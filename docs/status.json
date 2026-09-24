@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:09:19.991667+00:00",
-  "generated_ts": 1790255359,
-  "generated_local": "2026-09-24 16:09 +03",
+  "generated_at": "2026-09-24T13:10:13.564615+00:00",
+  "generated_ts": 1790255413,
+  "generated_local": "2026-09-24 16:10 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:09:19.991562+00:00",
+    "updated_at": "2026-09-24T13:10:13.564479+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,16 +23,16 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.56,
+    "avg_change_pct": -0.55,
     "details": {
       "SPY": {
-        "last": 764.11,
+        "last": 764.1609,
         "change_pct": -0.48,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.6585,
-        "change_pct": -0.88,
+        "last": 734.8117,
+        "change_pct": -0.86,
         "rsi": 68.9
       },
       "IWM": {
@@ -49,7 +49,7 @@
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.88,
+        "change_pct": -0.86,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 1240,
-    "ny_time": "09:09:19",
+    "seconds_left": 1186,
+    "ny_time": "09:10:13",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,11 +81,11 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.16
+        "change_pct": 0.26
       },
       {
         "name": "Financials",
-        "change_pct": -0.12
+        "change_pct": -0.14
       }
     ],
     "weakest": [
@@ -99,12 +99,12 @@
       },
       {
         "name": "Consumer",
-        "change_pct": -0.33
+        "change_pct": -0.32
       }
     ]
   },
   "style": {
-    "growth_avg": -0.89,
+    "growth_avg": -0.87,
     "value_avg": 0.1,
     "leader": "قيمة",
     "growth_count": 10,
@@ -246,7 +246,7 @@
   ],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
-    "UBER:زخم ضعيف (+0.07% < 0.55%)",
+    "UBER:زخم ضعيف (+0.12% < 0.55%)",
     "BAC:زخم ضعيف (+0.35% < 0.55%)",
     "DIS:زخم ضعيف (+0.04% < 0.55%)"
   ],
@@ -308,8 +308,8 @@
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.46,
-      "last": 599.51,
+      "change_pct": -2.47,
+      "last": 599.42,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -326,8 +326,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.38,
-      "last": 189.15,
+      "change_pct": -1.41,
+      "last": 189.08,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -335,8 +335,8 @@
     },
     {
       "symbol": "NVDA",
-      "change_pct": -1.24,
-      "last": 222.72,
+      "change_pct": -1.22,
+      "last": 222.75,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -344,8 +344,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.23,
-      "last": 350.61,
+      "change_pct": -1.18,
+      "last": 350.81,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -723,7 +723,7 @@
     "TSLA",
     "XOM"
   ],
-  "news_note_ar": "بث سريع · محايد/إيجابي فقط · حتى 5 عناوين جديدة كل دقيقة",
+  "news_note_ar": "أخبار الموقع فقط — محايد/إيجابي · تتحدّث كل دقيقة",
   "bot": "@Aied01_bot",
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
