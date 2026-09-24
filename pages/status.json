@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:01:28.191761+00:00",
-  "generated_ts": 1790254888,
-  "generated_local": "2026-09-24 16:01 +03",
+  "generated_at": "2026-09-24T13:02:16.499652+00:00",
+  "generated_ts": 1790254936,
+  "generated_local": "2026-09-24 16:02 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:01:28.191645+00:00",
+    "updated_at": "2026-09-24T13:02:16.499530+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,21 +23,21 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.55,
+    "avg_change_pct": -0.53,
     "details": {
       "SPY": {
-        "last": 764.28,
+        "last": 764.26,
         "change_pct": -0.46,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.7,
-        "change_pct": -0.88,
+        "last": 734.73,
+        "change_pct": -0.87,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 281.06,
-        "change_pct": -0.31,
+        "last": 281.17,
+        "change_pct": -0.27,
         "rsi": 29.0
       }
     },
@@ -49,12 +49,12 @@
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.88,
+        "change_pct": -0.87,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.31,
+        "change_pct": -0.27,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 1711,
-    "ny_time": "09:01:28",
+    "seconds_left": 1663,
+    "ny_time": "09:02:16",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,34 +77,34 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 0.96
+        "change_pct": 0.95
       },
       {
         "name": "Communication",
-        "change_pct": 0.15
+        "change_pct": 0.17
       },
       {
-        "name": "Consumer",
-        "change_pct": -0.24
+        "name": "Financials",
+        "change_pct": -0.23
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -0.96
+        "change_pct": -0.94
       },
       {
         "name": "Industrial",
         "change_pct": -0.36
       },
       {
-        "name": "Financials",
-        "change_pct": -0.24
+        "name": "Consumer",
+        "change_pct": -0.25
       }
     ]
   },
   "style": {
-    "growth_avg": -0.93,
+    "growth_avg": -0.92,
     "value_avg": 0.08,
     "leader": "قيمة",
     "growth_count": 10,
@@ -125,35 +125,35 @@
         "RSI تشبع شرائي"
       ],
       "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم غير طبيعي صاعد: حجم ×2.5 مع صعود | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقاومة≈$14.11 | تقلّب عالي: ATR% 8.4",
-      "entry": 14.65,
+      "entry": 14.7,
       "stop": 6.17,
-      "target": 29.91,
+      "target": 30.05,
       "shares": 14,
-      "risk_sar": 445.2,
+      "risk_sar": 447.82,
       "allowed": true,
-      "change_pct": 2.02,
-      "last": 14.65,
+      "change_pct": 2.37,
+      "last": 14.7,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 2.52,
         "volume": 9172100.0,
         "avg_volume_20": 3636165.0,
-        "dollar_volume": 134371265.0,
-        "avg_dollar_volume": 53269817.25,
-        "dollar_volume_label": "134.4M$",
-        "avg_dollar_volume_label": "53.3M$",
+        "dollar_volume": 134829870.0,
+        "avg_dollar_volume": 53451625.5,
+        "dollar_volume_label": "134.8M$",
+        "avg_dollar_volume_label": "53.5M$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×2.5 · اليوم 134.4M$ · متوسط 53.3M$"
+        "label": "RVOL ×2.5 · اليوم 134.8M$ · متوسط 53.5M$"
       },
       "rvol": 2.52,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 8.39,
-      "flow_score": 12.84,
+      "flow_score": 15.08,
       "flow_ok": true,
       "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ",
-      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.65%20دخول%2014.65%20وقف%206.17%20هدف%2029.91%0Aسيولة%20قوي%20RVOL%20x2.52%20زخم%20+2.02%"
+      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.7%20دخول%2014.7%20وقف%206.17%20هدف%2030.05%0Aسيولة%20قوي%20RVOL%20x2.52%20زخم%20+2.37%"
     },
     {
       "symbol": "APA",
@@ -300,8 +300,8 @@
   "movers": [
     {
       "symbol": "AMD",
-      "change_pct": -2.62,
-      "last": 598.5,
+      "change_pct": -2.54,
+      "last": 599.0,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -309,12 +309,12 @@
     },
     {
       "symbol": "SECZ",
-      "change_pct": 2.02,
-      "last": 14.65,
+      "change_pct": 2.37,
+      "last": 14.7,
       "rvol": 2.52,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "134.4M$"
+      "dollar_volume_label": "134.8M$"
     },
     {
       "symbol": "APA",
@@ -327,8 +327,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.67,
-      "last": 188.59,
+      "change_pct": -1.65,
+      "last": 188.63,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -336,8 +336,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.35,
-      "last": 350.19,
+      "change_pct": -1.32,
+      "last": 350.3,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -345,8 +345,8 @@
     },
     {
       "symbol": "NVDA",
-      "change_pct": -1.13,
-      "last": 222.96,
+      "change_pct": -1.11,
+      "last": 223.0,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -354,8 +354,8 @@
     },
     {
       "symbol": "XOM",
-      "change_pct": 1.05,
-      "last": 162.93,
+      "change_pct": 1.04,
+      "last": 162.9,
       "rvol": 0.84,
       "grade": "medium",
       "grade_ar": "متوسط",
