@@ -6,109 +6,147 @@
   <title>لوحة تنبيهات الأسهم</title>
   <style>
     :root {
-      --bg: #07111f;
-      --card: #101a2c;
-      --line: #243247;
-      --text: #e8eefc;
-      --muted: #9fb0d0;
-      --ok: #4ade80;
-      --warn: #fbbf24;
-      --accent: #3b82f6;
+      --bg:#07111f; --card:#101a2c; --line:#243247; --text:#e8eefc;
+      --muted:#9fb0d0; --ok:#4ade80; --bad:#f87171; --warn:#fbbf24; --accent:#3b82f6;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, system-ui, sans-serif;
-      background: radial-gradient(1200px 600px at 80% -10%, #123056 0%, var(--bg) 55%);
-      color: var(--text);
-      min-height: 100vh;
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--text);
+      font-family:"Segoe UI", Tahoma, system-ui, sans-serif;
+      background:radial-gradient(900px 500px at 100% -20%, #15325a 0%, var(--bg) 50%);
+      min-height:100vh;
     }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 18px 14px 40px; }
-    h1 { font-size: 1.35rem; margin: 8px 0 4px; }
-    .muted { color: var(--muted); font-size: .92rem; }
-    .card {
-      background: color-mix(in srgb, var(--card) 92%, black);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px;
-      margin: 12px 0;
+    .wrap{max-width:760px;margin:0 auto;padding:16px 12px 48px}
+    h1{font-size:1.2rem;margin:0 0 6px}
+    h2{font-size:1.05rem;margin:0 0 10px}
+    .muted{color:var(--muted);font-size:.9rem;line-height:1.5}
+    .card{
+      background:color-mix(in srgb, var(--card) 94%, black);
+      border:1px solid var(--line); border-radius:16px; padding:14px; margin:12px 0;
     }
-    .row { display: flex; justify-content: space-between; gap: 10px; margin: 8px 0; }
-    .pill {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: #1e293b;
-      font-size: .85rem;
+    .row{display:flex;justify-content:space-between;gap:10px;margin:7px 0;align-items:center}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;background:#1e293b;font-size:.82rem}
+    .ok{color:var(--ok)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+    .btn{
+      display:inline-block;margin:6px 6px 0 0;padding:11px 14px;border-radius:12px;
+      background:var(--accent);color:#fff;text-decoration:none;font-weight:650
     }
-    .ok { color: var(--ok); }
-    .warn { color: var(--warn); }
-    a.btn {
-      display: inline-block;
-      margin: 6px 4px 0 0;
-      padding: 11px 14px;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: 600;
+    .btn.secondary{background:#334155}
+    .opp{
+      border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0;
+      background:#0c1526;
     }
-    code { background: #0b1526; padding: 2px 6px; border-radius: 6px; }
-    pre {
-      white-space: pre-wrap;
-      word-break: break-word;
-      background: #0b1526;
-      padding: 10px;
-      border-radius: 10px;
-      font-size: .82rem;
-      direction: ltr;
-      text-align: left;
-    }
+    .opp .sym{font-size:1.05rem;font-weight:700}
+    .tag{display:inline-block;margin:2px 0 2px 4px;padding:2px 8px;border-radius:8px;background:#1e293b;font-size:.75rem;color:#cbd5e1}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .m{background:#0c1526;border:1px solid var(--line);border-radius:12px;padding:10px}
+    .up{color:var(--ok)} .down{color:var(--bad)}
+    .empty{padding:18px;text-align:center;color:var(--muted)}
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>لوحة تنبيهات الأسهم الأمريكية</h1>
-    <p class="muted">مجانية ودائمة عبر GitHub Pages · تعليمي فقط · بدون تنفيذ أوامر</p>
+    <p class="muted" id="subtitle">جاري تحميل البيانات...</p>
 
     <div class="card">
       <div class="row"><span>الحالة</span><span id="alive" class="pill">...</span></div>
       <div class="row"><span>آخر تحديث</span><span id="updated" class="muted">-</span></div>
       <div class="row"><span>يوم تداول؟</span><span id="trading">-</span></div>
       <div class="row"><span>الوضع</span><span id="mode">-</span></div>
+      <div class="row"><span>رأس المال</span><span id="capital">-</span></div>
       <p class="muted" id="note"></p>
     </div>
 
     <div class="card">
-      <h1>البوت على تيليجرام</h1>
-      <p>هذه اللوحة للقراءة. التحكم والتنبيهات على تيليجرام.</p>
-      <a class="btn" href="https://t.me/Aied01_bot">فتح @Aied01_bot</a>
-      <a class="btn" href="https://t.me/aied01">القناة @aied01</a>
-      <p class="muted" style="margin-top:10px">أوامر مفيدة: <code>/status</code> <code>/scan</code> <code>/premarket</code> <code>/help</code></p>
+      <h2>مزاج السوق</h2>
+      <p id="tone">-</p>
+      <div id="indexes" class="muted"></div>
     </div>
 
     <div class="card">
-      <h1>تفاصيل الحالة</h1>
-      <pre id="raw">جاري التحميل...</pre>
+      <h2>أفضل الفرص الآن</h2>
+      <div id="opps"><div class="empty">جاري الجلب...</div></div>
+    </div>
+
+    <div class="card">
+      <h2>أقوى المتحركات</h2>
+      <div id="movers" class="grid"></div>
+    </div>
+
+    <div class="card">
+      <h2>المخاطرة</h2>
+      <pre id="risk" class="muted" style="white-space:pre-wrap;margin:0;font-family:inherit"></pre>
+    </div>
+
+    <div class="card">
+      <h2>تيليجرام</h2>
+      <p class="muted">التنبيهات والتحكم من البوت. اللوحة للعرض فقط.</p>
+      <a class="btn" href="https://t.me/Aied01_bot">فتح @Aied01_bot</a>
+      <a class="btn secondary" href="https://t.me/aied01">القناة @aied01</a>
+      <p class="muted" style="margin-top:10px">أوامر: <code>/status</code> <code>/scan</code> <code>/premarket</code> <code>/help</code></p>
+      <p class="muted" id="disc"></p>
     </div>
   </div>
   <script>
-    async function load() {
-      try {
-        const res = await fetch('./status.json?ts=' + Date.now());
-        const data = await res.json();
-        const ok = !!(data.status && data.status.ok);
+    function esc(s){return String(s??'').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));}
+    function clsChg(v){return v>=0?'up':'down'}
+    async function load(){
+      try{
+        const res = await fetch('./status.json?ts='+Date.now());
+        const d = await res.json();
+        const ok = !!(d.status && d.status.ok);
         document.getElementById('alive').textContent = ok ? 'شغال' : 'تحقق';
-        document.getElementById('alive').className = 'pill ' + (ok ? 'ok' : 'warn');
-        document.getElementById('updated').textContent = (data.status && data.status.updated_at) || data.generated_at || '-';
-        document.getElementById('trading').textContent = data.trading_day ? 'نعم' : 'لا';
-        document.getElementById('mode').textContent = data.mode || '-';
-        document.getElementById('note').textContent = data.holiday_note || '';
-        document.getElementById('raw').textContent = JSON.stringify(data, null, 2);
-      } catch (e) {
-        document.getElementById('alive').textContent = 'لا بيانات بعد';
-        document.getElementById('alive').className = 'pill warn';
-        document.getElementById('raw').textContent = 'ارفع المشروع على GitHub وفعّل Actions لنشر status.json تلقائيًا.';
+        document.getElementById('alive').className = 'pill ' + (ok?'ok':'warn');
+        document.getElementById('updated').textContent = d.generated_local || d.generated_at || '-';
+        document.getElementById('trading').textContent = d.trading_day ? 'نعم' : 'لا';
+        document.getElementById('mode').textContent = d.mode || '-';
+        document.getElementById('capital').textContent = (d.capital_sar? Number(d.capital_sar).toLocaleString('ar-SA')+' ر.س':'-');
+        document.getElementById('note').textContent = d.holiday_note || '';
+        document.getElementById('subtitle').textContent = 'تحديث: '+(d.generated_local||'');
+        document.getElementById('tone').textContent = (d.market && d.market.tone) || 'غير متاح';
+        const det = (d.market && d.market.details) || {};
+        document.getElementById('indexes').innerHTML = Object.keys(det).map(k=>{
+          const x=det[k];
+          return `<div>${esc(k)}: <span class="${clsChg(x.change_pct)}">${x.change_pct>0?'+':''}${x.change_pct}%</span> | RSI ${x.rsi}</div>`;
+        }).join('') || 'لا بيانات مؤشرات';
+
+        const opps = d.opportunities || [];
+        const box = document.getElementById('opps');
+        if(!opps.length){
+          box.innerHTML = '<div class="empty">لا توجد فرص قوية الآن — الأفضل الانتظار أو حدّث لاحقًا.</div>';
+        } else {
+          box.innerHTML = opps.map(o=>`
+            <div class="opp">
+              <div class="row">
+                <span class="sym">${esc(o.symbol)}</span>
+                <span class="pill">${esc(o.score_100)}/100</span>
+              </div>
+              <div>${esc(o.action)}</div>
+              <div class="muted" style="margin-top:6px">${esc(o.reason)}</div>
+              <div style="margin-top:8px">
+                ${(o.strategies||[]).map(s=>`<span class="tag">${esc(s)}</span>`).join('')}
+              </div>
+              <div class="muted" style="margin-top:8px">
+                دخول≈ $${esc(o.entry)} | وقف≈ $${esc(o.stop)} | هدف≈ $${esc(o.target)}<br/>
+                الحجم: ${esc(o.shares)} سهم | مخاطرة≈ ${esc(o.risk_sar)} ر.س<br/>
+                ${o.allowed ? 'يمكنك التخطيط للدخول' : 'راقب فقط / لا تدخل الآن'}
+              </div>
+            </div>`).join('');
+        }
+
+        const movers = d.movers || [];
+        document.getElementById('movers').innerHTML = movers.map(m=>`
+          <div class="m">
+            <div class="row"><b>${esc(m.symbol)}</b><span class="${clsChg(m.change_pct)}">${m.change_pct>0?'+':''}${esc(m.change_pct)}%</span></div>
+            <div class="muted">$${esc(m.last)}</div>
+          </div>`).join('') || '<div class="empty">لا متحركات</div>';
+
+        document.getElementById('risk').textContent = d.risk_banner || '';
+        document.getElementById('disc').textContent = d.disclaimer || '';
+      }catch(e){
+        document.getElementById('subtitle').textContent = 'تعذّر تحميل البيانات';
+        document.getElementById('opps').innerHTML = '<div class="empty">حدّث الصفحة بعد قليل، أو افتح تيليجرام /scan</div>';
       }
     }
     load();
