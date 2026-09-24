@@ -22,6 +22,7 @@ def main() -> int:
     rc = run([str(py), str(ROOT / "scripts" / "build_pages.py")])
     if rc != 0:
         return rc
+    run([str(py), str(ROOT / "scripts" / "write_live_json.py")])
 
     # Ensure docs HTML matches pages
     src = ROOT / "pages" / "index.html"
@@ -29,7 +30,18 @@ def main() -> int:
     if src.exists():
         dst.write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
 
-    run(["git", "add", "docs/index.html", "docs/status.json", "pages/index.html", "pages/status.json"])
+    run(
+        [
+            "git",
+            "add",
+            "docs/index.html",
+            "docs/status.json",
+            "docs/live.json",
+            "pages/index.html",
+            "pages/status.json",
+            "pages/live.json",
+        ]
+    )
     # Commit only if staged changes exist
     dirty = subprocess.call(["git", "diff", "--cached", "--quiet"], cwd=ROOT)
     if dirty == 0:
