@@ -335,12 +335,8 @@
           <input id="calcPrice" type="number" inputmode="decimal" step="0.01" min="0" placeholder="0.00" />
         </div>
         <div class="calc-field">
-          <label for="calcCapital">رأس المال (ر.س)</label>
-          <input id="calcCapital" type="number" inputmode="decimal" step="1" min="0" placeholder="1800" />
-        </div>
-        <div class="calc-field">
-          <label for="calcFx">سعر الصرف (ر.س لكل $1)</label>
-          <input id="calcFx" type="number" inputmode="decimal" step="0.01" min="0.1" value="3.75" />
+          <label for="calcCapital">رأس المال ($)</label>
+          <input id="calcCapital" type="number" inputmode="decimal" step="1" min="0" placeholder="480" />
         </div>
         <div class="calc-field">
           <label for="calcRiskPct">نسبة المخاطرة المقبولة %</label>
@@ -378,8 +374,8 @@
       </div>
 
       <div class="calc-size" id="calcSizeBox">
-        <div class="muted">حجم الصفقة (Position Sizing)</div>
-        <div class="muted" id="calcFxHint" style="margin-top:4px;font-size:.82rem"></div>
+        <div class="muted">حجم الصفقة (Position Sizing) — الحساب بالدولار</div>
+        <div class="muted" id="calcCapHint" style="margin-top:4px;font-size:.82rem"></div>
         <div class="big" id="calcOutShares">— سهم</div>
         <div class="row" style="margin:6px 0 0">
           <span class="muted">القيمة الإجمالية (تكلفة الشراء)</span>
@@ -432,7 +428,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=5;
+    window.__STATUS_V=6;
     const LS = {
       theme: 'dash_theme',
       filter: 'dash_filter',
@@ -505,13 +501,16 @@
       if(!Number.isFinite(v)) return '—';
       return v.toLocaleString('ar-SA',{maximumFractionDigits:0})+' ر.س';
     }
-    function calcFxRate(){
-      const el=document.getElementById('calcFx');
-      const typed=el ? Number(el.value) : NaN;
-      if(Number.isFinite(typed) && typed>0) return typed;
+    function displayFxRate(){
       const fromData=Number(DATA && DATA.usd_sar_rate);
       if(Number.isFinite(fromData) && fromData>0) return fromData;
       return 3.75;
+    }
+    function defaultCapitalUsd(){
+      const sar=Number(DATA && DATA.capital_sar);
+      const fx=displayFxRate();
+      if(Number.isFinite(sar) && sar>0 && fx>0) return Number((sar/fx).toFixed(2));
+      return NaN;
     }
     function strategyStopDefault(st){
       return st==='momentum' ? 1.0 : 1.5;
@@ -568,10 +567,11 @@
           brEl.value=String(Number((px*1.001).toFixed(4)));
         }
       }
-      if(DATA && DATA.capital_sar!=null){
+      if(DATA){
         const cap=document.getElementById('calcCapital');
-        if(cap && (!cap.value || opts.forceCapital)){
-          cap.value=String(Number(DATA.capital_sar));
+        const defUsd=defaultCapitalUsd();
+        if(cap && (!cap.value || opts.forceCapital) && Number.isFinite(defUsd)){
+          cap.value=String(defUsd);
         }
       }
       document.querySelectorAll('.calc-picked').forEach(el=>el.classList.remove('calc-picked'));
@@ -594,9 +594,9 @@
     }
     function runStrategyCalc(){
       const price=Number((document.getElementById('calcPrice')||{}).value);
-      const capitalSar=Number((document.getElementById('calcCapital')||{}).value);
+      const capitalUsd=Number((document.getElementById('calcCapital')||{}).value);
       const riskPct=Number((document.getElementById('calcRiskPct')||{}).value);
-      const fx=calcFxRate();
+      const fx=displayFxRate();
       const st=(document.getElementById('calcStrategy')||{}).value||'catalyst';
       let stopPct=Number((document.getElementById('calcStopPct')||{}).value);
       const brRaw=(document.getElementById('calcBreakout')||{}).value;
@@ -618,7 +618,7 @@
       const outN=document.getElementById('calcOutNotional');
       const outR=document.getElementById('calcOutRiskCash');
       const outMax=document.getElementById('calcOutMaxShares');
-      const fxHint=document.getElementById('calcFxHint');
+      const capHint=document.getElementById('calcCapHint');
       const warnBox=document.getElementById('calcWarnings');
       syncCalcSectorTip();
 
@@ -631,7 +631,7 @@
         if(outN) outN.textContent='—';
         if(outR) outR.textContent='—';
         if(outMax) outMax.textContent='—';
-        if(fxHint) fxHint.textContent='';
+        if(capHint) capHint.textContent='';
         if(warnBox) warnBox.innerHTML='';
         return;
       }
@@ -644,8 +644,7 @@
       if(outT1) outT1.textContent='$'+money2(t1)+` (1:${r1})`;
       if(outT2) outT2.textContent='$'+money2(t2)+` (1:${r2})`;
 
-      // رأس المال بالريال → دولار، ثم الحسبة كلها بالدولار (سعر السهم دولار)
-      const capitalUsd=(Number.isFinite(capitalSar) && capitalSar>0 && fx>0) ? (capitalSar / fx) : NaN;
+      // رأس المال والحسبة كلها بالدولار مباشرة (نفس وحدة سعر السهم)
       const maxByCapital=Number.isFinite(capitalUsd) && capitalUsd>0 ? Math.floor(capitalUsd / entry) : 0;
       let shares=0;
       let notionalUsd=0;
@@ -654,15 +653,14 @@
       if(Number.isFinite(capitalUsd) && capitalUsd>0 && Number.isFinite(riskPct) && riskPct>0 && riskPerShareUsd>0){
         riskBudgetUsd=capitalUsd*(riskPct/100);
         const byRisk=Math.floor(riskBudgetUsd / riskPerShareUsd);
-        // لا تتجاوز رأس المال الفعلي
         shares=Math.max(0, Math.min(byRisk, maxByCapital));
         notionalUsd=shares*entry;
         riskCashUsd=shares*riskPerShareUsd;
       }
-      if(fxHint && Number.isFinite(capitalUsd)){
-        fxHint.textContent=`تحويل رأس المال: ${moneySar(capitalSar)} ÷ ${fx} = ≈ $${money2(capitalUsd)} · ميزانية المخاطرة ≈ $${money2(riskBudgetUsd)} (${riskPct}%)`;
-      } else if(fxHint){
-        fxHint.textContent='';
+      if(capHint && Number.isFinite(capitalUsd) && capitalUsd>0){
+        capHint.textContent=`رأس المال $${money2(capitalUsd)} · ميزانية المخاطرة ≈ $${money2(riskBudgetUsd)} (${riskPct}%) · تقريباً ${moneySar(capitalUsd*fx)}`;
+      } else if(capHint){
+        capHint.textContent='';
       }
       if(outSh) outSh.textContent=`${shares.toLocaleString('ar-SA')} سهم`;
       if(outN) outN.textContent= `$${money2(notionalUsd)} · ≈ ${moneySar(notionalUsd*fx)}`;
@@ -672,14 +670,14 @@
       let warns='';
       if(shares>0 && Number.isFinite(capitalUsd) && capitalUsd>0){
         if(notionalUsd > capitalUsd + 0.01){
-          warns += `<div class="calc-warn">⚠️ تكلفة الصفقة أكبر من رأس المال بالدولار — قلل النسبة أو الوقف</div>`;
+          warns += `<div class="calc-warn">⚠️ تكلفة الصفقة أكبر من رأس المال — قلل النسبة أو الوقف</div>`;
         } else if(notionalUsd >= capitalUsd * 0.95){
           warns += `<div class="calc-warn">⚠️ الصفقة تستخدم معظم/كامل رأس المال — وزّع المخاطر إن أمكن</div>`;
         }
       }
       if(shares<=0 && Number.isFinite(capitalUsd) && capitalUsd>0){
         if(maxByCapital<=0){
-          warns += `<div class="calc-tip">رأس المال بالدولار (≈ $${money2(capitalUsd)}) لا يكفي لشراء سهم واحد بسعر $${money2(entry)}</div>`;
+          warns += `<div class="calc-tip">رأس المال $${money2(capitalUsd)} لا يكفي لشراء سهم واحد بسعر $${money2(entry)}</div>`;
         } else {
           warns += `<div class="calc-tip">ضمن نسبة المخاطرة ${riskPct}% لا يكفي لسهم واحد — زد المخاطرة % أو قرّب الوقف أو اختر سهماً أرخص (أقصى شراء بكامل المال: ${maxByCapital} سهم)</div>`;
         }
@@ -703,13 +701,9 @@
       if(stopEl){
         stopEl.addEventListener('input',()=>{ CALC_STOP_USER_EDITED=true; runStrategyCalc(); });
       }
-      ['calcPrice','calcCapital','calcRiskPct','calcBreakout','calcFx'].forEach(id=>{
+      ['calcPrice','calcCapital','calcRiskPct','calcBreakout'].forEach(id=>{
         const el=document.getElementById(id);
-        if(!el) return;
-        el.addEventListener('input', ()=>{
-          if(id==='calcFx') el.dataset.userEdited='1';
-          runStrategyCalc();
-        });
+        if(el) el.addEventListener('input', runStrategyCalc);
       });
       const capElWatch=document.getElementById('calcCapital');
       if(capElWatch){
@@ -741,16 +735,11 @@
         if(riskEl) riskEl.value='2';
         if(stEl) stEl.value='catalyst';
         setCalcStopDefaultIfNeeded();
-        const fxEl=document.getElementById('calcFx');
-        if(fxEl) fxEl.value=String(Number((DATA&&DATA.usd_sar_rate)||3.75));
-        if(DATA && DATA.capital_sar!=null && capEl) capEl.value=String(Number(DATA.capital_sar));
+        const defUsd=defaultCapitalUsd();
+        if(capEl && Number.isFinite(defUsd)) capEl.value=String(defUsd);
         document.querySelectorAll('.calc-picked').forEach(el=>el.classList.remove('calc-picked'));
         runStrategyCalc();
       };
-      const fxElInit=document.getElementById('calcFx');
-      if(fxElInit && DATA && DATA.usd_sar_rate!=null){
-        fxElInit.value=String(Number(DATA.usd_sar_rate));
-      }
       setCalcStopDefaultIfNeeded();
       runStrategyCalc();
     }
@@ -1171,13 +1160,12 @@
         lagEl.className=d.has_live_quotes?'muted ok':'muted warn';
       }
       const calcCap=document.getElementById('calcCapital');
-      if(calcCap && d.capital_sar!=null && (!calcCap.value || calcCap.dataset.autofilled!=='0')){
-        calcCap.value=String(Number(d.capital_sar));
-        calcCap.dataset.autofilled='1';
-      }
-      const fxEl=document.getElementById('calcFx');
-      if(fxEl && d.usd_sar_rate!=null && (!fxEl.dataset.userEdited || fxEl.dataset.userEdited!=='1')){
-        fxEl.value=String(Number(d.usd_sar_rate)||3.75);
+      if(calcCap && (!calcCap.value || calcCap.dataset.autofilled!=='0')){
+        const defUsd=defaultCapitalUsd();
+        if(Number.isFinite(defUsd)){
+          calcCap.value=String(defUsd);
+          calcCap.dataset.autofilled='1';
+        }
       }
       runStrategyCalc();
       document.getElementById('tone').textContent=(d.market&&d.market.tone)||'-';
