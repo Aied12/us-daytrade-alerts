@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-09-24T13:31:05.104435+00:00",
-  "generated_ts": 1790256665,
+  "generated_at": "2026-09-24T13:31:22.240256+00:00",
+  "generated_ts": 1790256682,
   "generated_local": "2026-09-24 16:31 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:31:05.104318+00:00",
+    "updated_at": "2026-09-24T13:31:22.240108+00:00",
     "last_mode": "dashboard",
-    "changed": true,
+    "changed": false,
     "symbols": 24
   },
   "telegram_enabled": true,
@@ -23,39 +23,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.56,
+    "avg_change_pct": -0.51,
     "details": {
       "SPY": {
-        "last": 763.96,
-        "change_pct": -0.5,
-        "rsi": 44.3
+        "last": 764.02,
+        "change_pct": -0.49,
+        "rsi": 44.0
       },
       "QQQ": {
-        "last": 735.12,
-        "change_pct": -0.82,
-        "rsi": 61.0
+        "last": 735.08,
+        "change_pct": -0.83,
+        "rsi": 60.6
       },
       "IWM": {
-        "last": 281.0,
-        "change_pct": -0.35,
-        "rsi": 25.0
+        "last": 281.34,
+        "change_pct": -0.21,
+        "rsi": 24.8
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.5,
-        "rsi": 44.3
+        "change_pct": -0.49,
+        "rsi": 44.0
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.82,
-        "rsi": 61.0
+        "change_pct": -0.83,
+        "rsi": 60.6
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.35,
-        "rsi": 25.0
+        "change_pct": -0.21,
+        "rsi": 24.8
       }
     ],
     "no_trade_today": false,
@@ -68,8 +68,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 23334,
-    "ny_time": "09:31:05",
+    "seconds_left": 23317,
+    "ny_time": "09:31:22",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,35 +77,35 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 0.87
+        "change_pct": 1.34
       },
       {
         "name": "Communication",
-        "change_pct": 0.49
+        "change_pct": -0.0
       },
       {
-        "name": "Financials",
-        "change_pct": -0.03
+        "name": "Consumer",
+        "change_pct": -0.42
       }
     ],
     "weakest": [
       {
+        "name": "Financials",
+        "change_pct": -0.83
+      },
+      {
         "name": "Technology",
-        "change_pct": -0.62
+        "change_pct": -0.73
       },
       {
         "name": "Industrial",
-        "change_pct": -0.33
-      },
-      {
-        "name": "Consumer",
-        "change_pct": -0.32
+        "change_pct": -0.66
       }
     ]
   },
   "style": {
-    "growth_avg": -0.5,
-    "value_avg": 0.03,
+    "growth_avg": -0.68,
+    "value_avg": -0.17,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -113,230 +113,83 @@
   "opportunities": [],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
-    "JPM:زخم ضعيف (+0.12% < 0.85%)",
-    "BAC:زخم ضعيف (+0.34% < 0.85%)",
-    "LTH:زخم ضعيف (+0.57% < 0.85%)",
-    "ASAN:تداول بطيء اليوم ($1M · RVOL×0.02)",
-    "SECZ:تداول بطيء اليوم ($6M · RVOL×0.12)",
-    "VEEV:زخم ضعيف (+0.18% < 0.85%)",
-    "DIS:زخم ضعيف (+0.56% < 0.85%)",
-    "RRR:زخم ضعيف (+0.79% < 0.85%)",
-    "BETA:زخم ضعيف (-1.91% < 0.85%)",
-    "AAON:زخم ضعيف (-2.22% < 0.85%)",
-    "DCO:زخم ضعيف (-0.39% < 0.85%)",
-    "KVYO:تداول بطيء اليوم ($1M · RVOL×0.01)",
-    "HUBS:تداول بطيء اليوم ($8M · RVOL×0.02)",
-    "AR:زخم ضعيف (+0.29% < 0.85%)",
-    "FPS:زخم ضعيف (-2.72% < 0.85%)",
-    "FRSH:تداول بطيء اليوم ($1M · RVOL×0.01)"
+    "XOM:تداول بطيء اليوم ($16M · RVOL×0.01)",
+    "DIS:زخم ضعيف (-0.32% < 0.85%)",
+    "CVX:تداول بطيء اليوم ($10M · RVOL×0.00)",
+    "NVDA:زخم ضعيف (-1.46% < 0.85%)"
   ],
   "gainers": [
     {
-      "symbol": "SECZ",
-      "name": "Securitize Corp.",
-      "last": 14.36,
-      "change_pct": 10.46,
-      "ref": 13.0,
-      "rth_close": 14.36,
-      "volume": 9169868.0,
-      "dollar_volume": 131679304.48,
-      "dollar_volume_label": "131.7M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ"
-    },
-    {
-      "symbol": "BETA",
-      "name": "Beta Technologies, Inc.",
-      "last": 24.34,
-      "change_pct": 4.55,
-      "ref": 23.28,
-      "rth_close": 24.34,
-      "volume": 2209292.0,
-      "dollar_volume": 53774167.28,
-      "dollar_volume_label": "53.8M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=BETA"
-    },
-    {
       "symbol": "IONQ",
       "name": "IonQ, Inc.",
-      "last": 42.54,
-      "change_pct": 4.42,
-      "ref": 40.74,
-      "rth_close": 42.54,
-      "volume": 2270962.0,
-      "dollar_volume": 96606723.48,
-      "dollar_volume_label": "96.6M$",
+      "last": 43.01,
+      "change_pct": 1.1,
+      "ref": 42.54,
+      "rth_close": 43.01,
+      "volume": 3359549.0,
+      "dollar_volume": 144494202.49,
+      "dollar_volume_label": "144.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=IONQ"
-    },
-    {
-      "symbol": "RRR",
-      "name": "Red Rock Resorts, Inc.",
-      "last": 50.9,
-      "change_pct": 4.39,
-      "ref": 48.76,
-      "rth_close": 50.9,
-      "volume": 2132213.0,
-      "dollar_volume": 108529641.7,
-      "dollar_volume_label": "108.5M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=RRR"
-    },
-    {
-      "symbol": "ASAN",
-      "name": "Asana, Inc.",
-      "last": 9.47,
-      "change_pct": 4.3,
-      "ref": 9.08,
-      "rth_close": 9.47,
-      "volume": 8536552.0,
-      "dollar_volume": 80841147.44,
-      "dollar_volume_label": "80.8M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=ASAN"
-    },
-    {
-      "symbol": "LTH",
-      "name": "Life Time Group Holdings, Inc.",
-      "last": 39.67,
-      "change_pct": 3.88,
-      "ref": 38.19,
-      "rth_close": 39.67,
-      "volume": 5755215.0,
-      "dollar_volume": 228309379.05,
-      "dollar_volume_label": "228.3M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=LTH"
-    },
-    {
-      "symbol": "VEEV",
-      "name": "Veeva Systems Inc.",
-      "last": 270.75,
-      "change_pct": 3.77,
-      "ref": 260.91,
-      "rth_close": 270.75,
-      "volume": 1421262.0,
-      "dollar_volume": 384806686.5,
-      "dollar_volume_label": "384.8M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=VEEV"
-    },
-    {
-      "symbol": "HUBS",
-      "name": "HubSpot, Inc.",
-      "last": 226.03,
-      "change_pct": 3.74,
-      "ref": 217.88,
-      "rth_close": 226.03,
-      "volume": 1745131.0,
-      "dollar_volume": 394451959.93,
-      "dollar_volume_label": "394.5M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=HUBS"
-    },
-    {
-      "symbol": "DCO",
-      "name": "Ducommun Incorporated",
-      "last": 172.51,
-      "change_pct": 3.64,
-      "ref": 166.45,
-      "rth_close": 172.51,
-      "volume": 243332.0,
-      "dollar_volume": 41977203.32,
-      "dollar_volume_label": "42.0M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=DCO"
-    },
-    {
-      "symbol": "FPS",
-      "name": "Forgent Power Solutions, Inc.",
-      "last": 39.88,
-      "change_pct": 3.53,
-      "ref": 38.52,
-      "rth_close": 39.88,
-      "volume": 7925582.0,
-      "dollar_volume": 316072210.16,
-      "dollar_volume_label": "316.1M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=FPS"
     }
   ],
   "gainers_min_price": 5.0,
   "gainers_session_ar": "الجلسة الرسمية الآن",
   "movers": [
     {
-      "symbol": "SECZ",
-      "change_pct": 6.27,
-      "last": 15.25,
-      "rvol": 0.12,
+      "symbol": "IONQ",
+      "change_pct": 4.44,
+      "last": 42.55,
+      "rvol": 0.16,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "6.4M$"
-    },
-    {
-      "symbol": "FPS",
-      "change_pct": -2.72,
-      "last": 38.79,
-      "rvol": 0.02,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "6.5M$"
+      "dollar_volume_label": "145.3M$"
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.42,
-      "last": 599.76,
-      "rvol": 0.08,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "1.0B$"
-    },
-    {
-      "symbol": "HUBS",
-      "change_pct": 2.34,
-      "last": 230.97,
-      "rvol": 0.02,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "7.7M$"
-    },
-    {
-      "symbol": "BETA",
-      "change_pct": -1.91,
-      "last": 23.89,
-      "rvol": 0.01,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "730K$"
-    },
-    {
-      "symbol": "CRM",
-      "change_pct": 1.59,
-      "last": 241.35,
+      "change_pct": -2.33,
+      "last": 600.27,
       "rvol": 0.09,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "358.5M$"
+      "dollar_volume_label": "1.1B$"
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.56,
-      "last": 349.46,
+      "change_pct": -1.66,
+      "last": 349.1,
       "rvol": 0.06,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "561.8M$"
+      "dollar_volume_label": "603.2M$"
+    },
+    {
+      "symbol": "CVX",
+      "change_pct": 1.55,
+      "last": 205.55,
+      "rvol": 0.0,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "9.7M$"
+    },
+    {
+      "symbol": "NVDA",
+      "change_pct": -1.46,
+      "last": 222.22,
+      "rvol": 0.03,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "892.7M$"
+    },
+    {
+      "symbol": "COIN",
+      "change_pct": -1.45,
+      "last": 198.16,
+      "rvol": 0.04,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "84.2M$"
     }
   ],
   "news": [
@@ -356,6 +209,36 @@
       "source": "finnhub:merger"
     },
     {
+      "symbol": "AMD",
+      "title": "AMD's Six-Day Rally Finally Hits a Pause",
+      "title_ar": "توقف ارتفاع AMD لمدة ستة أيام أخيرًا",
+      "summary": "AMD has gained more than 180% this year and recently crossed a $1 trillion market cap.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=129eb1c49c02682e2adc557954ec9d25c9ed79229dce0c9e1f032a0d598c9a8f",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 12:20 UTC",
+      "published_ts": 1790252423,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "786dcaac9c87e2293b455f1af9f065d18bd339b8",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "AMD",
+      "title": "AMD Joined Nvidia in the Trillion Dollar Club. The Run Isn’t an Accident",
+      "title_ar": "انضمت AMD إلى Nvidia في نادي تريليون دولار. الركض ليس حادثًا",
+      "summary": "AMD just crossed a threshold only one other chip company has ever reached, but the rally into that milestone raises a harder question about what the stock is actually worth from here.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=18cb38c36abd3f685d20b84c0a6c4d9e79d7e6cdf24809621daed961c4aa3b04",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 12:00 UTC",
+      "published_ts": 1790251254,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "d8e71cbb78bd8d8241f862fe767d06dd8b7438ac",
+      "source": "finnhub"
+    },
+    {
       "symbol": "MARKET",
       "title": "HIFI raises $37M to expand stablecoin payments, tokenized markets",
       "title_ar": "تجمع هيفي 37 مليون $ لتوسيع المدفوعات المستقرة بالعملات والأسواق الرمزية",
@@ -371,33 +254,108 @@
       "source": "finnhub:crypto"
     },
     {
-      "symbol": "VEEV",
-      "title": "Quality Management System Software Market Forecasts Growth from $11.73B (2026) to $20.43B by 2031, Profiling Veeva Systems, Siemens, PTC, SAP, Oracle & 15 Others",
-      "title_ar": "توقعات سوق برمجيات نظام إدارة الجودة النمو من 11.73مليار $ (2026) إلى 20.43مليار $ بحلول عام 2031، أنظمة، Siemens،،، و 15 أخرى",
-      "summary": "The global Quality Management System (QMS) software market is projected to grow from USD 11.73 billion in 2026 to USD 20.43 billion by 2031, at an 11.7% CAGR. Growth is driven by cloud-based QMS platforms, AI-powered quality analytics, automated compliance workflows and integrati",
+      "symbol": "JPM",
+      "title": "JPMorgan Announces Cash Distributions for the JPMorgan ETFs",
+      "title_ar": "JPMorgan تعلن عن توزيعات نقدية لصناديق JPMorgan المتداولة",
+      "summary": "TORONTO, Sept. 24, 2026 (GLOBE NEWSWIRE) -- J. P. Morgan Asset Management (JPMAM)* today announced the final September 2026 cash distributions for the below listed JPMorgan ETFs. The JPMorgan ETFs trade on the Toronto Stock Exchange (TSX). Unitholders of record on October 1, 2026",
       "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=76e311e7847ac2e56b081ae9d1891eb5a3cec21dcdf75026c048d157a5b04ba8",
+      "url": "https://finnhub.io/api/news?id=cf6b52dffa507cc66a548e6e19c5366028f72454be8d44adcaf5ea6e8ec9ac94",
       "publisher": "Yahoo",
-      "published": "2026-09-24 10:29 UTC",
-      "published_ts": 1790245740,
+      "published": "2026-09-24 11:00 UTC",
+      "published_ts": 1790247600,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "4a032eb140c35373f1aaa7f132a89d7817d6ccbc",
+      "id": "f314670290c2a08e4beb7cf3a82d137fd2f5359d",
       "source": "finnhub"
     },
     {
-      "symbol": "HUBS",
-      "title": "1 Profitable Stock to Research Further and 2 We Ignore",
-      "title_ar": "سهم واحد مربح لمزيد من البحث و سهمان نتجاهلهما",
-      "summary": "Even if a company is profitable, it doesn’t always mean it’s a great investment. Some struggle to maintain growth, face looming threats, or fail to reinvest wisely, limiting their future potential.",
+      "symbol": "BAC",
+      "title": "Citi Is Rolling Out Higher Rates in New Push for Clients’ Assets",
+      "title_ar": "تقوم Citi بإطلاق أسعار أعلى في دفعة جديدة لأصول العملاء",
+      "summary": "Citigroup wants clients to park more of their cash and investments with the bank. It’s offering incentives to make it happen.",
       "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=5d02c2c907be8eadd00ae0d0ae05845392d177da66a52fe46876d917a6fbbe61",
+      "url": "https://finnhub.io/api/news?id=15476efc5f85ae38c8d5155336bc6ed004219d4520a7afe6518d847f94a62e47",
       "publisher": "Yahoo",
-      "published": "2026-09-24 09:36 UTC",
-      "published_ts": 1790242614,
+      "published": "2026-09-24 11:00 UTC",
+      "published_ts": 1790247600,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "d7faf68016e48af12e266e767a88e20c07764fc2",
+      "id": "3aba898ead24767e45a549add3b8f003532ea37b",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "BAC",
+      "title": "BofA to Hire 1,000 Additional Apprentices and Invest $150 Million in Workforce Development across the U.S.",
+      "title_ar": "بنك أوف أمريكا يوظف 1000 متدرب إضافي ويستثمر 150 مليون $ في تطوير القوى العاملة في جميع أنحاء الولايات المتحدة",
+      "summary": "Bank of America today announced it will hire 1,000 additional apprentices over the next two years and commit $150 million over five years to workforce development organizations to help strengthen local economies and drive job opportunities along with workforce growth across the U",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=86ddabda4a212087dc4dc441e8ef44ffc1664945e3622d3fa5807893d949cea7",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 11:00 UTC",
+      "published_ts": 1790247600,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "e75ffc0b7703b4de306ccdaa7fe3e8b40388c2b7",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "GOOGL",
+      "title": "Tigress Raises Alphabet (GOOGL) Price Target to $485 as AI Fuels Growth. Can the Momentum Last?",
+      "title_ar": "ترفع شركة Tigress السعر المستهدف لشركة Alphabet (GOOGL) إلى 485 $ مع نمو. هل يمكن أن يستمر الزخم ؟",
+      "summary": "AI leadership is increasingly becoming a key growth engine across Alphabet Inc. (NASDAQ:GOOGL)’s core businesses. Tigress Financial analyst Ivan Feinseth echoed this sentiment on September 17, citing strong Search momentum, rising Cloud growth, and margin expansion in second-quar",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=7422b41fe575673e92c7200d3d19df7368ecb019b98f8ceb72e3898d97ce619f",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 10:29 UTC",
+      "published_ts": 1790245741,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "39d74bf8d19a67cad9247d0022f95200a31f0eb7",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "MSFT",
+      "title": "Global Digital Agency Granite Acquires Branding and Design Agency Right Hat in Latest US Expansion Move",
+      "title_ar": "الوكالة الرقمية العالمية جرانيت تستحوذ على وكالة العلامات التجارية والتصميم في أحدث خطوة توسع في الولايات المتحدة",
+      "summary": "CHICAGO & NEW YORK, September 24, 2026--Global digital agency Granite acquires branding and design agency Right Hat in latest US expansion move.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=9b4aafa562df3ccddc5e710736e17b59ad5385b42eaaf629b0b4090e709c7ad7",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 10:00 UTC",
+      "published_ts": 1790244000,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "1ac4e8e6a8cf364dab817fc232744667fcf70c7a",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "JPM",
+      "title": "JPMorgan’s Peters Favors Stocks as Higher Yields Test Earnings",
+      "title_ar": "بيترز من جي بي مورغان تفضل الأسهم مع ارتفاع أرباح اختبار العائدات",
+      "summary": "Equities can keep climbing even as rising bond yields raise the bar for earnings growth, according to JPMorgan Chase & Co.’s Grace Peters.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=a9b113b6bdf27dff508b870815810dc884ffcf62ca366e58a6cf4e31a37a46ab",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 09:39 UTC",
+      "published_ts": 1790242755,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "d96ac9909d8e364eafbf636ca3feb7e8ec1f753b",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "GOOGL",
+      "title": "Zacks Earnings Trends Highlights: Micron, Nvidia and Alphabet",
+      "title_ar": "أبرز اتجاهات أرباح Zacks: Micron و Nvidia و Alphabet",
+      "summary": "S&P 500 Q3 earnings are projected to rise 23.9%, with Micron, NVIDIA and Alphabet materially shaping tech-sector growth.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=50026334c801517eb95a0014e8f7a303994b2a5fab78891a8fddd59fdd8e568d",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 09:17 UTC",
+      "published_ts": 1790241420,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "2b3b88f05295ce216b2bb21b4e13a9c20a65dcd6",
       "source": "finnhub"
     },
     {
@@ -416,18 +374,18 @@
       "source": "finnhub"
     },
     {
-      "symbol": "HUBS",
-      "title": "3 Tech Stocks Built For Higher Rates And Stronger Cash Flow",
-      "title_ar": "3 أسهم تقنية مصممة لمعدلات أعلى وتدفق نقدي أقوى",
-      "summary": "Interest rate worries are colliding with strong tech earnings, and that mix is quietly reshaping where dependable cash flow might come from next. With the Federal Reserve talking about possible rate hikes while major platforms report better than expected results, investors risk m",
+      "symbol": "COST",
+      "title": "Dividend Decisions: Costco's Unique Payout vs. Walmart's Stability",
+      "title_ar": "قرارات توزيعات الأرباح: عائد كوستكو الفريد مقابل استقرار وول مارت",
+      "summary": "Costco's special dividends look appealing, but Walmart also looks attractive because of its status as a Dividend King.",
       "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=3be2e443ee3c0b19a6085eb6dd590171164a18f4bb1c3da8a6e7a99cfe7a0568",
+      "url": "https://finnhub.io/api/news?id=0599423c4f357c06a1c32a63aeece0c7643e9ae7517615ed4aab10fd749c3aa8",
       "publisher": "Yahoo",
-      "published": "2026-09-24 08:10 UTC",
-      "published_ts": 1790237404,
+      "published": "2026-09-24 09:04 UTC",
+      "published_ts": 1790240640,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "497ebe585761566a0d644c8d56f33b68b00669c3",
+      "id": "3e1fe0cf98c533415e90dc9d6965eab94cd646e2",
       "source": "finnhub"
     },
     {
@@ -446,19 +404,19 @@
       "source": "finnhub"
     },
     {
-      "symbol": "DCO",
-      "title": "Ducommun (DCO) Stock Looks Cheap On A 298% Three Year Run",
-      "title_ar": "سهم Ducommun (DCO) يبدو رخيصًا بنسبة 298 ٪ على مدار ثلاث سنوات",
-      "summary": "Ducommun Incorporated has been on a powerful multi year run, and with the stock recently closing at US$172.51, the real question now is whether that price lines up with the cash the business can generate over time. After such a strong stretch, investors are increasingly asking if",
+      "symbol": "COST",
+      "title": "Costco Wholesale (COST) Could Be 16% Below Fair Value On DoorDash Delivery Rollout",
+      "title_ar": "يمكن أن تكون تكلفة البيع بالجملة لشركة كوستكو (COSTCO) أقل بنسبة 16 ٪ من القيمة العادلة عند طرح تسليم شركة دور داش (DoorDash)",
+      "summary": "Costco Wholesale (COST) has just taken its DoorDash partnership nationwide, putting same day delivery from every U.S. warehouse a tap away. That shift gives investors a fresh lens on this membership driven retailer. Against this rollout, Costco Wholesale’s 1-day share price retur",
       "summary_ar": "",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/ducommun-dco-stock-looks-cheap-061230474.html",
-      "publisher": "Simply Wall St.",
-      "published": "2026-09-24 06:12:30 UT",
-      "published_ts": 1790230350,
+      "url": "https://finnhub.io/api/news?id=324d30d46199aa4be75bf23b1cebb2d7875bcd3e724762c193d430873e52c80b",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 07:11 UTC",
+      "published_ts": 1790233910,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "d4fac11a0cc61d0da43be7dfc9b8e9d57da84c80",
-      "source": "yahoo"
+      "id": "e05b05623a7d09f79c5e0ac796ba9d64d512c722",
+      "source": "finnhub"
     },
     {
       "symbol": "MARKET",
@@ -489,21 +447,6 @@
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "95f0fcf87b3e6db419887dd2b5257d03fde99017",
       "source": "finnhub:general"
-    },
-    {
-      "symbol": "SECZ",
-      "title": "Securitize Corp (SECZ) Soars to All-Time High Anew, Analysts ‘Highly Bullish’",
-      "title_ar": "شركة Securitize Corp (SECZ) ترتفع إلى أعلى مستوى لها على الإطلاق من جديد، المحللون \"صعوديون للغاية\"",
-      "summary": "Securitize Corp. (NYSE:SECZ) saw its share price climb to a new all-time high on Wednesday, as investors resumed buying positions amid the rosy growth prospects from securities tokenization. In intra-day trading, the stock jumped to its highest price of $14.86 before trimming gai",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=2fbacc41db626df42f5ba240b1d96c872d3f88a64dbca88c5a383ded49bda5be",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 23:43 UTC",
-      "published_ts": 1790207023,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "a88895b33450892b2a484f1c5b25acf3afd09379",
-      "source": "finnhub"
     },
     {
       "symbol": "MARKET",
@@ -551,21 +494,6 @@
       "source": "finnhub:crypto"
     },
     {
-      "symbol": "SECZ",
-      "title": "Securitize Stock Jumps 12% as Cantor Bets on a Tokenization Boom",
-      "title_ar": "توريق الأسهم يقفز بنسبة 12 ٪ حيث يراهن قائد الفرقة الموسيقيّة على طفرة التوكن",
-      "summary": "Securitize shares have surged as regulators open a path for tokenized stock trading. Cantor Fitzgerald sees more room to rise.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=9e8b0db4e7decbd629015852ab2992586362131a12005226a1bc8a3194005a50",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 16:55 UTC",
-      "published_ts": 1790182500,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "3f64ec8e00a91aa2f9911892f3b0965a5f635ce5",
-      "source": "finnhub"
-    },
-    {
       "symbol": "MARKET",
       "title": "NYSE, Blockchain.com in tie-up to bring tokenized US stocks to crypto users",
       "title_ar": "بورصة نيويورك، Blockchain.com في شراكة لجلب الأسهم الأمريكية الرمزية لمستخدمي العملات المشفرة",
@@ -579,36 +507,6 @@
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "ea4a4fac9530225d46cf328c28e3470e965a39a9",
       "source": "finnhub:crypto"
-    },
-    {
-      "symbol": "LTH",
-      "title": "Life Time Group Holdings (LTH) Plans to More Than Double Its Current Location Count",
-      "title_ar": "تخطط مجموعة لايف تايم القابضة (LTH) لأكثر من ضعف عدد مواقعها الحالية",
-      "summary": "Osterweis Capital Management, an investment management firm, released its Q2 2026 investor update for its “Osterweis Opportunity Fund”. You can download a copy of the letter here. The fund returned 35.34% in the quarter, significantly outperforming the Russell 2000 Growth Index’s",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/life-time-group-holdings-lth-142935624.html",
-      "publisher": "Insider Monkey",
-      "published": "2026-09-23 14:29:35 UT",
-      "published_ts": 1790173775,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "30ac0a58bbeb6db899de06bb6fba2cc6d2d964f5",
-      "source": "yahoo"
-    },
-    {
-      "symbol": "FPS",
-      "title": "Should ALNT Stock Be in Your Portfolio After a 143% Surge in a Year?",
-      "title_ar": "هل يجب أن يكون سهم ALNT في محفظتك بعد زيادة بنسبة 143 ٪ في السنة ؟",
-      "summary": "Allient's 143% one-year surge is backed by record orders, a growing backlog, margin gains and rising 2026 earnings estimates.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=d80456cadb5c2be1dcae3ab0c232dcaef499b87c9dc8b7096e05ef38ea0bb3a2",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 14:18 UTC",
-      "published_ts": 1790173080,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "00a05d2070b39a9c476e26a415aef126f85676bd",
-      "source": "finnhub"
     },
     {
       "symbol": "IONQ",
@@ -626,87 +524,43 @@
       "source": "finnhub"
     },
     {
-      "symbol": "SECZ",
-      "title": "TriSalus Life Sciences, Lakefront Biotherapeutics, Editas Medicine And Other Big Stocks Moving Higher On Wednesday",
-      "title_ar": "TriSalus Life Sciences، وLakefront Biotherapeutics، وEditas Medicine وغيرها من الأسهم الكبيرة التي تتحرك صعودًا يوم الأربعاء",
-      "summary": "U.S. stocks fell as Nasdaq dropped 100+ points, while TriSalus surged 5.8% on FDA clearance; Securitize, Lakefront and others also gained.",
+      "symbol": "AMD",
+      "title": "Wondering what's happening in today's S&P500  pre-market session?",
+      "title_ar": "هل تتساءل عما يحدث في جلسة ما قبل السوق لمؤشر  S&P500 اليوم ؟",
+      "summary": "The US market is yet to commence its session on Thursday, but let's get a preview of the pre-market session and explore the top S&P500 gainers and losers driving the early market movements.",
       "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=2e5802cba842297d796bff6bf5332c96000c6054e89c8ad89fff63b599e27270",
-      "publisher": "Benzinga",
-      "published": "2026-09-23 10:02 UTC",
-      "published_ts": 1790157779,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "166ffc5c7882f8f52fe626b65220a6e595bba6a8",
+      "url": "https://finnhub.io/api/news?id=e36f17a0a336c936e7bcf62e255c87584a2afb5e2fb83f8131263752f543b5ab",
+      "publisher": "ChartMill",
+      "published": "2026-09-24 12:35 UTC",
+      "published_ts": 1790253301,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد",
+      "id": "cd229c0bdaf1081e3b22f3f92b2971799f54a2b2",
       "source": "finnhub"
     },
     {
-      "symbol": "SECZ",
-      "title": "Cantor Fitzgerald Sees Big Upside in Securitize (SECZ): Is It Time to Buy?",
-      "title_ar": "يرى كانتور فيتزجيرالد جانبًا إيجابيًا كبيرًا في التوريق (SECZ): هل حان وقت الشراء ؟",
-      "summary": "Securitize Corp. (NYSE:SECZ) shares jumped as investors digested favorable regulatory developments and Cantor Fitzgerald initiated coverage of the stock on September 21, giving it an Overweight rating and setting the price target at $21.20. The firm highlighted the company’s posi",
+      "symbol": "MARKET",
+      "title": "EU's financial regulator to make AI and tokenization a supervisory priority in 2027",
+      "title_ar": "الهيئة التنظيمية المالية في الاتحاد الأوروبي لجعل الذكاء الاصطناعي والرمز أولوية إشرافية في عام 2027",
+      "summary": "",
       "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=fb3eb0f521f9b252fa140de52e31c29b21a550f8989b4e1bd1d90aaab702d84d",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 05:24 UTC",
-      "published_ts": 1790141056,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "4a058615817cfc82ef810e443ac670e3867efb8a",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "ASAN",
-      "title": "Asana Unveils Agentic Work Management as AI Fuels Retention and ARR Growth",
-      "title_ar": "أسانا تكشف النقاب عن إدارة عمل الوكلاء مع احتفاظ الذكاء الاصطناعي بالوقود ونمو ARR",
-      "summary": "Asana (NYSE:ASAN) is preparing to launch its Agentic Work Management platform, a product and packaging shift that Chief Financial Officer Aziz Megji said is intended to combine the company’s collaborative work-management tools with artificial intelligence capabilities and create ",
-      "summary_ar": "",
-      "url": "https://www.marketbeat.com/instant-alerts/event-asana-unveils-agentic-work-management-as-ai-fuels-retention-and-arr-growth-2026-09-21/?utm_source=yahoofinance&utm_medium=yahoofinance",
-      "publisher": "MarketBeat",
-      "published": "2026-09-21 11:02:04 UT",
-      "published_ts": 1789988524,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "ea9d3b510b98326812b9c2ca9db2a447f708b14f",
-      "source": "yahoo"
-    },
-    {
-      "symbol": "LTH",
-      "title": "Life Time Group Holdings (LTH) Stock Could Be 23% Overvalued Following Trainer Hiring News",
-      "title_ar": "يمكن أن يكون سهم مجموعة لايف تايم القابضة (LTH) مبالغًا في تقييمه بنسبة 23 ٪ بعد أخبار توظيف المدرب",
-      "summary": "Life Time Group Holdings has delivered a strong 3 year share price run, yet the real test for investors now is whether the current US$40.75 price can be explained by the cash the business is expected to generate. With the stock pulling back in recent weeks after a sizeable multi ",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/life-time-group-holdings-lth-020928461.html",
-      "publisher": "Simply Wall St.",
-      "published": "2026-09-19 02:09:28 UT",
-      "published_ts": 1789783768,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "72029a726354028ef592715c3525e15f355daa49",
-      "source": "yahoo"
-    },
-    {
-      "symbol": "ASAN",
-      "title": "Asana, Five9, Palo Alto Networks, Rapid7, and Sprout Social Shares Plummet, What You Need To Know",
-      "title_ar": "انخفضت أسهم Asana و Five9 و Palo Alto Networks و Rapid7 و Sprout Social، ما تحتاج إلى معرفته",
-      "summary": "A number of stocks fell in the afternoon session after markets remained volatile during the last trading session of the week, reflecting growing uncertainty, with the broad market retreat erasing the sector's gains from the previous day.",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/asana-five9-palo-alto-networks-232840904.html",
-      "publisher": "StockStory",
-      "published": "2026-09-18 23:28:40 UT",
-      "published_ts": 1789774120,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "c9a2b12a34d7389510f23a9df16f39fa7d98de9e",
-      "source": "yahoo"
+      "url": "https://www.coindesk.com/policy/2026/09/24/eu-s-financial-regulator-to-make-ai-and-tokenization-a-supervisory-priority-in-2027",
+      "publisher": "CoinDesk",
+      "published": "2026-09-24 12:26 UTC",
+      "published_ts": 1790252803,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد",
+      "id": "bf8ae6d53bbc0313b6c24f0df06ab765d898861b",
+      "source": "finnhub:crypto"
     }
   ],
   "news_excluded_negative": [
-    "AAON",
-    "AR",
-    "FRSH",
-    "KVYO",
-    "RBRK"
+    "AMZN",
+    "CRM",
+    "META",
+    "NFLX",
+    "TSLA",
+    "XOM"
   ],
   "news_note_ar": "أخبار الموقع فقط — محايد/إيجابي · تتحدّث كل دقيقة",
   "bot": "@Aied01_bot",
