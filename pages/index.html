@@ -525,6 +525,119 @@
       renderOpps();
     };
 
+    let LIVE_SYM = localStorage.getItem('dash_live_sym') || '';
+    let tvWidget = null;
+    const LIVE_CACHE = {};
+
+    function themeForTv(){
+      return (document.documentElement.getAttribute('data-theme')||'dark')==='light'?'light':'dark';
+    }
+    function renderLiveChips(){
+      const box=document.getElementById('liveChips');
+      if(!box) return;
+      const set=new Set();
+      (DATA&&DATA.opportunities||[]).forEach(o=>set.add(o.symbol));
+      (DATA&&DATA.gainers||[]).slice(0,8).forEach(g=>set.add(g.symbol));
+      ['SPY','QQQ','IWM','AAPL','NVDA','TSLA'].forEach(s=>set.add(s));
+      const list=[...set].slice(0,14);
+      box.innerHTML=list.map(s=>`<button type="button" class="sym-chip ${s===LIVE_SYM?'active':''}" data-live="${esc(s)}">${esc(s)}</button>`).join('');
+      box.querySelectorAll('[data-live]').forEach(b=>b.onclick=()=>setLiveSymbol(b.dataset.live));
+    }
+    function mountTv(sym){
+      const el=document.getElementById('tvChart');
+      if(!el || typeof TradingView==='undefined') return;
+      el.innerHTML='';
+      tvWidget=new TradingView.widget({
+        autosize:true,
+        symbol: sym.includes(':')?sym:sym,
+        interval:'1',
+        timezone:'America/New_York',
+        theme: themeForTv(),
+        style:'1',
+        locale:'ar',
+        toolbar_bg: themeForTv()==='dark'?'#0f172a':'#ffffff',
+        enable_publishing:false,
+        hide_top_toolbar:false,
+        hide_legend:false,
+        save_image:false,
+        container_id:'tvChart',
+        studies:['Volume@tv-basicstudies'],
+        withdateranges:true,
+        allow_symbol_change:true,
+      });
+    }
+    function setLiveSymbol(sym, scroll=true){
+      if(!sym) return;
+      LIVE_SYM=String(sym).toUpperCase();
+      localStorage.setItem('dash_live_sym', LIVE_SYM);
+      document.getElementById('liveSymLabel').textContent=LIVE_SYM+' · بث لحظي';
+      renderLiveChips();
+      mountTv(LIVE_SYM);
+      pollLivePrice(true);
+      if(scroll) document.getElementById('liveCard').scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    async function fetchYahooLive(sym){
+      const endpoint=`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?range=1d&interval=1m&includePrePost=true`;
+      async function parse(res){
+        const data=await res.json();
+        const res0=((data.chart||{}).result||[])[0];
+        if(!res0) throw new Error('empty');
+        const meta=res0.meta||{};
+        const closes=(((res0.indicators||{}).quote||[])[0]||{}).close||[];
+        let last=null;
+        for(let i=closes.length-1;i>=0;i--){ if(closes[i]!=null){ last=closes[i]; break; } }
+        const rth=Number(meta.regularMarketPrice||0);
+        const prev=Number(meta.chartPreviousClose||meta.previousClose||0);
+        if(last==null) last=rth;
+        const ref = rth>0 ? rth : prev;
+        const chg = ref ? ((last-ref)/ref)*100 : 0;
+        // During RTH prefer change vs previous close
+        const phaseRef = prev>0 ? prev : ref;
+        const chgDay = phaseRef ? ((last-phaseRef)/phaseRef)*100 : chg;
+        return {last:Number(last), change_pct:chgDay, rth, prev};
+      }
+      try{
+        const r=await fetch(endpoint,{cache:'no-store'});
+        if(r.ok) return await parse(r);
+      }catch(e){}
+      // CORS fallback
+      const proxied=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(endpoint),{cache:'no-store'});
+      return await parse(proxied);
+    }
+    async function pollLivePrice(force=false){
+      if(!LIVE_SYM) return;
+      try{
+        const q=await fetchYahooLive(LIVE_SYM);
+        LIVE_CACHE[LIVE_SYM]=q;
+        const px=document.getElementById('livePrice');
+        const ch=document.getElementById('liveChg');
+        px.textContent='$'+q.last.toFixed(2);
+        px.className='live-price '+(q.change_pct>=0?'up':'down');
+        ch.textContent=(q.change_pct>=0?'+':'')+q.change_pct.toFixed(2)+'% مقابل المرجع';
+        ch.className='live-sub '+(q.change_pct>=0?'up':'down');
+        document.getElementById('liveClock').textContent='آخر سعر حي: '+new Date().toLocaleTimeString('ar-SA');
+        // refresh matching cells
+        document.querySelectorAll(`[data-px="${LIVE_SYM}"]`).forEach(el=>{ el.textContent='$'+q.last.toFixed(2); });
+        document.querySelectorAll(`[data-chg="${LIVE_SYM}"]`).forEach(el=>{
+          el.textContent=(q.change_pct>=0?'+':'')+q.change_pct.toFixed(2)+'%';
+          el.className=(q.change_pct>=0?'up':'down')+' live-chg';
+        });
+        // update open opportunity summaries
+        document.querySelectorAll('.opp .sym').forEach(node=>{
+          if((node.textContent||'').includes(LIVE_SYM)){
+            const row=node.closest('details');
+            if(!row) return;
+            const line=row.querySelector('summary div:nth-child(2)');
+            if(line && q){
+              // keep action text, refresh price tail if present
+            }
+          }
+        });
+      }catch(e){
+        document.getElementById('liveClock').textContent='تعذّر جلب السعر الحي مؤقتاً';
+      }
+    }
+
     loadPrefs();
     fetchData(true);
     // Auto refresh prices/stocks
@@ -536,6 +649,11 @@
       if(hint) hint.textContent=`تحديث تلقائي · التالي خلال ${refreshIn}ث`;
       tickClocks();
     },1000);
+    // Live tick every 3s like TradingView feel
+    setInterval(()=>pollLivePrice(false), 3000);
+    document.getElementById('btnTheme').addEventListener('click',()=>{
+      setTimeout(()=>{ if(LIVE_SYM) mountTv(LIVE_SYM); }, 50);
+    });
   </script>
 </body>
 </html>
