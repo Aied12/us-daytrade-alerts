@@ -72,6 +72,11 @@
     .liq-strong{color:var(--ok);font-weight:700}
     .liq-medium{color:var(--warn);font-weight:700}
     .liq-weak{color:var(--bad);font-weight:700}
+    .tbl{width:100%;border-collapse:collapse;font-size:.95rem}
+    .tbl th,.tbl td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+    .tbl th{color:var(--muted);font-weight:600;font-size:.82rem}
+    .tbl tr:last-child td{border-bottom:0}
+    .tbl a{color:var(--accent);text-decoration:none;font-weight:700}
   </style>
 </head>
 <body>
@@ -145,6 +150,19 @@
         </select>
       </div>
       <div id="opps"><div class="empty">جاري الجلب...</div></div>
+    </div>
+
+    <div class="card">
+      <h2>أعلى الأسهم ارتفاعاً</h2>
+      <p class="muted" id="gainersNote">سعر ≥ $5 — جدول منفصل لأقوى الصاعدين اليوم</p>
+      <div style="overflow:auto">
+        <table class="tbl" id="gainersTbl">
+          <thead>
+            <tr><th>#</th><th>السهم</th><th>السعر</th><th>الارتفاع</th><th>سيولة اليوم</th><th></th></tr>
+          </thead>
+          <tbody id="gainersBody"><tr><td colspan="6" class="muted">جاري الجلب...</td></tr></tbody>
+        </table>
+      </div>
     </div>
 
     <div class="card">
@@ -355,6 +373,19 @@
       document.getElementById('secWeak').innerHTML=w1?`${esc(w1.name)} <span class="down">${w1.change_pct>0?'+':''}${esc(w1.change_pct)}%</span>`:'-';
       const st=d.style||{};
       document.getElementById('styleBoard').innerHTML=`نمو ${st.growth_avg??'-'}% · قيمة ${st.value_avg??'-'}% · المتقدم: <b>${esc(st.leader||'-')}</b>`;
+
+      const gainers=d.gainers||[];
+      const gmin=d.gainers_min_price??5;
+      document.getElementById('gainersNote').textContent=`سعر ≥ $${gmin} — أقوى الصاعدين اليوم (جدول منفصل)`;
+      document.getElementById('gainersBody').innerHTML = gainers.length ? gainers.map((g,i)=>`
+        <tr>
+          <td>${i+1}</td>
+          <td><b>${esc(g.symbol)}</b>${g.name?` <span class="muted">${esc(g.name)}</span>`:''}</td>
+          <td>$${esc(g.last)}</td>
+          <td class="up">+${esc(g.change_pct)}%</td>
+          <td>${esc(g.dollar_volume_label||'-')}</td>
+          <td><a href="${esc(g.tv_url)}" target="_blank" rel="noopener">TV</a></td>
+        </tr>`).join('') : '<tr><td colspan="6" class="muted">لا صاعدين فوق $5 حالياً</td></tr>';
 
       const movers=d.movers||[];
       document.getElementById('movers').innerHTML=movers.map(m=>`

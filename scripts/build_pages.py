@@ -17,6 +17,7 @@ from bot.config import load_settings
 from bot.extras import GROWTH_NAMES, VALUE_NAMES, SECTOR_ETFS
 from bot.holidays import holiday_note, is_trading_day
 from bot.journal import actions_path, ensure_actions, ensure_journal, journal_path
+from bot.gainers import fetch_day_gainers, watchlist_gainers
 from bot.liquidity import liquidity_dict
 from bot.market_data import fetch_history, market_context, scan_watchlist, sector_momentum
 from bot.ops import read_status, touch_status
@@ -213,6 +214,10 @@ def main() -> None:
         )
 
     movers = sorted(snaps, key=lambda s: abs(s.change_pct), reverse=True)[:8]
+    min_px = max(float(settings.min_price_usd), 5.0)
+    gainers = fetch_day_gainers(min_price=min_px, limit=20)
+    if not gainers:
+        gainers = watchlist_gainers(snaps, min_price=min_px, limit=15)
     indexes = []
     for k, v in (ctx.get("details") or {}).items():
         indexes.append({"symbol": k, "change_pct": v.get("change_pct", 0), "rsi": v.get("rsi")})
@@ -250,6 +255,8 @@ def main() -> None:
         "sectors": _sector_board(snaps),
         "style": _style_board(snaps),
         "opportunities": opportunities,
+        "gainers": gainers,
+        "gainers_min_price": min_px,
         "movers": [
             {
                 "symbol": s.symbol,
