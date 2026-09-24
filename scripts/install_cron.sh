@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Cron: every 5 minutes from 11:00 to 23:00 Saudi (AST = UTC+3).
-# 11:00 SA = 08:00 UTC … 23:00 SA = 20:00 UTC
+# Cron: every 5 minutes 11:00–23:00 Saudi + telegram bot poller
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 RUN="$ROOT/scripts/run_cron.sh"
-chmod +x "$RUN" "$ROOT/scripts/link_telegram.py" "$ROOT/scripts/scheduled_run.py"
+BOT="$ROOT/scripts/run_bot_once.sh"
+chmod +x "$RUN" "$BOT" "$ROOT/scripts/link_telegram.py" "$ROOT/scripts/scheduled_run.py" "$ROOT/scripts/telegram_bot.py"
 
 MARKER_BEGIN="# BEGIN us-daytrade-alerts"
 MARKER_END="# END us-daytrade-alerts"
@@ -14,11 +14,12 @@ CRON_BLOCK=$(cat <<EOF
 $MARKER_BEGIN
 SHELL=/bin/bash
 PATH=/usr/bin:/bin
-# كل 5 دقائق من 11:00 ص إلى 11:00 م بتوقيت السعودية
+# تحديث السوق كل 5 دقائق 11ص–11م السعودية
 */5 8-19 * * 1-5 $RUN tick
 0 20 * * 1-5 $RUN tick
-# ملخص مسائي إضافي بعد آخر تحديث
 5 20 * * 1-5 $RUN evening
+# مستمع أوامر/أزرار تيليجرام كل دقيقة
+* * * * * $BOT
 $MARKER_END
 EOF
 )
@@ -36,7 +37,5 @@ CLEANED="$(printf '%s\n' "$EXISTING" | awk -v b="$MARKER_BEGIN" -v e="$MARKER_EN
   printf '%s\n' "$CRON_BLOCK"
 } | sed '/^$/N;/^\n$/D' | crontab -
 
-echo "✅ تم تثبيت الجدولة (كل 5 دقائق 11ص–11م السعودية):"
+echo "✅ تم تثبيت الجدولة:"
 crontab -l
-echo
-echo "السجلات: $ROOT/logs/cron_*.log"

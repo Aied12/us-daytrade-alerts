@@ -133,6 +133,10 @@ def format_evening(
 
 
 def build_full_pack(settings: Settings, snapshots: list[QuoteSnapshot]) -> dict:
+    from bot.formatters import format_signal_card, is_urgent
+
+    # Filter: stocks above min price (default $5)
+    snapshots = [s for s in snapshots if s.last >= settings.min_price_usd]
     signals = rank_signals(snapshots)
     morning = format_morning(settings, snapshots, signals)
     plans = []
@@ -148,7 +152,10 @@ def build_full_pack(settings: Settings, snapshots: list[QuoteSnapshot]) -> dict:
         plan = plan_trade(settings, sig)
         plans.append(plan)
         if plan.allowed or sig.action == Action.WATCH_ENTRY:
-            msg = format_intraday_alert(settings, sig, plan)
+            card = format_signal_card(settings, sig, plan)
+            msg = card if settings.is_beginner else (card + "\n\n" + format_intraday_alert(settings, sig, plan))
+            if is_urgent(settings, sig):
+                msg = "🚨 عاجل — فرصة قوية\n" + msg
             intraday_messages.append(msg)
             sent_symbols.append(sig.symbol)
             alert_count += 1
@@ -161,4 +168,5 @@ def build_full_pack(settings: Settings, snapshots: list[QuoteSnapshot]) -> dict:
         "intraday": intraday_messages,
         "evening": evening,
         "sent_symbols": sent_symbols,
+        "snapshots": snapshots,
     }

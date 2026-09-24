@@ -18,9 +18,15 @@ JOURNAL_FIELDS = [
     "notes",
 ]
 
+ACTION_FIELDS = ["timestamp_utc", "symbol", "action", "notes"]
+
 
 def journal_path(settings: Settings) -> Path:
     return settings.data_dir / "journal.csv"
+
+
+def actions_path(settings: Settings) -> Path:
+    return settings.data_dir / "actions.csv"
 
 
 def ensure_journal(settings: Settings) -> Path:
@@ -30,6 +36,28 @@ def ensure_journal(settings: Settings) -> Path:
             writer = csv.DictWriter(f, fieldnames=JOURNAL_FIELDS)
             writer.writeheader()
     return path
+
+
+def ensure_actions(settings: Settings) -> Path:
+    path = actions_path(settings)
+    if not path.exists():
+        with path.open("w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=ACTION_FIELDS)
+            writer.writeheader()
+    return path
+
+
+def log_action(settings: Settings, symbol: str, action: str, notes: str = "") -> dict:
+    path = ensure_actions(settings)
+    row = {
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "symbol": symbol.upper(),
+        "action": action,
+        "notes": notes,
+    }
+    with path.open("a", newline="", encoding="utf-8") as f:
+        csv.DictWriter(f, fieldnames=ACTION_FIELDS).writerow(row)
+    return row
 
 
 def add_trade(
