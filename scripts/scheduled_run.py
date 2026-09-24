@@ -61,7 +61,10 @@ def resolve_mode(now: datetime, requested: str) -> str | None:
         return None
 
     t = now.time()
-    # Morning brief: 09:00–09:35 ET
+    # Premarket brief: ~04:00 ET (= 11:00 Saudi) through early premarket
+    if time(3, 55) <= t <= time(4, 40):
+        return "morning"
+    # Reminder near cash open: 09:00–09:35 ET
     if time(9, 0) <= t <= time(9, 35):
         return "morning"
     # Intraday scans: 09:45–15:55 ET
@@ -86,7 +89,7 @@ def run(mode: str) -> None:
     save_json_snapshot(settings, pack, f"sched_{mode}_{stamp}.json")
 
     if mode == "morning":
-        deliver(settings, "🌅 التقرير الصباحي (تلقائي)", pack["morning"])
+        deliver(settings, "🌅 فرص قبل الافتتاح (تلقائي)", pack["morning"])
     elif mode == "intraday":
         if not pack["intraday"]:
             # Quiet during empty scans — log only, avoid spam
@@ -100,7 +103,7 @@ def run(mode: str) -> None:
     elif mode == "evening":
         deliver(settings, "🌙 الملخص المسائي (تلقائي)", pack["evening"])
     elif mode == "demo":
-        deliver(settings, "🌅 التقرير الصباحي (تلقائي)", pack["morning"])
+        deliver(settings, "🌅 فرص قبل الافتتاح (تلقائي)", pack["morning"])
         for i, msg in enumerate(pack["intraday"], 1):
             deliver(settings, f"🚨 تنبيه تلقائي #{i}", msg)
         deliver(settings, "🌙 الملخص المسائي (تلقائي)", pack["evening"])
