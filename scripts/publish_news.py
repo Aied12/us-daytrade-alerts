@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import subprocess
 import sys
 import time
 from datetime import datetime, timezone
@@ -20,6 +21,11 @@ from bot.news_ar import (
     save_seen_news,
 )
 from bot.notify import deliver
+
+
+def run(cmd: list[str]) -> int:
+    print("+", " ".join(cmd))
+    return subprocess.call(cmd, cwd=ROOT)
 
 
 def _symbols(settings) -> list[str]:
@@ -113,6 +119,14 @@ def main() -> int:
     _write_news_live(merged, fresh_n=len(burst))
     save_seen_news(seen)
     print(f"[news] wrote news-live.json n={len(merged)} fresh={len(fresh)}")
+
+    run(["git", "add", "docs/news-live.json", "pages/news-live.json"])
+    dirty = subprocess.call(["git", "diff", "--cached", "--quiet"], cwd=ROOT)
+    if dirty != 0:
+        run(["git", "commit", "-m", "Auto-update news-live.json headlines"])
+        run(["git", "push", "origin", "HEAD:main"])
+    else:
+        print("[news] no file changes to push")
     return 0
 
 
