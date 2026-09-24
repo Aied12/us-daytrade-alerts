@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:44:22.292403+00:00",
-  "generated_ts": 1790257462,
-  "generated_local": "2026-09-24 16:44 +03",
+  "generated_at": "2026-09-24T13:45:28.923869+00:00",
+  "generated_ts": 1790257528,
+  "generated_local": "2026-09-24 16:45 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:44:22.292190+00:00",
+    "updated_at": "2026-09-24T13:45:28.923691+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,38 +23,38 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.51,
+    "avg_change_pct": -0.47,
     "details": {
       "SPY": {
-        "last": 764.41,
-        "change_pct": -0.44,
-        "rsi": 44.7
+        "last": 764.7,
+        "change_pct": -0.41,
+        "rsi": 44.8
       },
       "QQQ": {
-        "last": 736.47,
-        "change_pct": -0.64,
-        "rsi": 62.0
+        "last": 736.68,
+        "change_pct": -0.61,
+        "rsi": 62.3
       },
       "IWM": {
-        "last": 280.66,
-        "change_pct": -0.45,
+        "last": 280.78,
+        "change_pct": -0.4,
         "rsi": 24.6
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.44,
-        "rsi": 44.7
+        "change_pct": -0.41,
+        "rsi": 44.8
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.64,
-        "rsi": 62.0
+        "change_pct": -0.61,
+        "rsi": 62.3
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.45,
+        "change_pct": -0.4,
         "rsi": 24.6
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 22537,
-    "ny_time": "09:44:22",
+    "seconds_left": 22471,
+    "ny_time": "09:45:28",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,36 +77,36 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.18
+        "change_pct": 1.19
       },
       {
         "name": "Communication",
-        "change_pct": 0.85
+        "change_pct": 0.95
       },
       {
-        "name": "Technology",
-        "change_pct": -0.21
+        "name": "Consumer",
+        "change_pct": -0.22
       }
     ],
     "weakest": [
       {
         "name": "Industrial",
-        "change_pct": -1.97
+        "change_pct": -2.25
       },
       {
         "name": "Financials",
-        "change_pct": -0.47
+        "change_pct": -0.27
       },
       {
-        "name": "Consumer",
-        "change_pct": -0.31
+        "name": "Technology",
+        "change_pct": -0.23
       }
     ]
   },
   "style": {
-    "growth_avg": -0.13,
-    "value_avg": -0.11,
-    "leader": "قيمة",
+    "growth_avg": -0.07,
+    "value_avg": -0.1,
+    "leader": "نمو",
     "growth_count": 10,
     "value_count": 11
   },
@@ -115,28 +115,29 @@
   "opps_rejected_slow": [
     "P:درجة سيولة ضعيفة",
     "NBIS:درجة سيولة ضعيفة",
-    "BAC:زخم ضعيف (+0.07% < 0.85%)",
-    "PLTR:زخم ضعيف (+0.09% < 0.85%)",
-    "AMD:درجة سيولة ضعيفة",
     "XOM:درجة سيولة ضعيفة",
-    "NFLX:زخم ضعيف (-0.10% < 0.85%)",
-    "UBER:زخم ضعيف (+0.20% < 0.85%)",
+    "INTC:زخم ضعيف (+0.77% < 0.85%)",
+    "BAC:زخم ضعيف (+0.29% < 0.85%)",
+    "PLTR:زخم ضعيف (+0.32% < 0.85%)",
+    "AMD:زخم ضعيف (+0.81% < 0.85%)",
+    "NFLX:زخم ضعيف (-0.01% < 0.85%)",
+    "UBER:زخم ضعيف (+0.45% < 0.85%)",
     "CRWV:درجة سيولة ضعيفة",
-    "CVX:زخم ضعيف (+0.72% < 0.85%)",
-    "NVDA:زخم ضعيف (-1.14% < 0.85%)",
+    "CVX:زخم ضعيف (+0.73% < 0.85%)",
+    "NVDA:زخم ضعيف (-1.13% < 0.85%)",
     "META:درجة سيولة ضعيفة"
   ],
   "gainers": [
     {
       "symbol": "P",
       "name": "Everpure, Inc.",
-      "last": 126.3,
-      "change_pct": 15.1,
+      "last": 124.88,
+      "change_pct": 13.81,
       "ref": 109.73,
-      "rth_close": 126.3,
-      "volume": 1957755.0,
-      "dollar_volume": 247264456.5,
-      "dollar_volume_label": "247.3M$",
+      "rth_close": 124.88,
+      "volume": 2057740.0,
+      "dollar_volume": 256970571.2,
+      "dollar_volume_label": "257.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=P"
@@ -144,13 +145,13 @@
     {
       "symbol": "NBIS",
       "name": "Nebius Group N.V.",
-      "last": 239.4,
-      "change_pct": 5.64,
+      "last": 240.2,
+      "change_pct": 6.0,
       "ref": 226.61,
-      "rth_close": 239.4,
-      "volume": 4379471.0,
-      "dollar_volume": 1048445357.4,
-      "dollar_volume_label": "1.0B$",
+      "rth_close": 240.2,
+      "volume": 4525851.0,
+      "dollar_volume": 1087109410.2,
+      "dollar_volume_label": "1.1B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
@@ -158,16 +159,58 @@
     {
       "symbol": "CRWV",
       "name": "CoreWeave, Inc.",
-      "last": 88.61,
-      "change_pct": 1.96,
+      "last": 88.82,
+      "change_pct": 2.21,
       "ref": 86.9,
-      "rth_close": 88.61,
-      "volume": 6293352.0,
-      "dollar_volume": 557653920.72,
-      "dollar_volume_label": "557.7M$",
+      "rth_close": 88.82,
+      "volume": 6396984.0,
+      "dollar_volume": 568180118.88,
+      "dollar_volume_label": "568.2M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRWV"
+    },
+    {
+      "symbol": "BB",
+      "name": "BlackBerry Limited",
+      "last": 8.52,
+      "change_pct": 1.43,
+      "ref": 8.39,
+      "rth_close": 8.52,
+      "volume": 8328004.0,
+      "dollar_volume": 70954594.08,
+      "dollar_volume_label": "71.0M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=BB"
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel Corporation",
+      "last": 124.3,
+      "change_pct": 1.39,
+      "ref": 122.6,
+      "rth_close": 124.3,
+      "volume": 15790718.0,
+      "dollar_volume": 1962786247.4,
+      "dollar_volume_label": "2.0B$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=INTC"
+    },
+    {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices, Inc.",
+      "last": 622.4,
+      "change_pct": 1.27,
+      "ref": 614.61,
+      "rth_close": 622.4,
+      "volume": 4335579.0,
+      "dollar_volume": 2698464369.6,
+      "dollar_volume_label": "2.7B$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=AMD"
     }
   ],
   "gainers_min_price": 5.0,
@@ -175,17 +218,17 @@
   "movers": [
     {
       "symbol": "P",
-      "change_pct": 15.92,
-      "last": 127.11,
-      "rvol": 0.28,
+      "change_pct": 15.04,
+      "last": 126.14,
+      "rvol": 0.3,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "249.2M$"
+      "dollar_volume_label": "261.9M$"
     },
     {
       "symbol": "NBIS",
-      "change_pct": 5.61,
-      "last": 239.32,
+      "change_pct": 5.79,
+      "last": 239.74,
       "rvol": 0.31,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -193,39 +236,39 @@
     },
     {
       "symbol": "BA",
-      "change_pct": -1.97,
-      "last": 195.99,
-      "rvol": 0.2,
+      "change_pct": -2.25,
+      "last": 195.43,
+      "rvol": 0.22,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "233.4M$"
+      "dollar_volume_label": "258.1M$"
     },
     {
       "symbol": "CRWV",
-      "change_pct": 1.96,
-      "last": 88.6,
+      "change_pct": 1.98,
+      "last": 88.62,
       "rvol": 0.23,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "559.5M$"
+      "dollar_volume_label": "568.2M$"
     },
     {
       "symbol": "DIS",
-      "change_pct": 1.8,
-      "last": 105.32,
-      "rvol": 0.07,
+      "change_pct": 1.91,
+      "last": 105.44,
+      "rvol": 0.08,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "58.0M$"
+      "dollar_volume_label": "66.2M$"
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.76,
-      "last": 348.73,
+      "change_pct": -1.87,
+      "last": 348.36,
       "rvol": 0.1,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "937.7M$"
+      "dollar_volume_label": "958.8M$"
     }
   ],
   "news": [
@@ -305,6 +348,21 @@
       "source": "finnhub"
     },
     {
+      "symbol": "BB",
+      "title": "BlackBerry: Fiscal Q2 Earnings Snapshot",
+      "title_ar": "بلاك بيري: لمحة عن أرباح الربع الثاني من السنة المالية",
+      "summary": "WATERLOO, Ontario (AP) — BlackBerry Ltd. (BB) on Thursday reported fiscal second-quarter profit of $33.9 million.  On a per-share basis, the Waterloo, Ontario-based company said it had net income of 5 cents.  For the current quarter ending in November, BlackBerry expects its per-",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=19f7fef639bdec92d30ade2489320d9094a1faacaf7f0d84133cd9928f0f34c8",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 12:08 UTC",
+      "published_ts": 1790251681,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "fc504e0c52868451b0b9c6a8092ccd1043d64ec9",
+      "source": "finnhub"
+    },
+    {
       "symbol": "AMD",
       "title": "AMD Joined Nvidia in the Trillion Dollar Club. The Run Isn’t an Accident",
       "title_ar": "انضمت AMD إلى Nvidia في نادي تريليون دولار. الركض ليس حادثًا",
@@ -350,6 +408,21 @@
       "source": "finnhub"
     },
     {
+      "symbol": "BB",
+      "title": "BlackBerry shares gain premarket as Q2 results, guidance beat estimates",
+      "title_ar": "أسهم بلاك بيري تكسب ما قبل السوق مع نتائج الربع الثاني، والتوجيه يفوق التقديرات",
+      "summary": "Investing.com -- BlackBerry shares rose more than 2% in premarket trading Thursday after the company reported second-quarter results and full-year guidance that came in well ahead of Wall Street expectations.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=7701683b2899a88b37423a0b819c4b9fcee745d4cfe5bd7a994d7be2a6062112",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 11:38 UTC",
+      "published_ts": 1790249907,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "2d90a43b42514c051154f7bae38f843e7b71df65",
+      "source": "finnhub"
+    },
+    {
       "symbol": "CRWV",
       "title": "JPMorgan upgrades CoreWeave on stronger compute pricing",
       "title_ar": "يقوم JPMorgan بترقية CoreWeave بتسعير حوسبة أقوى",
@@ -365,6 +438,21 @@
       "source": "finnhub"
     },
     {
+      "symbol": "INTC",
+      "title": "Intel, Marvell, Super Micro, Meta, MGM, and More Stocks That Explain Today’s Market",
+      "title_ar": "Intel و Marvell و Super Micro و Meta و MGM والمزيد من الأسهم التي تفسر سوق اليوم",
+      "summary": "AI stocks struggle as Wall Street frets about rising bond yields, while Meta Platforms slides as investors lock in some profit after a 12% rally.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=2d3491e6a3c4081314d32aa414d5b41406c49c6ef9ac8de93e3e29c03f1ac5bc",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 11:20 UTC",
+      "published_ts": 1790248800,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "b68230b74cfa9cdf1d829e422d559d9b7f1afc0e",
+      "source": "finnhub"
+    },
+    {
       "symbol": "P",
       "title": "Everpure Sees AI Demand Underpinning Revenue Growth. This Analyst Says Stock Price Could Double.",
       "title_ar": "ترى Everpure أن الطلب على الذكاء الاصطناعي يدعم نمو الإيرادات. يقول هذا المحلل إن سعر السهم قد يتضاعف.",
@@ -377,6 +465,21 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "c1bddb366d39689bf13940db3ccf9fbbe7f70969",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "BB",
+      "title": "BlackBerry Posts Strong Earnings, Driven by Car Software. The Stock Jumps.",
+      "title_ar": "بلاك بيري تحقق أرباحًا قوية، مدفوعة ببرامج السيارات. الأسهم تقفز.",
+      "summary": "BlackBerry reports fiscal second-quarter earnings per share of 7 cents from sales of $163.3 million. Wall Street was looking for 4 cents and $142.5 million, respectively.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=149f580c2a3ed870d0180307770654d0759fc376ca2322540634b83372e8ab9a",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 11:14 UTC",
+      "published_ts": 1790248440,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "40eca5d13e91e8bfec29c91196a2dd99d4e2b255",
       "source": "finnhub"
     },
     {
@@ -455,33 +558,18 @@
       "source": "finnhub"
     },
     {
-      "symbol": "COST",
-      "title": "Dividend Decisions: Costco's Unique Payout vs. Walmart's Stability",
-      "title_ar": "قرارات توزيعات الأرباح: عائد كوستكو الفريد مقابل استقرار وول مارت",
-      "summary": "Costco's special dividends look appealing, but Walmart also looks attractive because of its status as a Dividend King.",
+      "symbol": "INTC",
+      "title": "Brain-Inspired Computing Processor Market Outlook 2026-2035 - Featuring Profiles of Intel, IBM, and BrainChip Holdings",
+      "title_ar": "توقعات سوق معالجات الحوسبة المستوحاة من الدماغ 2026-2035 - تتميز بملامح من Intel و IBM و BrainChip Holdings",
+      "summary": "Energy-Efficient Edge AI, Spiking Neural Networks and Event-Driven Vision Drive Brain-Inspired Processor AdoptionDublin, Sept. 24, 2026 (GLOBE NEWSWIRE) -- \"Brain-Inspired Computing Processor Market Opportunity, Growth Drivers, Industry Trend Analysis, and Forecast 2026-2035\" has",
       "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=0599423c4f357c06a1c32a63aeece0c7643e9ae7517615ed4aab10fd749c3aa8",
+      "url": "https://finnhub.io/api/news?id=a013f2ca1c0edcf183fbb5df720daf0cc6d9ad86659cb87c46982799d032c6d6",
       "publisher": "Yahoo",
-      "published": "2026-09-24 09:04 UTC",
-      "published_ts": 1790240640,
+      "published": "2026-09-24 09:10 UTC",
+      "published_ts": 1790241000,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "3e1fe0cf98c533415e90dc9d6965eab94cd646e2",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "COST",
-      "title": "Costco Wholesale (COST) Could Be 16% Below Fair Value On DoorDash Delivery Rollout",
-      "title_ar": "يمكن أن تكون تكلفة البيع بالجملة لشركة كوستكو (COSTCO) أقل بنسبة 16 ٪ من القيمة العادلة عند طرح تسليم شركة دور داش (DoorDash)",
-      "summary": "Costco Wholesale (COST) has just taken its DoorDash partnership nationwide, putting same day delivery from every U.S. warehouse a tap away. That shift gives investors a fresh lens on this membership driven retailer. Against this rollout, Costco Wholesale’s 1-day share price retur",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=324d30d46199aa4be75bf23b1cebb2d7875bcd3e724762c193d430873e52c80b",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 07:11 UTC",
-      "published_ts": 1790233910,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "e05b05623a7d09f79c5e0ac796ba9d64d512c722",
+      "id": "8b03329f526f19545e99943ac5c1e967e7a61f5f",
       "source": "finnhub"
     },
     {
@@ -543,56 +631,10 @@
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "ee0ebe5da08e4574b58f66a4ccc007bd633bb043",
       "source": "finnhub:general"
-    },
-    {
-      "symbol": "CRWV",
-      "title": "CoreWeave Priced an Upsized $3.7 Billion Convertible Note as Capex Spending Spikes. What That Means for CRWV Stock Fans.",
-      "title_ar": "قامت CoreWeave بتسعير سندات قابلة للتحويل بقيمة 3.7 مليار $ مع ارتفاع الإنفاق الرأسمالي. ماذا يعني ذلك لمحبي الأسهم CRWV.",
-      "summary": "CoreWeave priced an upsized convertible note as capex spending surges, adding debt and equity options to fund AI data-center growth.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=b9260d6261ce854d03facdf397cc69521d54ea68ed78cf4262e5185ce8bf0fd0",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 22:35 UTC",
-      "published_ts": 1790202933,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "528bc4d28fa7bb31044f66e8a16514b43fc7cd9e",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "MARKET",
-      "title": "A rare Microsoft bear warms up to the stock. Here's what changed their mind",
-      "title_ar": "دب نادر من مايكروسوفت يرتفع إلى مستوى السهم. إليك ما غير رأيه",
-      "summary": "Stifel upgraded the software and cloud giant to buy from hold.",
-      "summary_ar": "",
-      "url": "https://www.cnbc.com/2026/09/23/a-rare-microsoft-bear-warms-up-to-the-stock-heres-what-changed-their-mind.html",
-      "publisher": "CNBC",
-      "published": "2026-09-23 19:53 UTC",
-      "published_ts": 1790193196,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "a504f9cac743fa3db1cb4684e674fb2dc7eb2803",
-      "source": "finnhub:general"
-    },
-    {
-      "symbol": "NBIS",
-      "title": "Nebius Group Heads 3 Top Insider Growth Stocks",
-      "title_ar": "مجموعة نيبيوس تتصدر 3 أفضل أسهم النمو من الداخل",
-      "summary": "With US Treasury yields jumping to fresh 19 year highs on strong economic readings, investors are being paid more to sit in cash and bonds. That raises the bar for any growth story. It also creates a window for fast growing businesses where founders and executives still own large",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=3062c51fee6ec02547e5def9589d9f99e06eb0dedf46ab1218a3b6422a343349",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 19:15 UTC",
-      "published_ts": 1790190930,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "946b029ca15f42bb9fd707878e131ace614d8bc4",
-      "source": "finnhub"
     }
   ],
   "news_excluded_negative": [
     "AMZN",
-    "CRM",
     "FRVO",
     "META",
     "NFLX",
