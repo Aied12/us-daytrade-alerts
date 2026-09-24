@@ -77,7 +77,20 @@
     .tbl th{color:var(--muted);font-weight:600;font-size:.82rem}
     .tbl tr:last-child td{border-bottom:0}
     .tbl a{color:var(--accent);text-decoration:none;font-weight:700}
+    .live-box{margin-top:8px}
+    .live-price{font-size:1.6rem;font-weight:800;letter-spacing:.02em}
+    .live-sub{font-size:.95rem;margin-top:2px}
+    .sym-chip{
+      min-height:40px;padding:8px 12px;border-radius:12px;border:1px solid var(--line);
+      background:var(--card);color:var(--text);font-weight:700;cursor:pointer;font-size:.95rem;
+    }
+    .sym-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    #tvChart{height:420px;width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--line);margin-top:10px}
+    @media (max-width:600px){#tvChart{height:360px}}
+    .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-left:6px;animation:pulse 1.2s infinite}
+    @keyframes pulse{0%{opacity:1}50%{opacity:.35}100%{opacity:1}}
   </style>
+  <script src="https://s3.tradingview.com/tv.js"></script>
 </head>
 <body>
   <div class="wrap">
@@ -98,6 +111,26 @@
         <button class="btn ghost" id="btnLight" type="button">📶 نسخة خفيفة</button>
         <button class="btn ghost" id="btnNotify" type="button">🔔 إشعار الفرص</button>
       </div>
+    </div>
+
+    <div class="card" id="liveCard">
+      <div class="row">
+        <h2 style="margin:0">سعر لحظي <span class="pulse" title="بث حي"></span></h2>
+        <span class="pill ok" id="liveBadge">TradingView</span>
+      </div>
+      <div class="live-box">
+        <div class="row">
+          <div>
+            <div class="muted" id="liveSymLabel">—</div>
+            <div class="live-price" id="livePrice">--</div>
+            <div class="live-sub" id="liveChg">—</div>
+          </div>
+          <div class="muted" id="liveClock" style="text-align:left">يتحدث كل 3ث</div>
+        </div>
+      </div>
+      <div class="toolbar" id="liveChips" style="margin-top:8px"></div>
+      <div id="tvChart"></div>
+      <p class="muted" style="margin:8px 0 0">شارت TradingView حي (1 دقيقة) — اضغط سهم من الفرص أو القائمة لتبديله</p>
     </div>
 
     <div class="card">
@@ -316,7 +349,7 @@
           </div>
           <div class="toolbar">
             <button class="btn secondary" type="button" data-copy="${esc(o.symbol)}|${esc(o.entry)}|${esc(o.stop)}|${esc(o.target)}">📋 نسخ المستويات</button>
-            <a class="btn" href="${esc(o.tg_share)}" target="_blank" rel="noopener">✉️ تيليجرام</a>
+            <button class="btn" type="button" data-live="${esc(o.symbol)}">📡 لحظي</button>
             <a class="btn ghost" href="${esc(o.tv_url)}" target="_blank" rel="noopener">📈 TradingView</a>
           </div>
         </details>`;
@@ -327,7 +360,16 @@
           copyText(`${sym}\nدخول: ${entry}\nوقف: ${stop}\nهدف: ${target}`);
         });
       });
+      box.querySelectorAll('[data-live]').forEach(btn=>{
+        btn.addEventListener('click',(e)=>{ e.preventDefault(); e.stopPropagation(); setLiveSymbol(btn.dataset.live); });
+      });
       maybeNotify(list);
+      // default live symbol
+      if(!LIVE_SYM){
+        const first=list[0]&&list[0].symbol;
+        if(first) setLiveSymbol(first, false);
+      }
+      renderLiveChips();
     }
     function maybeNotify(list){
       if(localStorage.getItem(LS.notify)!=='1') return;
@@ -382,12 +424,15 @@
       document.getElementById('gainersBody').innerHTML = gainers.length ? gainers.map((g,i)=>`
         <tr>
           <td>${i+1}</td>
-          <td><b>${esc(g.symbol)}</b>${g.name?` <span class="muted">${esc(g.name)}</span>`:''}</td>
-          <td>$${esc(g.last)}</td>
-          <td class="up">+${esc(g.change_pct)}%</td>
+          <td><button type="button" class="sym-chip" style="min-height:36px;padding:6px 10px" data-live="${esc(g.symbol)}"><b>${esc(g.symbol)}</b></button>${g.name?` <span class="muted">${esc(g.name)}</span>`:''}</td>
+          <td class="live-cell" data-px="${esc(g.symbol)}">$${esc(g.last)}</td>
+          <td class="up live-chg" data-chg="${esc(g.symbol)}">+${esc(g.change_pct)}%</td>
           <td>${esc(g.dollar_volume_label||'-')}</td>
           <td><a href="${esc(g.tv_url)}" target="_blank" rel="noopener">TV</a></td>
         </tr>`).join('') : '<tr><td colspan="6" class="muted">لا صاعدين فوق الفلتر في الجلسة الحالية</td></tr>';
+      document.querySelectorAll('#gainersBody [data-live]').forEach(btn=>{
+        btn.addEventListener('click',()=>setLiveSymbol(btn.dataset.live));
+      });
 
       const movers=d.movers||[];
       document.getElementById('movers').innerHTML=movers.map(m=>`
