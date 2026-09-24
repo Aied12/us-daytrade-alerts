@@ -114,7 +114,6 @@ def set_bot_commands(settings: Settings) -> bool:
         {"command": "scan", "description": "فحص السوق الآن"},
         {"command": "premarket", "description": "قائمة ساخنة قبل الافتتاح"},
         {"command": "afterhours", "description": "ملخص بعد الإغلاق"},
-        {"command": "earnings", "description": "تقويم الأرباح"},
         {"command": "fed", "description": "تقويم الفيدرالي"},
         {"command": "news", "description": "أخبار عاجلة للقائمة"},
         {"command": "options", "description": "خيارات بحجم غير طبيعي"},

@@ -21,7 +21,6 @@ from bot.charts import make_daily_chart, make_market_poster
 from bot.config import load_settings
 from bot.extras import (
     format_after_hours,
-    format_earnings_calendar,
     format_fed_calendar,
     format_options_unusual,
     format_premarket_hotlist,
@@ -84,7 +83,6 @@ def cmd_help(settings) -> str:
         "/scan — فحص الآن\n"
         "/premarket — قائمة ساخنة قبل الافتتاح\n"
         "/afterhours — ملخص بعد الإغلاق\n"
-        "/earnings — تقويم الأرباح\n"
         "/fed — تقويم الفيدرالي\n"
         "/news — أخبار عاجلة\n"
         "/options — خيارات بحجم غير طبيعي\n"
@@ -219,8 +217,6 @@ def handle_message(settings, msg: dict) -> None:
         deliver(settings, "🌅 Premarket", format_premarket_hotlist(settings), also_channel=True)
     elif cmd == "/afterhours":
         deliver(settings, "🌙 After-hours", format_after_hours(settings), also_channel=True)
-    elif cmd == "/earnings":
-        deliver(settings, "📅 Earnings", format_earnings_calendar(settings), also_channel=True)
     elif cmd == "/fed":
         deliver(settings, "🏛 Fed", format_fed_calendar(), also_channel=True)
     elif cmd == "/news":

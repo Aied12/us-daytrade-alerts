@@ -16,7 +16,6 @@ from bot.charts import make_market_poster
 from bot.config import load_settings
 from bot.extras import (
     format_after_hours,
-    format_earnings_calendar,
     format_fed_calendar,
     format_options_unusual,
     format_premarket_hotlist,
@@ -162,7 +161,6 @@ def run_evening() -> None:
     )
     # after-hours + calendars pack
     deliver(settings, "🌙 After-hours", format_after_hours(settings), also_channel=True)
-    deliver(settings, "📅 Earnings", format_earnings_calendar(settings), also_channel=True)
     deliver(settings, "🏛 Fed", format_fed_calendar(), also_channel=True)
     script = voice_script_from_update(pack["evening"][:300], True)
     vp = synthesize_arabic(script, settings.data_dir / "media" / f"evening_{stamp}.mp3")
