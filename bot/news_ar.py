@@ -322,6 +322,58 @@ def news_fingerprint(title: str, symbol: str = "") -> str:
     return hashlib.sha1(f"{symbol}|{base}".encode("utf-8")).hexdigest()
 
 
+_STOP = {
+    "the", "a", "an", "to", "of", "in", "on", "for", "and", "or", "is", "are", "with", "as", "at",
+    "by", "from", "stock", "shares", "inc", "corp", "co", "ltd", "plc", "after", "says", "say",
+}
+
+
+def _title_tokens(title: str) -> set[str]:
+    t = _norm(title)
+    t = re.sub(r"[^a-z0-9\u0600-\u06ff\s]", " ", t)
+    return {w for w in t.split() if len(w) > 2 and w not in _STOP}
+
+
+def _title_jaccard(a: str, b: str) -> float:
+    ta, tb = _title_tokens(a), _title_tokens(b)
+    if not ta or not tb:
+        return 0.0
+    inter = len(ta & tb)
+    return inter / float(len(ta | tb))
+
+
+def dedupe_near_news(rows: list[dict[str, Any]], *, thresh_same: float = 0.55, thresh_any: float = 0.82) -> list[dict[str, Any]]:
+    """Drop near-duplicate headlines (same story rewritten / syndicated)."""
+    kept: list[dict[str, Any]] = []
+    for row in rows:
+        title = row.get("title") or ""
+        sym = str(row.get("symbol") or "").upper()
+        dup = False
+        for k in kept:
+            kt = k.get("title") or ""
+            ks = str(k.get("symbol") or "").upper()
+            sim = _title_jaccard(title, kt)
+            same_sym = bool(sym and ks and sym == ks)
+            marketish = sym == "MARKET" or ks == "MARKET"
+            if same_sym and sim >= thresh_same:
+                dup = True
+                break
+            if marketish and sim >= 0.62:
+                dup = True
+                break
+            if sim >= thresh_any:
+                dup = True
+                break
+            na = re.sub(r"\s+", " ", _norm(title))[:48]
+            nb = re.sub(r"\s+", " ", _norm(kt))[:48]
+            if na and na == nb:
+                dup = True
+                break
+        if not dup:
+            kept.append(row)
+    return kept
+
+
 def load_seen_news() -> dict[str, float]:
     try:
         data = json.loads(SEEN_PATH.read_text(encoding="utf-8"))
@@ -385,6 +437,7 @@ def fetch_stock_news_ar(
         key=lambda x: (1 if x.get("sentiment") == "pos" else 0, x.get("published_ts") or 0),
         reverse=True,
     )
+    collected = dedupe_near_news(collected)
     collected = collected[:limit]
 
     news: list[dict[str, Any]] = []

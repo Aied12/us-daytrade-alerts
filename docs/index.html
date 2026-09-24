@@ -306,7 +306,7 @@
     }
     function newsNormTitle(t){
       return String(t||'').toLowerCase()
-        .replace(/[^\p{L}\p{N}\s]/gu,' ')
+        .replace(/[^a-z0-9\u0600-\u06ff\s]+/gi,' ')
         .replace(/\b(the|a|an|to|of|in|on|for|and|or|is|are|with|as|at|by|from|stock|shares|inc|corp)\b/g,' ')
         .replace(/\s+/g,' ').trim();
     }
@@ -618,13 +618,13 @@
     function renderNewsList(news){
       const newsBox=document.getElementById('newsList');
       if(!newsBox) return;
-      const list=(news||[]).filter(n=>n && n.sentiment!=='neg');
+      const list=dedupeNewsSmart((news||[]).filter(n=>n && n.sentiment!=='neg'));
       const sentCls={pos:'sent-pos',neg:'sent-neg',neu:'sent-neu'};
       newsBox.innerHTML = list.length ? list.map(n=>{
         const sent=n.sentiment||'neu';
         const title=n.title_ar||n.title||'';
         const sum=n.summary_ar||'';
-        const when=n.published||'';
+        const when=fmtNewsAgo(n);
         const pub=n.publisher||'';
         const href=n.url||('#');
         return `<article class="news-item">
@@ -741,6 +741,15 @@
       localStorage.setItem(LS.sort,e.target.value);
       renderOpps();
     };
+    document.querySelectorAll('#flowFilters button').forEach(b=>{
+      b.onclick=()=>{
+        const key=b.dataset.flow;
+        if(FLOW_FILTERS.has(key)) FLOW_FILTERS.delete(key); else FLOW_FILTERS.add(key);
+        b.classList.toggle('active', FLOW_FILTERS.has(key));
+        localStorage.setItem(LS.flow, JSON.stringify([...FLOW_FILTERS]));
+        renderOpps();
+      };
+    });
 
     let GAINERS_STATE = [];
     const MIN_GAINERS_LIQ = 5_000_000; // $5M — below this = out of liquidity
@@ -781,7 +790,7 @@
         <tr data-gainer="${esc(g.symbol)}">
           <td>${i+1}</td>
           <td><b>${esc(g.symbol)}</b>${g.name?` <span class="muted">${esc(g.name)}</span>`:''}</td>
-          <td class="live-cell">$<span data-live-px="${esc(g.symbol)}">${esc(Number(g.last).toFixed(2))}</span></td>
+          <td class="live-cell">$<span data-live-px="${esc(g.symbol)}">${esc(Number(g.last).toFixed(2))}</span><span class="moving-badge" data-moving="${esc(g.symbol)}"><span class="dot"></span>الآن</span></td>
           <td><span class="${clsChg(g.change_pct)}" data-live-chg="${esc(g.symbol)}">${g.change_pct>0?'+':''}${esc(Number(g.change_pct).toFixed(2))}%</span></td>
           <td data-gainer-liq="${esc(g.symbol)}">${esc(g.dollar_volume_label||'-')}</td>
           <td></td>
@@ -861,21 +870,58 @@
         volume: (q.volume>0 ? Number(q.volume) : (prev&&prev.volume)||0),
         ts: q.ts||Date.now(),
       });
+      const moved = !prev || Math.abs(prev.last-merged.last)>=0.0001
+        || Math.abs((prev.change_pct||0)-(merged.change_pct||0))>=0.001;
+      if(moved && prev){
+        merged.move_ts = Date.now();
+        merged.move_dir = (merged.last > prev.last) ? 1 : ((merged.last < prev.last) ? -1 : 0);
+      } else if(prev && prev.move_ts){
+        merged.move_ts = prev.move_ts;
+        merged.move_dir = prev.move_dir||0;
+      }
       LIVE_CACHE[sym]=merged;
-      const priceSame = prev && Math.abs(prev.last-merged.last)<0.0001
-        && Math.abs((prev.change_pct||0)-(merged.change_pct||0))<0.001;
-      if(priceSame) return;
+      if(!moved){
+        refreshMovingBadges();
+        return;
+      }
       document.querySelectorAll('[data-live-px="'+sym+'"]').forEach(el=>{
         el.textContent = Number(merged.last).toFixed(2);
         el.style.transition='color .15s';
         el.style.color = (prev && merged.last>prev.last) ? 'var(--ok)' : ((prev && merged.last<prev.last) ? 'var(--bad)' : '');
         setTimeout(()=>{ el.style.color=''; }, 700);
+        const wrap=el.closest('.live-cell, .live-price, div');
+        if(wrap){ wrap.classList.add('moving'); setTimeout(()=>wrap.classList.remove('moving'), MOVE_WINDOW_MS); }
       });
       document.querySelectorAll('[data-live-chg="'+sym+'"]').forEach(el=>{
         el.textContent=(merged.change_pct>=0?'+':'')+Number(merged.change_pct).toFixed(2)+'%';
         el.classList.remove('up','down','muted');
         el.classList.add(merged.change_pct>=0?'up':'down');
       });
+      refreshMovingBadges();
+    }
+
+    function refreshMovingBadges(){
+      const now=Date.now();
+      const active=[];
+      Object.keys(LIVE_CACHE).forEach(sym=>{
+        const q=LIVE_CACHE[sym];
+        const on = q && q.move_ts && (now - q.move_ts) < MOVE_WINDOW_MS;
+        document.querySelectorAll('[data-moving="'+sym+'"]').forEach(el=>{
+          el.classList.toggle('on', !!on);
+        });
+        if(on) active.push(sym);
+      });
+      const bar=document.getElementById('movingBar');
+      const box=document.getElementById('movingSyms');
+      if(bar && box){
+        if(active.length){
+          bar.classList.add('on');
+          box.textContent = active.slice(0,12).join(' · ') + (active.length>12?` +${active.length-12}`:'');
+        } else {
+          bar.classList.remove('on');
+          box.textContent='—';
+        }
+      }
     }
 
     function parseYahooChart(data){
@@ -989,11 +1035,14 @@
         liveWave++;
         syncGainersAfterQuotes();
         syncOppsAfterQuotes();
+        refreshMovingBadges();
         const clk=document.getElementById('liveClock');
         if(clk){
+          const movingN=Object.values(LIVE_CACHE).filter(q=>q && q.move_ts && (Date.now()-q.move_ts)<MOVE_WINDOW_MS).length;
           clk.textContent = `لحظي: ${directN||batch.n||0} سهم · ${new Date().toLocaleTimeString('ar-SA')}`
             + (batch.ok?` · ملف ${Math.round(batch.age)}ث`:'')
-            + ` · صاعدين ${GAINERS_STATE.length}`;
+            + ` · صاعدين ${GAINERS_STATE.length}`
+            + (movingN?` · يتحرك ${movingN}`:'');
         }
       } finally {
         liveBusy=false;
@@ -1012,6 +1061,7 @@
     },1000);
     setInterval(()=>pollAllPrices(), 5000);
     setInterval(()=>pollNewsLive(), 20000);
+    setInterval(()=>refreshMovingBadges(), 1000);
   </script>
 </body>
 </html>
