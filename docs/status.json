@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:18:19.249241+00:00",
-  "generated_ts": 1790252299,
-  "generated_local": "2026-09-24 15:18 +03",
+  "generated_at": "2026-09-24T12:19:17.334331+00:00",
+  "generated_ts": 1790252357,
+  "generated_local": "2026-09-24 15:19 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:18:19.249090+00:00",
+    "updated_at": "2026-09-24T12:19:17.334210+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,16 +23,16 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.55,
+    "avg_change_pct": -0.56,
     "details": {
       "SPY": {
-        "last": 764.36,
-        "change_pct": -0.45,
+        "last": 764.2199,
+        "change_pct": -0.47,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.6597,
-        "change_pct": -0.88,
+        "last": 734.5853,
+        "change_pct": -0.89,
         "rsi": 68.9
       },
       "IWM": {
@@ -44,12 +44,12 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.45,
+        "change_pct": -0.47,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.88,
+        "change_pct": -0.89,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 4300,
-    "ny_time": "08:18:19",
+    "seconds_left": 4242,
+    "ny_time": "08:19:17",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,11 +77,11 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 0.99
+        "change_pct": 0.97
       },
       {
         "name": "Communication",
-        "change_pct": 0.19
+        "change_pct": 0.26
       },
       {
         "name": "Industrial",
@@ -91,15 +91,15 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.1
+        "change_pct": -1.12
       },
       {
         "name": "Financials",
-        "change_pct": -0.36
+        "change_pct": -0.34
       },
       {
         "name": "Consumer",
-        "change_pct": -0.33
+        "change_pct": -0.32
       }
     ]
   },
@@ -246,21 +246,21 @@
         "اختبار/كسر مقاومة"
       ],
       "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم مرتفع: حجم ×3.3 | اختبار/كسر مقاومة: مقاومة≈$30.24",
-      "entry": 30.79,
+      "entry": 30.78,
       "stop": 27.83,
-      "target": 36.12,
+      "target": 36.09,
       "shares": 40,
-      "risk_sar": 444.0,
+      "risk_sar": 442.5,
       "allowed": true,
-      "change_pct": 0.09,
-      "last": 30.79,
+      "change_pct": 0.07,
+      "last": 30.78,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 3.25,
         "volume": 111086700.0,
         "avg_volume_20": 34141375.0,
-        "dollar_volume": 3420215080.29,
-        "avg_dollar_volume": 1051168552.46,
+        "dollar_volume": 3419248626.0,
+        "avg_dollar_volume": 1050871522.5,
         "dollar_volume_label": "3.4B$",
         "avg_dollar_volume_label": "1.1B$",
         "grade": "strong",
@@ -271,7 +271,7 @@
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=WBD",
-      "tg_share": "https://t.me/share/url?url=&text=WBD%20فكّر في شراء قصير المدى%0Aالآن%2030.79%20دخول%2030.79%20وقف%2027.83%20هدف%2036.12%0Aسيولة%20قوي%20RVOL%20x3.25"
+      "tg_share": "https://t.me/share/url?url=&text=WBD%20فكّر في شراء قصير المدى%0Aالآن%2030.78%20دخول%2030.78%20وقف%2027.83%20هدف%2036.09%0Aسيولة%20قوي%20RVOL%20x3.25"
     },
     {
       "symbol": "APA",
@@ -453,13 +453,13 @@
     {
       "symbol": "PCG",
       "name": "Pacific Gas & Electric Co.",
-      "last": 12.48,
-      "change_pct": 0.56,
+      "last": 12.47,
+      "change_pct": 0.47,
       "ref": 12.41,
       "rth_close": 12.41,
       "volume": 47281720.0,
-      "dollar_volume": 590075865.6,
-      "dollar_volume_label": "590.1M$",
+      "dollar_volume": 589603048.4,
+      "dollar_volume_label": "589.6M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PCG"
@@ -481,12 +481,12 @@
     {
       "symbol": "WBD",
       "name": "Warner Bros. Discovery, Inc. - ",
-      "last": 30.79,
-      "change_pct": 0.09,
+      "last": 30.78,
+      "change_pct": 0.07,
       "ref": 30.76,
       "rth_close": 30.76,
       "volume": 110237037.0,
-      "dollar_volume": 3394198369.23,
+      "dollar_volume": 3393095998.86,
       "dollar_volume_label": "3.4B$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
@@ -498,8 +498,8 @@
   "movers": [
     {
       "symbol": "AMD",
-      "change_pct": -2.3,
-      "last": 600.5,
+      "change_pct": -2.43,
+      "last": 599.66,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -507,8 +507,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.72,
-      "last": 188.49,
+      "change_pct": -1.73,
+      "last": 188.47,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -516,8 +516,8 @@
     },
     {
       "symbol": "META",
-      "change_pct": -1.7,
-      "last": 731.45,
+      "change_pct": -1.72,
+      "last": 731.33,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -543,8 +543,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.38,
-      "last": 350.09,
+      "change_pct": -1.33,
+      "last": 350.26,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -561,8 +561,8 @@
     },
     {
       "symbol": "COIN",
-      "change_pct": -1.26,
-      "last": 195.64,
+      "change_pct": -1.19,
+      "last": 195.77,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -577,7 +577,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 109,
+    "alerts_today": 110,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
