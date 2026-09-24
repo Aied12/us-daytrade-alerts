@@ -548,6 +548,50 @@
       box.innerHTML=list.map(s=>`<button type="button" class="sym-chip ${s===LIVE_SYM?'active':''}" data-live="${esc(s)}">${esc(s)}</button>`).join('');
       box.querySelectorAll('[data-live]').forEach(b=>b.onclick=()=>setLiveSymbol(b.dataset.live));
     }
+    function mountTvOverview(sym){
+      const host=document.getElementById('tvOverview');
+      if(!host) return;
+      host.innerHTML='';
+      const theme=themeForTv();
+      const script=document.createElement('script');
+      script.type='text/javascript';
+      script.src='https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js';
+      script.async=true;
+      script.text=JSON.stringify({
+        symbols: [[sym, sym]],
+        chartOnly: false,
+        width: '100%',
+        height: '100%',
+        locale: 'ar',
+        colorTheme: theme,
+        autosize: true,
+        showVolume: true,
+        showMA: false,
+        hideDateRanges: false,
+        hideMarketStatus: false,
+        hideSymbolLogo: false,
+        scalePosition: 'right',
+        scaleMode: 'Normal',
+        fontFamily: '-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif',
+        fontSize: '10',
+        noTimeScale: false,
+        valuesTracking: '1',
+        changeMode: 'price-and-percent',
+        chartType: 'area',
+        lineWidth: 2,
+        lineType: 0,
+        dateRanges: ['1d|1', '1d|5', '1m|30', '3m|60', '12m|1D', '60m|1W', 'all|1M']
+      });
+      const wrap=document.createElement('div');
+      wrap.className='tradingview-widget-container';
+      wrap.style.height='100%';
+      const inner=document.createElement('div');
+      inner.className='tradingview-widget-container__widget';
+      inner.style.height='calc(100% - 0px)';
+      wrap.appendChild(inner);
+      wrap.appendChild(script);
+      host.appendChild(wrap);
+    }
     function mountTv(sym){
       const el=document.getElementById('tvChart');
       if(!el || typeof TradingView==='undefined') return;
@@ -571,21 +615,42 @@
         withdateranges:true,
         allow_symbol_change:true,
       });
+      mountTvOverview(String(sym).toUpperCase());
     }
     function setLiveSymbol(sym, scroll=true){
       if(!sym) return;
       LIVE_SYM=String(sym).toUpperCase();
       localStorage.setItem('dash_live_sym', LIVE_SYM);
-      document.getElementById('liveSymLabel').textContent=LIVE_SYM+' · بث لحظي';
+      document.getElementById('liveSymLabel').textContent=LIVE_SYM+' · بث لحظي من TradingView';
       renderLiveChips();
       mountTv(LIVE_SYM);
       pollLivePrice(true);
+      pollVisiblePrices();
       if(scroll) document.getElementById('liveCard').scrollIntoView({behavior:'smooth',block:'start'});
     }
+    function applyQuoteToDom(sym, q){
+      if(!q || !(q.last>0)) return;
+      LIVE_CACHE[sym]=q;
+      document.querySelectorAll('[data-live-px="'+sym+'"]').forEach(el=>{
+        const txt=(el.textContent||'').trim();
+        el.textContent = txt.startsWith('$') ? ('$'+q.last.toFixed(2)) : q.last.toFixed(2);
+      });
+      document.querySelectorAll('[data-live-chg="'+sym+'"]').forEach(el=>{
+        el.textContent=(q.change_pct>=0?'+':'')+q.change_pct.toFixed(2)+'%';
+        el.classList.remove('up','down');
+        el.classList.add(q.change_pct>=0?'up':'down');
+      });
+      if(sym===LIVE_SYM){
+        const px=document.getElementById('livePrice');
+        const ch=document.getElementById('liveChg');
+        if(px){ px.textContent='$'+q.last.toFixed(2); px.className='live-price '+(q.change_pct>=0?'up':'down'); }
+        if(ch){ ch.textContent=(q.change_pct>=0?'+':'')+q.change_pct.toFixed(2)+'%'; ch.className='live-sub '+(q.change_pct>=0?'up':'down'); }
+        const clk=document.getElementById('liveClock');
+        if(clk) clk.textContent='آخر تحديث رقمي: '+new Date().toLocaleTimeString('ar-SA');
+      }
+    }
     async function fetchYahooLive(sym){
-      const endpoint=`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?range=1d&interval=1m&includePrePost=true`;
-      async function parse(res){
-        const data=await res.json();
+      function fromChart(data){
         const res0=((data.chart||{}).result||[])[0];
         if(!res0) throw new Error('empty');
         const meta=res0.meta||{};
@@ -595,58 +660,76 @@
         const rth=Number(meta.regularMarketPrice||0);
         const prev=Number(meta.chartPreviousClose||meta.previousClose||0);
         if(last==null) last=rth;
-        const ref = rth>0 ? rth : prev;
-        const chg = ref ? ((last-ref)/ref)*100 : 0;
-        // During RTH prefer change vs previous close
-        const phaseRef = prev>0 ? prev : ref;
-        const chgDay = phaseRef ? ((last-phaseRef)/phaseRef)*100 : chg;
+        const ref = prev>0 ? prev : (rth>0 ? rth : last);
+        const chgDay = ref ? ((last-ref)/ref)*100 : 0;
         return {last:Number(last), change_pct:chgDay, rth, prev};
       }
+      // same-origin live.json first
       try{
-        const r=await fetch(endpoint,{cache:'no-store'});
-        if(r.ok) return await parse(r);
+        const r=await fetch('./live.json?ts='+Date.now(),{cache:'no-store'});
+        if(r.ok){
+          const j=await r.json();
+          const row=(j.quotes||{})[sym];
+          if(row && row.last) return {last:Number(row.last), change_pct:Number(row.change_pct||0)};
+        }
       }catch(e){}
-      // CORS fallback
-      const proxied=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(endpoint),{cache:'no-store'});
-      return await parse(proxied);
+      try{
+        const yahoo=`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?range=1d&interval=1m&includePrePost=true`;
+        const r=await fetch(yahoo,{cache:'no-store'});
+        if(r.ok) return fromChart(await r.json());
+      }catch(e){}
+      // jina CORS-friendly proxy
+      const jina='https://r.jina.ai/http://query1.finance.yahoo.com/v8/finance/chart/'
+        +encodeURIComponent(sym)+'?range=1d&interval=1m&includePrePost=true';
+      const r=await fetch(jina,{cache:'no-store', headers:{'Accept':'application/json'}});
+      if(!r.ok) throw new Error('jina '+r.status);
+      const payload=await r.json();
+      let content=(payload.data&&payload.data.content)||payload.content||'';
+      if(typeof content==='string'){
+        const start=content.indexOf('{');
+        const end=content.lastIndexOf('}');
+        if(start>=0 && end>start) content=content.slice(start,end+1);
+        return fromChart(JSON.parse(content));
+      }
+      return fromChart(content);
     }
-    async function pollLivePrice(force=false){
+    async function pollLivePrice(){
       if(!LIVE_SYM) return;
       try{
-        const q=await fetchYahooLive(LIVE_SYM);
-        LIVE_CACHE[LIVE_SYM]=q;
-        const px=document.getElementById('livePrice');
-        const ch=document.getElementById('liveChg');
-        px.textContent='$'+q.last.toFixed(2);
-        px.className='live-price '+(q.change_pct>=0?'up':'down');
-        ch.textContent=(q.change_pct>=0?'+':'')+q.change_pct.toFixed(2)+'% مقابل المرجع';
-        ch.className='live-sub '+(q.change_pct>=0?'up':'down');
-        document.getElementById('liveClock').textContent='آخر سعر حي: '+new Date().toLocaleTimeString('ar-SA');
-        // refresh matching cells
-        document.querySelectorAll(`[data-px="${LIVE_SYM}"]`).forEach(el=>{ el.textContent='$'+q.last.toFixed(2); });
-        document.querySelectorAll(`[data-chg="${LIVE_SYM}"]`).forEach(el=>{
-          el.textContent=(q.change_pct>=0?'+':'')+q.change_pct.toFixed(2)+'%';
-          el.className=(q.change_pct>=0?'up':'down')+' live-chg';
-        });
-        // update open opportunity summaries
-        document.querySelectorAll('.opp .sym').forEach(node=>{
-          if((node.textContent||'').includes(LIVE_SYM)){
-            const row=node.closest('details');
-            if(!row) return;
-            const line=row.querySelector('summary div:nth-child(2)');
-            if(line && q){
-              // keep action text, refresh price tail if present
+        applyQuoteToDom(LIVE_SYM, await fetchYahooLive(LIVE_SYM));
+      }catch(e){
+        const clk=document.getElementById('liveClock');
+        if(clk) clk.textContent='نظر للسعر داخل ويدجت TradingView بالأسفل (يتحرك لحظياً)';
+      }
+    }
+    async function pollVisiblePrices(){
+      const nodes=[...document.querySelectorAll('[data-live-px]')];
+      const syms=[...new Set(nodes.map(n=>n.getAttribute('data-live-px')).filter(Boolean))];
+      const ordered=[LIVE_SYM, ...syms].filter(Boolean);
+      const uniq=[...new Set(ordered)].slice(0, 8);
+      // Prefer same-origin live.json batch
+      try{
+        const r=await fetch('./live.json?ts='+Date.now(),{cache:'no-store'});
+        if(r.ok){
+          const j=await r.json();
+          const quotes=j.quotes||{};
+          let hit=0;
+          for(const sym of uniq){
+            if(quotes[sym] && quotes[sym].last){
+              applyQuoteToDom(sym, {last:Number(quotes[sym].last), change_pct:Number(quotes[sym].change_pct||0)});
+              hit++;
             }
           }
-        });
-      }catch(e){
-        document.getElementById('liveClock').textContent='تعذّر جلب السعر الحي مؤقتاً';
+          if(hit>0) return;
+        }
+      }catch(e){}
+      for(const sym of uniq){
+        try{ applyQuoteToDom(sym, await fetchYahooLive(sym)); }catch(e){}
       }
     }
 
     loadPrefs();
     fetchData(true);
-    // Auto refresh prices/stocks
     setInterval(()=>fetchData(false), AUTO_SEC*1000);
     setInterval(()=>{
       if(sessionLeft>0) sessionLeft-=1;
@@ -655,8 +738,8 @@
       if(hint) hint.textContent=`تحديث تلقائي · التالي خلال ${refreshIn}ث`;
       tickClocks();
     },1000);
-    // Live tick every 3s like TradingView feel
-    setInterval(()=>pollLivePrice(false), 3000);
+    setInterval(()=>pollLivePrice(), 4000);
+    setInterval(()=>pollVisiblePrices(), 7000);
   </script>
 </body>
 </html>
