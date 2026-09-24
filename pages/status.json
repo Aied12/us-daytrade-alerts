@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-09-24T13:36:45.996003+00:00",
-  "generated_ts": 1790257005,
-  "generated_local": "2026-09-24 16:36 +03",
+  "generated_at": "2026-09-24T13:37:22.937643+00:00",
+  "generated_ts": 1790257042,
+  "generated_local": "2026-09-24 16:37 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:36:45.995861+00:00",
+    "updated_at": "2026-09-24T13:37:22.937485+00:00",
     "last_mode": "dashboard",
-    "changed": true,
+    "changed": false,
     "symbols": 24
   },
   "telegram_enabled": true,
@@ -28,12 +28,12 @@
       "SPY": {
         "last": 764.69,
         "change_pct": -0.41,
-        "rsi": 44.9
+        "rsi": 44.8
       },
       "QQQ": {
         "last": 736.34,
         "change_pct": -0.66,
-        "rsi": 62.0
+        "rsi": 62.1
       },
       "IWM": {
         "last": 281.02,
@@ -45,12 +45,12 @@
       {
         "symbol": "SPY",
         "change_pct": -0.41,
-        "rsi": 44.9
+        "rsi": 44.8
       },
       {
         "symbol": "QQQ",
         "change_pct": -0.66,
-        "rsi": 62.0
+        "rsi": 62.1
       },
       {
         "symbol": "IWM",
@@ -68,8 +68,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 22994,
-    "ny_time": "09:36:45",
+    "seconds_left": 22957,
+    "ny_time": "09:37:22",
     "open": "09:30",
     "close": "16:00"
   },
@@ -114,13 +114,12 @@
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
     "P:درجة سيولة ضعيفة",
-    "CRCL:درجة سيولة ضعيفة",
     "NBIS:درجة سيولة ضعيفة",
-    "JPM:زخم ضعيف (+0.17% < 0.85%)",
     "BAC:زخم ضعيف (+0.43% < 0.85%)",
     "CRM:درجة سيولة ضعيفة",
     "UBER:زخم ضعيف (+0.46% < 0.85%)",
     "NFLX:زخم ضعيف (+0.62% < 0.85%)",
+    "JPM:زخم ضعيف (+0.17% < 0.85%)",
     "DIS:تداول بطيء اليوم ($39M · RVOL×0.05)",
     "NVDA:زخم ضعيف (-1.43% < 0.85%)"
   ],
@@ -142,13 +141,13 @@
     {
       "symbol": "NBIS",
       "name": "Nebius Group N.V.",
-      "last": 238.13,
-      "change_pct": 5.08,
+      "last": 238.87,
+      "change_pct": 5.41,
       "ref": 226.61,
-      "rth_close": 238.13,
-      "volume": 2584320.0,
-      "dollar_volume": 615404121.6,
-      "dollar_volume_label": "615.4M$",
+      "rth_close": 238.87,
+      "volume": 2984718.0,
+      "dollar_volume": 712959588.66,
+      "dollar_volume_label": "713.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
@@ -170,10 +169,10 @@
       "symbol": "NBIS",
       "change_pct": 5.0,
       "last": 237.94,
-      "rvol": 0.2,
+      "rvol": 0.21,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "668.8M$"
+      "dollar_volume_label": "718.9M$"
     },
     {
       "symbol": "DIS",
@@ -182,7 +181,7 @@
       "rvol": 0.05,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "38.6M$"
+      "dollar_volume_label": "39.1M$"
     },
     {
       "symbol": "AVGO",
@@ -191,22 +190,22 @@
       "rvol": 0.08,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "766.3M$"
+      "dollar_volume_label": "781.3M$"
     },
     {
       "symbol": "BA",
       "change_pct": -1.68,
       "last": 196.58,
-      "rvol": 0.12,
+      "rvol": 0.13,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "145.0M$"
+      "dollar_volume_label": "152.6M$"
     },
     {
       "symbol": "NVDA",
       "change_pct": -1.43,
       "last": 222.28,
-      "rvol": 0.05,
+      "rvol": 0.06,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "1.5B$"
@@ -218,7 +217,16 @@
       "rvol": 0.06,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "591.6M$"
+      "dollar_volume_label": "614.7M$"
+    },
+    {
+      "symbol": "XOM",
+      "change_pct": 1.24,
+      "last": 163.23,
+      "rvol": 0.03,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "67.9M$"
     }
   ],
   "news": [
@@ -355,6 +363,36 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "f314670290c2a08e4beb7cf3a82d137fd2f5359d",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "BAC",
+      "title": "Citi Is Rolling Out Higher Rates in New Push for Clients’ Assets",
+      "title_ar": "تقوم Citi بإطلاق أسعار أعلى في دفعة جديدة لأصول العملاء",
+      "summary": "Citigroup wants clients to park more of their cash and investments with the bank. It’s offering incentives to make it happen.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=15476efc5f85ae38c8d5155336bc6ed004219d4520a7afe6518d847f94a62e47",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 11:00 UTC",
+      "published_ts": 1790247600,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "3aba898ead24767e45a549add3b8f003532ea37b",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "BAC",
+      "title": "BofA to Hire 1,000 Additional Apprentices and Invest $150 Million in Workforce Development across the U.S.",
+      "title_ar": "بنك أوف أمريكا يوظف 1000 متدرب إضافي ويستثمر 150 مليون $ في تطوير القوى العاملة في جميع أنحاء الولايات المتحدة",
+      "summary": "Bank of America today announced it will hire 1,000 additional apprentices over the next two years and commit $150 million over five years to workforce development organizations to help strengthen local economies and drive job opportunities along with workforce growth across the U",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=86ddabda4a212087dc4dc441e8ef44ffc1664945e3622d3fa5807893d949cea7",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 11:00 UTC",
+      "published_ts": 1790247600,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "e75ffc0b7703b4de306ccdaa7fe3e8b40388c2b7",
       "source": "finnhub"
     },
     {
@@ -551,41 +589,10 @@
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "a504f9cac743fa3db1cb4684e674fb2dc7eb2803",
       "source": "finnhub:general"
-    },
-    {
-      "symbol": "NBIS",
-      "title": "Nebius Group Heads 3 Top Insider Growth Stocks",
-      "title_ar": "مجموعة نيبيوس تتصدر 3 أفضل أسهم النمو من الداخل",
-      "summary": "With US Treasury yields jumping to fresh 19 year highs on strong economic readings, investors are being paid more to sit in cash and bonds. That raises the bar for any growth story. It also creates a window for fast growing businesses where founders and executives still own large",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=3062c51fee6ec02547e5def9589d9f99e06eb0dedf46ab1218a3b6422a343349",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 19:15 UTC",
-      "published_ts": 1790190930,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "946b029ca15f42bb9fd707878e131ace614d8bc4",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "MARKET",
-      "title": "US stablecoin adoption could surge with bank-like protections: Visa survey",
-      "title_ar": "يمكن أن يرتفع اعتماد العملات المستقرة في الولايات المتحدة مع الحماية الشبيهة بالبنوك: استطلاع فيزا",
-      "summary": "The survey released by Visa posited that bank-like protections for stablecoins could increase adoption in the US as companies are preparing for the enactment of the GENIUS Act.",
-      "summary_ar": "",
-      "url": "https://cointelegraph.com/news/stablecoin-adoption-bank-level-protections-visa?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "publisher": "Cointelegraph",
-      "published": "2026-09-23 18:17 UTC",
-      "published_ts": 1790187468,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "f5250bd6cc29f52848451ffeb0838905137c48d1",
-      "source": "finnhub:crypto"
     }
   ],
   "news_excluded_negative": [
     "AMZN",
-    "CRCL",
     "CRM",
     "META",
     "NFLX",
