@@ -528,11 +528,14 @@
         const dvol = vol!=null ? last*vol : g.dollar_volume;
         return Object.assign({}, g, {last:last, change_pct:chg, dollar_volume:dvol, dollar_volume_label:moneyLabel(dvol)});
       });
-      rows = rows.filter(g =>
-        g.last >= gmin &&
-        g.change_pct > 0.01 &&
-        (Number(g.dollar_volume)<=0 || Number(g.dollar_volume) >= MIN_GAINERS_LIQ)
-      );
+      // Keep only rising $5+ names with liquidity ≥ $5M (drop when flat/down or illiquid)
+      rows = rows.filter(g => {
+        const dvol=Number(g.dollar_volume)||0;
+        const hasVol=dvol>0;
+        return g.last >= gmin &&
+          g.change_pct > 0.01 &&
+          (!hasVol || dvol >= MIN_GAINERS_LIQ);
+      });
       rows.sort((a,b)=>b.change_pct-a.change_pct);
       const keep={};
       rows.forEach(r=>keep[r.symbol]=r);
@@ -579,6 +582,7 @@
       const set=new Set();
       (DATA&&DATA.opportunities||[]).forEach(o=>o.symbol&&set.add(String(o.symbol).toUpperCase()));
       (DATA&&DATA.gainers||[]).forEach(g=>g.symbol&&set.add(String(g.symbol).toUpperCase()));
+      GAINERS_STATE.forEach(g=>g.symbol&&set.add(String(g.symbol).toUpperCase()));
       (DATA&&DATA.movers||[]).forEach(m=>m.symbol&&set.add(String(m.symbol).toUpperCase()));
       ((DATA&&DATA.market&&DATA.market.indexes)||[]).forEach(x=>x.symbol&&set.add(String(x.symbol).toUpperCase()));
       ['SPY','QQQ','IWM'].forEach(s=>set.add(s));
@@ -613,19 +617,27 @@
       if(!q || !(q.last>0)) return;
       sym=String(sym).toUpperCase();
       const prev=LIVE_CACHE[sym];
-      // ignore unchanged to reduce flicker, but still write first time
-      if(prev && Math.abs(prev.last-q.last)<0.0001 && Math.abs((prev.change_pct||0)-(q.change_pct||0))<0.001) return;
-      LIVE_CACHE[sym]=q;
+      // Always refresh cache (incl. volume) so gainers liquidity can drop names
+      const merged=Object.assign({}, prev||{}, q, {
+        last:Number(q.last),
+        change_pct:Number(q.change_pct||0),
+        volume: (q.volume>0 ? Number(q.volume) : (prev&&prev.volume)||0),
+        ts: q.ts||Date.now(),
+      });
+      LIVE_CACHE[sym]=merged;
+      const priceSame = prev && Math.abs(prev.last-merged.last)<0.0001
+        && Math.abs((prev.change_pct||0)-(merged.change_pct||0))<0.001;
+      if(priceSame) return;
       document.querySelectorAll('[data-live-px="'+sym+'"]').forEach(el=>{
-        el.textContent = Number(q.last).toFixed(2);
+        el.textContent = Number(merged.last).toFixed(2);
         el.style.transition='color .15s';
-        el.style.color = (prev && q.last>prev.last) ? 'var(--ok)' : ((prev && q.last<prev.last) ? 'var(--bad)' : '');
+        el.style.color = (prev && merged.last>prev.last) ? 'var(--ok)' : ((prev && merged.last<prev.last) ? 'var(--bad)' : '');
         setTimeout(()=>{ el.style.color=''; }, 700);
       });
       document.querySelectorAll('[data-live-chg="'+sym+'"]').forEach(el=>{
-        el.textContent=(q.change_pct>=0?'+':'')+Number(q.change_pct).toFixed(2)+'%';
+        el.textContent=(merged.change_pct>=0?'+':'')+Number(merged.change_pct).toFixed(2)+'%';
         el.classList.remove('up','down','muted');
-        el.classList.add(q.change_pct>=0?'up':'down');
+        el.classList.add(merged.change_pct>=0?'up':'down');
       });
     }
 
@@ -679,7 +691,12 @@
       Object.keys(quotes).forEach(sym=>{
         const row=quotes[sym];
         if(row&&row.last){
-          applyQuoteToDom(sym,{last:Number(row.last), change_pct:Number(row.change_pct||0), ts:Date.now()});
+          applyQuoteToDom(sym,{
+            last:Number(row.last),
+            change_pct:Number(row.change_pct||0),
+            volume:Number(row.volume||0),
+            ts:Date.now(),
+          });
           n++;
         }
       });
