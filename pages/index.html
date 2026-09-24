@@ -21,6 +21,7 @@
       margin:0; color:var(--text); background:var(--bg);
       font-family:"Segoe UI", Tahoma, system-ui, sans-serif;
       font-size:17px; line-height:1.45; min-height:100vh;
+      overflow-anchor:none;
     }
     .wrap{max-width:780px;margin:0 auto;padding:14px 12px 90px}
     h1{font-size:1.25rem;margin:0 0 6px}
@@ -423,6 +424,45 @@
     let CALC_SYM = '';
     let CALC_STOP_USER_EDITED = false;
     let GAINERS_STATE = [];
+    let OPEN_OPP_SYMS = new Set();
+    let LAST_STATUS_TS = 0;
+
+    function withPreservedScroll(fn){
+      const x = window.scrollX || window.pageXOffset || 0;
+      const y = window.scrollY || window.pageYOffset || 0;
+      const active = document.activeElement;
+      const activeId = active && active.id ? active.id : null;
+      const activeTag = active && active.tagName ? active.tagName.toLowerCase() : '';
+      const keepFocus = activeTag==='input' || activeTag==='select' || activeTag==='textarea';
+      try { fn(); }
+      finally {
+        const restore = ()=>{
+          window.scrollTo(x, y);
+          if(keepFocus && activeId){
+            const el=document.getElementById(activeId);
+            if(el && typeof el.focus==='function'){
+              try{ el.focus({preventScroll:true}); }catch(e){ try{ el.focus(); }catch(_){} }
+            }
+          }
+        };
+        restore();
+        requestAnimationFrame(restore);
+        setTimeout(restore, 0);
+      }
+    }
+    function rememberOpenOpps(){
+      OPEN_OPP_SYMS = new Set();
+      document.querySelectorAll('#opps details.opp[open]').forEach(d=>{
+        const s=d.getAttribute('data-calc-sym')||'';
+        if(s) OPEN_OPP_SYMS.add(s.toUpperCase());
+      });
+    }
+    function isMostlyVisible(el){
+      if(!el) return false;
+      const r=el.getBoundingClientRect();
+      const vh=window.innerHeight||document.documentElement.clientHeight||0;
+      return r.top < vh*0.75 && r.bottom > vh*0.15;
+    }
 
     function money2(n){
       const v=Number(n);
@@ -499,8 +539,16 @@
       document.querySelectorAll(`[data-calc-sym="${s}"]`).forEach(el=>el.classList.add('calc-picked'));
       runStrategyCalc();
       const card=document.getElementById('strategyCalcCard');
-      if(card && opts.scroll!==false){
-        card.scrollIntoView({behavior:'smooth', block:'start'});
+      // لا تقفز لأعلى/للحاسبة إلا إذا كانت خارج الشاشة
+      if(card && opts.scroll!==false && !isMostlyVisible(card)){
+        const y=window.scrollY||0;
+        card.scrollIntoView({behavior:'smooth', block:'nearest'});
+        // إن قفز المتصفح بعيداً جداً، أعد قريباً من موضع المستخدم
+        setTimeout(()=>{
+          if(Math.abs((window.scrollY||0)-y) > window.innerHeight){
+            window.scrollTo({top:y, behavior:'auto'});
+          }
+        }, 50);
       }
       toast(`تم تطبيق ${s} على الحاسبة`);
     }
@@ -860,6 +908,8 @@
     function renderOpps(){
       const list=filteredOpps();
       const box=document.getElementById('opps');
+      withPreservedScroll(()=>{
+      rememberOpenOpps();
       if(!list.length){ box.innerHTML='<div class="empty">لا توجد فرص ضمن الفلتر الحالي</div>'; return; }
       box.innerHTML=list.map((o,i)=>{
         const L=o.liquidity||{};
@@ -880,8 +930,10 @@
         const trail=o.trail_offset!=null?o.trail_offset:(o.smart&&o.smart.trail_offset);
         const wait=!!o.wait_1m_confirm;
         const expired=!!(o.expired||(o.smart&&o.smart.expired));
+        const symU=String(o.symbol||'').toUpperCase();
+        const shouldOpen = OPEN_OPP_SYMS.size ? OPEN_OPP_SYMS.has(symU) : i<2;
         return `
-        <details class="opp ${o.urgent?'urgent':''} ${wait?'wait':''} ${expired?'expired':''}" data-calc-sym="${esc(o.symbol)}" ${i<2?'open':''}>
+        <details class="opp ${o.urgent?'urgent':''} ${wait?'wait':''} ${expired?'expired':''}" data-calc-sym="${esc(o.symbol)}" ${shouldOpen?'open':''}>
           <summary>
             <div class="row">
               <span class="sym calc-clickable" data-apply-calc="${esc(o.symbol)}">${esc(o.symbol)} ${o.urgent?'🔥 عاجل':''} ${wait?'⏳ تأكيد':''} ${expired?'⛔ انتهت':''}</span>
@@ -930,7 +982,14 @@
         btn.addEventListener('click',(ev)=>{
           ev.preventDefault();
           ev.stopPropagation();
-          applyStockToCalc(btn.getAttribute('data-apply-calc'));
+          applyStockToCalc(btn.getAttribute('data-apply-calc'), {scroll:true});
+        });
+      });
+      box.querySelectorAll('details.opp').forEach(d=>{
+        d.addEventListener('toggle',()=>{
+          const s=(d.getAttribute('data-calc-sym')||'').toUpperCase();
+          if(!s) return;
+          if(d.open) OPEN_OPP_SYMS.add(s); else OPEN_OPP_SYMS.delete(s);
         });
       });
       if(CALC_SYM){
@@ -939,6 +998,7 @@
       maybeNotify(list);
       renderLiveTape();
       // Don't call pollAllPrices here — it re-enters while busy and freezes levels
+      });
     }
     function maybeNotify(list){
       if(localStorage.getItem(LS.notify)!=='1') return;
@@ -951,6 +1011,9 @@
       lastUrgent=new Set(urgent);
     }
     function renderAll(){
+      withPreservedScroll(()=>_renderAllBody());
+    }
+    function _renderAllBody(){
       const d=DATA; if(!d) return;
       const ok=!!(d.status&&d.status.ok);
       document.getElementById('alive').textContent=ok?'شغال':'تحقق';
@@ -1051,11 +1114,15 @@
     function renderMomentum(rows){
       const box=document.getElementById('momentumList');
       if(!box) return;
+      withPreservedScroll(()=>{
       const list=rows||[];
       if(!list.length){
         box.innerHTML='<div class="empty">لا زخم ≥ العتبة الآن — راقب البث</div>';
         return;
       }
+      const sig=list.map(r=>`${r.symbol}:${r.change_pct}:${r.impact}:${r.has_news?1:0}`).join('|');
+      if(box.dataset.sig===sig) return;
+      box.dataset.sig=sig;
       box.innerHTML=list.map(r=>{
         const cats=(r.catalyst_ar||[]).map(c=>`<span class="tag tone-ok">${esc(c)}</span>`).join('');
         const newsLine=r.news_title_ar
@@ -1082,6 +1149,7 @@
           </div>
         </div>`;
       }).join('');
+      });
     }
 
     function filteredCatalystNews(news){
@@ -1095,9 +1163,13 @@
     function renderNewsList(news){
       const newsBox=document.getElementById('newsList');
       if(!newsBox) return;
+      withPreservedScroll(()=>{
       NEWS_CACHE=news||NEWS_CACHE;
       const list=filteredCatalystNews(NEWS_CACHE);
       const sentCls={pos:'sent-pos',neg:'sent-neg',neu:'sent-neu'};
+      const sig=list.map(n=>`${n.id||n.symbol}:${n.impact}:${n.title_ar||n.title||''}`).join('|').slice(0,1200);
+      if(newsBox.dataset.sig===sig && newsBox.querySelector('.news-item')) return;
+      newsBox.dataset.sig=sig;
       newsBox.innerHTML = list.length ? list.map(n=>{
         const sent=n.sentiment||'neu';
         const title=n.title_ar||n.title||'';
@@ -1128,6 +1200,7 @@
           </a>
         </article>`;
       }).join('') : '<div class="empty">لا محفزات ضمن الفلتر الحالي</div>';
+      });
     }
 
     async function pollNewsLive(){
@@ -1171,23 +1244,38 @@
 
     async function fetchData(bust=false){
       const btn=document.getElementById('btnRefresh');
-      btn.disabled=true; btn.textContent='... جاري التحديث';
+      // لا تعطّل الزر في التحديث التلقائي حتى لا يسرق التركيز ويقفز التمرير
+      if(bust){
+        btn.disabled=true; btn.textContent='... جاري التحديث';
+      }
       try{
-        // Always cache-bust so auto-refresh picks new status.json quickly
         const url='./status.json?ts='+Date.now();
         const res=await fetch(url,{cache:'no-store'});
-        DATA=await res.json();
+        const next=await res.json();
+        const nextTs=Number(next.generated_ts||0);
+        DATA=next;
         sessionLeft=Number((DATA.session&&DATA.session.seconds_left)||0);
+        // نفس المحتوى → تحديث خفيف فقط (بدون إعادة رسم الصفحة)
+        if(!bust && LAST_STATUS_TS && nextTs && nextTs===LAST_STATUS_TS){
+          tickClocks();
+          refreshIn=AUTO_SEC;
+          return;
+        }
+        LAST_STATUS_TS=nextTs||LAST_STATUS_TS;
         renderAll();
         renderLiveTape();
-        pollAllPrices();
+        if(bust || !liveBusy) pollAllPrices();
         refreshIn=AUTO_SEC;
         if(bust) toast('تم التحديث');
       }catch(e){
-        document.getElementById('opps').innerHTML='<div class="empty">تعذّر التحديث — تحقق من النت أو افتح /scan في تيليجرام</div>';
-        toast('فشل التحديث');
+        if(bust){
+          document.getElementById('opps').innerHTML='<div class="empty">تعذّر التحديث — تحقق من النت أو افتح /scan في تيليجرام</div>';
+          toast('فشل التحديث');
+        }
       }finally{
-        btn.disabled=false; btn.textContent='🔄 تحديث الآن';
+        if(bust){
+          btn.disabled=false; btn.textContent='🔄 تحديث الآن';
+        }
       }
     }
 
@@ -1258,6 +1346,7 @@
     function renderGainersTable(){
       const body=document.getElementById('gainersBody');
       if(!body) return;
+      withPreservedScroll(()=>{
       const gmin=(DATA&&DATA.gainers_min_price)!=null?Number(DATA.gainers_min_price):5;
       let rows = GAINERS_STATE.map(g=>{
         const q=LIVE_CACHE[g.symbol];
@@ -1279,6 +1368,10 @@
       const keep={};
       rows.forEach(r=>keep[r.symbol]=r);
       GAINERS_STATE = GAINERS_STATE.filter(g=>keep[g.symbol]).map(g=>keep[g.symbol]||g);
+      // تجنّب إعادة الرسم إن لم يتغيّر ترتيب/قيم الصفوف بشكل جوهري
+      const sig = rows.map(g=>`${g.symbol}:${Number(g.last).toFixed(2)}:${Number(g.change_pct).toFixed(2)}`).join('|');
+      if(body.dataset.sig===sig && body.querySelector('tr[data-calc-sym]')) return;
+      body.dataset.sig=sig;
       body.innerHTML = rows.length ? rows.map((g,i)=>`
         <tr data-gainer="${esc(g.symbol)}" data-calc-sym="${esc(g.symbol)}" class="calc-clickable" title="اضغط للتطبيق على حاسبة الاستراتيجية">
           <td>${i+1}</td>
@@ -1292,18 +1385,19 @@
         btn.addEventListener('click',(ev)=>{
           ev.preventDefault();
           ev.stopPropagation();
-          applyStockToCalc(btn.getAttribute('data-apply-calc'), {preferOppEntry:false});
+          applyStockToCalc(btn.getAttribute('data-apply-calc'), {preferOppEntry:false, scroll:true});
         });
       });
       body.querySelectorAll('tr[data-calc-sym]').forEach(tr=>{
         tr.addEventListener('click',(ev)=>{
           if(ev.target && ev.target.closest && ev.target.closest('button,a')) return;
-          applyStockToCalc(tr.getAttribute('data-calc-sym'), {preferOppEntry:false});
+          applyStockToCalc(tr.getAttribute('data-calc-sym'), {preferOppEntry:false, scroll:true});
         });
       });
       if(CALC_SYM){
         body.querySelectorAll(`[data-calc-sym="${CALC_SYM}"]`).forEach(el=>el.classList.add('calc-picked'));
       }
+      });
     }
 
     function syncGainersAfterQuotes(){
