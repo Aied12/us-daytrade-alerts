@@ -420,6 +420,216 @@
     let CAT_FILTER = 'all';
     let NEWS_CACHE = [];
     let MOMENTUM_CACHE = [];
+    let CALC_SYM = '';
+    let CALC_STOP_USER_EDITED = false;
+
+    function money2(n){
+      const v=Number(n);
+      if(!Number.isFinite(v)) return '—';
+      return v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    }
+    function moneySar(n){
+      const v=Number(n);
+      if(!Number.isFinite(v)) return '—';
+      return v.toLocaleString('ar-SA',{maximumFractionDigits:0})+' ر.س';
+    }
+    function strategyStopDefault(st){
+      return st==='momentum' ? 1.0 : 1.5;
+    }
+    function strategyRewardMultiples(st){
+      if(st==='momentum') return [1, 3];
+      return [1, 2]; // catalyst + sector
+    }
+    function syncCalcSectorTip(){
+      const tip=document.getElementById('calcSectorTip');
+      if(!tip) return;
+      tip.style.display = (document.getElementById('calcStrategy')||{}).value==='sector' ? 'block' : 'none';
+    }
+    function setCalcStopDefaultIfNeeded(){
+      const st=(document.getElementById('calcStrategy')||{}).value||'catalyst';
+      const stopEl=document.getElementById('calcStopPct');
+      if(!stopEl) return;
+      if(!CALC_STOP_USER_EDITED){
+        stopEl.value=String(strategyStopDefault(st));
+      }
+      syncCalcSectorTip();
+    }
+    function livePriceFor(sym){
+      const s=String(sym||'').toUpperCase();
+      if(!s) return null;
+      const q=LIVE_CACHE[s];
+      if(q&&q.last>0) return Number(q.last);
+      const opp=(DATA&&DATA.opportunities||[]).find(o=>String(o.symbol).toUpperCase()===s);
+      if(opp&&Number(opp.last)>0) return Number(opp.last);
+      const g=(GAINERS_STATE||[]).find(x=>String(x.symbol).toUpperCase()===s)
+        || (DATA&&DATA.gainers||[]).find(x=>String(x.symbol).toUpperCase()===s);
+      if(g&&Number(g.last)>0) return Number(g.last);
+      return null;
+    }
+    function applyStockToCalc(sym, opts){
+      opts=opts||{};
+      const s=String(sym||'').toUpperCase();
+      if(!s) return;
+      CALC_SYM=s;
+      const pill=document.getElementById('calcSymPill');
+      if(pill) pill.textContent=s;
+      const px=livePriceFor(s);
+      const priceEl=document.getElementById('calcPrice');
+      if(priceEl && px!=null){
+        priceEl.value=String(Number(px.toFixed(4)));
+      }
+      // Prefer opportunity entry as breakout hint when available
+      const opp=(DATA&&DATA.opportunities||[]).find(o=>String(o.symbol).toUpperCase()===s);
+      const brEl=document.getElementById('calcBreakout');
+      if(brEl){
+        if(opp && Number(opp.entry)>0 && opts.preferOppEntry!==false){
+          brEl.value=String(Number(Number(opp.entry).toFixed(4)));
+        } else if(px!=null){
+          brEl.value=String(Number((px*1.001).toFixed(4)));
+        }
+      }
+      if(DATA && DATA.capital_sar!=null){
+        const cap=document.getElementById('calcCapital');
+        if(cap && (!cap.value || opts.forceCapital)){
+          cap.value=String(Number(DATA.capital_sar));
+        }
+      }
+      document.querySelectorAll('.calc-picked').forEach(el=>el.classList.remove('calc-picked'));
+      document.querySelectorAll(`[data-calc-sym="${s}"]`).forEach(el=>el.classList.add('calc-picked'));
+      runStrategyCalc();
+      const card=document.getElementById('strategyCalcCard');
+      if(card && opts.scroll!==false){
+        card.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+      toast(`تم تطبيق ${s} على الحاسبة`);
+    }
+    function runStrategyCalc(){
+      const price=Number((document.getElementById('calcPrice')||{}).value);
+      const capital=Number((document.getElementById('calcCapital')||{}).value);
+      const riskPct=Number((document.getElementById('calcRiskPct')||{}).value);
+      const st=(document.getElementById('calcStrategy')||{}).value||'catalyst';
+      let stopPct=Number((document.getElementById('calcStopPct')||{}).value);
+      const brRaw=(document.getElementById('calcBreakout')||{}).value;
+      let entry=Number(brRaw);
+      if(!Number.isFinite(entry) || entry<=0){
+        entry = Number.isFinite(price) && price>0 ? price*1.001 : NaN;
+        const brEl=document.getElementById('calcBreakout');
+        if(brEl && Number.isFinite(entry)) brEl.value=String(Number(entry.toFixed(4)));
+      }
+      if(!Number.isFinite(stopPct) || stopPct<=0){
+        stopPct=strategyStopDefault(st);
+      }
+      const [r1,r2]=strategyRewardMultiples(st);
+      const outE=document.getElementById('calcOutEntry');
+      const outS=document.getElementById('calcOutStop');
+      const outT1=document.getElementById('calcOutT1');
+      const outT2=document.getElementById('calcOutT2');
+      const outSh=document.getElementById('calcOutShares');
+      const outN=document.getElementById('calcOutNotional');
+      const outR=document.getElementById('calcOutRiskCash');
+      const warnBox=document.getElementById('calcWarnings');
+      syncCalcSectorTip();
+
+      if(!Number.isFinite(entry) || entry<=0){
+        if(outE) outE.textContent='—';
+        if(outS) outS.textContent='—';
+        if(outT1) outT1.textContent='—';
+        if(outT2) outT2.textContent='—';
+        if(outSh) outSh.textContent='— سهم';
+        if(outN) outN.textContent='—';
+        if(outR) outR.textContent='—';
+        if(warnBox) warnBox.innerHTML='';
+        return;
+      }
+      const stop=entry*(1 - stopPct/100);
+      const riskPerShare=entry-stop;
+      const t1=entry + riskPerShare*r1;
+      const t2=entry + riskPerShare*r2;
+      if(outE) outE.textContent='$'+money2(entry);
+      if(outS) outS.textContent='$'+money2(stop)+` (−${stopPct}%)`;
+      if(outT1) outT1.textContent='$'+money2(t1)+` (1:${r1})`;
+      if(outT2) outT2.textContent='$'+money2(t2)+` (1:${r2})`;
+
+      let shares=0;
+      let notional=0;
+      let riskCash=0;
+      if(Number.isFinite(capital) && capital>0 && Number.isFinite(riskPct) && riskPct>0 && riskPerShare>0){
+        const riskBudget=capital*(riskPct/100);
+        shares=Math.floor(riskBudget / riskPerShare);
+        notional=shares*entry;
+        riskCash=shares*riskPerShare;
+      }
+      if(outSh) outSh.textContent=`${shares.toLocaleString('ar-SA')} سهم`;
+      if(outN) outN.textContent= moneySar(notional) + (entry?` · ≈ $${money2(notional)}`:'');
+      if(outR) outR.textContent=moneySar(riskCash);
+
+      let warns='';
+      if(shares>0 && Number.isFinite(capital) && capital>0){
+        if(notional > capital){
+          warns += `<div class="calc-warn">⚠️ حجم الصفقة المحسوب أكبر من رأس المال - قلل نسبة المخاطرة أو المسافة للوقف</div>`;
+        } else if(notional >= capital * 0.999){
+          warns += `<div class="calc-warn">⚠️ هذا يعني الدخول بكامل رأس المال بصفقة واحدة - غير موصى به، فكر بتوزيع الصفقات</div>`;
+        }
+      }
+      if(shares<=0 && Number.isFinite(capital) && capital>0){
+        warns += `<div class="calc-tip">لا يمكن شراء سهم واحد ضمن المخاطرة الحالية — زد المخاطرة % أو قرّب الوقف أو اختر سهماً أرخص</div>`;
+      }
+      if(warnBox) warnBox.innerHTML=warns;
+    }
+    function initStrategyCalc(){
+      const stEl=document.getElementById('calcStrategy');
+      const stopEl=document.getElementById('calcStopPct');
+      const riskEl=document.getElementById('calcRiskPct');
+      const priceEl=document.getElementById('calcPrice');
+      const capEl=document.getElementById('calcCapital');
+      const brEl=document.getElementById('calcBreakout');
+      if(stEl){
+        stEl.addEventListener('change',()=>{
+          CALC_STOP_USER_EDITED=false;
+          setCalcStopDefaultIfNeeded();
+          runStrategyCalc();
+        });
+      }
+      if(stopEl){
+        stopEl.addEventListener('input',()=>{ CALC_STOP_USER_EDITED=true; runStrategyCalc(); });
+      }
+      ['calcPrice','calcCapital','calcRiskPct','calcBreakout'].forEach(id=>{
+        const el=document.getElementById(id);
+        if(el) el.addEventListener('input', runStrategyCalc);
+      });
+      const btnRun=document.getElementById('btnCalcRun');
+      if(btnRun) btnRun.onclick=()=>runStrategyCalc();
+      const btnLive=document.getElementById('btnCalcApplyLive');
+      if(btnLive) btnLive.onclick=()=>{
+        if(CALC_SYM){
+          const px=livePriceFor(CALC_SYM);
+          if(px!=null && priceEl){ priceEl.value=String(Number(px.toFixed(4))); }
+          runStrategyCalc();
+          toast('تم تحديث السعر اللحظي');
+        } else if(priceEl && priceEl.value){
+          runStrategyCalc();
+        } else {
+          toast('اختر سهماً أولاً من الفرص أو الصاعدين');
+        }
+      };
+      const btnReset=document.getElementById('btnCalcReset');
+      if(btnReset) btnReset.onclick=()=>{
+        CALC_SYM='';
+        CALC_STOP_USER_EDITED=false;
+        const pill=document.getElementById('calcSymPill');
+        if(pill) pill.textContent='— يدوي —';
+        if(priceEl) priceEl.value='';
+        if(brEl) brEl.value='';
+        if(riskEl) riskEl.value='2';
+        if(stEl) stEl.value='catalyst';
+        setCalcStopDefaultIfNeeded();
+        if(DATA && DATA.capital_sar!=null && capEl) capEl.value=String(Number(DATA.capital_sar));
+        document.querySelectorAll('.calc-picked').forEach(el=>el.classList.remove('calc-picked'));
+        runStrategyCalc();
+      };
+      setCalcStopDefaultIfNeeded();
+      runStrategyCalc();
+    }
 
     function toast(msg){
       const t=document.getElementById('toast');
