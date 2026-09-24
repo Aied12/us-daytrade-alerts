@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T10:21:17.252584+00:00",
-  "generated_ts": 1790245277,
-  "generated_local": "2026-09-24 13:21 +03",
+  "generated_at": "2026-09-24T10:22:14.822438+00:00",
+  "generated_ts": 1790245334,
+  "generated_local": "2026-09-24 13:22 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T10:21:17.252509+00:00",
+    "updated_at": "2026-09-24T10:22:14.822320+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,13 +26,13 @@
     "avg_change_pct": -0.68,
     "details": {
       "SPY": {
-        "last": 763.3,
+        "last": 763.28,
         "change_pct": -0.59,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 733.45,
-        "change_pct": -1.05,
+        "last": 733.4687,
+        "change_pct": -1.04,
         "rsi": 68.9
       },
       "IWM": {
@@ -49,7 +49,7 @@
       },
       {
         "symbol": "QQQ",
-        "change_pct": -1.05,
+        "change_pct": -1.04,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 11322,
-    "ny_time": "06:21:17",
+    "seconds_left": 11265,
+    "ny_time": "06:22:14",
     "open": "09:30",
     "close": "16:00"
   },
@@ -91,11 +91,11 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.05
+        "change_pct": -1.08
       },
       {
         "name": "Financials",
-        "change_pct": -0.67
+        "change_pct": -0.68
       },
       {
         "name": "Consumer",
@@ -104,7 +104,7 @@
     ]
   },
   "style": {
-    "growth_avg": -1.11,
+    "growth_avg": -1.14,
     "value_avg": 0.04,
     "leader": "قيمة",
     "growth_count": 10,
@@ -253,8 +253,8 @@
   "movers": [
     {
       "symbol": "META",
-      "change_pct": -2.38,
-      "last": 726.38,
+      "change_pct": -2.43,
+      "last": 725.99,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -262,8 +262,8 @@
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.3,
-      "last": 600.5,
+      "change_pct": -2.36,
+      "last": 600.12,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -271,8 +271,8 @@
     },
     {
       "symbol": "COIN",
-      "change_pct": -1.66,
-      "last": 194.85,
+      "change_pct": -1.68,
+      "last": 194.81,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -280,12 +280,21 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.38,
-      "last": 350.08,
+      "change_pct": -1.34,
+      "last": 350.25,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "8.2B$"
+    },
+    {
+      "symbol": "PLTR",
+      "change_pct": -1.2,
+      "last": 189.48,
+      "rvol": 1.26,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "6.6B$"
     },
     {
       "symbol": "CVX",
@@ -298,30 +307,21 @@
     },
     {
       "symbol": "NVDA",
-      "change_pct": -1.1,
-      "last": 223.04,
+      "change_pct": -1.11,
+      "last": 223.02,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "19.9B$"
     },
     {
-      "symbol": "PLTR",
-      "change_pct": -1.08,
-      "last": 189.71,
-      "rvol": 1.26,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "6.6B$"
-    },
-    {
-      "symbol": "QQQ",
-      "change_pct": -1.05,
-      "last": 733.45,
-      "rvol": 1.01,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "24.3B$"
+      "symbol": "TSLA",
+      "change_pct": -1.07,
+      "last": 376.05,
+      "rvol": 0.86,
+      "grade": "medium",
+      "grade_ar": "متوسط",
+      "dollar_volume_label": "12.6B$"
     }
   ],
   "performance": {
@@ -332,7 +332,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 81,
+    "alerts_today": 82,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
