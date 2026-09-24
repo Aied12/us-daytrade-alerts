@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T09:40:14.028248+00:00",
-  "generated_ts": 1790242814,
-  "generated_local": "2026-09-24 12:40 +03",
+  "generated_at": "2026-09-24T09:41:17.223895+00:00",
+  "generated_ts": 1790242877,
+  "generated_local": "2026-09-24 12:41 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T09:40:14.028148+00:00",
+    "updated_at": "2026-09-24T09:41:17.223819+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,13 +26,13 @@
     "avg_change_pct": -0.75,
     "details": {
       "SPY": {
-        "last": 762.69,
-        "change_pct": -0.67,
+        "last": 762.78,
+        "change_pct": -0.66,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 732.62,
-        "change_pct": -1.16,
+        "last": 732.48,
+        "change_pct": -1.18,
         "rsi": 68.9
       },
       "IWM": {
@@ -44,12 +44,12 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.67,
+        "change_pct": -0.66,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -1.16,
+        "change_pct": -1.18,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 13785,
-    "ny_time": "05:40:14",
+    "seconds_left": 13722,
+    "ny_time": "05:41:17",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,7 +81,7 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.11
+        "change_pct": 0.07
       },
       {
         "name": "Industrial",
@@ -91,21 +91,21 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.23
+        "change_pct": -1.25
       },
       {
         "name": "Financials",
-        "change_pct": -0.76
+        "change_pct": -0.68
       },
       {
         "name": "Consumer",
-        "change_pct": -0.51
+        "change_pct": -0.54
       }
     ]
   },
   "style": {
-    "growth_avg": -1.31,
-    "value_avg": -0.01,
+    "growth_avg": -1.32,
+    "value_avg": -0.02,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -238,8 +238,8 @@
   "movers": [
     {
       "symbol": "META",
-      "change_pct": -2.67,
-      "last": 724.25,
+      "change_pct": -2.62,
+      "last": 724.6,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -256,8 +256,8 @@
     },
     {
       "symbol": "COIN",
-      "change_pct": -2.16,
-      "last": 193.85,
+      "change_pct": -1.94,
+      "last": 194.29,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -265,44 +265,44 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.57,
-      "last": 349.4,
+      "change_pct": -1.64,
+      "last": 349.17,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
-      "dollar_volume_label": "8.2B$"
-    },
-    {
-      "symbol": "TSLA",
-      "change_pct": -1.21,
-      "last": 375.51,
-      "rvol": 0.86,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "12.6B$"
-    },
-    {
-      "symbol": "NVDA",
-      "change_pct": -1.2,
-      "last": 222.8,
-      "rvol": 0.68,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "19.9B$"
+      "dollar_volume_label": "8.1B$"
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.2,
-      "last": 189.49,
+      "change_pct": -1.29,
+      "last": 189.32,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "6.6B$"
     },
     {
+      "symbol": "TSLA",
+      "change_pct": -1.27,
+      "last": 375.3,
+      "rvol": 0.86,
+      "grade": "medium",
+      "grade_ar": "متوسط",
+      "dollar_volume_label": "12.5B$"
+    },
+    {
+      "symbol": "NVDA",
+      "change_pct": -1.23,
+      "last": 222.75,
+      "rvol": 0.68,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "19.9B$"
+    },
+    {
       "symbol": "QQQ",
-      "change_pct": -1.16,
-      "last": 732.62,
+      "change_pct": -1.18,
+      "last": 732.48,
       "rvol": 1.01,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -317,7 +317,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 48,
+    "alerts_today": 49,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
