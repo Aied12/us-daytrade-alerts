@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T10:41:16.356916+00:00",
-  "generated_ts": 1790246476,
-  "generated_local": "2026-09-24 13:41 +03",
+  "generated_at": "2026-09-24T10:42:14.301181+00:00",
+  "generated_ts": 1790246534,
+  "generated_local": "2026-09-24 13:42 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T10:41:16.356851+00:00",
+    "updated_at": "2026-09-24T10:42:14.301090+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,21 +23,21 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.6,
+    "avg_change_pct": -0.61,
     "details": {
       "SPY": {
-        "last": 763.67,
+        "last": 763.68,
         "change_pct": -0.54,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.2687,
+        "last": 734.2531,
         "change_pct": -0.94,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 281.0,
-        "change_pct": -0.33,
+        "last": 280.96,
+        "change_pct": -0.34,
         "rsi": 29.0
       }
     },
@@ -54,7 +54,7 @@
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.33,
+        "change_pct": -0.34,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 10123,
-    "ny_time": "06:41:16",
+    "seconds_left": 10065,
+    "ny_time": "06:42:14",
     "open": "09:30",
     "close": "16:00"
   },
@@ -91,20 +91,20 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -0.96
+        "change_pct": -0.98
       },
       {
         "name": "Financials",
-        "change_pct": -0.57
+        "change_pct": -0.61
       },
       {
         "name": "Consumer",
-        "change_pct": -0.33
+        "change_pct": -0.34
       }
     ]
   },
   "style": {
-    "growth_avg": -1.04,
+    "growth_avg": -1.07,
     "value_avg": 0.05,
     "leader": "قيمة",
     "growth_count": 10,
@@ -200,8 +200,8 @@
   "movers": [
     {
       "symbol": "META",
-      "change_pct": -2.25,
-      "last": 727.37,
+      "change_pct": -2.28,
+      "last": 727.14,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -209,8 +209,8 @@
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.02,
-      "last": 602.21,
+      "change_pct": -2.05,
+      "last": 601.99,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -218,8 +218,8 @@
     },
     {
       "symbol": "COIN",
-      "change_pct": -1.59,
-      "last": 194.98,
+      "change_pct": -1.71,
+      "last": 194.74,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -227,30 +227,30 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.18,
-      "last": 350.79,
+      "change_pct": -1.21,
+      "last": 350.68,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "8.2B$"
     },
     {
-      "symbol": "NVDA",
-      "change_pct": -1.09,
-      "last": 223.06,
-      "rvol": 0.68,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "19.9B$"
-    },
-    {
       "symbol": "PLTR",
-      "change_pct": -1.02,
-      "last": 189.84,
+      "change_pct": -1.14,
+      "last": 189.6,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "6.6B$"
+    },
+    {
+      "symbol": "NVDA",
+      "change_pct": -1.07,
+      "last": 223.1,
+      "rvol": 0.68,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "19.9B$"
     },
     {
       "symbol": "XOM",
@@ -262,13 +262,13 @@
       "dollar_volume_label": "2.0B$"
     },
     {
-      "symbol": "TSLA",
-      "change_pct": -0.95,
-      "last": 376.51,
-      "rvol": 0.86,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "12.6B$"
+      "symbol": "QQQ",
+      "change_pct": -0.94,
+      "last": 734.25,
+      "rvol": 1.01,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "24.3B$"
     }
   ],
   "performance": {
@@ -279,7 +279,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 101,
+    "alerts_today": 102,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
