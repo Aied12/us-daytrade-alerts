@@ -257,36 +257,23 @@ def format_fed_calendar() -> str:
 
 
 def format_stock_news(settings: Settings, limit_per: int = 2) -> str:
-    """55 Urgent news linked to watchlist symbols."""
+    """55 Urgent news linked to watchlist symbols (Arabic titles)."""
+    try:
+        from bot.news_ar import fetch_stock_news_ar
+
+        rows = fetch_stock_news_ar(list(settings.watchlist or []), limit=12, per_symbol=limit_per)
+    except Exception:
+        rows = []
     lines = ["📰 أخبار عاجلة مرتبطة بالقائمة", ""]
-    found = 0
-    for sym in settings.watchlist:
-        if found >= 12:
-            break
-        try:
-            news = yf.Ticker(sym).news or []
-        except Exception:
-            continue
-        for item in news[:limit_per]:
-            title = (item.get("title") or "").strip()
-            if not title:
-                continue
-            low = title.lower()
-            tag = ""
-            if any(w in low for w in NEGATIVE_NEWS):
-                tag = "🔴"
-            elif any(w in low for w in POSITIVE_NEWS):
-                tag = "🟢"
-            else:
-                tag = "⚪"
-            lines.append(f"{tag} {sym}: {title[:120]}")
-            found += 1
-            if found >= 12:
-                break
-    if found == 0:
+    if not rows:
         lines.append("لا عناوين متاحة الآن.")
+    else:
+        for n in rows:
+            tag = {"pos": "🟢", "neg": "🔴"}.get(n.get("sentiment") or "", "⚪")
+            title = n.get("title_ar") or n.get("title") or ""
+            lines.append(f"{tag} {n.get('symbol')}: {title[:140]}")
     lines.append("")
-    lines.append("العناوين ليست توصية — تحقق من المصدر قبل أي قرار.")
+    lines.append("العناوين مترجمة آلياً — تحقق من المصدر قبل أي قرار.")
     return "\n".join(lines)
 
 

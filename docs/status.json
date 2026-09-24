@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:33:40.466050+00:00",
-  "generated_ts": 1790253220,
+  "generated_at": "2026-09-24T12:33:55.409339+00:00",
+  "generated_ts": 1790253235,
   "generated_local": "2026-09-24 15:33 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:33:40.465929+00:00",
+    "updated_at": "2026-09-24T12:33:55.409202+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,7 +23,7 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.61,
+    "avg_change_pct": -0.65,
     "details": {
       "SPY": {
         "last": 763.79,
@@ -31,13 +31,13 @@
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 733.7,
-        "change_pct": -1.01,
+        "last": 733.51,
+        "change_pct": -1.04,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 281.05,
-        "change_pct": -0.31,
+        "last": 280.8,
+        "change_pct": -0.4,
         "rsi": 29.0
       }
     },
@@ -49,12 +49,12 @@
       },
       {
         "symbol": "QQQ",
-        "change_pct": -1.01,
+        "change_pct": -1.04,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.31,
+        "change_pct": -0.4,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 3379,
-    "ny_time": "08:33:40",
+    "seconds_left": 3364,
+    "ny_time": "08:33:55",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,7 +81,7 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.02
+        "change_pct": 0.06
       },
       {
         "name": "Industrial",
@@ -91,21 +91,21 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.28
+        "change_pct": -1.31
       },
       {
         "name": "Financials",
-        "change_pct": -0.4
+        "change_pct": -0.43
       },
       {
         "name": "Consumer",
-        "change_pct": -0.36
+        "change_pct": -0.4
       }
     ]
   },
   "style": {
-    "growth_avg": -1.26,
-    "value_avg": 0.02,
+    "growth_avg": -1.29,
+    "value_avg": 0.01,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -234,46 +234,6 @@
       "tg_share": "https://t.me/share/url?url=&text=AR%20فكّر في شراء قصير المدى%0Aالآن%2036.11%20دخول%2036.11%20وقف%2034.4%20هدف%2040.18%0Aسيولة%20قوي%20RVOL%20x1.49"
     },
     {
-      "symbol": "AAPL",
-      "action": "فكّر في شراء قصير المدى",
-      "action_key": "CONSIDER_LONG",
-      "side": "long",
-      "score_100": 69,
-      "urgent": false,
-      "strategies": [
-        "ارتداد VWAP",
-        "ترتيب متوسطات صاعد",
-        "RSI متوازن"
-      ],
-      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.02%) | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 62",
-      "entry": 337.25,
-      "stop": 309.37,
-      "target": 387.43,
-      "shares": 4,
-      "risk_sar": 418.2,
-      "allowed": true,
-      "change_pct": 0.07,
-      "last": 337.25,
-      "session_phase": "pre",
-      "liquidity": {
-        "rvol": 0.73,
-        "volume": 31587800.0,
-        "avg_volume_20": 43477185.0,
-        "dollar_volume": 10652865516.36,
-        "avg_dollar_volume": 14662515427.95,
-        "dollar_volume_label": "10.7B$",
-        "avg_dollar_volume_label": "14.7B$",
-        "grade": "weak",
-        "grade_ar": "ضعيف",
-        "label": "RVOL ×0.7 · اليوم 10.7B$ · متوسط 14.7B$"
-      },
-      "rvol": 0.73,
-      "liq_grade": "weak",
-      "liq_grade_ar": "ضعيف",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=AAPL",
-      "tg_share": "https://t.me/share/url?url=&text=AAPL%20فكّر في شراء قصير المدى%0Aالآن%20337.25%20دخول%20337.25%20وقف%20309.37%20هدف%20387.43%0Aسيولة%20ضعيف%20RVOL%20x0.73"
-    },
-    {
       "symbol": "WBD",
       "action": "فكّر في شراء قصير المدى",
       "action_key": "CONSIDER_LONG",
@@ -286,21 +246,21 @@
         "اختبار/كسر مقاومة"
       ],
       "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم مرتفع: حجم ×3.3 | اختبار/كسر مقاومة: مقاومة≈$30.24",
-      "entry": 30.78,
+      "entry": 30.79,
       "stop": 27.83,
-      "target": 36.09,
+      "target": 36.12,
       "shares": 40,
-      "risk_sar": 442.5,
+      "risk_sar": 444.0,
       "allowed": true,
-      "change_pct": 0.07,
-      "last": 30.78,
+      "change_pct": 0.1,
+      "last": 30.79,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 3.25,
         "volume": 111086700.0,
         "avg_volume_20": 34141375.0,
-        "dollar_volume": 3419248626.0,
-        "avg_dollar_volume": 1050871522.5,
+        "dollar_volume": 3420359493.0,
+        "avg_dollar_volume": 1051212936.25,
         "dollar_volume_label": "3.4B$",
         "avg_dollar_volume_label": "1.1B$",
         "grade": "strong",
@@ -311,7 +271,47 @@
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=WBD",
-      "tg_share": "https://t.me/share/url?url=&text=WBD%20فكّر في شراء قصير المدى%0Aالآن%2030.78%20دخول%2030.78%20وقف%2027.83%20هدف%2036.09%0Aسيولة%20قوي%20RVOL%20x3.25"
+      "tg_share": "https://t.me/share/url?url=&text=WBD%20فكّر في شراء قصير المدى%0Aالآن%2030.79%20دخول%2030.79%20وقف%2027.83%20هدف%2036.12%0Aسيولة%20قوي%20RVOL%20x3.25"
+    },
+    {
+      "symbol": "AAPL",
+      "action": "فكّر في شراء قصير المدى",
+      "action_key": "CONSIDER_LONG",
+      "side": "long",
+      "score_100": 69,
+      "urgent": false,
+      "strategies": [
+        "ارتداد VWAP",
+        "ترتيب متوسطات صاعد",
+        "RSI متوازن"
+      ],
+      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.02%) | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 62",
+      "entry": 337.23,
+      "stop": 309.37,
+      "target": 387.38,
+      "shares": 4,
+      "risk_sar": 417.9,
+      "allowed": true,
+      "change_pct": 0.06,
+      "last": 337.23,
+      "session_phase": "pre",
+      "liquidity": {
+        "rvol": 0.73,
+        "volume": 31587800.0,
+        "avg_volume_20": 43477185.0,
+        "dollar_volume": 10652353794.0,
+        "avg_dollar_volume": 14661811097.55,
+        "dollar_volume_label": "10.7B$",
+        "avg_dollar_volume_label": "14.7B$",
+        "grade": "weak",
+        "grade_ar": "ضعيف",
+        "label": "RVOL ×0.7 · اليوم 10.7B$ · متوسط 14.7B$"
+      },
+      "rvol": 0.73,
+      "liq_grade": "weak",
+      "liq_grade_ar": "ضعيف",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=AAPL",
+      "tg_share": "https://t.me/share/url?url=&text=AAPL%20فكّر في شراء قصير المدى%0Aالآن%20337.23%20دخول%20337.23%20وقف%20309.37%20هدف%20387.38%0Aسيولة%20ضعيف%20RVOL%20x0.73"
     },
     {
       "symbol": "SECZ",
@@ -563,21 +563,21 @@
         "تقلّب عالي"
       ],
       "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 57 | تقلّب عالي: ATR% 4.9",
-      "entry": 148.9,
+      "entry": 148.63,
       "stop": 137.06,
-      "target": 170.21,
+      "target": 169.46,
       "shares": 10,
-      "risk_sar": 444.0,
+      "risk_sar": 433.87,
       "allowed": false,
-      "change_pct": 0.37,
-      "last": 148.9,
+      "change_pct": 0.18,
+      "last": 148.63,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.68,
         "volume": 60280300.0,
         "avg_volume_20": 89208805.0,
-        "dollar_volume": 8975881342.72,
-        "avg_dollar_volume": 13283405165.63,
+        "dollar_volume": 8959479073.09,
+        "avg_dollar_volume": 13259131449.79,
         "dollar_volume_label": "9.0B$",
         "avg_dollar_volume_label": "13.3B$",
         "grade": "weak",
@@ -588,7 +588,7 @@
       "liq_grade": "weak",
       "liq_grade_ar": "ضعيف",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX",
-      "tg_share": "https://t.me/share/url?url=&text=SPCX%20راقب دخول%0Aالآن%20148.9%20دخول%20148.9%20وقف%20137.06%20هدف%20170.21%0Aسيولة%20ضعيف%20RVOL%20x0.68"
+      "tg_share": "https://t.me/share/url?url=&text=SPCX%20راقب دخول%0Aالآن%20148.63%20دخول%20148.63%20وقف%20137.06%20هدف%20169.46%0Aسيولة%20ضعيف%20RVOL%20x0.68"
     }
   ],
   "gainers": [
@@ -724,8 +724,8 @@
   "movers": [
     {
       "symbol": "AMD",
-      "change_pct": -2.97,
-      "last": 596.36,
+      "change_pct": -3.01,
+      "last": 596.14,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -733,8 +733,8 @@
     },
     {
       "symbol": "META",
-      "change_pct": -2.04,
-      "last": 728.9,
+      "change_pct": -2.19,
+      "last": 727.84,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -742,8 +742,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -2.03,
-      "last": 187.9,
+      "change_pct": -2.02,
+      "last": 187.91,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -760,8 +760,8 @@
     },
     {
       "symbol": "COIN",
-      "change_pct": -1.5,
-      "last": 195.15,
+      "change_pct": -1.58,
+      "last": 195.0,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -769,8 +769,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.48,
-      "last": 349.72,
+      "change_pct": -1.55,
+      "last": 349.49,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",

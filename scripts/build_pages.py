@@ -21,6 +21,7 @@ from bot.gainers import fetch_day_gainers, watchlist_gainers
 from bot.live_quotes import price_lag_label_ar, session_phase
 from bot.liquidity import liquidity_dict
 from bot.market_data import fetch_history, market_context, scan_watchlist, sector_momentum
+from bot.news_ar import fetch_stock_news_ar
 from bot.ops import read_status, touch_status
 from bot.reports import build_full_pack
 from bot.risk import plan_trade, risk_banner
@@ -244,6 +245,23 @@ def main() -> None:
     opportunities = opportunities[:12]
 
     movers = sorted(snaps, key=lambda s: abs(s.change_pct), reverse=True)[:8]
+
+    # News symbols: opportunities + gainers + core watchlist (unique, capped)
+    news_syms: list[str] = []
+    for o in opportunities:
+        if o.get("symbol"):
+            news_syms.append(str(o["symbol"]).upper())
+    for g in gainers or []:
+        if g.get("symbol"):
+            news_syms.append(str(g["symbol"]).upper())
+    for s in settings.watchlist or []:
+        news_syms.append(str(s).upper())
+    news_syms = list(dict.fromkeys(news_syms))[:16]
+    try:
+        news_ar = fetch_stock_news_ar(news_syms, limit=10, per_symbol=2)
+    except Exception:
+        news_ar = []
+
     from bot.gainers import session_label_ar
 
     gainers_session = session_label_ar(phase)
@@ -296,12 +314,8 @@ def main() -> None:
             }
             for s in movers
         ],
-        "performance": {
-            "journal": _journal_stats(settings),
-            "alerts_today": _alerts_today(settings),
-            "recent_actions": _recent_actions(settings, 5),
-            "stop_discipline_pct": None,  # 19 later
-        },
+        "news": news_ar,
+        "news_note_ar": "عناوين مترجمة آلياً — تحقق من المصدر قبل أي قرار",
         "bot": "@Aied01_bot",
         "channel": "@aied01",
         "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
