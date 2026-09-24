@@ -18,6 +18,7 @@ from bot.extras import GROWTH_NAMES, VALUE_NAMES, SECTOR_ETFS
 from bot.holidays import holiday_note, is_trading_day
 from bot.journal import actions_path, ensure_actions, ensure_journal, journal_path
 from bot.gainers import fetch_day_gainers, watchlist_gainers
+from bot.live_quotes import price_lag_label_ar, session_phase
 from bot.liquidity import liquidity_dict
 from bot.market_data import fetch_history, market_context, scan_watchlist, sector_momentum
 from bot.ops import read_status, touch_status
@@ -163,6 +164,7 @@ def main() -> None:
     snaps = [s for s in snaps if s.last >= settings.min_price_usd]
     pack = build_full_pack(settings, snaps) if snaps else {"signals": []}
     by_sym = {s.symbol: s for s in snaps}
+    phase = session_phase()
 
     opportunities = []
     for sig in pack.get("signals") or []:
@@ -181,7 +183,11 @@ def main() -> None:
         snap = by_sym.get(sig.symbol)
         score100 = getattr(sig, "score_100", int(sig.score * 10))
         urgent = sig.action == Action.CONSIDER_LONG and score100 >= 70
+        # During premarket, don't mark urgent if live price is already red vs prior close
+        if phase == "pre" and snap and snap.change_pct < 0:
+            urgent = False
         liq = liquidity_dict(snap)
+        live_last = round(snap.last, 2) if snap else plan.entry
         opportunities.append(
             {
                 "symbol": sig.symbol,
@@ -192,13 +198,15 @@ def main() -> None:
                 "urgent": urgent,
                 "strategies": (sig.strategies or [])[:4],
                 "reason": sig.reason[:220],
-                "entry": plan.entry,
+                "entry": live_last if phase in ("pre", "post") else plan.entry,
                 "stop": plan.stop,
                 "target": plan.target,
                 "shares": plan.shares,
                 "risk_sar": plan.risk_sar,
-                "allowed": plan.allowed,
+                "allowed": plan.allowed and not (phase == "pre" and snap and snap.change_pct < -0.5),
                 "change_pct": round(snap.change_pct, 2) if snap else 0.0,
+                "last": live_last,
+                "session_phase": phase,
                 "liquidity": liq,
                 "rvol": liq["rvol"],
                 "liq_grade": liq["grade"],
@@ -207,7 +215,7 @@ def main() -> None:
                 "tg_share": (
                     f"https://t.me/share/url?url=&text="
                     f"{sig.symbol}%20{sig.action.value}%0A"
-                    f"دخول%20{plan.entry}%20وقف%20{plan.stop}%20هدف%20{plan.target}%0A"
+                    f"الآن%20{live_last}%20وقف%20{plan.stop}%20هدف%20{plan.target}%0A"
                     f"سيولة%20{liq['grade_ar']}%20RVOL%20x{liq['rvol']}"
                 ),
             }
@@ -218,9 +226,9 @@ def main() -> None:
     gainers = fetch_day_gainers(min_price=min_px, limit=20)
     if not gainers:
         gainers = watchlist_gainers(snaps, min_price=min_px, limit=15)
-    from bot.gainers import session_label_ar, session_phase
+    from bot.gainers import session_label_ar
 
-    gainers_session = session_label_ar(session_phase())
+    gainers_session = session_label_ar(phase)
     indexes = []
     for k, v in (ctx.get("details") or {}).items():
         indexes.append({"symbol": k, "change_pct": v.get("change_pct", 0), "rsi": v.get("rsi")})
