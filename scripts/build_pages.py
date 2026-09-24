@@ -17,6 +17,7 @@ from bot.config import load_settings
 from bot.extras import GROWTH_NAMES, VALUE_NAMES, SECTOR_ETFS
 from bot.holidays import holiday_note, is_trading_day
 from bot.journal import actions_path, ensure_actions, ensure_journal, journal_path
+from bot.liquidity import liquidity_dict
 from bot.market_data import fetch_history, market_context, scan_watchlist, sector_momentum
 from bot.ops import read_status, touch_status
 from bot.reports import build_full_pack
@@ -178,6 +179,7 @@ def main() -> None:
         snap = by_sym.get(sig.symbol)
         score100 = getattr(sig, "score_100", int(sig.score * 10))
         urgent = sig.action == Action.CONSIDER_LONG and score100 >= 70
+        liq = liquidity_dict(snap)
         opportunities.append(
             {
                 "symbol": sig.symbol,
@@ -195,11 +197,16 @@ def main() -> None:
                 "risk_sar": plan.risk_sar,
                 "allowed": plan.allowed,
                 "change_pct": round(snap.change_pct, 2) if snap else 0.0,
+                "liquidity": liq,
+                "rvol": liq["rvol"],
+                "liq_grade": liq["grade"],
+                "liq_grade_ar": liq["grade_ar"],
                 "tv_url": f"https://www.tradingview.com/chart/?symbol={sig.symbol}",
                 "tg_share": (
                     f"https://t.me/share/url?url=&text="
                     f"{sig.symbol}%20{sig.action.value}%0A"
-                    f"دخول%20{plan.entry}%20وقف%20{plan.stop}%20هدف%20{plan.target}"
+                    f"دخول%20{plan.entry}%20وقف%20{plan.stop}%20هدف%20{plan.target}%0A"
+                    f"سيولة%20{liq['grade_ar']}%20RVOL%20x{liq['rvol']}"
                 ),
             }
         )
@@ -243,7 +250,12 @@ def main() -> None:
         "style": _style_board(snaps),
         "opportunities": opportunities,
         "movers": [
-            {"symbol": s.symbol, "change_pct": round(s.change_pct, 2), "last": round(s.last, 2)}
+            {
+                "symbol": s.symbol,
+                "change_pct": round(s.change_pct, 2),
+                "last": round(s.last, 2),
+                **{k: liquidity_dict(s)[k] for k in ("rvol", "grade", "grade_ar", "dollar_volume_label")},
+            }
             for s in movers
         ],
         "performance": {

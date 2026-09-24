@@ -69,7 +69,9 @@
       background:#0f172a;color:#fff;padding:10px 14px;border-radius:12px;display:none;z-index:50;
       max-width:90vw;
     }
-    code{font-size:.9em}
+    .liq-strong{color:var(--ok);font-weight:700}
+    .liq-medium{color:var(--warn);font-weight:700}
+    .liq-weak{color:var(--bad);font-weight:700}
   </style>
 </head>
 <body>
@@ -139,6 +141,7 @@
         <select id="sortSel">
           <option value="score">حسب القوة</option>
           <option value="change">حسب نسبة التغيّر</option>
+          <option value="rvol">حسب السيولة (RVOL)</option>
         </select>
       </div>
       <div id="opps"><div class="empty">جاري الجلب...</div></div>
@@ -251,14 +254,27 @@
       if(f==='watch') list=list.filter(o=>o.action_key==='WATCH_ENTRY');
       const sort=document.getElementById('sortSel').value;
       if(sort==='change') list.sort((a,b)=>Math.abs(b.change_pct)-Math.abs(a.change_pct));
+      else if(sort==='rvol') list.sort((a,b)=>(b.rvol||0)-(a.rvol||0));
       else list.sort((a,b)=>(b.score_100||0)-(a.score_100||0) || (b.urgent?1:0)-(a.urgent?1:0));
       return list;
+    }
+    function liqClass(g){
+      if(g==='strong') return 'liq-strong';
+      if(g==='medium') return 'liq-medium';
+      return 'liq-weak';
     }
     function renderOpps(){
       const list=filteredOpps();
       const box=document.getElementById('opps');
       if(!list.length){ box.innerHTML='<div class="empty">لا توجد فرص ضمن الفلتر الحالي</div>'; return; }
-      box.innerHTML=list.map((o,i)=>`
+      box.innerHTML=list.map((o,i)=>{
+        const L=o.liquidity||{};
+        const grade=o.liq_grade||L.grade||'weak';
+        const gradeAr=o.liq_grade_ar||L.grade_ar||'ضعيف';
+        const rvol=o.rvol??L.rvol??0;
+        const dLab=L.dollar_volume_label||'-';
+        const aLab=L.avg_dollar_volume_label||'-';
+        return `
         <details class="opp ${o.urgent?'urgent':''}" ${i<2?'open':''}>
           <summary>
             <div class="row">
@@ -266,12 +282,17 @@
               <span class="pill">${esc(o.score_100)}/100</span>
             </div>
             <div>${esc(o.action)} · <span class="${clsChg(o.change_pct)}">${o.change_pct>0?'+':''}${esc(o.change_pct)}%</span></div>
+            <div class="muted" style="margin-top:4px">
+              سيولة: <span class="${liqClass(grade)}">${esc(gradeAr)}</span>
+              · RVOL ×${esc(rvol)} · اليوم ${esc(dLab)}
+            </div>
           </summary>
           <div class="muted" style="margin-top:8px">${esc(o.reason)}</div>
           <div style="margin-top:8px">${(o.strategies||[]).map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div>
           <div class="muted" style="margin-top:8px">
             دخول≈ $${esc(o.entry)} | وقف≈ $${esc(o.stop)} | هدف≈ $${esc(o.target)}<br/>
             الحجم: ${esc(o.shares)} سهم | مخاطرة≈ ${esc(o.risk_sar)} ر.س<br/>
+            السيولة: ${esc(gradeAr)} | RVOL ×${esc(rvol)} | متداول اليوم ${esc(dLab)} | متوسط يومي ${esc(aLab)}<br/>
             ${o.allowed?'يمكنك التخطيط للدخول':'راقب فقط / لا تدخل الآن'}
           </div>
           <div class="toolbar">
@@ -279,7 +300,8 @@
             <a class="btn" href="${esc(o.tg_share)}" target="_blank" rel="noopener">✉️ تيليجرام</a>
             <a class="btn ghost" href="${esc(o.tv_url)}" target="_blank" rel="noopener">📈 TradingView</a>
           </div>
-        </details>`).join('');
+        </details>`;
+      }).join('');
       box.querySelectorAll('[data-copy]').forEach(btn=>{
         btn.addEventListener('click',()=>{
           const [sym,entry,stop,target]=btn.dataset.copy.split('|');
@@ -336,7 +358,11 @@
 
       const movers=d.movers||[];
       document.getElementById('movers').innerHTML=movers.map(m=>`
-        <div class="m"><div class="row"><b>${esc(m.symbol)}</b><span class="${clsChg(m.change_pct)}">${m.change_pct>0?'+':''}${esc(m.change_pct)}%</span></div><div class="muted">$${esc(m.last)}</div></div>
+        <div class="m">
+          <div class="row"><b>${esc(m.symbol)}</b><span class="${clsChg(m.change_pct)}">${m.change_pct>0?'+':''}${esc(m.change_pct)}%</span></div>
+          <div class="muted">$${esc(m.last)} · RVOL ×${esc(m.rvol??'-')}</div>
+          <div class="${liqClass(m.grade||'weak')}">${esc(m.grade_ar||'-')} · ${esc(m.dollar_volume_label||'')}</div>
+        </div>
       `).join('')||'<div class="empty">لا متحركات</div>';
 
       const perf=d.performance||{};
