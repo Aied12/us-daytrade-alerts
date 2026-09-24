@@ -163,6 +163,7 @@
 
     <div class="card">
       <h2>أفضل الفرص</h2>
+      <p class="muted" id="oppsNote">زخم حقيقي + سيولة عالية فقط — تُستبعد الأسهم البطيئة</p>
       <div class="seg" id="filterSeg">
         <button type="button" data-f="all" class="active">الكل</button>
         <button type="button" data-f="buy">شراء فقط</button>
@@ -171,6 +172,7 @@
       <div class="row" style="margin-top:8px">
         <span class="muted">ترتيب</span>
         <select id="sortSel">
+          <option value="flow">حسب الزخم×السيولة</option>
           <option value="score">حسب القوة</option>
           <option value="change">حسب نسبة التغيّر</option>
           <option value="rvol">حسب السيولة (RVOL)</option>
@@ -269,7 +271,7 @@
       const theme=localStorage.getItem(LS.theme)||'dark';
       document.documentElement.setAttribute('data-theme', theme);
       const filter=localStorage.getItem(LS.filter)||'all';
-      const sort=localStorage.getItem(LS.sort)||'score';
+      const sort=localStorage.getItem(LS.sort)||'flow';
       document.getElementById('sortSel').value=sort;
       document.querySelectorAll('#filterSeg button').forEach(b=>{
         b.classList.toggle('active', b.dataset.f===filter);
@@ -351,6 +353,7 @@
       const sort=document.getElementById('sortSel').value;
       if(sort==='change') list.sort((a,b)=>Math.abs(b.change_pct)-Math.abs(a.change_pct));
       else if(sort==='rvol') list.sort((a,b)=>(b.rvol||0)-(a.rvol||0));
+      else if(sort==='flow') list.sort((a,b)=>(b.flow_score||0)-(a.flow_score||0) || Math.abs(b.change_pct)-Math.abs(a.change_pct));
       else list.sort((a,b)=>(b.score_100||0)-(a.score_100||0) || (b.urgent?1:0)-(a.urgent?1:0));
       return list;
     }
@@ -381,6 +384,8 @@
             <div class="muted" style="margin-top:4px">
               سيولة: <span class="${liqClass(grade)}">${esc(gradeAr)}</span>
               · RVOL ×${esc(rvol)} · اليوم ${esc(dLab)}
+              ${o.atr_pct!=null?` · ATR ${esc(o.atr_pct)}%`:''}
+              ${o.flow_score!=null?` · تدفق ${esc(o.flow_score)}`:''}
             </div>
           </summary>
           <div class="muted" style="margin-top:8px">${esc(o.reason)}</div>
@@ -435,6 +440,8 @@
       document.getElementById('tone').textContent=(d.market&&d.market.tone)||'-';
       document.getElementById('risk').textContent=d.risk_banner||'';
       document.getElementById('disc').textContent=d.disclaimer||'';
+      const oppsNote=document.getElementById('oppsNote');
+      if(oppsNote) oppsNote.textContent=d.opps_note_ar||'زخم حقيقي + سيولة عالية فقط — تُستبعد الأسهم البطيئة';
 
       const hol=document.getElementById('holidayBox');
       if(d.holiday_note){ hol.innerHTML=`<div class="holiday">⚠️ ${esc(d.holiday_note)}</div>`; }
