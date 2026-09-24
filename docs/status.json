@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:49:22.397839+00:00",
-  "generated_ts": 1790254162,
-  "generated_local": "2026-09-24 15:49 +03",
+  "generated_at": "2026-09-24T12:50:12.405379+00:00",
+  "generated_ts": 1790254212,
+  "generated_local": "2026-09-24 15:50 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:49:22.397730+00:00",
+    "updated_at": "2026-09-24T12:50:12.405230+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -22,17 +22,17 @@
   "daily_loss_limit_sar": 900.0,
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
-    "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.59,
+    "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
+    "avg_change_pct": -0.6,
     "details": {
       "SPY": {
-        "last": 763.96,
-        "change_pct": -0.5,
+        "last": 763.8301,
+        "change_pct": -0.52,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.3454,
-        "change_pct": -0.93,
+        "last": 734.1451,
+        "change_pct": -0.95,
         "rsi": 68.9
       },
       "IWM": {
@@ -44,12 +44,12 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.5,
+        "change_pct": -0.52,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.93,
+        "change_pct": -0.95,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 2437,
-    "ny_time": "08:49:22",
+    "seconds_left": 2387,
+    "ny_time": "08:50:12",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,30 +81,30 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.25
+        "change_pct": 0.21
       },
       {
-        "name": "Financials",
-        "change_pct": -0.29
+        "name": "Consumer",
+        "change_pct": -0.33
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.12
+        "change_pct": -1.13
       },
       {
         "name": "Industrial",
         "change_pct": -0.39
       },
       {
-        "name": "Consumer",
+        "name": "Financials",
         "change_pct": -0.33
       }
     ]
   },
   "style": {
-    "growth_avg": -1.1,
+    "growth_avg": -1.12,
     "value_avg": 0.1,
     "leader": "قيمة",
     "growth_count": 10,
@@ -198,55 +198,13 @@
       "flow_ok": true,
       "tv_url": "https://www.tradingview.com/chart/?symbol=RRR",
       "tg_share": "https://t.me/share/url?url=&text=RRR%20فكّر في شراء قصير المدى%0Aالآن%2051.3%20دخول%2051.3%20وقف%2047.78%20هدف%2060.1%0Aسيولة%20قوي%20RVOL%20x2.0%20زخم%20+0.79%"
-    },
-    {
-      "symbol": "SSL",
-      "action": "فكّر في شراء قصير المدى",
-      "action_key": "CONSIDER_LONG",
-      "side": "long",
-      "score_100": 79,
-      "urgent": true,
-      "strategies": [
-        "افتتاح فجوة صاعدة",
-        "ترتيب متوسطات صاعد",
-        "حجم مرتفع",
-        "تقلّب عالي"
-      ],
-      "reason": "افتتاح فجوة صاعدة: فجوة +3.0% مع ثبات فوق الافتتاح | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم مرتفع: حجم ×1.6 | تقلّب عالي: ATR% 4.3 | زخم اتجاه الافتتاح: اتجاه الفجوة مستمر",
-      "entry": 14.41,
-      "stop": 11.3,
-      "target": 20.01,
-      "shares": 38,
-      "risk_sar": 443.17,
-      "allowed": true,
-      "change_pct": 0.84,
-      "last": 14.41,
-      "session_phase": "pre",
-      "liquidity": {
-        "rvol": 1.6,
-        "volume": 3110400.0,
-        "avg_volume_20": 1939500.0,
-        "dollar_volume": 44820864.0,
-        "avg_dollar_volume": 27948195.0,
-        "dollar_volume_label": "44.8M$",
-        "avg_dollar_volume_label": "27.9M$",
-        "grade": "strong",
-        "grade_ar": "قوي",
-        "label": "RVOL ×1.6 · اليوم 44.8M$ · متوسط 27.9M$"
-      },
-      "rvol": 1.6,
-      "liq_grade": "strong",
-      "liq_grade_ar": "قوي",
-      "atr_pct": 4.29,
-      "flow_score": 2.14,
-      "flow_ok": true,
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SSL",
-      "tg_share": "https://t.me/share/url?url=&text=SSL%20فكّر في شراء قصير المدى%0Aالآن%2014.41%20دخول%2014.41%20وقف%2011.3%20هدف%2020.01%0Aسيولة%20قوي%20RVOL%20x1.6%20زخم%20+0.84%"
     }
   ],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
+    "SSL:زخم ضعيف (+0.21% < 0.55%)",
     "UBER:زخم ضعيف (+0.16% < 0.55%)",
+    "NFLX:زخم ضعيف (+0.13% < 0.55%)",
     "BAC:زخم ضعيف (+0.16% < 0.55%)"
   ],
   "gainers": [
@@ -298,8 +256,8 @@
   "movers": [
     {
       "symbol": "META",
-      "change_pct": -1.81,
-      "last": 730.6,
+      "change_pct": -1.76,
+      "last": 731.0,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -307,8 +265,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.7,
-      "last": 188.52,
+      "change_pct": -1.71,
+      "last": 188.51,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -316,8 +274,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.42,
-      "last": 349.95,
+      "change_pct": -1.45,
+      "last": 349.85,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -333,22 +291,22 @@
       "dollar_volume_label": "247.6M$"
     },
     {
-      "symbol": "AMZN",
-      "change_pct": -1.14,
-      "last": 246.43,
-      "rvol": 1.26,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "10.8B$"
-    },
-    {
       "symbol": "COIN",
-      "change_pct": -1.12,
-      "last": 195.91,
+      "change_pct": -1.24,
+      "last": 195.68,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "1.4B$"
+    },
+    {
+      "symbol": "AMZN",
+      "change_pct": -1.18,
+      "last": 246.34,
+      "rvol": 1.26,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "10.8B$"
     }
   ],
   "news": [
