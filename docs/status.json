@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:51:16.841427+00:00",
-  "generated_ts": 1790254276,
-  "generated_local": "2026-09-24 15:51 +03",
+  "generated_at": "2026-09-24T12:52:12.168672+00:00",
+  "generated_ts": 1790254332,
+  "generated_local": "2026-09-24 15:52 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:51:16.841267+00:00",
+    "updated_at": "2026-09-24T12:52:12.168519+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,16 +23,16 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.64,
+    "avg_change_pct": -0.62,
     "details": {
       "SPY": {
-        "last": 763.6003,
-        "change_pct": -0.55,
+        "last": 763.84,
+        "change_pct": -0.52,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 733.86,
-        "change_pct": -0.99,
+        "last": 734.04,
+        "change_pct": -0.97,
         "rsi": 68.9
       },
       "IWM": {
@@ -44,12 +44,12 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.55,
+        "change_pct": -0.52,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.99,
+        "change_pct": -0.97,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 2323,
-    "ny_time": "08:51:16",
+    "seconds_left": 2267,
+    "ny_time": "08:52:12",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,17 +81,17 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.25
+        "change_pct": 0.09
       },
       {
         "name": "Financials",
-        "change_pct": -0.36
+        "change_pct": -0.31
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.16
+        "change_pct": -1.14
       },
       {
         "name": "Industrial",
@@ -99,13 +99,13 @@
       },
       {
         "name": "Consumer",
-        "change_pct": -0.39
+        "change_pct": -0.38
       }
     ]
   },
   "style": {
-    "growth_avg": -1.17,
-    "value_avg": 0.09,
+    "growth_avg": -1.14,
+    "value_avg": 0.07,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -203,19 +203,21 @@
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
     "UBER:زخم ضعيف (+0.01% < 0.55%)",
-    "BAC:زخم ضعيف (+0.16% < 0.55%)"
+    "NFLX:زخم ضعيف (+0.14% < 0.55%)",
+    "BAC:زخم ضعيف (+0.21% < 0.55%)",
+    "DIS:زخم ضعيف (+0.04% < 0.55%)"
   ],
   "gainers": [
     {
       "symbol": "APA",
       "name": "APA Corporation",
-      "last": 44.32,
-      "change_pct": 1.42,
+      "last": 44.49,
+      "change_pct": 1.82,
       "ref": 43.7,
       "rth_close": 43.7,
       "volume": 5586877.0,
-      "dollar_volume": 247610388.64,
-      "dollar_volume_label": "247.6M$",
+      "dollar_volume": 248560157.73,
+      "dollar_volume_label": "248.6M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=APA"
@@ -258,8 +260,8 @@
     },
     {
       "symbol": "META",
-      "change_pct": -1.77,
-      "last": 730.96,
+      "change_pct": -1.69,
+      "last": 731.5,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -267,30 +269,30 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.52,
-      "last": 349.58,
+      "change_pct": -1.43,
+      "last": 349.93,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "8.2B$"
     },
     {
-      "symbol": "COIN",
-      "change_pct": -1.31,
-      "last": 195.53,
-      "rvol": 0.7,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "1.4B$"
-    },
-    {
       "symbol": "AMZN",
-      "change_pct": -1.24,
-      "last": 246.18,
+      "change_pct": -1.27,
+      "last": 246.11,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "10.8B$"
+    },
+    {
+      "symbol": "COIN",
+      "change_pct": -1.23,
+      "last": 195.7,
+      "rvol": 0.7,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "1.4B$"
     }
   ],
   "news": [
