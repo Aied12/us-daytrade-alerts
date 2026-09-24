@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T10:14:15.633211+00:00",
-  "generated_ts": 1790244855,
-  "generated_local": "2026-09-24 13:14 +03",
+  "generated_at": "2026-09-24T10:15:07.379863+00:00",
+  "generated_ts": 1790244907,
+  "generated_local": "2026-09-24 13:15 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T10:14:15.633134+00:00",
+    "updated_at": "2026-09-24T10:15:07.379767+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,7 +23,7 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.72,
+    "avg_change_pct": -0.71,
     "details": {
       "SPY": {
         "last": 762.91,
@@ -31,8 +31,8 @@
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 732.9466,
-        "change_pct": -1.11,
+        "last": 733.2,
+        "change_pct": -1.08,
         "rsi": 68.9
       },
       "IWM": {
@@ -49,7 +49,7 @@
       },
       {
         "symbol": "QQQ",
-        "change_pct": -1.11,
+        "change_pct": -1.08,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 11744,
-    "ny_time": "06:14:15",
+    "seconds_left": 11692,
+    "ny_time": "06:15:07",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,7 +81,7 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.14
+        "change_pct": 0.17
       },
       {
         "name": "Industrial",
@@ -91,21 +91,21 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.11
+        "change_pct": -1.1
       },
       {
         "name": "Financials",
-        "change_pct": -0.71
+        "change_pct": -0.66
       },
       {
         "name": "Consumer",
-        "change_pct": -0.51
+        "change_pct": -0.49
       }
     ]
   },
   "style": {
-    "growth_avg": -1.21,
-    "value_avg": 0.01,
+    "growth_avg": -1.17,
+    "value_avg": 0.02,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -252,8 +252,8 @@
   "movers": [
     {
       "symbol": "META",
-      "change_pct": -2.52,
-      "last": 725.37,
+      "change_pct": -2.5,
+      "last": 725.49,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -261,8 +261,8 @@
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.36,
-      "last": 600.13,
+      "change_pct": -2.3,
+      "last": 600.49,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -270,8 +270,8 @@
     },
     {
       "symbol": "COIN",
-      "change_pct": -1.78,
-      "last": 194.6,
+      "change_pct": -1.61,
+      "last": 194.94,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -279,8 +279,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.42,
-      "last": 349.94,
+      "change_pct": -1.47,
+      "last": 349.76,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -288,21 +288,12 @@
     },
     {
       "symbol": "NVDA",
-      "change_pct": -1.24,
-      "last": 222.72,
+      "change_pct": -1.23,
+      "last": 222.74,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "19.9B$"
-    },
-    {
-      "symbol": "TSLA",
-      "change_pct": -1.21,
-      "last": 375.51,
-      "rvol": 0.86,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "12.6B$"
     },
     {
       "symbol": "CVX",
@@ -314,9 +305,18 @@
       "dollar_volume_label": "1.7B$"
     },
     {
+      "symbol": "TSLA",
+      "change_pct": -1.15,
+      "last": 375.75,
+      "rvol": 0.86,
+      "grade": "medium",
+      "grade_ar": "متوسط",
+      "dollar_volume_label": "12.6B$"
+    },
+    {
       "symbol": "QQQ",
-      "change_pct": -1.11,
-      "last": 732.95,
+      "change_pct": -1.08,
+      "last": 733.2,
       "rvol": 1.01,
       "grade": "strong",
       "grade_ar": "قوي",
