@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh only live.json on GitHub Pages (fast price ticks for the dashboard)."""
+"""Refresh only prices-live.json on GitHub Pages (fast price ticks for the dashboard)."""
 
 from __future__ import annotations
 
@@ -22,12 +22,12 @@ def main() -> int:
     rc = run([str(py), str(ROOT / "scripts" / "write_live_json.py")])
     if rc != 0:
         return rc
-    run(["git", "add", "docs/live.json", "pages/live.json"])
+    run(["git", "add", "docs/prices-live.json", "pages/prices-live.json"])
     dirty = subprocess.call(["git", "diff", "--cached", "--quiet"], cwd=ROOT)
     if dirty == 0:
         print("[live] no quote changes")
         return 0
-    run(["git", "commit", "-m", "Auto-update live.json quotes"])
+    run(["git", "commit", "-m", "Auto-update prices-live.json quotes"])
     run(["git", "push", "origin", "HEAD:main"])
     return 0
 

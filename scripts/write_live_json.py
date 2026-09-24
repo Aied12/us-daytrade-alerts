@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write docs/live.json with current extended-hours prices for the dashboard."""
+"""Write docs/prices-live.json with current extended-hours prices for the dashboard."""
 
 from __future__ import annotations
 
@@ -18,7 +18,6 @@ from bot.live_quotes import fetch_live_quotes, session_phase
 def main() -> int:
     settings = load_settings()
     symbols = list(dict.fromkeys(settings.watchlist + ["SPY", "QQQ", "IWM"]))
-    # also pull recent gainers symbols if present
     try:
         status = json.loads((ROOT / "docs" / "status.json").read_text(encoding="utf-8"))
         for g in (status.get("gainers") or [])[:15]:
@@ -44,10 +43,12 @@ def main() -> int:
             for sym, q in quotes.items()
         },
     }
+    raw = json.dumps(payload, ensure_ascii=False)
     for d in (ROOT / "docs", ROOT / "pages"):
         d.mkdir(parents=True, exist_ok=True)
-        (d / "live.json").write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
-        print("wrote", d / "live.json", "n=", len(payload["quotes"]))
+        for name in ("prices-live.json", "live.json"):
+            (d / name).write_text(raw, encoding="utf-8")
+            print("wrote", d / name, "n=", len(payload["quotes"]))
     return 0
 
 

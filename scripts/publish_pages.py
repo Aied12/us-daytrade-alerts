@@ -36,10 +36,10 @@ def main() -> int:
             "add",
             "docs/index.html",
             "docs/status.json",
-            "docs/live.json",
+            "docs/prices-live.json",
             "pages/index.html",
             "pages/status.json",
-            "pages/live.json",
+            "pages/prices-live.json",
         ]
     )
     # Commit only if staged changes exist
