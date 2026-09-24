@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-09-24T16:48:15.757063+00:00",
-  "generated_ts": 1790268495,
+  "generated_at": "2026-09-24T16:48:18.569187+00:00",
+  "generated_ts": 1790268498,
   "generated_local": "2026-09-24 19:48 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T16:48:15.756942+00:00",
+    "updated_at": "2026-09-24T16:48:18.569085+00:00",
     "last_mode": "dashboard",
-    "changed": true,
+    "changed": false,
     "symbols": 24,
     "error": "HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=60)"
   },
@@ -29,12 +29,12 @@
       "SPY": {
         "last": 767.64,
         "change_pct": -0.02,
-        "rsi": 46.9
+        "rsi": 47.1
       },
       "QQQ": {
         "last": 740.45,
         "change_pct": -0.1,
-        "rsi": 65.1
+        "rsi": 65.3
       },
       "IWM": {
         "last": 281.48,
@@ -46,12 +46,12 @@
       {
         "symbol": "SPY",
         "change_pct": -0.02,
-        "rsi": 46.9
+        "rsi": 47.1
       },
       {
         "symbol": "QQQ",
         "change_pct": -0.1,
-        "rsi": 65.1
+        "rsi": 65.3
       },
       {
         "symbol": "IWM",
@@ -69,8 +69,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 11504,
-    "ny_time": "12:48:15",
+    "seconds_left": 11501,
+    "ny_time": "12:48:18",
     "open": "09:30",
     "close": "16:00"
   },
@@ -78,7 +78,7 @@
     "strongest": [
       {
         "name": "Communication",
-        "change_pct": 1.18
+        "change_pct": 1.21
       },
       {
         "name": "Technology",
@@ -86,13 +86,13 @@
       },
       {
         "name": "Financials",
-        "change_pct": 0.32
+        "change_pct": 0.31
       }
     ],
     "weakest": [
       {
         "name": "Industrial",
-        "change_pct": -1.22
+        "change_pct": -1.21
       },
       {
         "name": "Consumer",
@@ -100,13 +100,13 @@
       },
       {
         "name": "Energy",
-        "change_pct": 0.24
+        "change_pct": 0.15
       }
     ]
   },
   "style": {
-    "growth_avg": 0.63,
-    "value_avg": 0.1,
+    "growth_avg": 0.64,
+    "value_avg": 0.08,
     "leader": "نمو",
     "growth_count": 10,
     "value_count": 11
@@ -260,6 +260,67 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
     },
     {
+      "symbol": "RCL",
+      "name": "Royal Caribbean Cruises Ltd.",
+      "last": 241.49,
+      "change_pct": 4.86,
+      "dollar_volume": 540319627.09,
+      "dollar_volume_label": "540.3M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "has_news": true,
+      "news": {
+        "symbol": "RCL",
+        "title": "Royal Caribbean plans to buy stake in Sandals Resorts for $3 billion",
+        "title_ar": "تخطط رويال كاريبيان لشراء حصة في صندل ريزورتس مقابل 3 مليارات دولار",
+        "summary": "Royal Caribbean is expanding its portfolio of land-based destinations by entering into a partnership with Sandals Resorts in a deal announced Wednesday. The cruise line will acquire a 50% equity stake in Sandals and Beaches Resorts for $3 billion, with the transaction expected to",
+        "summary_ar": "",
+        "url": "https://finnhub.io/api/news?id=46e34ef1b1de4548eddf07861dfc226051d8a5aa95e5525bcd2e23d80b3f8685",
+        "publisher": "Yahoo",
+        "published": "2026-09-24 00:17 UTC",
+        "published_ts": 1790209020,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "26b25d46c59a069925fbb92adda413ccd81df1a3",
+        "source": "finnhub",
+        "impact": 5,
+        "impact_ar": "تأثير 5/5",
+        "sentiment_score": 4,
+        "catalysts": [
+          {
+            "key": "mna",
+            "ar": "اندماج/استحواذ",
+            "base_impact": 5
+          },
+          {
+            "key": "partnership",
+            "ar": "شراكة/عقد",
+            "base_impact": 3
+          }
+        ],
+        "catalyst_keys": [
+          "mna",
+          "partnership"
+        ],
+        "catalyst_ar": [
+          "اندماج/استحواذ",
+          "شراكة/عقد"
+        ],
+        "impact_reason_ar": "اندماج/استحواذ · شراكة/عقد",
+        "officialish": false
+      },
+      "news_title_ar": "تخطط رويال كاريبيان لشراء حصة في صندل ريزورتس مقابل 3 مليارات دولار",
+      "news_url": "https://finnhub.io/api/news?id=46e34ef1b1de4548eddf07861dfc226051d8a5aa95e5525bcd2e23d80b3f8685",
+      "catalyst_ar": [
+        "اندماج/استحواذ",
+        "شراكة/عقد"
+      ],
+      "alert_ar": "زخم +4.9% · اندماج/استحواذ · شراكة/عقد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=RCL"
+    },
+    {
       "symbol": "BLLN",
       "name": "BillionToOne, Inc.",
       "last": 123.16,
@@ -362,64 +423,52 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRL"
     },
     {
-      "symbol": "PL",
-      "name": "Planet Labs PBC",
-      "last": 17.39,
-      "change_pct": 6.14,
-      "dollar_volume": 133351441.37,
-      "dollar_volume_label": "133.4M$",
+      "symbol": "VCYT",
+      "name": "Veracyte, Inc.",
+      "last": 45.92,
+      "change_pct": 4.78,
+      "dollar_volume": 50193682.56,
+      "dollar_volume_label": "50.2M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
       "has_news": true,
       "news": {
-        "symbol": "PL",
-        "title": "Planet Labs Scales European Manufacturing With Berlin Facility",
-        "title_ar": "Planet Labs Scales European Manufacturing With Berlin Facility",
-        "summary": "PL's Berlin plant is expected to roughly double satellite manufacturing capacity as sovereign demand supports contracts, pipeline growth and revenues.",
+        "symbol": "VCYT",
+        "title": "Here's Why You Should Hold Bio-Rad Stock in Your Portfolio for Now",
+        "title_ar": "إليك لماذا يجب عليك الاحتفاظ بمخزون Bio - Rad في محفظتك في الوقت الحالي",
+        "summary": "BIO's Clinical Diagnostics strength and international reach support growth, while China weakness, geopolitics and FX remain key risks.",
         "summary_ar": "",
-        "url": "https://finnhub.io/api/news?id=ecf1af619511b59fabf5ade56dd156dc0af85a5909352885246f9638b5015b7e",
+        "url": "https://finnhub.io/api/news?id=48cc1443138b430d77c91c876bd01b6c8821c7ad21be8d7223c2fbf3db058a2b",
         "publisher": "Yahoo",
-        "published": "2026-09-23 14:32 UTC",
-        "published_ts": 1790173920,
+        "published": "2026-09-23 15:22 UTC",
+        "published_ts": 1790176920,
         "sentiment": "pos",
         "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "cf76a9e357b7f9df55b30f4df97c39c289bd0460",
+        "id": "e43a24d99ec6ef54ab02a395af53a48cf3bc2b8e",
         "source": "finnhub",
         "impact": 4,
         "impact_ar": "تأثير 4/5",
         "sentiment_score": 4,
-        "catalysts": [
-          {
-            "key": "partnership",
-            "ar": "شراكة/عقد",
-            "base_impact": 3
-          }
-        ],
-        "catalyst_keys": [
-          "partnership"
-        ],
-        "catalyst_ar": [
-          "شراكة/عقد"
-        ],
-        "impact_reason_ar": "شراكة/عقد",
+        "catalysts": [],
+        "catalyst_keys": [],
+        "catalyst_ar": [],
+        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
         "officialish": false
       },
-      "news_title_ar": "Planet Labs Scales European Manufacturing With Berlin Facility",
-      "news_url": "https://finnhub.io/api/news?id=ecf1af619511b59fabf5ade56dd156dc0af85a5909352885246f9638b5015b7e",
-      "catalyst_ar": [
-        "شراكة/عقد"
-      ],
-      "alert_ar": "زخم +6.1% · شراكة/عقد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=PL"
+      "news_title_ar": "إليك لماذا يجب عليك الاحتفاظ بمخزون Bio - Rad في محفظتك في الوقت الحالي",
+      "news_url": "https://finnhub.io/api/news?id=48cc1443138b430d77c91c876bd01b6c8821c7ad21be8d7223c2fbf3db058a2b",
+      "catalyst_ar": [],
+      "alert_ar": "زخم +4.8% · تحرك سعري قوي بدون محفز واضح بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=VCYT"
     },
     {
       "symbol": "LIFE",
       "name": "",
-      "last": 37.45,
-      "change_pct": 10.44,
-      "dollar_volume": 43995922.95,
+      "last": 37.43,
+      "change_pct": 10.38,
+      "dollar_volume": 43973437.74,
       "dollar_volume_label": "44.0M$",
       "rvol": 1.51,
       "liq_grade_ar": "قوي",
@@ -474,9 +523,9 @@
     {
       "symbol": "PRGO",
       "name": "",
-      "last": 14.88,
-      "change_pct": 7.51,
-      "dollar_volume": 51771612.0,
+      "last": 14.89,
+      "change_pct": 7.59,
+      "dollar_volume": 51806404.75,
       "dollar_volume_label": "51.8M$",
       "rvol": 2.61,
       "liq_grade_ar": "قوي",
@@ -487,15 +536,15 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +7.5% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +7.6% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PRGO"
     },
     {
       "symbol": "TXG",
       "name": "",
-      "last": 81.2,
-      "change_pct": 7.38,
-      "dollar_volume": 127626262.4,
+      "last": 81.17,
+      "change_pct": 7.35,
+      "dollar_volume": 127586968.6,
       "dollar_volume_label": "127.6M$",
       "rvol": 1.19,
       "liq_grade_ar": "قوي",
@@ -506,27 +555,8 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +7.4% · لا خبر رسمي مرفق بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=TXG"
-    },
-    {
-      "symbol": "GRAL",
-      "name": "",
-      "last": 116.4,
-      "change_pct": 7.26,
-      "dollar_volume": 222710098.8,
-      "dollar_volume_label": "222.7M$",
-      "rvol": 3.62,
-      "liq_grade_ar": "قوي",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": false,
-      "news": null,
-      "news_title_ar": "",
-      "news_url": "",
-      "catalyst_ar": [],
       "alert_ar": "زخم +7.3% · لا خبر رسمي مرفق بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=GRAL"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=TXG"
     }
   ],
   "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
@@ -563,10 +593,10 @@
       "liquidity": {
         "rvol": 0.26,
         "rvol_pace": 0.51,
-        "volume": 4357327.0,
-        "avg_volume_20": 16680736.35,
-        "dollar_volume": 1044494855.17,
-        "avg_dollar_volume": 3998539310.46,
+        "volume": 4357331.0,
+        "avg_volume_20": 16680736.55,
+        "dollar_volume": 1044495814.01,
+        "avg_dollar_volume": 3998539358.4,
         "dollar_volume_label": "1.0B$",
         "avg_dollar_volume_label": "4.0B$",
         "grade": "strong",
@@ -690,23 +720,23 @@
     "P:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "TWST:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "NBIS:امتداد يومي قوي — الفرصة انتهت للمطاردة",
-    "JPM:زخم ضعيف (+0.18% < 0.45%)",
+    "JPM:زخم ضعيف (+0.16% < 0.45%)",
     "BAC:زخم ضعيف (+0.45% < 0.45%)",
     "RKLB:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "RCL:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "BLLN:امتداد يومي قوي — الفرصة انتهت للمطاردة",
-    "AAPL:زخم ضعيف (+0.29% < 0.45%)",
+    "AAPL:زخم ضعيف (+0.34% < 0.45%)",
+    "XOM:زخم ضعيف (+0.42% < 0.45%)",
     "CRL:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "TXG:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "GRAL:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "AXTI:ممتد جداً فوق VWAP — لا تدخل متأخراً",
     "CDNA:امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
-    "UBER:زخم ضعيف (-0.01% < 0.45%)",
-    "IWM:زخم ضعيف (-0.16% < 0.45%)",
+    "UBER:زخم ضعيف (+0.06% < 0.45%)",
+    "IWM:زخم ضعيف (-0.10% < 0.45%)",
     "PL:ممتد جداً فوق VWAP — لا تدخل متأخراً",
-    "COIN:زخم ضعيف (+0.32% < 0.45%)",
-    "PRGO:ممتد جداً فوق VWAP — لا تدخل متأخراً",
-    "CXW:وتيرة حجم منخفضة ×0.85 (RVOL خام ×0.43)"
+    "TSLA:زخم ضعيف (+0.43% < 0.45%)",
+    "COIN:زخم ضعيف (+0.32% < 0.45%)"
   ],
   "gainers": [
     {
@@ -981,35 +1011,35 @@
   "movers": [
     {
       "symbol": "P",
-      "change_pct": 16.57,
-      "last": 127.82,
+      "change_pct": 16.64,
+      "last": 127.9,
       "rvol": 0.99,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "907.1M$"
+      "dollar_volume_label": "907.7M$"
     },
     {
       "symbol": "CDNA",
-      "change_pct": 11.58,
-      "last": 60.6,
+      "change_pct": 11.53,
+      "last": 60.57,
       "rvol": 0.82,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "55.0M$"
+      "dollar_volume_label": "54.9M$"
     },
     {
       "symbol": "TWST",
-      "change_pct": 9.91,
-      "last": 174.2,
+      "change_pct": 10.01,
+      "last": 174.37,
       "rvol": 1.04,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "319.0M$"
+      "dollar_volume_label": "319.4M$"
     },
     {
       "symbol": "WRBY",
-      "change_pct": 8.82,
-      "last": 25.41,
+      "change_pct": 8.95,
+      "last": 25.44,
       "rvol": 0.76,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -1017,8 +1047,8 @@
     },
     {
       "symbol": "NBIS",
-      "change_pct": 8.24,
-      "last": 245.28,
+      "change_pct": 8.16,
+      "last": 245.1,
       "rvol": 1.04,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -1026,8 +1056,8 @@
     },
     {
       "symbol": "BLLN",
-      "change_pct": 7.64,
-      "last": 123.16,
+      "change_pct": 7.66,
+      "last": 123.19,
       "rvol": 0.8,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -1304,26 +1334,76 @@
       "officialish": false
     },
     {
-      "symbol": "CDNA",
-      "title": "5 Top-Ranked High-Efficiency Stocks With Strong Profit Potential",
-      "title_ar": "5 أسهم عالية الكفاءة ذات تصنيف عالي مع إمكانية ربح قوية",
-      "summary": "Five stocks stand out for high efficiency, with strong receivables, asset, inventory and operating margin metrics.",
+      "symbol": "RCL",
+      "title": "Royal Caribbean plans to buy stake in Sandals Resorts for $3 billion",
+      "title_ar": "تخطط رويال كاريبيان لشراء حصة في صندل ريزورتس مقابل 3 مليارات دولار",
+      "summary": "Royal Caribbean is expanding its portfolio of land-based destinations by entering into a partnership with Sandals Resorts in a deal announced Wednesday. The cruise line will acquire a 50% equity stake in Sandals and Beaches Resorts for $3 billion, with the transaction expected to",
       "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=769a5f0aa18fdfaaa1741fe0419f464d3987dba78bc692ca68962a84128cf57e",
+      "url": "https://finnhub.io/api/news?id=46e34ef1b1de4548eddf07861dfc226051d8a5aa95e5525bcd2e23d80b3f8685",
       "publisher": "Yahoo",
-      "published": "2026-09-23 12:00 UTC",
-      "published_ts": 1790164800,
+      "published": "2026-09-24 00:17 UTC",
+      "published_ts": 1790209020,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "cd5e068c363a390c5637747cf48f4371d2244c2c",
+      "id": "26b25d46c59a069925fbb92adda413ccd81df1a3",
       "source": "finnhub",
       "impact": 5,
       "impact_ar": "تأثير 5/5",
       "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "catalysts": [
+        {
+          "key": "mna",
+          "ar": "اندماج/استحواذ",
+          "base_impact": 5
+        },
+        {
+          "key": "partnership",
+          "ar": "شراكة/عقد",
+          "base_impact": 3
+        }
+      ],
+      "catalyst_keys": [
+        "mna",
+        "partnership"
+      ],
+      "catalyst_ar": [
+        "اندماج/استحواذ",
+        "شراكة/عقد"
+      ],
+      "impact_reason_ar": "اندماج/استحواذ · شراكة/عقد",
+      "officialish": false
+    },
+    {
+      "symbol": "RCL",
+      "title": "Royal Caribbean-Sandals Deal Accretive in Year One, Truist Says",
+      "title_ar": "صفقة رويال كاريبيان ساندلز تتراكم في العام الأول، كما يقول تروست",
+      "summary": "Royal Caribbean's (RCL) proposed acquisition of a 50% stake in Sandals Resorts is likely to be viewe",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=caed5685139fa66ebfbfd5698eaeb1d79b7f11fdf1ed829ab01df14d048aee6f",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 18:50 UTC",
+      "published_ts": 1790189420,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "2cf4655c1615175b6864277b12459eaa54007628",
+      "source": "finnhub",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "mna",
+          "ar": "اندماج/استحواذ",
+          "base_impact": 5
+        }
+      ],
+      "catalyst_keys": [
+        "mna"
+      ],
+      "catalyst_ar": [
+        "اندماج/استحواذ"
+      ],
+      "impact_reason_ar": "اندماج/استحواذ",
       "officialish": false
     },
     {
@@ -1479,69 +1559,26 @@
       "officialish": false
     },
     {
-      "symbol": "PL",
-      "title": "Planet Labs Scales European Manufacturing With Berlin Facility",
-      "title_ar": "Planet Labs Scales European Manufacturing With Berlin Facility",
-      "summary": "PL's Berlin plant is expected to roughly double satellite manufacturing capacity as sovereign demand supports contracts, pipeline growth and revenues.",
+      "symbol": "VCYT",
+      "title": "Here's Why You Should Hold Bio-Rad Stock in Your Portfolio for Now",
+      "title_ar": "إليك لماذا يجب عليك الاحتفاظ بمخزون Bio - Rad في محفظتك في الوقت الحالي",
+      "summary": "BIO's Clinical Diagnostics strength and international reach support growth, while China weakness, geopolitics and FX remain key risks.",
       "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=ecf1af619511b59fabf5ade56dd156dc0af85a5909352885246f9638b5015b7e",
+      "url": "https://finnhub.io/api/news?id=48cc1443138b430d77c91c876bd01b6c8821c7ad21be8d7223c2fbf3db058a2b",
       "publisher": "Yahoo",
-      "published": "2026-09-23 14:32 UTC",
-      "published_ts": 1790173920,
+      "published": "2026-09-23 15:22 UTC",
+      "published_ts": 1790176920,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "cf76a9e357b7f9df55b30f4df97c39c289bd0460",
+      "id": "e43a24d99ec6ef54ab02a395af53a48cf3bc2b8e",
       "source": "finnhub",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
       "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "partnership",
-          "ar": "شراكة/عقد",
-          "base_impact": 3
-        }
-      ],
-      "catalyst_keys": [
-        "partnership"
-      ],
-      "catalyst_ar": [
-        "شراكة/عقد"
-      ],
-      "impact_reason_ar": "شراكة/عقد",
-      "officialish": false
-    },
-    {
-      "symbol": "BLLN",
-      "title": "BillionToOne Stock Jumped 12% Yesterday. Here’s What the Streets Target.",
-      "title_ar": "قفز سهم BillionToOne بنسبة 12% يوم أمس. إليك ما تستهدفه الشوارع.",
-      "summary": "Key TakeawaysNo-Headline Rally: BillionToOne stock jumped 12% to $116 on Tuesday, September 22, without a company release, stretching a run that began near $100 on September 14. Insiders Took Profits: The CEO and general counsel sold ~60K shares for ~$6.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=fe85fdd59d1077de071f992b6b4658ca3188e43fa7b8c9669a19ef593a24d7f7",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 08:06 UTC",
-      "published_ts": 1790150812,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "f41bb1a9cd87f2346fe4db65355de59e5384d5d5",
-      "source": "finnhub",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "insider",
-          "ar": "مطلعون",
-          "base_impact": 3
-        }
-      ],
-      "catalyst_keys": [
-        "insider"
-      ],
-      "catalyst_ar": [
-        "مطلعون"
-      ],
-      "impact_reason_ar": "مطلعون",
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
       "officialish": false
     },
     {
@@ -1749,9 +1786,7 @@
     "PLTR",
     "PRGO",
     "RKLB",
-    "TSLA",
-    "TXG",
-    "XOM"
+    "TXG"
   ],
   "news_note_ar": "بث محفزات: أخبار الشركات + تأثير 1–5 + وسم (FDA/أرباح/شراكة…) — بدون إشاعات",
   "scan_mode_ar": "مسح StockTitan-style: محفز رسمي ← تأثير ← زخم سعري مربوط بالخبر",
