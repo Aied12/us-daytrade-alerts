@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T08:41:59.126390+00:00",
-  "generated_ts": 1790239319,
-  "generated_local": "2026-09-24 11:41 +03",
+  "generated_at": "2026-09-24T08:50:41.004857+00:00",
+  "generated_ts": 1790239841,
+  "generated_local": "2026-09-24 11:50 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T08:41:59.126286+00:00",
+    "updated_at": "2026-09-24T08:50:41.004751+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -58,13 +58,18 @@
         "rsi": 29.0
       }
     ],
-    "no_trade_today": false
+    "no_trade_today": false,
+    "price_provider": "yahoo",
+    "price_lag_ar": "تأخير Yahoo ≈ 15 دقيقة"
   },
+  "price_provider": "yahoo",
+  "price_lag_ar": "تأخير Yahoo ≈ 15 دقيقة",
+  "has_live_quotes": false,
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 17280,
-    "ny_time": "04:41:59",
+    "seconds_left": 16758,
+    "ny_time": "04:50:41",
     "open": "09:30",
     "close": "16:00"
   },
@@ -385,7 +390,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 20,
+    "alerts_today": 24,
     "recent_actions": [],
     "stop_discipline_pct": null
   },

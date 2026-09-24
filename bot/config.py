@@ -36,9 +36,18 @@ class Settings:
     light_mode: bool = False  # 95
     api_thrift: bool = False  # 85
     dashboard_token: str = ""  # 90 simple web auth
+    finnhub_api_key: str = ""  # near-real-time quotes (free)
+    alpaca_api_key: str = ""
+    alpaca_api_secret: str = ""
     watchlist: list[str] = field(default_factory=lambda: list(DEFAULT_WATCHLIST))
     data_dir: Path = ROOT / "data"
     logs_dir: Path = ROOT / "logs"
+
+    @property
+    def has_live_quotes(self) -> bool:
+        if self.finnhub_api_key:
+            return True
+        return bool(self.alpaca_api_key and self.alpaca_api_secret)
 
     @property
     def capital_usd(self) -> float:
@@ -118,6 +127,9 @@ def load_settings() -> Settings:
         light_mode=light,
         api_thrift=thrift,
         dashboard_token=os.getenv("DASHBOARD_TOKEN", "").strip(),
+        finnhub_api_key=os.getenv("FINNHUB_API_KEY", "").strip(),
+        alpaca_api_key=os.getenv("ALPACA_API_KEY", "").strip(),
+        alpaca_api_secret=os.getenv("ALPACA_API_SECRET", "").strip(),
         watchlist=watchlist,
     )
     settings.data_dir.mkdir(parents=True, exist_ok=True)

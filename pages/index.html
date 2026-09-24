@@ -108,6 +108,7 @@
     <div class="card">
       <div class="row"><span>يوم تداول؟</span><span id="trading">-</span></div>
       <div class="row"><span>الوضع</span><span id="mode">-</span></div>
+      <div class="row"><span>مصدر السعر</span><span id="priceLag" class="warn">-</span></div>
       <div class="row"><span>رأس المال</span><span id="capital">-</span></div>
       <div class="row"><span>حد الخسارة اليومي</span><span id="dailyLoss" class="warn">-</span></div>
       <p class="warn" id="reminder" style="margin:8px 0 0;font-weight:700"></p>
@@ -305,6 +306,10 @@
       document.getElementById('ago').textContent=`آخر فحص: ${fmtAgo(d.generated_ts)} · ${d.generated_local||''}`;
       document.getElementById('trading').textContent=d.trading_day?'نعم':'لا';
       document.getElementById('mode').textContent=d.mode||'-';
+      const lag=d.price_lag_ar||(d.market&&d.market.price_lag_ar)||'تأخير Yahoo ≈ 15 دقيقة';
+      const lagEl=document.getElementById('priceLag');
+      lagEl.textContent=lag;
+      lagEl.className=d.has_live_quotes?'ok':'warn';
       document.getElementById('capital').textContent=d.capital_sar?Number(d.capital_sar).toLocaleString('ar-SA')+' ر.س':'-';
       document.getElementById('dailyLoss').textContent=d.daily_loss_limit_sar?Number(d.daily_loss_limit_sar).toLocaleString('ar-SA')+' ر.س':'-';
       document.getElementById('reminder').textContent=d.reminder||'لا تدخل إذا وصلت حد الخسارة اليومي';

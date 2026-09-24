@@ -324,9 +324,13 @@ def build_snapshot(symbol: str) -> Optional[QuoteSnapshot]:
 
 
 def market_context() -> dict:
+    from bot.live_quotes import apply_live_quote, fetch_live_quotes, price_lag_label_ar, quote_provider
+
+    live = fetch_live_quotes(("SPY", "QQQ", "IWM"))
     out = {}
     for sym in ("SPY", "QQQ", "IWM"):
         snap = build_snapshot(sym)
+        snap = apply_live_quote(snap, live.get(sym))
         if snap:
             out[sym] = {
                 "last": snap.last,
@@ -334,7 +338,14 @@ def market_context() -> dict:
                 "rsi": round(snap.rsi_14, 1),
             }
     if not out:
-        return {"tone": "غير متاح", "details": {}, "no_trade_today": False, "avg_change_pct": 0.0}
+        return {
+            "tone": "غير متاح",
+            "details": {},
+            "no_trade_today": False,
+            "avg_change_pct": 0.0,
+            "price_provider": quote_provider(),
+            "price_lag_ar": price_lag_label_ar(),
+        }
 
     avg_chg = sum(v["change_pct"] for v in out.values()) / len(out)
     if avg_chg >= 0.6:
@@ -362,6 +373,8 @@ def market_context() -> dict:
         "details": out,
         "no_trade_today": no_trade,
         "no_trade_reasons": reasons,
+        "price_provider": quote_provider(),
+        "price_lag_ar": price_lag_label_ar(),
     }
 
 
@@ -376,12 +389,15 @@ def sector_momentum(snapshots: list[QuoteSnapshot]) -> dict[str, float]:
 
 def scan_watchlist(symbols: list[str]) -> list[QuoteSnapshot]:
     from bot.cacheutil import light_watchlist
+    from bot.live_quotes import apply_live_quote, fetch_live_quotes
 
     symbols = light_watchlist(symbols)
+    live = fetch_live_quotes(symbols)
     snaps: list[QuoteSnapshot] = []
     for sym in symbols:
         try:
             snap = build_snapshot(sym)
+            snap = apply_live_quote(snap, live.get(sym.upper()))
             if snap:
                 snaps.append(snap)
         except Exception:
