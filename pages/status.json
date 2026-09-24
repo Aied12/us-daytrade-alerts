@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:50:12.405379+00:00",
-  "generated_ts": 1790254212,
+  "generated_at": "2026-09-24T12:50:21.704829+00:00",
+  "generated_ts": 1790254221,
   "generated_local": "2026-09-24 15:50 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:50:12.405230+00:00",
+    "updated_at": "2026-09-24T12:50:21.704700+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 2387,
-    "ny_time": "08:50:12",
+    "seconds_left": 2378,
+    "ny_time": "08:50:21",
     "open": "09:30",
     "close": "16:00"
   },
@@ -202,7 +202,6 @@
   ],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
-    "SSL:زخم ضعيف (+0.21% < 0.55%)",
     "UBER:زخم ضعيف (+0.16% < 0.55%)",
     "NFLX:زخم ضعيف (+0.13% < 0.55%)",
     "BAC:زخم ضعيف (+0.16% < 0.55%)"
@@ -221,20 +220,6 @@
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=APA"
-    },
-    {
-      "symbol": "SSL",
-      "name": "Sasol Ltd.",
-      "last": 14.41,
-      "change_pct": 0.84,
-      "ref": 14.29,
-      "rth_close": 14.29,
-      "volume": 3110388.0,
-      "dollar_volume": 44820691.08,
-      "dollar_volume_label": "44.8M$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SSL"
     },
     {
       "symbol": "RRR",
@@ -402,32 +387,6 @@
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
     },
     {
-      "symbol": "SSL",
-      "title": "Is Sasol (SSL) a Great Value Stock Right Now?",
-      "title_ar": "هل Sasol (SSL) سهم ذو قيمة كبيرة الآن ؟",
-      "summary": "Here at Zacks, our focus is on the proven Zacks Rank system, which emphasizes earnings estimates and estimate revisions to find great stocks. Nevertheless, we are always paying attention to the latest value, growth, and momentum trends to underscore strong picks.",
-      "summary_ar": "هنا في Zacks، ينصب تركيزنا على نظام Zacks Rank المثبت، والذي يؤكد على تقديرات الأرباح وتقدير المراجعات للعثور على أسهم رائعة. ومع ذلك، فإننا نولي دائمًا اهتمامًا لأحدث اتجاهات القيمة والنمو والزخم للتأكيد على الخيارات القوية.",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/sasol-ssl-great-value-stock-134002207.html",
-      "publisher": "Zacks",
-      "published": "2026-09-10 13:40:02 UT",
-      "published_ts": 1789047602,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-    },
-    {
-      "symbol": "SSL",
-      "title": "Why Sasol Stock Soared Nearly 10% Higher Today",
-      "title_ar": "لماذا ارتفع سهم ساسول بنسبة 10 ٪ تقريبًا اليوم",
-      "summary": "An analyst at an American bank has become notably more bullish on the South African company's prospects.",
-      "summary_ar": "أصبح المحلل في أحد البنوك الأمريكية أكثر تفاؤلاً بشكل ملحوظ بشأن آفاق الشركة في جنوب إفريقيا.",
-      "url": "https://www.fool.com/investing/2026/09/09/why-sasol-stock-soared-nearly-10-higher-today/",
-      "publisher": "Motley Fool",
-      "published": "2026-09-09 23:22:04 UT",
-      "published_ts": 1788996124,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-    },
-    {
       "symbol": "AAPL",
       "title": "The S&P 500 has never been this concentrated in just 2 stocks",
       "title_ar": "لم يكن مؤشر S&P 500 بهذا التركيز في سهمين فقط",
@@ -465,11 +424,38 @@
       "published_ts": 1790229000,
       "sentiment": "neu",
       "sentiment_ar": "محايد"
+    },
+    {
+      "symbol": "AMZN",
+      "title": "Meta's Muse is an impressively capable AI agent, despite some hiccups",
+      "title_ar": "ميوز ميتا هو عامل ذكاء اصطناعي قادر بشكل مثير للإعجاب، على الرغم من بعض السقطات",
+      "summary": "Here's what it's like to use Meta's Muse AI agent.",
+      "summary_ar": "إليك ما يشبه استخدام وكيل MUSE AI من Meta.",
+      "url": "https://finance.yahoo.com/technology/article/metas-muse-is-an-impressively-capable-ai-agent-despite-some-hiccups-173310662.html",
+      "publisher": "Yahoo Finance",
+      "published": "2026-09-23 17:33:10 UT",
+      "published_ts": 1790184790,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد"
+    },
+    {
+      "symbol": "AAPL",
+      "title": "Gary Cohn on Meta's Muse: 'I'm not comfortable giving up my personal data'",
+      "title_ar": "غاري كوهن على ميوز ميتا: \"لست مرتاحًا للتخلي عن بياناتي الشخصية\"",
+      "summary": "Not everyone is excited about Muse.",
+      "summary_ar": "ليس الجميع متحمسين لموسى.",
+      "url": "https://finance.yahoo.com/technology/article/gary-cohn-on-metas-muse-im-not-comfortable-giving-up-my-personal-data-155957321.html",
+      "publisher": "Yahoo Finance",
+      "published": "2026-09-23 15:59:57 UT",
+      "published_ts": 1790179197,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد"
     }
   ],
   "news_excluded_negative": [
     "AMD",
     "AR",
+    "CRM",
     "CVX",
     "GOOGL",
     "MSFT",
