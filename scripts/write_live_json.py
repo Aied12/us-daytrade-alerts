@@ -26,9 +26,15 @@ def main() -> int:
         for o in (status.get("opportunities") or [])[:15]:
             if o.get("symbol"):
                 symbols.append(o["symbol"])
+        for m in (status.get("momentum_scanner") or [])[:10]:
+            if m.get("symbol"):
+                symbols.append(m["symbol"])
+        for s in (status.get("sniper_scanner") or [])[:12]:
+            if s.get("symbol"):
+                symbols.append(s["symbol"])
     except Exception:
         pass
-    symbols = list(dict.fromkeys(s.upper() for s in symbols if s))[:40]
+    symbols = list(dict.fromkeys(s.upper() for s in symbols if s))[:55]
     quotes = fetch_live_quotes(symbols)
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
