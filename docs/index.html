@@ -154,11 +154,11 @@
 
     <div class="card">
       <h2>أعلى الأسهم ارتفاعاً</h2>
-      <p class="muted" id="gainersNote">سعر ≥ $5 — جدول منفصل لأقوى الصاعدين اليوم</p>
+      <p class="muted" id="gainersNote">سعر ≥ $5 — سعر لحظي حسب الجلسة الحالية</p>
       <div style="overflow:auto">
         <table class="tbl" id="gainersTbl">
           <thead>
-            <tr><th>#</th><th>السهم</th><th>السعر</th><th>الارتفاع</th><th>سيولة اليوم</th><th></th></tr>
+            <tr><th>#</th><th>السهم</th><th>السعر الآن</th><th>الارتفاع</th><th>سيولة</th><th></th></tr>
           </thead>
           <tbody id="gainersBody"><tr><td colspan="6" class="muted">جاري الجلب...</td></tr></tbody>
         </table>
@@ -376,7 +376,8 @@
 
       const gainers=d.gainers||[];
       const gmin=d.gainers_min_price??5;
-      document.getElementById('gainersNote').textContent=`سعر ≥ $${gmin} — أقوى الصاعدين اليوم (جدول منفصل)`;
+      const gses=d.gainers_session_ar||'الآن';
+      document.getElementById('gainersNote').textContent=`سعر ≥ $${gmin} · ${gses} · مرتّب حسب الارتفاع الحالي (مو إغلاق أمس)`;
       document.getElementById('gainersBody').innerHTML = gainers.length ? gainers.map((g,i)=>`
         <tr>
           <td>${i+1}</td>
@@ -385,7 +386,7 @@
           <td class="up">+${esc(g.change_pct)}%</td>
           <td>${esc(g.dollar_volume_label||'-')}</td>
           <td><a href="${esc(g.tv_url)}" target="_blank" rel="noopener">TV</a></td>
-        </tr>`).join('') : '<tr><td colspan="6" class="muted">لا صاعدين فوق $5 حالياً</td></tr>';
+        </tr>`).join('') : '<tr><td colspan="6" class="muted">لا صاعدين فوق الفلتر في الجلسة الحالية</td></tr>';
 
       const movers=d.movers||[];
       document.getElementById('movers').innerHTML=movers.map(m=>`

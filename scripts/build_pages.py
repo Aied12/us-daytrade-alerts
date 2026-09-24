@@ -218,6 +218,9 @@ def main() -> None:
     gainers = fetch_day_gainers(min_price=min_px, limit=20)
     if not gainers:
         gainers = watchlist_gainers(snaps, min_price=min_px, limit=15)
+    from bot.gainers import session_label_ar, session_phase
+
+    gainers_session = session_label_ar(session_phase())
     indexes = []
     for k, v in (ctx.get("details") or {}).items():
         indexes.append({"symbol": k, "change_pct": v.get("change_pct", 0), "rsi": v.get("rsi")})
@@ -257,6 +260,7 @@ def main() -> None:
         "opportunities": opportunities,
         "gainers": gainers,
         "gainers_min_price": min_px,
+        "gainers_session_ar": gainers_session,
         "movers": [
             {
                 "symbol": s.symbol,
