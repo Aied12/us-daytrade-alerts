@@ -102,11 +102,10 @@ def handle_scan(settings) -> None:
     actionable = [
         s
         for s in pack["signals"]
-        if s.action in (Action.CONSIDER_LONG, Action.CONSIDER_SHORT, Action.WATCH_ENTRY)
+        if s.action in (Action.CONSIDER_LONG, Action.WATCH_ENTRY)
+        and getattr(s, "side", None) != "short"
         and s.symbol != "MARKET"
     ][:5]
-    if settings.is_beginner:
-        actionable = [s for s in actionable if s.action != Action.CONSIDER_SHORT]
     if not actionable:
         deliver(settings, "📡 /scan", "لا توجد فرص قوية فوق فلتر السعر الآن.")
         return

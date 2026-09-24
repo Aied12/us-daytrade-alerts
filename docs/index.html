@@ -247,8 +247,8 @@
     function filteredOpps(){
       if(!DATA) return [];
       let list=[...(DATA.opportunities||[])];
-      const beginner=!!DATA.is_beginner;
-      if(beginner) list=list.filter(o=>o.action_key!=='CONSIDER_SHORT' && o.side!=='short');
+      // إخفاء البيع القصير دائماً
+      list=list.filter(o=>o.action_key!=='CONSIDER_SHORT' && o.side!=='short');
       const f=currentFilter();
       if(f==='buy') list=list.filter(o=>o.action_key==='CONSIDER_LONG');
       if(f==='watch') list=list.filter(o=>o.action_key==='WATCH_ENTRY');

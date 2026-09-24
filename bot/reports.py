@@ -48,7 +48,8 @@ def format_morning(
     actionable = [
         s
         for s in signals
-        if s.action in (Action.CONSIDER_LONG, Action.CONSIDER_SHORT, Action.WATCH_ENTRY)
+        if s.action in (Action.CONSIDER_LONG, Action.WATCH_ENTRY)
+        and getattr(s, "side", None) != "short"
         and s.symbol != "MARKET"
     ][: settings.max_morning_picks]
 
@@ -111,7 +112,8 @@ def format_evening(
     sent_alerts: list[str],
 ) -> str:
     ctx = market_context()
-    top = [s for s in signals if s.action != Action.WAIT][:8]
+    top = [s for s in signals if s.action != Action.WAIT and s.symbol != "MARKET"
+           and s.action != Action.CONSIDER_SHORT and getattr(s, "side", None) != "short"][:8]
     lines = [
         "🌙 ملخص بعد الإغلاق",
         f"⏰ {_now_ny()}",
@@ -163,9 +165,9 @@ def build_full_pack(settings: Settings, snapshots: list[QuoteSnapshot]) -> dict:
     for sig in signals:
         if sig.symbol == "MARKET":
             continue
-        if sig.action not in (Action.CONSIDER_LONG, Action.CONSIDER_SHORT, Action.WATCH_ENTRY):
+        if sig.action not in (Action.CONSIDER_LONG, Action.WATCH_ENTRY):
             continue
-        if settings.is_beginner and sig.action == Action.CONSIDER_SHORT:
+        if getattr(sig, "side", None) == "short" or sig.action == Action.CONSIDER_SHORT:
             continue
         if alert_count >= settings.max_alerts_per_day:
             break

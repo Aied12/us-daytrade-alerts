@@ -34,8 +34,25 @@ def action_emoji(action: Action) -> str:
 
 
 def is_urgent(settings: Settings, signal: Signal) -> bool:
+    if not is_alertable(signal):
+        return False
     return signal.action == Action.CONSIDER_LONG and signal.score_100 >= max(
         70, int(settings.urgent_min_score * 10)
+    )
+
+
+def is_alertable(signal: Signal) -> bool:
+    """Long/watch only — never surface short sells."""
+    if signal.symbol == "MARKET":
+        return False
+    if signal.action == Action.CONSIDER_SHORT:
+        return False
+    if getattr(signal, "side", None) == "short":
+        return False
+    return signal.action in (
+        Action.CONSIDER_LONG,
+        Action.WATCH_ENTRY,
+        Action.TAKE_PROFIT_ZONE,
     )
 
 

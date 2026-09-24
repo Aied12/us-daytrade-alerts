@@ -41,17 +41,16 @@ def plan_trade(settings: Settings, signal: Signal) -> PositionPlan:
     if entry > 0 and shares * entry > max_position_usd:
         shares = int(max_position_usd // entry)
 
-    # Beginners: longs only
-    if settings.is_beginner and signal.side == "short":
+    # Shorts disabled entirely — longs / watch only
+    if signal.side == "short" or signal.action == Action.CONSIDER_SHORT:
         allowed = False
-        note = "البيع القصير للمتمرسين فقط — وضعك مبتدئ"
+        note = "البيع القصير موقوف — لا يُعرض ولا يُنفَّذ"
     elif signal.action == Action.NO_TRADE_DAY:
         allowed = False
         note = "إشارة يوم: لا تتداول اليوم"
     else:
-        allowed = shares >= 1 and signal.side in ("long", "short") and signal.action in (
+        allowed = shares >= 1 and signal.side == "long" and signal.action in (
             Action.CONSIDER_LONG,
-            Action.CONSIDER_SHORT,
             Action.WATCH_ENTRY,
         )
         # Only auto-allow CONSIDER_* for execution planning; WATCH is observe

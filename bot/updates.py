@@ -33,7 +33,17 @@ def _fingerprints(
     change_by_symbol = change_by_symbol or {}
     out: list[dict] = []
     for s in signals:
-        if s.action in (Action.WAIT,):
+        if s.symbol == "MARKET" or s.action in (Action.WAIT, Action.NO_TRADE_DAY):
+            continue
+        # Never track/notify short sells
+        if s.action == Action.CONSIDER_SHORT or getattr(s, "side", None) == "short":
+            continue
+        if s.action not in (
+            Action.CONSIDER_LONG,
+            Action.WATCH_ENTRY,
+            Action.TAKE_PROFIT_ZONE,
+            Action.AVOID,
+        ):
             continue
         out.append(
             {

@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T09:03:01.089804+00:00",
-  "generated_ts": 1790240581,
-  "generated_local": "2026-09-24 12:03 +03",
+  "generated_at": "2026-09-24T09:08:00.548762+00:00",
+  "generated_ts": 1790240880,
+  "generated_local": "2026-09-24 12:08 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T09:03:01.089694+00:00",
+    "updated_at": "2026-09-24T09:08:00.548658+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 16018,
-    "ny_time": "05:03:01",
+    "seconds_left": 15719,
+    "ny_time": "05:08:00",
     "open": "09:30",
     "close": "16:00"
   },
@@ -187,44 +187,6 @@
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PLTR",
       "tg_share": "https://t.me/share/url?url=&text=PLTR%20فكّر في شراء قصير المدى%0Aدخول%20191.79%20وقف%20165.22%20هدف%20239.62%0Aسيولة%20قوي%20RVOL%20x1.26"
-    },
-    {
-      "symbol": "JPM",
-      "action": "فكّر في بيع قصير بحذر",
-      "action_key": "CONSIDER_SHORT",
-      "side": "short",
-      "score_100": 30,
-      "urgent": false,
-      "strategies": [
-        "تحت VWAP بضعف",
-        "تقاطع متوسطات هابط",
-        "كسر قاع 20 يوم"
-      ],
-      "reason": "تحت VWAP بضعف: بعيد تحت VWAP (-2.54%) | تقاطع متوسطات هابط: MA20 قطع MA50 للأسفل | كسر قاع 20 يوم: قرب/تحت قاع 20ي $336.98",
-      "entry": 337.53,
-      "stop": 362.39,
-      "target": 297.75,
-      "shares": 4,
-      "risk_sar": 372.9,
-      "allowed": true,
-      "change_pct": -0.73,
-      "liquidity": {
-        "rvol": 0.96,
-        "volume": 7068500.0,
-        "avg_volume_20": 7339070.0,
-        "dollar_volume": 2385830805.0,
-        "avg_dollar_volume": 2477156297.1,
-        "dollar_volume_label": "2.4B$",
-        "avg_dollar_volume_label": "2.5B$",
-        "grade": "strong",
-        "grade_ar": "قوي",
-        "label": "RVOL ×1.0 · اليوم 2.4B$ · متوسط 2.5B$"
-      },
-      "rvol": 0.96,
-      "liq_grade": "strong",
-      "liq_grade_ar": "قوي",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=JPM",
-      "tg_share": "https://t.me/share/url?url=&text=JPM%20فكّر في بيع قصير بحذر%0Aدخول%20337.53%20وقف%20362.39%20هدف%20297.75%0Aسيولة%20قوي%20RVOL%20x0.96"
     },
     {
       "symbol": "DIS",
@@ -449,81 +411,6 @@
       "liq_grade_ar": "ضعيف",
       "tv_url": "https://www.tradingview.com/chart/?symbol=COIN",
       "tg_share": "https://t.me/share/url?url=&text=COIN%20راقب دخول%0Aدخول%20198.13%20وقف%20164.99%20هدف%20257.78%0Aسيولة%20ضعيف%20RVOL%20x0.7"
-    },
-    {
-      "symbol": "BAC",
-      "action": "راقب دخول",
-      "action_key": "WATCH_ENTRY",
-      "side": "short",
-      "score_100": 38,
-      "urgent": false,
-      "strategies": [
-        "تحت VWAP بضعف",
-        "كسر دعم"
-      ],
-      "reason": "تحت VWAP بضعف: بعيد تحت VWAP (-2.33%) | كسر دعم: دعم≈$56.33 | مراقبة بيع قصير — للمتمرس فقط",
-      "entry": 56.0,
-      "stop": 63.42,
-      "target": 44.13,
-      "shares": 16,
-      "risk_sar": 445.2,
-      "allowed": false,
-      "change_pct": -0.36,
-      "liquidity": {
-        "rvol": 0.98,
-        "volume": 36696000.0,
-        "avg_volume_20": 37580485.0,
-        "dollar_volume": 2054976000.0,
-        "avg_dollar_volume": 2104507160.0,
-        "dollar_volume_label": "2.1B$",
-        "avg_dollar_volume_label": "2.1B$",
-        "grade": "strong",
-        "grade_ar": "قوي",
-        "label": "RVOL ×1.0 · اليوم 2.1B$ · متوسط 2.1B$"
-      },
-      "rvol": 0.98,
-      "liq_grade": "strong",
-      "liq_grade_ar": "قوي",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=BAC",
-      "tg_share": "https://t.me/share/url?url=&text=BAC%20راقب دخول%0Aدخول%2056.0%20وقف%2063.42%20هدف%2044.13%0Aسيولة%20قوي%20RVOL%20x0.98"
-    },
-    {
-      "symbol": "UBER",
-      "action": "راقب دخول",
-      "action_key": "WATCH_ENTRY",
-      "side": "short",
-      "score_100": 38,
-      "urgent": false,
-      "strategies": [
-        "تحت VWAP بضعف",
-        "تقاطع متوسطات هابط",
-        "تقلّب عالي"
-      ],
-      "reason": "تحت VWAP بضعف: بعيد تحت VWAP (-1.41%) | تقاطع متوسطات هابط: MA20 قطع MA50 للأسفل | تقلّب عالي: ATR% 2.9 | مراقبة بيع قصير — للمتمرس فقط",
-      "entry": 69.42,
-      "stop": 79.9,
-      "target": 52.65,
-      "shares": 11,
-      "risk_sar": 432.3,
-      "allowed": false,
-      "change_pct": -0.67,
-      "liquidity": {
-        "rvol": 0.96,
-        "volume": 17977000.0,
-        "avg_volume_20": 18700240.0,
-        "dollar_volume": 1247963340.0,
-        "avg_dollar_volume": 1298170660.8,
-        "dollar_volume_label": "1.2B$",
-        "avg_dollar_volume_label": "1.3B$",
-        "grade": "strong",
-        "grade_ar": "قوي",
-        "label": "RVOL ×1.0 · اليوم 1.2B$ · متوسط 1.3B$"
-      },
-      "rvol": 0.96,
-      "liq_grade": "strong",
-      "liq_grade_ar": "قوي",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=UBER",
-      "tg_share": "https://t.me/share/url?url=&text=UBER%20راقب دخول%0Aدخول%2069.42%20وقف%2079.9%20هدف%2052.65%0Aسيولة%20قوي%20RVOL%20x0.96"
     }
   ],
   "movers": [
@@ -608,7 +495,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 36,
+    "alerts_today": 40,
     "recent_actions": [],
     "stop_discipline_pct": null
   },

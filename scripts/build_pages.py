@@ -169,11 +169,12 @@ def main() -> None:
             continue
         if sig.action not in (
             Action.CONSIDER_LONG,
-            Action.CONSIDER_SHORT,
             Action.WATCH_ENTRY,
             Action.AVOID,
             Action.TAKE_PROFIT_ZONE,
         ):
+            continue
+        if getattr(sig, "side", None) == "short" or sig.action == Action.CONSIDER_SHORT:
             continue
         plan = plan_trade(settings, sig)
         snap = by_sym.get(sig.symbol)

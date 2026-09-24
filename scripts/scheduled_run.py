@@ -73,13 +73,17 @@ def run_tick() -> None:
         print(f"[tick] mode={settings.user_mode} light={settings.light_mode} thrift={settings.api_thrift}")
         note = holiday_note()
         if note:
-            deliver(settings, "📅 تنبيه عطلة/إغلاق", note, also_channel=True)
+            hol_flag = settings.data_dir / f"holiday_notified_{datetime.now(settings.local_tz).strftime('%Y%m%d')}.flag"
+            if not hol_flag.exists():
+                deliver(settings, "📅 تنبيه عطلة/إغلاق", note, also_channel=True)
+                hol_flag.write_text("1", encoding="utf-8")
         snapshots = scan_watchlist(settings.watchlist)
         snapshots = [s for s in snapshots if s.last >= settings.min_price_usd]
         if not snapshots:
-            deliver(settings, "🔄 تحديث", "تعذّر جلب بيانات السوق / لا رموز فوق فلتر السعر.")
+            # Silent on empty data — avoid spam; status still updated
             touch_status(ok=False, last_mode="tick", reason="no-snapshots")
-            sys.exit(1)
+            print("[tick] no snapshots — silent")
+            return
 
         pack = build_full_pack(settings, snapshots)
         ctx = market_context()
@@ -88,55 +92,58 @@ def run_tick() -> None:
         changed, body = build_tick_message(settings, pack["signals"], change_by, tone)
         stamp = datetime.now(settings.local_tz).strftime("%Y%m%d_%H%M%S")
         save_json_snapshot(settings, pack, f"tick_{stamp}.json")
-        now = datetime.now(settings.local_tz).strftime("%Y-%m-%d %H:%M")
 
         maybe_send_daily_poster(settings)
 
-        if changed:
-            text = body
-            top = next(
-                (
-                    s
-                    for s in pack["signals"]
-                    if s.symbol != "MARKET"
-                    and s.action in (Action.CONSIDER_LONG, Action.CONSIDER_SHORT, Action.WATCH_ENTRY)
-                    and not (settings.is_beginner and s.action == Action.CONSIDER_SHORT)
-                ),
-                None,
-            )
-            markup = action_keyboard(top.symbol) if top else None
-            market = next((s for s in pack["signals"] if s.action == Action.NO_TRADE_DAY), None)
-            if market:
-                text = f"🛑 {market.reason}\n\n" + text
-            deliver(
+        if not changed:
+            print("[tick] no change — silent (no Telegram)")
+            touch_status(ok=True, last_mode="tick", changed=False, symbols=len(snapshots))
+            return
+
+        text = body
+        top = next(
+            (
+                s
+                for s in pack["signals"]
+                if s.symbol != "MARKET"
+                and s.action in (Action.CONSIDER_LONG, Action.WATCH_ENTRY)
+                and getattr(s, "side", None) != "short"
+            ),
+            None,
+        )
+        markup = action_keyboard(top.symbol) if top else None
+        market = next((s for s in pack["signals"] if s.action == Action.NO_TRADE_DAY), None)
+        if market:
+            text = f"🛑 {market.reason}\n\n" + text
+        deliver(
+            settings,
+            "🔄 تحديث",
+            text,
+            reply_markup=markup,
+            also_channel=bool(settings.telegram_channel_id),
+        )
+        for sig in pack["signals"]:
+            if sig.symbol == "MARKET":
+                continue
+            if getattr(sig, "side", None) == "short" or sig.action == Action.CONSIDER_SHORT:
+                continue
+            if not is_urgent(settings, sig):
+                continue
+            plan = plan_trade(settings, sig)
+            card = "🚨 عاجل — فرصة قوية\n" + format_signal_card(settings, sig, plan)
+            send_telegram(
                 settings,
-                "🔄 تحديث",
-                text,
-                reply_markup=markup,
+                card,
+                reply_markup=action_keyboard(sig.symbol),
                 also_channel=bool(settings.telegram_channel_id),
             )
-            for sig in pack["signals"]:
-                if sig.symbol == "MARKET":
-                    continue
-                if not is_urgent(settings, sig):
-                    continue
-                plan = plan_trade(settings, sig)
-                card = "🚨 عاجل — فرصة قوية\n" + format_signal_card(settings, sig, plan)
-                send_telegram(
-                    settings,
-                    card,
-                    reply_markup=action_keyboard(sig.symbol),
-                    also_channel=bool(settings.telegram_channel_id),
-                )
-            if not settings.light_mode:
-                script = voice_script_from_update(text, True)
-                voice_path = settings.data_dir / "media" / f"tick_{stamp}.mp3"
-                vp = synthesize_arabic(script, voice_path)
-                if vp:
-                    send_voice(settings, vp, caption="ملخص صوتي للتحديث")
-        else:
-            deliver(settings, "🔄 تحديث", f"⏰ {now} ({settings.timezone_name})\nلا يوجد شي جديد يابطل")
-        touch_status(ok=True, last_mode="tick", changed=changed, symbols=len(snapshots))
+        if not settings.light_mode:
+            script = voice_script_from_update(text, True)
+            voice_path = settings.data_dir / "media" / f"tick_{stamp}.mp3"
+            vp = synthesize_arabic(script, voice_path)
+            if vp:
+                send_voice(settings, vp, caption="ملخص صوتي للتحديث")
+        touch_status(ok=True, last_mode="tick", changed=True, symbols=len(snapshots))
     except Exception as e:
         log_error("run_tick", e)
         touch_status(ok=False, last_mode="tick", error=str(e))
