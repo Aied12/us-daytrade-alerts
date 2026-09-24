@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:54:18.556928+00:00",
-  "generated_ts": 1790254458,
-  "generated_local": "2026-09-24 15:54 +03",
+  "generated_at": "2026-09-24T12:55:21.546704+00:00",
+  "generated_ts": 1790254521,
+  "generated_local": "2026-09-24 15:55 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:54:18.556791+00:00",
+    "updated_at": "2026-09-24T12:55:21.546563+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -22,39 +22,39 @@
   "daily_loss_limit_sar": 900.0,
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
-    "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.61,
+    "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
+    "avg_change_pct": -0.59,
     "details": {
       "SPY": {
-        "last": 763.89,
-        "change_pct": -0.51,
+        "last": 764.03,
+        "change_pct": -0.49,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.07,
-        "change_pct": -0.96,
+        "last": 734.3456,
+        "change_pct": -0.93,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 280.896,
-        "change_pct": -0.36,
+        "last": 280.94,
+        "change_pct": -0.35,
         "rsi": 29.0
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.51,
+        "change_pct": -0.49,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.96,
+        "change_pct": -0.93,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.36,
+        "change_pct": -0.35,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 2141,
-    "ny_time": "08:54:18",
+    "seconds_left": 2078,
+    "ny_time": "08:55:21",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,36 +81,80 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.18
+        "change_pct": 0.14
       },
       {
-        "name": "Consumer",
-        "change_pct": -0.33
+        "name": "Financials",
+        "change_pct": -0.3
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.1
+        "change_pct": -1.05
       },
       {
         "name": "Industrial",
-        "change_pct": -0.39
+        "change_pct": -0.36
       },
       {
-        "name": "Financials",
-        "change_pct": -0.35
+        "name": "Consumer",
+        "change_pct": -0.33
       }
     ]
   },
   "style": {
-    "growth_avg": -1.08,
+    "growth_avg": -1.02,
     "value_avg": 0.07,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
   },
   "opportunities": [
+    {
+      "symbol": "SECZ",
+      "action": "فكّر في شراء قصير المدى",
+      "action_key": "CONSIDER_LONG",
+      "side": "long",
+      "score_100": 68,
+      "urgent": false,
+      "strategies": [
+        "ارتداد لملء فجوة هابطة",
+        "ترتيب متوسطات صاعد",
+        "حجم مرتفع",
+        "RSI تشبع شرائي"
+      ],
+      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم مرتفع: حجم ×2.5 | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقاومة≈$14.11 | تقلّب عالي: ATR% 8.4",
+      "entry": 14.47,
+      "stop": 6.17,
+      "target": 29.41,
+      "shares": 14,
+      "risk_sar": 435.75,
+      "allowed": true,
+      "change_pct": 0.78,
+      "last": 14.47,
+      "session_phase": "pre",
+      "liquidity": {
+        "rvol": 2.52,
+        "volume": 9172100.0,
+        "avg_volume_20": 3636165.0,
+        "dollar_volume": 132734962.36,
+        "avg_dollar_volume": 52621125.41,
+        "dollar_volume_label": "132.7M$",
+        "avg_dollar_volume_label": "52.6M$",
+        "grade": "strong",
+        "grade_ar": "قوي",
+        "label": "RVOL ×2.5 · اليوم 132.7M$ · متوسط 52.6M$"
+      },
+      "rvol": 2.52,
+      "liq_grade": "strong",
+      "liq_grade_ar": "قوي",
+      "atr_pct": 8.39,
+      "flow_score": 4.91,
+      "flow_ok": true,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ",
+      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.47%20دخول%2014.47%20وقف%206.17%20هدف%2029.41%0Aسيولة%20قوي%20RVOL%20x2.52%20زخم%20+0.78%"
+    },
     {
       "symbol": "APA",
       "action": "فكّر في شراء قصير المدى",
@@ -234,6 +278,20 @@
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=RRR"
+    },
+    {
+      "symbol": "SECZ",
+      "name": "Securitize Corp.",
+      "last": 14.47,
+      "change_pct": 0.78,
+      "ref": 14.36,
+      "rth_close": 14.36,
+      "volume": 9169868.0,
+      "dollar_volume": 132687989.96,
+      "dollar_volume_label": "132.7M$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ"
     }
   ],
   "gainers_min_price": 5.0,
@@ -241,30 +299,12 @@
   "movers": [
     {
       "symbol": "PLTR",
-      "change_pct": -1.64,
-      "last": 188.65,
+      "change_pct": -1.68,
+      "last": 188.57,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "6.6B$"
-    },
-    {
-      "symbol": "META",
-      "change_pct": -1.54,
-      "last": 732.65,
-      "rvol": 1.37,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "22.2B$"
-    },
-    {
-      "symbol": "AVGO",
-      "change_pct": -1.5,
-      "last": 349.66,
-      "rvol": 0.85,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "8.2B$"
     },
     {
       "symbol": "APA",
@@ -276,22 +316,31 @@
       "dollar_volume_label": "247.7M$"
     },
     {
+      "symbol": "AVGO",
+      "change_pct": -1.45,
+      "last": 349.85,
+      "rvol": 0.85,
+      "grade": "medium",
+      "grade_ar": "متوسط",
+      "dollar_volume_label": "8.2B$"
+    },
+    {
       "symbol": "AMZN",
-      "change_pct": -1.25,
-      "last": 246.16,
+      "change_pct": -1.24,
+      "last": 246.17,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "10.8B$"
     },
     {
-      "symbol": "COIN",
-      "change_pct": -1.23,
-      "last": 195.69,
-      "rvol": 0.7,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "1.4B$"
+      "symbol": "META",
+      "change_pct": -1.21,
+      "last": 735.13,
+      "rvol": 1.37,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "22.3B$"
     }
   ],
   "news": [
@@ -309,28 +358,15 @@
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
     },
     {
-      "symbol": "AVGO",
-      "title": "AMD's Six-Day Rally Finally Hits a Pause",
-      "title_ar": "توقف ارتفاع AMD لمدة ستة أيام أخيرًا",
-      "summary": "AMD has gained more than 180% this year and recently crossed a $1 trillion market cap.",
-      "summary_ar": "اكتسبت AMD أكثر من 180 ٪ هذا العام وتجاوزت مؤخرًا القيمة السوقية البالغة 1 تريليون $.",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/amds-six-day-rally-finally-122023912.html",
-      "publisher": "GuruFocus.com",
-      "published": "2026-09-24 12:20:23 UT",
-      "published_ts": 1790252423,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-    },
-    {
-      "symbol": "AVGO",
-      "title": "AMD Joined Nvidia in the Trillion Dollar Club. The Run Isn’t an Accident",
-      "title_ar": "انضمت AMD إلى Nvidia في نادي تريليون دولار. الركض ليس حادثًا",
-      "summary": "AMD just crossed a threshold only one other chip company has ever reached, but the rally into that milestone raises a harder question about what the stock is actually worth from here.",
-      "summary_ar": "تجاوزت AMD للتو عتبة لم تصل إليها سوى شركة رقائق واحدة أخرى، لكن الارتفاع في هذا الإنجاز يطرح سؤالًا أكثر صعوبة حول قيمة السهم بالفعل من هنا.",
-      "url": "https://247wallst.com/investing/2026/09/24/amd-joined-nvidia-in-the-trillion-dollar-club-the-run-isnt-an-accident/",
-      "publisher": "24/7 Wall St.",
-      "published": "2026-09-24 12:00:54 UT",
-      "published_ts": 1790251254,
+      "symbol": "SECZ",
+      "title": "Securitize Corp (SECZ) Soars to All-Time High Anew, Analysts ‘Highly Bullish’",
+      "title_ar": "شركة Securitize Corp (SECZ) ترتفع إلى أعلى مستوى لها على الإطلاق من جديد، المحللون \"صعوديون للغاية\"",
+      "summary": "Securitize Corp. (NYSE:SECZ) saw its share price climb to a new all-time high on Wednesday, as investors resumed buying positions amid the rosy growth prospects from securities tokenization. In intra-day trading, the stock jumped to its highest price of $14.86 before trimming gai",
+      "summary_ar": "شهدت Securitize Corp. (NYSE: SECZ) ارتفاع سعر سهمها إلى أعلى مستوى جديد على الإطلاق يوم الأربعاء، حيث استأنف المستثمرون مراكز الشراء وسط توقعات النمو الوردية من توكنات الأوراق المالية. في التداول اليومي، السهم إلى أعلى سعر له عند 14.86 $ قبل خفض مؤشر GAI",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/securitize-corp-secz-soars-time-234343365.html",
+      "publisher": "Insider Monkey",
+      "published": "2026-09-23 23:43:43 UT",
+      "published_ts": 1790207023,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
     },
@@ -374,6 +410,19 @@
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
     },
     {
+      "symbol": "SECZ",
+      "title": "Securitize Stock Jumps 12% as Cantor Bets on a Tokenization Boom",
+      "title_ar": "توريق الأسهم يقفز بنسبة 12 ٪ حيث يراهن قائد الفرقة الموسيقيّة على طفرة التوكن",
+      "summary": "Securitize shares have surged as regulators open a path for tokenized stock trading. Cantor Fitzgerald sees more room to rise.",
+      "summary_ar": "ارتفعت أسهم Securitize حيث فتح المنظمون طريقًا لتداول الأسهم الرمزية. يرى كانتور فيتزجيرالد مساحة أكبر للارتفاع.",
+      "url": "https://www.barrons.com/articles/securitize-stock-price-cantor-tokenization-1bff8d31?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "published": "2026-09-23 16:55:00 UT",
+      "published_ts": 1790182500,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
       "symbol": "APA",
       "title": "Should Value Investors Buy APA (APA) Stock?",
       "title_ar": "هل يجب على مستثمري القيمة شراء أسهم APA (APA )؟",
@@ -383,6 +432,19 @@
       "publisher": "Zacks",
       "published": "2026-09-23 13:40:04 UT",
       "published_ts": 1790170804,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
+      "symbol": "SECZ",
+      "title": "Cantor Fitzgerald Sees Big Upside in Securitize (SECZ): Is It Time to Buy?",
+      "title_ar": "يرى كانتور فيتزجيرالد جانبًا إيجابيًا كبيرًا في التوريق (SECZ): هل حان وقت الشراء ؟",
+      "summary": "Securitize Corp. (NYSE:SECZ) shares jumped as investors digested favorable regulatory developments and Cantor Fitzgerald initiated coverage of the stock on September 21, giving it an Overweight rating and setting the price target at $21.20. The firm highlighted the company’s posi",
+      "summary_ar": "قفزت أسهم Securitize Corp. (NYSE: SECZ) حيث استوعب المستثمرون التطورات التنظيمية المواتية وبدأ Cantor Fitzgerald بتغطية السهم في 21، مما منحه تصنيفًا للوزن الزائد وحدد السعر المستهدف عند 21.20 $. سلطت الشركة الضوء على موقف الشركة",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cantor-fitzgerald-sees-big-upside-052416150.html",
+      "publisher": "Insider Monkey",
+      "published": "2026-09-23 05:24:16 UT",
+      "published_ts": 1790141056,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
     },
@@ -409,19 +471,6 @@
       "publisher": "Yahoo Finance",
       "published": "2026-09-24 08:57:05 UT",
       "published_ts": 1790240225,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد"
-    },
-    {
-      "symbol": "AVGO",
-      "title": "Where Will Broadcom Stock Be in 5 Years?",
-      "title_ar": "أين ستكون أسهم برودكوم خلال 5 سنوات ؟",
-      "summary": "Broadcom is unlikely to match the performance of the previous five years, but that does not mean investors should dismiss it.",
-      "summary_ar": "من غير المرجح أن تتطابق Broadcom مع أداء السنوات الخمس السابقة، لكن هذا لا يعني أنه يجب على المستثمرين رفضها.",
-      "url": "https://www.fool.com/investing/2026/09/24/where-will-broadcom-stock-be-in-5-years/",
-      "publisher": "Motley Fool",
-      "published": "2026-09-24 05:50:00 UT",
-      "published_ts": 1790229000,
       "sentiment": "neu",
       "sentiment_ar": "محايد"
     },
@@ -455,12 +504,12 @@
   "news_excluded_negative": [
     "AMD",
     "AR",
-    "CRM",
     "CVX",
     "GOOGL",
     "MSFT",
     "NFLX",
     "NVDA",
+    "PCG",
     "TSLA",
     "XOM"
   ],
