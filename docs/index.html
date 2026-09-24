@@ -201,7 +201,7 @@
 
     <div class="card">
       <h2>أخبار الأسهم</h2>
-      <p class="muted" id="newsNote">محايد + إيجابي متوقع يدعم الارتفاع — بدون أخبار سلبية</p>
+      <p class="muted" id="newsNote">بث سريع · محايد/إيجابي · حتى 5 جديدة/دقيقة</p>
       <div id="newsList"><div class="muted">جاري جلب الأخبار...</div></div>
     </div>
 
@@ -495,38 +495,64 @@
         d.gainers=d.gainers.filter(g=>!blocked.has(String(g.symbol||'').toUpperCase()));
       }
       const note=document.getElementById('newsNote');
-      if(note) note.textContent=d.news_note_ar||'محايد + إيجابي متوقع يدعم الارتفاع فقط — الأسهم ذات خبر سلبي تُزال';
-      const newsBox=document.getElementById('newsList');
-      if(newsBox){
-        const sentCls={pos:'sent-pos',neg:'sent-neg',neu:'sent-neu'};
-        newsBox.innerHTML = news.length ? news.map(n=>{
-          const sent=n.sentiment||'neu';
-          if(sent==='neg') return '';
-          const title=n.title_ar||n.title||'';
-          const sum=n.summary_ar||n.summary||'';
-          const when=n.published||'';
-          const pub=n.publisher||'';
-          const href=n.url||('#');
-          return `<article class="news-item">
-            <a href="${esc(href)}" target="_blank" rel="noopener">
-              <div class="row" style="margin:0 0 6px">
-                <b>${esc(n.symbol||'')}</b>
-                <span class="${sentCls[sent]||'sent-neu'}">${esc(n.sentiment_ar||'')}</span>
-              </div>
-              <div style="font-weight:700;line-height:1.35">${esc(title)}</div>
-              ${sum?`<div class="muted" style="margin-top:6px">${esc(sum)}</div>`:''}
-              <div class="news-meta muted">
-                ${pub?`<span>${esc(pub)}</span>`:''}
-                ${when?`<span>${esc(when)}</span>`:''}
-                <span>المصدر ↗</span>
-              </div>
-            </a>
-          </article>`;
-        }).join('') : '<div class="empty">لا أخبار محايدة/إيجابية الآن</div>';
-      }
+      if(note) note.textContent=d.news_note_ar||'بث سريع · محايد/إيجابي · حتى 5 جديدة/دقيقة';
+      renderNewsList(news);
 
       renderOpps();
       tickClocks();
+    }
+
+    function renderNewsList(news){
+      const newsBox=document.getElementById('newsList');
+      if(!newsBox) return;
+      const list=(news||[]).filter(n=>n && n.sentiment!=='neg');
+      const sentCls={pos:'sent-pos',neg:'sent-neg',neu:'sent-neu'};
+      newsBox.innerHTML = list.length ? list.map(n=>{
+        const sent=n.sentiment||'neu';
+        const title=n.title_ar||n.title||'';
+        const sum=n.summary_ar||'';
+        const when=n.published||'';
+        const pub=n.publisher||'';
+        const href=n.url||('#');
+        return `<article class="news-item">
+          <a href="${esc(href)}" target="_blank" rel="noopener">
+            <div class="row" style="margin:0 0 6px">
+              <b>${esc(n.symbol||'')}</b>
+              <span class="${sentCls[sent]||'sent-neu'}">${esc(n.sentiment_ar||'')}</span>
+            </div>
+            <div style="font-weight:700;line-height:1.35">${esc(title)}</div>
+            ${sum?`<div class="muted" style="margin-top:6px">${esc(sum)}</div>`:''}
+            <div class="news-meta muted">
+              ${pub?`<span>${esc(pub)}</span>`:''}
+              ${when?`<span>${esc(when)}</span>`:''}
+              <span>المصدر ↗</span>
+            </div>
+          </a>
+        </article>`;
+      }).join('') : '<div class="empty">لا أخبار محايدة/إيجابية الآن</div>';
+    }
+
+    async function pollNewsLive(){
+      try{
+        const urls=['./news-live.json','https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/news-live.json'];
+        let best=null;
+        for(const u of urls){
+          try{
+            const r=await fetch(u+(u.includes('?')?'&':'?')+'ts='+Date.now(),{cache:'no-store'});
+            if(!r.ok) continue;
+            const j=await r.json();
+            const age=j.generated_ts?(Date.now()/1000-Number(j.generated_ts)):9999;
+            if(!best || age<best.age) best={j,age};
+          }catch(e){}
+        }
+        if(!best || !Array.isArray(best.j.news)) return;
+        const note=document.getElementById('newsNote');
+        if(note){
+          note.textContent=(best.j.note_ar||'بث سريع') + (best.j.fresh_this_minute!=null?` · جديد هذه الدقيقة: ${best.j.fresh_this_minute}`:'') + ` · ${Math.round(best.age)}ث`;
+        }
+        renderNewsList(best.j.news);
+        if(DATA) DATA.news=best.j.news;
+      }catch(e){}
     }
 
     let sessionLeft=0;
@@ -862,7 +888,7 @@
     }
 
     loadPrefs();
-    fetchData(true).then(()=>{ renderLiveTape(); pollAllPrices(); });
+    fetchData(true).then(()=>{ renderLiveTape(); pollAllPrices(); pollNewsLive(); });
     setInterval(()=>fetchData(false), AUTO_SEC*1000);
     setInterval(()=>{
       if(sessionLeft>0) sessionLeft-=1;
@@ -872,6 +898,7 @@
       tickClocks();
     },1000);
     setInterval(()=>pollAllPrices(), 5000);
+    setInterval(()=>pollNewsLive(), 20000);
   </script>
 </body>
 </html>

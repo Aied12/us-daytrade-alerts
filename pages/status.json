@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:59:26.317948+00:00",
-  "generated_ts": 1790254766,
-  "generated_local": "2026-09-24 15:59 +03",
+  "generated_at": "2026-09-24T13:00:33.763400+00:00",
+  "generated_ts": 1790254833,
+  "generated_local": "2026-09-24 16:00 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:59:26.317836+00:00",
+    "updated_at": "2026-09-24T13:00:33.763300+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,28 +23,28 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.56,
+    "avg_change_pct": -0.57,
     "details": {
       "SPY": {
-        "last": 764.19,
-        "change_pct": -0.47,
+        "last": 764.15,
+        "change_pct": -0.48,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.4667,
+        "last": 734.458,
         "change_pct": -0.91,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 281.08,
-        "change_pct": -0.3,
+        "last": 281.01,
+        "change_pct": -0.32,
         "rsi": 29.0
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.47,
+        "change_pct": -0.48,
         "rsi": 53.4
       },
       {
@@ -54,7 +54,7 @@
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.3,
+        "change_pct": -0.32,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 1833,
-    "ny_time": "08:59:26",
+    "seconds_left": 1766,
+    "ny_time": "09:00:33",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,21 +77,21 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.01
+        "change_pct": 1.05
       },
       {
         "name": "Communication",
-        "change_pct": 0.19
+        "change_pct": 0.16
       },
       {
         "name": "Financials",
-        "change_pct": -0.24
+        "change_pct": -0.28
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.04
+        "change_pct": -0.99
       },
       {
         "name": "Industrial",
@@ -99,13 +99,13 @@
       },
       {
         "name": "Consumer",
-        "change_pct": -0.3
+        "change_pct": -0.29
       }
     ]
   },
   "style": {
-    "growth_avg": -1.01,
-    "value_avg": 0.08,
+    "growth_avg": -0.98,
+    "value_avg": 0.09,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -246,7 +246,7 @@
   ],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
-    "UBER:زخم ضعيف (+0.12% < 0.55%)",
+    "UBER:زخم ضعيف (+0.17% < 0.55%)",
     "BAC:زخم ضعيف (+0.16% < 0.55%)",
     "DIS:زخم ضعيف (+0.04% < 0.55%)"
   ],
@@ -298,6 +298,15 @@
   "gainers_session_ar": "Premarket الآن (قبل الافتتاح)",
   "movers": [
     {
+      "symbol": "AMD",
+      "change_pct": -2.62,
+      "last": 598.5,
+      "rvol": 0.78,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "9.8B$"
+    },
+    {
       "symbol": "SECZ",
       "change_pct": 2.02,
       "last": 14.65,
@@ -317,21 +326,12 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.41,
-      "last": 349.99,
+      "change_pct": -1.49,
+      "last": 349.7,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "8.2B$"
-    },
-    {
-      "symbol": "META",
-      "change_pct": -1.21,
-      "last": 735.07,
-      "rvol": 1.37,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "22.3B$"
     },
     {
       "symbol": "APA",
@@ -343,186 +343,388 @@
       "dollar_volume_label": "247.0M$"
     },
     {
-      "symbol": "AMZN",
-      "change_pct": -1.12,
-      "last": 246.49,
-      "rvol": 1.26,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "10.8B$"
+      "symbol": "NVDA",
+      "change_pct": -1.16,
+      "last": 222.9,
+      "rvol": 0.68,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "19.9B$"
     }
   ],
   "news": [
     {
-      "symbol": "SECZ",
-      "title": "Securitize Corp (SECZ) Soars to All-Time High Anew, Analysts ‘Highly Bullish’",
-      "title_ar": "شركة Securitize Corp (SECZ) ترتفع إلى أعلى مستوى لها على الإطلاق من جديد، المحللون \"صعوديون للغاية\"",
-      "summary": "Securitize Corp. (NYSE:SECZ) saw its share price climb to a new all-time high on Wednesday, as investors resumed buying positions amid the rosy growth prospects from securities tokenization. In intra-day trading, the stock jumped to its highest price of $14.86 before trimming gai",
-      "summary_ar": "شهدت Securitize Corp. (NYSE: SECZ) ارتفاع سعر سهمها إلى أعلى مستوى جديد على الإطلاق يوم الأربعاء، حيث استأنف المستثمرون مراكز الشراء وسط توقعات النمو الوردية من توكنات الأوراق المالية. في التداول اليومي، السهم إلى أعلى سعر له عند 14.86 $ قبل خفض مؤشر GAI",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/securitize-corp-secz-soars-time-234343365.html",
-      "publisher": "Insider Monkey",
-      "published": "2026-09-23 23:43:43 UT",
-      "published_ts": 1790207023,
+      "symbol": "MARKET",
+      "title": "The Elmet Group to Acquire 4.99% Stake in Masan High-Tech Materials and Enter Multi-Year Tungsten Supply Partnership for the U.S. Market",
+      "title_ar": "تستحوذ مجموعة Elmet على حصة 4.99 ٪ في مواد Masan عالية التقنية وتدخل في شراكة توريد التنغستن متعددة السنوات للسوق الأمريكية",
+      "summary": "HANOI, Vietnam--(BUSINESS WIRE)--Masan High-Tech Materials Corporation (UPCoM: MSR, “MSR” or the “Company”), one of the very few fully integrated tungsten mining and refining platforms in the world, today announced a strategic partnership with The Elmet Group Co. (“Elmet,” NASDAQ",
+      "summary_ar": "",
+      "url": "http://www.businesswire.com/news/home/20260924219797/en/The-Elmet-Group-to-Acquire-4.99-Stake-in-Masan-High-Tech-Materials-and-Enter-Multi-Year-Tungsten-Supply-Partnership-for-the-U.S.-Market/?feedref=JjAwJuNHiystnCoBq_hl-Rc4vIAVcHHkbDcwJimU8QtrtlakeQ9hNboBqTAWIjTge3KWq9s9jif-UkBjBsFRyYAbRTSLTc1mgvhPlnaBA55M-oupQnbXnhKsYk8RmHF_kAy2gZikaX3QWV6xOvgFlA==",
+      "publisher": "BusinessWire",
+      "published": "2026-09-24 12:38 UTC",
+      "published_ts": 1790253480,
       "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "59c5ae96ac6265634c115982bf2574596f9506a8",
+      "source": "finnhub:merger"
     },
     {
-      "symbol": "META",
-      "title": "How Meta's Muse was a total game changer for the AI narrative",
-      "title_ar": "كيف كان ميوز ميتا مغيرًا كليًا لقصة الذكاء الاصطناعي",
-      "summary": "Meta Platforms' (META) Muse chatbot not only moved AI stocks higher this week, but it may have even led to a tonal shift in the AI narrative and how consumers are using the new technology. Futurum CEO Daniel Newman weighs in on this topic.",
-      "summary_ar": "لم يقم MUSE chatbot من Meta Platforms (META) برفع أسهم الذكاء الاصطناعي هذا الأسبوع فحسب، بل ربما أدى أيضًا إلى تحول نغمي في سرد الذكاء الاصطناعي وكيفية استخدام المستهلكين للتكنولوجيا الجديدة. الرئيس التنفيذي لشركة Futurum دانيال نيومان يدلي بدلوه في هذا الموضوع.",
-      "url": "https://finance.yahoo.com/video/metas-muse-total-game-changer-192805011.html",
-      "publisher": "Yahoo Finance Video",
-      "published": "2026-09-23 19:28:05 UT",
-      "published_ts": 1790191685,
+      "symbol": "AMD",
+      "title": "AMD's Six-Day Rally Finally Hits a Pause",
+      "title_ar": "توقف ارتفاع AMD لمدة ستة أيام أخيرًا",
+      "summary": "AMD has gained more than 180% this year and recently crossed a $1 trillion market cap.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=129eb1c49c02682e2adc557954ec9d25c9ed79229dce0c9e1f032a0d598c9a8f",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 12:20 UTC",
+      "published_ts": 1790252423,
       "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "786dcaac9c87e2293b455f1af9f065d18bd339b8",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "AMD",
+      "title": "AMD Joined Nvidia in the Trillion Dollar Club. The Run Isn’t an Accident",
+      "title_ar": "انضمت AMD إلى Nvidia في نادي تريليون دولار. الركض ليس حادثًا",
+      "summary": "AMD just crossed a threshold only one other chip company has ever reached, but the rally into that milestone raises a harder question about what the stock is actually worth from here.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=18cb38c36abd3f685d20b84c0a6c4d9e79d7e6cdf24809621daed961c4aa3b04",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 12:00 UTC",
+      "published_ts": 1790251254,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "d8e71cbb78bd8d8241f862fe767d06dd8b7438ac",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "MARKET",
+      "title": "HIFI raises $37M to expand stablecoin payments, tokenized markets",
+      "title_ar": "تجمع هيفي 37 مليون $ لتوسيع المدفوعات المستقرة بالعملات والأسواق الرمزية",
+      "summary": "HIFI CEO Zach Walsh told Cointelegraph the $37 million Series A is the company’s first priced funding round, though HIFI did not disclose its valuation.",
+      "summary_ar": "",
+      "url": "https://cointelegraph.com/news/hifi-raises-37m-to-expand-stablecoin-payments-tokenized-markets?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "publisher": "Cointelegraph",
+      "published": "2026-09-24 12:00 UTC",
+      "published_ts": 1790251200,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "a18344083e6447b02c4b69e02de04681f7b6c849",
+      "source": "finnhub:crypto"
+    },
+    {
+      "symbol": "GOOGL",
+      "title": "Tigress Raises Alphabet (GOOGL) Price Target to $485 as AI Fuels Growth. Can the Momentum Last?",
+      "title_ar": "ترفع شركة Tigress السعر المستهدف لشركة Alphabet (GOOGL) إلى 485 $ مع نمو. هل يمكن أن يستمر الزخم ؟",
+      "summary": "AI leadership is increasingly becoming a key growth engine across Alphabet Inc. (NASDAQ:GOOGL)’s core businesses. Tigress Financial analyst Ivan Feinseth echoed this sentiment on September 17, citing strong Search momentum, rising Cloud growth, and margin expansion in second-quar",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=7422b41fe575673e92c7200d3d19df7368ecb019b98f8ceb72e3898d97ce619f",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 10:29 UTC",
+      "published_ts": 1790245741,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "39d74bf8d19a67cad9247d0022f95200a31f0eb7",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "MSFT",
+      "title": "Global Digital Agency Granite Acquires Branding and Design Agency Right Hat in Latest US Expansion Move",
+      "title_ar": "الوكالة الرقمية العالمية جرانيت تستحوذ على وكالة العلامات التجارية والتصميم في أحدث خطوة توسع في الولايات المتحدة",
+      "summary": "CHICAGO & NEW YORK, September 24, 2026--Global digital agency Granite acquires branding and design agency Right Hat in latest US expansion move.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=9b4aafa562df3ccddc5e710736e17b59ad5385b42eaaf629b0b4090e709c7ad7",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 10:00 UTC",
+      "published_ts": 1790244000,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "1ac4e8e6a8cf364dab817fc232744667fcf70c7a",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "GOOGL",
+      "title": "Zacks Earnings Trends Highlights: Micron, Nvidia and Alphabet",
+      "title_ar": "أبرز اتجاهات أرباح Zacks: Micron و Nvidia و Alphabet",
+      "summary": "S&P 500 Q3 earnings are projected to rise 23.9%, with Micron, NVIDIA and Alphabet materially shaping tech-sector growth.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=50026334c801517eb95a0014e8f7a303994b2a5fab78891a8fddd59fdd8e568d",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 09:17 UTC",
+      "published_ts": 1790241420,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "2b3b88f05295ce216b2bb21b4e13a9c20a65dcd6",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "AAPL",
+      "title": "Formula 1 Business Outlook 2026: Global Expansion, Digital Innovation and Sponsorship Growth Accelerate Revenue Opportunities",
+      "title_ar": "توقعات الأعمال للفورمولا 1 2026: التوسع العالمي والابتكار الرقمي ونمو الرعاية تسريع فرص الإيرادات",
+      "summary": "Formula 1’s US and social media growth is creating opportunities in media rights, sponsorships, race hosting, ticketing and pop-culture partnerships despite event disruptions.Dublin, Sept. 24, 2026 (GLOBE NEWSWIRE) -- \"The Business of Formula 1 2026\" has been added to ResearchAnd",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=f2c0b2567cf9fc40fb21d77c3b0440b096fe77e7f09c193393d810ef9f5c57c4",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 09:12 UTC",
+      "published_ts": 1790241120,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "c31cde84e239dfcddccadd08a6569204a99d5a8a",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "MARKET",
+      "title": "Gold slips as rising oil prices, Treasury yields dent appeal - Reuters",
+      "title_ar": "الذهب ينزلق مع ارتفاع أسعار النفط، وعوائد سندات الخزانة تؤثر على الجاذبية - رويترز",
+      "summary": "Gold slips as rising oil prices, Treasury yields dent appeal  Reuters",
+      "summary_ar": "",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPenM1U09oVWJmVW8zbUtuN1ZLcWU1dGRKa1Rqdk1FU0k5QmVDSGRwcG9hR1NVVFVYOGhkSWpMdVF0aWFZMWx6TlNSWHZiajl5UWdzbWFZNmpGUW53MEhhbGgteHgtOGZGTzdlVGdWVjhWR2pMSzdJSWdCSmVTRHA4RVlCWS1tNU1NQU9QanFEQTRnNjhSSlhFQ052dEE?oc=5",
+      "publisher": "Reuters",
+      "published": "2026-09-24 02:23 UTC",
+      "published_ts": 1790216580,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "714d61eb1c0df9ecc5a3c05a65cd2d2de6c0ec32",
+      "source": "finnhub:general"
+    },
+    {
+      "symbol": "MARKET",
+      "title": "Oil extends gains on little sign of progress in US-Iran talks - reuters.com",
+      "title_ar": "النفط يوسع المكاسب مع بوادر تقدم ضئيلة في المحادثات بين الولايات المتحدة وإيران - reuters.com",
+      "summary": "Oil extends gains on little sign of progress in US-Iran talks  reuters.com",
+      "summary_ar": "",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOR1FxSEFPZkVpeHV0LS1WTURzc3lOWWM3d0dfTG1mQ0hBWmZiLWhia1FPbnUzdm5yMVhuZE1RenYyOTNqYmFqT2d5MzVtNE1IcHJCNGJ4aXU0US1Tc09OWnJINzRpQkFTWXdsczlhcE50N25wT052OUZhS21QOG9haGV4XzFTZnQ4NzNTWFlVbU1QcDRyZC0yejVxX1dabVZmWHMyMVM0dWE5RGpNWXZNVHBn?oc=5",
+      "publisher": "Reuters",
+      "published": "2026-09-24 01:17 UTC",
+      "published_ts": 1790212620,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "6e8d3adcf9c0571df877c8181547ed5135a8094d",
+      "source": "finnhub:general"
+    },
+    {
+      "symbol": "MARKET",
+      "title": "Wall Street ends down as oil prices, Treasury yields rise - Reuters",
+      "title_ar": "وول ستريت تنتهي مع ارتفاع أسعار النفط وعوائد سندات الخزانة - رويترز",
+      "summary": "Wall Street ends down as oil prices, Treasury yields rise  Reuters",
+      "summary_ar": "",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQeEU4dTJoZV9XeFR4cENDYXhRMG1Tb3E4aHFNc1RoUEpHeVJNYmtnS1RHb0lVdzg5S1BKelZiUkR4eER2bkFZc0tjcWxlRFEyODRlVlRoNlNmblFabUhsZnJwTllqbmd2RUQ5NmI0M0JVc3B3aVkwcmt0SE9vTERyLVhFRzIybV9OMU94QlF6UGdORGhJZldzTUJ6X1F2TjhTRVpLNDZWeVN6WU1hR0ZLRw?oc=5",
+      "publisher": "Reuters",
+      "published": "2026-09-23 23:20 UTC",
+      "published_ts": 1790205600,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "ee0ebe5da08e4574b58f66a4ccc007bd633bb043",
+      "source": "finnhub:general"
+    },
+    {
+      "symbol": "MARKET",
+      "title": "A rare Microsoft bear warms up to the stock. Here's what changed their mind",
+      "title_ar": "دب نادر من مايكروسوفت يرتفع إلى مستوى السهم. إليك ما غير رأيه",
+      "summary": "Stifel upgraded the software and cloud giant to buy from hold.",
+      "summary_ar": "",
+      "url": "https://www.cnbc.com/2026/09/23/a-rare-microsoft-bear-warms-up-to-the-stock-heres-what-changed-their-mind.html",
+      "publisher": "CNBC",
+      "published": "2026-09-23 19:53 UTC",
+      "published_ts": 1790193196,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "a504f9cac743fa3db1cb4684e674fb2dc7eb2803",
+      "source": "finnhub:general"
+    },
+    {
+      "symbol": "MARKET",
+      "title": "US stablecoin adoption could surge with bank-like protections: Visa survey",
+      "title_ar": "يمكن أن يرتفع اعتماد العملات المستقرة في الولايات المتحدة مع الحماية الشبيهة بالبنوك: استطلاع فيزا",
+      "summary": "The survey released by Visa posited that bank-like protections for stablecoins could increase adoption in the US as companies are preparing for the enactment of the GENIUS Act.",
+      "summary_ar": "",
+      "url": "https://cointelegraph.com/news/stablecoin-adoption-bank-level-protections-visa?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "publisher": "Cointelegraph",
+      "published": "2026-09-23 18:17 UTC",
+      "published_ts": 1790187468,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "f5250bd6cc29f52848451ffeb0838905137c48d1",
+      "source": "finnhub:crypto"
     },
     {
       "symbol": "APA",
       "title": "Is EOG Resources Stock A Buy For Its Shrinking Share Count?",
       "title_ar": "هل تقوم شركة EOG RESOURCES بالشراء بسبب عدد أسهمها المتقلص ؟",
       "summary": "EOG Resources (EOG) has gained about 25% over the past year. The company pays a growing dividend and keeps buying back stock, so each remaining share owns a little more of the business every year. Over the last three years, though, that has not made the earnings behind your share",
-      "summary_ar": "اكتسبت موارد EOG (EOG) حوالي 25 ٪ خلال العام الماضي. تدفع الشركة أرباحًا متزايدة وتستمر في إعادة شراء الأسهم، لذلك يمتلك كل سهم متبقٍ المزيد من الأعمال كل عام. على مدى السنوات الثلاث الماضية، على الرغم من أن هذا لم يجعل الأرباح وراء حصتك",
-      "url": "https://www.trefis.com/articles/616299/is-eog-resources-stock-a-buy-for-its-shrinking-share-count/2026-09-23",
-      "publisher": "Trefis",
-      "published": "2026-09-23 17:48:22 UT",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=a3ca4fa1f045104b23026ce62726acd3e99d639930665e73ce89930c2ccbf1d8",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 17:48 UTC",
       "published_ts": 1790185702,
       "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "fb48433acc983b2efba659f65ef4ec0c93d392c5",
+      "source": "finnhub"
     },
     {
-      "symbol": "META",
-      "title": "Meta's Muse raises bigger question: Can consumers trust AI with our money?",
-      "title_ar": "يثير MUSE من Meta سؤالًا أكبر: هل يمكن للمستهلكين الوثوق بالذكاء الاصطناعي بأموالنا ؟",
-      "summary": "Meta's (META) Muse is the latest AI product that consumers have adopted to help in everyday purchases, raising the question yet again if people should be comfortable with sharing their financial information with a chatbot. Today's Market Hang panel consists of Host Turney Duff, Y",
-      "summary_ar": "META (META) MUSE هو أحدث منتج للذكاء الاصطناعي اعتمده المستهلكون للمساعدة في عمليات الشراء اليومية، مما يثير السؤال مرة أخرى عما إذا كان يجب أن يكون الناس مرتاحين لمشاركة معلوماتهم المالية مع روبوت الدردشة. تتكون لوحة تعليق السوق اليوم من المضيف تيرني دوف، واي",
-      "url": "https://finance.yahoo.com/video/metas-muse-raises-bigger-consumers-173209487.html",
-      "publisher": "Yahoo Finance Video",
-      "published": "2026-09-23 17:32:09 UT",
-      "published_ts": 1790184729,
+      "symbol": "MARKET",
+      "title": "NYSE, Blockchain.com in tie-up to bring tokenized US stocks to crypto users",
+      "title_ar": "بورصة نيويورك، Blockchain.com في شراكة لجلب الأسهم الأمريكية الرمزية لمستخدمي العملات المشفرة",
+      "summary": "Blockchain.com users could gain access to tokenized US stocks and ETFs through NYSE’s planned digital trading platform under a new partnership, as bourses rush to deliver new trading.",
+      "summary_ar": "",
+      "url": "https://cointelegraph.com/news/nyse-blockchaincom-team-up-to-bring-tokenized-us-stocks-to-crypto-users?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "publisher": "Cointelegraph",
+      "published": "2026-09-23 15:56 UTC",
+      "published_ts": 1790178980,
       "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-    },
-    {
-      "symbol": "SECZ",
-      "title": "Securitize Stock Jumps 12% as Cantor Bets on a Tokenization Boom",
-      "title_ar": "توريق الأسهم يقفز بنسبة 12 ٪ حيث يراهن قائد الفرقة الموسيقيّة على طفرة التوكن",
-      "summary": "Securitize shares have surged as regulators open a path for tokenized stock trading. Cantor Fitzgerald sees more room to rise.",
-      "summary_ar": "ارتفعت أسهم Securitize حيث فتح المنظمون طريقًا لتداول الأسهم الرمزية. يرى كانتور فيتزجيرالد مساحة أكبر للارتفاع.",
-      "url": "https://www.barrons.com/articles/securitize-stock-price-cantor-tokenization-1bff8d31?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "published": "2026-09-23 16:55:00 UT",
-      "published_ts": 1790182500,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "ea4a4fac9530225d46cf328c28e3470e965a39a9",
+      "source": "finnhub:crypto"
     },
     {
       "symbol": "APA",
       "title": "Should Value Investors Buy APA (APA) Stock?",
       "title_ar": "هل يجب على مستثمري القيمة شراء أسهم APA (APA )؟",
       "summary": "Here at Zacks, our focus is on the proven Zacks Rank system, which emphasizes earnings estimates and estimate revisions to find great stocks. Nevertheless, we are always paying attention to the latest value, growth, and momentum trends to underscore strong picks.",
-      "summary_ar": "هنا في Zacks، ينصب تركيزنا على نظام Zacks Rank المثبت، والذي يؤكد على تقديرات الأرباح وتقدير المراجعات للعثور على أسهم رائعة. ومع ذلك، فإننا نولي دائمًا اهتمامًا لأحدث اتجاهات القيمة والنمو والزخم للتأكيد على الخيارات القوية.",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/value-investors-buy-apa-apa-134004346.html",
-      "publisher": "Zacks",
-      "published": "2026-09-23 13:40:04 UT",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=7101e9b4d0f120829ab415ca974af0e96acf01b64acdc507fd7d1a9ff7b62168",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 13:40 UTC",
       "published_ts": 1790170804,
       "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "99db9aa5ede774ef7b1d3189d142d1a878bffa74",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "SECZ",
+      "title": "TriSalus Life Sciences, Lakefront Biotherapeutics, Editas Medicine And Other Big Stocks Moving Higher On Wednesday",
+      "title_ar": "TriSalus Life Sciences، وLakefront Biotherapeutics، وEditas Medicine وغيرها من الأسهم الكبيرة التي تتحرك صعودًا يوم الأربعاء",
+      "summary": "U.S. stocks fell as Nasdaq dropped 100+ points, while TriSalus surged 5.8% on FDA clearance; Securitize, Lakefront and others also gained.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=2e5802cba842297d796bff6bf5332c96000c6054e89c8ad89fff63b599e27270",
+      "publisher": "Benzinga",
+      "published": "2026-09-23 10:02 UTC",
+      "published_ts": 1790157779,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "166ffc5c7882f8f52fe626b65220a6e595bba6a8",
+      "source": "finnhub"
     },
     {
       "symbol": "SECZ",
       "title": "Cantor Fitzgerald Sees Big Upside in Securitize (SECZ): Is It Time to Buy?",
       "title_ar": "يرى كانتور فيتزجيرالد جانبًا إيجابيًا كبيرًا في التوريق (SECZ): هل حان وقت الشراء ؟",
       "summary": "Securitize Corp. (NYSE:SECZ) shares jumped as investors digested favorable regulatory developments and Cantor Fitzgerald initiated coverage of the stock on September 21, giving it an Overweight rating and setting the price target at $21.20. The firm highlighted the company’s posi",
-      "summary_ar": "قفزت أسهم Securitize Corp. (NYSE: SECZ) حيث استوعب المستثمرون التطورات التنظيمية المواتية وبدأ Cantor Fitzgerald بتغطية السهم في 21، مما منحه تصنيفًا للوزن الزائد وحدد السعر المستهدف عند 21.20 $. سلطت الشركة الضوء على موقف الشركة",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/cantor-fitzgerald-sees-big-upside-052416150.html",
-      "publisher": "Insider Monkey",
-      "published": "2026-09-23 05:24:16 UT",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=fb3eb0f521f9b252fa140de52e31c29b21a550f8989b4e1bd1d90aaab702d84d",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 05:24 UTC",
       "published_ts": 1790141056,
       "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "4a058615817cfc82ef810e443ac670e3867efb8a",
+      "source": "finnhub"
     },
     {
-      "symbol": "AMZN",
-      "title": "AI Data Center Boom Faces This 'Fundamental Trade-off' With China",
-      "title_ar": "ازدهار مركز بيانات الذكاء الاصطناعي يواجه هذه \"المقايضة الأساسية\" مع الصين",
-      "summary": "Nobody's spending on data centers like the U.S., propelled by the belief that AI is an existential, winner-takes-all sprint. But America's contentious, trillion-dollar artificial intelligence infrastructure push relies on components and materials from its no. 1 rival: China. When",
-      "summary_ar": "لا أحد ينفق على مراكز البيانات مثل الولايات المتحدة، مدفوعًا بالاعتقاد بأن الذكاء الاصطناعي هو سباق وجودي يأخذ الفائز كل شيء. لكن دفعة البنية التحتية للذكاء الاصطناعي المثيرة للجدل في أمريكا والتي تبلغ قيمتها تريليون دولار تعتمد على المكونات والمواد من منافستها رقم 1: الصين.",
-      "url": "https://www.investors.com/news/ai-data-center-boom-supply-chain-china/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "published": "2026-09-24 12:52:04 UT",
-      "published_ts": 1790254324,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد"
+      "symbol": "SECZ",
+      "title": "Cantor Fitzgerald Flags 95% Upside in the Firm Putting Stocks Onchain",
+      "title_ar": "أعلام كانتور فيتزجيرالد 95 ٪ رأسا على عقب في الشركة التي تضع الأسهم على السلسلة",
+      "summary": "Cantor Fitzgerald starts Securitize stock at overweight with a $21.20 target, days after the SEC cleared tokenized stock trading.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=be2a354824123bc55b543e2fe85f5a8099d1292713db8fd3e45c32b6eea79c6a",
+      "publisher": "Yahoo",
+      "published": "2026-09-22 07:54 UTC",
+      "published_ts": 1790063682,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "6b477f54db671d1b546ca3721dc149ddef9e3483",
+      "source": "finnhub"
     },
     {
-      "symbol": "AAPL",
-      "title": "The S&P 500 has never been this concentrated in just 2 stocks",
-      "title_ar": "لم يكن مؤشر S&P 500 بهذا التركيز في سهمين فقط",
-      "summary": "Apple and Nvidia have truly become the straws that stir the stock market's drink.",
-      "summary_ar": "أصبحت Apple و Nvidia حقًا القش الذي يحرك مشروب سوق الأسهم.",
-      "url": "https://finance.yahoo.com/markets/article/the-sp-500-has-never-been-this-concentrated-in-just-2-stocks-122519280.html",
-      "publisher": "Yahoo Finance",
-      "published": "2026-09-24 12:25:19 UT",
-      "published_ts": 1790252719,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد"
+      "symbol": "SECZ",
+      "title": "Securitize (SECZ) Climbs to All-Time High on Tokenized Securities Go-Signal",
+      "title_ar": "توريق (SECZ) يصل إلى أعلى مستوى له على الإطلاق في إشارة انتقال الأوراق المالية المشفرة",
+      "summary": "Securitize Corp. (NYSE:SECZ) soared to a fresh all-time high on Monday, primarily after the Securities and Exchange Commission (SEC) green-lit the trading of tokenized securities. In intra-day trading, the stock jumped to its highest price of $13.93 before paring gains to finish ",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=3813a9a1b9c142703616cd6f1ee14b9731cfd46ef6e4072d33203b9ca0d60805",
+      "publisher": "Yahoo",
+      "published": "2026-09-22 00:45 UTC",
+      "published_ts": 1790037921,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "d9092caa3606ca1e2b88379b92e99b31c6f1ee13",
+      "source": "finnhub"
     },
     {
-      "symbol": "AAPL",
-      "title": "Here's what Wall Street thinks of Meta's new smartglass lineup and first Muse 'holdable'",
-      "title_ar": "إليك ما تعتقده وول ستريت عن تشكيلة ميتا الجديدة من النظارات الذكية وأول ملهم \"قابل للحمل\"",
-      "summary": "The day after Meta Connect.",
-      "summary_ar": "في اليوم التالي لـ Meta Connect.",
-      "url": "https://finance.yahoo.com/markets/stocks/article/heres-what-wall-street-thinks-of-metas-new-smartglass-lineup-and-first-muse-holdable-085705955.html",
-      "publisher": "Yahoo Finance",
-      "published": "2026-09-24 08:57:05 UT",
-      "published_ts": 1790240225,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد"
+      "symbol": "RRR",
+      "title": "Profits Slide At Red Rock Resorts (RRR) Even As Dividends Hold",
+      "title_ar": "تنزلق الأرباح في منتجعات ريد روك (RRR) حتى مع الاحتفاظ بتوزيعات الأرباح",
+      "summary": "On August 4, Red Rock Resorts (NASDAQ:RRR) reported second-quarter results for the period ended June 30, and nearly every headline number moved in the wrong direction. Net revenue slipped 3% to $510.3 million, net income fell 29.3% to $76.6 million, and adjusted EBITDA dropped 9.",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/profits-slide-red-rock-resorts-180949235.html",
+      "publisher": "Insider Monkey",
+      "published": "2026-09-05 18:09:49 UT",
+      "published_ts": 1788631789,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "8f1f4140304a7b994af18886c7f2d8b664b5121f",
+      "source": "yahoo"
     },
     {
-      "symbol": "AMZN",
-      "title": "Meta's Muse is an impressively capable AI agent, despite some hiccups",
-      "title_ar": "ميوز ميتا هو عامل ذكاء اصطناعي قادر بشكل مثير للإعجاب، على الرغم من بعض السقطات",
-      "summary": "Here's what it's like to use Meta's Muse AI agent.",
-      "summary_ar": "إليك ما يشبه استخدام وكيل MUSE AI من Meta.",
-      "url": "https://finance.yahoo.com/technology/article/metas-muse-is-an-impressively-capable-ai-agent-despite-some-hiccups-173310662.html",
-      "publisher": "Yahoo Finance",
-      "published": "2026-09-23 17:33:10 UT",
-      "published_ts": 1790184790,
+      "symbol": "AMD",
+      "title": "Wondering what's happening in today's S&P500  pre-market session?",
+      "title_ar": "هل تتساءل عما يحدث في جلسة ما قبل السوق لمؤشر  S&P500 اليوم ؟",
+      "summary": "The US market is yet to commence its session on Thursday, but let's get a preview of the pre-market session and explore the top S&P500 gainers and losers driving the early market movements.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=e36f17a0a336c936e7bcf62e255c87584a2afb5e2fb83f8131263752f543b5ab",
+      "publisher": "ChartMill",
+      "published": "2026-09-24 12:35 UTC",
+      "published_ts": 1790253301,
       "sentiment": "neu",
-      "sentiment_ar": "محايد"
+      "sentiment_ar": "محايد",
+      "id": "cd229c0bdaf1081e3b22f3f92b2971799f54a2b2",
+      "source": "finnhub"
     },
     {
-      "symbol": "AAPL",
-      "title": "Gary Cohn on Meta's Muse: 'I'm not comfortable giving up my personal data'",
-      "title_ar": "غاري كوهن على ميوز ميتا: \"لست مرتاحًا للتخلي عن بياناتي الشخصية\"",
-      "summary": "Not everyone is excited about Muse.",
-      "summary_ar": "ليس الجميع متحمسين لموسى.",
-      "url": "https://finance.yahoo.com/technology/article/gary-cohn-on-metas-muse-im-not-comfortable-giving-up-my-personal-data-155957321.html",
-      "publisher": "Yahoo Finance",
-      "published": "2026-09-23 15:59:57 UT",
-      "published_ts": 1790179197,
+      "symbol": "AMD",
+      "title": "AMD Just Joined the Trillion-Dollar Club. Is the Stock Still a Buy, or Is This the Top?",
+      "title_ar": "انضمت AMD للتو إلى نادي التريليون دولار. هل لا يزال السهم يشتري، أم أن هذا هو الأعلى ؟",
+      "summary": "Advanced Micro Devices, Inc. (NASDAQ:AMD) concluded the September 21 session valued more than $1 trillion for the first time, after its shares increased nearly 10% in a single day to close at $615.52. That type of headline is simple to write and read, but it is nearly useless for",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=5b84ee411e3dbf9f4fadb0405b782bd7f88fbad735b7019c2208e72f2b9334ed",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 11:40 UTC",
+      "published_ts": 1790250035,
       "sentiment": "neu",
-      "sentiment_ar": "محايد"
+      "sentiment_ar": "محايد",
+      "id": "a70fd93f7845b538d71754d5bf10f7d2bf4746ab",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "NVDA",
+      "title": "If Kevin Warsh Keeps Rates Elevated, These 2 Stocks Are Built to Handle It",
+      "title_ar": "إذا حافظ كيفن وارش على ارتفاع الأسعار، فقد تم تصميم هذين المخزونين للتعامل معها",
+      "summary": "The Federal Open Market Committee recently raised interest rates for the first time in three years.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=ea31c74d0984f412bb3504a054899413324b0732bf218cf34d87720bbcc8a19b",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 11:35 UTC",
+      "published_ts": 1790249700,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد",
+      "id": "c6696890d9f8efc00930f04673b79bb93c0359e2",
+      "source": "finnhub"
     }
   ],
   "news_excluded_negative": [
-    "AMD",
+    "AMZN",
     "AR",
     "CVX",
-    "GOOGL",
-    "MSFT",
+    "META",
     "NFLX",
-    "NVDA",
     "PCG",
     "TSLA",
     "XOM"
   ],
-  "news_note_ar": "محايد + إيجابي متوقع يدعم الارتفاع فقط — الأسهم ذات خبر سلبي تُزال من اللوحة",
+  "news_note_ar": "بث سريع · محايد/إيجابي فقط · حتى 5 عناوين جديدة كل دقيقة",
   "bot": "@Aied01_bot",
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
