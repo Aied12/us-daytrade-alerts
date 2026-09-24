@@ -447,24 +447,28 @@ def fetch_stock_news_ar(
         if translate_summary and row.get("summary"):
             summary_ar = _translate_ar(row["summary"])
         tag = row.get("sentiment") or _sentiment(row["title"], row.get("summary") or "")
-        news.append(
-            {
-                "symbol": row["symbol"],
-                "title": row["title"],
-                "title_ar": title_ar,
-                "summary": row.get("summary") or "",
-                "summary_ar": summary_ar,
-                "url": row.get("url") or f"https://finance.yahoo.com/quote/{row['symbol']}/news",
-                "publisher": row.get("publisher") or "",
-                "published": row.get("published") or "",
-                "published_ts": row.get("published_ts"),
-                "sentiment": tag,
-                "sentiment_ar": _sentiment_ar(tag),
-                "id": news_fingerprint(row["title"], row.get("symbol") or ""),
-                "source": row.get("source") or "",
-            }
-        )
+        from bot.catalyst_scan import enrich_news_item
+
+        item = {
+            "symbol": row["symbol"],
+            "title": row["title"],
+            "title_ar": title_ar,
+            "summary": row.get("summary") or "",
+            "summary_ar": summary_ar,
+            "url": row.get("url") or f"https://finance.yahoo.com/quote/{row['symbol']}/news",
+            "publisher": row.get("publisher") or "",
+            "published": row.get("published") or "",
+            "published_ts": row.get("published_ts"),
+            "sentiment": tag,
+            "sentiment_ar": _sentiment_ar(tag),
+            "id": news_fingerprint(row["title"], row.get("symbol") or ""),
+            "source": row.get("source") or "",
+        }
+        news.append(enrich_news_item(item))
         time.sleep(0.05)
+    from bot.catalyst_scan import rank_catalyst_news
+
+    news = rank_catalyst_news(news, limit=limit)
     return {
         "news": news,
         "negative_symbols": sorted(negative_symbols),

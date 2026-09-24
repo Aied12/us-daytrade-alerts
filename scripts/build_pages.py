@@ -28,6 +28,7 @@ from bot.reports import build_full_pack
 from bot.risk import plan_trade, risk_banner
 from bot.signals import Action
 from bot.smart_signals import enrich_smart_signal
+from bot.catalyst_scan import build_momentum_scanner, enrich_news_item, rank_catalyst_news
 
 NY = ZoneInfo("America/New_York")
 
@@ -311,7 +312,7 @@ def main() -> None:
             news_syms.append(str(g["symbol"]).upper())
     for s in settings.watchlist or []:
         news_syms.append(str(s).upper())
-    news_syms = list(dict.fromkeys(news_syms))[:16]
+    news_syms = list(dict.fromkeys(news_syms))[:22]
     try:
         news_pack = fetch_stock_news_ar(
             news_syms,
@@ -332,6 +333,25 @@ def main() -> None:
         gainers = [g for g in (gainers or []) if str(g.get("symbol") or "").upper() not in bad_news]
         movers = [s for s in movers if s.symbol.upper() not in bad_news]
         news_ar = [n for n in news_ar if str(n.get("symbol") or "").upper() not in bad_news]
+
+    # StockTitan-style: enrich + rank catalyst feed, then Argus-like momentum scanner
+    chg_by = {s.symbol.upper(): float(s.change_pct) for s in snaps}
+    for g in gainers or []:
+        sym = str(g.get("symbol") or "").upper()
+        if sym and sym not in chg_by:
+            chg_by[sym] = float(g.get("change_pct") or 0)
+    news_ar = [
+        enrich_news_item(n, change_pct=chg_by.get(str(n.get("symbol") or "").upper()))
+        for n in news_ar
+    ]
+    news_ar = rank_catalyst_news(news_ar, limit=30)
+    momentum = build_momentum_scanner(
+        snaps=snaps,
+        gainers=gainers,
+        news=news_ar,
+        phase=phase,
+        limit=12,
+    )
 
     from bot.gainers import session_label_ar
 
@@ -372,8 +392,10 @@ def main() -> None:
         "session": _session_countdown(),
         "sectors": _sector_board(snaps),
         "style": _style_board(snaps),
+        "momentum_scanner": momentum,
+        "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
         "opportunities": opportunities,
-        "opps_note_ar": "يُعرض الزخم الحي مع سيولة بالدولار ووتيرة الحجم حسب وقت الجلسة — الممتد يُوسم «انتهت» دون إخفاء",
+        "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · لا مطاردة الممتد",
         "opps_rejected_slow": rejected_slow[:20],
         "gainers": gainers,
         "gainers_min_price": min_px,
@@ -389,11 +411,12 @@ def main() -> None:
         ],
         "news": news_ar,
         "news_excluded_negative": sorted(bad_news),
-        "news_note_ar": "أخبار الموقع فقط — محايد/إيجابي · تتحدّث كل دقيقة",
+        "news_note_ar": "بث محفزات: أخبار الشركات + تأثير 1–5 + وسم (FDA/أرباح/شراكة…) — بدون إشاعات",
+        "scan_mode_ar": "مسح StockTitan-style: محفز رسمي ← تأثير ← زخم سعري مربوط بالخبر",
         "bot": "@Aied01_bot",
         "channel": "@aied01",
         "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
-        "reminder": "لا تدخل إذا وصلت حد الخسارة اليومي",
+        "reminder": "تداول المحفز لا المطاردة — راجع المصدر قبل الدخول",
     }
 
     for d in out_dirs:
