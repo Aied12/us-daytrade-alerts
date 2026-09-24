@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:31:22.240256+00:00",
-  "generated_ts": 1790256682,
-  "generated_local": "2026-09-24 16:31 +03",
+  "generated_at": "2026-09-24T13:32:14.886295+00:00",
+  "generated_ts": 1790256734,
+  "generated_local": "2026-09-24 16:32 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:31:22.240108+00:00",
+    "updated_at": "2026-09-24T13:32:14.886138+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,39 +23,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.51,
+    "avg_change_pct": -0.45,
     "details": {
       "SPY": {
-        "last": 764.02,
-        "change_pct": -0.49,
-        "rsi": 44.0
+        "last": 764.43,
+        "change_pct": -0.44,
+        "rsi": 44.5
       },
       "QQQ": {
-        "last": 735.08,
-        "change_pct": -0.83,
-        "rsi": 60.6
+        "last": 735.6,
+        "change_pct": -0.76,
+        "rsi": 61.2
       },
       "IWM": {
-        "last": 281.34,
-        "change_pct": -0.21,
-        "rsi": 24.8
+        "last": 281.58,
+        "change_pct": -0.14,
+        "rsi": 25.4
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.49,
-        "rsi": 44.0
+        "change_pct": -0.44,
+        "rsi": 44.5
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.83,
-        "rsi": 60.6
+        "change_pct": -0.76,
+        "rsi": 61.2
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.21,
-        "rsi": 24.8
+        "change_pct": -0.14,
+        "rsi": 25.4
       }
     ],
     "no_trade_today": false,
@@ -68,8 +68,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 23317,
-    "ny_time": "09:31:22",
+    "seconds_left": 23265,
+    "ny_time": "09:32:14",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,35 +77,35 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.34
+        "change_pct": 0.74
+      },
+      {
+        "name": "Financials",
+        "change_pct": 0.64
       },
       {
         "name": "Communication",
-        "change_pct": -0.0
-      },
-      {
-        "name": "Consumer",
-        "change_pct": -0.42
+        "change_pct": 0.41
       }
     ],
     "weakest": [
       {
-        "name": "Financials",
-        "change_pct": -0.83
+        "name": "Industrial",
+        "change_pct": -0.74
       },
       {
         "name": "Technology",
-        "change_pct": -0.73
+        "change_pct": -0.5
       },
       {
-        "name": "Industrial",
-        "change_pct": -0.66
+        "name": "Consumer",
+        "change_pct": -0.33
       }
     ]
   },
   "style": {
-    "growth_avg": -0.68,
-    "value_avg": -0.17,
+    "growth_avg": -0.14,
+    "value_avg": -0.08,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -113,10 +113,13 @@
   "opportunities": [],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
-    "XOM:تداول بطيء اليوم ($16M · RVOL×0.01)",
-    "DIS:زخم ضعيف (-0.32% < 0.85%)",
-    "CVX:تداول بطيء اليوم ($10M · RVOL×0.00)",
-    "NVDA:زخم ضعيف (-1.46% < 0.85%)"
+    "JPM:زخم ضعيف (+0.26% < 0.85%)",
+    "BAC:زخم ضعيف (+0.59% < 0.85%)",
+    "CRM:مدى اليوم ضيق (0.63%)",
+    "DIS:زخم ضعيف (+0.57% < 0.85%)",
+    "COIN:درجة سيولة ضعيفة",
+    "NVDA:زخم ضعيف (-1.22% < 0.85%)",
+    "META:درجة سيولة ضعيفة"
   ],
   "gainers": [
     {
@@ -138,58 +141,49 @@
   "gainers_session_ar": "الجلسة الرسمية الآن",
   "movers": [
     {
-      "symbol": "IONQ",
-      "change_pct": 4.44,
-      "last": 42.55,
-      "rvol": 0.16,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "145.3M$"
-    },
-    {
-      "symbol": "AMD",
-      "change_pct": -2.33,
-      "last": 600.27,
-      "rvol": 0.09,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "1.1B$"
-    },
-    {
       "symbol": "AVGO",
-      "change_pct": -1.66,
-      "last": 349.1,
-      "rvol": 0.06,
+      "change_pct": -1.75,
+      "last": 348.77,
+      "rvol": 0.07,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "603.2M$"
+      "dollar_volume_label": "646.6M$"
     },
     {
-      "symbol": "CVX",
-      "change_pct": 1.55,
-      "last": 205.55,
-      "rvol": 0.0,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "9.7M$"
-    },
-    {
-      "symbol": "NVDA",
-      "change_pct": -1.46,
-      "last": 222.22,
-      "rvol": 0.03,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "892.7M$"
-    },
-    {
-      "symbol": "COIN",
-      "change_pct": -1.45,
-      "last": 198.16,
+      "symbol": "MSFT",
+      "change_pct": -1.64,
+      "last": 492.37,
       "rvol": 0.04,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "84.2M$"
+      "dollar_volume_label": "434.1M$"
+    },
+    {
+      "symbol": "AMD",
+      "change_pct": -1.29,
+      "last": 606.66,
+      "rvol": 0.09,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "1.2B$"
+    },
+    {
+      "symbol": "NVDA",
+      "change_pct": -1.22,
+      "last": 222.75,
+      "rvol": 0.04,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "962.7M$"
+    },
+    {
+      "symbol": "PLTR",
+      "change_pct": -1.12,
+      "last": 189.64,
+      "rvol": 0.06,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "292.1M$"
     }
   ],
   "news": [
@@ -356,6 +350,21 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "2b3b88f05295ce216b2bb21b4e13a9c20a65dcd6",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "AAPL",
+      "title": "Meta Platforms' Turn To Shine: History Suggests 40% Upside",
+      "title_ar": "تحول منصات ميتا للتألق: التاريخ يشير إلى 40 ٪ رأسا على عقب",
+      "summary": "Meta Platforms could rally 40%+ in 12 months as AI infrastructure spending boosts monetization, trading under 24x earnings. Click for more on META stock.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=a5aeac64cda435d6b95c8f310fad45f188accfae462197f9fb64a2951b552ccb",
+      "publisher": "SeekingAlpha",
+      "published": "2026-09-24 09:15 UTC",
+      "published_ts": 1790241300,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "f0440bde966e943a2a77c5d21d4d9d12c5ab6406",
       "source": "finnhub"
     },
     {
@@ -537,21 +546,6 @@
       "sentiment_ar": "محايد",
       "id": "cd229c0bdaf1081e3b22f3f92b2971799f54a2b2",
       "source": "finnhub"
-    },
-    {
-      "symbol": "MARKET",
-      "title": "EU's financial regulator to make AI and tokenization a supervisory priority in 2027",
-      "title_ar": "الهيئة التنظيمية المالية في الاتحاد الأوروبي لجعل الذكاء الاصطناعي والرمز أولوية إشرافية في عام 2027",
-      "summary": "",
-      "summary_ar": "",
-      "url": "https://www.coindesk.com/policy/2026/09/24/eu-s-financial-regulator-to-make-ai-and-tokenization-a-supervisory-priority-in-2027",
-      "publisher": "CoinDesk",
-      "published": "2026-09-24 12:26 UTC",
-      "published_ts": 1790252803,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد",
-      "id": "bf8ae6d53bbc0313b6c24f0df06ab765d898861b",
-      "source": "finnhub:crypto"
     }
   ],
   "news_excluded_negative": [
