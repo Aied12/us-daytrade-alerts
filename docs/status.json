@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:12:16.703452+00:00",
-  "generated_ts": 1790255536,
-  "generated_local": "2026-09-24 16:12 +03",
+  "generated_at": "2026-09-24T13:13:19.921407+00:00",
+  "generated_ts": 1790255599,
+  "generated_local": "2026-09-24 16:13 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:12:16.703345+00:00",
+    "updated_at": "2026-09-24T13:13:19.921275+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,35 +26,35 @@
     "avg_change_pct": -0.52,
     "details": {
       "SPY": {
-        "last": 764.56,
-        "change_pct": -0.42,
+        "last": 764.44,
+        "change_pct": -0.44,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 735.21,
-        "change_pct": -0.81,
+        "last": 735.03,
+        "change_pct": -0.83,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 281.02,
-        "change_pct": -0.32,
+        "last": 281.1215,
+        "change_pct": -0.28,
         "rsi": 29.0
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.42,
+        "change_pct": -0.44,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.81,
+        "change_pct": -0.83,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.32,
+        "change_pct": -0.28,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 1063,
-    "ny_time": "09:12:16",
+    "seconds_left": 1000,
+    "ny_time": "09:13:19",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,31 +81,31 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.27
+        "change_pct": 0.24
       },
       {
         "name": "Financials",
-        "change_pct": -0.14
+        "change_pct": -0.19
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -0.79
-      },
-      {
-        "name": "Industrial",
-        "change_pct": -0.32
+        "change_pct": -0.81
       },
       {
         "name": "Consumer",
-        "change_pct": -0.26
+        "change_pct": -0.27
+      },
+      {
+        "name": "Industrial",
+        "change_pct": -0.22
       }
     ]
   },
   "style": {
-    "growth_avg": -0.78,
-    "value_avg": 0.12,
+    "growth_avg": -0.8,
+    "value_avg": 0.11,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -125,21 +125,21 @@
         "RSI تشبع شرائي"
       ],
       "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم غير طبيعي صاعد: حجم ×2.5 مع صعود | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقاومة≈$14.11 | تقلّب عالي: ATR% 8.4",
-      "entry": 14.8,
+      "entry": 14.79,
       "stop": 6.17,
-      "target": 30.33,
+      "target": 30.31,
       "shares": 13,
-      "risk_sar": 420.71,
+      "risk_sar": 420.22,
       "allowed": true,
-      "change_pct": 3.06,
-      "last": 14.8,
+      "change_pct": 3.02,
+      "last": 14.79,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 2.52,
         "volume": 9172100.0,
         "avg_volume_20": 3636165.0,
-        "dollar_volume": 135746162.79,
-        "avg_dollar_volume": 53814878.38,
+        "dollar_volume": 135692047.4,
+        "avg_dollar_volume": 53793425.01,
         "dollar_volume_label": "135.7M$",
         "avg_dollar_volume_label": "53.8M$",
         "grade": "strong",
@@ -150,10 +150,10 @@
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 8.39,
-      "flow_score": 19.57,
+      "flow_score": 19.31,
       "flow_ok": true,
       "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ",
-      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.8%20دخول%2014.8%20وقف%206.17%20هدف%2030.33%0Aسيولة%20قوي%20RVOL%20x2.52%20زخم%20+3.06%"
+      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.79%20دخول%2014.79%20وقف%206.17%20هدف%2030.31%0Aسيولة%20قوي%20RVOL%20x2.52%20زخم%20+3.02%"
     },
     {
       "symbol": "APA",
@@ -247,20 +247,20 @@
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
     "UBER:زخم ضعيف (+0.12% < 0.55%)",
-    "BAC:زخم ضعيف (+0.35% < 0.55%)",
+    "BAC:زخم ضعيف (+0.27% < 0.55%)",
     "DIS:زخم ضعيف (+0.04% < 0.55%)"
   ],
   "gainers": [
     {
       "symbol": "SECZ",
       "name": "Securitize Corp.",
-      "last": 14.8,
-      "change_pct": 3.09,
+      "last": 14.79,
+      "change_pct": 3.02,
       "ref": 14.36,
       "rth_close": 14.36,
       "volume": 9169868.0,
-      "dollar_volume": 135714046.4,
-      "dollar_volume_label": "135.7M$",
+      "dollar_volume": 135622347.72,
+      "dollar_volume_label": "135.6M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ"
@@ -299,8 +299,8 @@
   "movers": [
     {
       "symbol": "SECZ",
-      "change_pct": 3.06,
-      "last": 14.8,
+      "change_pct": 3.02,
+      "last": 14.79,
       "rvol": 2.52,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -308,8 +308,8 @@
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.33,
-      "last": 600.32,
+      "change_pct": -2.43,
+      "last": 599.68,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -326,8 +326,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.41,
-      "last": 189.09,
+      "change_pct": -1.46,
+      "last": 188.99,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -335,8 +335,8 @@
     },
     {
       "symbol": "NVDA",
-      "change_pct": -1.13,
-      "last": 222.96,
+      "change_pct": -1.18,
+      "last": 222.85,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -344,8 +344,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.1,
-      "last": 351.07,
+      "change_pct": -1.11,
+      "last": 351.05,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
