@@ -336,7 +336,11 @@
         </div>
         <div class="calc-field">
           <label for="calcCapital">رأس المال (ر.س)</label>
-          <input id="calcCapital" type="number" inputmode="decimal" step="1" min="0" placeholder="45000" />
+          <input id="calcCapital" type="number" inputmode="decimal" step="1" min="0" placeholder="1800" />
+        </div>
+        <div class="calc-field">
+          <label for="calcFx">سعر الصرف (ر.س لكل $1)</label>
+          <input id="calcFx" type="number" inputmode="decimal" step="0.01" min="0.1" value="3.75" />
         </div>
         <div class="calc-field">
           <label for="calcRiskPct">نسبة المخاطرة المقبولة %</label>
@@ -375,14 +379,19 @@
 
       <div class="calc-size" id="calcSizeBox">
         <div class="muted">حجم الصفقة (Position Sizing)</div>
+        <div class="muted" id="calcFxHint" style="margin-top:4px;font-size:.82rem"></div>
         <div class="big" id="calcOutShares">— سهم</div>
         <div class="row" style="margin:6px 0 0">
-          <span class="muted">القيمة الإجمالية</span>
+          <span class="muted">القيمة الإجمالية (تكلفة الشراء)</span>
           <b id="calcOutNotional">—</b>
         </div>
         <div class="row" style="margin:4px 0 0">
           <span class="muted">المخاطرة النقدية ≈</span>
           <b id="calcOutRiskCash">—</b>
+        </div>
+        <div class="row" style="margin:4px 0 0">
+          <span class="muted">أقصى أسهم برأس المال</span>
+          <b id="calcOutMaxShares">—</b>
         </div>
         <div id="calcWarnings"></div>
       </div>
@@ -496,6 +505,14 @@
       if(!Number.isFinite(v)) return '—';
       return v.toLocaleString('ar-SA',{maximumFractionDigits:0})+' ر.س';
     }
+    function calcFxRate(){
+      const el=document.getElementById('calcFx');
+      const typed=el ? Number(el.value) : NaN;
+      if(Number.isFinite(typed) && typed>0) return typed;
+      const fromData=Number(DATA && DATA.usd_sar_rate);
+      if(Number.isFinite(fromData) && fromData>0) return fromData;
+      return 3.75;
+    }
     function strategyStopDefault(st){
       return st==='momentum' ? 1.0 : 1.5;
     }
@@ -577,8 +594,9 @@
     }
     function runStrategyCalc(){
       const price=Number((document.getElementById('calcPrice')||{}).value);
-      const capital=Number((document.getElementById('calcCapital')||{}).value);
+      const capitalSar=Number((document.getElementById('calcCapital')||{}).value);
       const riskPct=Number((document.getElementById('calcRiskPct')||{}).value);
+      const fx=calcFxRate();
       const st=(document.getElementById('calcStrategy')||{}).value||'catalyst';
       let stopPct=Number((document.getElementById('calcStopPct')||{}).value);
       const brRaw=(document.getElementById('calcBreakout')||{}).value;
@@ -599,6 +617,8 @@
       const outSh=document.getElementById('calcOutShares');
       const outN=document.getElementById('calcOutNotional');
       const outR=document.getElementById('calcOutRiskCash');
+      const outMax=document.getElementById('calcOutMaxShares');
+      const fxHint=document.getElementById('calcFxHint');
       const warnBox=document.getElementById('calcWarnings');
       syncCalcSectorTip();
 
@@ -610,41 +630,59 @@
         if(outSh) outSh.textContent='— سهم';
         if(outN) outN.textContent='—';
         if(outR) outR.textContent='—';
+        if(outMax) outMax.textContent='—';
+        if(fxHint) fxHint.textContent='';
         if(warnBox) warnBox.innerHTML='';
         return;
       }
       const stop=entry*(1 - stopPct/100);
-      const riskPerShare=entry-stop;
-      const t1=entry + riskPerShare*r1;
-      const t2=entry + riskPerShare*r2;
+      const riskPerShareUsd=entry-stop;
+      const t1=entry + riskPerShareUsd*r1;
+      const t2=entry + riskPerShareUsd*r2;
       if(outE) outE.textContent='$'+money2(entry);
       if(outS) outS.textContent='$'+money2(stop)+` (−${stopPct}%)`;
       if(outT1) outT1.textContent='$'+money2(t1)+` (1:${r1})`;
       if(outT2) outT2.textContent='$'+money2(t2)+` (1:${r2})`;
 
+      // رأس المال بالريال → دولار، ثم الحسبة كلها بالدولار (سعر السهم دولار)
+      const capitalUsd=(Number.isFinite(capitalSar) && capitalSar>0 && fx>0) ? (capitalSar / fx) : NaN;
+      const maxByCapital=Number.isFinite(capitalUsd) && capitalUsd>0 ? Math.floor(capitalUsd / entry) : 0;
       let shares=0;
-      let notional=0;
-      let riskCash=0;
-      if(Number.isFinite(capital) && capital>0 && Number.isFinite(riskPct) && riskPct>0 && riskPerShare>0){
-        const riskBudget=capital*(riskPct/100);
-        shares=Math.floor(riskBudget / riskPerShare);
-        notional=shares*entry;
-        riskCash=shares*riskPerShare;
+      let notionalUsd=0;
+      let riskCashUsd=0;
+      let riskBudgetUsd=NaN;
+      if(Number.isFinite(capitalUsd) && capitalUsd>0 && Number.isFinite(riskPct) && riskPct>0 && riskPerShareUsd>0){
+        riskBudgetUsd=capitalUsd*(riskPct/100);
+        const byRisk=Math.floor(riskBudgetUsd / riskPerShareUsd);
+        // لا تتجاوز رأس المال الفعلي
+        shares=Math.max(0, Math.min(byRisk, maxByCapital));
+        notionalUsd=shares*entry;
+        riskCashUsd=shares*riskPerShareUsd;
+      }
+      if(fxHint && Number.isFinite(capitalUsd)){
+        fxHint.textContent=`تحويل رأس المال: ${moneySar(capitalSar)} ÷ ${fx} = ≈ $${money2(capitalUsd)} · ميزانية المخاطرة ≈ $${money2(riskBudgetUsd)} (${riskPct}%)`;
+      } else if(fxHint){
+        fxHint.textContent='';
       }
       if(outSh) outSh.textContent=`${shares.toLocaleString('ar-SA')} سهم`;
-      if(outN) outN.textContent= moneySar(notional) + (entry?` · ≈ $${money2(notional)}`:'');
-      if(outR) outR.textContent=moneySar(riskCash);
+      if(outN) outN.textContent= `$${money2(notionalUsd)} · ≈ ${moneySar(notionalUsd*fx)}`;
+      if(outR) outR.textContent= `$${money2(riskCashUsd)} · ≈ ${moneySar(riskCashUsd*fx)}`;
+      if(outMax) outMax.textContent= `${maxByCapital.toLocaleString('ar-SA')} سهم (لو دخلت بكامل رأس المال)`;
 
       let warns='';
-      if(shares>0 && Number.isFinite(capital) && capital>0){
-        if(notional > capital){
-          warns += `<div class="calc-warn">⚠️ حجم الصفقة المحسوب أكبر من رأس المال - قلل نسبة المخاطرة أو المسافة للوقف</div>`;
-        } else if(notional >= capital * 0.999){
-          warns += `<div class="calc-warn">⚠️ هذا يعني الدخول بكامل رأس المال بصفقة واحدة - غير موصى به، فكر بتوزيع الصفقات</div>`;
+      if(shares>0 && Number.isFinite(capitalUsd) && capitalUsd>0){
+        if(notionalUsd > capitalUsd + 0.01){
+          warns += `<div class="calc-warn">⚠️ تكلفة الصفقة أكبر من رأس المال بالدولار — قلل النسبة أو الوقف</div>`;
+        } else if(notionalUsd >= capitalUsd * 0.95){
+          warns += `<div class="calc-warn">⚠️ الصفقة تستخدم معظم/كامل رأس المال — وزّع المخاطر إن أمكن</div>`;
         }
       }
-      if(shares<=0 && Number.isFinite(capital) && capital>0){
-        warns += `<div class="calc-tip">لا يمكن شراء سهم واحد ضمن المخاطرة الحالية — زد المخاطرة % أو قرّب الوقف أو اختر سهماً أرخص</div>`;
+      if(shares<=0 && Number.isFinite(capitalUsd) && capitalUsd>0){
+        if(maxByCapital<=0){
+          warns += `<div class="calc-tip">رأس المال بالدولار (≈ $${money2(capitalUsd)}) لا يكفي لشراء سهم واحد بسعر $${money2(entry)}</div>`;
+        } else {
+          warns += `<div class="calc-tip">ضمن نسبة المخاطرة ${riskPct}% لا يكفي لسهم واحد — زد المخاطرة % أو قرّب الوقف أو اختر سهماً أرخص (أقصى شراء بكامل المال: ${maxByCapital} سهم)</div>`;
+        }
       }
       if(warnBox) warnBox.innerHTML=warns;
     }

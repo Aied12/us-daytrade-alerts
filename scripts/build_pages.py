@@ -388,6 +388,7 @@ def main() -> None:
         "trading_day": is_trading_day(),
         "holiday_note": holiday_note(),
         "capital_sar": settings.capital_sar,
+        "usd_sar_rate": settings.usd_sar_rate,
         "daily_loss_limit_sar": settings.daily_loss_budget_sar,
         "risk_banner": risk_banner(settings),
         "market": {
