@@ -852,7 +852,7 @@
           const chgTxt=chg==null?'…':((chg>=0?'+':'')+chg.toFixed(2)+'%');
           return `<div class="m" data-tape="${esc(s)}">
             <div class="row"><b>${esc(s)}</b><span class="${cls}" data-live-chg="${esc(s)}">${chgTxt}</span></div>
-            <div class="live-price" style="font-size:1.15rem">$<span data-live-px="${esc(s)}">${last}</span></div>
+            <div class="live-price" style="font-size:1.15rem">$<span data-live-px="${esc(s)}">${last}</span><span class="moving-badge" data-moving="${esc(s)}"><span class="dot"></span>يتحرك</span></div>
           </div>`;
         }).join('') || '<div class="empty">لا أسهم</div>';
         box.dataset.built='1';

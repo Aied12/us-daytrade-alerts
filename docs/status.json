@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:18:15.642448+00:00",
-  "generated_ts": 1790255895,
-  "generated_local": "2026-09-24 16:18 +03",
+  "generated_at": "2026-09-24T13:19:24.210692+00:00",
+  "generated_ts": 1790255964,
+  "generated_local": "2026-09-24 16:19 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:18:15.642318+00:00",
+    "updated_at": "2026-09-24T13:19:24.210538+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,13 +26,13 @@
     "avg_change_pct": -0.48,
     "details": {
       "SPY": {
-        "last": 764.73,
-        "change_pct": -0.4,
+        "last": 764.64,
+        "change_pct": -0.41,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 735.2212,
-        "change_pct": -0.81,
+        "last": 735.27,
+        "change_pct": -0.8,
         "rsi": 68.9
       },
       "IWM": {
@@ -44,12 +44,12 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.4,
+        "change_pct": -0.41,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.81,
+        "change_pct": -0.8,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 704,
-    "ny_time": "09:18:15",
+    "seconds_left": 635,
+    "ny_time": "09:19:24",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,25 +77,25 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 0.95
+        "change_pct": 0.96
       },
       {
         "name": "Communication",
-        "change_pct": 0.19
+        "change_pct": 0.23
       },
       {
         "name": "Financials",
-        "change_pct": -0.06
+        "change_pct": -0.14
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -0.81
+        "change_pct": -0.76
       },
       {
         "name": "Consumer",
-        "change_pct": -0.25
+        "change_pct": -0.24
       },
       {
         "name": "Industrial",
@@ -104,8 +104,8 @@
     ]
   },
   "style": {
-    "growth_avg": -0.77,
-    "value_avg": 0.12,
+    "growth_avg": -0.71,
+    "value_avg": 0.1,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -116,44 +116,44 @@
       "action": "فكّر في شراء قصير المدى",
       "action_key": "CONSIDER_LONG",
       "side": "long",
-      "score_100": 81,
+      "score_100": 97,
       "urgent": true,
       "strategies": [
         "ارتداد لملء فجوة هابطة",
         "ترتيب متوسطات صاعد",
         "حجم غير طبيعي صاعد",
-        "RSI تشبع شرائي"
+        "كسر قمة 20 يوم"
       ],
-      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم غير طبيعي صاعد: حجم ×2.5 مع صعود | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقاومة≈$14.11 | تقلّب عالي: ATR% 8.4",
-      "entry": 14.79,
+      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم غير طبيعي صاعد: حجم ×2.5 مع صعود | كسر قمة 20 يوم: قرب/فوق قمة 20ي $14.87 | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقا",
+      "entry": 14.85,
       "stop": 6.17,
-      "target": 30.31,
+      "target": 30.47,
       "shares": 13,
-      "risk_sar": 420.22,
+      "risk_sar": 423.15,
       "allowed": true,
-      "change_pct": 2.99,
-      "last": 14.79,
+      "change_pct": 3.41,
+      "last": 14.85,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 2.52,
         "volume": 9172100.0,
         "avg_volume_20": 3636165.0,
-        "dollar_volume": 135655359.0,
-        "avg_dollar_volume": 53778880.35,
-        "dollar_volume_label": "135.7M$",
-        "avg_dollar_volume_label": "53.8M$",
+        "dollar_volume": 136205685.0,
+        "avg_dollar_volume": 53997050.25,
+        "dollar_volume_label": "136.2M$",
+        "avg_dollar_volume_label": "54.0M$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×2.5 · اليوم 135.7M$ · متوسط 53.8M$"
+        "label": "RVOL ×2.5 · اليوم 136.2M$ · متوسط 54.0M$"
       },
       "rvol": 2.52,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 8.39,
-      "flow_score": 19.12,
+      "flow_score": 21.84,
       "flow_ok": true,
       "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ",
-      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.79%20دخول%2014.79%20وقف%206.17%20هدف%2030.31%0Aسيولة%20قوي%20RVOL%20x2.52%20زخم%20+2.99%"
+      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.85%20دخول%2014.85%20وقف%206.17%20هدف%2030.47%0Aسيولة%20قوي%20RVOL%20x2.52%20زخم%20+3.41%"
     },
     {
       "symbol": "APA",
@@ -242,25 +242,69 @@
       "flow_ok": true,
       "tv_url": "https://www.tradingview.com/chart/?symbol=RRR",
       "tg_share": "https://t.me/share/url?url=&text=RRR%20فكّر في شراء قصير المدى%0Aالآن%2051.3%20دخول%2051.3%20وقف%2047.78%20هدف%2060.1%0Aسيولة%20قوي%20RVOL%20x2.0%20زخم%20+0.79%"
+    },
+    {
+      "symbol": "DOCU",
+      "action": "فكّر في شراء قصير المدى",
+      "action_key": "CONSIDER_LONG",
+      "side": "long",
+      "score_100": 78,
+      "urgent": true,
+      "strategies": [
+        "ارتداد لملء فجوة هابطة",
+        "ترتيب متوسطات صاعد",
+        "RSI متوازن",
+        "شمعة: ابتلاع صاعد"
+      ],
+      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.9% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 62 | شمعة: ابتلاع صاعد: ابتلاع صاعد | تقلّب عالي: ATR% 4.2",
+      "entry": 70.0,
+      "stop": 59.85,
+      "target": 88.27,
+      "shares": 11,
+      "risk_sar": 418.69,
+      "allowed": true,
+      "change_pct": 0.73,
+      "last": 70.0,
+      "session_phase": "pre",
+      "liquidity": {
+        "rvol": 0.87,
+        "volume": 3403000.0,
+        "avg_volume_20": 3902140.0,
+        "dollar_volume": 238210000.0,
+        "avg_dollar_volume": 273149800.0,
+        "dollar_volume_label": "238.2M$",
+        "avg_dollar_volume_label": "273.1M$",
+        "grade": "medium",
+        "grade_ar": "متوسط",
+        "label": "RVOL ×0.9 · اليوم 238.2M$ · متوسط 273.1M$"
+      },
+      "rvol": 0.87,
+      "liq_grade": "medium",
+      "liq_grade_ar": "متوسط",
+      "atr_pct": 4.25,
+      "flow_score": 2.07,
+      "flow_ok": true,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=DOCU",
+      "tg_share": "https://t.me/share/url?url=&text=DOCU%20فكّر في شراء قصير المدى%0Aالآن%2070.0%20دخول%2070.0%20وقف%2059.85%20هدف%2088.27%0Aسيولة%20متوسط%20RVOL%20x0.87%20زخم%20+0.73%"
     }
   ],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
     "UBER:زخم ضعيف (+0.20% < 0.55%)",
-    "BAC:زخم ضعيف (+0.44% < 0.55%)",
-    "DIS:زخم ضعيف (+0.04% < 0.55%)"
+    "BAC:زخم ضعيف (+0.14% < 0.55%)",
+    "DIS:زخم ضعيف (+0.02% < 0.55%)"
   ],
   "gainers": [
     {
       "symbol": "SECZ",
       "name": "Securitize Corp.",
-      "last": 14.8,
-      "change_pct": 3.06,
+      "last": 14.85,
+      "change_pct": 3.41,
       "ref": 14.36,
       "rth_close": 14.36,
       "volume": 9169868.0,
-      "dollar_volume": 135714046.4,
-      "dollar_volume_label": "135.7M$",
+      "dollar_volume": 136172539.8,
+      "dollar_volume_label": "136.2M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ"
@@ -268,13 +312,13 @@
     {
       "symbol": "APA",
       "name": "APA Corporation",
-      "last": 44.49,
-      "change_pct": 1.81,
+      "last": 44.53,
+      "change_pct": 1.9,
       "ref": 43.7,
       "rth_close": 43.7,
       "volume": 5586877.0,
-      "dollar_volume": 248560157.73,
-      "dollar_volume_label": "248.6M$",
+      "dollar_volume": 248783632.81,
+      "dollar_volume_label": "248.8M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=APA"
@@ -292,6 +336,20 @@
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=RRR"
+    },
+    {
+      "symbol": "DOCU",
+      "name": "DocuSign, Inc.",
+      "last": 70.0,
+      "change_pct": 0.73,
+      "ref": 69.49,
+      "rth_close": 69.49,
+      "volume": 3335549.0,
+      "dollar_volume": 233488430.0,
+      "dollar_volume_label": "233.5M$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=DOCU"
     }
   ],
   "gainers_min_price": 5.0,
@@ -299,12 +357,12 @@
   "movers": [
     {
       "symbol": "SECZ",
-      "change_pct": 2.99,
-      "last": 14.79,
+      "change_pct": 3.41,
+      "last": 14.85,
       "rvol": 2.52,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "135.7M$"
+      "dollar_volume_label": "136.2M$"
     },
     {
       "symbol": "AMD",
@@ -326,8 +384,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.41,
-      "last": 189.09,
+      "change_pct": -1.45,
+      "last": 189.0,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -344,8 +402,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.05,
-      "last": 351.25,
+      "change_pct": -1.06,
+      "last": 351.22,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -609,6 +667,21 @@
       "source": "finnhub"
     },
     {
+      "symbol": "DOCU",
+      "title": "1 Software Stock to Keep an Eye On and 2 We Ignore",
+      "title_ar": "1 مخزون برمجيات يجب مراقبته و2 نتجاهله",
+      "summary": "Software is rapidly reducing operating expenses for businesses. This secular theme has materialized in superior earnings growth and stock price performance for most SaaS companies, and over the last six months, the industry’s 39.7% return has topped the S&P 500 by 21.7 percentage",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=255a0c34a77911a3a9e462c1a13fb0e0f859ecc760833f5de6a4b4f9f27ed38d",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 07:57 UTC",
+      "published_ts": 1790150222,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "e765550922c099a041dc4a13ba7baded8133af21",
+      "source": "finnhub"
+    },
+    {
       "symbol": "SECZ",
       "title": "Cantor Fitzgerald Sees Big Upside in Securitize (SECZ): Is It Time to Buy?",
       "title_ar": "يرى كانتور فيتزجيرالد جانبًا إيجابيًا كبيرًا في التوريق (SECZ): هل حان وقت الشراء ؟",
@@ -684,42 +757,27 @@
       "source": "finnhub"
     },
     {
-      "symbol": "AMD",
-      "title": "AMD Just Joined the Trillion-Dollar Club. Is the Stock Still a Buy, or Is This the Top?",
-      "title_ar": "انضمت AMD للتو إلى نادي التريليون دولار. هل لا يزال السهم يشتري، أم أن هذا هو الأعلى ؟",
-      "summary": "Advanced Micro Devices, Inc. (NASDAQ:AMD) concluded the September 21 session valued more than $1 trillion for the first time, after its shares increased nearly 10% in a single day to close at $615.52. That type of headline is simple to write and read, but it is nearly useless for",
+      "symbol": "DOCU",
+      "title": "Investors Heavily Search Docusign Inc. (DOCU): Here is What You Need to Know",
+      "title_ar": "Investors Heavily Search Docusign Inc. (Document): إليك ما تحتاج إلى معرفته",
+      "summary": "DocuSign (DOCU) has received quite a bit of attention from Zacks.com users lately. Therefore, it is wise to be aware of the facts that can impact the stock's prospects.",
       "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=5b84ee411e3dbf9f4fadb0405b782bd7f88fbad735b7019c2208e72f2b9334ed",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 11:40 UTC",
-      "published_ts": 1790250035,
+      "url": "https://finance.yahoo.com/markets/stocks/articles/investors-heavily-search-docusign-inc-120005393.html",
+      "publisher": "Zacks",
+      "published": "2026-09-24 12:00:05 UT",
+      "published_ts": 1790251205,
       "sentiment": "neu",
       "sentiment_ar": "محايد",
-      "id": "a70fd93f7845b538d71754d5bf10f7d2bf4746ab",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "NVDA",
-      "title": "If Kevin Warsh Keeps Rates Elevated, These 2 Stocks Are Built to Handle It",
-      "title_ar": "إذا حافظ كيفن وارش على ارتفاع الأسعار، فقد تم تصميم هذين المخزونين للتعامل معها",
-      "summary": "The Federal Open Market Committee recently raised interest rates for the first time in three years.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=ea31c74d0984f412bb3504a054899413324b0732bf218cf34d87720bbcc8a19b",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 11:35 UTC",
-      "published_ts": 1790249700,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد",
-      "id": "c6696890d9f8efc00930f04673b79bb93c0359e2",
-      "source": "finnhub"
+      "id": "9dbf90f0d6e0322b92874c356a18f78d378ce7ee",
+      "source": "yahoo"
     }
   ],
   "news_excluded_negative": [
     "AMZN",
     "AR",
-    "CRM",
     "META",
     "NFLX",
+    "PCG",
     "TSLA",
     "XOM"
   ],
