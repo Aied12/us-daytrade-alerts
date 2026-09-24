@@ -300,7 +300,7 @@
               <span class="sym">${esc(o.symbol)} ${o.urgent?'🔥 عاجل':''}</span>
               <span class="pill">${esc(o.score_100)}/100</span>
             </div>
-            <div>${esc(o.action)} · <span class="${clsChg(o.change_pct)}">${o.change_pct>0?'+':''}${esc(o.change_pct)}%</span></div>
+            <div>${esc(o.action)} · <span class="${clsChg(o.change_pct)}">${o.change_pct>0?'+':''}${esc(o.change_pct)}%</span>${o.last!=null?` · الآن $${esc(o.last)}`:''}</div>
             <div class="muted" style="margin-top:4px">
               سيولة: <span class="${liqClass(grade)}">${esc(gradeAr)}</span>
               · RVOL ×${esc(rvol)} · اليوم ${esc(dLab)}
