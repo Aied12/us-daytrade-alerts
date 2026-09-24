@@ -32,7 +32,9 @@ def send_telegram(
     reply_markup: dict | None = None,
     also_channel: bool = False,
 ) -> bool:
-    if not settings.telegram_bot_token:
+    if settings.telegram_paused or not settings.telegram_bot_token:
+        if settings.telegram_paused:
+            print("[telegram] متوقف مؤقتاً — لا إرسال")
         return False
     if chat_id:
         targets = [chat_id]

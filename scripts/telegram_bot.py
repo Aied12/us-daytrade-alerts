@@ -284,6 +284,9 @@ def poll_once(settings, timeout: int = 25) -> None:
 
 def main() -> None:
     settings = load_settings()
+    if settings.telegram_paused:
+        print("telegram paused temporarily")
+        sys.exit(0)
     if not settings.telegram_enabled:
         print("telegram not configured")
         sys.exit(1)

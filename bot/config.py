@@ -28,6 +28,7 @@ class Settings:
     telegram_bot_token: str = ""
     telegram_chat_id: str = ""
     telegram_channel_id: str = ""
+    telegram_force_off: bool = False  # TELEGRAM_ENABLED=0 or data/telegram_paused
     extra_chat_ids: list[str] = field(default_factory=list)  # 89 multi-user
     min_price_usd: float = 5.0
     urgent_min_score: float = 5.0
@@ -66,7 +67,15 @@ class Settings:
         return self.capital_sar * self.daily_loss_limit
 
     @property
+    def telegram_paused(self) -> bool:
+        if self.telegram_force_off:
+            return True
+        return (self.data_dir / "telegram_paused").exists()
+
+    @property
     def telegram_enabled(self) -> bool:
+        if self.telegram_paused:
+            return False
         return bool(self.telegram_bot_token and self.telegram_chat_id)
 
     @property
@@ -110,6 +119,8 @@ def load_settings() -> Settings:
     thrift = os.getenv("API_THRIFT", "1" if light else "0").strip().lower() in (
         "1", "true", "yes"
     )
+    tg_flag = os.getenv("TELEGRAM_ENABLED", "1").strip().lower()
+    telegram_force_off = tg_flag in ("0", "false", "no", "off")
     settings = Settings(
         capital_sar=float(os.getenv("CAPITAL_SAR", "45000")),
         usd_sar_rate=float(os.getenv("USD_SAR_RATE", "3.75")),
@@ -119,6 +130,7 @@ def load_settings() -> Settings:
         telegram_bot_token=os.getenv("TELEGRAM_BOT_TOKEN", "").strip(),
         telegram_chat_id=os.getenv("TELEGRAM_CHAT_ID", "").strip(),
         telegram_channel_id=os.getenv("TELEGRAM_CHANNEL_ID", "").strip(),
+        telegram_force_off=telegram_force_off,
         extra_chat_ids=extras,
         min_price_usd=float(os.getenv("MIN_PRICE_USD", "5")),
         urgent_min_score=float(os.getenv("URGENT_MIN_SCORE", "5")),

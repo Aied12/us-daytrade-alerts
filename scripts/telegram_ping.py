@@ -21,6 +21,10 @@ import requests
 
 def ping() -> bool:
     settings = load_settings()
+    if settings.telegram_paused:
+        touch_status(ok=True, telegram="paused", source="telegram_ping")
+        print("[telegram] متوقف مؤقتاً — تخطي الـ ping")
+        return True
     if not settings.telegram_bot_token:
         touch_status(ok=False, telegram="no-token")
         return False
