@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:07:18.738290+00:00",
-  "generated_ts": 1790255238,
-  "generated_local": "2026-09-24 16:07 +03",
+  "generated_at": "2026-09-24T13:08:26.162858+00:00",
+  "generated_ts": 1790255306,
+  "generated_local": "2026-09-24 16:08 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:07:18.738163+00:00",
+    "updated_at": "2026-09-24T13:08:26.162726+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,17 +26,17 @@
     "avg_change_pct": -0.56,
     "details": {
       "SPY": {
-        "last": 764.17,
-        "change_pct": -0.47,
+        "last": 764.26,
+        "change_pct": -0.46,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.5917,
+        "last": 734.59,
         "change_pct": -0.89,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 281.01,
+        "last": 281.02,
         "change_pct": -0.32,
         "rsi": 29.0
       }
@@ -44,7 +44,7 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.47,
+        "change_pct": -0.46,
         "rsi": 53.4
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 1361,
-    "ny_time": "09:07:18",
+    "seconds_left": 1293,
+    "ny_time": "09:08:26",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,7 +77,7 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 0.96
+        "change_pct": 0.95
       },
       {
         "name": "Communication",
@@ -99,13 +99,13 @@
       },
       {
         "name": "Consumer",
-        "change_pct": -0.29
+        "change_pct": -0.33
       }
     ]
   },
   "style": {
-    "growth_avg": -0.89,
-    "value_avg": 0.1,
+    "growth_avg": -0.92,
+    "value_avg": 0.11,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -116,44 +116,44 @@
       "action": "فكّر في شراء قصير المدى",
       "action_key": "CONSIDER_LONG",
       "side": "long",
-      "score_100": 81,
+      "score_100": 97,
       "urgent": true,
       "strategies": [
         "ارتداد لملء فجوة هابطة",
         "ترتيب متوسطات صاعد",
         "حجم غير طبيعي صاعد",
-        "RSI تشبع شرائي"
+        "كسر قمة 20 يوم"
       ],
-      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم غير طبيعي صاعد: حجم ×2.5 مع صعود | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقاومة≈$14.11 | تقلّب عالي: ATR% 8.4",
-      "entry": 14.8,
+      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم غير طبيعي صاعد: حجم ×2.5 مع صعود | كسر قمة 20 يوم: قرب/فوق قمة 20ي $14.87 | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقا",
+      "entry": 14.86,
       "stop": 6.17,
-      "target": 30.33,
+      "target": 30.5,
       "shares": 13,
-      "risk_sar": 420.71,
+      "risk_sar": 423.64,
       "allowed": true,
-      "change_pct": 3.06,
-      "last": 14.8,
+      "change_pct": 3.48,
+      "last": 14.86,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 2.52,
         "volume": 9172100.0,
         "avg_volume_20": 3636165.0,
-        "dollar_volume": 135747080.0,
-        "avg_dollar_volume": 53815242.0,
-        "dollar_volume_label": "135.7M$",
-        "avg_dollar_volume_label": "53.8M$",
+        "dollar_volume": 136297406.0,
+        "avg_dollar_volume": 54033411.9,
+        "dollar_volume_label": "136.3M$",
+        "avg_dollar_volume_label": "54.0M$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×2.5 · اليوم 135.7M$ · متوسط 53.8M$"
+        "label": "RVOL ×2.5 · اليوم 136.3M$ · متوسط 54.0M$"
       },
       "rvol": 2.52,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 8.39,
-      "flow_score": 19.58,
+      "flow_score": 22.29,
       "flow_ok": true,
       "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ",
-      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.8%20دخول%2014.8%20وقف%206.17%20هدف%2030.33%0Aسيولة%20قوي%20RVOL%20x2.52%20زخم%20+3.06%"
+      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.86%20دخول%2014.86%20وقف%206.17%20هدف%2030.5%0Aسيولة%20قوي%20RVOL%20x2.52%20زخم%20+3.48%"
     },
     {
       "symbol": "APA",
@@ -246,7 +246,7 @@
   ],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
-    "UBER:زخم ضعيف (+0.22% < 0.55%)",
+    "UBER:زخم ضعيف (+0.07% < 0.55%)",
     "BAC:زخم ضعيف (+0.36% < 0.55%)",
     "DIS:زخم ضعيف (+0.04% < 0.55%)"
   ],
@@ -299,12 +299,12 @@
   "movers": [
     {
       "symbol": "SECZ",
-      "change_pct": 3.06,
-      "last": 14.8,
+      "change_pct": 3.48,
+      "last": 14.86,
       "rvol": 2.52,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "135.7M$"
+      "dollar_volume_label": "136.3M$"
     },
     {
       "symbol": "AMD",
@@ -326,8 +326,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.64,
-      "last": 188.65,
+      "change_pct": -1.59,
+      "last": 188.74,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -335,8 +335,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.25,
-      "last": 350.55,
+      "change_pct": -1.27,
+      "last": 350.49,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -344,21 +344,21 @@
     },
     {
       "symbol": "NVDA",
-      "change_pct": -1.17,
-      "last": 222.88,
+      "change_pct": -1.18,
+      "last": 222.85,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "19.9B$"
     },
     {
-      "symbol": "XOM",
-      "change_pct": 1.06,
-      "last": 162.94,
-      "rvol": 0.84,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "2.0B$"
+      "symbol": "COIN",
+      "change_pct": -0.99,
+      "last": 196.17,
+      "rvol": 0.7,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "1.4B$"
     }
   ],
   "news": [
@@ -726,11 +726,11 @@
   "news_excluded_negative": [
     "AMZN",
     "AR",
-    "CRM",
     "META",
     "NFLX",
     "PCG",
-    "TSLA"
+    "TSLA",
+    "XOM"
   ],
   "news_note_ar": "بث سريع · محايد/إيجابي فقط · حتى 5 عناوين جديدة كل دقيقة",
   "bot": "@Aied01_bot",
