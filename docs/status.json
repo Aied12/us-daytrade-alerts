@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T08:50:41.004857+00:00",
-  "generated_ts": 1790239841,
-  "generated_local": "2026-09-24 11:50 +03",
+  "generated_at": "2026-09-24T08:55:35.415684+00:00",
+  "generated_ts": 1790240135,
+  "generated_local": "2026-09-24 11:55 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T08:50:41.004751+00:00",
+    "updated_at": "2026-09-24T08:55:35.415583+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,17 +26,17 @@
     "avg_change_pct": -1.13,
     "details": {
       "SPY": {
-        "last": 767.8099975585938,
+        "last": 767.81,
         "change_pct": -0.72,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 741.2100219726562,
+        "last": 741.21,
         "change_pct": -0.84,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 281.9200134277344,
+        "last": 281.92,
         "change_pct": -1.84,
         "rsi": 29.0
       }
@@ -59,17 +59,17 @@
       }
     ],
     "no_trade_today": false,
-    "price_provider": "yahoo",
-    "price_lag_ar": "تأخير Yahoo ≈ 15 دقيقة"
+    "price_provider": "finnhub",
+    "price_lag_ar": "أسعار شبه لحظية (Finnhub)"
   },
-  "price_provider": "yahoo",
-  "price_lag_ar": "تأخير Yahoo ≈ 15 دقيقة",
-  "has_live_quotes": false,
+  "price_provider": "finnhub",
+  "price_lag_ar": "أسعار شبه لحظية (Finnhub)",
+  "has_live_quotes": true,
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 16758,
-    "ny_time": "04:50:41",
+    "seconds_left": 16464,
+    "ny_time": "04:55:35",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,36 +77,36 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.38
+        "change_pct": 1.56
       },
       {
         "name": "Industrial",
         "change_pct": 1.12
       },
       {
-        "name": "Consumer",
-        "change_pct": -0.47
+        "name": "Technology",
+        "change_pct": -0.34
       }
     ],
     "weakest": [
-      {
-        "name": "Communication",
-        "change_pct": -0.92
-      },
       {
         "name": "Financials",
         "change_pct": -0.85
       },
       {
-        "name": "Technology",
-        "change_pct": -0.49
+        "name": "Communication",
+        "change_pct": -0.73
+      },
+      {
+        "name": "Consumer",
+        "change_pct": -0.5
       }
     ]
   },
   "style": {
-    "growth_avg": -0.33,
-    "value_avg": -0.33,
-    "leader": "قيمة",
+    "growth_avg": -0.19,
+    "value_avg": -0.27,
+    "leader": "نمو",
     "growth_count": 10,
     "value_count": 11
   },
@@ -182,6 +182,27 @@
       "tg_share": "https://t.me/share/url?url=&text=JPM%20فكّر في بيع قصير بحذر%0Aدخول%20337.53%20وقف%20362.39%20هدف%20297.75"
     },
     {
+      "symbol": "DIS",
+      "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
+      "side": "long",
+      "score_100": 61,
+      "urgent": false,
+      "strategies": [
+        "ارتداد من دعم"
+      ],
+      "reason": "ارتداد من دعم: دعم≈$102.69",
+      "entry": 103.46,
+      "stop": 102.22,
+      "target": 106.56,
+      "shares": 28,
+      "risk_sar": 130.2,
+      "allowed": false,
+      "change_pct": -0.35,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=DIS",
+      "tg_share": "https://t.me/share/url?url=&text=DIS%20راقب دخول%0Aدخول%20103.46%20وقف%20102.22%20هدف%20106.56"
+    },
+    {
       "symbol": "TSLA",
       "action": "راقب دخول",
       "action_key": "WATCH_ENTRY",
@@ -215,14 +236,14 @@
       "strategies": [
         "زخم قطاع Energy"
       ],
-      "reason": "زخم قطاع Energy: قطاع Energy +1.4%",
+      "reason": "زخم قطاع Energy: قطاع Energy +1.6%",
       "entry": 161.23,
       "stop": 156.41,
       "target": 169.91,
       "shares": 18,
       "risk_sar": 325.35,
       "allowed": false,
-      "change_pct": 1.85,
+      "change_pct": 1.59,
       "tv_url": "https://www.tradingview.com/chart/?symbol=XOM",
       "tg_share": "https://t.me/share/url?url=&text=XOM%20راقب دخول%0Aدخول%20161.23%20وقف%20156.41%20هدف%20169.91"
     },
@@ -236,14 +257,14 @@
       "strategies": [
         "زخم قطاع Energy"
       ],
-      "reason": "زخم قطاع Energy: قطاع Energy +1.4%",
+      "reason": "زخم قطاع Energy: قطاع Energy +1.6%",
       "entry": 205.51,
       "stop": 198.5,
       "target": 218.13,
       "shares": 14,
       "risk_sar": 368.02,
       "allowed": false,
-      "change_pct": 0.9,
+      "change_pct": 1.53,
       "tv_url": "https://www.tradingview.com/chart/?symbol=CVX",
       "tg_share": "https://t.me/share/url?url=&text=CVX%20راقب دخول%0Aدخول%20205.51%20وقف%20198.5%20هدف%20218.13"
     },
@@ -362,9 +383,9 @@
       "last": 249.27
     },
     {
-      "symbol": "XOM",
-      "change_pct": 1.85,
-      "last": 161.23
+      "symbol": "CRM",
+      "change_pct": 1.84,
+      "last": 237.58
     },
     {
       "symbol": "IWM",
@@ -372,14 +393,14 @@
       "last": 281.92
     },
     {
-      "symbol": "AMD",
-      "change_pct": -1.47,
-      "last": 614.61
+      "symbol": "XOM",
+      "change_pct": 1.59,
+      "last": 161.23
     },
     {
-      "symbol": "NVDA",
-      "change_pct": -1.47,
-      "last": 225.51
+      "symbol": "CVX",
+      "change_pct": 1.53,
+      "last": 205.51
     }
   ],
   "performance": {
@@ -390,7 +411,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 24,
+    "alerts_today": 28,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
