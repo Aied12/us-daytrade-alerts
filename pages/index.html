@@ -85,12 +85,9 @@
       background:var(--card);color:var(--text);font-weight:700;cursor:pointer;font-size:.95rem;
     }
     .sym-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-    #tvChart{height:420px;width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--line);margin-top:10px}
-    @media (max-width:600px){#tvChart{height:360px}}
     .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-left:6px;animation:pulse 1.2s infinite}
     @keyframes pulse{0%{opacity:1}50%{opacity:.35}100%{opacity:1}}
   </style>
-  <script src="https://s3.tradingview.com/tv.js"></script>
 </head>
 <body>
   <div class="wrap">
@@ -115,24 +112,11 @@
 
     <div class="card" id="liveCard">
       <div class="row">
-        <h2 style="margin:0">سعر لحظي <span class="pulse" title="بث حي"></span></h2>
-        <span class="pill ok" id="liveBadge">TradingView حي</span>
+        <h2 style="margin:0">أسعار لحظية <span class="pulse" title="بث حي"></span></h2>
+        <span class="pill ok" id="liveBadge">كل الأسهم</span>
       </div>
-      <div class="live-box">
-        <div class="row">
-          <div>
-            <div class="muted" id="liveSymLabel">—</div>
-            <div class="live-price" id="livePrice">--</div>
-            <div class="live-sub" id="liveChg">—</div>
-          </div>
-          <div class="muted" id="liveClock" style="text-align:left">يتحدث الآن...</div>
-        </div>
-      </div>
-      <div class="toolbar" id="liveChips" style="margin-top:8px"></div>
-      <!-- TradingView Symbol Overview: live price that actually ticks -->
-      <div id="tvOverview" style="height:220px;margin-top:10px;border-radius:14px;overflow:hidden;border:1px solid var(--line)"></div>
-      <div id="tvChart"></div>
-      <p class="muted" style="margin:8px 0 0">السعر والشارت من TradingView مباشرة (لحظي). اضغط «لحظي» على أي سهم.</p>
+      <p class="muted" id="liveClock" style="margin:6px 0 8px">جاري تحديث كل الأسعار...</p>
+      <div id="liveTape" class="grid"></div>
     </div>
 
     <div class="card">
