@@ -971,6 +971,9 @@
       document.querySelectorAll('#catFilters button').forEach(b=>{
         b.classList.toggle('active', b.dataset.cat===CAT_FILTER);
       });
+      const savedTier=localStorage.getItem(LS.priceTier);
+      PRICE_TIER = (savedTier==='low') ? 'low' : 'high';
+      syncPriceTierUi();
       syncLightBtn();
     }
     function currentFilter(){
@@ -1284,7 +1287,7 @@
       }));
       const gmin=d.gainers_min_price??5;
       const gses=d.gainers_session_ar||'الآن';
-      document.getElementById('gainersNote').textContent=`سعر ≥ $${gmin} · ${gses} · مرتّب حسب الارتفاع الحالي · يُزال إذا نزل أو ضعفت السيولة`;
+      document.getElementById('gainersNote').textContent=`${priceTierLabel()} · ${gses} · مرتّب حسب الارتفاع · يُزال إذا نزل أو ضعفت السيولة`;
       renderGainersTable();
 
       const movers=filterByPriceTier(d.movers||[]);
@@ -1532,6 +1535,9 @@
       if(perm==='granted'){ localStorage.setItem(LS.notify,'1'); toast('تم تفعيل إشعار الفرص القوية'); }
       else { localStorage.setItem(LS.notify,'0'); toast('لم يتم السماح بالإشعارات'); }
     };
+    document.querySelectorAll('#priceTier button').forEach(b=>{
+      b.onclick=()=>setPriceTier(b.dataset.tier||'high');
+    });
     document.querySelectorAll('#filterSeg button').forEach(b=>{
       b.onclick=()=>{
         document.querySelectorAll('#filterSeg button').forEach(x=>x.classList.remove('active'));
