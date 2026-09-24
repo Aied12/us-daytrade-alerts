@@ -27,6 +27,7 @@ from bot.ops import read_status, touch_status
 from bot.reports import build_full_pack
 from bot.risk import plan_trade, risk_banner
 from bot.signals import Action
+from bot.smart_signals import enrich_smart_signal
 
 NY = ZoneInfo("America/New_York")
 
@@ -178,6 +179,7 @@ def main() -> None:
 
     pack = build_full_pack(settings, snaps) if snaps else {"signals": []}
     by_sym = {s.symbol: s for s in snaps}
+    qqq_chg = float(((ctx.get("details") or {}).get("QQQ") or {}).get("change_pct") or 0.0)
 
     opportunities = []
     rejected_slow: list[str] = []
@@ -200,16 +202,27 @@ def main() -> None:
         if not ok_flow:
             rejected_slow.append(f"{sig.symbol}:{flow_reason}")
             continue
+        smart = enrich_smart_signal(sig, snap, qqq_chg=qqq_chg, live_last=live_last)
+        # 29/30/23 — drop earnings-imminent, expired chase, or severe fake-liquidity junk
+        if smart.get("exclude"):
+            rejected_slow.append(f"{sig.symbol}:{smart.get('exclude_reason') or 'smart-exclude'}")
+            continue
         plan = plan_trade(settings, sig, live_last=live_last)
         # Hard rule: long entry must never exceed live price
         if (sig.side or "long") == "long" and plan.entry > live_last:
             plan.entry = live_last
         score100 = getattr(sig, "score_100", int(sig.score * 10))
-        urgent = sig.action == Action.CONSIDER_LONG and score100 >= 70
+        urgent = sig.action == Action.CONSIDER_LONG and score100 >= 70 and smart.get("confidence") in ("A", "B")
         if phase == "pre" and snap and snap.change_pct < 0:
+            urgent = False
+        if smart.get("wait_1m_confirm"):
             urgent = False
         liq = liquidity_dict(snap)
         flow_score = momentum_rank_score(snap)
+        # Prefer alt stop on card when available
+        stop_show = smart.get("stop_alt") or plan.stop
+        target_partial = smart.get("target_partial")
+        target_final = smart.get("target_final") or plan.target
         opportunities.append(
             {
                 "symbol": sig.symbol,
@@ -217,15 +230,24 @@ def main() -> None:
                 "action_key": sig.action.name,
                 "side": sig.side,
                 "score_100": score100,
+                "confidence": smart.get("confidence"),
+                "confidence_ar": smart.get("confidence_ar"),
                 "urgent": urgent,
                 "strategies": (sig.strategies or [])[:4],
                 "reason": sig.reason[:220],
                 "entry": plan.entry,
                 "stop": plan.stop,
+                "stop_alt": smart.get("stop_alt"),
                 "target": plan.target,
+                "target_partial": target_partial,
+                "target_final": target_final,
+                "trail_offset": smart.get("trail_offset"),
                 "shares": plan.shares,
                 "risk_sar": plan.risk_sar,
-                "allowed": plan.allowed and not (phase == "pre" and snap and snap.change_pct < -0.5),
+                "allowed": plan.allowed
+                and not (phase == "pre" and snap and snap.change_pct < -0.5)
+                and not smart.get("wait_1m_confirm")
+                and smart.get("confidence") != "C",
                 "change_pct": round(snap.change_pct, 2) if snap else 0.0,
                 "last": live_last,
                 "session_phase": phase,
@@ -236,19 +258,29 @@ def main() -> None:
                 "atr_pct": round(float(snap.atr_pct or 0), 2) if snap else 0.0,
                 "flow_score": round(flow_score, 2),
                 "flow_ok": True,
+                "smart": smart,
+                "smart_tags": smart.get("tags") or [],
+                "smart_notes": smart.get("notes") or [],
+                "wait_1m_confirm": bool(smart.get("wait_1m_confirm")),
+                "fake_liquidity": bool(smart.get("fake_liquidity")),
+                "candle": smart.get("candle") or {},
+                "vwap": smart.get("vwap") or {},
+                "qqq": smart.get("qqq") or {},
                 "tv_url": f"https://www.tradingview.com/chart/?symbol={sig.symbol}",
                 "tg_share": (
                     f"https://t.me/share/url?url=&text="
-                    f"{sig.symbol}%20{sig.action.value}%0A"
-                    f"الآن%20{live_last}%20دخول%20{plan.entry}%20وقف%20{plan.stop}%20هدف%20{plan.target}%0A"
+                    f"{sig.symbol}%20{sig.action.value}%20ثقة%20{smart.get('confidence')}%0A"
+                    f"الآن%20{live_last}%20دخول%20{plan.entry}%20وقف%20{stop_show}%20هدف%20{target_final}%0A"
                     f"سيولة%20{liq['grade_ar']}%20RVOL%20x{liq['rvol']}%20زخم%20{snap.change_pct:+.2f}%"
                 ),
             }
         )
 
-    # Rank by live flow (momentum × RVOL × $volume), then signal score
+    # Rank by confidence then live flow
+    rank_conf = {"A": 3, "B": 2, "C": 1}
     opportunities.sort(
         key=lambda o: (
+            rank_conf.get(o.get("confidence") or "C", 0),
             float(o.get("flow_score") or 0),
             1 if o.get("urgent") else 0,
             o.get("score_100") or 0,
