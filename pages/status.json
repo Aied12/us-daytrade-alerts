@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T09:53:15.944605+00:00",
-  "generated_ts": 1790243595,
-  "generated_local": "2026-09-24 12:53 +03",
+  "generated_at": "2026-09-24T09:54:14.084552+00:00",
+  "generated_ts": 1790243654,
+  "generated_local": "2026-09-24 12:54 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T09:53:15.944537+00:00",
+    "updated_at": "2026-09-24T09:54:14.084461+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,13 +26,13 @@
     "avg_change_pct": -0.76,
     "details": {
       "SPY": {
-        "last": 762.6,
+        "last": 762.59,
         "change_pct": -0.68,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 732.8,
-        "change_pct": -1.13,
+        "last": 732.73,
+        "change_pct": -1.14,
         "rsi": 68.9
       },
       "IWM": {
@@ -49,7 +49,7 @@
       },
       {
         "symbol": "QQQ",
-        "change_pct": -1.13,
+        "change_pct": -1.14,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 13004,
-    "ny_time": "05:53:15",
+    "seconds_left": 12945,
+    "ny_time": "05:54:14",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,15 +77,15 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.18
+        "change_pct": 1.16
       },
       {
         "name": "Communication",
-        "change_pct": 0.03
+        "change_pct": 0.04
       },
       {
         "name": "Industrial",
-        "change_pct": -0.29
+        "change_pct": -0.27
       }
     ],
     "weakest": [
@@ -99,7 +99,7 @@
       },
       {
         "name": "Consumer",
-        "change_pct": -0.55
+        "change_pct": -0.54
       }
     ]
   },
@@ -161,21 +161,21 @@
         "زخم قطاع Energy"
       ],
       "reason": "زخم قطاع Energy: قطاع Energy +1.2%",
-      "entry": 208.03,
+      "entry": 207.93,
       "stop": 198.5,
-      "target": 225.18,
+      "target": 224.9,
       "shares": 12,
-      "risk_sar": 428.85,
+      "risk_sar": 424.35,
       "allowed": false,
-      "change_pct": 1.23,
-      "last": 208.03,
+      "change_pct": 1.18,
+      "last": 207.93,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.83,
         "volume": 8257800.0,
         "avg_volume_20": 9972730.0,
-        "dollar_volume": 1717870134.0,
-        "avg_dollar_volume": 2074627021.9,
+        "dollar_volume": 1717044354.0,
+        "avg_dollar_volume": 2073629748.9,
         "dollar_volume_label": "1.7B$",
         "avg_dollar_volume_label": "2.1B$",
         "grade": "medium",
@@ -186,7 +186,7 @@
       "liq_grade": "medium",
       "liq_grade_ar": "متوسط",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CVX",
-      "tg_share": "https://t.me/share/url?url=&text=CVX%20راقب دخول%0Aالآن%20208.03%20وقف%20198.5%20هدف%20225.18%0Aسيولة%20متوسط%20RVOL%20x0.83"
+      "tg_share": "https://t.me/share/url?url=&text=CVX%20راقب دخول%0Aالآن%20207.93%20وقف%20198.5%20هدف%20224.9%0Aسيولة%20متوسط%20RVOL%20x0.83"
     }
   ],
   "gainers": [
@@ -238,8 +238,8 @@
   "movers": [
     {
       "symbol": "META",
-      "change_pct": -2.72,
-      "last": 723.84,
+      "change_pct": -2.77,
+      "last": 723.5,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -247,8 +247,8 @@
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.38,
-      "last": 600.0,
+      "change_pct": -2.4,
+      "last": 599.88,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -265,8 +265,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.55,
-      "last": 349.48,
+      "change_pct": -1.58,
+      "last": 349.37,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -275,38 +275,38 @@
     {
       "symbol": "NVDA",
       "change_pct": -1.27,
-      "last": 222.65,
+      "last": 222.64,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "19.9B$"
     },
     {
+      "symbol": "TSLA",
+      "change_pct": -1.25,
+      "last": 375.38,
+      "rvol": 0.86,
+      "grade": "medium",
+      "grade_ar": "متوسط",
+      "dollar_volume_label": "12.5B$"
+    },
+    {
       "symbol": "CVX",
-      "change_pct": 1.23,
-      "last": 208.03,
+      "change_pct": 1.18,
+      "last": 207.93,
       "rvol": 0.83,
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "1.7B$"
     },
     {
-      "symbol": "TSLA",
-      "change_pct": -1.22,
-      "last": 375.5,
-      "rvol": 0.86,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "12.6B$"
-    },
-    {
-      "symbol": "XOM",
-      "change_pct": 1.14,
-      "last": 163.06,
-      "rvol": 0.84,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "2.0B$"
+      "symbol": "QQQ",
+      "change_pct": -1.14,
+      "last": 732.73,
+      "rvol": 1.01,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "24.3B$"
     }
   ],
   "performance": {
@@ -317,7 +317,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 61,
+    "alerts_today": 62,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
