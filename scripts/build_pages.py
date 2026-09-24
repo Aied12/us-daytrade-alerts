@@ -272,7 +272,14 @@ def main() -> None:
         news_syms.append(str(s).upper())
     news_syms = list(dict.fromkeys(news_syms))[:16]
     try:
-        news_pack = fetch_stock_news_ar(news_syms, limit=12, per_symbol=3)
+        news_pack = fetch_stock_news_ar(
+            news_syms,
+            limit=24,
+            per_symbol=4,
+            drop_negative_symbols=True,
+            translate_summary=False,
+            include_market=True,
+        )
     except Exception:
         news_pack = {"news": [], "negative_symbols": []}
     news_ar = list(news_pack.get("news") or [])
@@ -341,7 +348,7 @@ def main() -> None:
         ],
         "news": news_ar,
         "news_excluded_negative": sorted(bad_news),
-        "news_note_ar": "محايد + إيجابي متوقع يدعم الارتفاع فقط — الأسهم ذات خبر سلبي تُزال من اللوحة",
+        "news_note_ar": "بث سريع · محايد/إيجابي فقط · حتى 5 عناوين جديدة كل دقيقة",
         "bot": "@Aied01_bot",
         "channel": "@aied01",
         "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",

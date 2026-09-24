@@ -10,7 +10,8 @@ import hashlib
 import json
 import re
 import time
-from datetime import datetime, timezone
+import os
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -21,7 +22,9 @@ from bot.cacheutil import cached_call
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = ROOT / "data" / "cache" / "news_ar"
+SEEN_PATH = ROOT / "data" / "news_seen.json"
 UA = {"User-Agent": "Mozilla/5.0 us-daytrade-alerts"}
+FINNHUB_KEY = os.getenv("FINNHUB_API_KEY", "").strip()
 
 # Word-boundary negatives (single tokens)
 NEGATIVE_WORDS = (
@@ -182,20 +185,68 @@ def _item_fields(item: dict[str, Any]) -> dict[str, Any] | None:
 
 def _fetch_symbol_news(symbol: str, limit: int = 4) -> list[dict[str, Any]]:
     def _call():
+        rows: list[dict[str, Any]] = []
+        # Finnhub company news (fast, many headlines)
+        if FINNHUB_KEY:
+            try:
+                frm = (date.today() - timedelta(days=2)).isoformat()
+                to = date.today().isoformat()
+                r = requests.get(
+                    "https://finnhub.io/api/v1/company-news",
+                    params={"symbol": symbol, "from": frm, "to": to, "token": FINNHUB_KEY},
+                    headers=UA,
+                    timeout=15,
+                )
+                if r.ok:
+                    for item in r.json() or []:
+                        title = (item.get("headline") or "").strip()
+                        if not title:
+                            continue
+                        ts = int(item.get("datetime") or 0) or None
+                        published = (
+                            datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+                            if ts
+                            else ""
+                        )
+                        rows.append(
+                            {
+                                "title": title,
+                                "summary": (item.get("summary") or "")[:280],
+                                "url": item.get("url") or f"https://finance.yahoo.com/quote/{symbol}/news",
+                                "published": published,
+                                "published_ts": ts,
+                                "publisher": item.get("source") or "",
+                                "symbol": symbol.upper(),
+                                "source": "finnhub",
+                            }
+                        )
+            except Exception:
+                pass
+        # Yahoo fallback / supplement
         try:
-            return list(yf.Ticker(symbol).news or [])
+            for item in list(yf.Ticker(symbol).news or []):
+                if not isinstance(item, dict):
+                    continue
+                fields = _item_fields(item)
+                if not fields:
+                    continue
+                fields["symbol"] = symbol.upper()
+                fields["source"] = "yahoo"
+                rows.append(fields)
         except Exception:
-            return []
+            pass
+        return rows
 
-    raw = cached_call(f"yfnews:{symbol}", _call, ttl=300) or []
+    raw = cached_call(f"newsmix:{symbol}", _call, ttl=45) or []
     out: list[dict[str, Any]] = []
-    for item in raw:
-        if not isinstance(item, dict):
+    seen: set[str] = set()
+    for fields in raw:
+        title = (fields.get("title") or "").strip()
+        key = re.sub(r"\s+", " ", title.lower())
+        if not title or key in seen:
             continue
-        fields = _item_fields(item)
-        if not fields:
-            continue
-        fields["symbol"] = symbol.upper()
+        seen.add(key)
+        fields = dict(fields)
         fields["sentiment"] = _sentiment(fields["title"], fields.get("summary") or "")
         out.append(fields)
         if len(out) >= limit:
@@ -203,18 +254,101 @@ def _fetch_symbol_news(symbol: str, limit: int = 4) -> list[dict[str, Any]]:
     return out
 
 
+def _fetch_market_news(limit: int = 30) -> list[dict[str, Any]]:
+    """Finnhub general + market categories; keep market/stock-ish headlines."""
+    if not FINNHUB_KEY:
+        return []
+
+    def _call():
+        rows: list[dict[str, Any]] = []
+        for cat in ("general", "merger", "forex", "crypto"):
+            try:
+                r = requests.get(
+                    "https://finnhub.io/api/v1/news",
+                    params={"category": cat, "token": FINNHUB_KEY},
+                    headers=UA,
+                    timeout=15,
+                )
+                if not r.ok:
+                    continue
+                for item in r.json() or []:
+                    title = (item.get("headline") or "").strip()
+                    if not title:
+                        continue
+                    related = str(item.get("related") or "").upper()
+                    # Prefer items tied to tickers, or market/Fed/earnings language
+                    blob = title.lower()
+                    stockish = bool(related) or any(
+                        w in blob
+                        for w in (
+                            "stock", "shares", "nasdaq", "dow", "s&p", "earnings", "fed",
+                            "rate", "wall street", "ipo", "rally", "market", "treasury",
+                            "oil", "semiconductor", "chip", "bank", "ai ",
+                        )
+                    )
+                    if not stockish:
+                        continue
+                    ts = int(item.get("datetime") or 0) or None
+                    sym = (related.split(",")[0].strip() if related else "MARKET") or "MARKET"
+                    rows.append(
+                        {
+                            "title": title,
+                            "summary": (item.get("summary") or "")[:280],
+                            "url": item.get("url") or "",
+                            "published": (
+                                datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+                                if ts
+                                else ""
+                            ),
+                            "published_ts": ts,
+                            "publisher": item.get("source") or "",
+                            "symbol": sym[:12],
+                            "source": f"finnhub:{cat}",
+                            "sentiment": _sentiment(title, item.get("summary") or ""),
+                        }
+                    )
+            except Exception:
+                continue
+        return rows
+
+    rows = cached_call("fh:marketnews", _call, ttl=40) or []
+    rows = [r for r in rows if r.get("sentiment") in ("pos", "neu")]
+    rows.sort(key=lambda x: x.get("published_ts") or 0, reverse=True)
+    return rows[:limit]
+
+
+def news_fingerprint(title: str, symbol: str = "") -> str:
+    base = re.sub(r"\s+", " ", (title or "").lower()).strip()
+    return hashlib.sha1(f"{symbol}|{base}".encode("utf-8")).hexdigest()
+
+
+def load_seen_news() -> dict[str, float]:
+    try:
+        data = json.loads(SEEN_PATH.read_text(encoding="utf-8"))
+        if isinstance(data, dict):
+            return {str(k): float(v) for k, v in data.items()}
+    except Exception:
+        pass
+    return {}
+
+
+def save_seen_news(seen: dict[str, float], keep: int = 800) -> None:
+    # prune oldest
+    items = sorted(seen.items(), key=lambda kv: kv[1], reverse=True)[:keep]
+    SEEN_PATH.parent.mkdir(parents=True, exist_ok=True)
+    SEEN_PATH.write_text(json.dumps(dict(items), ensure_ascii=False), encoding="utf-8")
+
+
 def fetch_stock_news_ar(
     symbols: list[str],
     *,
-    limit: int = 12,
-    per_symbol: int = 3,
+    limit: int = 30,
+    per_symbol: int = 4,
+    drop_negative_symbols: bool = True,
+    translate_summary: bool = False,
+    include_market: bool = True,
 ) -> dict[str, Any]:
-    """Return bullish/neutral Arabic news and symbols tainted by negative headlines.
-
-    Keys:
-      news: list of pos/neu items only (pos first)
-      negative_symbols: set/list of symbols to remove from boards
-    """
+    """Return bullish/neutral Arabic news (+ optional negative symbol list)."""
     seen_titles: set[str] = set()
     collected: list[dict[str, Any]] = []
     negative_symbols: set[str] = set()
@@ -226,18 +360,27 @@ def fetch_stock_news_ar(
         rows = _fetch_symbol_news(sym_u, limit=per_symbol)
         if any(r.get("sentiment") == "neg" for r in rows):
             negative_symbols.add(sym_u)
-            continue  # drop the stock and all its headlines
+            if drop_negative_symbols:
+                continue
         for row in rows:
             key = re.sub(r"\s+", " ", row["title"].lower())
             if key in seen_titles:
                 continue
             seen_titles.add(key)
-            # Keep only neutral + positive (rise-biased)
             if row.get("sentiment") not in ("pos", "neu"):
+                continue
+            if drop_negative_symbols and sym_u in negative_symbols:
                 continue
             collected.append(row)
 
-    # Prefer positive/rise headlines, then newest
+    if include_market:
+        for row in _fetch_market_news(limit=25):
+            key = re.sub(r"\s+", " ", row["title"].lower())
+            if key in seen_titles:
+                continue
+            seen_titles.add(key)
+            collected.append(row)
+
     collected.sort(
         key=lambda x: (1 if x.get("sentiment") == "pos" else 0, x.get("published_ts") or 0),
         reverse=True,
@@ -247,7 +390,9 @@ def fetch_stock_news_ar(
     news: list[dict[str, Any]] = []
     for row in collected:
         title_ar = _translate_ar(row["title"])
-        summary_ar = _translate_ar(row["summary"]) if row.get("summary") else ""
+        summary_ar = ""
+        if translate_summary and row.get("summary"):
+            summary_ar = _translate_ar(row["summary"])
         tag = row.get("sentiment") or _sentiment(row["title"], row.get("summary") or "")
         news.append(
             {
@@ -262,9 +407,11 @@ def fetch_stock_news_ar(
                 "published_ts": row.get("published_ts"),
                 "sentiment": tag,
                 "sentiment_ar": _sentiment_ar(tag),
+                "id": news_fingerprint(row["title"], row.get("symbol") or ""),
+                "source": row.get("source") or "",
             }
         )
-        time.sleep(0.12)
+        time.sleep(0.05)
     return {
         "news": news,
         "negative_symbols": sorted(negative_symbols),

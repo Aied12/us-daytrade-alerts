@@ -22,6 +22,8 @@ PATH=/usr/bin:/bin
 0 20 * * 1-5 $RUN tick
 # أسعار live.json كل دقيقة — عشان أرقام اللوحة تتحرك
 * 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_live.py
+# أخبار سريعة كل دقيقة — حتى 5 عناوين جديدة (محايد/إيجابي)
+* 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_news.py
 # نشر لوحة كامل كل دقيقتين — فرص متحركة
 */2 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_pages.py
 # Intel ظهرًا ≈16:00 السعودية
