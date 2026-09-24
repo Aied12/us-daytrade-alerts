@@ -432,7 +432,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=4;
+    window.__STATUS_V=5;
     const LS = {
       theme: 'dash_theme',
       filter: 'dash_filter',
@@ -703,9 +703,13 @@
       if(stopEl){
         stopEl.addEventListener('input',()=>{ CALC_STOP_USER_EDITED=true; runStrategyCalc(); });
       }
-      ['calcPrice','calcCapital','calcRiskPct','calcBreakout'].forEach(id=>{
+      ['calcPrice','calcCapital','calcRiskPct','calcBreakout','calcFx'].forEach(id=>{
         const el=document.getElementById(id);
-        if(el) el.addEventListener('input', runStrategyCalc);
+        if(!el) return;
+        el.addEventListener('input', ()=>{
+          if(id==='calcFx') el.dataset.userEdited='1';
+          runStrategyCalc();
+        });
       });
       const capElWatch=document.getElementById('calcCapital');
       if(capElWatch){
@@ -737,10 +741,16 @@
         if(riskEl) riskEl.value='2';
         if(stEl) stEl.value='catalyst';
         setCalcStopDefaultIfNeeded();
+        const fxEl=document.getElementById('calcFx');
+        if(fxEl) fxEl.value=String(Number((DATA&&DATA.usd_sar_rate)||3.75));
         if(DATA && DATA.capital_sar!=null && capEl) capEl.value=String(Number(DATA.capital_sar));
         document.querySelectorAll('.calc-picked').forEach(el=>el.classList.remove('calc-picked'));
         runStrategyCalc();
       };
+      const fxElInit=document.getElementById('calcFx');
+      if(fxElInit && DATA && DATA.usd_sar_rate!=null){
+        fxElInit.value=String(Number(DATA.usd_sar_rate));
+      }
       setCalcStopDefaultIfNeeded();
       runStrategyCalc();
     }
@@ -1164,6 +1174,10 @@
       if(calcCap && d.capital_sar!=null && (!calcCap.value || calcCap.dataset.autofilled!=='0')){
         calcCap.value=String(Number(d.capital_sar));
         calcCap.dataset.autofilled='1';
+      }
+      const fxEl=document.getElementById('calcFx');
+      if(fxEl && d.usd_sar_rate!=null && (!fxEl.dataset.userEdited || fxEl.dataset.userEdited!=='1')){
+        fxEl.value=String(Number(d.usd_sar_rate)||3.75);
       }
       runStrategyCalc();
       document.getElementById('tone').textContent=(d.market&&d.market.tone)||'-';
