@@ -186,13 +186,12 @@ def run_premarket() -> None:
     deliver(settings, "🌅 Premarket", format_premarket_hotlist(settings), also_channel=True)
     deliver(settings, "🧭 Sectors", format_sector_etfs(), also_channel=True)
     deliver(settings, "🌱🏦 Style", format_style_board(settings), also_channel=True)
-    deliver(settings, "📰 News", format_stock_news(settings), also_channel=True)
+    # News stays on the website only (publish_news.py → news-live.json)
 
 
 def run_intel() -> None:
-    """Midday intel: news + fed reminder."""
+    """Midday intel: fed reminder (news is website-only)."""
     settings = load_settings()
-    deliver(settings, "📰 News", format_stock_news(settings), also_channel=True)
     deliver(settings, "🏛 Fed", format_fed_calendar(), also_channel=True)
 
 

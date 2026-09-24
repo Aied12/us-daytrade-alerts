@@ -348,7 +348,7 @@ def main() -> None:
         ],
         "news": news_ar,
         "news_excluded_negative": sorted(bad_news),
-        "news_note_ar": "بث سريع · محايد/إيجابي فقط · حتى 5 عناوين جديدة كل دقيقة",
+        "news_note_ar": "أخبار الموقع فقط — محايد/إيجابي · تتحدّث كل دقيقة",
         "bot": "@Aied01_bot",
         "channel": "@aied01",
         "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",

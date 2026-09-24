@@ -83,7 +83,7 @@ def cmd_help(settings) -> str:
         "/premarket — قائمة ساخنة قبل الافتتاح\n"
         "/afterhours — ملخص بعد الإغلاق\n"
         "/fed — تقويم الفيدرالي\n"
-        "/news — أخبار عاجلة\n"
+        "/news — رابط أخبار الموقع\n"
         "/sectors — ETF القطاعات\n"
         "/style — نمو vs قيمة\n"
         "/status — هل البوت حي؟\n"
@@ -217,7 +217,10 @@ def handle_message(settings, msg: dict) -> None:
     elif cmd == "/fed":
         deliver(settings, "🏛 Fed", format_fed_calendar(), also_channel=True)
     elif cmd == "/news":
-        deliver(settings, "📰 News", format_stock_news(settings), also_channel=True)
+        send_telegram(
+            settings,
+            "📰 الأخبار صارت على الموقع فقط:\nhttps://aied12.github.io/us-daytrade-alerts/\n(قسم أخبار الأسهم — تتحدّث كل دقيقة)",
+        )
     elif cmd == "/sectors":
         deliver(settings, "🧭 Sectors", format_sector_etfs(), also_channel=True)
     elif cmd == "/style":

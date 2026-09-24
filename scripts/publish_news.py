@@ -20,8 +20,6 @@ from bot.news_ar import (
     news_fingerprint,
     save_seen_news,
 )
-from bot.notify import deliver
-
 
 def run(cmd: list[str]) -> int:
     print("+", " ".join(cmd))
@@ -52,7 +50,7 @@ def _write_news_live(items: list[dict], *, fresh_n: int) -> None:
         "generated_ts": int(time.time()),
         "fresh_this_minute": fresh_n,
         "count": len(items),
-        "note_ar": "بث أخبار سريع — محايد/إيجابي فقط · حتى 5 عناوين جديدة كل دقيقة",
+        "note_ar": "أخبار الموقع فقط — محايد/إيجابي · تتحدّث كل دقيقة",
         "news": items,
     }
     raw = json.dumps(payload, ensure_ascii=False)
@@ -87,16 +85,8 @@ def main() -> int:
 
     # Cap Telegram burst at 5/minute (old-bot cadence)
     burst = fresh[:5]
-    if burst and settings.telegram_enabled:
-        lines = ["📰 أخبار جديدة (محايد/إيجابي)", ""]
-        for n in burst:
-            tag = "🟢" if n.get("sentiment") == "pos" else "⚪"
-            title = n.get("title_ar") or n.get("title") or ""
-            lines.append(f"{tag} {n.get('symbol')}: {title[:160]}")
-        deliver(settings, "", "\n".join(lines), also_channel=True)
-        print(f"[news] telegram burst={len(burst)}")
-    else:
-        print(f"[news] fresh={len(fresh)} burst={len(burst)} (no tg or empty)")
+    # Site-only: do not push news to Telegram
+    print(f"[news] site-only fresh={len(fresh)} shown_new={len(burst)}")
 
     # Rolling board: newest first, keep 40
     # Prefer previously published live file + new items
