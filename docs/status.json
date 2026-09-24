@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T09:36:54.743038+00:00",
-  "generated_ts": 1790242614,
-  "generated_local": "2026-09-24 12:36 +03",
+  "generated_at": "2026-09-24T09:37:12.729934+00:00",
+  "generated_ts": 1790242632,
+  "generated_local": "2026-09-24 12:37 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T09:36:54.742912+00:00",
+    "updated_at": "2026-09-24T09:37:12.729819+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 13985,
-    "ny_time": "05:36:54",
+    "seconds_left": 13967,
+    "ny_time": "05:37:12",
     "open": "09:30",
     "close": "16:00"
   },
@@ -131,6 +131,7 @@
       "allowed": false,
       "change_pct": 1.05,
       "last": 162.93,
+      "session_phase": "pre",
       "liquidity": {
         "rvol": 0.84,
         "volume": 12569300.0,
@@ -147,7 +148,7 @@
       "liq_grade": "medium",
       "liq_grade_ar": "متوسط",
       "tv_url": "https://www.tradingview.com/chart/?symbol=XOM",
-      "tg_share": "https://t.me/share/url?url=&text=XOM%20راقب دخول%0Aدخول%20162.93%20وقف%20156.41%20هدف%20174.67%0Aسيولة%20متوسط%20RVOL%20x0.84"
+      "tg_share": "https://t.me/share/url?url=&text=XOM%20راقب دخول%0Aالآن%20162.93%20وقف%20156.41%20هدف%20174.67%0Aسيولة%20متوسط%20RVOL%20x0.84"
     },
     {
       "symbol": "CVX",
@@ -168,6 +169,7 @@
       "allowed": false,
       "change_pct": 1.11,
       "last": 207.8,
+      "session_phase": "pre",
       "liquidity": {
         "rvol": 0.83,
         "volume": 8257800.0,
@@ -184,7 +186,7 @@
       "liq_grade": "medium",
       "liq_grade_ar": "متوسط",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CVX",
-      "tg_share": "https://t.me/share/url?url=&text=CVX%20راقب دخول%0Aدخول%20207.8%20وقف%20198.5%20هدف%20224.54%0Aسيولة%20متوسط%20RVOL%20x0.83"
+      "tg_share": "https://t.me/share/url?url=&text=CVX%20راقب دخول%0Aالآن%20207.8%20وقف%20198.5%20هدف%20224.54%0Aسيولة%20متوسط%20RVOL%20x0.83"
     }
   ],
   "gainers": [
@@ -315,7 +317,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 80,
+    "alerts_today": 82,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
