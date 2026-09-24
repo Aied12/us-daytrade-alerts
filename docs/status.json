@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:21:19.911246+00:00",
-  "generated_ts": 1790256079,
-  "generated_local": "2026-09-24 16:21 +03",
+  "generated_at": "2026-09-24T13:22:13.809904+00:00",
+  "generated_ts": 1790256133,
+  "generated_local": "2026-09-24 16:22 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:21:19.911110+00:00",
+    "updated_at": "2026-09-24T13:22:13.809771+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,21 +23,21 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.48,
+    "avg_change_pct": -0.49,
     "details": {
       "SPY": {
-        "last": 764.6046,
+        "last": 764.5546,
         "change_pct": -0.42,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 735.1299,
-        "change_pct": -0.82,
+        "last": 734.9712,
+        "change_pct": -0.84,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 281.32,
-        "change_pct": -0.21,
+        "last": 281.31,
+        "change_pct": -0.22,
         "rsi": 29.0
       }
     },
@@ -49,12 +49,12 @@
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.82,
+        "change_pct": -0.84,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.21,
+        "change_pct": -0.22,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 520,
-    "ny_time": "09:21:19",
+    "seconds_left": 466,
+    "ny_time": "09:22:13",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,30 +81,30 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.24
+        "change_pct": 0.12
       },
       {
         "name": "Financials",
-        "change_pct": -0.1
+        "change_pct": -0.14
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -0.74
+        "change_pct": -0.77
+      },
+      {
+        "name": "Consumer",
+        "change_pct": -0.24
       },
       {
         "name": "Industrial",
         "change_pct": -0.22
-      },
-      {
-        "name": "Consumer",
-        "change_pct": -0.19
       }
     ]
   },
   "style": {
-    "growth_avg": -0.67,
+    "growth_avg": -0.75,
     "value_avg": 0.11,
     "leader": "قيمة",
     "growth_count": 10,
@@ -116,44 +116,44 @@
       "action": "فكّر في شراء قصير المدى",
       "action_key": "CONSIDER_LONG",
       "side": "long",
-      "score_100": 81,
+      "score_100": 97,
       "urgent": true,
       "strategies": [
         "ارتداد لملء فجوة هابطة",
         "ترتيب متوسطات صاعد",
         "حجم غير طبيعي صاعد",
-        "RSI تشبع شرائي"
+        "كسر قمة 20 يوم"
       ],
-      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم غير طبيعي صاعد: حجم ×2.5 مع صعود | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقاومة≈$14.11 | تقلّب عالي: ATR% 8.4",
-      "entry": 14.84,
+      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم غير طبيعي صاعد: حجم ×2.5 مع صعود | كسر قمة 20 يوم: قرب/فوق قمة 20ي $14.87 | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقا",
+      "entry": 14.86,
       "stop": 6.17,
-      "target": 30.45,
+      "target": 30.5,
       "shares": 13,
-      "risk_sar": 422.66,
+      "risk_sar": 423.64,
       "allowed": true,
-      "change_pct": 3.34,
-      "last": 14.84,
+      "change_pct": 3.45,
+      "last": 14.86,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 2.52,
         "volume": 9172100.0,
         "avg_volume_20": 3636165.0,
-        "dollar_volume": 136113964.0,
-        "avg_dollar_volume": 53960688.6,
-        "dollar_volume_label": "136.1M$",
+        "dollar_volume": 136260717.6,
+        "avg_dollar_volume": 54018867.24,
+        "dollar_volume_label": "136.3M$",
         "avg_dollar_volume_label": "54.0M$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×2.5 · اليوم 136.1M$ · متوسط 54.0M$"
+        "label": "RVOL ×2.5 · اليوم 136.3M$ · متوسط 54.0M$"
       },
       "rvol": 2.52,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 8.39,
-      "flow_score": 21.38,
+      "flow_score": 22.11,
       "flow_ok": true,
       "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ",
-      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.84%20دخول%2014.84%20وقف%206.17%20هدف%2030.45%0Aسيولة%20قوي%20RVOL%20x2.52%20زخم%20+3.34%"
+      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.86%20دخول%2014.86%20وقف%206.17%20هدف%2030.5%0Aسيولة%20قوي%20RVOL%20x2.52%20زخم%20+3.45%"
     },
     {
       "symbol": "APA",
@@ -357,17 +357,17 @@
   "movers": [
     {
       "symbol": "SECZ",
-      "change_pct": 3.34,
-      "last": 14.84,
+      "change_pct": 3.45,
+      "last": 14.86,
       "rvol": 2.52,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "136.1M$"
+      "dollar_volume_label": "136.3M$"
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.41,
-      "last": 599.8,
+      "change_pct": -2.51,
+      "last": 599.2,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -375,8 +375,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.28,
-      "last": 189.34,
+      "change_pct": -1.36,
+      "last": 189.18,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -384,12 +384,21 @@
     },
     {
       "symbol": "NVDA",
-      "change_pct": -1.17,
-      "last": 222.88,
+      "change_pct": -1.22,
+      "last": 222.75,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "19.9B$"
+    },
+    {
+      "symbol": "AVGO",
+      "change_pct": -1.12,
+      "last": 351.01,
+      "rvol": 0.85,
+      "grade": "medium",
+      "grade_ar": "متوسط",
+      "dollar_volume_label": "8.2B$"
     },
     {
       "symbol": "APA",
@@ -399,15 +408,6 @@
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "246.8M$"
-    },
-    {
-      "symbol": "AVGO",
-      "change_pct": -1.07,
-      "last": 351.19,
-      "rvol": 0.85,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "8.2B$"
     }
   ],
   "news": [
