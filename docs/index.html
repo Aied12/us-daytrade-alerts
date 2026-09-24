@@ -185,6 +185,19 @@
       background:color-mix(in srgb,var(--ok) 12%, var(--card));font-size:.9rem;font-weight:700;
     }
     #movingBar.on{display:block}
+    .section-nav{
+      display:flex;gap:6px;overflow:auto;padding:8px 0 4px;margin-top:4px;
+      -webkit-overflow-scrolling:touch;scrollbar-width:thin;
+    }
+    .section-nav button{
+      flex:0 0 auto;min-height:40px;padding:8px 12px;border-radius:12px;
+      border:1px solid var(--line);background:var(--card);color:var(--text);
+      font:inherit;font-size:.88rem;font-weight:700;cursor:pointer;white-space:nowrap;
+    }
+    .section-nav button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .panel{display:none}
+    .panel.active{display:block}
+    .sticky .toolbar{margin-top:2px}
   </style>
 </head>
 <body>
@@ -196,7 +209,7 @@
         <div>
           <h1>لوحة تنبيهات الأسهم</h1>
           <div class="muted" id="ago">جاري التحميل...</div>
-          <div class="muted" id="autoHint" style="margin-top:2px">مسح محفزات + زخم مربوط بالخبر...</div>
+          <div class="muted" id="autoHint" style="margin-top:2px">اختر قسماً من الشريط أعلاه</div>
         </div>
         <span id="alive" class="pill">...</span>
       </div>
@@ -206,9 +219,21 @@
         <button class="btn ghost" id="btnLight" type="button">📶 نسخة خفيفة</button>
         <button class="btn ghost" id="btnNotify" type="button">🔔 إشعار الفرص</button>
       </div>
+      <div class="section-nav" id="sectionNav" role="tablist" aria-label="أقسام اللوحة">
+        <button type="button" data-section="live" class="active">أسعار لحظية</button>
+        <button type="button" data-section="market">السوق</button>
+        <button type="button" data-section="mood">مزاج السوق</button>
+        <button type="button" data-section="momentum">ماسح الزخم</button>
+        <button type="button" data-section="news">بث المحفزات</button>
+        <button type="button" data-section="opps">خطط الدخول</button>
+        <button type="button" data-section="calc">حاسبة الاستراتيجية</button>
+        <button type="button" data-section="gainers">أعلى ارتفاعاً</button>
+        <button type="button" data-section="movers">أقوى التحركات</button>
+        <button type="button" data-section="more">المزيد</button>
+      </div>
     </div>
 
-    <div class="card" id="liveCard">
+    <div class="card panel active" id="panel-live" data-section-panel="live">
       <div class="row">
         <h2 style="margin:0">أسعار لحظية <span class="pulse" title="بث حي"></span></h2>
         <span class="pill ok" id="liveBadge">كل الأسهم</span>
@@ -217,7 +242,8 @@
       <div id="liveTape" class="grid"></div>
     </div>
 
-    <div class="card">
+    <div class="card panel" id="panel-market" data-section-panel="market">
+      <h2>السوق</h2>
       <div class="indexes" id="indexes"></div>
       <div class="row" style="margin-top:10px">
         <span class="muted">السعودية</span><b id="saClock">--:--:--</b>
@@ -226,20 +252,12 @@
         <span class="muted">نيويورك</span><b id="nyClock">--:--:--</b>
       </div>
       <div class="row">
-        <span class="muted" id="sessionLabel">الجلسة</span><b id="countdown">--</b>
+        <span class="muted" id="sessionLabel">للClosing</span><b id="countdown">--</b>
       </div>
+      <p class="muted" id="priceLag" style="margin-top:10px">-</p>
     </div>
 
-    <div class="card">
-      <div class="row"><span>يوم تداول؟</span><span id="trading">-</span></div>
-      <div class="row"><span>الوضع</span><span id="mode">-</span></div>
-      <div class="row"><span>مصدر السعر</span><span id="priceLag" class="warn">-</span></div>
-      <div class="row"><span>رأس المال</span><span id="capital">-</span></div>
-      <div class="row"><span>حد الخسارة اليومي</span><span id="dailyLoss" class="warn">-</span></div>
-      <p class="warn" id="reminder" style="margin:8px 0 0;font-weight:700"></p>
-    </div>
-
-    <div class="card">
+    <div class="card panel" id="panel-mood" data-section-panel="mood">
       <h2>مزاج السوق</h2>
       <p id="tone">-</p>
       <p class="muted" id="scanMode" style="margin:6px 0 0"></p>
@@ -253,13 +271,13 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card panel" id="panel-momentum" data-section-panel="momentum">
       <h2>ماسح الزخم</h2>
       <p class="muted" id="momentumNote">تحرك ≈4%+ مع سيولة — والخبر/المحفز بجانب الحركة (مثل Argus)</p>
       <div id="momentumList"><div class="empty">جاري المسح...</div></div>
     </div>
 
-    <div class="card">
+    <div class="card panel" id="panel-news" data-section-panel="news">
       <h2>بث المحفزات</h2>
       <p class="muted" id="newsNote">أخبار الشركات + تأثير 1–5 + وسم المحفز — بدون إشاعات</p>
       <div class="cat-filters" id="catFilters">
@@ -274,7 +292,7 @@
       <div id="newsList"><div class="muted">جاري جلب المحفزات...</div></div>
     </div>
 
-    <div class="card">
+    <div class="card panel" id="panel-opps" data-section-panel="opps">
       <h2>خطط الدخول</h2>
       <p class="muted" id="oppsNote">بعد الماسح — ثقة A/B/C · وقف/هدف · لا مطاردة الممتد</p>
       <div class="seg" id="filterSeg">
@@ -301,7 +319,7 @@
       <div id="opps"><div class="empty">جاري الجلب...</div></div>
     </div>
 
-    <div class="card" id="strategyCalcCard">
+    <div class="card panel" id="panel-calc" data-section-panel="calc">
       <h2>حاسبة الاستراتيجية</h2>
       <p class="muted">احسب الدخول / الوقف / الأهداف وحجم الصفقة — اضغط سهماً من خطط الدخول أو أعلى الارتفاعات لتعبئة السعر</p>
       <div class="row" style="margin-top:4px">
@@ -371,7 +389,7 @@
       <p class="muted" style="margin:12px 0 0;font-size:.82rem;line-height:1.4">هذه حسابات آلية لأغراض تعليمية وإدارة مخاطر، وليست توصية استثمارية. راجع قراراتك دائمًا.</p>
     </div>
 
-    <div class="card">
+    <div class="card panel" id="panel-gainers" data-section-panel="gainers">
       <h2>أعلى الأسهم ارتفاعاً</h2>
       <p class="muted" id="gainersNote">سعر ≥ $5 — سعر لحظي حسب الجلسة الحالية</p>
       <div style="overflow:auto">
@@ -384,18 +402,16 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card panel" id="panel-movers" data-section-panel="movers">
       <h2>أقوى المتحركات</h2>
       <div id="movers" class="grid"></div>
     </div>
 
-    <div class="card">
-      <h2>المخاطرة</h2>
+    <div class="card panel" id="panel-more" data-section-panel="more">
+      <h2>المزيد</h2>
+      <h2 style="margin-top:14px;font-size:1rem">المخاطرة</h2>
       <pre id="risk" class="muted" style="white-space:pre-wrap;margin:0;font-family:inherit"></pre>
-    </div>
-
-    <div class="card">
-      <h2>تيليجرام</h2>
+      <h2 style="margin-top:18px;font-size:1rem">تيليجرام</h2>
       <a class="btn" href="https://t.me/Aied01_bot">فتح @Aied01_bot</a>
       <a class="btn secondary" href="https://t.me/aied01">القناة @aied01</a>
       <p class="muted" style="margin-top:10px">أوامر: <code>/status</code> <code>/scan</code> <code>/premarket</code> <code>/help</code></p>
