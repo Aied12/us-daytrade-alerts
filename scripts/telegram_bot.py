@@ -19,6 +19,16 @@ sys.path.insert(0, str(ROOT))
 
 from bot.charts import make_daily_chart, make_market_poster
 from bot.config import load_settings
+from bot.extras import (
+    format_after_hours,
+    format_earnings_calendar,
+    format_fed_calendar,
+    format_options_unusual,
+    format_premarket_hotlist,
+    format_sector_etfs,
+    format_stock_news,
+    format_style_board,
+)
 from bot.formatters import action_keyboard, mode_keyboard, format_signal_card, is_urgent
 from bot.journal import log_action, summarize_journal
 from bot.market_data import market_context, scan_watchlist
@@ -72,16 +82,19 @@ def cmd_help(settings) -> str:
     return (
         "أوامر البوت:\n"
         "/scan — فحص الآن\n"
-        "/risk — رأس المال والمخاطرة\n"
-        "/journal — دفتر الصفقات\n"
-        "/mode — مبتدئ أو محترف\n"
-        "/chart — ملصق يومي (شارت)\n"
-        "/voice — ملخص صوتي قصير\n"
-        "/strategies — مقارنة استراتيجيتين\n"
+        "/premarket — قائمة ساخنة قبل الافتتاح\n"
+        "/afterhours — ملخص بعد الإغلاق\n"
+        "/earnings — تقويم الأرباح\n"
+        "/fed — تقويم الفيدرالي\n"
+        "/news — أخبار عاجلة\n"
+        "/options — خيارات بحجم غير طبيعي\n"
+        "/sectors — ETF القطاعات\n"
+        "/style — نمو vs قيمة\n"
+        "/risk /journal /mode /chart /voice /strategies\n"
         "/help — هذه القائمة\n\n"
         f"الوضع الحالي: {'مبتدئ' if settings.is_beginner else 'محترف'}\n"
         f"فلتر السعر: فوق ${settings.min_price_usd:g}\n"
-        "الأزرار تحت التنبيهات: دخلت / راقبت / تجاهلت"
+        "الأزرار: دخلت / راقبت / تجاهلت"
     )
 
 
@@ -201,6 +214,22 @@ def handle_message(settings, msg: dict) -> None:
             f"الوضع الحالي: {'مبتدئ' if settings.is_beginner else 'محترف'}\nاختر:",
             reply_markup=mode_keyboard(),
         )
+    elif cmd == "/premarket":
+        deliver(settings, "🌅 Premarket", format_premarket_hotlist(settings), also_channel=True)
+    elif cmd == "/afterhours":
+        deliver(settings, "🌙 After-hours", format_after_hours(settings), also_channel=True)
+    elif cmd == "/earnings":
+        deliver(settings, "📅 Earnings", format_earnings_calendar(settings), also_channel=True)
+    elif cmd == "/fed":
+        deliver(settings, "🏛 Fed", format_fed_calendar(), also_channel=True)
+    elif cmd == "/news":
+        deliver(settings, "📰 News", format_stock_news(settings), also_channel=True)
+    elif cmd == "/options":
+        deliver(settings, "📊 Options", format_options_unusual(settings), also_channel=True)
+    elif cmd == "/sectors":
+        deliver(settings, "🧭 Sectors", format_sector_etfs(), also_channel=True)
+    elif cmd == "/style":
+        deliver(settings, "🌱🏦 Style", format_style_board(settings), also_channel=True)
     elif cmd == "/strategies":
         # /strategies فجوة|كسر  or defaults
         raw = text[len("/strategies"):].strip()

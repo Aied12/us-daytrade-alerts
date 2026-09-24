@@ -14,6 +14,16 @@ sys.path.insert(0, str(ROOT))
 
 from bot.charts import make_market_poster
 from bot.config import load_settings
+from bot.extras import (
+    format_after_hours,
+    format_earnings_calendar,
+    format_fed_calendar,
+    format_options_unusual,
+    format_premarket_hotlist,
+    format_sector_etfs,
+    format_stock_news,
+    format_style_board,
+)
 from bot.formatters import action_keyboard, format_signal_card, is_urgent
 from bot.market_data import market_context, scan_watchlist
 from bot.notify import deliver, save_json_snapshot, send_photo, send_telegram, send_voice
@@ -149,11 +159,30 @@ def run_evening() -> None:
         pack["evening"],
         also_channel=bool(settings.telegram_channel_id),
     )
-    # evening voice
+    # after-hours + calendars pack
+    deliver(settings, "🌙 After-hours", format_after_hours(settings), also_channel=True)
+    deliver(settings, "📅 Earnings", format_earnings_calendar(settings), also_channel=True)
+    deliver(settings, "🏛 Fed", format_fed_calendar(), also_channel=True)
     script = voice_script_from_update(pack["evening"][:300], True)
     vp = synthesize_arabic(script, settings.data_dir / "media" / f"evening_{stamp}.mp3")
     if vp:
         send_voice(settings, vp, caption="ملخص مسائي صوتي")
+
+
+def run_premarket() -> None:
+    settings = load_settings()
+    deliver(settings, "🌅 Premarket", format_premarket_hotlist(settings), also_channel=True)
+    deliver(settings, "🧭 Sectors", format_sector_etfs(), also_channel=True)
+    deliver(settings, "🌱🏦 Style", format_style_board(settings), also_channel=True)
+    deliver(settings, "📰 News", format_stock_news(settings), also_channel=True)
+
+
+def run_intel() -> None:
+    """Midday intel: options + news + fed reminder."""
+    settings = load_settings()
+    deliver(settings, "📊 Options", format_options_unusual(settings), also_channel=True)
+    deliver(settings, "📰 News", format_stock_news(settings), also_channel=True)
+    deliver(settings, "🏛 Fed", format_fed_calendar(), also_channel=True)
 
 
 def main() -> None:
@@ -161,7 +190,10 @@ def main() -> None:
     parser.add_argument(
         "--mode",
         default="tick",
-        choices=["tick", "auto", "morning", "intraday", "evening", "demo"],
+        choices=[
+            "tick", "auto", "morning", "intraday", "evening", "demo",
+            "premarket", "intel", "afterhours",
+        ],
     )
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
@@ -171,6 +203,26 @@ def main() -> None:
     print(f"[scheduled] NY={now_ny.isoformat()} SA={now_sa.isoformat()} mode={args.mode}")
 
     mode = "tick" if args.mode in ("auto", "morning", "intraday") else args.mode
+
+    if mode == "premarket":
+        if not args.force and not is_trading_day(now_ny):
+            print("[scheduled] skip — not a US trading day")
+            return
+        run_premarket()
+        return
+
+    if mode == "intel":
+        if not args.force and not is_trading_day(now_ny):
+            return
+        run_intel()
+        return
+
+    if mode == "afterhours":
+        if not args.force and not is_trading_day(now_ny):
+            return
+        settings = load_settings()
+        deliver(settings, "🌙 After-hours", format_after_hours(settings), also_channel=True)
+        return
 
     if mode == "tick":
         if not args.force and not is_trading_day(now_ny):
@@ -190,8 +242,7 @@ def main() -> None:
         return
 
     if mode == "demo":
-        run_tick()
-        run_tick()
+        run_premarket()
         return
 
     raise SystemExit(f"unknown mode: {mode}")

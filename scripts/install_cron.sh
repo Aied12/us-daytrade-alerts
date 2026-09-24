@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Cron: every 5 minutes 11:00–23:00 Saudi + telegram bot poller
+# Cron: session ticks + premarket/intel/afterhours + bot poller
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 RUN="$ROOT/scripts/run_cron.sh"
 BOT="$ROOT/scripts/run_bot_once.sh"
-chmod +x "$RUN" "$BOT" "$ROOT/scripts/link_telegram.py" "$ROOT/scripts/scheduled_run.py" "$ROOT/scripts/telegram_bot.py"
+chmod +x "$RUN" "$BOT" "$ROOT/scripts/"*.py "$ROOT/scripts/"*.sh 2>/dev/null || true
 
 MARKER_BEGIN="# BEGIN us-daytrade-alerts"
 MARKER_END="# END us-daytrade-alerts"
@@ -14,9 +14,14 @@ CRON_BLOCK=$(cat <<EOF
 $MARKER_BEGIN
 SHELL=/bin/bash
 PATH=/usr/bin:/bin
+# Premarket pack — 11:00 السعودية
+0 8 * * 1-5 $RUN premarket
 # تحديث السوق كل 5 دقائق 11ص–11م السعودية
 */5 8-19 * * 1-5 $RUN tick
 0 20 * * 1-5 $RUN tick
+# Intel (خيارات/أخبار/فيد) ظهرًا تقريبًا 16:00 السعودية
+0 13 * * 1-5 $RUN intel
+# ملخص مسائي + after-hours
 5 20 * * 1-5 $RUN evening
 # مستمع أوامر/أزرار تيليجرام كل دقيقة
 * * * * * $BOT
