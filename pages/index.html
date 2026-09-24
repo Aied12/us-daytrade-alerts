@@ -88,6 +88,7 @@
         <div>
           <h1>لوحة تنبيهات الأسهم</h1>
           <div class="muted" id="ago">جاري التحميل...</div>
+          <div class="muted" id="autoHint" style="margin-top:2px">تحديث تلقائي للأسعار...</div>
         </div>
         <span id="alive" class="pill">...</span>
       </div>
@@ -427,13 +428,13 @@
       const btn=document.getElementById('btnRefresh');
       btn.disabled=true; btn.textContent='... جاري التحديث';
       try{
-        // 25/26: cache-friendly status.json; light-net caches longer for weak 5G
-        const bucket=isLightNet()?60000:15000;
-        const url='./status.json?ts='+(bust?Date.now():Math.floor(Date.now()/bucket));
-        const res=await fetch(url,{cache:bust?'no-store':'force-cache'});
+        // Always cache-bust so auto-refresh picks new status.json quickly
+        const url='./status.json?ts='+Date.now();
+        const res=await fetch(url,{cache:'no-store'});
         DATA=await res.json();
         sessionLeft=Number((DATA.session&&DATA.session.seconds_left)||0);
         renderAll();
+        refreshIn=AUTO_SEC;
         if(bust) toast('تم التحديث');
       }catch(e){
         document.getElementById('opps').innerHTML='<div class="empty">تعذّر التحديث — تحقق من النت أو افتح /scan في تيليجرام</div>';
@@ -442,6 +443,9 @@
         btn.disabled=false; btn.textContent='🔄 تحديث الآن';
       }
     }
+
+    const AUTO_SEC = isLightNet()?45:20;
+    let refreshIn = AUTO_SEC;
 
     document.getElementById('btnRefresh').onclick=()=>fetchData(true);
     document.getElementById('btnTheme').onclick=()=>{
@@ -478,9 +482,15 @@
 
     loadPrefs();
     fetchData(true);
-    // 24 auto refresh every minute
-    setInterval(()=>fetchData(false), 60000);
-    setInterval(()=>{ if(sessionLeft>0) sessionLeft-=1; tickClocks(); },1000);
+    // Auto refresh prices/stocks
+    setInterval(()=>fetchData(false), AUTO_SEC*1000);
+    setInterval(()=>{
+      if(sessionLeft>0) sessionLeft-=1;
+      refreshIn=Math.max(0, refreshIn-1);
+      const hint=document.getElementById('autoHint');
+      if(hint) hint.textContent=`تحديث تلقائي · التالي خلال ${refreshIn}ث`;
+      tickClocks();
+    },1000);
   </script>
 </body>
 </html>
