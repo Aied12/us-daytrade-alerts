@@ -12,20 +12,65 @@ from __future__ import annotations
 from typing import Any
 
 from bot.catalyst_scan import enrich_news_item, impact_score_1_5
-from bot.gainers import _money, _yahoo_live, session_label_ar, session_phase, _screener_symbols
+from bot.gainers import _money, session_label_ar, session_phase, _screener_symbols
 from bot.cacheutil import cached_call
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import requests
+
+UA = {"User-Agent": "Mozilla/5.0"}
 
 # Price band: cheap / near-penny to low single-digit (not APA-style mid/large)
 SNIPER_MIN_PRICE = 0.30
 SNIPER_MAX_PRICE = 8.00
-# Strong move floors (day-trade runners)
+# Strong move floors (day-trade runners) — vs prior close (يوم كامل)
 SNIPER_MIN_CHG = 8.0
 SNIPER_MIN_CHG_WITH_NEWS = 5.0
 SNIPER_MIN_CHG_PRE = 6.0
 # Participation — softer than main board, but not empty prints
 SNIPER_MIN_DOLLAR = 400_000
 SNIPER_MIN_DOLLAR_HOT = 200_000  # if move is huge
+
+
+def _sniper_live(symbol: str) -> dict[str, Any] | None:
+    """Live last + full-day % vs previous close (not wiped in post by RTH ref)."""
+    try:
+        r = requests.get(
+            f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}",
+            params={"range": "1d", "interval": "1m", "includePrePost": "true"},
+            headers=UA,
+            timeout=15,
+        )
+        r.raise_for_status()
+        res = ((r.json().get("chart") or {}).get("result") or [None])[0]
+        if not res:
+            return None
+        meta = res.get("meta") or {}
+        closes = ((res.get("indicators") or {}).get("quote") or [{}])[0].get("close") or []
+        live = next((float(c) for c in reversed(closes) if c is not None), None)
+        rth = float(meta.get("regularMarketPrice") or 0)
+        prev_close = float(meta.get("chartPreviousClose") or meta.get("previousClose") or 0)
+        if live is None or live <= 0:
+            live = rth if rth > 0 else None
+        if live is None or prev_close <= 0:
+            return None
+        # Sniper ranks on the full day move (pre→RTH→post), not AH drift alone
+        chg = (live - prev_close) / prev_close * 100
+        # Prefer Yahoo's regular % when AH last ≈ RTH (avoids tiny noise)
+        reg_pct = meta.get("regularMarketChangePercent")
+        if reg_pct is not None and abs(live - rth) / max(rth, 1e-9) < 0.01:
+            chg = float(reg_pct)
+        return {
+            "symbol": symbol.upper(),
+            "last": round(live, 4 if live < 1 else 2),
+            "ref": round(prev_close, 4 if prev_close < 1 else 2),
+            "change_pct": round(chg, 2),
+            "rth_close": round(rth, 4 if rth and rth < 1 else 2) if rth else None,
+            "phase": session_phase(),
+            "name": (meta.get("shortName") or meta.get("longName") or "")[:40],
+            "volume": float(meta.get("regularMarketVolume") or 0),
+        }
+    except Exception:
+        return None
 
 
 def sniper_passes(row: dict[str, Any], *, phase: str | None = None, has_news: bool = False) -> bool:
@@ -37,7 +82,7 @@ def sniper_passes(row: dict[str, Any], *, phase: str | None = None, has_news: bo
         return False
     if chg <= 0:
         return False
-    floor = SNIPER_MIN_CHG_PRE if phase == "pre" else SNIPER_MIN_CHG
+    floor = SNIPER_MIN_CHG_PRE if phase in ("pre", "post") else SNIPER_MIN_CHG
     if has_news:
         floor = min(floor, SNIPER_MIN_CHG_WITH_NEWS)
     if chg < floor:
@@ -54,14 +99,15 @@ def fetch_cheap_runners(*, limit: int = 25) -> list[dict[str, Any]]:
     def _build() -> list[dict]:
         phase = session_phase()
         cand: list[str] = []
-        for scr in ("day_gainers", "most_actives", "small_cap_gainers"):
+        # Prefer small-cap / actives first — day_gainers skews mid/large after the open
+        for scr in ("small_cap_gainers", "most_actives", "day_gainers"):
             for s in _screener_symbols(scr, 40):
                 if s and s not in cand:
                     cand.append(s)
-        cand = cand[:55]
+        cand = cand[:70]
         lives: list[dict] = []
         with ThreadPoolExecutor(max_workers=8) as pool:
-            futs = {pool.submit(_yahoo_live, s): s for s in cand}
+            futs = {pool.submit(_sniper_live, s): s for s in cand}
             for fut in as_completed(futs):
                 row = fut.result()
                 if not row:
@@ -94,7 +140,11 @@ def fetch_cheap_runners(*, limit: int = 25) -> list[dict[str, Any]]:
 
     cache_key = f"sniper_runners:{session_phase()}:{limit}"
     try:
-        return list(cached_call(cache_key, _build, ttl=60) or [])
+        hit = cached_call(cache_key, _build, ttl=60)
+        # Don't keep an empty board stuck for a full TTL minute
+        if hit:
+            return list(hit)
+        return _build()
     except Exception:
         try:
             return _build()
@@ -144,7 +194,7 @@ def build_sniper_scanner(
         chg = float(r.get("change_pct") or 0)
         if top and top.get("impact") is None:
             top = enrich_news_item(top, change_pct=chg)
-        if top is None and chg >= 12:
+        if top is None and chg >= 10:
             # tape rocket without headline yet
             impact = 4 if chg >= 20 else 3
             reason = "زخم سعري قوي بدون خبر رسمي مرفق بعد"

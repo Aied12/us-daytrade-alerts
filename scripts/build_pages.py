@@ -426,7 +426,7 @@ def main() -> None:
         "sniper_scanner": sniper,
         "sniper_note_ar": "ماسح القنص: أسهم رخيصة ($0.30–$8) + زخم قوي (≥5–8%) + خبر/محفز مفضّل — أسلوب قنص السنتات، منفصل عن اللوحة المحافظة",
         "sniper_price_band": {"min": 0.30, "max": 8.0},
-        "opportunities": opportunities
+        "opportunities": opportunities,
         "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
         "opps_rejected_slow": rejected_slow[:20],
         "gainers": gainers,

@@ -238,6 +238,7 @@
         <button type="button" data-section="market">السوق</button>
         <button type="button" data-section="mood">مزاج السوق</button>
         <button type="button" data-section="momentum">ماسح الزخم</button>
+        <button type="button" data-section="sniper">ماسح القنص</button>
         <button type="button" data-section="news">بث المحفزات</button>
         <button type="button" data-section="opps">خطط الدخول</button>
         <button type="button" data-section="calc">حاسبة الاستراتيجية</button>
@@ -289,6 +290,17 @@
       <h2>ماسح الزخم</h2>
       <p class="muted" id="momentumNote">تحرك ≈4%+ مع سيولة — والخبر/المحفز بجانب الحركة (مثل Argus)</p>
       <div id="momentumList"><div class="empty">جاري المسح...</div></div>
+    </div>
+
+    <div class="card panel" id="panel-sniper" data-section-panel="sniper">
+      <h2>ماسح القنص</h2>
+      <p class="muted" id="sniperNote">أسهم رخيصة ($0.30–$8) + زخم قوي + خبر/محفز — أسلوب قنص السنتات (منفصل عن اللوحة المحافظة)</p>
+      <div class="seg" id="sniperSeg">
+        <button type="button" data-sf="all" class="active">الكل</button>
+        <button type="button" data-sf="news">مع خبر</button>
+        <button type="button" data-sf="rocket">صاروخ ≥15%</button>
+      </div>
+      <div id="sniperList"><div class="empty">جاري مسح القنص...</div></div>
     </div>
 
     <div class="card panel" id="panel-news" data-section-panel="news">
@@ -453,17 +465,20 @@
       cat: 'dash_cat_filter',
       section: 'dash_section',
       priceTier: 'dash_price_tier',
+      sniper: 'dash_sniper_filter',
     };
-    const SECTION_IDS = ['live','market','mood','momentum','news','opps','calc','gainers','movers','more'];
+    const SECTION_IDS = ['live','market','mood','momentum','sniper','news','opps','calc','gainers','movers','more'];
     let CURRENT_SECTION = 'momentum';
     let DATA = null;
     let lastUrgent = new Set();
     const MOVE_WINDOW_MS = 12000;
     let FLOW_FILTERS = new Set();
     let CAT_FILTER = 'all';
+    let SNIPER_FILTER = 'all'; // all | news | rocket
     let PRICE_TIER = 'high'; // high = ≥$51 · low = $5–<$51
     let NEWS_CACHE = [];
     let MOMENTUM_CACHE = [];
+    let SNIPER_CACHE = [];
     let CALC_SYM = '';
     let CALC_STOP_USER_EDITED = false;
     let GAINERS_STATE = [];
@@ -508,6 +523,7 @@
       renderOpps();
       renderGainersTable();
       renderMomentum(MOMENTUM_CACHE);
+      renderSniper(SNIPER_CACHE);
       renderNewsList(NEWS_CACHE);
       if(DATA){
         const moversBox=document.getElementById('movers');
@@ -971,6 +987,11 @@
       document.querySelectorAll('#catFilters button').forEach(b=>{
         b.classList.toggle('active', b.dataset.cat===CAT_FILTER);
       });
+      SNIPER_FILTER = localStorage.getItem(LS.sniper)||'all';
+      if(!['all','news','rocket'].includes(SNIPER_FILTER)) SNIPER_FILTER='all';
+      document.querySelectorAll('#sniperSeg button').forEach(b=>{
+        b.classList.toggle('active', b.dataset.sf===SNIPER_FILTER);
+      });
       const savedTier=localStorage.getItem(LS.priceTier);
       PRICE_TIER = (savedTier==='low') ? 'low' : 'high';
       syncPriceTierUi();
@@ -1313,6 +1334,10 @@
       if(mNote) mNote.textContent=d.momentum_note_ar||mNote.textContent;
       MOMENTUM_CACHE=d.momentum_scanner||[];
       renderMomentum(MOMENTUM_CACHE);
+      const sNote=document.getElementById('sniperNote');
+      if(sNote) sNote.textContent=d.sniper_note_ar||sNote.textContent;
+      SNIPER_CACHE=d.sniper_scanner||[];
+      renderSniper(SNIPER_CACHE);
       const note=document.getElementById('newsNote');
       if(note) note.textContent=d.news_note_ar||'بث محفزات · تأثير 1–5';
       NEWS_CACHE=news;
@@ -1357,6 +1382,60 @@
           <div class="muted">الآن $<span data-live-px="${esc(r.symbol)}">${esc(Number(r.last).toFixed(2))}</span>
             ${r.dollar_volume_label?` · ${esc(r.dollar_volume_label)}`:''}
             ${r.liq_grade_ar?` · ${esc(r.liq_grade_ar)}`:''}
+          </div>
+          <div class="alert">${esc(r.alert_ar||'')}</div>
+          <div style="margin-top:4px">${cats}</div>
+          ${newsLine}
+          <div class="toolbar" style="margin-top:8px">
+            <a class="btn secondary" href="${esc(href)}" target="_blank" rel="noopener">المصدر / الشارت</a>
+          </div>
+        </div>`;
+      }).join('');
+      });
+    }
+
+    function filteredSniper(rows){
+      let list=(rows||[]).slice();
+      if(SNIPER_FILTER==='news') list=list.filter(r=>r.has_news);
+      else if(SNIPER_FILTER==='rocket') list=list.filter(r=>Number(r.change_pct||0)>=15);
+      return list;
+    }
+
+    function renderSniper(rows){
+      const box=document.getElementById('sniperList');
+      if(!box) return;
+      withPreservedScroll(()=>{
+      // شريحة السعر المحافظة لا تُطبَّق هنا — نطاق القنص $0.30–$8
+      let list=filteredSniper(rows||[]);
+      if(!list.length){
+        const hint=SNIPER_FILTER==='news'?'مع خبر':(SNIPER_FILTER==='rocket'?'صاروخ ≥15%':'');
+        box.innerHTML=`<div class="empty">لا قنص ${hint?`(${hint}) `:''}الآن ضمن $0.30–$8</div>`;
+        return;
+      }
+      const sig=SNIPER_FILTER+'|'+list.map(r=>`${r.symbol}:${r.change_pct}:${r.impact}:${r.has_news?1:0}:${r.score||0}`).join('|');
+      if(box.dataset.sig===sig) return;
+      box.dataset.sig=sig;
+      box.innerHTML=list.map(r=>{
+        const cats=(r.catalyst_ar||[]).map(c=>`<span class="tag tone-ok">${esc(c)}</span>`).join('');
+        const newsLine=r.news_title_ar
+          ? `<div class="muted" style="margin-top:6px">${esc(r.news_title_ar)}</div>`
+          : `<div class="muted" style="margin-top:6px">${esc(r.reason_ar||'زخم سعري — راقب ظهور الخبر')}</div>`;
+        const href=r.news_url||r.tv_url||'#';
+        const px=Number(r.last||0);
+        const pxTxt=px>0 && px<1 ? px.toFixed(4) : px.toFixed(2);
+        return `<div class="scan-item">
+          <div class="row">
+            <span class="sym">${esc(r.symbol)} <span class="${clsChg(r.change_pct)}" data-live-chg="${esc(r.symbol)}">${r.change_pct>0?'+':''}${esc(r.change_pct)}%</span></span>
+            <span>
+              <span class="pill impact-pill">${impactDots(r.impact)}</span>
+              ${r.has_news?'<span class="pill ok">خبر</span>':'<span class="pill warn">بدون خبر</span>'}
+              <span class="pill">قنص</span>
+            </span>
+          </div>
+          <div class="muted">الآن $<span data-live-px="${esc(r.symbol)}">${esc(pxTxt)}</span>
+            ${r.dollar_volume_label?` · ${esc(r.dollar_volume_label)}`:''}
+            ${r.price_band_ar?` · ${esc(r.price_band_ar)}`:''}
+            ${r.session_ar?` · ${esc(r.session_ar)}`:''}
           </div>
           <div class="alert">${esc(r.alert_ar||'')}</div>
           <div style="margin-top:4px">${cats}</div>
@@ -1566,6 +1645,15 @@
         CAT_FILTER=b.dataset.cat||'all';
         localStorage.setItem(LS.cat, CAT_FILTER);
         renderNewsList(NEWS_CACHE);
+      };
+    });
+    document.querySelectorAll('#sniperSeg button').forEach(b=>{
+      b.onclick=()=>{
+        document.querySelectorAll('#sniperSeg button').forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+        SNIPER_FILTER=b.dataset.sf||'all';
+        localStorage.setItem(LS.sniper, SNIPER_FILTER);
+        renderSniper(SNIPER_CACHE);
       };
     });
 
