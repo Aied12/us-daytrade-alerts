@@ -1,9 +1,8 @@
 from __future__ import annotations
 
 import json
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from datetime import datetime
-from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from bot.config import Settings
@@ -86,6 +85,19 @@ def _by_symbol(items: list[dict]) -> dict[str, dict]:
     return {i["symbol"]: i for i in items}
 
 
+def _is_short_fp(fp: dict) -> bool:
+    action = str(fp.get("action") or "")
+    return "بيع قصير" in action
+
+
+def _is_watch_fp(fp: dict) -> bool:
+    return "راقب" in str(fp.get("action") or "")
+
+
+def _is_long_fp(fp: dict) -> bool:
+    return "شراء" in str(fp.get("action") or "")
+
+
 def describe_changes(
     settings: Settings,
     prev: dict | None,
@@ -93,7 +105,7 @@ def describe_changes(
     signals: list[Signal],
     market_tone: str,
 ) -> tuple[bool, str]:
-    """Return (changed, message_body)."""
+    """Meaningful changes only — match what the dashboard shows."""
     now = datetime.now(RIYADH).strftime("%Y-%m-%d %H:%M")
     if prev is None:
         lines = [
@@ -113,7 +125,9 @@ def describe_changes(
                 )
         return True, "\n".join(lines)
 
-    prev_sigs = _by_symbol(prev.get("signals") or [])
+    # Ignore historical shorts so hiding them never looks like "disappeared"
+    prev_list = [s for s in (prev.get("signals") or []) if not _is_short_fp(s)]
+    prev_sigs = _by_symbol(prev_list)
     curr_sigs = _by_symbol(fingerprints)
     changes: list[str] = []
 
@@ -124,37 +138,39 @@ def describe_changes(
     for sym, cur in curr_sigs.items():
         old = prev_sigs.get(sym)
         if old is None:
+            prefix = "🆕" if _is_long_fp(cur) else "👀"
             changes.append(
-                f"🆕 {sym}: ظهرت إشارة «{cur['action']}» "
+                f"{prefix} {sym}: ظهرت إشارة «{cur['action']}» "
                 f"({cur['change_pct']:+.1f}%) "
                 f"دخول≈${cur['entry']} وقف≈${cur['stop']} هدف≈${cur['target']}"
             )
             continue
         bits = []
         if old.get("action") != cur["action"]:
-            bits.append(f"الإجراء: {old['action']} ← {cur['action']}")
-        if abs(float(old.get("entry", 0)) - float(cur["entry"])) >= 0.5:
+            bits.append(f"الإشارة: {old['action']} ← {cur['action']}")
+        if abs(float(old.get("entry", 0)) - float(cur["entry"])) >= 0.8:
             bits.append(f"الدخول: ${old['entry']} ← ${cur['entry']}")
-        if abs(float(old.get("stop", 0)) - float(cur["stop"])) >= 0.4:
+        if abs(float(old.get("stop", 0)) - float(cur["stop"])) >= 0.6:
             bits.append(f"الوقف: ${old['stop']} ← ${cur['stop']}")
-        if abs(float(old.get("target", 0)) - float(cur["target"])) >= 0.5:
+        if abs(float(old.get("target", 0)) - float(cur["target"])) >= 0.8:
             bits.append(f"الهدف: ${old['target']} ← ${cur['target']}")
-        old_chg = float(old.get("change_pct") or 0)
-        if abs(old_chg - float(cur["change_pct"])) >= 0.4:
-            bits.append(f"التغيّر اليومي: {old_chg:+.1f}% ← {cur['change_pct']:+.1f}%")
-        if abs(float(old.get("score", 0)) - float(cur["score"])) >= 1.0:
+        # Skip tiny % noise that was causing false Telegram vs page mismatch
+        if abs(float(old.get("score", 0)) - float(cur["score"])) >= 1.5:
             bits.append(f"قوة الإشارة: {old['score']} ← {cur['score']}")
         if bits:
             changes.append(f"✏️ {sym}: " + " | ".join(bits))
 
     for sym, old in prev_sigs.items():
-        if sym not in curr_sigs:
-            changes.append(f"❌ {sym}: اختفت إشارة «{old.get('action')}»")
+        if sym in curr_sigs:
+            continue
+        if _is_short_fp(old) or _is_watch_fp(old):
+            continue  # don't spam "اختفت" for watches / shorts
+        if _is_long_fp(old):
+            changes.append(f"❌ {sym}: اختفت فرصة الشراء «{old.get('action')}»")
 
     if not changes:
         return False, "لا يوجد شي جديد يابطل"
 
-    # Enrich with plan for newly actionable names
     sig_map = {s.symbol: s for s in signals}
     extra = []
     for sym, cur in curr_sigs.items():
@@ -168,15 +184,23 @@ def describe_changes(
                     f"{plan.shares} سهم | مخاطرة≈{plan.risk_sar:.0f} ر.س"
                 )
 
+    board = ["", "📋 الفرص الحالية على اللوحة:"]
+    if fingerprints:
+        for fp in fingerprints[:8]:
+            board.append(f"• {fp['symbol']}: {fp['action']} ({fp['change_pct']:+.1f}%)")
+    else:
+        board.append("• لا توجد فرص شراء/مراقبة الآن")
+
     body = [
         f"⏰ {now} (السعودية)",
         "فيه تغيّر:",
         "",
-        *changes[:15],
+        *changes[:12],
     ]
     if extra:
         body.append("")
         body.extend(extra[:5])
+    body.extend(board)
     body.append("")
     body.append(f"📊 مزاج السوق الآن: {market_tone}")
     return True, "\n".join(body)

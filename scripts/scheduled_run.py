@@ -144,6 +144,13 @@ def run_tick() -> None:
             if vp:
                 send_voice(settings, vp, caption="ملخص صوتي للتحديث")
         touch_status(ok=True, last_mode="tick", changed=True, symbols=len(snapshots))
+        # Keep GitHub Pages in sync with the same signal pack as Telegram
+        try:
+            from scripts.build_pages import main as build_pages_main
+
+            build_pages_main()
+        except Exception as e:
+            print("[tick] build_pages skipped:", e)
     except Exception as e:
         log_error("run_tick", e)
         touch_status(ok=False, last_mode="tick", error=str(e))
