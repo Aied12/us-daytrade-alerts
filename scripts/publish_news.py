@@ -50,7 +50,7 @@ def _write_news_live(items: list[dict], *, fresh_n: int) -> None:
         "generated_ts": int(time.time()),
         "fresh_this_minute": fresh_n,
         "count": len(items),
-        "note_ar": "أخبار الموقع فقط — محايد/إيجابي · تتحدّث كل دقيقة",
+        "note_ar": "بث محفزات StockTitan-style — تأثير 1–5 · محايد/إيجابي · كل دقيقة",
         "news": items,
     }
     raw = json.dumps(payload, ensure_ascii=False)
@@ -71,6 +71,12 @@ def main() -> int:
         include_market=True,
     )
     news = [n for n in (pack.get("news") or []) if n.get("sentiment") in ("pos", "neu")]
+    try:
+        from bot.catalyst_scan import enrich_news_item, rank_catalyst_news
+
+        news = rank_catalyst_news([enrich_news_item(n) for n in news], limit=40)
+    except Exception:
+        pass
 
     seen = load_seen_news()
     now = time.time()
