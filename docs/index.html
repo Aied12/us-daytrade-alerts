@@ -282,6 +282,60 @@
         document.execCommand('copy'); ta.remove(); toast('تم النسخ');
       });
     }
+    function reanchorOppLevels(o, last){
+      const oldEntry=Number(o.entry)||last;
+      const stop=Number(o.stop)||0;
+      const target=Number(o.target)||0;
+      const side=o.side||'long';
+      if(side==='short'){
+        const stopDist=Math.max(stop-oldEntry, last*0.008);
+        const targetDist=Math.max(oldEntry-target, last*0.012);
+        return {entry:last, stop:last+stopDist, target:last-targetDist};
+      }
+      const stopDist=Math.max(oldEntry-stop, last*0.008);
+      const targetDist=Math.max(target-oldEntry, last*0.012);
+      return {entry:last, stop:last-stopDist, target:last+targetDist};
+    }
+
+    function syncOppsAfterQuotes(){
+      if(!DATA || !Array.isArray(DATA.opportunities) || !DATA.opportunities.length) return;
+      const before = DATA.opportunities.map(o=>o.symbol).join(',');
+      DATA.opportunities = DATA.opportunities.map(o=>{
+        const q=LIVE_CACHE[String(o.symbol).toUpperCase()];
+        if(!q || !(q.last>0)) return o;
+        const last=Number(q.last);
+        const lv=reanchorOppLevels(o, last);
+        // Long entry must never sit above live price
+        const entry = (o.side==='short') ? lv.entry : Math.min(lv.entry, last);
+        return Object.assign({}, o, {
+          last,
+          change_pct: Number(q.change_pct||o.change_pct||0),
+          entry: Number(entry.toFixed(2)),
+          stop: Number(lv.stop.toFixed(2)),
+          target: Number(lv.target.toFixed(2)),
+        });
+      }).filter(o=>{
+        // Drop expired long setups that flipped clearly red in live pre/tape
+        if((o.side==='long' || o.action_key==='CONSIDER_LONG' || o.action_key==='WATCH_ENTRY')
+          && Number(o.change_pct) < -0.6) return false;
+        return true;
+      });
+      // Update level spans in-place (no full card rebuild — keeps open details)
+      DATA.opportunities.forEach(o=>{
+        const sym=String(o.symbol).toUpperCase();
+        document.querySelectorAll('[data-live-entry="'+sym+'"]').forEach(el=>{ el.textContent=Number(o.entry).toFixed(2); });
+        document.querySelectorAll('[data-live-stop="'+sym+'"]').forEach(el=>{ el.textContent=Number(o.stop).toFixed(2); });
+        document.querySelectorAll('[data-live-target="'+sym+'"]').forEach(el=>{ el.textContent=Number(o.target).toFixed(2); });
+        document.querySelectorAll('button[data-copy^="'+sym+'|"]').forEach(btn=>{
+          btn.dataset.copy = `${sym}|${Number(o.entry).toFixed(2)}|${Number(o.stop).toFixed(2)}|${Number(o.target).toFixed(2)}`;
+        });
+      });
+      const after = DATA.opportunities.map(o=>o.symbol).join(',');
+      if(before !== after){
+        renderOpps();
+      }
+    }
+
     function filteredOpps(){
       if(!DATA) return [];
       let list=[...(DATA.opportunities||[])];
@@ -319,7 +373,7 @@
               <span class="sym">${esc(o.symbol)} ${o.urgent?'🔥 عاجل':''}</span>
               <span class="pill">${esc(o.score_100)}/100</span>
             </div>
-            <div>${esc(o.action)} · <span class="${clsChg(o.change_pct)}" data-live-chg="${esc(o.symbol)}">${o.change_pct>0?'+':''}${esc(o.change_pct)}%</span> · الآن $<span data-live-px="${esc(o.symbol)}">${esc(o.last!=null?o.last:o.entry)}</span></div>
+            <div>${esc(o.action)} · <span class="${clsChg(o.change_pct)}" data-live-chg="${esc(o.symbol)}">${o.change_pct>0?'+':''}${esc(o.change_pct)}%</span> · الآن $<span data-live-px="${esc(o.symbol)}">${esc(Number(o.last!=null?o.last:o.entry).toFixed(2))}</span></div>
             <div class="muted" style="margin-top:4px">
               سيولة: <span class="${liqClass(grade)}">${esc(gradeAr)}</span>
               · RVOL ×${esc(rvol)} · اليوم ${esc(dLab)}
@@ -327,14 +381,14 @@
           </summary>
           <div class="muted" style="margin-top:8px">${esc(o.reason)}</div>
           <div style="margin-top:8px">${(o.strategies||[]).map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div>
-          <div class="muted" style="margin-top:8px">
-            دخول≈ $${esc(o.entry)} | وقف≈ $${esc(o.stop)} | هدف≈ $${esc(o.target)}<br/>
+          <div class="muted" style="margin-top:8px" data-opp-levels="${esc(o.symbol)}">
+            دخول≈ $<span data-live-entry="${esc(o.symbol)}">${esc(Number(o.entry).toFixed(2))}</span> | وقف≈ $<span data-live-stop="${esc(o.symbol)}">${esc(Number(o.stop).toFixed(2))}</span> | هدف≈ $<span data-live-target="${esc(o.symbol)}">${esc(Number(o.target).toFixed(2))}</span><br/>
             الحجم: ${esc(o.shares)} سهم | مخاطرة≈ ${esc(o.risk_sar)} ر.س<br/>
             السيولة: ${esc(gradeAr)} | RVOL ×${esc(rvol)} | متداول اليوم ${esc(dLab)} | متوسط يومي ${esc(aLab)}<br/>
             ${o.allowed?'يمكنك التخطيط للدخول':'راقب فقط / لا تدخل الآن'}
           </div>
           <div class="toolbar">
-            <button class="btn secondary" type="button" data-copy="${esc(o.symbol)}|${esc(o.entry)}|${esc(o.stop)}|${esc(o.target)}">📋 نسخ المستويات</button>
+            <button class="btn secondary" type="button" data-copy="${esc(o.symbol)}|${esc(Number(o.entry).toFixed(2))}|${esc(Number(o.stop).toFixed(2))}|${esc(Number(o.target).toFixed(2))}">📋 نسخ المستويات</button>
             <a class="btn" href="${esc(o.tg_share)}" target="_blank" rel="noopener">✉️ تيليجرام</a>
           </div>
         </details>`;
@@ -347,7 +401,7 @@
       });
       maybeNotify(list);
       renderLiveTape();
-      pollAllPrices();
+      // Don't call pollAllPrices here — it re-enters while busy and freezes levels
     }
     function maybeNotify(list){
       if(localStorage.getItem(LS.notify)!=='1') return;
@@ -751,6 +805,7 @@
         }
         liveWave++;
         syncGainersAfterQuotes();
+        syncOppsAfterQuotes();
         const clk=document.getElementById('liveClock');
         if(clk){
           clk.textContent = `لحظي: ${directN||batch.n||0} سهم · ${new Date().toLocaleTimeString('ar-SA')}`
