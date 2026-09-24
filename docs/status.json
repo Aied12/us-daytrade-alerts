@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-09-24T09:50:13.676722+00:00",
-  "generated_ts": 1790243413,
-  "generated_local": "2026-09-24 12:50 +03",
+  "generated_at": "2026-09-24T09:51:28.191956+00:00",
+  "generated_ts": 1790243488,
+  "generated_local": "2026-09-24 12:51 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T09:50:13.676627+00:00",
+    "updated_at": "2026-09-24T09:51:28.191844+00:00",
     "last_mode": "dashboard",
-    "changed": false,
+    "changed": true,
     "symbols": 24
   },
   "telegram_enabled": true,
@@ -23,38 +23,38 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.79,
+    "avg_change_pct": -0.76,
     "details": {
       "SPY": {
-        "last": 762.55,
-        "change_pct": -0.69,
+        "last": 762.64,
+        "change_pct": -0.67,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 732.49,
-        "change_pct": -1.18,
+        "last": 732.6117,
+        "change_pct": -1.16,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 280.52,
-        "change_pct": -0.5,
+        "last": 280.62,
+        "change_pct": -0.46,
         "rsi": 29.0
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.69,
+        "change_pct": -0.67,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -1.18,
+        "change_pct": -1.16,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.5,
+        "change_pct": -0.46,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 13186,
-    "ny_time": "05:50:13",
+    "seconds_left": 13111,
+    "ny_time": "05:51:28",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,7 +81,7 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.06
+        "change_pct": 0.02
       },
       {
         "name": "Industrial",
@@ -95,16 +95,16 @@
       },
       {
         "name": "Financials",
-        "change_pct": -0.78
+        "change_pct": -0.73
       },
       {
         "name": "Consumer",
-        "change_pct": -0.6
+        "change_pct": -0.56
       }
     ]
   },
   "style": {
-    "growth_avg": -1.34,
+    "growth_avg": -1.33,
     "value_avg": -0.01,
     "leader": "قيمة",
     "growth_count": 10,
@@ -238,8 +238,8 @@
   "movers": [
     {
       "symbol": "META",
-      "change_pct": -2.67,
-      "last": 724.2,
+      "change_pct": -2.77,
+      "last": 723.49,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -256,8 +256,8 @@
     },
     {
       "symbol": "COIN",
-      "change_pct": -2.22,
-      "last": 193.74,
+      "change_pct": -2.08,
+      "last": 194.0,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -266,29 +266,29 @@
     {
       "symbol": "AVGO",
       "change_pct": -1.55,
-      "last": 349.48,
+      "last": 349.47,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "8.2B$"
     },
     {
-      "symbol": "NVDA",
-      "change_pct": -1.34,
-      "last": 222.5,
-      "rvol": 0.68,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "19.9B$"
-    },
-    {
       "symbol": "TSLA",
-      "change_pct": -1.34,
-      "last": 375.04,
+      "change_pct": -1.27,
+      "last": 375.3,
       "rvol": 0.86,
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "12.5B$"
+    },
+    {
+      "symbol": "NVDA",
+      "change_pct": -1.26,
+      "last": 222.67,
+      "rvol": 0.68,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "19.9B$"
     },
     {
       "symbol": "CVX",
@@ -317,7 +317,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 58,
+    "alerts_today": 59,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
