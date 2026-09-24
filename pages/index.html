@@ -47,6 +47,15 @@
     }
     .seg{display:flex;gap:6px;flex-wrap:wrap}
     .seg button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .price-tier{
+      display:inline-flex;gap:4px;align-items:center;flex-wrap:wrap;
+      padding:2px;border-radius:12px;border:1px solid var(--line);background:var(--chip);
+    }
+    .price-tier button{
+      border:0;background:transparent;color:inherit;border-radius:10px;
+      padding:8px 10px;cursor:pointer;font:inherit;font-size:.85rem;font-weight:700;min-height:40px;
+    }
+    .price-tier button.active{background:var(--accent);color:#fff}
     .indexes{display:flex;gap:8px;overflow:auto;padding-bottom:4px}
     .idx{min-width:108px;padding:10px;border-radius:14px;border:1px solid var(--line);background:var(--card)}
     .opp{border:1px solid var(--line);border-radius:16px;padding:12px;margin:10px 0;background:color-mix(in srgb,var(--card) 90%, black)}
@@ -218,7 +227,12 @@
         <button class="btn secondary" id="btnTheme" type="button">🌓 نهاري/ليلي</button>
         <button class="btn ghost" id="btnLight" type="button">📶 نسخة خفيفة</button>
         <button class="btn ghost" id="btnNotify" type="button">🔔 إشعار الفرص</button>
+        <div class="price-tier" id="priceTier" role="group" aria-label="شريحة السعر">
+          <button type="button" data-tier="high" class="active" title="أسهم سعرها 51$ فأكثر">أعلى ≥$51</button>
+          <button type="button" data-tier="low" title="أسهم سعرها من 5$ إلى أقل من 51$">أقل $5–$51</button>
+        </div>
       </div>
+      <p class="muted" id="priceTierHint" style="margin:6px 0 0;font-size:.82rem">عرض: أسهم أعلى قيمة (≥ $51)</p>
       <div class="section-nav" id="sectionNav" role="tablist" aria-label="أقسام اللوحة">
         <button type="button" data-section="live" class="active">أسعار لحظية</button>
         <button type="button" data-section="market">السوق</button>
@@ -428,7 +442,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=6;
+    window.__STATUS_V=7;
     const LS = {
       theme: 'dash_theme',
       filter: 'dash_filter',
@@ -438,6 +452,7 @@
       flow: 'dash_flow_filters',
       cat: 'dash_cat_filter',
       section: 'dash_section',
+      priceTier: 'dash_price_tier',
     };
     const SECTION_IDS = ['live','market','mood','momentum','news','opps','calc','gainers','movers','more'];
     let CURRENT_SECTION = 'momentum';
@@ -446,6 +461,7 @@
     const MOVE_WINDOW_MS = 12000;
     let FLOW_FILTERS = new Set();
     let CAT_FILTER = 'all';
+    let PRICE_TIER = 'high'; // high = ≥$51 · low = $5–<$51
     let NEWS_CACHE = [];
     let MOMENTUM_CACHE = [];
     let CALC_SYM = '';
@@ -453,6 +469,64 @@
     let GAINERS_STATE = [];
     let OPEN_OPP_SYMS = new Set();
     let LAST_STATUS_TS = 0;
+
+    function rowLastPrice(row){
+      if(!row) return NaN;
+      const sym=String(row.symbol||'').toUpperCase();
+      const q=sym && LIVE_CACHE[sym];
+      if(q && q.last>0) return Number(q.last);
+      const n=Number(row.last!=null?row.last:(row.price!=null?row.price:row.entry));
+      return Number.isFinite(n) && n>0 ? n : NaN;
+    }
+    function passesPriceTier(price){
+      const p=Number(price);
+      if(!Number.isFinite(p) || p<=0) return false;
+      if(PRICE_TIER==='low') return p >= 5 && p < 51;
+      return p >= 51; // high
+    }
+    function filterByPriceTier(list){
+      return (list||[]).filter(row=>passesPriceTier(rowLastPrice(row)));
+    }
+    function priceTierLabel(){
+      return PRICE_TIER==='low' ? 'أسهم أقل قيمة ($5 – أقل من $51)' : 'أسهم أعلى قيمة (≥ $51)';
+    }
+    function syncPriceTierUi(){
+      document.querySelectorAll('#priceTier button').forEach(b=>{
+        b.classList.toggle('active', b.dataset.tier===PRICE_TIER);
+      });
+      const hint=document.getElementById('priceTierHint');
+      if(hint) hint.textContent='عرض: '+priceTierLabel();
+      const badge=document.getElementById('liveBadge');
+      if(badge) badge.textContent = PRICE_TIER==='low' ? 'أقل $5–$51' : 'أعلى ≥$51';
+    }
+    function setPriceTier(tier, opts){
+      opts=opts||{};
+      PRICE_TIER = (tier==='low') ? 'low' : 'high';
+      localStorage.setItem(LS.priceTier, PRICE_TIER);
+      syncPriceTierUi();
+      // إعادة رسم الأقسام المتأثرة
+      renderOpps();
+      renderGainersTable();
+      renderMomentum(MOMENTUM_CACHE);
+      renderNewsList(NEWS_CACHE);
+      if(DATA){
+        const moversBox=document.getElementById('movers');
+        if(moversBox){
+          const movers=filterByPriceTier(DATA.movers||[]);
+          moversBox.innerHTML=movers.map(m=>`
+            <div class="m">
+              <div class="row"><b>${esc(m.symbol)}</b><span class="${clsChg(m.change_pct)}" data-live-chg="${esc(m.symbol)}">${m.change_pct>0?'+':''}${esc(m.change_pct)}%</span></div>
+              <div class="muted">$<span data-live-px="${esc(m.symbol)}">${esc(m.last)}</span> · RVOL ×${esc(m.rvol??'-')}</div>
+              <div class="${liqClass(m.grade||'weak')}">${esc(m.grade_ar||'-')} · ${esc(m.dollar_volume_label||'')}</div>
+            </div>
+          `).join('')||`<div class="empty">لا متحركات ضمن ${priceTierLabel()}</div>`;
+        }
+      }
+      const tape=document.getElementById('liveTape');
+      if(tape){ delete tape.dataset.built; }
+      renderLiveTape();
+      if(!opts.silent) toast(priceTierLabel());
+    }
 
     function withPreservedScroll(fn){
       const x = window.scrollX || window.pageXOffset || 0;
@@ -1027,6 +1101,7 @@
       if(FLOW_FILTERS.has('flow')) list=list.filter(o=>Number(o.flow_score||0) >= 1.2);
       // إزالة الفرص المنتهية / المطاردة المتأخرة (علم + وسم + تمدد سعري)
       list=list.filter(o=>!isOppExpired(o));
+      list=filterByPriceTier(list);
       const sort=document.getElementById('sortSel').value;
       if(sort==='change') list.sort((a,b)=>Math.abs(b.change_pct)-Math.abs(a.change_pct));
       else if(sort==='rvol') list.sort((a,b)=>(b.rvol_pace||b.rvol||0)-(a.rvol_pace||a.rvol||0));
@@ -1047,7 +1122,7 @@
       const box=document.getElementById('opps');
       withPreservedScroll(()=>{
       rememberOpenOpps();
-      if(!list.length){ box.innerHTML='<div class="empty">لا توجد فرص ضمن الفلتر الحالي</div>'; return; }
+      if(!list.length){ box.innerHTML=`<div class="empty">لا توجد فرص ضمن ${priceTierLabel()}</div>`; return; }
       box.innerHTML=list.map((o,i)=>{
         const L=o.liquidity||{};
         const grade=o.liq_grade||L.grade||'weak';
@@ -1212,14 +1287,14 @@
       document.getElementById('gainersNote').textContent=`سعر ≥ $${gmin} · ${gses} · مرتّب حسب الارتفاع الحالي · يُزال إذا نزل أو ضعفت السيولة`;
       renderGainersTable();
 
-      const movers=d.movers||[];
+      const movers=filterByPriceTier(d.movers||[]);
       document.getElementById('movers').innerHTML=movers.map(m=>`
         <div class="m">
           <div class="row"><b>${esc(m.symbol)}</b><span class="${clsChg(m.change_pct)}" data-live-chg="${esc(m.symbol)}">${m.change_pct>0?'+':''}${esc(m.change_pct)}%</span></div>
           <div class="muted">$<span data-live-px="${esc(m.symbol)}">${esc(m.last)}</span> · RVOL ×${esc(m.rvol??'-')}</div>
           <div class="${liqClass(m.grade||'weak')}">${esc(m.grade_ar||'-')} · ${esc(m.dollar_volume_label||'')}</div>
         </div>
-      `).join('')||'<div class="empty">لا متحركات</div>';
+      `).join('')||`<div class="empty">لا متحركات ضمن ${priceTierLabel()}</div>`;
 
       const news=(d.news||[]).filter(n=>n.sentiment!=='neg');
       const blocked=new Set((d.news_excluded_negative||[]).map(s=>String(s).toUpperCase()));
@@ -1254,12 +1329,12 @@
       const box=document.getElementById('momentumList');
       if(!box) return;
       withPreservedScroll(()=>{
-      const list=rows||[];
+      let list=filterByPriceTier(rows||[]);
       if(!list.length){
-        box.innerHTML='<div class="empty">لا زخم ≥ العتبة الآن — راقب البث</div>';
+        box.innerHTML=`<div class="empty">لا زخم ضمن ${priceTierLabel()} الآن</div>`;
         return;
       }
-      const sig=list.map(r=>`${r.symbol}:${r.change_pct}:${r.impact}:${r.has_news?1:0}`).join('|');
+      const sig=PRICE_TIER+'|'+list.map(r=>`${r.symbol}:${r.change_pct}:${r.impact}:${r.has_news?1:0}`).join('|');
       if(box.dataset.sig===sig) return;
       box.dataset.sig=sig;
       box.innerHTML=list.map(r=>{
@@ -1293,6 +1368,20 @@
 
     function filteredCatalystNews(news){
       let list=dedupeNewsSmart((news||[]).filter(n=>n && n.sentiment!=='neg'));
+      // إن وُجد سعر معروف للرمز في الكاش/البيانات طبّق شريحة السعر
+      list=list.filter(n=>{
+        const sym=String(n.symbol||'').toUpperCase();
+        if(!sym) return true;
+        const q=LIVE_CACHE[sym];
+        if(q && q.last>0) return passesPriceTier(q.last);
+        const fromOpp=(DATA&&DATA.opportunities||[]).find(o=>String(o.symbol).toUpperCase()===sym);
+        const fromG=(DATA&&DATA.gainers||[]).find(g=>String(g.symbol).toUpperCase()===sym)
+          || (GAINERS_STATE||[]).find(g=>String(g.symbol).toUpperCase()===sym);
+        const fromM=(DATA&&DATA.movers||[]).find(m=>String(m.symbol).toUpperCase()===sym);
+        const px=rowLastPrice(fromOpp||fromG||fromM||null);
+        if(!Number.isFinite(px)) return true; // خبر بدون سعر معروف: أبقِه
+        return passesPriceTier(px);
+      });
       const cat=CAT_FILTER||'all';
       if(cat==='hi') list=list.filter(n=>Number(n.impact||0)>=4);
       else if(cat!=='all') list=list.filter(n=>(n.catalyst_keys||[]).includes(cat) || (n.catalysts||[]).some(c=>c.key===cat));
@@ -1501,16 +1590,15 @@
       rows = rows.filter(g => {
         const dvol=Number(g.dollar_volume)||0;
         const hasVol=dvol>0;
-        return g.last >= gmin &&
+        return passesPriceTier(g.last) &&
           g.change_pct > 0.01 &&
           (!hasVol || dvol >= MIN_GAINERS_LIQ);
       });
       rows.sort((a,b)=>b.change_pct-a.change_pct);
       const keep={};
       rows.forEach(r=>keep[r.symbol]=r);
-      GAINERS_STATE = GAINERS_STATE.filter(g=>keep[g.symbol]).map(g=>keep[g.symbol]||g);
-      // تجنّب إعادة الرسم إن لم يتغيّر ترتيب/قيم الصفوف بشكل جوهري
-      const sig = rows.map(g=>`${g.symbol}:${Number(g.last).toFixed(2)}:${Number(g.change_pct).toFixed(2)}`).join('|');
+      // لا نحذف من GAINERS_STATE عند تبديل الشريحة — فقط نعرض المصفّى
+      const sig = PRICE_TIER+'|'+rows.map(g=>`${g.symbol}:${Number(g.last).toFixed(2)}:${Number(g.change_pct).toFixed(2)}`).join('|');
       if(body.dataset.sig===sig && body.querySelector('tr[data-calc-sym]')) return;
       body.dataset.sig=sig;
       body.innerHTML = rows.length ? rows.map((g,i)=>`
@@ -1521,7 +1609,7 @@
           <td><span class="${clsChg(g.change_pct)}" data-live-chg="${esc(g.symbol)}">${g.change_pct>0?'+':''}${esc(Number(g.change_pct).toFixed(2))}%</span></td>
           <td data-gainer-liq="${esc(g.symbol)}">${esc(g.dollar_volume_label||'-')}</td>
           <td><button class="btn secondary" type="button" data-apply-calc="${esc(g.symbol)}" style="min-height:36px;padding:6px 10px;margin:0;font-size:.85rem">حاسبة</button></td>
-        </tr>`).join('') : '<tr><td colspan="6" class="muted">لا صاعدين فوق الفلتر حالياً (أو خرجت السيولة)</td></tr>';
+        </tr>`).join('') : `<tr><td colspan="6" class="muted">لا صاعدين ضمن ${priceTierLabel()}</td></tr>`;
       body.querySelectorAll('[data-apply-calc]').forEach(btn=>{
         btn.addEventListener('click',(ev)=>{
           ev.preventDefault();
@@ -1585,9 +1673,22 @@
     function renderLiveTape(){
       const box=document.getElementById('liveTape');
       if(!box) return;
-      const syms=allPageSymbols().slice(0,30);
+      const syms=allPageSymbols().filter(s=>{
+        const q=LIVE_CACHE[s];
+        if(q && q.last>0) return passesPriceTier(q.last);
+        // بدون سعر حي: حاول من البيانات
+        const fromOpp=(DATA&&DATA.opportunities||[]).find(o=>String(o.symbol).toUpperCase()===s);
+        const fromG=(DATA&&DATA.gainers||[]).find(g=>String(g.symbol).toUpperCase()===s);
+        const fromM=(DATA&&DATA.movers||[]).find(m=>String(m.symbol).toUpperCase()===s);
+        const px=rowLastPrice(fromOpp||fromG||fromM||null);
+        // المؤشرات دائماً تُعرض في شريحة الأعلى فقط كمرجع سوق
+        if(['SPY','QQQ','IWM'].includes(s)) return PRICE_TIER==='high';
+        if(!Number.isFinite(px)) return PRICE_TIER==='high'; // رموز بلا سعر: في الأعلى فقط
+        return passesPriceTier(px);
+      }).slice(0,30);
       // Don't wipe DOM every time if already built — keep nodes for smooth updates
-      if(!box.dataset.built || box.querySelectorAll('[data-live-px]').length!==syms.length){
+      const builtKey=PRICE_TIER+'|'+syms.join(',');
+      if(box.dataset.built!==builtKey){
         box.innerHTML = syms.map(s=>{
           const q=LIVE_CACHE[s];
           const last=q?q.last.toFixed(2):'—';
@@ -1598,8 +1699,8 @@
             <div class="row"><b>${esc(s)}</b><span class="${cls}" data-live-chg="${esc(s)}">${chgTxt}</span></div>
             <div class="live-price" style="font-size:1.15rem">$<span data-live-px="${esc(s)}">${last}</span><span class="moving-badge" data-moving="${esc(s)}"><span class="dot"></span>يتحرك</span></div>
           </div>`;
-        }).join('') || '<div class="empty">لا أسهم</div>';
-        box.dataset.built='1';
+        }).join('') || `<div class="empty">لا أسهم ضمن ${priceTierLabel()}</div>`;
+        box.dataset.built=builtKey;
       }
     }
 
