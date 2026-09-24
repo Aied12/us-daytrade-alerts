@@ -40,6 +40,8 @@ def _fingerprints(
                 "symbol": s.symbol,
                 "action": s.action.value,
                 "score": round(s.score, 1),
+                "score_100": getattr(s, "score_100", int(s.score * 10)),
+                "strategies": getattr(s, "strategies", [])[:4],
                 "entry": round(s.entry_hint, 2),
                 "stop": round(s.stop_hint, 2),
                 "target": round(s.target_hint, 2),

@@ -115,6 +115,7 @@ def set_bot_commands(settings: Settings) -> bool:
         {"command": "mode", "description": "مبتدئ أو محترف"},
         {"command": "chart", "description": "ملصق السوق اليومي"},
         {"command": "voice", "description": "ملخص صوتي قصير"},
+        {"command": "strategies", "description": "مقارنة أداء الاستراتيجيات"},
         {"command": "help", "description": "المساعدة"},
     ]
     data = _post(settings, "setMyCommands", json={"commands": commands})
@@ -166,6 +167,8 @@ def save_json_snapshot(settings: Settings, payload: dict, name: str) -> Path:
             "symbol": s.symbol,
             "action": s.action.value,
             "score": s.score,
+            "score_100": getattr(s, "score_100", None),
+            "strategies": getattr(s, "strategies", [])[:5],
             "reason": s.reason,
             "entry": s.entry_hint,
             "stop": s.stop_hint,

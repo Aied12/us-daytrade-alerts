@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from bot.config import Settings
-from bot.signals import Signal
+from bot.signals import Action, Signal
 
 
 @dataclass
@@ -27,31 +27,53 @@ def plan_trade(settings: Settings, signal: Signal) -> PositionPlan:
     entry = signal.entry_hint
     stop = signal.stop_hint
     target = signal.target_hint
-    risk_per_share = max(entry - stop, 0.01)
+
+    if signal.side == "short":
+        risk_per_share = max(stop - entry, 0.01)
+        reward = max(entry - target, 0)
+    else:
+        risk_per_share = max(entry - stop, 0.01)
+        reward = max(target - entry, 0)
 
     max_risk_usd = settings.risk_budget_usd
-    shares = int(max_risk_usd // risk_per_share)
-    # Cap position at 25% of capital to avoid oversized names
+    shares = int(max_risk_usd // risk_per_share) if risk_per_share else 0
     max_position_usd = settings.capital_usd * 0.25
-    if shares * entry > max_position_usd:
+    if entry > 0 and shares * entry > max_position_usd:
         shares = int(max_position_usd // entry)
 
-    allowed = shares >= 1 and signal.side == "long"
+    # Beginners: longs only
+    if settings.is_beginner and signal.side == "short":
+        allowed = False
+        note = "البيع القصير للمتمرسين فقط — وضعك مبتدئ"
+    elif signal.action == Action.NO_TRADE_DAY:
+        allowed = False
+        note = "إشارة يوم: لا تتداول اليوم"
+    else:
+        allowed = shares >= 1 and signal.side in ("long", "short") and signal.action in (
+            Action.CONSIDER_LONG,
+            Action.CONSIDER_SHORT,
+            Action.WATCH_ENTRY,
+        )
+        # Only auto-allow CONSIDER_* for execution planning; WATCH is observe
+        if signal.action == Action.WATCH_ENTRY:
+            allowed = False
+            note = "راقب فقط — لا دخول حتى تتأكد"
+        elif not allowed:
+            note = "لا تدخل — الإشارة ليست جاهزة أو الحجم أقل من سهم"
+        else:
+            rr = reward / risk_per_share if risk_per_share else 0
+            if rr < 1.2:
+                allowed = False
+                note = "العائد/المخاطرة ضعيف — انتظر دخول أفضل"
+            else:
+                note = (
+                    f"خاطِر بحد أقصى ~{settings.risk_budget_sar:.0f} ر.س "
+                    f"({settings.risk_per_trade*100:.0f}% من رأس المال)"
+                )
+
     position_usd = shares * entry
     risk_usd = shares * risk_per_share
-    reward = max(target - entry, 0)
     rr = reward / risk_per_share if risk_per_share else 0
-
-    if not allowed:
-        note = "لا تدخل — الإشارة ليست شراء، أو حجم الصفقة أقل من سهم واحد"
-    elif rr < 1.2:
-        note = "العائد/المخاطرة ضعيف — انتظر دخول أفضل أو تجاهل"
-        allowed = False
-    else:
-        note = (
-            f"خاطِر بحد أقصى ~{settings.risk_budget_sar:.0f} ر.س "
-            f"({settings.risk_per_trade*100:.0f}% من رأس المال)"
-        )
 
     return PositionPlan(
         symbol=signal.symbol,
@@ -78,5 +100,6 @@ def risk_banner(settings: Settings) -> str:
         f"({settings.risk_per_trade*100:.0f}%)\n"
         f"🛑 حد الخسارة اليومي: {settings.daily_loss_budget_sar:,.0f} ر.س "
         f"({settings.daily_loss_limit*100:.0f}%) — إذا وصلته قف فورًا\n"
-        f"📌 أقصى تنبيهات دخول اليوم: {settings.max_alerts_per_day}"
+        f"📌 أقصى تنبيهات دخول اليوم: {settings.max_alerts_per_day}\n"
+        f"🎛 الوضع: {'مبتدئ' if settings.is_beginner else 'محترف'}"
     )

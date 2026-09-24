@@ -19,7 +19,7 @@ sys.path.insert(0, str(ROOT))
 
 from bot.charts import make_daily_chart, make_market_poster
 from bot.config import load_settings
-from bot.formatters import action_keyboard, mode_keyboard, format_signal_card
+from bot.formatters import action_keyboard, mode_keyboard, format_signal_card, is_urgent
 from bot.journal import log_action, summarize_journal
 from bot.market_data import market_context, scan_watchlist
 from bot.notify import (
@@ -32,7 +32,7 @@ from bot.notify import (
 )
 from bot.reports import build_full_pack
 from bot.risk import plan_trade, risk_banner
-from bot.signals import Action
+from bot.signals import Action, compare_strategies
 from bot.voice import synthesize_arabic, voice_script_from_update
 
 RIYADH = ZoneInfo("Asia/Riyadh")
@@ -77,6 +77,7 @@ def cmd_help(settings) -> str:
         "/mode — مبتدئ أو محترف\n"
         "/chart — ملصق يومي (شارت)\n"
         "/voice — ملخص صوتي قصير\n"
+        "/strategies — مقارنة استراتيجيتين\n"
         "/help — هذه القائمة\n\n"
         f"الوضع الحالي: {'مبتدئ' if settings.is_beginner else 'محترف'}\n"
         f"فلتر السعر: فوق ${settings.min_price_usd:g}\n"
@@ -91,15 +92,18 @@ def handle_scan(settings) -> None:
     actionable = [
         s
         for s in pack["signals"]
-        if s.action in (Action.CONSIDER_LONG, Action.WATCH_ENTRY)
+        if s.action in (Action.CONSIDER_LONG, Action.CONSIDER_SHORT, Action.WATCH_ENTRY)
+        and s.symbol != "MARKET"
     ][:5]
+    if settings.is_beginner:
+        actionable = [s for s in actionable if s.action != Action.CONSIDER_SHORT]
     if not actionable:
         deliver(settings, "📡 /scan", "لا توجد فرص قوية فوق فلتر السعر الآن.")
         return
     for sig in actionable:
         plan = plan_trade(settings, sig)
         card = format_signal_card(settings, sig, plan)
-        if sig.action == Action.CONSIDER_LONG and sig.score >= settings.urgent_min_score:
+        if is_urgent(settings, sig):
             card = "🚨 عاجل — فرصة قوية\n" + card
         send_telegram(
             settings,
@@ -197,6 +201,14 @@ def handle_message(settings, msg: dict) -> None:
             f"الوضع الحالي: {'مبتدئ' if settings.is_beginner else 'محترف'}\nاختر:",
             reply_markup=mode_keyboard(),
         )
+    elif cmd == "/strategies":
+        # /strategies فجوة|كسر  or defaults
+        raw = text[len("/strategies"):].strip()
+        if "|" in raw:
+            a, b = [x.strip() for x in raw.split("|", 1)]
+        else:
+            a, b = "كسر قمة 20 يوم", "حجم غير طبيعي صاعد"
+        send_telegram(settings, compare_strategies(settings, a, b))
     elif cmd == "/chart":
         handle_chart(settings, arg)
     elif cmd == "/voice":

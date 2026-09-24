@@ -93,11 +93,17 @@ def run_tick() -> None:
             (
                 s
                 for s in pack["signals"]
-                if s.action in (Action.CONSIDER_LONG, Action.WATCH_ENTRY)
+                if s.symbol != "MARKET"
+                and s.action in (Action.CONSIDER_LONG, Action.CONSIDER_SHORT, Action.WATCH_ENTRY)
+                and not (settings.is_beginner and s.action == Action.CONSIDER_SHORT)
             ),
             None,
         )
         markup = action_keyboard(top.symbol) if top else None
+        # Market no-trade banner
+        market = next((s for s in pack["signals"] if s.action == Action.NO_TRADE_DAY), None)
+        if market:
+            text = f"🛑 {market.reason}\n\n" + text
         deliver(
             settings,
             "🔄 تحديث",
@@ -105,8 +111,9 @@ def run_tick() -> None:
             reply_markup=markup,
             also_channel=bool(settings.telegram_channel_id),
         )
-        # Urgent separate cards
         for sig in pack["signals"]:
+            if sig.symbol == "MARKET":
+                continue
             if not is_urgent(settings, sig):
                 continue
             plan = plan_trade(settings, sig)

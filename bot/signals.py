@@ -1,142 +1,236 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+import json
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from enum import Enum
+from pathlib import Path
 
-from bot.market_data import QuoteSnapshot
+from bot.config import Settings
+from bot.market_data import QuoteSnapshot, market_context, sector_momentum
+from bot.strategies import StrategyHit, evaluate_all
 
 
 class Action(str, Enum):
     WATCH_ENTRY = "راقب دخول"
     CONSIDER_LONG = "فكّر في شراء قصير المدى"
+    CONSIDER_SHORT = "فكّر في بيع قصير بحذر"
     AVOID = "تجنّب الآن"
     TAKE_PROFIT_ZONE = "منطقة جني أرباح / لا تطارد"
     WAIT = "انتظر تأكيد"
+    NO_TRADE_DAY = "لا تتداول اليوم"
 
 
 @dataclass
 class Signal:
     symbol: str
     action: Action
-    score: float
+    score: float  # legacy 0-10ish for compatibility
+    score_100: int  # 33 composite 0-100
     reason: str
     entry_hint: float
     stop_hint: float
     target_hint: float
-    side: str  # long only for v1
+    side: str
+    strategies: list[str] = field(default_factory=list)
+    strategy_notes: list[str] = field(default_factory=list)
 
 
-def _vol_ratio(s: QuoteSnapshot) -> float:
-    if s.avg_volume_20 <= 0:
-        return 1.0
-    return s.volume / s.avg_volume_20
+def _clamp(n: float, lo: float, hi: float) -> float:
+    return max(lo, min(hi, n))
 
 
-def score_momentum_breakout(s: QuoteSnapshot) -> Signal | None:
-    """Simple day-trade rules: momentum + volume + breakout bias."""
-    vol_r = _vol_ratio(s)
-    reasons: list[str] = []
-    score = 0.0
+def compose_signal(
+    s: QuoteSnapshot,
+    hits: list[StrategyHit],
+    *,
+    no_trade_today: bool = False,
+) -> Signal:
+    long_pts = sum(h.points for h in hits if h.side == "long")
+    short_pts = sum(h.points for h in hits if h.side == "short")
+    avoid_pts = sum(h.points for h in hits if h.side == "avoid")
+    neutral_pts = sum(h.points for h in hits if h.side == "neutral")
 
-    # Strong up day with volume
-    if s.change_pct >= 1.2:
-        score += 2.0
-        reasons.append(f"صعود يومي {s.change_pct:.1f}%")
-    elif s.change_pct >= 0.5:
-        score += 1.0
-        reasons.append(f"صعود خفيف {s.change_pct:.1f}%")
+    # 33 composite 0-100
+    raw = long_pts * 1.1 + neutral_pts * 0.3 - short_pts * 0.5 - avoid_pts * 1.2
+    score_100 = int(_clamp(50 + raw, 0, 100))
 
-    if vol_r >= 1.5:
-        score += 2.0
-        reasons.append(f"حجم أعلى من المعتاد ×{vol_r:.1f}")
-    elif vol_r >= 1.1:
-        score += 0.8
-        reasons.append(f"حجم فوق المتوسط ×{vol_r:.1f}")
+    names = [h.name_ar for h in hits]
+    notes = [f"{h.name_ar}: {h.note}" for h in hits]
 
-    # Near day high = breakout continuation bias
-    if s.day_high > 0 and (s.last / s.day_high) >= 0.985:
-        score += 1.5
-        reasons.append("قرب قمة اليوم (زخم استمرار)")
-
-    if s.above_vwap_proxy:
-        score += 0.7
-        reasons.append("فوق متوسط السعر المرجعي")
-
-    if 45 <= s.rsi_14 <= 70:
-        score += 1.0
-        reasons.append(f"RSI مناسب {s.rsi_14:.0f}")
-    elif s.rsi_14 > 78:
-        score -= 1.5
-        reasons.append(f"RSI مرتفع جدًا {s.rsi_14:.0f} — خطر مطاردة")
-
-    # Gap chase penalty
-    if s.gap_pct >= 3.0 and s.change_pct < s.gap_pct:
-        score -= 1.0
-        reasons.append(f"فجوة افتتاح كبيرة {s.gap_pct:.1f}% — حذر من المطاردة")
-
-    # Weak / down hard
-    if s.change_pct <= -1.5 and vol_r >= 1.2:
-        stop = round(s.last * 1.012, 2)
-        target = round(s.last * 0.985, 2)
-        return Signal(
-            symbol=s.symbol,
-            action=Action.AVOID,
-            score=score,
-            reason="ضعف واضح مع حجم — لا تناسب شراء يومي للمبتدئ",
-            entry_hint=s.last,
-            stop_hint=stop,
-            target_hint=target,
-            side="none",
-        )
-
-    # Position hints for long
     entry = round(s.last, 2)
-    stop = round(min(s.day_low, s.last * 0.988), 2)
-    risk = max(entry - stop, entry * 0.008)
-    target = round(entry + risk * 1.8, 2)
+    if long_pts >= short_pts and long_pts > 0:
+        stop = round(min(s.day_low, s.support or s.last * 0.988, s.last * 0.988), 2)
+        if stop >= entry:
+            stop = round(entry * 0.988, 2)
+        risk = max(entry - stop, entry * 0.008)
+        raw_target = entry + risk * 1.8
+        if s.resistance and s.resistance > entry:
+            target = round(max(raw_target, min(s.resistance, entry + risk * 2.5)), 2)
+        else:
+            target = round(raw_target, 2)
+        side = "long"
+    elif short_pts > long_pts:
+        stop = round(max(s.day_high, s.resistance or s.last * 1.012, s.last * 1.012), 2)
+        if stop <= entry:
+            stop = round(entry * 1.012, 2)
+        risk = max(stop - entry, entry * 0.008)
+        raw_target = entry - risk * 1.6
+        if s.support and s.support < entry:
+            target = round(min(raw_target, max(s.support, entry - risk * 2.2)), 2)
+        else:
+            target = round(raw_target, 2)
+        side = "short"
+    else:
+        stop = round(s.last * 0.99, 2)
+        target = round(s.last * 1.01, 2)
+        side = "none"
 
-    # Long alerts only on non-negative days (unless strong bounce setup later)
-    if s.change_pct < 0:
-        action = Action.WAIT
-        reasons.append("السهم بالسالب اليوم — لا شراء يومي")
-        score = min(score, 2.5)
-    elif score >= 5.0:
+    if no_trade_today:
+        action = Action.NO_TRADE_DAY
+        side = "none"
+    elif avoid_pts >= 12 or (s.news_negative and avoid_pts >= 8):
+        action = Action.AVOID
+        side = "none"
+    elif side == "short" and short_pts >= 14:
+        action = Action.CONSIDER_SHORT
+    elif side == "long" and score_100 >= 68 and long_pts >= 14:
         action = Action.CONSIDER_LONG
-    elif score >= 3.2:
+    elif side == "long" and score_100 >= 58:
         action = Action.WATCH_ENTRY
-    elif s.rsi_14 > 78 and s.change_pct > 2:
+    elif s.rsi_14 >= 78 and s.change_pct > 2:
         action = Action.TAKE_PROFIT_ZONE
-        reasons.append("امتداد قوي — الأفضل انتظار تراجع صغير")
+        side = "none"
+    elif side == "short" and short_pts >= 8:
+        action = Action.WATCH_ENTRY  # watch short cautiously labeled in reason
+        notes.append("مراقبة بيع قصير — للمتمرس فقط")
     else:
         action = Action.WAIT
-        if not reasons:
-            reasons.append("لا توجد شروط زخم كافية الآن")
+
+    # legacy score ~0-10 from score_100
+    legacy = round(score_100 / 10.0, 2)
+    reason = " | ".join(notes[:6]) if notes else "لا إشارات استراتيجية قوية"
 
     return Signal(
         symbol=s.symbol,
         action=action,
-        score=round(score, 2),
-        reason=" | ".join(reasons),
+        score=legacy,
+        score_100=score_100,
+        reason=reason,
         entry_hint=entry,
         stop_hint=stop,
         target_hint=target,
-        side="long" if action in (Action.CONSIDER_LONG, Action.WATCH_ENTRY) else "none",
+        side=side if action in (Action.CONSIDER_LONG, Action.CONSIDER_SHORT, Action.WATCH_ENTRY) else "none",
+        strategies=names,
+        strategy_notes=notes,
     )
 
 
-def rank_signals(snapshots: list[QuoteSnapshot]) -> list[Signal]:
+def rank_signals(
+    snapshots: list[QuoteSnapshot],
+    *,
+    settings: Settings | None = None,
+    vol_preference: str | None = None,
+) -> list[Signal]:
+    ctx = market_context()
+    sec = sector_momentum(snapshots)
+    spy_chg = ctx.get("details", {}).get("SPY", {}).get("change_pct", 0.0)
+    qqq_chg = ctx.get("details", {}).get("QQQ", {}).get("change_pct", 0.0)
+    no_trade = bool(ctx.get("no_trade_today"))
+
+    if vol_preference is None:
+        vol_preference = "low" if (settings and settings.is_beginner) else "high"
+
     signals: list[Signal] = []
     for snap in snapshots:
-        sig = score_momentum_breakout(snap)
-        if sig:
-            signals.append(sig)
-    # Prefer actionable first, then score
+        hits = evaluate_all(
+            snap,
+            sector_mom=sec,
+            spy_chg=spy_chg,
+            qqq_chg=qqq_chg,
+            vol_preference=vol_preference,
+        )
+        sig = compose_signal(snap, hits, no_trade_today=no_trade and snap.symbol in ("SPY", "QQQ", "IWM"))
+        # Propagate no-trade as market banner via index symbols only;
+        # for others still score but dampen longs if no_trade
+        if no_trade and sig.side == "long" and sig.action in (Action.CONSIDER_LONG, Action.WATCH_ENTRY):
+            sig.action = Action.WAIT
+            sig.side = "none"
+            sig.reason = "لا تتداول اليوم (ظروف سوق) — " + sig.reason
+            sig.strategies = ["لا تتداول اليوم"] + sig.strategies
+        signals.append(sig)
+
+    # Ensure a market-level NO_TRADE signal exists when flagged
+    if no_trade:
+        reasons = "، ".join(ctx.get("no_trade_reasons") or ["ظروف سوق صعبة"])
+        signals.insert(
+            0,
+            Signal(
+                symbol="MARKET",
+                action=Action.NO_TRADE_DAY,
+                score=0,
+                score_100=0,
+                reason=f"إشارة عامة: لا تتداول اليوم — {reasons}",
+                entry_hint=0,
+                stop_hint=0,
+                target_hint=0,
+                side="none",
+                strategies=["لا تتداول اليوم"],
+                strategy_notes=[reasons],
+            ),
+        )
+
     priority = {
-        Action.CONSIDER_LONG: 0,
-        Action.WATCH_ENTRY: 1,
-        Action.TAKE_PROFIT_ZONE: 2,
-        Action.WAIT: 3,
-        Action.AVOID: 4,
+        Action.NO_TRADE_DAY: 0,
+        Action.CONSIDER_LONG: 1,
+        Action.CONSIDER_SHORT: 2,
+        Action.WATCH_ENTRY: 3,
+        Action.TAKE_PROFIT_ZONE: 4,
+        Action.WAIT: 5,
+        Action.AVOID: 6,
     }
-    signals.sort(key=lambda x: (priority[x.action], -x.score))
+    signals.sort(key=lambda x: (priority.get(x.action, 9), -x.score_100))
     return signals
+
+
+def track_strategy_hits(settings: Settings, signals: list[Signal]) -> Path:
+    """35 — append daily strategy hit counts for later comparison."""
+    path = settings.data_dir / "strategy_performance.json"
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    data = {}
+    if path.exists():
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            data = {}
+    day = data.setdefault(today, {})
+    for sig in signals:
+        for name in sig.strategies:
+            bucket = day.setdefault(name, {"hits": 0, "longish": 0, "shortish": 0})
+            bucket["hits"] += 1
+            if sig.side == "long":
+                bucket["longish"] += 1
+            if sig.side == "short":
+                bucket["shortish"] += 1
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
+
+
+def compare_strategies(settings: Settings, a: str, b: str) -> str:
+    """35 compare two strategy hit frequencies (proxy until PnL linked)."""
+    path = settings.data_dir / "strategy_performance.json"
+    if not path.exists():
+        return "لا توجد بيانات مقارنة بعد — انتظر بضعة أيام تداول."
+    data = json.loads(path.read_text(encoding="utf-8"))
+    tot_a = tot_b = 0
+    days = 0
+    for day, bucket in data.items():
+        days += 1
+        tot_a += (bucket.get(a) or {}).get("hits", 0)
+        tot_b += (bucket.get(b) or {}).get("hits", 0)
+    return (
+        f"مقارنة تقريبية عبر {days} يوم:\n"
+        f"• {a}: {tot_a} ظهور\n"
+        f"• {b}: {tot_b} ظهور\n"
+        "ملاحظة: هذا عدّاد إشارات وليس أرباحًا محققة بعد."
+    )

@@ -48,8 +48,15 @@ def format_morning(
     actionable = [
         s
         for s in signals
-        if s.action in (Action.CONSIDER_LONG, Action.WATCH_ENTRY)
+        if s.action in (Action.CONSIDER_LONG, Action.CONSIDER_SHORT, Action.WATCH_ENTRY)
+        and s.symbol != "MARKET"
     ][: settings.max_morning_picks]
+
+    # 34 no-trade banner
+    if any(s.action == Action.NO_TRADE_DAY for s in signals):
+        nt = next(s for s in signals if s.action == Action.NO_TRADE_DAY)
+        lines.append("")
+        lines.append(f"🛑 {nt.reason}")
 
     lines.append("")
     lines.append(f"🎯 أفضل الفرص اليوم ({len(actionable)}):")
@@ -60,8 +67,10 @@ def format_morning(
             plan = plan_trade(settings, sig)
             snap = next((x for x in snapshots if x.symbol == sig.symbol), None)
             chg = f"{snap.change_pct:+.1f}%" if snap else ""
+            strats = "، ".join(sig.strategies[:3]) if sig.strategies else "—"
             lines.append(
-                f"\n{i}) {sig.symbol} — {sig.action.value} {chg}\n"
+                f"\n{i}) {sig.symbol} — {sig.action.value} {chg} | {sig.score_100}/100\n"
+                f"   استراتيجيات: {strats}\n"
                 f"   السبب: {sig.reason}\n"
                 f"   دخول≈ ${plan.entry} | وقف≈ ${plan.stop} | هدف≈ ${plan.target}\n"
                 f"   الحجم المقترح: {plan.shares} سهم "
@@ -121,7 +130,13 @@ def format_evening(
         lines.append("  لا توجد إشارات بارزة.")
     else:
         for s in top:
-            lines.append(f"  • {s.symbol}: {s.action.value} (score {s.score}) — {s.reason}")
+            if s.symbol == "MARKET":
+                lines.append(f"  • 🛑 {s.reason}")
+            else:
+                strats = "، ".join(s.strategies[:2]) if s.strategies else ""
+                lines.append(
+                    f"  • {s.symbol}: {s.action.value} ({s.score_100}/100) {strats}"
+                )
 
     lines.append("")
     lines.append("📋 واجب الليلة:")
@@ -134,10 +149,11 @@ def format_evening(
 
 def build_full_pack(settings: Settings, snapshots: list[QuoteSnapshot]) -> dict:
     from bot.formatters import format_signal_card, is_urgent
+    from bot.signals import track_strategy_hits
 
-    # Filter: stocks above min price (default $5)
     snapshots = [s for s in snapshots if s.last >= settings.min_price_usd]
-    signals = rank_signals(snapshots)
+    signals = rank_signals(snapshots, settings=settings)
+    track_strategy_hits(settings, signals)
     morning = format_morning(settings, snapshots, signals)
     plans = []
     intraday_messages = []
@@ -145,20 +161,23 @@ def build_full_pack(settings: Settings, snapshots: list[QuoteSnapshot]) -> dict:
     sent_symbols: list[str] = []
 
     for sig in signals:
-        if sig.action not in (Action.CONSIDER_LONG, Action.WATCH_ENTRY):
+        if sig.symbol == "MARKET":
+            continue
+        if sig.action not in (Action.CONSIDER_LONG, Action.CONSIDER_SHORT, Action.WATCH_ENTRY):
+            continue
+        if settings.is_beginner and sig.action == Action.CONSIDER_SHORT:
             continue
         if alert_count >= settings.max_alerts_per_day:
             break
         plan = plan_trade(settings, sig)
         plans.append(plan)
-        if plan.allowed or sig.action == Action.WATCH_ENTRY:
-            card = format_signal_card(settings, sig, plan)
-            msg = card if settings.is_beginner else (card + "\n\n" + format_intraday_alert(settings, sig, plan))
-            if is_urgent(settings, sig):
-                msg = "🚨 عاجل — فرصة قوية\n" + msg
-            intraday_messages.append(msg)
-            sent_symbols.append(sig.symbol)
-            alert_count += 1
+        card = format_signal_card(settings, sig, plan)
+        msg = card if settings.is_beginner else (card + "\n\n" + format_intraday_alert(settings, sig, plan))
+        if is_urgent(settings, sig):
+            msg = "🚨 عاجل — فرصة قوية\n" + msg
+        intraday_messages.append(msg)
+        sent_symbols.append(sig.symbol)
+        alert_count += 1
 
     evening = format_evening(settings, signals, sent_symbols)
     return {
