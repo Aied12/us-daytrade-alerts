@@ -17,6 +17,7 @@ from bot.config import load_settings
 from bot.extras import GROWTH_NAMES, VALUE_NAMES, SECTOR_ETFS
 from bot.holidays import holiday_note, is_trading_day
 from bot.journal import actions_path, ensure_actions, ensure_journal, journal_path
+from bot.flow_filter import gainer_passes_flow, momentum_rank_score, passes_daytrade_flow
 from bot.gainers import fetch_day_gainers, watchlist_gainers
 from bot.live_quotes import price_lag_label_ar, session_phase
 from bot.liquidity import liquidity_dict
@@ -164,19 +165,22 @@ def main() -> None:
     phase = session_phase()
     min_px = max(float(settings.min_price_usd), 5.0)
 
-    # Refresh candidate universe every build: watchlist + live day-gainers
-    gainers = fetch_day_gainers(min_price=min_px, limit=20)
+    # Refresh candidate universe: watchlist + day gainers + most-actives (via gainers feed)
+    gainers = fetch_day_gainers(min_price=min_px, limit=25)
     gainer_syms = [g["symbol"] for g in (gainers or []) if g.get("symbol")]
-    scan_syms = list(dict.fromkeys([*(settings.watchlist or []), *gainer_syms[:12]]))
+    scan_syms = list(dict.fromkeys([*(settings.watchlist or []), *gainer_syms[:18]]))
     snaps = scan_watchlist(scan_syms)
     snaps = [s for s in snaps if s.last >= settings.min_price_usd]
     if not gainers:
         gainers = watchlist_gainers(snaps, min_price=min_px, limit=15)
+    # Drop quiet gainers early
+    gainers = [g for g in (gainers or []) if gainer_passes_flow(g, phase)]
 
     pack = build_full_pack(settings, snaps) if snaps else {"signals": []}
     by_sym = {s.symbol: s for s in snaps}
 
     opportunities = []
+    rejected_slow: list[str] = []
     for sig in pack.get("signals") or []:
         if sig.symbol == "MARKET":
             continue
@@ -192,6 +196,10 @@ def main() -> None:
         # Premarket: drop names already red — setup expired
         if phase == "pre" and snap and snap.change_pct < -0.35:
             continue
+        ok_flow, flow_reason = passes_daytrade_flow(snap, phase)
+        if not ok_flow:
+            rejected_slow.append(f"{sig.symbol}:{flow_reason}")
+            continue
         plan = plan_trade(settings, sig, live_last=live_last)
         # Hard rule: long entry must never exceed live price
         if (sig.side or "long") == "long" and plan.entry > live_last:
@@ -201,9 +209,7 @@ def main() -> None:
         if phase == "pre" and snap and snap.change_pct < 0:
             urgent = False
         liq = liquidity_dict(snap)
-        # Require usable liquidity on the board
-        if float(liq.get("dollar_volume") or 0) < 5_000_000 and float(liq.get("rvol") or 0) < 0.5:
-            continue
+        flow_score = momentum_rank_score(snap)
         opportunities.append(
             {
                 "symbol": sig.symbol,
@@ -227,22 +233,30 @@ def main() -> None:
                 "rvol": liq["rvol"],
                 "liq_grade": liq["grade"],
                 "liq_grade_ar": liq["grade_ar"],
+                "atr_pct": round(float(snap.atr_pct or 0), 2) if snap else 0.0,
+                "flow_score": round(flow_score, 2),
+                "flow_ok": True,
                 "tv_url": f"https://www.tradingview.com/chart/?symbol={sig.symbol}",
                 "tg_share": (
                     f"https://t.me/share/url?url=&text="
                     f"{sig.symbol}%20{sig.action.value}%0A"
                     f"الآن%20{live_last}%20دخول%20{plan.entry}%20وقف%20{plan.stop}%20هدف%20{plan.target}%0A"
-                    f"سيولة%20{liq['grade_ar']}%20RVOL%20x{liq['rvol']}"
+                    f"سيولة%20{liq['grade_ar']}%20RVOL%20x{liq['rvol']}%20زخم%20{snap.change_pct:+.2f}%"
                 ),
             }
         )
 
-    # Rank freshest best setups; keep board moving
+    # Rank by live flow (momentum × RVOL × $volume), then signal score
     opportunities.sort(
-        key=lambda o: (1 if o.get("urgent") else 0, o.get("score_100") or 0, o.get("change_pct") or 0),
+        key=lambda o: (
+            float(o.get("flow_score") or 0),
+            1 if o.get("urgent") else 0,
+            o.get("score_100") or 0,
+            o.get("change_pct") or 0,
+        ),
         reverse=True,
     )
-    opportunities = opportunities[:12]
+    opportunities = opportunities[:8]
 
     movers = sorted(snaps, key=lambda s: abs(s.change_pct), reverse=True)[:8]
 
@@ -311,6 +325,8 @@ def main() -> None:
         "sectors": _sector_board(snaps),
         "style": _style_board(snaps),
         "opportunities": opportunities,
+        "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
+        "opps_rejected_slow": rejected_slow[:20],
         "gainers": gainers,
         "gainers_min_price": min_px,
         "gainers_session_ar": gainers_session,

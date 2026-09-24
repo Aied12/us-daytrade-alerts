@@ -154,8 +154,10 @@ def fetch_day_gainers(min_price: float = 5.0, limit: int = 20) -> list[dict[str,
                         "tv_url": f"https://www.tradingview.com/chart/?symbol={row['symbol']}",
                     }
                 )
-        # Drop weak liquidity names from the board
-        lives = [x for x in lives if float(x.get("dollar_volume") or 0) >= 5_000_000]
+        # Require real participation + move (no slow tickers)
+        from bot.flow_filter import gainer_passes_flow
+
+        lives = [x for x in lives if gainer_passes_flow(x, phase)]
         lives.sort(key=lambda x: x["change_pct"], reverse=True)
         return lives[:limit]
 
