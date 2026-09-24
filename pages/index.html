@@ -884,6 +884,28 @@
       return {entry:last, stop:last-stopDist, target:last+targetDist};
     }
 
+    function isOppExpired(o){
+      if(!o) return true;
+      if(o.expired || (o.smart && o.smart.expired)) return true;
+      const tags=o.smart_tags || (o.smart && o.smart.tags) || [];
+      if(tags.some(t=> (t&&t.key)==='expired' || /انتهت|منتهية/.test(String((t&&t.ar)||'')))) return true;
+      // حي: إذا السعر تجاوز الدخول بوضوح → فرصة منتهية للمطاردة
+      const side=o.side||'long';
+      const last=Number(o.last||0);
+      const entry=Number(o.entry_planned||o.entry_original||o.entry||0);
+      if(side==='long' && entry>0 && last>0){
+        const stretch=((last-entry)/entry)*100;
+        if(stretch >= 1.2) return true;
+      }
+      return false;
+    }
+    function purgeExpiredOpps(){
+      if(!DATA || !Array.isArray(DATA.opportunities)) return false;
+      const before=DATA.opportunities.length;
+      DATA.opportunities=DATA.opportunities.filter(o=>!isOppExpired(o));
+      return DATA.opportunities.length!==before;
+    }
+
     function syncOppsAfterQuotes(){
       if(!DATA || !Array.isArray(DATA.opportunities) || !DATA.opportunities.length) return;
       const before = DATA.opportunities.map(o=>o.symbol).join(',');
@@ -894,10 +916,13 @@
         const lv=reanchorOppLevels(o, last);
         // Long entry must never sit above live price
         const entry = (o.side==='short') ? lv.entry : Math.min(lv.entry, last);
+        // Preserve original planned entry for expiry checks when possible
+        const planned=Number(o.entry_planned!=null?o.entry_planned:o.entry||entry);
         return Object.assign({}, o, {
           last,
           change_pct: Number(q.change_pct||o.change_pct||0),
           entry: Number(entry.toFixed(2)),
+          entry_planned: planned,
           stop: Number(lv.stop.toFixed(2)),
           target: Number(lv.target.toFixed(2)),
         });
@@ -905,7 +930,11 @@
         // Drop expired long setups that flipped clearly red in live pre/tape
         if((o.side==='long' || o.action_key==='CONSIDER_LONG' || o.action_key==='WATCH_ENTRY')
           && Number(o.change_pct) < -0.6) return false;
-        return true;
+        // Drop chase / extended vs planned entry
+        const planEntry=Number(o.entry_planned||o.entry_original||o.entry||0);
+        const last=Number(o.last||0);
+        if(planEntry>0 && last>0 && ((last-planEntry)/planEntry)*100 >= 1.2) return false;
+        return !isOppExpired(o);
       });
       // Update level spans in-place (no full card rebuild — keeps open details)
       DATA.opportunities.forEach(o=>{
@@ -925,6 +954,7 @@
 
     function filteredOpps(){
       if(!DATA) return [];
+      purgeExpiredOpps();
       let list=[...(DATA.opportunities||[])];
       // إخفاء البيع القصير دائماً
       list=list.filter(o=>o.action_key!=='CONSIDER_SHORT' && o.side!=='short');
@@ -943,8 +973,8 @@
         return g==='strong' || g==='medium';
       });
       if(FLOW_FILTERS.has('flow')) list=list.filter(o=>Number(o.flow_score||0) >= 1.2);
-      // إزالة الفرص المنتهية / المطاردة المتأخرة
-      list=list.filter(o=>!o.expired && !(o.smart&&o.smart.expired));
+      // إزالة الفرص المنتهية / المطاردة المتأخرة (علم + وسم + تمدد سعري)
+      list=list.filter(o=>!isOppExpired(o));
       const sort=document.getElementById('sortSel').value;
       if(sort==='change') list.sort((a,b)=>Math.abs(b.change_pct)-Math.abs(a.change_pct));
       else if(sort==='rvol') list.sort((a,b)=>(b.rvol_pace||b.rvol||0)-(a.rvol_pace||a.rvol||0));
@@ -1156,6 +1186,7 @@
       NEWS_CACHE=news;
       renderNewsList(NEWS_CACHE);
 
+      purgeExpiredOpps();
       renderOpps();
       tickClocks();
     }

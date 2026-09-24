@@ -209,6 +209,7 @@ def main() -> None:
             rejected_slow.append(f"{sig.symbol}:{smart.get('exclude_reason') or smart.get('expired_ar') or 'منتهية'}")
             continue
         plan = plan_trade(settings, sig, live_last=live_last)
+        entry_original = float(sig.entry_hint or live_last)
         # Hard rule: long entry must never exceed live price
         if (sig.side or "long") == "long" and plan.entry > live_last:
             plan.entry = live_last
@@ -242,6 +243,8 @@ def main() -> None:
                 "strategies": (sig.strategies or [])[:4],
                 "reason": sig.reason[:220],
                 "entry": plan.entry,
+                "entry_original": round(entry_original, 2),
+                "entry_planned": round(float(sig.entry_hint or plan.entry), 2),
                 "stop": plan.stop,
                 "stop_alt": smart.get("stop_alt"),
                 "target": plan.target,
