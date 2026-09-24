@@ -666,7 +666,7 @@
       }
       // same-origin live.json first
       try{
-        const r=await fetch('./live.json?ts='+Date.now(),{cache:'no-store'});
+        const r=await fetch('./prices-live.json?ts='+Date.now(),{cache:'no-store'});
         if(r.ok){
           const j=await r.json();
           const row=(j.quotes||{})[sym];
@@ -709,7 +709,7 @@
       const uniq=[...new Set(ordered)].slice(0, 8);
       // Prefer same-origin live.json batch
       try{
-        const r=await fetch('./live.json?ts='+Date.now(),{cache:'no-store'});
+        const r=await fetch('./prices-live.json?ts='+Date.now(),{cache:'no-store'});
         if(r.ok){
           const j=await r.json();
           const quotes=j.quotes||{};
