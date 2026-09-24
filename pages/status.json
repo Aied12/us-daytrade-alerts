@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:41:28.988283+00:00",
-  "generated_ts": 1790257288,
-  "generated_local": "2026-09-24 16:41 +03",
+  "generated_at": "2026-09-24T13:42:15.244771+00:00",
+  "generated_ts": 1790257335,
+  "generated_local": "2026-09-24 16:42 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:41:28.988106+00:00",
+    "updated_at": "2026-09-24T13:42:15.244631+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,39 +23,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.39,
+    "avg_change_pct": -0.51,
     "details": {
       "SPY": {
-        "last": 765.03,
-        "change_pct": -0.36,
-        "rsi": 44.8
+        "last": 764.5699,
+        "change_pct": -0.42,
+        "rsi": 44.6
       },
       "QQQ": {
-        "last": 737.11,
-        "change_pct": -0.55,
-        "rsi": 62.2
+        "last": 736.35,
+        "change_pct": -0.66,
+        "rsi": 61.8
       },
       "IWM": {
-        "last": 281.16,
-        "change_pct": -0.27,
-        "rsi": 24.8
+        "last": 280.75,
+        "change_pct": -0.44,
+        "rsi": 24.6
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.36,
-        "rsi": 44.8
+        "change_pct": -0.42,
+        "rsi": 44.6
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.55,
-        "rsi": 62.2
+        "change_pct": -0.66,
+        "rsi": 61.8
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.27,
-        "rsi": 24.8
+        "change_pct": -0.44,
+        "rsi": 24.6
       }
     ],
     "no_trade_today": false,
@@ -68,8 +68,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 22711,
-    "ny_time": "09:41:28",
+    "seconds_left": 22664,
+    "ny_time": "09:42:15",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,35 +77,35 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.25
+        "change_pct": 1.21
       },
       {
         "name": "Communication",
-        "change_pct": 1.11
+        "change_pct": 1.07
       },
       {
-        "name": "Financials",
-        "change_pct": 0.05
+        "name": "Technology",
+        "change_pct": -0.08
       }
     ],
     "weakest": [
       {
         "name": "Industrial",
-        "change_pct": -1.58
+        "change_pct": -1.62
       },
       {
         "name": "Consumer",
-        "change_pct": -0.23
+        "change_pct": -0.28
       },
       {
-        "name": "Technology",
-        "change_pct": -0.15
+        "name": "Financials",
+        "change_pct": -0.11
       }
     ]
   },
   "style": {
     "growth_avg": 0.06,
-    "value_avg": 0.04,
+    "value_avg": 0.02,
     "leader": "نمو",
     "growth_count": 10,
     "value_count": 11
@@ -116,13 +116,13 @@
     "P:درجة سيولة ضعيفة",
     "NBIS:درجة سيولة ضعيفة",
     "CRWV:درجة سيولة ضعيفة",
-    "BAC:زخم ضعيف (+0.25% < 0.85%)",
+    "BAC:زخم ضعيف (+0.23% < 0.85%)",
+    "PLTR:زخم ضعيف (+0.35% < 0.85%)",
     "AMD:درجة سيولة ضعيفة",
     "XOM:درجة سيولة ضعيفة",
-    "UBER:زخم ضعيف (+0.45% < 0.85%)",
-    "COIN:زخم ضعيف (+0.18% < 0.85%)",
-    "CVX:درجة سيولة ضعيفة",
-    "DIS:RVOL منخفض ×0.06",
+    "UBER:زخم ضعيف (+0.23% < 0.85%)",
+    "CVX:زخم ضعيف (+0.81% < 0.85%)",
+    "DIS:RVOL منخفض ×0.07",
     "NVDA:زخم ضعيف (-1.19% < 0.85%)",
     "META:درجة سيولة ضعيفة"
   ],
@@ -203,57 +203,57 @@
   "movers": [
     {
       "symbol": "P",
-      "change_pct": 13.79,
-      "last": 124.77,
-      "rvol": 0.23,
+      "change_pct": 15.58,
+      "last": 126.73,
+      "rvol": 0.25,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "201.2M$"
+      "dollar_volume_label": "220.8M$"
     },
     {
       "symbol": "NBIS",
-      "change_pct": 6.67,
-      "last": 241.72,
-      "rvol": 0.27,
+      "change_pct": 6.77,
+      "last": 241.95,
+      "rvol": 0.29,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "955.4M$"
+      "dollar_volume_label": "1.0B$"
     },
     {
       "symbol": "CRWV",
-      "change_pct": 2.9,
-      "last": 89.42,
-      "rvol": 0.21,
+      "change_pct": 3.07,
+      "last": 89.57,
+      "rvol": 0.22,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "513.8M$"
+      "dollar_volume_label": "536.3M$"
     },
     {
       "symbol": "DIS",
-      "change_pct": 2.0,
-      "last": 105.53,
-      "rvol": 0.06,
+      "change_pct": 1.92,
+      "last": 105.45,
+      "rvol": 0.07,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "51.3M$"
+      "dollar_volume_label": "54.4M$"
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.72,
-      "last": 348.9,
+      "change_pct": -1.82,
+      "last": 348.52,
       "rvol": 0.1,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "891.0M$"
+      "dollar_volume_label": "907.3M$"
     },
     {
-      "symbol": "XOM",
-      "change_pct": 1.63,
-      "last": 163.86,
-      "rvol": 0.04,
+      "symbol": "BA",
+      "change_pct": -1.62,
+      "last": 196.7,
+      "rvol": 0.17,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "90.8M$"
+      "dollar_volume_label": "198.7M$"
     }
   ],
   "news": [
