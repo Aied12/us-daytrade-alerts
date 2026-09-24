@@ -409,7 +409,7 @@
       }));
       const gmin=d.gainers_min_price??5;
       const gses=d.gainers_session_ar||'الآن';
-      document.getElementById('gainersNote').textContent=`سعر ≥ $${gmin} · ${gses} · لحظي · يُزال إذا نزل أو ضعفت السيولة`;
+      document.getElementById('gainersNote').textContent=`سعر ≥ $${gmin} · ${gses} · مرتّب حسب الارتفاع الحالي · يُزال إذا نزل أو ضعفت السيولة`;
       renderGainersTable();
 
       const movers=d.movers||[];
