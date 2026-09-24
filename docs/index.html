@@ -886,9 +886,18 @@
 
     function isOppExpired(o){
       if(!o) return true;
-      if(o.expired || (o.smart && o.smart.expired)) return true;
-      const tags=o.smart_tags || (o.smart && o.smart.tags) || [];
-      if(tags.some(t=> (t&&t.key)==='expired' || /انتهت|منتهية/.test(String((t&&t.ar)||'')))) return true;
+      if(o.expired === true || o.expired === 1 || o.expired === 'true') return true;
+      if(o.smart && (o.smart.expired === true || o.smart.expired === 1)) return true;
+      const confAr=String(o.confidence_ar||(o.smart&&o.smart.confidence_ar)||'');
+      if(/منتهية/.test(confAr)) return true;
+      const tags=o.smart_tags || (o.smart && o.smart.tags) || o.tags || [];
+      if(tags.some(t=>{
+        if(!t) return false;
+        if(typeof t==='string') return /انتهت|منتهية/.test(t);
+        return t.key==='expired' || /انتهت|منتهية/.test(String(t.ar||''));
+      })) return true;
+      const notes=o.smart_notes || (o.smart && o.smart.notes) || [];
+      if(notes.some(n=>/انتهت|مطاردة|ممتد جداً فوق VWAP|فات الدخول/.test(String(n||'')))) return true;
       // حي: إذا السعر تجاوز الدخول بوضوح → فرصة منتهية للمطاردة
       const side=o.side||'long';
       const last=Number(o.last||0);
@@ -897,6 +906,9 @@
         const stretch=((last-entry)/entry)*100;
         if(stretch >= 1.2) return true;
       }
+      // مطاردة ممتد: شراء بعد قفزة يومية كبيرة بدون دخول مخطط أقدم
+      const chg=Number(o.change_pct||0);
+      if(side==='long' && o.action_key==='CONSIDER_LONG' && chg >= 4.5) return true;
       return false;
     }
     function purgeExpiredOpps(){
@@ -1006,7 +1018,7 @@
         const aLab=L.avg_dollar_volume_label||'-';
         const conf=o.confidence||'B';
         const confAr=o.confidence_ar||'';
-        const tags=[...(o.smart_tags||[])];
+        const tags=[...(o.smart_tags||[])].filter(t=>t && t.key!=='expired' && !/انتهت|منتهية/.test(String(t.ar||'')));
         const notes=o.smart_notes||[];
         const candle=o.candle||(o.smart&&o.smart.candle)||{};
         const stopAlt=o.stop_alt!=null?o.stop_alt:(o.smart&&o.smart.stop_alt);
@@ -1014,14 +1026,13 @@
         const tFinal=o.target_final!=null?o.target_final:o.target;
         const trail=o.trail_offset!=null?o.trail_offset:(o.smart&&o.smart.trail_offset);
         const wait=!!o.wait_1m_confirm;
-        const expired=!!(o.expired||(o.smart&&o.smart.expired));
         const symU=String(o.symbol||'').toUpperCase();
         const shouldOpen = OPEN_OPP_SYMS.size ? OPEN_OPP_SYMS.has(symU) : i<2;
         return `
-        <details class="opp ${o.urgent?'urgent':''} ${wait?'wait':''} ${expired?'expired':''}" data-calc-sym="${esc(o.symbol)}" ${shouldOpen?'open':''}>
+        <details class="opp ${o.urgent?'urgent':''} ${wait?'wait':''}" data-calc-sym="${esc(o.symbol)}" ${shouldOpen?'open':''}>
           <summary>
             <div class="row">
-              <span class="sym calc-clickable" data-apply-calc="${esc(o.symbol)}">${esc(o.symbol)} ${o.urgent?'🔥 عاجل':''} ${wait?'⏳ تأكيد':''} ${expired?'⛔ انتهت':''}</span>
+              <span class="sym calc-clickable" data-apply-calc="${esc(o.symbol)}">${esc(o.symbol)} ${o.urgent?'🔥 عاجل':''} ${wait?'⏳ تأكيد':''}</span>
               <span>
                 <span class="pill conf-${esc(conf)}" title="${esc(confAr)}">ثقة ${esc(conf)}</span>
                 <span class="pill">${esc(o.score_100)}/100</span>
@@ -1334,14 +1345,16 @@
         btn.disabled=true; btn.textContent='... جاري التحديث';
       }
       try{
-        const url='./status.json?ts='+Date.now();
-        const res=await fetch(url,{cache:'no-store'});
+        const url='./status.json?ts='+Date.now()+'&v='+(window.__STATUS_V||'3');
+        const res=await fetch(url,{cache:'no-store', headers:{'Cache-Control':'no-cache','Pragma':'no-cache'}});
         const next=await res.json();
         const nextTs=Number(next.generated_ts||0);
         DATA=next;
+        // دائماً احذف المنتهية فور وصول البيانات (حتى لو الكاش قديم)
+        const purged=purgeExpiredOpps();
         sessionLeft=Number((DATA.session&&DATA.session.seconds_left)||0);
-        // نفس المحتوى → تحديث خفيف فقط (بدون إعادة رسم الصفحة)
-        if(!bust && LAST_STATUS_TS && nextTs && nextTs===LAST_STATUS_TS){
+        // نفس المحتوى → تحديث خفيف فقط (بدون إعادة رسم الصفحة) — إلا إذا حذفنا منتهية
+        if(!bust && LAST_STATUS_TS && nextTs && nextTs===LAST_STATUS_TS && !purged){
           tickClocks();
           refreshIn=AUTO_SEC;
           return;
