@@ -24,7 +24,6 @@ from bot.extras import (
     format_fed_calendar,
     format_premarket_hotlist,
     format_sector_etfs,
-    format_stock_news,
     format_style_board,
 )
 from bot.formatters import action_keyboard, mode_keyboard, format_signal_card, is_urgent
