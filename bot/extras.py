@@ -304,23 +304,32 @@ def _option_unusual(symbol: str) -> Optional[str]:
             return None
         calls = calls.copy()
         puts = puts.copy() if puts is not None else pd.DataFrame()
-        calls["score"] = calls["volume"].fillna(0) / calls["openInterest"].replace(0, pd.NA).fillna(1)
-        top_c = calls.sort_values("score", ascending=False).head(1)
+        # Prefer volume; if OI missing/zero, still flag high absolute volume
+        def _score(df: pd.DataFrame) -> pd.DataFrame:
+            vol = df["volume"].fillna(0)
+            oi = df["openInterest"].fillna(0).replace(0, pd.NA)
+            df = df.copy()
+            df["score"] = vol / oi.fillna(vol.clip(lower=1))
+            df.loc[oi.isna() | (oi == 0), "score"] = vol
+            return df
+
+        calls = _score(calls)
+        top_c = calls.sort_values(["volume", "score"], ascending=False).head(1)
         msg = None
-        if not top_c.empty and float(top_c["volume"].iloc[0] or 0) >= 500:
+        if not top_c.empty and float(top_c["volume"].iloc[0] or 0) >= 2000:
             row = top_c.iloc[0]
+            oi_v = int(row.get("openInterest") or 0)
             msg = (
-                f"{symbol} CALL strike {row.get('strike')} vol={int(row.get('volume') or 0)} "
-                f"OI={int(row.get('openInterest') or 0)}"
+                f"{symbol} CALL {row.get('strike')} vol={int(row.get('volume') or 0)} OI={oi_v}"
             )
         if puts is not None and not puts.empty:
-            puts["score"] = puts["volume"].fillna(0) / puts["openInterest"].replace(0, pd.NA).fillna(1)
-            top_p = puts.sort_values("score", ascending=False).head(1)
-            if not top_p.empty and float(top_p["volume"].iloc[0] or 0) >= 500:
+            puts = _score(puts)
+            top_p = puts.sort_values(["volume", "score"], ascending=False).head(1)
+            if not top_p.empty and float(top_p["volume"].iloc[0] or 0) >= 2000:
                 row = top_p.iloc[0]
+                oi_v = int(row.get("openInterest") or 0)
                 put_msg = (
-                    f"{symbol} PUT strike {row.get('strike')} vol={int(row.get('volume') or 0)} "
-                    f"OI={int(row.get('openInterest') or 0)}"
+                    f"{symbol} PUT {row.get('strike')} vol={int(row.get('volume') or 0)} OI={oi_v}"
                 )
                 msg = f"{msg} | {put_msg}" if msg else put_msg
         return msg
