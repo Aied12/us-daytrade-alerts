@@ -25,6 +25,11 @@ LOG_FILE="$LOG_DIR/cron_${MODE}_${STAMP}.log"
   [[ -f "$ROOT/.env" ]] && source "$ROOT/.env"
   set +a
   "$PYTHON" "$ROOT/scripts/scheduled_run.py" --mode "$MODE"
+  # Refresh GitHub Pages JSON after market scans so the dashboard auto-updates
+  if [[ "$MODE" == "tick" || "$MODE" == "auto" || "$MODE" == "premarket" || "$MODE" == "intraday" || "$MODE" == "morning" ]]; then
+    echo "==== publish pages $(date -u -Iseconds) ===="
+    "$PYTHON" "$ROOT/scripts/publish_pages.py" || echo "publish_pages failed (non-fatal)"
+  fi
   echo "==== done $(date -u -Iseconds) ===="
 } >>"$LOG_FILE" 2>&1
 

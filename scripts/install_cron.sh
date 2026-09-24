@@ -17,9 +17,11 @@ SHELL=/bin/bash
 PATH=/usr/bin:/bin
 # Premarket pack — 11:00 السعودية
 0 8 * * 1-5 $RUN premarket
-# تحديث السوق كل دقيقتين 11ص–11م السعودية (أسرع مع Finnhub/Alpaca)
-*/2 8-19 * * 1-5 $RUN tick
+# تحديث السوق كل دقيقة 11ص–11م السعودية (أسعار/صاعدين تلقائي للوحة)
+* 8-19 * * 1-5 $RUN tick
 0 20 * * 1-5 $RUN tick
+# تحديث اللوحة حتى قبل/بعد الجلسة السعودية الخفيفة
+*/2 7,20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_pages.py
 # Intel ظهرًا ≈16:00 السعودية
 0 13 * * 1-5 $RUN intel
 # ملخص مسائي
