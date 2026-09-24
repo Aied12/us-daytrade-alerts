@@ -136,6 +136,48 @@
       background:var(--card);color:var(--text);font-size:.88rem;cursor:pointer;font-weight:600;
     }
     .flow-filters button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .calc-field{display:flex;flex-direction:column;gap:4px;margin:8px 0}
+    .calc-field label{font-size:.88rem;color:var(--muted);font-weight:600}
+    .calc-field input,.calc-field select{
+      min-height:44px;border-radius:12px;border:1px solid var(--line);
+      background:var(--bg);color:var(--text);padding:8px 12px;font-size:1rem;width:100%;
+      font-family:inherit;
+    }
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    @media (max-width:560px){.calc-grid{grid-template-columns:1fr}}
+    .calc-out{
+      border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center;
+      background:color-mix(in srgb,var(--card) 88%, black);
+    }
+    .calc-out .lab{font-size:.82rem;color:var(--muted);margin-bottom:4px}
+    .calc-out .val{font-size:1.15rem;font-weight:800;letter-spacing:.01em}
+    .calc-out.entry{border-color:color-mix(in srgb,var(--ok) 45%, var(--line));background:color-mix(in srgb,var(--ok) 14%, var(--card))}
+    .calc-out.entry .val{color:var(--ok)}
+    .calc-out.stop{border-color:color-mix(in srgb,var(--bad) 45%, var(--line));background:color-mix(in srgb,var(--bad) 14%, var(--card))}
+    .calc-out.stop .val{color:var(--bad)}
+    .calc-out.t1{border-color:color-mix(in srgb,var(--warn) 50%, var(--line));background:color-mix(in srgb,var(--warn) 14%, var(--card))}
+    .calc-out.t1 .val{color:var(--warn)}
+    .calc-out.t2{border-color:color-mix(in srgb,var(--ok) 65%, var(--line));background:color-mix(in srgb,var(--ok) 22%, var(--card))}
+    .calc-out.t2 .val{color:var(--ok)}
+    .calc-size{
+      margin-top:10px;border:1px solid var(--line);border-radius:14px;padding:14px;
+      background:color-mix(in srgb,var(--accent) 10%, var(--card));
+    }
+    .calc-size .big{font-size:1.35rem;font-weight:800;margin:4px 0}
+    .calc-warn{
+      margin-top:8px;padding:10px 12px;border-radius:12px;font-size:.9rem;font-weight:700;
+      background:color-mix(in srgb,var(--bad) 16%, var(--card));color:var(--bad);
+      border:1px solid color-mix(in srgb,var(--bad) 40%, var(--line));
+    }
+    .calc-tip{
+      margin-top:8px;padding:10px 12px;border-radius:12px;font-size:.9rem;font-weight:700;
+      background:color-mix(in srgb,var(--warn) 14%, var(--card));color:var(--warn);
+      border:1px solid color-mix(in srgb,var(--warn) 40%, var(--line));
+    }
+    .calc-sym-pill{font-weight:800}
+    .opp.calc-picked,.scan-item.calc-picked{outline:2px solid var(--accent)}
+    tr.calc-picked td{background:color-mix(in srgb,var(--accent) 14%, transparent)}
+    .calc-clickable{cursor:pointer}
     #movingBar{
       display:none;margin:8px 0;padding:8px 12px;border-radius:12px;
       border:1px solid color-mix(in srgb,var(--ok) 40%, var(--line));
@@ -256,6 +298,76 @@
       </div>
       <div id="movingBar">● يتحرك الآن: <span id="movingSyms">—</span></div>
       <div id="opps"><div class="empty">جاري الجلب...</div></div>
+    </div>
+
+    <div class="card" id="strategyCalcCard">
+      <h2>حاسبة الاستراتيجية</h2>
+      <p class="muted">احسب الدخول / الوقف / الأهداف وحجم الصفقة — اضغط سهماً من خطط الدخول أو أعلى الارتفاعات لتعبئة السعر</p>
+      <div class="row" style="margin-top:4px">
+        <span class="muted">السهم المختار</span>
+        <span class="pill calc-sym-pill" id="calcSymPill">— يدوي —</span>
+      </div>
+      <div id="calcSectorTip" class="calc-tip" style="display:none">⚠️ تأكد أن قطاع السهم ضمن أقوى القطاعات المعروضة بقسم مزاج السوق قبل الدخول</div>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="calcPrice">سعر السهم الحالي ($)</label>
+          <input id="calcPrice" type="number" inputmode="decimal" step="0.01" min="0" placeholder="0.00" />
+        </div>
+        <div class="calc-field">
+          <label for="calcCapital">رأس المال (ر.س)</label>
+          <input id="calcCapital" type="number" inputmode="decimal" step="1" min="0" placeholder="45000" />
+        </div>
+        <div class="calc-field">
+          <label for="calcRiskPct">نسبة المخاطرة المقبولة %</label>
+          <input id="calcRiskPct" type="number" inputmode="decimal" step="0.1" min="0.1" max="20" value="2" />
+        </div>
+        <div class="calc-field">
+          <label for="calcStrategy">الاستراتيجية</label>
+          <select id="calcStrategy">
+            <option value="catalyst">محفز/اختراق — Catalyst Breakout</option>
+            <option value="momentum">زخم RVOL — Momentum</option>
+            <option value="sector">تدوير قطاع — Sector Rotation</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="calcBreakout">سعر كسر القمة / الدخول ($)</label>
+          <input id="calcBreakout" type="number" inputmode="decimal" step="0.01" min="0" placeholder="تلقائي ≈ السعر × 1.001" />
+        </div>
+        <div class="calc-field">
+          <label for="calcStopPct">وقف الخسارة % تحت الدخول</label>
+          <input id="calcStopPct" type="number" inputmode="decimal" step="0.1" min="0.1" max="20" value="1.5" />
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <button class="btn" type="button" id="btnCalcRun">احسب</button>
+        <button class="btn secondary" type="button" id="btnCalcApplyLive">تحديث السعر اللحظي</button>
+        <button class="btn ghost" type="button" id="btnCalcReset">إعادة ضبط</button>
+      </div>
+
+      <div class="grid" style="margin-top:12px" id="calcResults">
+        <div class="calc-out entry"><div class="lab">سعر الدخول</div><div class="val" id="calcOutEntry">—</div></div>
+        <div class="calc-out stop"><div class="lab">وقف الخسارة</div><div class="val" id="calcOutStop">—</div></div>
+        <div class="calc-out t1"><div class="lab">الهدف الأول</div><div class="val" id="calcOutT1">—</div></div>
+        <div class="calc-out t2"><div class="lab">الهدف الثاني</div><div class="val" id="calcOutT2">—</div></div>
+      </div>
+
+      <div class="calc-size" id="calcSizeBox">
+        <div class="muted">حجم الصفقة (Position Sizing)</div>
+        <div class="big" id="calcOutShares">— سهم</div>
+        <div class="row" style="margin:6px 0 0">
+          <span class="muted">القيمة الإجمالية</span>
+          <b id="calcOutNotional">—</b>
+        </div>
+        <div class="row" style="margin:4px 0 0">
+          <span class="muted">المخاطرة النقدية ≈</span>
+          <b id="calcOutRiskCash">—</b>
+        </div>
+        <div id="calcWarnings"></div>
+      </div>
+
+      <p class="muted" style="margin:12px 0 0;font-size:.82rem;line-height:1.4">هذه حسابات آلية لأغراض تعليمية وإدارة مخاطر، وليست توصية استثمارية. راجع قراراتك دائمًا.</p>
     </div>
 
     <div class="card">
