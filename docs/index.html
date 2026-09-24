@@ -337,8 +337,7 @@
           </div>
           <div class="toolbar">
             <button class="btn secondary" type="button" data-copy="${esc(o.symbol)}|${esc(o.entry)}|${esc(o.stop)}|${esc(o.target)}">📋 نسخ المستويات</button>
-            <button class="btn" type="button" data-live="${esc(o.symbol)}">📡 لحظي</button>
-            <a class="btn ghost" href="${esc(o.tv_url)}" target="_blank" rel="noopener">📈 TradingView</a>
+            <a class="btn" href="${esc(o.tg_share)}" target="_blank" rel="noopener">✉️ تيليجرام</a>
           </div>
         </details>`;
       }).join('');
@@ -348,16 +347,9 @@
           copyText(`${sym}\nدخول: ${entry}\nوقف: ${stop}\nهدف: ${target}`);
         });
       });
-      box.querySelectorAll('[data-live]').forEach(btn=>{
-        btn.addEventListener('click',(e)=>{ e.preventDefault(); e.stopPropagation(); setLiveSymbol(btn.dataset.live); });
-      });
       maybeNotify(list);
-      // default live symbol
-      if(!LIVE_SYM){
-        const first=list[0]&&list[0].symbol;
-        if(first) setLiveSymbol(first, false);
-      }
-      renderLiveChips();
+      renderLiveTape();
+      pollAllPrices();
     }
     function maybeNotify(list){
       if(localStorage.getItem(LS.notify)!=='1') return;
@@ -395,7 +387,10 @@
 
       const idxs=d.market&&d.market.indexes||[];
       document.getElementById('indexes').innerHTML = idxs.map(x=>`
-        <div class="idx"><b>${esc(x.symbol)}</b><div class="${clsChg(x.change_pct)}">${x.change_pct>0?'+':''}${esc(x.change_pct)}%</div><div class="muted">RSI ${esc(x.rsi)}</div></div>
+        <div class="idx"><b>${esc(x.symbol)}</b>
+          <div class="${clsChg(x.change_pct)}" data-live-chg="${esc(x.symbol)}">${x.change_pct>0?'+':''}${esc(x.change_pct)}%</div>
+          <div class="muted">$<span data-live-px="${esc(x.symbol)}">—</span> · RSI ${esc(x.rsi)}</div>
+        </div>
       `).join('') || '<div class="muted">لا مؤشرات</div>';
 
       const sec=d.sectors||{};
@@ -412,21 +407,18 @@
       document.getElementById('gainersBody').innerHTML = gainers.length ? gainers.map((g,i)=>`
         <tr>
           <td>${i+1}</td>
-          <td><button type="button" class="sym-chip" style="min-height:36px;padding:6px 10px" data-live="${esc(g.symbol)}"><b>${esc(g.symbol)}</b></button>${g.name?` <span class="muted">${esc(g.name)}</span>`:''}</td>
-          <td class="live-cell"><span data-live-px="${esc(g.symbol)}">$${esc(g.last)}</span></td>
-          <td><span class="up" data-live-chg="${esc(g.symbol)}">+${esc(g.change_pct)}%</span></td>
+          <td><b>${esc(g.symbol)}</b>${g.name?` <span class="muted">${esc(g.name)}</span>`:''}</td>
+          <td class="live-cell">$<span data-live-px="${esc(g.symbol)}">${esc(g.last)}</span></td>
+          <td><span class="${clsChg(g.change_pct)}" data-live-chg="${esc(g.symbol)}">${g.change_pct>0?'+':''}${esc(g.change_pct)}%</span></td>
           <td>${esc(g.dollar_volume_label||'-')}</td>
-          <td><a href="${esc(g.tv_url)}" target="_blank" rel="noopener">TV</a></td>
+          <td></td>
         </tr>`).join('') : '<tr><td colspan="6" class="muted">لا صاعدين فوق الفلتر في الجلسة الحالية</td></tr>';
-      document.querySelectorAll('#gainersBody [data-live]').forEach(btn=>{
-        btn.addEventListener('click',()=>setLiveSymbol(btn.dataset.live));
-      });
 
       const movers=d.movers||[];
       document.getElementById('movers').innerHTML=movers.map(m=>`
         <div class="m">
-          <div class="row"><b>${esc(m.symbol)}</b><span class="${clsChg(m.change_pct)}">${m.change_pct>0?'+':''}${esc(m.change_pct)}%</span></div>
-          <div class="muted">$${esc(m.last)} · RVOL ×${esc(m.rvol??'-')}</div>
+          <div class="row"><b>${esc(m.symbol)}</b><span class="${clsChg(m.change_pct)}" data-live-chg="${esc(m.symbol)}">${m.change_pct>0?'+':''}${esc(m.change_pct)}%</span></div>
+          <div class="muted">$<span data-live-px="${esc(m.symbol)}">${esc(m.last)}</span> · RVOL ×${esc(m.rvol??'-')}</div>
           <div class="${liqClass(m.grade||'weak')}">${esc(m.grade_ar||'-')} · ${esc(m.dollar_volume_label||'')}</div>
         </div>
       `).join('')||'<div class="empty">لا متحركات</div>';
@@ -486,7 +478,6 @@
       const next=cur==='dark'?'light':'dark';
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem(LS.theme,next);
-      if(LIVE_SYM) setTimeout(()=>mountTv(LIVE_SYM), 80);
     };
     document.getElementById('btnLight').onclick=()=>{
       const next=isLightNet()?'0':'1';
@@ -514,206 +505,124 @@
       renderOpps();
     };
 
-    let LIVE_SYM = localStorage.getItem('dash_live_sym') || '';
-    let tvWidget = null;
     const LIVE_CACHE = {};
+    let liveRotate = 0;
 
-    function themeForTv(){
-      return (document.documentElement.getAttribute('data-theme')||'dark')==='light'?'light':'dark';
-    }
-    function renderLiveChips(){
-      const box=document.getElementById('liveChips');
-      if(!box) return;
+    function allPageSymbols(){
       const set=new Set();
-      (DATA&&DATA.opportunities||[]).forEach(o=>set.add(o.symbol));
-      (DATA&&DATA.gainers||[]).slice(0,8).forEach(g=>set.add(g.symbol));
-      ['SPY','QQQ','IWM','AAPL','NVDA','TSLA'].forEach(s=>set.add(s));
-      const list=[...set].slice(0,14);
-      box.innerHTML=list.map(s=>`<button type="button" class="sym-chip ${s===LIVE_SYM?'active':''}" data-live="${esc(s)}">${esc(s)}</button>`).join('');
-      box.querySelectorAll('[data-live]').forEach(b=>b.onclick=()=>setLiveSymbol(b.dataset.live));
-    }
-    function mountTvOverview(sym){
-      const host=document.getElementById('tvOverview');
-      if(!host) return;
-      host.innerHTML='';
-      const theme=themeForTv();
-      const script=document.createElement('script');
-      script.type='text/javascript';
-      script.src='https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js';
-      script.async=true;
-      script.text=JSON.stringify({
-        symbols: [[sym, sym]],
-        chartOnly: false,
-        width: '100%',
-        height: '100%',
-        locale: 'ar',
-        colorTheme: theme,
-        autosize: true,
-        showVolume: true,
-        showMA: false,
-        hideDateRanges: false,
-        hideMarketStatus: false,
-        hideSymbolLogo: false,
-        scalePosition: 'right',
-        scaleMode: 'Normal',
-        fontFamily: '-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif',
-        fontSize: '10',
-        noTimeScale: false,
-        valuesTracking: '1',
-        changeMode: 'price-and-percent',
-        chartType: 'area',
-        lineWidth: 2,
-        lineType: 0,
-        dateRanges: ['1d|1', '1d|5', '1m|30', '3m|60', '12m|1D', '60m|1W', 'all|1M']
+      (DATA&&DATA.opportunities||[]).forEach(o=>o.symbol&&set.add(o.symbol));
+      (DATA&&DATA.gainers||[]).forEach(g=>g.symbol&&set.add(g.symbol));
+      (DATA&&DATA.movers||[]).forEach(m=>m.symbol&&set.add(m.symbol));
+      ((DATA&&DATA.market&&DATA.market.indexes)||[]).forEach(x=>x.symbol&&set.add(x.symbol));
+      ['SPY','QQQ','IWM'].forEach(s=>set.add(s));
+      document.querySelectorAll('[data-live-px]').forEach(n=>{
+        const s=n.getAttribute('data-live-px'); if(s) set.add(s);
       });
-      const wrap=document.createElement('div');
-      wrap.className='tradingview-widget-container';
-      wrap.style.height='100%';
-      const inner=document.createElement('div');
-      inner.className='tradingview-widget-container__widget';
-      inner.style.height='calc(100% - 0px)';
-      wrap.appendChild(inner);
-      wrap.appendChild(script);
-      host.appendChild(wrap);
+      return [...set];
     }
-    function mountTv(sym){
-      const el=document.getElementById('tvChart');
-      if(!el || typeof TradingView==='undefined') return;
-      const cid='tv_host_'+Date.now();
-      el.innerHTML=`<div id="${cid}" style="height:100%;width:100%"></div>`;
-      tvWidget=new TradingView.widget({
-        autosize:true,
-        symbol: String(sym).toUpperCase(),
-        interval:'1',
-        timezone:'America/New_York',
-        theme: themeForTv(),
-        style:'1',
-        locale:'ar',
-        toolbar_bg: themeForTv()==='dark'?'#0f172a':'#ffffff',
-        enable_publishing:false,
-        hide_top_toolbar:false,
-        hide_legend:false,
-        save_image:false,
-        container_id:cid,
-        studies:['Volume@tv-basicstudies'],
-        withdateranges:true,
-        allow_symbol_change:true,
-      });
-      mountTvOverview(String(sym).toUpperCase());
+
+    function renderLiveTape(){
+      const box=document.getElementById('liveTape');
+      if(!box) return;
+      const syms=allPageSymbols().slice(0,24);
+      box.innerHTML = syms.map(s=>{
+        const q=LIVE_CACHE[s];
+        const last=q?q.last.toFixed(2):'—';
+        const chg=q?q.change_pct:null;
+        const cls=chg==null?'':(chg>=0?'up':'down');
+        const chgTxt=chg==null?'…':((chg>=0?'+':'')+chg.toFixed(2)+'%');
+        return `<div class="m">
+          <div class="row"><b>${esc(s)}</b><span class="${cls}" data-live-chg="${esc(s)}">${chgTxt}</span></div>
+          <div class="live-price" style="font-size:1.15rem" >$<span data-live-px="${esc(s)}">${last}</span></div>
+        </div>`;
+      }).join('') || '<div class="empty">لا أسهم</div>';
     }
-    function setLiveSymbol(sym, scroll=true){
-      if(!sym) return;
-      LIVE_SYM=String(sym).toUpperCase();
-      localStorage.setItem('dash_live_sym', LIVE_SYM);
-      document.getElementById('liveSymLabel').textContent=LIVE_SYM+' · بث لحظي من TradingView';
-      renderLiveChips();
-      mountTv(LIVE_SYM);
-      pollLivePrice(true);
-      pollVisiblePrices();
-      if(scroll) document.getElementById('liveCard').scrollIntoView({behavior:'smooth',block:'start'});
-    }
+
     function applyQuoteToDom(sym, q){
       if(!q || !(q.last>0)) return;
       LIVE_CACHE[sym]=q;
       document.querySelectorAll('[data-live-px="'+sym+'"]').forEach(el=>{
-        const txt=(el.textContent||'').trim();
-        el.textContent = txt.startsWith('$') ? ('$'+q.last.toFixed(2)) : q.last.toFixed(2);
+        el.textContent = Number(q.last).toFixed(2);
       });
       document.querySelectorAll('[data-live-chg="'+sym+'"]').forEach(el=>{
-        el.textContent=(q.change_pct>=0?'+':'')+q.change_pct.toFixed(2)+'%';
+        el.textContent=(q.change_pct>=0?'+':'')+Number(q.change_pct).toFixed(2)+'%';
         el.classList.remove('up','down');
         el.classList.add(q.change_pct>=0?'up':'down');
       });
-      if(sym===LIVE_SYM){
-        const px=document.getElementById('livePrice');
-        const ch=document.getElementById('liveChg');
-        if(px){ px.textContent='$'+q.last.toFixed(2); px.className='live-price '+(q.change_pct>=0?'up':'down'); }
-        if(ch){ ch.textContent=(q.change_pct>=0?'+':'')+q.change_pct.toFixed(2)+'%'; ch.className='live-sub '+(q.change_pct>=0?'up':'down'); }
-        const clk=document.getElementById('liveClock');
-        if(clk) clk.textContent='آخر تحديث رقمي: '+new Date().toLocaleTimeString('ar-SA');
-      }
     }
-    async function fetchYahooLive(sym){
-      function fromChart(data){
-        const res0=((data.chart||{}).result||[])[0];
-        if(!res0) throw new Error('empty');
-        const meta=res0.meta||{};
-        const closes=(((res0.indicators||{}).quote||[])[0]||{}).close||[];
-        let last=null;
-        for(let i=closes.length-1;i>=0;i--){ if(closes[i]!=null){ last=closes[i]; break; } }
-        const rth=Number(meta.regularMarketPrice||0);
-        const prev=Number(meta.chartPreviousClose||meta.previousClose||0);
-        if(last==null) last=rth;
-        const ref = prev>0 ? prev : (rth>0 ? rth : last);
-        const chgDay = ref ? ((last-ref)/ref)*100 : 0;
-        return {last:Number(last), change_pct:chgDay, rth, prev};
-      }
-      // same-origin live.json first
-      try{
-        const r=await fetch('./prices-live.json?ts='+Date.now(),{cache:'no-store'});
-        if(r.ok){
-          const j=await r.json();
-          const row=(j.quotes||{})[sym];
-          if(row && row.last) return {last:Number(row.last), change_pct:Number(row.change_pct||0)};
-        }
-      }catch(e){}
-      try{
-        const yahoo=`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?range=1d&interval=1m&includePrePost=true`;
-        const r=await fetch(yahoo,{cache:'no-store'});
-        if(r.ok) return fromChart(await r.json());
-      }catch(e){}
-      // jina CORS-friendly proxy
-      const jina='https://r.jina.ai/http://query1.finance.yahoo.com/v8/finance/chart/'
-        +encodeURIComponent(sym)+'?range=1d&interval=1m&includePrePost=true';
-      const r=await fetch(jina,{cache:'no-store', headers:{'Accept':'application/json'}});
-      if(!r.ok) throw new Error('jina '+r.status);
-      const payload=await r.json();
-      let content=(payload.data&&payload.data.content)||payload.content||'';
-      if(typeof content==='string'){
-        const start=content.indexOf('{');
-        const end=content.lastIndexOf('}');
-        if(start>=0 && end>start) content=content.slice(start,end+1);
-        return fromChart(JSON.parse(content));
-      }
-      return fromChart(content);
-    }
-    async function pollLivePrice(){
-      if(!LIVE_SYM) return;
-      try{
-        applyQuoteToDom(LIVE_SYM, await fetchYahooLive(LIVE_SYM));
-      }catch(e){
-        const clk=document.getElementById('liveClock');
-        if(clk) clk.textContent='نظر للسعر داخل ويدجت TradingView بالأسفل (يتحرك لحظياً)';
-      }
-    }
-    async function pollVisiblePrices(){
-      const nodes=[...document.querySelectorAll('[data-live-px]')];
-      const syms=[...new Set(nodes.map(n=>n.getAttribute('data-live-px')).filter(Boolean))];
-      const ordered=[LIVE_SYM, ...syms].filter(Boolean);
-      const uniq=[...new Set(ordered)].slice(0, 8);
-      // Prefer same-origin live.json batch
+
+    async function fetchBatchLive(){
+      // 1) same-origin prices-live.json (all symbols at once)
       try{
         const r=await fetch('./prices-live.json?ts='+Date.now(),{cache:'no-store'});
         if(r.ok){
           const j=await r.json();
           const quotes=j.quotes||{};
-          let hit=0;
-          for(const sym of uniq){
-            if(quotes[sym] && quotes[sym].last){
-              applyQuoteToDom(sym, {last:Number(quotes[sym].last), change_pct:Number(quotes[sym].change_pct||0)});
-              hit++;
+          let n=0;
+          Object.keys(quotes).forEach(sym=>{
+            const row=quotes[sym];
+            if(row&&row.last){
+              applyQuoteToDom(sym,{last:Number(row.last), change_pct:Number(row.change_pct||0)});
+              n++;
             }
+          });
+          if(n){
+            const clk=document.getElementById('liveClock');
+            if(clk) clk.textContent=`تم تحديث ${n} سهم · ${new Date().toLocaleTimeString('ar-SA')} · مصدر الأسعار الحية`;
+            renderLiveTape();
+            return true;
           }
-          if(hit>0) return;
         }
       }catch(e){}
-      for(const sym of uniq){
-        try{ applyQuoteToDom(sym, await fetchYahooLive(sym)); }catch(e){}
+      return false;
+    }
+
+    async function fetchOneYahoo(sym){
+      const jina='https://r.jina.ai/http://query1.finance.yahoo.com/v8/finance/chart/'
+        +encodeURIComponent(sym)+'?range=1d&interval=1m&includePrePost=true';
+      const r=await fetch(jina,{cache:'no-store', headers:{'Accept':'application/json'}});
+      if(!r.ok) throw new Error('fail');
+      const payload=await r.json();
+      let content=(payload.data&&payload.data.content)||payload.content||'';
+      if(typeof content==='string'){
+        const a=content.indexOf('{'), b=content.lastIndexOf('}');
+        content=content.slice(a,b+1);
+        content=JSON.parse(content);
       }
+      const res0=((content.chart||{}).result||[])[0];
+      const meta=res0.meta||{};
+      const closes=(((res0.indicators||{}).quote||[])[0]||{}).close||[];
+      let last=null;
+      for(let i=closes.length-1;i>=0;i--){ if(closes[i]!=null){ last=closes[i]; break; } }
+      const rth=Number(meta.regularMarketPrice||0);
+      const prev=Number(meta.chartPreviousClose||meta.previousClose||0);
+      if(last==null) last=rth;
+      const ref=prev>0?prev:(rth>0?rth:last);
+      const chg=ref?((last-ref)/ref)*100:0;
+      return {last:Number(last), change_pct:chg};
+    }
+
+    async function pollAllPrices(){
+      const ok=await fetchBatchLive();
+      if(ok) return;
+      // fallback: rotate a few symbols via jina so numbers still move
+      const syms=allPageSymbols();
+      if(!syms.length) return;
+      const chunk=3;
+      const start=liveRotate % Math.max(syms.length,1);
+      liveRotate = start + chunk;
+      const slice=syms.slice(start, start+chunk);
+      if(slice.length<chunk) slice.push(...syms.slice(0, chunk-slice.length));
+      for(const sym of slice){
+        try{ applyQuoteToDom(sym, await fetchOneYahoo(sym)); }catch(e){}
+      }
+      renderLiveTape();
+      const clk=document.getElementById('liveClock');
+      if(clk) clk.textContent='تحديث جزئي · '+new Date().toLocaleTimeString('ar-SA');
     }
 
     loadPrefs();
-    fetchData(true);
+    fetchData(true).then(()=>{ renderLiveTape(); pollAllPrices(); });
     setInterval(()=>fetchData(false), AUTO_SEC*1000);
     setInterval(()=>{
       if(sessionLeft>0) sessionLeft-=1;
@@ -722,8 +631,8 @@
       if(hint) hint.textContent=`تحديث تلقائي · التالي خلال ${refreshIn}ث`;
       tickClocks();
     },1000);
-    setInterval(()=>pollLivePrice(), 4000);
-    setInterval(()=>pollVisiblePrices(), 7000);
+    // All page prices every 3 seconds
+    setInterval(()=>pollAllPrices(), 3000);
   </script>
 </body>
 </html>
