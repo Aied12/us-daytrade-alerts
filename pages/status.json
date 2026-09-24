@@ -1,22 +1,25 @@
 {
-  "generated_at": "2026-09-24T08:31:30.362815+00:00",
-  "generated_local": "2026-09-24 11:31 +03",
+  "generated_at": "2026-09-24T08:41:59.126390+00:00",
+  "generated_ts": 1790239319,
+  "generated_local": "2026-09-24 11:41 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T08:31:30.362679+00:00",
+    "updated_at": "2026-09-24T08:41:59.126286+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
   },
   "telegram_enabled": true,
   "mode": "pro",
+  "is_beginner": false,
   "light_mode": false,
   "timezone": "Asia/Riyadh",
   "trading_day": true,
   "holiday_note": null,
   "capital_sar": 45000.0,
+  "daily_loss_limit_sar": 900.0,
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
@@ -38,13 +41,78 @@
         "rsi": 29.0
       }
     },
+    "indexes": [
+      {
+        "symbol": "SPY",
+        "change_pct": -0.72,
+        "rsi": 53.4
+      },
+      {
+        "symbol": "QQQ",
+        "change_pct": -0.84,
+        "rsi": 68.9
+      },
+      {
+        "symbol": "IWM",
+        "change_pct": -1.84,
+        "rsi": 29.0
+      }
+    ],
     "no_trade_today": false
+  },
+  "session": {
+    "phase": "before_open",
+    "label_ar": "للافتتاح",
+    "seconds_left": 17280,
+    "ny_time": "04:41:59",
+    "open": "09:30",
+    "close": "16:00"
+  },
+  "sectors": {
+    "strongest": [
+      {
+        "name": "Energy",
+        "change_pct": 1.38
+      },
+      {
+        "name": "Industrial",
+        "change_pct": 1.12
+      },
+      {
+        "name": "Consumer",
+        "change_pct": -0.47
+      }
+    ],
+    "weakest": [
+      {
+        "name": "Communication",
+        "change_pct": -0.92
+      },
+      {
+        "name": "Financials",
+        "change_pct": -0.85
+      },
+      {
+        "name": "Technology",
+        "change_pct": -0.49
+      }
+    ]
+  },
+  "style": {
+    "growth_avg": -0.33,
+    "value_avg": -0.33,
+    "leader": "قيمة",
+    "growth_count": 10,
+    "value_count": 11
   },
   "opportunities": [
     {
       "symbol": "BA",
       "action": "فكّر في شراء قصير المدى",
+      "action_key": "CONSIDER_LONG",
+      "side": "long",
       "score_100": 75,
+      "urgent": true,
       "strategies": [
         "ارتداد VWAP",
         "حجم مرتفع",
@@ -57,12 +125,18 @@
       "target": 208.53,
       "shares": 15,
       "risk_sar": 193.5,
-      "allowed": true
+      "allowed": true,
+      "change_pct": 1.12,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=BA",
+      "tg_share": "https://t.me/share/url?url=&text=BA%20فكّر في شراء قصير المدى%0Aدخول%20199.93%20وقف%20196.49%20هدف%20208.53"
     },
     {
       "symbol": "PLTR",
       "action": "فكّر في شراء قصير المدى",
+      "action_key": "CONSIDER_LONG",
+      "side": "long",
       "score_100": 69,
+      "urgent": false,
       "strategies": [
         "ترتيب متوسطات صاعد",
         "اختبار/كسر مقاومة",
@@ -74,12 +148,18 @@
       "target": 239.62,
       "shares": 4,
       "risk_sar": 398.55,
-      "allowed": true
+      "allowed": true,
+      "change_pct": 3.68,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=PLTR",
+      "tg_share": "https://t.me/share/url?url=&text=PLTR%20فكّر في شراء قصير المدى%0Aدخول%20191.79%20وقف%20165.22%20هدف%20239.62"
     },
     {
       "symbol": "JPM",
       "action": "فكّر في بيع قصير بحذر",
+      "action_key": "CONSIDER_SHORT",
+      "side": "short",
       "score_100": 30,
+      "urgent": false,
       "strategies": [
         "تحت VWAP بضعف",
         "تقاطع متوسطات هابط",
@@ -91,12 +171,18 @@
       "target": 297.75,
       "shares": 4,
       "risk_sar": 372.9,
-      "allowed": true
+      "allowed": true,
+      "change_pct": -0.73,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=JPM",
+      "tg_share": "https://t.me/share/url?url=&text=JPM%20فكّر في بيع قصير بحذر%0Aدخول%20337.53%20وقف%20362.39%20هدف%20297.75"
     },
     {
       "symbol": "TSLA",
       "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
+      "side": "long",
       "score_100": 60,
+      "urgent": false,
       "strategies": [
         "ترتيب متوسطات صاعد",
         "RSI متوازن",
@@ -109,12 +195,18 @@
       "target": 444.43,
       "shares": 3,
       "risk_sar": 401.96,
-      "allowed": false
+      "allowed": false,
+      "change_pct": 0.32,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=TSLA",
+      "tg_share": "https://t.me/share/url?url=&text=TSLA%20راقب دخول%0Aدخول%20380.12%20وقف%20344.39%20هدف%20444.43"
     },
     {
       "symbol": "XOM",
       "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
+      "side": "long",
       "score_100": 59,
+      "urgent": false,
       "strategies": [
         "زخم قطاع Energy"
       ],
@@ -124,12 +216,18 @@
       "target": 169.91,
       "shares": 18,
       "risk_sar": 325.35,
-      "allowed": false
+      "allowed": false,
+      "change_pct": 1.85,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=XOM",
+      "tg_share": "https://t.me/share/url?url=&text=XOM%20راقب دخول%0Aدخول%20161.23%20وقف%20156.41%20هدف%20169.91"
     },
     {
       "symbol": "CVX",
       "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
+      "side": "long",
       "score_100": 59,
+      "urgent": false,
       "strategies": [
         "زخم قطاع Energy"
       ],
@@ -139,12 +237,18 @@
       "target": 218.13,
       "shares": 14,
       "risk_sar": 368.02,
-      "allowed": false
+      "allowed": false,
+      "change_pct": 0.9,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=CVX",
+      "tg_share": "https://t.me/share/url?url=&text=CVX%20راقب دخول%0Aدخول%20205.51%20وقف%20198.5%20هدف%20218.13"
     },
     {
       "symbol": "MSFT",
       "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
+      "side": "long",
       "score_100": 58,
+      "urgent": false,
       "strategies": [
         "ترتيب متوسطات صاعد",
         "RSI متوازن",
@@ -156,12 +260,18 @@
       "target": 525.32,
       "shares": 5,
       "risk_sar": 257.62,
-      "allowed": false
+      "allowed": false,
+      "change_pct": 0.52,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=MSFT",
+      "tg_share": "https://t.me/share/url?url=&text=MSFT%20راقب دخول%0Aدخول%20500.59%20وقف%20486.85%20هدف%20525.32"
     },
     {
       "symbol": "COIN",
       "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
+      "side": "long",
       "score_100": 58,
+      "urgent": false,
       "strategies": [
         "ارتداد لملء فجوة هابطة",
         "RSI متوازن",
@@ -174,7 +284,55 @@
       "target": 257.78,
       "shares": 3,
       "risk_sar": 372.82,
-      "allowed": false
+      "allowed": false,
+      "change_pct": -1.46,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=COIN",
+      "tg_share": "https://t.me/share/url?url=&text=COIN%20راقب دخول%0Aدخول%20198.13%20وقف%20164.99%20هدف%20257.78"
+    },
+    {
+      "symbol": "BAC",
+      "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
+      "side": "short",
+      "score_100": 38,
+      "urgent": false,
+      "strategies": [
+        "تحت VWAP بضعف",
+        "كسر دعم"
+      ],
+      "reason": "تحت VWAP بضعف: بعيد تحت VWAP (-2.33%) | كسر دعم: دعم≈$56.33 | مراقبة بيع قصير — للمتمرس فقط",
+      "entry": 56.0,
+      "stop": 63.42,
+      "target": 44.13,
+      "shares": 16,
+      "risk_sar": 445.2,
+      "allowed": false,
+      "change_pct": -0.36,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=BAC",
+      "tg_share": "https://t.me/share/url?url=&text=BAC%20راقب دخول%0Aدخول%2056.0%20وقف%2063.42%20هدف%2044.13"
+    },
+    {
+      "symbol": "UBER",
+      "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
+      "side": "short",
+      "score_100": 38,
+      "urgent": false,
+      "strategies": [
+        "تحت VWAP بضعف",
+        "تقاطع متوسطات هابط",
+        "تقلّب عالي"
+      ],
+      "reason": "تحت VWAP بضعف: بعيد تحت VWAP (-1.41%) | تقاطع متوسطات هابط: MA20 قطع MA50 للأسفل | تقلّب عالي: ATR% 2.9 | مراقبة بيع قصير — للمتمرس فقط",
+      "entry": 69.42,
+      "stop": 79.9,
+      "target": 52.65,
+      "shares": 11,
+      "risk_sar": 432.3,
+      "allowed": false,
+      "change_pct": -0.67,
+      "tv_url": "https://www.tradingview.com/chart/?symbol=UBER",
+      "tg_share": "https://t.me/share/url?url=&text=UBER%20راقب دخول%0Aدخول%2069.42%20وقف%2079.9%20هدف%2052.65"
     }
   ],
   "movers": [
@@ -219,7 +377,20 @@
       "last": 225.51
     }
   ],
+  "performance": {
+    "journal": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "pnl_sar": 0.0,
+      "text": "لا صفقات مسجّلة بعد"
+    },
+    "alerts_today": 20,
+    "recent_actions": [],
+    "stop_discipline_pct": null
+  },
   "bot": "@Aied01_bot",
   "channel": "@aied01",
-  "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي."
+  "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
+  "reminder": "لا تدخل إذا وصلت حد الخسارة اليومي"
 }
