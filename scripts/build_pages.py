@@ -258,9 +258,18 @@ def main() -> None:
         news_syms.append(str(s).upper())
     news_syms = list(dict.fromkeys(news_syms))[:16]
     try:
-        news_ar = fetch_stock_news_ar(news_syms, limit=10, per_symbol=2)
+        news_pack = fetch_stock_news_ar(news_syms, limit=12, per_symbol=3)
     except Exception:
-        news_ar = []
+        news_pack = {"news": [], "negative_symbols": []}
+    news_ar = list(news_pack.get("news") or [])
+    bad_news = {str(s).upper() for s in (news_pack.get("negative_symbols") or [])}
+
+    # Drop any stock with negative headlines from boards + news (already filtered)
+    if bad_news:
+        opportunities = [o for o in opportunities if str(o.get("symbol") or "").upper() not in bad_news]
+        gainers = [g for g in (gainers or []) if str(g.get("symbol") or "").upper() not in bad_news]
+        movers = [s for s in movers if s.symbol.upper() not in bad_news]
+        news_ar = [n for n in news_ar if str(n.get("symbol") or "").upper() not in bad_news]
 
     from bot.gainers import session_label_ar
 
@@ -315,7 +324,8 @@ def main() -> None:
             for s in movers
         ],
         "news": news_ar,
-        "news_note_ar": "عناوين مترجمة آلياً — تحقق من المصدر قبل أي قرار",
+        "news_excluded_negative": sorted(bad_news),
+        "news_note_ar": "محايد + إيجابي متوقع يدعم الارتفاع فقط — الأسهم ذات خبر سلبي تُزال من اللوحة",
         "bot": "@Aied01_bot",
         "channel": "@aied01",
         "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",

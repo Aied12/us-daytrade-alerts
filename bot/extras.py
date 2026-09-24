@@ -257,23 +257,28 @@ def format_fed_calendar() -> str:
 
 
 def format_stock_news(settings: Settings, limit_per: int = 2) -> str:
-    """55 Urgent news linked to watchlist symbols (Arabic titles)."""
+    """55 Urgent news linked to watchlist symbols (Arabic titles, no negatives)."""
     try:
         from bot.news_ar import fetch_stock_news_ar
 
-        rows = fetch_stock_news_ar(list(settings.watchlist or []), limit=12, per_symbol=limit_per)
+        pack = fetch_stock_news_ar(list(settings.watchlist or []), limit=12, per_symbol=limit_per)
+        rows = list(pack.get("news") or [])
+        bad = pack.get("negative_symbols") or []
     except Exception:
-        rows = []
-    lines = ["📰 أخبار عاجلة مرتبطة بالقائمة", ""]
+        rows, bad = [], []
+    lines = ["📰 أخبار محايدة/إيجابية (بدون سلبي)", ""]
     if not rows:
-        lines.append("لا عناوين متاحة الآن.")
+        lines.append("لا عناوين محايدة/إيجابية الآن.")
     else:
         for n in rows:
-            tag = {"pos": "🟢", "neg": "🔴"}.get(n.get("sentiment") or "", "⚪")
+            tag = {"pos": "🟢", "neu": "⚪"}.get(n.get("sentiment") or "", "⚪")
             title = n.get("title_ar") or n.get("title") or ""
             lines.append(f"{tag} {n.get('symbol')}: {title[:140]}")
+    if bad:
+        lines.append("")
+        lines.append("تم استبعاد (خبر سلبي): " + ", ".join(bad))
     lines.append("")
-    lines.append("العناوين مترجمة آلياً — تحقق من المصدر قبل أي قرار.")
+    lines.append("محايد + إيجابي متوقع يدعم الارتفاع فقط — تحقق من المصدر.")
     return "\n".join(lines)
 
 

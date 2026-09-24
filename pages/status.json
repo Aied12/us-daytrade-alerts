@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:44:17.054834+00:00",
-  "generated_ts": 1790253857,
+  "generated_at": "2026-09-24T12:44:26.556618+00:00",
+  "generated_ts": 1790253866,
   "generated_local": "2026-09-24 15:44 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:44:17.054680+00:00",
+    "updated_at": "2026-09-24T12:44:26.556473+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 2742,
-    "ny_time": "08:44:17",
+    "seconds_left": 2733,
+    "ny_time": "08:44:26",
     "open": "09:30",
     "close": "16:00"
   },
@@ -275,6 +275,47 @@
       "tg_share": "https://t.me/share/url?url=&text=APA%20فكّر في شراء قصير المدى%0Aالآن%2044.32%20دخول%2044.32%20وقف%2040.85%20هدف%2050.57%0Aسيولة%20قوي%20RVOL%20x1.02"
     },
     {
+      "symbol": "SECZ",
+      "action": "فكّر في شراء قصير المدى",
+      "action_key": "CONSIDER_LONG",
+      "side": "long",
+      "score_100": 68,
+      "urgent": false,
+      "strategies": [
+        "ارتداد لملء فجوة هابطة",
+        "ترتيب متوسطات صاعد",
+        "حجم مرتفع",
+        "RSI تشبع شرائي"
+      ],
+      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم مرتفع: حجم ×2.5 | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقاومة≈$14.11 | تقلّب عالي: ATR% 8.4",
+      "entry": 14.46,
+      "stop": 6.17,
+      "target": 29.38,
+      "shares": 14,
+      "risk_sar": 435.23,
+      "allowed": true,
+      "change_pct": 0.7,
+      "last": 14.46,
+      "session_phase": "pre",
+      "liquidity": {
+        "rvol": 2.52,
+        "volume": 9172100.0,
+        "avg_volume_20": 3636165.0,
+        "dollar_volume": 132632234.84,
+        "avg_dollar_volume": 52580400.37,
+        "dollar_volume_label": "132.6M$",
+        "avg_dollar_volume_label": "52.6M$",
+        "grade": "strong",
+        "grade_ar": "قوي",
+        "label": "RVOL ×2.5 · اليوم 132.6M$ · متوسط 52.6M$"
+      },
+      "rvol": 2.52,
+      "liq_grade": "strong",
+      "liq_grade_ar": "قوي",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ",
+      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.46%20دخول%2014.46%20وقف%206.17%20هدف%2029.38%0Aسيولة%20قوي%20RVOL%20x2.52"
+    },
+    {
       "symbol": "UBER",
       "action": "فكّر في شراء قصير المدى",
       "action_key": "CONSIDER_LONG",
@@ -438,6 +479,20 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=RRR"
     },
     {
+      "symbol": "SECZ",
+      "name": "Securitize Corp.",
+      "last": 14.46,
+      "change_pct": 0.7,
+      "ref": 14.36,
+      "rth_close": 14.36,
+      "volume": 9169868.0,
+      "dollar_volume": 132596291.28,
+      "dollar_volume_label": "132.6M$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ"
+    },
+    {
       "symbol": "LTH",
       "name": "Life Time Group Holdings, Inc.",
       "last": 39.74,
@@ -508,6 +563,15 @@
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "1.4B$"
+    },
+    {
+      "symbol": "CVX",
+      "change_pct": 1.16,
+      "last": 207.9,
+      "rvol": 0.83,
+      "grade": "medium",
+      "grade_ar": "متوسط",
+      "dollar_volume_label": "1.7B$"
     }
   ],
   "news": [
@@ -525,6 +589,19 @@
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
     },
     {
+      "symbol": "SECZ",
+      "title": "Securitize Corp (SECZ) Soars to All-Time High Anew, Analysts ‘Highly Bullish’",
+      "title_ar": "شركة Securitize Corp (SECZ) ترتفع إلى أعلى مستوى لها على الإطلاق من جديد، المحللون \"صعوديون للغاية\"",
+      "summary": "Securitize Corp. (NYSE:SECZ) saw its share price climb to a new all-time high on Wednesday, as investors resumed buying positions amid the rosy growth prospects from securities tokenization. In intra-day trading, the stock jumped to its highest price of $14.86 before trimming gai",
+      "summary_ar": "شهدت Securitize Corp. (NYSE: SECZ) ارتفاع سعر سهمها إلى أعلى مستوى جديد على الإطلاق يوم الأربعاء، حيث استأنف المستثمرون مراكز الشراء وسط توقعات النمو الوردية من توكنات الأوراق المالية. في التداول اليومي، السهم إلى أعلى سعر له عند 14.86 $ قبل خفض مؤشر GAI",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/securitize-corp-secz-soars-time-234343365.html",
+      "publisher": "Insider Monkey",
+      "published": "2026-09-23 23:43:43 UT",
+      "published_ts": 1790207023,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
       "symbol": "APA",
       "title": "Is EOG Resources Stock A Buy For Its Shrinking Share Count?",
       "title_ar": "هل تقوم شركة EOG RESOURCES بالشراء بسبب عدد أسهمها المتقلص ؟",
@@ -534,6 +611,19 @@
       "publisher": "Trefis",
       "published": "2026-09-23 17:48:22 UT",
       "published_ts": 1790185702,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
+      "symbol": "SECZ",
+      "title": "Securitize Stock Jumps 12% as Cantor Bets on a Tokenization Boom",
+      "title_ar": "توريق الأسهم يقفز بنسبة 12 ٪ حيث يراهن قائد الفرقة الموسيقيّة على طفرة التوكن",
+      "summary": "Securitize shares have surged as regulators open a path for tokenized stock trading. Cantor Fitzgerald sees more room to rise.",
+      "summary_ar": "ارتفعت أسهم Securitize حيث فتح المنظمون طريقًا لتداول الأسهم الرمزية. يرى كانتور فيتزجيرالد مساحة أكبر للارتفاع.",
+      "url": "https://www.barrons.com/articles/securitize-stock-price-cantor-tokenization-1bff8d31?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "published": "2026-09-23 16:55:00 UT",
+      "published_ts": 1790182500,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
     },
@@ -560,6 +650,19 @@
       "publisher": "Zacks",
       "published": "2026-09-23 13:40:04 UT",
       "published_ts": 1790170804,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
+      "symbol": "SECZ",
+      "title": "Cantor Fitzgerald Sees Big Upside in Securitize (SECZ): Is It Time to Buy?",
+      "title_ar": "يرى كانتور فيتزجيرالد جانبًا إيجابيًا كبيرًا في التوريق (SECZ): هل حان وقت الشراء ؟",
+      "summary": "Securitize Corp. (NYSE:SECZ) shares jumped as investors digested favorable regulatory developments and Cantor Fitzgerald initiated coverage of the stock on September 21, giving it an Overweight rating and setting the price target at $21.20. The firm highlighted the company’s posi",
+      "summary_ar": "قفزت أسهم Securitize Corp. (NYSE: SECZ) حيث استوعب المستثمرون التطورات التنظيمية المواتية وبدأ Cantor Fitzgerald بتغطية السهم في 21، مما منحه تصنيفًا للوزن الزائد وحدد السعر المستهدف عند 21.20 $. سلطت الشركة الضوء على موقف الشركة",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cantor-fitzgerald-sees-big-upside-052416150.html",
+      "publisher": "Insider Monkey",
+      "published": "2026-09-23 05:24:16 UT",
+      "published_ts": 1790141056,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
     },
@@ -627,50 +730,10 @@
       "published_ts": 1790248082,
       "sentiment": "neu",
       "sentiment_ar": "محايد"
-    },
-    {
-      "symbol": "BAC",
-      "title": "27% of Gen Z workers score stock awards as 'benefit-maxxing' trend pushes young employees to grab every workplace perk",
-      "title_ar": "27 ٪ من عمال الجيل Z يسجلون جوائز الأسهم حيث يدفع اتجاه \" زيادة الفائدة\" الموظفين الشباب للاستيلاء على كل امتيازات مكان العمل",
-      "summary": "Many young employees are more financially literate than their parents’ generation, experts say.",
-      "summary_ar": "يقول الخبراء إن العديد من الموظفين الشباب أكثر إلمامًا بالقراءة والكتابة من جيل آبائهم.",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/27-gen-z-workers-score-094500485.html",
-      "publisher": "Moneywise",
-      "published": "2026-09-24 09:45:00 UT",
-      "published_ts": 1790243100,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد"
-    },
-    {
-      "symbol": "BAC",
-      "title": "Bank of America to hire 1,000 more apprentices, invest $150M in workforce development",
-      "title_ar": "بنك أوف أميركا يوظف 1000 متدرب إضافي، ويستثمر 150 مليون $ في تطوير",
-      "summary": "Bank of America is adding 1,000 apprentices and committing $150 million to workforce development in a push to expand career pathways beyond traditional college degrees.",
-      "summary_ar": "أضاف بنك أوف أمريكا 1000 متدرب وخصص 150 مليون دولار لتطوير القوى العاملة في محاولة لتوسيع المسارات الوظيفية بما يتجاوز الشهادات الجامعية التقليدية.",
-      "url": "https://www.foxbusiness.com/economy/bank-of-america-hire-1000-more-apprentices-invest-150m-workforce-development",
-      "publisher": "Fox Business",
-      "published": "2026-09-24 09:00:48 UT",
-      "published_ts": 1790240448,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد"
-    },
-    {
-      "symbol": "AAPL",
-      "title": "Here's what Wall Street thinks of Meta's new smartglass lineup and first Muse 'holdable'",
-      "title_ar": "إليك ما تعتقده وول ستريت عن تشكيلة ميتا الجديدة من النظارات الذكية وأول ملهم \"قابل للحمل\"",
-      "summary": "The day after Meta Connect.",
-      "summary_ar": "في اليوم التالي لـ Meta Connect.",
-      "url": "https://finance.yahoo.com/markets/stocks/article/heres-what-wall-street-thinks-of-metas-new-smartglass-lineup-and-first-muse-holdable-085705955.html",
-      "publisher": "Yahoo Finance",
-      "published": "2026-09-24 08:57:05 UT",
-      "published_ts": 1790240225,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد"
     }
   ],
   "news_excluded_negative": [
     "AR",
-    "CVX",
     "MSFT",
     "NFLX",
     "NVDA",

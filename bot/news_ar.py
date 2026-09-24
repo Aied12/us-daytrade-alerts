@@ -1,4 +1,8 @@
-"""Fetch watchlist/gainer stock news and translate headlines to Arabic."""
+"""Fetch watchlist/gainer stock news and translate headlines to Arabic.
+
+Dashboard policy: only neutral + bullish (rise-biased) headlines.
+Symbols with any recent negative headline are excluded entirely.
+"""
 
 from __future__ import annotations
 
@@ -19,29 +23,64 @@ ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = ROOT / "data" / "cache" / "news_ar"
 UA = {"User-Agent": "Mozilla/5.0 us-daytrade-alerts"}
 
-NEGATIVE = (
-    "cut", "miss", "falls", "fall", "drop", "drops", "downgrade", "lawsuit", "probe",
-    "fraud", "layoff", "layoffs", "recall", "ban", "crash", "plunge", "slump", "weak",
-    "warning", "delay", "delays", "investigation", "fine", "penalty", "short",
+# Word-boundary negatives (single tokens)
+NEGATIVE_WORDS = (
+    "cut", "cuts", "miss", "misses", "falls", "fall", "drop", "drops", "downgrade",
+    "downgraded", "lawsuit", "probe", "fraud", "layoff", "layoffs", "recall", "ban",
+    "bans", "crash", "crashes", "plunge", "plunges", "slump", "slumps", "weak",
+    "warning", "delay", "delays", "investigation", "fine", "penalty", "decline",
+    "declines", "bearish", "selloff", "collapse", "collapses", "default", "bankruptcy",
+    "concern", "concerns", "fear", "fears", "pressure", "pressured", "tariff", "tariffs",
+    "lawsuit", "sued", "charges", "indicted", "scandal", "loss", "losses", "slash",
+    "slashes", "sinks", "tumbles", "tumble", "worst",
 )
-POSITIVE = (
-    "beat", "surge", "surges", "rally", "rallies", "upgrade", "record", "soar", "soars",
-    "jump", "jumps", "gain", "gains", "strong", "raises", "boost", "wins", "approval",
-    "profit", "growth", "buyback", "dividend", "deal", "partnership",
+NEGATIVE_PHRASES = (
+    "sell-off", "sell off", "guidance cut", "cuts guidance", "misses estimates",
+    "missed estimates", "below expectations", "class action", "sec charges",
+    "price target cut", "lowers target", "market crash", "market collapse",
+    "push back", "pushback", "heads lower", "turns lower", "profit warning",
+)
+
+# Bullish / expected-rise language
+POSITIVE_WORDS = (
+    "beat", "beats", "surge", "surges", "rally", "rallies", "upgrade", "upgraded",
+    "record", "soar", "soars", "jump", "jumps", "gain", "gains", "strong", "raises",
+    "boost", "boosts", "wins", "approval", "profit", "profits", "growth", "buyback",
+    "dividend", "deal", "partnership", "bullish", "outperform", "outperforms",
+    "climbs", "climb", "rises", "rise", "rising", "higher", "optimism", "optimistic",
+    "expands", "expansion", "breakout", "breakthrough", "accelerate", "accelerates",
+    "upside", "rebound", "rebounds", "recovery", "recovers",
+)
+POSITIVE_PHRASES = (
+    "all-time high", "price target raised", "raises target", "above expectations",
+    "beats estimates", "beat estimates", "raises guidance", "guidance raise",
+    "strong demand", "record high", "new high", "buy rating", "overweight",
+    "initiates buy", "street likes", "growth outlook", "earnings beat",
 )
 
 
-def _sentiment(title: str) -> str:
-    low = (title or "").lower()
-    if any(w in low for w in NEGATIVE):
+def _norm(text: str) -> str:
+    return re.sub(r"\s+", " ", (text or "").lower()).strip()
+
+
+def _has_word(text: str, word: str) -> bool:
+    return bool(re.search(rf"\b{re.escape(word)}\b", text))
+
+
+def _sentiment(title: str, summary: str = "") -> str:
+    """Classify headline: neg / pos (rise-biased) / neu."""
+    blob = _norm(f"{title} {summary}")
+    if not blob:
+        return "neu"
+    if any(p in blob for p in NEGATIVE_PHRASES) or any(_has_word(blob, w) for w in NEGATIVE_WORDS):
         return "neg"
-    if any(w in low for w in POSITIVE):
+    if any(p in blob for p in POSITIVE_PHRASES) or any(_has_word(blob, w) for w in POSITIVE_WORDS):
         return "pos"
     return "neu"
 
 
 def _sentiment_ar(tag: str) -> str:
-    return {"neg": "سلبي", "pos": "إيجابي", "neu": "محايد"}.get(tag, "محايد")
+    return {"neg": "سلبي", "pos": "إيجابي — متوقع يدعم الارتفاع", "neu": "محايد"}.get(tag, "محايد")
 
 
 def _looks_arabic(text: str) -> bool:
@@ -66,7 +105,6 @@ def _translate_ar(text: str) -> str:
             pass
 
     ar = ""
-    # 1) MyMemory free API (reliable for en→ar)
     try:
         r = requests.get(
             "https://api.mymemory.translated.net/get",
@@ -76,13 +114,11 @@ def _translate_ar(text: str) -> str:
         )
         if r.ok:
             ar = ((r.json().get("responseData") or {}).get("translatedText") or "").strip()
-            # MyMemory sometimes echoes English on quota
             if ar and ar.lower() == text.lower():
                 ar = ""
     except Exception:
         ar = ""
 
-    # 2) Google via deep_translator (optional)
     if not ar:
         try:
             from deep_translator import GoogleTranslator
@@ -93,7 +129,7 @@ def _translate_ar(text: str) -> str:
             ar = ""
 
     if not ar:
-        ar = text  # fallback: keep English rather than blank
+        ar = text
     try:
         path.write_text(json.dumps({"en": text, "ar": ar}, ensure_ascii=False), encoding="utf-8")
     except Exception:
@@ -144,7 +180,7 @@ def _item_fields(item: dict[str, Any]) -> dict[str, Any] | None:
     }
 
 
-def _fetch_symbol_news(symbol: str, limit: int = 3) -> list[dict[str, Any]]:
+def _fetch_symbol_news(symbol: str, limit: int = 4) -> list[dict[str, Any]]:
     def _call():
         try:
             return list(yf.Ticker(symbol).news or [])
@@ -160,6 +196,7 @@ def _fetch_symbol_news(symbol: str, limit: int = 3) -> list[dict[str, Any]]:
         if not fields:
             continue
         fields["symbol"] = symbol.upper()
+        fields["sentiment"] = _sentiment(fields["title"], fields.get("summary") or "")
         out.append(fields)
         if len(out) >= limit:
             break
@@ -170,30 +207,48 @@ def fetch_stock_news_ar(
     symbols: list[str],
     *,
     limit: int = 12,
-    per_symbol: int = 2,
-) -> list[dict[str, Any]]:
-    """Return recent headlines with Arabic title/summary for dashboard."""
+    per_symbol: int = 3,
+) -> dict[str, Any]:
+    """Return bullish/neutral Arabic news and symbols tainted by negative headlines.
+
+    Keys:
+      news: list of pos/neu items only (pos first)
+      negative_symbols: set/list of symbols to remove from boards
+    """
     seen_titles: set[str] = set()
     collected: list[dict[str, Any]] = []
+    negative_symbols: set[str] = set()
+
     for sym in symbols:
-        if not sym or len(collected) >= limit * 2:
-            break
-        for row in _fetch_symbol_news(str(sym).upper(), limit=per_symbol):
+        if not sym:
+            continue
+        sym_u = str(sym).upper()
+        rows = _fetch_symbol_news(sym_u, limit=per_symbol)
+        if any(r.get("sentiment") == "neg" for r in rows):
+            negative_symbols.add(sym_u)
+            continue  # drop the stock and all its headlines
+        for row in rows:
             key = re.sub(r"\s+", " ", row["title"].lower())
             if key in seen_titles:
                 continue
             seen_titles.add(key)
+            # Keep only neutral + positive (rise-biased)
+            if row.get("sentiment") not in ("pos", "neu"):
+                continue
             collected.append(row)
 
-    # Prefer newest
-    collected.sort(key=lambda x: x.get("published_ts") or 0, reverse=True)
+    # Prefer positive/rise headlines, then newest
+    collected.sort(
+        key=lambda x: (1 if x.get("sentiment") == "pos" else 0, x.get("published_ts") or 0),
+        reverse=True,
+    )
     collected = collected[:limit]
 
     news: list[dict[str, Any]] = []
     for row in collected:
         title_ar = _translate_ar(row["title"])
         summary_ar = _translate_ar(row["summary"]) if row.get("summary") else ""
-        tag = _sentiment(row["title"])
+        tag = row.get("sentiment") or _sentiment(row["title"], row.get("summary") or "")
         news.append(
             {
                 "symbol": row["symbol"],
@@ -209,5 +264,8 @@ def fetch_stock_news_ar(
                 "sentiment_ar": _sentiment_ar(tag),
             }
         )
-        time.sleep(0.15)  # be kind to free translate APIs
-    return news
+        time.sleep(0.12)
+    return {
+        "news": news,
+        "negative_symbols": sorted(negative_symbols),
+    }
