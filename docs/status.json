@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T10:33:15.746600+00:00",
-  "generated_ts": 1790245995,
-  "generated_local": "2026-09-24 13:33 +03",
+  "generated_at": "2026-09-24T10:34:14.410596+00:00",
+  "generated_ts": 1790246054,
+  "generated_local": "2026-09-24 13:34 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T10:33:15.746533+00:00",
+    "updated_at": "2026-09-24T10:34:14.410498+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,13 +26,13 @@
     "avg_change_pct": -0.7,
     "details": {
       "SPY": {
-        "last": 763.05,
-        "change_pct": -0.62,
+        "last": 763.13,
+        "change_pct": -0.61,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 733.48,
-        "change_pct": -1.04,
+        "last": 733.449,
+        "change_pct": -1.05,
         "rsi": 68.9
       },
       "IWM": {
@@ -44,12 +44,12 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.62,
+        "change_pct": -0.61,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -1.04,
+        "change_pct": -1.05,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 10604,
-    "ny_time": "06:33:15",
+    "seconds_left": 10545,
+    "ny_time": "06:34:14",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,7 +81,7 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.17
+        "change_pct": 0.16
       },
       {
         "name": "Industrial",
@@ -91,7 +91,7 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.1
+        "change_pct": -1.06
       },
       {
         "name": "Financials",
@@ -99,13 +99,13 @@
       },
       {
         "name": "Consumer",
-        "change_pct": -0.43
+        "change_pct": -0.41
       }
     ]
   },
   "style": {
-    "growth_avg": -1.14,
-    "value_avg": 0.03,
+    "growth_avg": -1.11,
+    "value_avg": 0.04,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -239,8 +239,8 @@
   "movers": [
     {
       "symbol": "META",
-      "change_pct": -2.43,
-      "last": 726.0,
+      "change_pct": -2.46,
+      "last": 725.76,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -248,8 +248,8 @@
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.21,
-      "last": 601.03,
+      "change_pct": -2.12,
+      "last": 601.55,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -257,8 +257,8 @@
     },
     {
       "symbol": "COIN",
-      "change_pct": -1.7,
-      "last": 194.77,
+      "change_pct": -1.69,
+      "last": 194.79,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -266,21 +266,12 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.44,
-      "last": 349.87,
+      "change_pct": -1.3,
+      "last": 350.36,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "8.2B$"
-    },
-    {
-      "symbol": "PLTR",
-      "change_pct": -1.16,
-      "last": 189.56,
-      "rvol": 1.26,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "6.6B$"
     },
     {
       "symbol": "CVX",
@@ -301,9 +292,18 @@
       "dollar_volume_label": "19.9B$"
     },
     {
+      "symbol": "PLTR",
+      "change_pct": -1.09,
+      "last": 189.69,
+      "rvol": 1.26,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "6.6B$"
+    },
+    {
       "symbol": "TSLA",
-      "change_pct": -1.1,
-      "last": 375.95,
+      "change_pct": -1.06,
+      "last": 376.1,
       "rvol": 0.86,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -318,7 +318,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 93,
+    "alerts_today": 94,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
