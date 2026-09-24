@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:34:21.034859+00:00",
-  "generated_ts": 1790256861,
-  "generated_local": "2026-09-24 16:34 +03",
+  "generated_at": "2026-09-24T13:35:20.104698+00:00",
+  "generated_ts": 1790256920,
+  "generated_local": "2026-09-24 16:35 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:34:21.034732+00:00",
+    "updated_at": "2026-09-24T13:35:20.104592+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,39 +23,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.45,
+    "avg_change_pct": -0.46,
     "details": {
       "SPY": {
-        "last": 764.49,
-        "change_pct": -0.43,
-        "rsi": 44.7
+        "last": 764.72,
+        "change_pct": -0.4,
+        "rsi": 44.6
       },
       "QQQ": {
-        "last": 734.99,
-        "change_pct": -0.84,
-        "rsi": 61.0
+        "last": 735.45,
+        "change_pct": -0.78,
+        "rsi": 61.3
       },
       "IWM": {
-        "last": 281.68,
-        "change_pct": -0.09,
-        "rsi": 25.0
+        "last": 281.32,
+        "change_pct": -0.21,
+        "rsi": 24.9
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.43,
-        "rsi": 44.7
+        "change_pct": -0.4,
+        "rsi": 44.6
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.84,
-        "rsi": 61.0
+        "change_pct": -0.78,
+        "rsi": 61.3
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.09,
-        "rsi": 25.0
+        "change_pct": -0.21,
+        "rsi": 24.9
       }
     ],
     "no_trade_today": false,
@@ -68,8 +68,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 23138,
-    "ny_time": "09:34:21",
+    "seconds_left": 23079,
+    "ny_time": "09:35:20",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,35 +77,35 @@
     "strongest": [
       {
         "name": "Communication",
-        "change_pct": 1.25
+        "change_pct": 1.26
       },
       {
         "name": "Financials",
-        "change_pct": 0.82
+        "change_pct": 0.85
       },
       {
         "name": "Energy",
-        "change_pct": 0.59
+        "change_pct": 0.55
       }
     ],
     "weakest": [
       {
         "name": "Industrial",
-        "change_pct": -0.63
+        "change_pct": -0.9
       },
       {
         "name": "Technology",
-        "change_pct": -0.53
+        "change_pct": -0.36
       },
       {
         "name": "Consumer",
-        "change_pct": -0.2
+        "change_pct": -0.09
       }
     ]
   },
   "style": {
-    "growth_avg": -0.09,
-    "value_avg": 0.07,
+    "growth_avg": 0.02,
+    "value_avg": 0.13,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -115,23 +115,25 @@
   "opps_rejected_slow": [
     "P:درجة سيولة ضعيفة",
     "NBIS:درجة سيولة ضعيفة",
-    "JPM:زخم ضعيف (+0.25% < 0.85%)",
-    "BAC:زخم ضعيف (+0.63% < 0.85%)",
-    "NFLX:زخم ضعيف (+0.73% < 0.85%)",
-    "DIS:تداول بطيء اليوم ($27M · RVOL×0.03)",
+    "CRCL:درجة سيولة ضعيفة",
+    "NFLX:زخم ضعيف (+0.76% < 0.85%)",
+    "JPM:زخم ضعيف (+0.41% < 0.85%)",
+    "BAC:زخم ضعيف (+0.70% < 0.85%)",
+    "XOM:زخم ضعيف (+0.55% < 0.85%)",
+    "DIS:تداول بطيء اليوم ($30M · RVOL×0.04)",
     "COIN:درجة سيولة ضعيفة"
   ],
   "gainers": [
     {
       "symbol": "P",
       "name": "Everpure, Inc.",
-      "last": 122.17,
-      "change_pct": 11.34,
+      "last": 124.21,
+      "change_pct": 13.2,
       "ref": 109.73,
-      "rth_close": 122.17,
-      "volume": 1131983.0,
-      "dollar_volume": 138294363.11,
-      "dollar_volume_label": "138.3M$",
+      "rth_close": 124.22,
+      "volume": 1292237.0,
+      "dollar_volume": 160508757.77,
+      "dollar_volume_label": "160.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=P"
@@ -139,13 +141,13 @@
     {
       "symbol": "NBIS",
       "name": "Nebius Group N.V.",
-      "last": 236.87,
-      "change_pct": 4.53,
+      "last": 235.26,
+      "change_pct": 3.81,
       "ref": 226.61,
-      "rth_close": 236.87,
-      "volume": 2073526.0,
-      "dollar_volume": 491156103.62,
-      "dollar_volume_label": "491.2M$",
+      "rth_close": 235.25,
+      "volume": 2304451.0,
+      "dollar_volume": 542145142.26,
+      "dollar_volume_label": "542.1M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
@@ -156,63 +158,45 @@
   "movers": [
     {
       "symbol": "P",
-      "change_pct": 10.25,
-      "last": 120.89,
-      "rvol": 0.17,
+      "change_pct": 11.35,
+      "last": 122.1,
+      "rvol": 0.19,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "141.6M$"
+      "dollar_volume_label": "162.2M$"
     },
     {
       "symbol": "NBIS",
-      "change_pct": 4.72,
-      "last": 237.31,
-      "rvol": 0.15,
+      "change_pct": 4.56,
+      "last": 236.95,
+      "rvol": 0.16,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "520.3M$"
+      "dollar_volume_label": "553.5M$"
     },
     {
       "symbol": "AVGO",
-      "change_pct": -2.08,
-      "last": 347.61,
-      "rvol": 0.07,
+      "change_pct": -1.97,
+      "last": 348.0,
+      "rvol": 0.08,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "693.1M$"
-    },
-    {
-      "symbol": "NVDA",
-      "change_pct": -1.85,
-      "last": 221.33,
-      "rvol": 0.05,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "1.3B$"
+      "dollar_volume_label": "721.6M$"
     },
     {
       "symbol": "DIS",
-      "change_pct": 1.78,
-      "last": 105.3,
-      "rvol": 0.03,
+      "change_pct": 1.77,
+      "last": 105.29,
+      "rvol": 0.04,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "27.0M$"
+      "dollar_volume_label": "29.7M$"
     },
     {
-      "symbol": "COIN",
-      "change_pct": 1.57,
-      "last": 201.25,
-      "rvol": 0.06,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "124.2M$"
-    },
-    {
-      "symbol": "AMD",
-      "change_pct": -1.55,
-      "last": 605.08,
-      "rvol": 0.11,
+      "symbol": "NVDA",
+      "change_pct": -1.69,
+      "last": 221.69,
+      "rvol": 0.05,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "1.3B$"
@@ -337,36 +321,6 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "f314670290c2a08e4beb7cf3a82d137fd2f5359d",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "BAC",
-      "title": "Citi Is Rolling Out Higher Rates in New Push for Clients’ Assets",
-      "title_ar": "تقوم Citi بإطلاق أسعار أعلى في دفعة جديدة لأصول العملاء",
-      "summary": "Citigroup wants clients to park more of their cash and investments with the bank. It’s offering incentives to make it happen.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=15476efc5f85ae38c8d5155336bc6ed004219d4520a7afe6518d847f94a62e47",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 11:00 UTC",
-      "published_ts": 1790247600,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "3aba898ead24767e45a549add3b8f003532ea37b",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "BAC",
-      "title": "BofA to Hire 1,000 Additional Apprentices and Invest $150 Million in Workforce Development across the U.S.",
-      "title_ar": "بنك أوف أمريكا يوظف 1000 متدرب إضافي ويستثمر 150 مليون $ في تطوير القوى العاملة في جميع أنحاء الولايات المتحدة",
-      "summary": "Bank of America today announced it will hire 1,000 additional apprentices over the next two years and commit $150 million over five years to workforce development organizations to help strengthen local economies and drive job opportunities along with workforce growth across the U",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=86ddabda4a212087dc4dc441e8ef44ffc1664945e3622d3fa5807893d949cea7",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 11:00 UTC",
-      "published_ts": 1790247600,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "e75ffc0b7703b4de306ccdaa7fe3e8b40388c2b7",
       "source": "finnhub"
     },
     {
@@ -578,10 +532,41 @@
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "946b029ca15f42bb9fd707878e131ace614d8bc4",
       "source": "finnhub"
+    },
+    {
+      "symbol": "MARKET",
+      "title": "US stablecoin adoption could surge with bank-like protections: Visa survey",
+      "title_ar": "يمكن أن يرتفع اعتماد العملات المستقرة في الولايات المتحدة مع الحماية الشبيهة بالبنوك: استطلاع فيزا",
+      "summary": "The survey released by Visa posited that bank-like protections for stablecoins could increase adoption in the US as companies are preparing for the enactment of the GENIUS Act.",
+      "summary_ar": "",
+      "url": "https://cointelegraph.com/news/stablecoin-adoption-bank-level-protections-visa?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "publisher": "Cointelegraph",
+      "published": "2026-09-23 18:17 UTC",
+      "published_ts": 1790187468,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "f5250bd6cc29f52848451ffeb0838905137c48d1",
+      "source": "finnhub:crypto"
+    },
+    {
+      "symbol": "MARKET",
+      "title": "NYSE, Blockchain.com in tie-up to bring tokenized US stocks to crypto users",
+      "title_ar": "بورصة نيويورك، Blockchain.com في شراكة لجلب الأسهم الأمريكية الرمزية لمستخدمي العملات المشفرة",
+      "summary": "Blockchain.com users could gain access to tokenized US stocks and ETFs through NYSE’s planned digital trading platform under a new partnership, as bourses rush to deliver new trading.",
+      "summary_ar": "",
+      "url": "https://cointelegraph.com/news/nyse-blockchaincom-team-up-to-bring-tokenized-us-stocks-to-crypto-users?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "publisher": "Cointelegraph",
+      "published": "2026-09-23 15:56 UTC",
+      "published_ts": 1790178980,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "ea4a4fac9530225d46cf328c28e3470e965a39a9",
+      "source": "finnhub:crypto"
     }
   ],
   "news_excluded_negative": [
     "AMZN",
+    "CRCL",
     "CRM",
     "META",
     "NFLX",
