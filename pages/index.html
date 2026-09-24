@@ -94,6 +94,33 @@
     .sent-pos{color:var(--ok);font-weight:700}
     .sent-neg{color:var(--bad);font-weight:700}
     .sent-neu{color:var(--muted);font-weight:700}
+    .moving-badge{
+      display:none;align-items:center;gap:5px;font-size:.72rem;font-weight:800;
+      color:var(--ok);margin-inline-start:6px;vertical-align:middle;white-space:nowrap;
+    }
+    .moving-badge.on{display:inline-flex}
+    .moving-badge .dot{
+      width:7px;height:7px;border-radius:50%;background:var(--ok);
+      box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:movePulse 1s infinite;
+    }
+    @keyframes movePulse{
+      0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}
+      70%{box-shadow:0 0 0 7px rgba(74,222,128,0)}
+      100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}
+    }
+    .live-cell.moving, .live-price.moving{outline:1px solid color-mix(in srgb,var(--ok) 55%, transparent); border-radius:8px}
+    .flow-filters{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .flow-filters button{
+      min-height:38px;padding:6px 10px;border-radius:10px;border:1px solid var(--line);
+      background:var(--card);color:var(--text);font-size:.88rem;cursor:pointer;font-weight:600;
+    }
+    .flow-filters button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    #movingBar{
+      display:none;margin:8px 0;padding:8px 12px;border-radius:12px;
+      border:1px solid color-mix(in srgb,var(--ok) 40%, var(--line));
+      background:color-mix(in srgb,var(--ok) 12%, var(--card));font-size:.9rem;font-weight:700;
+    }
+    #movingBar.on{display:block}
   </style>
 </head>
 <body>
@@ -178,6 +205,13 @@
           <option value="rvol">حسب السيولة (RVOL)</option>
         </select>
       </div>
+      <div class="flow-filters" id="flowFilters">
+        <button type="button" data-flow="mom" title="ارتفاع ≥ 0.8%">زخم قوي</button>
+        <button type="button" data-flow="rvol" title="RVOL ≥ 1.2">RVOL ≥ 1.2</button>
+        <button type="button" data-flow="liq" title="سيولة قوية">سيولة قوية</button>
+        <button type="button" data-flow="flow" title="تدفق عالي">تدفق عالي</button>
+      </div>
+      <div id="movingBar">● يتحرك الآن: <span id="movingSyms">—</span></div>
       <div id="opps"><div class="empty">جاري الجلب...</div></div>
     </div>
 
@@ -227,9 +261,12 @@
       sort: 'dash_sort',
       notify: 'dash_notify',
       light: 'dash_light',
+      flow: 'dash_flow_filters',
     };
     let DATA = null;
     let lastUrgent = new Set();
+    const MOVE_WINDOW_MS = 12000;
+    let FLOW_FILTERS = new Set();
 
     function toast(msg){
       const t=document.getElementById('toast');
@@ -244,6 +281,68 @@
       if(sec<60) return `قبل ${sec} ثانية`;
       const m=Math.floor(sec/60); if(m<60) return `قبل ${m} دقيقة`;
       const h=Math.floor(m/60); return `قبل ${h} ساعة و${m%60} د`;
+    }
+    function parseNewsTs(n){
+      if(n && n.published_ts) return Number(n.published_ts);
+      const s=(n&&n.published)||'';
+      if(!s) return null;
+      // "2026-09-24 11:51:15 UTC" or ISO
+      const iso=s.replace(' UTC','Z').replace(' ','T');
+      const t=Date.parse(iso);
+      return Number.isFinite(t)?Math.floor(t/1000):null;
+    }
+    function fmtNewsAgo(n){
+      const ts=parseNewsTs(n);
+      if(!ts) return n&&n.published?String(n.published):'';
+      const sec=Math.max(0, Math.floor(Date.now()/1000 - ts));
+      if(sec<45) return 'الآن';
+      if(sec<90) return 'منذ دقيقة';
+      const m=Math.floor(sec/60);
+      if(m<60) return `منذ ${m} دقيقة`;
+      const h=Math.floor(m/60);
+      if(h<24) return h===1?'منذ ساعة':`منذ ${h} ساعات`;
+      const d=Math.floor(h/24);
+      return d===1?'منذ يوم':`منذ ${d} أيام`;
+    }
+    function newsNormTitle(t){
+      return String(t||'').toLowerCase()
+        .replace(/[^\p{L}\p{N}\s]/gu,' ')
+        .replace(/\b(the|a|an|to|of|in|on|for|and|or|is|are|with|as|at|by|from|stock|shares|inc|corp)\b/g,' ')
+        .replace(/\s+/g,' ').trim();
+    }
+    function newsTokens(t){
+      return new Set(newsNormTitle(t).split(' ').filter(w=>w.length>2));
+    }
+    function newsJaccard(a,b){
+      const A=newsTokens(a), B=newsTokens(b);
+      if(!A.size || !B.size) return 0;
+      let inter=0;
+      A.forEach(w=>{ if(B.has(w)) inter++; });
+      return inter / (A.size + B.size - inter);
+    }
+    function dedupeNewsSmart(list){
+      const out=[];
+      for(const n of (list||[])){
+        const title=n.title_ar||n.title||'';
+        const sym=String(n.symbol||'').toUpperCase();
+        let dup=false;
+        for(const k of out){
+          const kt=k.title_ar||k.title||'';
+          const ks=String(k.symbol||'').toUpperCase();
+          const sim=newsJaccard(title, kt);
+          const sameSym = sym && ks && sym===ks;
+          const marketish = sym==='MARKET' || ks==='MARKET';
+          if(sameSym && sim>=0.55){ dup=true; break; }
+          if(marketish && sim>=0.62){ dup=true; break; }
+          if(sim>=0.82){ dup=true; break; }
+          // same first 48 normalized chars
+          if(newsNormTitle(title).slice(0,48) && newsNormTitle(title).slice(0,48)===newsNormTitle(kt).slice(0,48)){
+            dup=true; break;
+          }
+        }
+        if(!dup) out.push(n);
+      }
+      return out;
     }
     function pad(n){return String(n).padStart(2,'0')}
     function clockInTz(timeZone){
@@ -275,6 +374,12 @@
       document.getElementById('sortSel').value=sort;
       document.querySelectorAll('#filterSeg button').forEach(b=>{
         b.classList.toggle('active', b.dataset.f===filter);
+      });
+      try{
+        FLOW_FILTERS = new Set(JSON.parse(localStorage.getItem(LS.flow)||'[]'));
+      }catch(e){ FLOW_FILTERS=new Set(); }
+      document.querySelectorAll('#flowFilters button').forEach(b=>{
+        b.classList.toggle('active', FLOW_FILTERS.has(b.dataset.flow));
       });
       syncLightBtn();
     }
@@ -350,6 +455,14 @@
       const f=currentFilter();
       if(f==='buy') list=list.filter(o=>o.action_key==='CONSIDER_LONG');
       if(f==='watch') list=list.filter(o=>o.action_key==='WATCH_ENTRY');
+      // فلاتر الزخم/السيولة
+      if(FLOW_FILTERS.has('mom')) list=list.filter(o=>Number(o.change_pct||0) >= 0.8);
+      if(FLOW_FILTERS.has('rvol')) list=list.filter(o=>Number(o.rvol||(o.liquidity||{}).rvol||0) >= 1.2);
+      if(FLOW_FILTERS.has('liq')) list=list.filter(o=>{
+        const g=o.liq_grade||(o.liquidity||{}).grade||'';
+        return g==='strong';
+      });
+      if(FLOW_FILTERS.has('flow')) list=list.filter(o=>Number(o.flow_score||0) >= 2.5);
       const sort=document.getElementById('sortSel').value;
       if(sort==='change') list.sort((a,b)=>Math.abs(b.change_pct)-Math.abs(a.change_pct));
       else if(sort==='rvol') list.sort((a,b)=>(b.rvol||0)-(a.rvol||0));
@@ -380,7 +493,7 @@
               <span class="sym">${esc(o.symbol)} ${o.urgent?'🔥 عاجل':''}</span>
               <span class="pill">${esc(o.score_100)}/100</span>
             </div>
-            <div>${esc(o.action)} · <span class="${clsChg(o.change_pct)}" data-live-chg="${esc(o.symbol)}">${o.change_pct>0?'+':''}${esc(o.change_pct)}%</span> · الآن $<span data-live-px="${esc(o.symbol)}">${esc(Number(o.last!=null?o.last:o.entry).toFixed(2))}</span></div>
+            <div>${esc(o.action)} · <span class="${clsChg(o.change_pct)}" data-live-chg="${esc(o.symbol)}">${o.change_pct>0?'+':''}${esc(o.change_pct)}%</span> · الآن $<span data-live-px="${esc(o.symbol)}">${esc(Number(o.last!=null?o.last:o.entry).toFixed(2))}</span><span class="moving-badge" data-moving="${esc(o.symbol)}"><span class="dot"></span>يتحرك الآن</span></div>
             <div class="muted" style="margin-top:4px">
               سيولة: <span class="${liqClass(grade)}">${esc(gradeAr)}</span>
               · RVOL ×${esc(rvol)} · اليوم ${esc(dLab)}
