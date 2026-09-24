@@ -153,7 +153,7 @@
         <div>
           <h1>لوحة تنبيهات الأسهم</h1>
           <div class="muted" id="ago">جاري التحميل...</div>
-          <div class="muted" id="autoHint" style="margin-top:2px">تحديث تلقائي للأسعار...</div>
+          <div class="muted" id="autoHint" style="margin-top:2px">مسح محفزات + زخم مربوط بالخبر...</div>
         </div>
         <span id="alive" class="pill">...</span>
       </div>
@@ -299,11 +299,15 @@
       notify: 'dash_notify',
       light: 'dash_light',
       flow: 'dash_flow_filters',
+      cat: 'dash_cat_filter',
     };
     let DATA = null;
     let lastUrgent = new Set();
     const MOVE_WINDOW_MS = 12000;
     let FLOW_FILTERS = new Set();
+    let CAT_FILTER = 'all';
+    let NEWS_CACHE = [];
+    let MOMENTUM_CACHE = [];
 
     function toast(msg){
       const t=document.getElementById('toast');
@@ -417,6 +421,10 @@
       }catch(e){ FLOW_FILTERS=new Set(); }
       document.querySelectorAll('#flowFilters button').forEach(b=>{
         b.classList.toggle('active', FLOW_FILTERS.has(b.dataset.flow));
+      });
+      CAT_FILTER = localStorage.getItem(LS.cat)||'all';
+      document.querySelectorAll('#catFilters button').forEach(b=>{
+        b.classList.toggle('active', b.dataset.cat===CAT_FILTER);
       });
       syncLightBtn();
     }
@@ -676,42 +684,106 @@
       if(blocked.size && Array.isArray(d.gainers)){
         d.gainers=d.gainers.filter(g=>!blocked.has(String(g.symbol||'').toUpperCase()));
       }
+      const scanEl=document.getElementById('scanMode');
+      if(scanEl) scanEl.textContent=d.scan_mode_ar||'';
+      const mNote=document.getElementById('momentumNote');
+      if(mNote) mNote.textContent=d.momentum_note_ar||mNote.textContent;
+      MOMENTUM_CACHE=d.momentum_scanner||[];
+      renderMomentum(MOMENTUM_CACHE);
       const note=document.getElementById('newsNote');
-      if(note) note.textContent=d.news_note_ar||'بث سريع · محايد/إيجابي · حتى 5 جديدة/دقيقة';
-      renderNewsList(news);
+      if(note) note.textContent=d.news_note_ar||'بث محفزات · تأثير 1–5';
+      NEWS_CACHE=news;
+      renderNewsList(NEWS_CACHE);
 
       renderOpps();
       tickClocks();
     }
 
+    function impactDots(n){
+      const v=Math.max(1, Math.min(5, Number(n)||1));
+      return `<span class="impact impact-${v}" title="تأثير ${v}/5">${'●'.repeat(v)}${'○'.repeat(5-v)}</span>`;
+    }
+
+    function renderMomentum(rows){
+      const box=document.getElementById('momentumList');
+      if(!box) return;
+      const list=rows||[];
+      if(!list.length){
+        box.innerHTML='<div class="empty">لا زخم ≥ العتبة الآن — راقب البث</div>';
+        return;
+      }
+      box.innerHTML=list.map(r=>{
+        const cats=(r.catalyst_ar||[]).map(c=>`<span class="tag tone-ok">${esc(c)}</span>`).join('');
+        const newsLine=r.news_title_ar
+          ? `<div class="muted" style="margin-top:6px">${esc(r.news_title_ar)}</div>`
+          : `<div class="muted" style="margin-top:6px">لا خبر رسمي مرفق بعد</div>`;
+        const href=r.news_url||r.tv_url||'#';
+        return `<div class="scan-item">
+          <div class="row">
+            <span class="sym">${esc(r.symbol)} <span class="${clsChg(r.change_pct)}" data-live-chg="${esc(r.symbol)}">${r.change_pct>0?'+':''}${esc(r.change_pct)}%</span></span>
+            <span>
+              <span class="pill impact-pill">${impactDots(r.impact)}</span>
+              ${r.has_news?'<span class="pill ok">خبر</span>':'<span class="pill">بدون خبر</span>'}
+            </span>
+          </div>
+          <div class="muted">الآن $<span data-live-px="${esc(r.symbol)}">${esc(Number(r.last).toFixed(2))}</span>
+            ${r.dollar_volume_label?` · ${esc(r.dollar_volume_label)}`:''}
+            ${r.liq_grade_ar?` · ${esc(r.liq_grade_ar)}`:''}
+          </div>
+          <div class="alert">${esc(r.alert_ar||'')}</div>
+          <div style="margin-top:4px">${cats}</div>
+          ${newsLine}
+          <div class="toolbar" style="margin-top:8px">
+            <a class="btn secondary" href="${esc(href)}" target="_blank" rel="noopener">المصدر / الشارت</a>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    function filteredCatalystNews(news){
+      let list=dedupeNewsSmart((news||[]).filter(n=>n && n.sentiment!=='neg'));
+      const cat=CAT_FILTER||'all';
+      if(cat==='hi') list=list.filter(n=>Number(n.impact||0)>=4);
+      else if(cat!=='all') list=list.filter(n=>(n.catalyst_keys||[]).includes(cat) || (n.catalysts||[]).some(c=>c.key===cat));
+      return list;
+    }
+
     function renderNewsList(news){
       const newsBox=document.getElementById('newsList');
       if(!newsBox) return;
-      const list=dedupeNewsSmart((news||[]).filter(n=>n && n.sentiment!=='neg'));
+      NEWS_CACHE=news||NEWS_CACHE;
+      const list=filteredCatalystNews(NEWS_CACHE);
       const sentCls={pos:'sent-pos',neg:'sent-neg',neu:'sent-neu'};
       newsBox.innerHTML = list.length ? list.map(n=>{
         const sent=n.sentiment||'neu';
         const title=n.title_ar||n.title||'';
-        const sum=n.summary_ar||'';
+        const sum=n.summary_ar||n.impact_reason_ar||'';
         const when=fmtNewsAgo(n);
         const pub=n.publisher||'';
         const href=n.url||('#');
+        const cats=(n.catalyst_ar||[]).map(c=>`<span class="tag tone-ok">${esc(c)}</span>`).join('');
+        const impact=n.impact!=null?Number(n.impact):null;
         return `<article class="news-item">
           <a href="${esc(href)}" target="_blank" rel="noopener">
             <div class="row" style="margin:0 0 6px">
               <b>${esc(n.symbol||'')}</b>
-              <span class="${sentCls[sent]||'sent-neu'}">${esc(n.sentiment_ar||'')}</span>
+              <span>
+                ${impact!=null?`<span class="pill impact-pill">${impactDots(impact)} ${esc(n.impact_ar||'')}</span>`:''}
+                <span class="${sentCls[sent]||'sent-neu'}">${esc(n.sentiment_ar||'')}</span>
+              </span>
             </div>
             <div style="font-weight:700;line-height:1.35">${esc(title)}</div>
+            ${cats?`<div style="margin-top:6px">${cats}</div>`:''}
             ${sum?`<div class="muted" style="margin-top:6px">${esc(sum)}</div>`:''}
             <div class="news-meta muted">
               ${pub?`<span>${esc(pub)}</span>`:''}
               ${when?`<span>${esc(when)}</span>`:''}
+              ${n.officialish?'<span>مصدر رسمي≈</span>':''}
               <span>المصدر ↗</span>
             </div>
           </a>
         </article>`;
-      }).join('') : '<div class="empty">لا أخبار محايدة/إيجابية الآن</div>';
+      }).join('') : '<div class="empty">لا محفزات ضمن الفلتر الحالي</div>';
     }
 
     async function pollNewsLive(){
@@ -817,6 +889,15 @@
         b.classList.toggle('active', FLOW_FILTERS.has(key));
         localStorage.setItem(LS.flow, JSON.stringify([...FLOW_FILTERS]));
         renderOpps();
+      };
+    });
+    document.querySelectorAll('#catFilters button').forEach(b=>{
+      b.onclick=()=>{
+        document.querySelectorAll('#catFilters button').forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+        CAT_FILTER=b.dataset.cat||'all';
+        localStorage.setItem(LS.cat, CAT_FILTER);
+        renderNewsList(NEWS_CACHE);
       };
     });
 
