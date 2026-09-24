@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:22:15.995437+00:00",
-  "generated_ts": 1790252535,
-  "generated_local": "2026-09-24 15:22 +03",
+  "generated_at": "2026-09-24T12:23:19.364105+00:00",
+  "generated_ts": 1790252599,
+  "generated_local": "2026-09-24 15:23 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:22:15.995329+00:00",
+    "updated_at": "2026-09-24T12:23:19.363995+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,12 +26,12 @@
     "avg_change_pct": -0.53,
     "details": {
       "SPY": {
-        "last": 764.38,
+        "last": 764.37,
         "change_pct": -0.45,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.86,
+        "last": 734.83,
         "change_pct": -0.86,
         "rsi": 68.9
       },
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 4064,
-    "ny_time": "08:22:15",
+    "seconds_left": 4000,
+    "ny_time": "08:23:19",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,11 +77,11 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 0.99
+        "change_pct": 0.98
       },
       {
         "name": "Communication",
-        "change_pct": 0.22
+        "change_pct": 0.25
       },
       {
         "name": "Industrial",
@@ -94,17 +94,17 @@
         "change_pct": -1.08
       },
       {
-        "name": "Financials",
-        "change_pct": -0.34
+        "name": "Consumer",
+        "change_pct": -0.32
       },
       {
-        "name": "Consumer",
-        "change_pct": -0.3
+        "name": "Financials",
+        "change_pct": -0.29
       }
     ]
   },
   "style": {
-    "growth_avg": -1.04,
+    "growth_avg": -1.03,
     "value_avg": 0.06,
     "leader": "قيمة",
     "growth_count": 10,
@@ -246,21 +246,21 @@
         "اختبار/كسر مقاومة"
       ],
       "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم مرتفع: حجم ×3.3 | اختبار/كسر مقاومة: مقاومة≈$30.24",
-      "entry": 30.78,
+      "entry": 30.79,
       "stop": 27.83,
-      "target": 36.09,
+      "target": 36.12,
       "shares": 40,
-      "risk_sar": 442.5,
+      "risk_sar": 444.0,
       "allowed": true,
-      "change_pct": 0.07,
-      "last": 30.78,
+      "change_pct": 0.1,
+      "last": 30.79,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 3.25,
         "volume": 111086700.0,
         "avg_volume_20": 34141375.0,
-        "dollar_volume": 3419259734.67,
-        "avg_dollar_volume": 1050874936.64,
+        "dollar_volume": 3420359493.0,
+        "avg_dollar_volume": 1051212936.25,
         "dollar_volume_label": "3.4B$",
         "avg_dollar_volume_label": "1.1B$",
         "grade": "strong",
@@ -271,7 +271,7 @@
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=WBD",
-      "tg_share": "https://t.me/share/url?url=&text=WBD%20فكّر في شراء قصير المدى%0Aالآن%2030.78%20دخول%2030.78%20وقف%2027.83%20هدف%2036.09%0Aسيولة%20قوي%20RVOL%20x3.25"
+      "tg_share": "https://t.me/share/url?url=&text=WBD%20فكّر في شراء قصير المدى%0Aالآن%2030.79%20دخول%2030.79%20وقف%2027.83%20هدف%2036.12%0Aسيولة%20قوي%20RVOL%20x3.25"
     },
     {
       "symbol": "APA",
@@ -391,6 +391,46 @@
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=BAC",
       "tg_share": "https://t.me/share/url?url=&text=BAC%20راقب دخول%0Aالآن%2056.1%20دخول%2056.1%20وقف%2055.43%20هدف%2057.78%0Aسيولة%20قوي%20RVOL%20x0.98"
+    },
+    {
+      "symbol": "SPCX",
+      "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
+      "side": "long",
+      "score_100": 59,
+      "urgent": false,
+      "strategies": [
+        "ترتيب متوسطات صاعد",
+        "RSI متوازن",
+        "تقلّب عالي"
+      ],
+      "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 57 | تقلّب عالي: ATR% 4.9",
+      "entry": 148.49,
+      "stop": 137.06,
+      "target": 169.06,
+      "shares": 10,
+      "risk_sar": 428.63,
+      "allowed": false,
+      "change_pct": 0.09,
+      "last": 148.49,
+      "session_phase": "pre",
+      "liquidity": {
+        "rvol": 0.68,
+        "volume": 60280300.0,
+        "avg_volume_20": 89208805.0,
+        "dollar_volume": 8951021747.0,
+        "avg_dollar_volume": 13246615454.45,
+        "dollar_volume_label": "9.0B$",
+        "avg_dollar_volume_label": "13.2B$",
+        "grade": "weak",
+        "grade_ar": "ضعيف",
+        "label": "RVOL ×0.7 · اليوم 9.0B$ · متوسط 13.2B$"
+      },
+      "rvol": 0.68,
+      "liq_grade": "weak",
+      "liq_grade_ar": "ضعيف",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX",
+      "tg_share": "https://t.me/share/url?url=&text=SPCX%20راقب دخول%0Aالآن%20148.49%20دخول%20148.49%20وقف%20137.06%20هدف%20169.06%0Aسيولة%20ضعيف%20RVOL%20x0.68"
     }
   ],
   "gainers": [
@@ -451,20 +491,6 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ"
     },
     {
-      "symbol": "PCG",
-      "name": "Pacific Gas & Electric Co.",
-      "last": 12.47,
-      "change_pct": 0.47,
-      "ref": 12.41,
-      "rth_close": 12.41,
-      "volume": 47281720.0,
-      "dollar_volume": 589603048.4,
-      "dollar_volume_label": "589.6M$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=PCG"
-    },
-    {
       "symbol": "LTH",
       "name": "Life Time Group Holdings, Inc.",
       "last": 39.74,
@@ -479,18 +505,46 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=LTH"
     },
     {
+      "symbol": "PCG",
+      "name": "Pacific Gas & Electric Co.",
+      "last": 12.43,
+      "change_pct": 0.14,
+      "ref": 12.41,
+      "rth_close": 12.41,
+      "volume": 47281720.0,
+      "dollar_volume": 587711779.6,
+      "dollar_volume_label": "587.7M$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=PCG"
+    },
+    {
       "symbol": "WBD",
       "name": "Warner Bros. Discovery, Inc. - ",
-      "last": 30.78,
-      "change_pct": 0.07,
+      "last": 30.79,
+      "change_pct": 0.1,
       "ref": 30.76,
       "rth_close": 30.76,
       "volume": 110237037.0,
-      "dollar_volume": 3393095998.86,
+      "dollar_volume": 3394198369.23,
       "dollar_volume_label": "3.4B$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=WBD"
+    },
+    {
+      "symbol": "SPCX",
+      "name": "Space Exploration Technologies ",
+      "last": 148.49,
+      "change_pct": 0.09,
+      "ref": 148.36,
+      "rth_close": 148.36,
+      "volume": 60046138.0,
+      "dollar_volume": 8916251031.62,
+      "dollar_volume_label": "8.9B$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX"
     }
   ],
   "gainers_min_price": 5.0,
@@ -498,8 +552,8 @@
   "movers": [
     {
       "symbol": "AMD",
-      "change_pct": -2.35,
-      "last": 600.17,
+      "change_pct": -2.38,
+      "last": 600.0,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -507,8 +561,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.74,
-      "last": 188.45,
+      "change_pct": -1.83,
+      "last": 188.27,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -516,8 +570,8 @@
     },
     {
       "symbol": "META",
-      "change_pct": -1.64,
-      "last": 731.9,
+      "change_pct": -1.63,
+      "last": 732.0,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -542,15 +596,6 @@
       "dollar_volume_label": "247.7M$"
     },
     {
-      "symbol": "AVGO",
-      "change_pct": -1.31,
-      "last": 350.35,
-      "rvol": 0.85,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "8.2B$"
-    },
-    {
       "symbol": "AR",
       "change_pct": 1.29,
       "last": 36.11,
@@ -560,9 +605,18 @@
       "dollar_volume_label": "201.7M$"
     },
     {
+      "symbol": "AVGO",
+      "change_pct": -1.28,
+      "last": 350.43,
+      "rvol": 0.85,
+      "grade": "medium",
+      "grade_ar": "متوسط",
+      "dollar_volume_label": "8.2B$"
+    },
+    {
       "symbol": "COIN",
-      "change_pct": -1.23,
-      "last": 195.7,
+      "change_pct": -1.08,
+      "last": 196.0,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -577,7 +631,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 113,
+    "alerts_today": 114,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
