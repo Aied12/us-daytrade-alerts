@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:58:16.915151+00:00",
-  "generated_ts": 1790254696,
-  "generated_local": "2026-09-24 15:58 +03",
+  "generated_at": "2026-09-24T12:59:26.317948+00:00",
+  "generated_ts": 1790254766,
+  "generated_local": "2026-09-24 15:59 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:58:16.914990+00:00",
+    "updated_at": "2026-09-24T12:59:26.317836+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,21 +23,21 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.57,
+    "avg_change_pct": -0.56,
     "details": {
       "SPY": {
-        "last": 764.2146,
+        "last": 764.19,
         "change_pct": -0.47,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.53,
-        "change_pct": -0.9,
+        "last": 734.4667,
+        "change_pct": -0.91,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 281.0,
-        "change_pct": -0.33,
+        "last": 281.08,
+        "change_pct": -0.3,
         "rsi": 29.0
       }
     },
@@ -49,12 +49,12 @@
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.9,
+        "change_pct": -0.91,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.33,
+        "change_pct": -0.3,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 1903,
-    "ny_time": "08:58:16",
+    "seconds_left": 1833,
+    "ny_time": "08:59:26",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,11 +77,11 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.14
+        "change_pct": 1.01
       },
       {
         "name": "Communication",
-        "change_pct": 0.14
+        "change_pct": 0.19
       },
       {
         "name": "Financials",
@@ -91,7 +91,7 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.05
+        "change_pct": -1.04
       },
       {
         "name": "Industrial",
@@ -99,13 +99,13 @@
       },
       {
         "name": "Consumer",
-        "change_pct": -0.29
+        "change_pct": -0.3
       }
     ]
   },
   "style": {
-    "growth_avg": -1.02,
-    "value_avg": 0.1,
+    "growth_avg": -1.01,
+    "value_avg": 0.08,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -246,7 +246,7 @@
   ],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
-    "UBER:زخم ضعيف (+0.23% < 0.55%)",
+    "UBER:زخم ضعيف (+0.12% < 0.55%)",
     "BAC:زخم ضعيف (+0.16% < 0.55%)",
     "DIS:زخم ضعيف (+0.04% < 0.55%)"
   ],
@@ -308,8 +308,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.69,
-      "last": 188.55,
+      "change_pct": -1.72,
+      "last": 188.5,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -317,8 +317,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.43,
-      "last": 349.9,
+      "change_pct": -1.41,
+      "last": 349.99,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -326,8 +326,8 @@
     },
     {
       "symbol": "META",
-      "change_pct": -1.33,
-      "last": 734.23,
+      "change_pct": -1.21,
+      "last": 735.07,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -353,19 +353,6 @@
     }
   ],
   "news": [
-    {
-      "symbol": "AMZN",
-      "title": "PayPal Strikes Major Meta AI Shopping Deal",
-      "title_ar": "صفقة PayPal Strikes Major Meta AI للتسوق",
-      "summary": "PayPal Powers Meta's Muse as AI Shopping Enters New Era",
-      "summary_ar": "باي بال تدعم ميوز ميتا مع دخول التسوق بالذكاء الاصطناعي إلى عصر جديد",
-      "url": "https://finance.yahoo.com/technology/ai/articles/paypal-strikes-major-meta-ai-124807933.html",
-      "publisher": "GuruFocus.com",
-      "published": "2026-09-24 12:48:07 UT",
-      "published_ts": 1790254087,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-    },
     {
       "symbol": "SECZ",
       "title": "Securitize Corp (SECZ) Soars to All-Time High Anew, Analysts ‘Highly Bullish’",
@@ -456,6 +443,19 @@
       "published_ts": 1790141056,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
+      "symbol": "AMZN",
+      "title": "AI Data Center Boom Faces This 'Fundamental Trade-off' With China",
+      "title_ar": "ازدهار مركز بيانات الذكاء الاصطناعي يواجه هذه \"المقايضة الأساسية\" مع الصين",
+      "summary": "Nobody's spending on data centers like the U.S., propelled by the belief that AI is an existential, winner-takes-all sprint. But America's contentious, trillion-dollar artificial intelligence infrastructure push relies on components and materials from its no. 1 rival: China. When",
+      "summary_ar": "لا أحد ينفق على مراكز البيانات مثل الولايات المتحدة، مدفوعًا بالاعتقاد بأن الذكاء الاصطناعي هو سباق وجودي يأخذ الفائز كل شيء. لكن دفعة البنية التحتية للذكاء الاصطناعي المثيرة للجدل في أمريكا والتي تبلغ قيمتها تريليون دولار تعتمد على المكونات والمواد من منافستها رقم 1: الصين.",
+      "url": "https://www.investors.com/news/ai-data-center-boom-supply-chain-china/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "published": "2026-09-24 12:52:04 UT",
+      "published_ts": 1790254324,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد"
     },
     {
       "symbol": "AAPL",
