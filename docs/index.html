@@ -943,16 +943,15 @@
         return g==='strong' || g==='medium';
       });
       if(FLOW_FILTERS.has('flow')) list=list.filter(o=>Number(o.flow_score||0) >= 1.2);
-      // expired setups stay visible with «الفرصة انتهت» tag (watch only)
+      // إزالة الفرص المنتهية / المطاردة المتأخرة
+      list=list.filter(o=>!o.expired && !(o.smart&&o.smart.expired));
       const sort=document.getElementById('sortSel').value;
       if(sort==='change') list.sort((a,b)=>Math.abs(b.change_pct)-Math.abs(a.change_pct));
       else if(sort==='rvol') list.sort((a,b)=>(b.rvol_pace||b.rvol||0)-(a.rvol_pace||a.rvol||0));
       else if(sort==='flow') list.sort((a,b)=>(b.flow_score||0)-(a.flow_score||0) || Math.abs(b.change_pct)-Math.abs(a.change_pct));
       else list.sort((a,b)=>{
         const ca={A:3,B:2,C:1}[a.confidence||'C']||0, cb={A:3,B:2,C:1}[b.confidence||'C']||0;
-        const ea=a.expired||(a.smart&&a.smart.expired)?0:1;
-        const eb=b.expired||(b.smart&&b.smart.expired)?0:1;
-        return eb-ea || cb-ca || (b.score_100||0)-(a.score_100||0) || (b.urgent?1:0)-(a.urgent?1:0);
+        return cb-ca || (b.score_100||0)-(a.score_100||0) || (b.urgent?1:0)-(a.urgent?1:0);
       });
       return list;
     }

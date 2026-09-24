@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T16:01:44.218111+00:00",
-  "generated_ts": 1790265704,
-  "generated_local": "2026-09-24 19:01 +03",
+  "generated_at": "2026-09-24T16:23:37.224784+00:00",
+  "generated_ts": 1790267017,
+  "generated_local": "2026-09-24 19:23 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T16:01:44.217999+00:00",
+    "updated_at": "2026-09-24T16:23:37.224676+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24,
@@ -23,40 +23,40 @@
   "daily_loss_limit_sar": 900.0,
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
-    "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.68,
+    "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
+    "avg_change_pct": -0.14,
     "details": {
       "SPY": {
-        "last": 764.31,
-        "change_pct": -0.46,
-        "rsi": 44.1
+        "last": 767.3,
+        "change_pct": -0.07,
+        "rsi": 46.6
       },
       "QQQ": {
-        "last": 736.14,
-        "change_pct": -0.68,
-        "rsi": 61.1
+        "last": 739.69,
+        "change_pct": -0.21,
+        "rsi": 64.2
       },
       "IWM": {
-        "last": 279.35,
-        "change_pct": -0.91,
-        "rsi": 23.2
+        "last": 281.535,
+        "change_pct": -0.14,
+        "rsi": 25.2
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.46,
-        "rsi": 44.1
+        "change_pct": -0.07,
+        "rsi": 46.6
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.68,
-        "rsi": 61.1
+        "change_pct": -0.21,
+        "rsi": 64.2
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.91,
-        "rsi": 23.2
+        "change_pct": -0.14,
+        "rsi": 25.2
       }
     ],
     "no_trade_today": false,
@@ -69,56 +69,109 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 14295,
-    "ny_time": "12:01:44",
+    "seconds_left": 12982,
+    "ny_time": "12:23:37",
     "open": "09:30",
     "close": "16:00"
   },
   "sectors": {
     "strongest": [
       {
-        "name": "Energy",
-        "change_pct": 1.59
+        "name": "Communication",
+        "change_pct": 1.09
       },
       {
-        "name": "Communication",
-        "change_pct": 0.81
+        "name": "Energy",
+        "change_pct": 0.66
       },
       {
         "name": "Technology",
-        "change_pct": -0.03
+        "change_pct": 0.41
       }
     ],
     "weakest": [
       {
         "name": "Industrial",
-        "change_pct": -1.59
+        "change_pct": -0.89
       },
       {
         "name": "Consumer",
-        "change_pct": -0.73
+        "change_pct": -0.34
       },
       {
         "name": "Financials",
-        "change_pct": -0.39
+        "change_pct": 0.33
       }
     ]
   },
   "style": {
-    "growth_avg": -0.14,
-    "value_avg": 0.03,
-    "leader": "قيمة",
+    "growth_avg": 0.5,
+    "value_avg": 0.08,
+    "leader": "نمو",
     "growth_count": 10,
     "value_count": 11
   },
   "momentum_scanner": [
     {
+      "symbol": "P",
+      "name": "Everpure, Inc.",
+      "last": 129.9,
+      "change_pct": 18.47,
+      "dollar_volume": 871643159.1,
+      "dollar_volume_label": "871.6M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "has_news": true,
+      "news": {
+        "symbol": "P",
+        "title": "AI Stock NetApp Hits Early Buy Trigger After Big Support At A Key Level",
+        "title_ar": "سهم AI NetApp يصل إلى مرحلة الشراء المبكر بعد دعم كبير على مستوى رئيسي",
+        "summary": "NetApp stock rallied sharply Thursday, hitting an early buy trigger. The AI name boasts accelerating quarterly earnings and sales growth.",
+        "summary_ar": "",
+        "url": "https://finnhub.io/api/news?id=9ec72a7ac7de7444a32082d1fd244ccc18c47eb0b9e44ee8478b8a68f59506c1",
+        "publisher": "Yahoo",
+        "published": "2026-09-24 15:24 UTC",
+        "published_ts": 1790263493,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "a1bf1ffd9f3f5aefcb855b369713cbfeb9d7f5d9",
+        "source": "finnhub",
+        "impact": 5,
+        "impact_ar": "تأثير 5/5",
+        "sentiment_score": 4,
+        "catalysts": [
+          {
+            "key": "earnings",
+            "ar": "أرباح",
+            "base_impact": 4
+          }
+        ],
+        "catalyst_keys": [
+          "earnings"
+        ],
+        "catalyst_ar": [
+          "أرباح"
+        ],
+        "impact_reason_ar": "أرباح",
+        "officialish": false
+      },
+      "news_title_ar": "سهم AI NetApp يصل إلى مرحلة الشراء المبكر بعد دعم كبير على مستوى رئيسي",
+      "news_url": "https://finnhub.io/api/news?id=9ec72a7ac7de7444a32082d1fd244ccc18c47eb0b9e44ee8478b8a68f59506c1",
+      "catalyst_ar": [
+        "أرباح"
+      ],
+      "alert_ar": "زخم +18.5% · أرباح",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=P"
+    },
+    {
       "symbol": "CDNA",
       "name": "CareDx, Inc.",
-      "last": 59.24,
-      "change_pct": 9.08,
-      "dollar_volume": 43160427.56,
-      "dollar_volume_label": "43.2M$",
+      "last": 59.76,
+      "change_pct": 10.03,
+      "dollar_volume": 49009295.52,
+      "dollar_volume_label": "49.0M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -150,73 +203,20 @@
       "news_title_ar": "BTIG تحافظ على الشراء على CareDx، وترفع السعر المستهدف إلى 74 $",
       "news_url": "https://finnhub.io/api/news?id=3e2513c9d0f2c9e3dc792c4ed05876cefaff21c017dffa4209eb1f04b26ea485",
       "catalyst_ar": [],
-      "alert_ar": "زخم +9.1% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +10.0% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CDNA"
-    },
-    {
-      "symbol": "TWST",
-      "name": "Twist Bioscience Corporation",
-      "last": 169.2,
-      "change_pct": 6.75,
-      "dollar_volume": 270517129.2,
-      "dollar_volume_label": "270.5M$",
-      "rvol": null,
-      "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": true,
-      "news": {
-        "symbol": "TWST",
-        "title": "Twist Bioscience (TWST) Expands AI Drug Discovery Exposure With Lilly TuneLab Partnership",
-        "title_ar": "تويست بيوسينس (TWST) توسع التعرض لاكتشاف عقاقير الذكاء الاصطناعي مع شراكة ليلي تون لاب",
-        "summary": "Twist Bioscience Corporation (NASDAQ:TWST) is on the cusp of gaining significant exposure to the rapidly evolving artificial intelligence (AI)-driven drug discovery ecosystem. On September 16, the company confirmed a strategic partnership with Lilly TuneLab, a platform created by",
-        "summary_ar": "",
-        "url": "https://finnhub.io/api/news?id=e1098474219e011b9be543223700072661216dbed12162ce435c750334a0adc1",
-        "publisher": "Yahoo",
-        "published": "2026-09-22 10:08 UTC",
-        "published_ts": 1790071730,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "be51bd795ffd8eebf5e481820ce8bc50ef4e7ee7",
-        "source": "finnhub",
-        "impact": 4,
-        "impact_ar": "تأثير 4/5",
-        "sentiment_score": 4,
-        "catalysts": [
-          {
-            "key": "partnership",
-            "ar": "شراكة/عقد",
-            "base_impact": 3
-          }
-        ],
-        "catalyst_keys": [
-          "partnership"
-        ],
-        "catalyst_ar": [
-          "شراكة/عقد"
-        ],
-        "impact_reason_ar": "شراكة/عقد",
-        "officialish": false
-      },
-      "news_title_ar": "تويست بيوسينس (TWST) توسع التعرض لاكتشاف عقاقير الذكاء الاصطناعي مع شراكة ليلي تون لاب",
-      "news_url": "https://finnhub.io/api/news?id=e1098474219e011b9be543223700072661216dbed12162ce435c750334a0adc1",
-      "catalyst_ar": [
-        "شراكة/عقد"
-      ],
-      "alert_ar": "زخم +6.8% · شراكة/عقد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=TWST"
     },
     {
       "symbol": "NBIS",
       "name": "Nebius Group N.V.",
-      "last": 241.3,
-      "change_pct": 6.48,
-      "dollar_volume": 3204881449.0,
-      "dollar_volume_label": "3.2B$",
+      "last": 244.88,
+      "change_pct": 8.06,
+      "dollar_volume": 3532190259.84,
+      "dollar_volume_label": "3.5B$",
       "rvol": null,
       "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
       "has_news": true,
       "news": {
         "symbol": "NBIS",
@@ -232,8 +232,8 @@
         "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
         "id": "16b3eebf4625e156877c5dca10e92f90beea8520",
         "source": "finnhub",
-        "impact": 4,
-        "impact_ar": "تأثير 4/5",
+        "impact": 5,
+        "impact_ar": "تأثير 5/5",
         "sentiment_score": 4,
         "catalysts": [
           {
@@ -256,16 +256,16 @@
       "catalyst_ar": [
         "ترقية محلل"
       ],
-      "alert_ar": "زخم +6.5% · ترقية محلل",
+      "alert_ar": "زخم +8.1% · ترقية محلل",
       "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
     },
     {
       "symbol": "BLLN",
       "name": "BillionToOne, Inc.",
-      "last": 121.58,
-      "change_pct": 6.26,
-      "dollar_volume": 47010365.96,
-      "dollar_volume_label": "47.0M$",
+      "last": 122.6,
+      "change_pct": 7.15,
+      "dollar_volume": 50911856.8,
+      "dollar_volume_label": "50.9M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -297,16 +297,16 @@
       "news_title_ar": "يمكن أن يكون سهم BillionToOne (BLLN) صفقة حيث يقفز بنسبة 30 ٪ منذ بداية العام",
       "news_url": "https://finnhub.io/api/news?id=1b66e24a7732997a6deb00f457f5c7be6cc8c69e764bad66b23a3e0993cf96ed",
       "catalyst_ar": [],
-      "alert_ar": "زخم +6.3% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +7.2% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=BLLN"
     },
     {
       "symbol": "CRL",
       "name": "Charles River Laboratories Inte",
-      "last": 292.35,
-      "change_pct": 5.41,
-      "dollar_volume": 139840652.55,
-      "dollar_volume_label": "139.8M$",
+      "last": 296.02,
+      "change_pct": 6.74,
+      "dollar_volume": 162707689.02,
+      "dollar_volume_label": "162.7M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -358,58 +358,36 @@
         "توجيهات",
         "شراكة/عقد"
       ],
-      "alert_ar": "زخم +5.4% · توجيهات · شراكة/عقد",
+      "alert_ar": "زخم +6.7% · توجيهات · شراكة/عقد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRL"
     },
     {
-      "symbol": "VCYT",
-      "name": "Veracyte, Inc.",
-      "last": 45.67,
-      "change_pct": 4.22,
-      "dollar_volume": 38937967.98,
-      "dollar_volume_label": "38.9M$",
+      "symbol": "TWST",
+      "name": "Twist Bioscience Corporation",
+      "last": 171.68,
+      "change_pct": 8.32,
+      "dollar_volume": 297752349.6,
+      "dollar_volume_label": "297.8M$",
       "rvol": null,
       "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": true,
-      "news": {
-        "symbol": "VCYT",
-        "title": "Here's Why You Should Hold Bio-Rad Stock in Your Portfolio for Now",
-        "title_ar": "إليك لماذا يجب عليك الاحتفاظ بمخزون Bio - Rad في محفظتك في الوقت الحالي",
-        "summary": "BIO's Clinical Diagnostics strength and international reach support growth, while China weakness, geopolitics and FX remain key risks.",
-        "summary_ar": "",
-        "url": "https://finnhub.io/api/news?id=48cc1443138b430d77c91c876bd01b6c8821c7ad21be8d7223c2fbf3db058a2b",
-        "publisher": "Yahoo",
-        "published": "2026-09-23 15:22 UTC",
-        "published_ts": 1790176920,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "e43a24d99ec6ef54ab02a395af53a48cf3bc2b8e",
-        "source": "finnhub",
-        "impact": 4,
-        "impact_ar": "تأثير 4/5",
-        "sentiment_score": 4,
-        "catalysts": [],
-        "catalyst_keys": [],
-        "catalyst_ar": [],
-        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-        "officialish": false
-      },
-      "news_title_ar": "إليك لماذا يجب عليك الاحتفاظ بمخزون Bio - Rad في محفظتك في الوقت الحالي",
-      "news_url": "https://finnhub.io/api/news?id=48cc1443138b430d77c91c876bd01b6c8821c7ad21be8d7223c2fbf3db058a2b",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "has_news": false,
+      "news": null,
+      "news_title_ar": "",
+      "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +4.2% · تحرك سعري قوي بدون محفز واضح بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=VCYT"
+      "alert_ar": "زخم +8.3% · لا خبر رسمي مرفق بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=TWST"
     },
     {
-      "symbol": "P",
+      "symbol": "TXG",
       "name": "",
-      "last": 129.82,
-      "change_pct": 18.39,
-      "dollar_volume": 828835400.54,
-      "dollar_volume_label": "828.8M$",
-      "rvol": 2.32,
+      "last": 81.76,
+      "change_pct": 8.12,
+      "dollar_volume": 115763656.96,
+      "dollar_volume_label": "115.8M$",
+      "rvol": 1.23,
       "liq_grade_ar": "قوي",
       "impact": 5,
       "impact_ar": "تأثير 5/5",
@@ -418,36 +396,17 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +18.4% · لا خبر رسمي مرفق بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=P"
-    },
-    {
-      "symbol": "TXG",
-      "name": "",
-      "last": 81.3,
-      "change_pct": 7.51,
-      "dollar_volume": 101799063.3,
-      "dollar_volume_label": "101.8M$",
-      "rvol": 1.25,
-      "liq_grade_ar": "قوي",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": false,
-      "news": null,
-      "news_title_ar": "",
-      "news_url": "",
-      "catalyst_ar": [],
-      "alert_ar": "زخم +7.5% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +8.1% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=TXG"
     },
     {
       "symbol": "PRGO",
       "name": "",
-      "last": 14.8,
-      "change_pct": 6.94,
-      "dollar_volume": 28999519.6,
-      "dollar_volume_label": "29.0M$",
-      "rvol": 1.98,
+      "last": 14.9,
+      "change_pct": 7.66,
+      "dollar_volume": 32963150.8,
+      "dollar_volume_label": "33.0M$",
+      "rvol": 1.95,
       "liq_grade_ar": "متوسط",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -456,35 +415,16 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +6.9% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +7.7% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PRGO"
-    },
-    {
-      "symbol": "CXW",
-      "name": "CoreCivic, Inc.",
-      "last": 34.12,
-      "change_pct": 5.7,
-      "dollar_volume": 19800961.96,
-      "dollar_volume_label": "19.8M$",
-      "rvol": null,
-      "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": false,
-      "news": null,
-      "news_title_ar": "",
-      "news_url": "",
-      "catalyst_ar": [],
-      "alert_ar": "زخم +5.7% · لا خبر رسمي مرفق بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=CXW"
     },
     {
       "symbol": "WRBY",
       "name": "Warby Parker Inc.",
-      "last": 24.45,
-      "change_pct": 4.71,
-      "dollar_volume": 26919914.55,
-      "dollar_volume_label": "26.9M$",
+      "last": 25.08,
+      "change_pct": 7.41,
+      "dollar_volume": 38021781.6,
+      "dollar_volume_label": "38.0M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -494,16 +434,54 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +4.7% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +7.4% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=WRBY"
     },
     {
-      "symbol": "ASST",
-      "name": "Strive, Inc.",
-      "last": 30.29,
-      "change_pct": 4.48,
-      "dollar_volume": 125888935.38,
-      "dollar_volume_label": "125.9M$",
+      "symbol": "LIFE",
+      "name": "",
+      "last": 36.26,
+      "change_pct": 6.92,
+      "dollar_volume": 37767044.76,
+      "dollar_volume_label": "37.8M$",
+      "rvol": 1.54,
+      "liq_grade_ar": "قوي",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "has_news": false,
+      "news": null,
+      "news_title_ar": "",
+      "news_url": "",
+      "catalyst_ar": [],
+      "alert_ar": "زخم +6.9% · لا خبر رسمي مرفق بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=LIFE"
+    },
+    {
+      "symbol": "GRAL",
+      "name": "",
+      "last": 115.94,
+      "change_pct": 6.84,
+      "dollar_volume": 212288918.02,
+      "dollar_volume_label": "212.3M$",
+      "rvol": 3.98,
+      "liq_grade_ar": "قوي",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "has_news": false,
+      "news": null,
+      "news_title_ar": "",
+      "news_url": "",
+      "catalyst_ar": [],
+      "alert_ar": "زخم +6.8% · لا خبر رسمي مرفق بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=GRAL"
+    },
+    {
+      "symbol": "CXW",
+      "name": "CoreCivic, Inc.",
+      "last": 34.35,
+      "change_pct": 6.43,
+      "dollar_volume": 23546615.85,
+      "dollar_volume_label": "23.5M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -513,8 +491,8 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +4.5% · لا خبر رسمي مرفق بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=ASST"
+      "alert_ar": "زخم +6.4% · لا خبر رسمي مرفق بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=CXW"
     }
   ],
   "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
@@ -534,39 +512,39 @@
         "تقلّب عالي",
         "زخم اتجاه الافتتاح"
       ],
-      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.20%) | شمعة: دوجي: دوجي | تقلّب عالي: ATR% 3.5 | زخم اتجاه الافتتاح: اتجاه الفجوة مستمر",
-      "entry": 240.52,
+      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.05%) | شمعة: دوجي: دوجي | تقلّب عالي: ATR% 3.5 | زخم اتجاه الافتتاح: اتجاه الفجوة مستمر",
+      "entry": 240.15,
       "stop": 220.83,
-      "stop_alt": 239.32,
-      "target": 275.96,
-      "target_partial": 258.24,
-      "target_final": 275.96,
-      "trail_offset": 6.89,
+      "stop_alt": 238.95,
+      "target": 274.93,
+      "target_partial": 257.54,
+      "target_final": 274.93,
+      "trail_offset": 6.76,
       "shares": 6,
-      "risk_sar": 443.02,
+      "risk_sar": 434.7,
       "allowed": false,
-      "change_pct": 1.24,
-      "last": 240.52,
+      "change_pct": 1.08,
+      "last": 240.15,
       "session_phase": "regular",
       "liquidity": {
-        "rvol": 0.23,
-        "rvol_pace": 0.6,
-        "volume": 3874100.0,
-        "avg_volume_20": 16656575.0,
-        "dollar_volume": 931798532.0,
-        "avg_dollar_volume": 4006239419.0,
-        "dollar_volume_label": "931.8M$",
+        "rvol": 0.25,
+        "rvol_pace": 0.56,
+        "volume": 4129402.0,
+        "avg_volume_20": 16669340.1,
+        "dollar_volume": 991675890.3,
+        "avg_dollar_volume": 4003142025.01,
+        "dollar_volume_label": "991.7M$",
         "avg_dollar_volume_label": "4.0B$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×0.2 · وتيرة ×0.6 · اليوم 931.8M$ · متوسط 4.0B$"
+        "label": "RVOL ×0.2 · وتيرة ×0.6 · اليوم 991.7M$ · متوسط 4.0B$"
       },
-      "rvol": 0.23,
-      "rvol_pace": 0.6,
+      "rvol": 0.25,
+      "rvol_pace": 0.56,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 3.49,
-      "flow_score": 3.31,
+      "flow_score": 2.7,
       "flow_ok": true,
       "smart": {
         "confidence": "B",
@@ -600,21 +578,21 @@
         "vwap": {
           "active": true,
           "side": "near",
-          "dist_pct": 0.2,
-          "ar": "قرب VWAP (+0.20%) — منطقة قرار"
+          "dist_pct": 0.05,
+          "ar": "قرب VWAP (+0.05%) — منطقة قرار"
         },
         "candle": {
           "name": "دوجي",
           "draw": "➕ ─●─",
           "ar": "شمعة: دوجي ➕ ─●─"
         },
-        "stop_alt": 239.32,
+        "stop_alt": 238.95,
         "stop_main": 220.83,
-        "stop_plan_ar": "وقف بديل≈ $239.32 (ATR) · الرئيسي≈ $220.83",
-        "target_partial": 258.24,
-        "target_final": 275.96,
-        "trail_offset": 6.89,
-        "partial_plan_ar": "جني 50% عند $258.24 ثم وقف متحرك ≈ $6.89 تحت القمة",
+        "stop_plan_ar": "وقف بديل≈ $238.95 (ATR) · الرئيسي≈ $220.83",
+        "target_partial": 257.54,
+        "target_final": 274.93,
+        "trail_offset": 6.76,
+        "partial_plan_ar": "جني 50% عند $257.54 ثم وقف متحرك ≈ $6.76 تحت القمة",
         "qqq": {
           "active": false,
           "corr": 0.19
@@ -627,12 +605,12 @@
         "exclude_reason": "",
         "notes": [
           "الصعود لم يثبت فوق الافتتاح — انتظر تأكيد دقيقة",
-          "قرب VWAP (+0.20%) — منطقة قرار",
+          "قرب VWAP (+0.05%) — منطقة قرار",
           "شمعة: دوجي ➕ ─●─",
-          "وقف بديل≈ $239.32 (ATR) · الرئيسي≈ $220.83",
-          "جني 50% عند $258.24 ثم وقف متحرك ≈ $6.89 تحت القمة"
+          "وقف بديل≈ $238.95 (ATR) · الرئيسي≈ $220.83",
+          "جني 50% عند $257.54 ثم وقف متحرك ≈ $6.76 تحت القمة"
         ],
-        "rvol": 0.23
+        "rvol": 0.25
       },
       "smart_tags": [
         {
@@ -658,10 +636,10 @@
       ],
       "smart_notes": [
         "الصعود لم يثبت فوق الافتتاح — انتظر تأكيد دقيقة",
-        "قرب VWAP (+0.20%) — منطقة قرار",
+        "قرب VWAP (+0.05%) — منطقة قرار",
         "شمعة: دوجي ➕ ─●─",
-        "وقف بديل≈ $239.32 (ATR) · الرئيسي≈ $220.83",
-        "جني 50% عند $258.24 ثم وقف متحرك ≈ $6.89 تحت القمة"
+        "وقف بديل≈ $238.95 (ATR) · الرئيسي≈ $220.83",
+        "جني 50% عند $257.54 ثم وقف متحرك ≈ $6.76 تحت القمة"
       ],
       "wait_1m_confirm": true,
       "fake_liquidity": false,
@@ -674,15 +652,15 @@
       "vwap": {
         "active": true,
         "side": "near",
-        "dist_pct": 0.2,
-        "ar": "قرب VWAP (+0.20%) — منطقة قرار"
+        "dist_pct": 0.05,
+        "ar": "قرب VWAP (+0.05%) — منطقة قرار"
       },
       "qqq": {
         "active": false,
         "corr": 0.19
       },
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRM",
-      "tg_share": "https://t.me/share/url?url=&text=CRM%20فكّر في شراء قصير المدى%20ثقة%20B%0Aالآن%20240.52%20دخول%20240.52%20وقف%20239.32%20هدف%20275.96%0Aسيولة%20قوي%20وتيرة%20x0.6%20زخم%20+1.24%"
+      "tg_share": "https://t.me/share/url?url=&text=CRM%20فكّر في شراء قصير المدى%20ثقة%20B%0Aالآن%20240.15%20دخول%20240.15%20وقف%20238.95%20هدف%20274.93%0Aسيولة%20قوي%20وتيرة%20x0.56%20زخم%20+1.08%"
     },
     {
       "symbol": "ASST",
@@ -698,39 +676,39 @@
         "ترتيب متوسطات صاعد",
         "تقلّب عالي"
       ],
-      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.6% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | تقلّب عالي: ATR% 6.9",
-      "entry": 30.36,
+      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.6% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | تقلّب عالي: ATR% 6.8",
+      "entry": 30.42,
       "stop": 21.73,
-      "stop_alt": 30.21,
-      "target": 45.89,
-      "target_partial": 38.12,
-      "target_final": 45.89,
-      "trail_offset": 3.02,
+      "stop_alt": 30.27,
+      "target": 46.06,
+      "target_partial": 38.24,
+      "target_final": 46.06,
+      "trail_offset": 3.04,
       "shares": 13,
-      "risk_sar": 420.71,
+      "risk_sar": 423.64,
       "allowed": false,
-      "change_pct": 4.73,
-      "last": 30.36,
+      "change_pct": 4.93,
+      "last": 30.42,
       "session_phase": "regular",
       "liquidity": {
-        "rvol": 0.39,
-        "rvol_pace": 1.01,
-        "volume": 4158799.0,
-        "avg_volume_20": 10626384.95,
-        "dollar_volume": 126261137.64,
-        "avg_dollar_volume": 322617047.08,
-        "dollar_volume_label": "126.3M$",
-        "avg_dollar_volume_label": "322.6M$",
+        "rvol": 0.43,
+        "rvol_pace": 0.97,
+        "volume": 4583789.0,
+        "avg_volume_20": 10647634.45,
+        "dollar_volume": 139438861.38,
+        "avg_dollar_volume": 323901039.97,
+        "dollar_volume_label": "139.4M$",
+        "avg_dollar_volume_label": "323.9M$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×0.4 · وتيرة ×1.0 · اليوم 126.3M$ · متوسط 322.6M$"
+        "label": "RVOL ×0.4 · وتيرة ×1.0 · اليوم 139.4M$ · متوسط 323.9M$"
       },
-      "rvol": 0.39,
-      "rvol_pace": 1.01,
+      "rvol": 0.43,
+      "rvol_pace": 0.97,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 6.85,
-      "flow_score": 11.69,
+      "flow_score": 12.29,
       "flow_ok": true,
       "smart": {
         "confidence": "C",
@@ -758,7 +736,7 @@
         "fake_liquidity_ar": "",
         "vwap": {
           "active": false,
-          "dist_pct": 1.4,
+          "dist_pct": 1.58,
           "side": "ok"
         },
         "candle": {
@@ -766,16 +744,16 @@
           "draw": "📗 █▼→██",
           "ar": "شمعة: ابتلاع صاعد 📗 █▼→██"
         },
-        "stop_alt": 30.21,
+        "stop_alt": 30.27,
         "stop_main": 21.73,
-        "stop_plan_ar": "وقف بديل≈ $30.21 (ATR) · الرئيسي≈ $21.73",
-        "target_partial": 38.12,
-        "target_final": 45.89,
-        "trail_offset": 3.02,
-        "partial_plan_ar": "جني 50% عند $38.12 ثم وقف متحرك ≈ $3.02 تحت القمة",
+        "stop_plan_ar": "وقف بديل≈ $30.27 (ATR) · الرئيسي≈ $21.73",
+        "target_partial": 38.24,
+        "target_final": 46.06,
+        "trail_offset": 3.04,
+        "partial_plan_ar": "جني 50% عند $38.24 ثم وقف متحرك ≈ $3.04 تحت القمة",
         "qqq": {
           "active": false,
-          "corr": 0.32
+          "corr": 0.34
         },
         "near_earnings": false,
         "earnings_ar": "",
@@ -786,10 +764,10 @@
         "notes": [
           "تحرك سريع بسيولة عادية — انتظر تأكيد دقيقة",
           "شمعة: ابتلاع صاعد 📗 █▼→██",
-          "وقف بديل≈ $30.21 (ATR) · الرئيسي≈ $21.73",
-          "جني 50% عند $38.12 ثم وقف متحرك ≈ $3.02 تحت القمة"
+          "وقف بديل≈ $30.27 (ATR) · الرئيسي≈ $21.73",
+          "جني 50% عند $38.24 ثم وقف متحرك ≈ $3.04 تحت القمة"
         ],
-        "rvol": 0.39
+        "rvol": 0.43
       },
       "smart_tags": [
         {
@@ -811,8 +789,8 @@
       "smart_notes": [
         "تحرك سريع بسيولة عادية — انتظر تأكيد دقيقة",
         "شمعة: ابتلاع صاعد 📗 █▼→██",
-        "وقف بديل≈ $30.21 (ATR) · الرئيسي≈ $21.73",
-        "جني 50% عند $38.12 ثم وقف متحرك ≈ $3.02 تحت القمة"
+        "وقف بديل≈ $30.27 (ATR) · الرئيسي≈ $21.73",
+        "جني 50% عند $38.24 ثم وقف متحرك ≈ $3.04 تحت القمة"
       ],
       "wait_1m_confirm": true,
       "fake_liquidity": false,
@@ -824,421 +802,66 @@
       },
       "vwap": {
         "active": false,
-        "dist_pct": 1.4,
+        "dist_pct": 1.58,
         "side": "ok"
       },
       "qqq": {
         "active": false,
-        "corr": 0.32
+        "corr": 0.34
       },
       "tv_url": "https://www.tradingview.com/chart/?symbol=ASST",
-      "tg_share": "https://t.me/share/url?url=&text=ASST%20راقب دخول%20ثقة%20C%0Aالآن%2030.36%20دخول%2030.36%20وقف%2030.21%20هدف%2045.89%0Aسيولة%20قوي%20وتيرة%20x1.01%20زخم%20+4.73%"
+      "tg_share": "https://t.me/share/url?url=&text=ASST%20راقب دخول%20ثقة%20C%0Aالآن%2030.42%20دخول%2030.42%20وقف%2030.27%20هدف%2046.06%0Aسيولة%20قوي%20وتيرة%20x0.97%20زخم%20+4.93%"
     },
     {
-      "symbol": "NBIS",
-      "action": "فكّر في شراء قصير المدى",
-      "action_key": "CONSIDER_LONG",
-      "side": "long",
-      "score_100": 79,
-      "confidence": "C",
-      "confidence_ar": "منتهية / ضعيفة",
-      "urgent": false,
-      "strategies": [
-        "افتتاح فجوة صاعدة",
-        "ترتيب متوسطات صاعد",
-        "RSI متوازن",
-        "تقلّب عالي"
-      ],
-      "reason": "افتتاح فجوة صاعدة: فجوة +2.4% مع ثبات فوق الافتتاح | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 62 | تقلّب عالي: ATR% 6.6 | زخم اتجاه الافتتاح: اتجاه الفجوة مستمر",
-      "entry": 241.86,
-      "stop": 195.53,
-      "stop_alt": 240.65,
-      "target": 325.25,
-      "target_partial": 283.56,
-      "target_final": 325.25,
-      "trail_offset": 16.22,
-      "shares": 2,
-      "risk_sar": 347.48,
-      "allowed": false,
-      "change_pct": 6.73,
-      "last": 241.86,
-      "session_phase": "regular",
-      "liquidity": {
-        "rvol": 0.9,
-        "rvol_pace": 2.31,
-        "volume": 13285789.0,
-        "avg_volume_20": 14844429.45,
-        "dollar_volume": 3213300927.54,
-        "avg_dollar_volume": 3590273706.78,
-        "dollar_volume_label": "3.2B$",
-        "avg_dollar_volume_label": "3.6B$",
-        "grade": "strong",
-        "grade_ar": "قوي",
-        "label": "RVOL ×0.9 · وتيرة ×2.3 · اليوم 3.2B$ · متوسط 3.6B$"
-      },
-      "rvol": 0.9,
-      "rvol_pace": 2.31,
-      "liq_grade": "strong",
-      "liq_grade_ar": "قوي",
-      "atr_pct": 6.63,
-      "flow_score": 76.79,
-      "flow_ok": true,
-      "smart": {
-        "confidence": "C",
-        "confidence_ar": "منتهية / ضعيفة",
-        "tags": [
-          {
-            "key": "confidence",
-            "ar": "ثقة C",
-            "tone": "bad"
-          },
-          {
-            "key": "wait_1m",
-            "ar": "انتظار تأكيد دقيقة",
-            "tone": "warn"
-          },
-          {
-            "key": "vwap",
-            "ar": "VWAP",
-            "tone": "bad"
-          },
-          {
-            "key": "candle",
-            "ar": "ابتلاع صاعد",
-            "tone": "ok"
-          },
-          {
-            "key": "expired",
-            "ar": "الفرصة انتهت",
-            "tone": "bad"
-          }
-        ],
-        "wait_1m_confirm": true,
-        "wait_1m_ar": "تحرك سريع بسيولة عادية — انتظر تأكيد دقيقة",
-        "fake_liquidity": false,
-        "fake_liquidity_ar": "",
-        "vwap": {
-          "active": true,
-          "side": "stretched",
-          "dist_pct": 4.98,
-          "ar": "ممتد فوق VWAP +4.98% — لا تطارد"
-        },
-        "candle": {
-          "name": "ابتلاع صاعد",
-          "draw": "📗 █▼→██",
-          "ar": "شمعة: ابتلاع صاعد 📗 █▼→██"
-        },
-        "stop_alt": 240.65,
-        "stop_main": 195.53,
-        "stop_plan_ar": "وقف بديل≈ $240.65 (ATR) · الرئيسي≈ $195.53",
-        "target_partial": 283.56,
-        "target_final": 325.25,
-        "trail_offset": 16.22,
-        "partial_plan_ar": "جني 50% عند $283.56 ثم وقف متحرك ≈ $16.22 تحت القمة",
-        "qqq": {
-          "active": false,
-          "corr": 0.51
-        },
-        "near_earnings": false,
-        "earnings_ar": "",
-        "expired": true,
-        "expired_ar": "ممتد جداً فوق VWAP — لا تدخل متأخراً",
-        "exclude": false,
-        "exclude_reason": "",
-        "notes": [
-          "تحرك سريع بسيولة عادية — انتظر تأكيد دقيقة",
-          "ممتد فوق VWAP +4.98% — لا تطارد",
-          "ممتد جداً فوق VWAP — لا تدخل متأخراً",
-          "شمعة: ابتلاع صاعد 📗 █▼→██",
-          "وقف بديل≈ $240.65 (ATR) · الرئيسي≈ $195.53",
-          "جني 50% عند $283.56 ثم وقف متحرك ≈ $16.22 تحت القمة"
-        ],
-        "rvol": 0.9
-      },
-      "smart_tags": [
-        {
-          "key": "confidence",
-          "ar": "ثقة C",
-          "tone": "bad"
-        },
-        {
-          "key": "wait_1m",
-          "ar": "انتظار تأكيد دقيقة",
-          "tone": "warn"
-        },
-        {
-          "key": "vwap",
-          "ar": "VWAP",
-          "tone": "bad"
-        },
-        {
-          "key": "candle",
-          "ar": "ابتلاع صاعد",
-          "tone": "ok"
-        },
-        {
-          "key": "expired",
-          "ar": "الفرصة انتهت",
-          "tone": "bad"
-        }
-      ],
-      "smart_notes": [
-        "تحرك سريع بسيولة عادية — انتظر تأكيد دقيقة",
-        "ممتد فوق VWAP +4.98% — لا تطارد",
-        "ممتد جداً فوق VWAP — لا تدخل متأخراً",
-        "شمعة: ابتلاع صاعد 📗 █▼→██",
-        "وقف بديل≈ $240.65 (ATR) · الرئيسي≈ $195.53",
-        "جني 50% عند $283.56 ثم وقف متحرك ≈ $16.22 تحت القمة"
-      ],
-      "wait_1m_confirm": true,
-      "fake_liquidity": false,
-      "expired": true,
-      "candle": {
-        "name": "ابتلاع صاعد",
-        "draw": "📗 █▼→██",
-        "ar": "شمعة: ابتلاع صاعد 📗 █▼→██"
-      },
-      "vwap": {
-        "active": true,
-        "side": "stretched",
-        "dist_pct": 4.98,
-        "ar": "ممتد فوق VWAP +4.98% — لا تطارد"
-      },
-      "qqq": {
-        "active": false,
-        "corr": 0.51
-      },
-      "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS",
-      "tg_share": "https://t.me/share/url?url=&text=NBIS%20فكّر في شراء قصير المدى%20ثقة%20C%0Aالآن%20241.86%20دخول%20241.86%20وقف%20240.65%20هدف%20325.25%0Aسيولة%20قوي%20وتيرة%20x2.31%20زخم%20+6.73%"
-    },
-    {
-      "symbol": "TWST",
-      "action": "فكّر في شراء قصير المدى",
-      "action_key": "CONSIDER_LONG",
-      "side": "long",
-      "score_100": 68,
-      "confidence": "C",
-      "confidence_ar": "منتهية / ضعيفة",
-      "urgent": false,
-      "strategies": [
-        "ترتيب متوسطات صاعد",
-        "شمعة: ابتلاع صاعد",
-        "تقلّب عالي"
-      ],
-      "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | شمعة: ابتلاع صاعد: ابتلاع صاعد | تقلّب عالي: ATR% 6.4",
-      "entry": 170.35,
-      "stop": 120.94,
-      "stop_alt": 169.5,
-      "target": 259.29,
-      "target_partial": 214.82,
-      "target_final": 259.29,
-      "trail_offset": 17.29,
-      "shares": 2,
-      "risk_sar": 370.57,
-      "allowed": false,
-      "change_pct": 7.48,
-      "last": 170.35,
-      "session_phase": "regular",
-      "liquidity": {
-        "rvol": 0.92,
-        "rvol_pace": 2.37,
-        "volume": 1598893.0,
-        "avg_volume_20": 1741089.65,
-        "dollar_volume": 272371422.55,
-        "avg_dollar_volume": 296594621.88,
-        "dollar_volume_label": "272.4M$",
-        "avg_dollar_volume_label": "296.6M$",
-        "grade": "strong",
-        "grade_ar": "قوي",
-        "label": "RVOL ×0.9 · وتيرة ×2.4 · اليوم 272.4M$ · متوسط 296.6M$"
-      },
-      "rvol": 0.92,
-      "rvol_pace": 2.37,
-      "liq_grade": "strong",
-      "liq_grade_ar": "قوي",
-      "atr_pct": 6.39,
-      "flow_score": 66.95,
-      "flow_ok": true,
-      "smart": {
-        "confidence": "C",
-        "confidence_ar": "منتهية / ضعيفة",
-        "tags": [
-          {
-            "key": "confidence",
-            "ar": "ثقة C",
-            "tone": "bad"
-          },
-          {
-            "key": "wait_1m",
-            "ar": "انتظار تأكيد دقيقة",
-            "tone": "warn"
-          },
-          {
-            "key": "vwap",
-            "ar": "VWAP",
-            "tone": "bad"
-          },
-          {
-            "key": "candle",
-            "ar": "ابتلاع صاعد",
-            "tone": "ok"
-          },
-          {
-            "key": "expired",
-            "ar": "الفرصة انتهت",
-            "tone": "bad"
-          }
-        ],
-        "wait_1m_confirm": true,
-        "wait_1m_ar": "تحرك سريع بسيولة عادية — انتظر تأكيد دقيقة",
-        "fake_liquidity": false,
-        "fake_liquidity_ar": "",
-        "vwap": {
-          "active": true,
-          "side": "stretched",
-          "dist_pct": 5.08,
-          "ar": "ممتد فوق VWAP +5.08% — لا تطارد"
-        },
-        "candle": {
-          "name": "ابتلاع صاعد",
-          "draw": "📗 █▼→██",
-          "ar": "شمعة: ابتلاع صاعد 📗 █▼→██"
-        },
-        "stop_alt": 169.5,
-        "stop_main": 120.94,
-        "stop_plan_ar": "وقف بديل≈ $169.5 (ATR) · الرئيسي≈ $120.94",
-        "target_partial": 214.82,
-        "target_final": 259.29,
-        "trail_offset": 17.29,
-        "partial_plan_ar": "جني 50% عند $214.82 ثم وقف متحرك ≈ $17.29 تحت القمة",
-        "qqq": {
-          "active": false,
-          "corr": 0.21
-        },
-        "near_earnings": false,
-        "earnings_ar": "",
-        "expired": true,
-        "expired_ar": "ممتد جداً فوق VWAP — لا تدخل متأخراً",
-        "exclude": false,
-        "exclude_reason": "",
-        "notes": [
-          "تحرك سريع بسيولة عادية — انتظر تأكيد دقيقة",
-          "ممتد فوق VWAP +5.08% — لا تطارد",
-          "ممتد جداً فوق VWAP — لا تدخل متأخراً",
-          "شمعة: ابتلاع صاعد 📗 █▼→██",
-          "وقف بديل≈ $169.5 (ATR) · الرئيسي≈ $120.94",
-          "جني 50% عند $214.82 ثم وقف متحرك ≈ $17.29 تحت القمة"
-        ],
-        "rvol": 0.92
-      },
-      "smart_tags": [
-        {
-          "key": "confidence",
-          "ar": "ثقة C",
-          "tone": "bad"
-        },
-        {
-          "key": "wait_1m",
-          "ar": "انتظار تأكيد دقيقة",
-          "tone": "warn"
-        },
-        {
-          "key": "vwap",
-          "ar": "VWAP",
-          "tone": "bad"
-        },
-        {
-          "key": "candle",
-          "ar": "ابتلاع صاعد",
-          "tone": "ok"
-        },
-        {
-          "key": "expired",
-          "ar": "الفرصة انتهت",
-          "tone": "bad"
-        }
-      ],
-      "smart_notes": [
-        "تحرك سريع بسيولة عادية — انتظر تأكيد دقيقة",
-        "ممتد فوق VWAP +5.08% — لا تطارد",
-        "ممتد جداً فوق VWAP — لا تدخل متأخراً",
-        "شمعة: ابتلاع صاعد 📗 █▼→██",
-        "وقف بديل≈ $169.5 (ATR) · الرئيسي≈ $120.94",
-        "جني 50% عند $214.82 ثم وقف متحرك ≈ $17.29 تحت القمة"
-      ],
-      "wait_1m_confirm": true,
-      "fake_liquidity": false,
-      "expired": true,
-      "candle": {
-        "name": "ابتلاع صاعد",
-        "draw": "📗 █▼→██",
-        "ar": "شمعة: ابتلاع صاعد 📗 █▼→██"
-      },
-      "vwap": {
-        "active": true,
-        "side": "stretched",
-        "dist_pct": 5.08,
-        "ar": "ممتد فوق VWAP +5.08% — لا تطارد"
-      },
-      "qqq": {
-        "active": false,
-        "corr": 0.21
-      },
-      "tv_url": "https://www.tradingview.com/chart/?symbol=TWST",
-      "tg_share": "https://t.me/share/url?url=&text=TWST%20فكّر في شراء قصير المدى%20ثقة%20C%0Aالآن%20170.35%20دخول%20170.35%20وقف%20169.5%20هدف%20259.29%0Aسيولة%20قوي%20وتيرة%20x2.37%20زخم%20+7.48%"
-    },
-    {
-      "symbol": "CDNA",
+      "symbol": "PL",
       "action": "راقب دخول",
       "action_key": "WATCH_ENTRY",
       "side": "long",
-      "score_100": 64,
+      "score_100": 61,
       "confidence": "C",
-      "confidence_ar": "منتهية / ضعيفة",
+      "confidence_ar": "ثقة منخفضة — راقب فقط",
       "urgent": false,
       "strategies": [
-        "ترتيب متوسطات صاعد",
-        "RSI تشبع شرائي",
-        "اختبار/كسر مقاومة",
+        "شمعة: ابتلاع صاعد",
         "تقلّب عالي"
       ],
-      "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI تشبع شرائي: RSI 89 | اختبار/كسر مقاومة: مقاومة≈$57.33 | تقلّب عالي: ATR% 3.8 | زخم اتجاه الافتتاح: اتجاه الفجوة مستمر",
-      "entry": 59.31,
-      "stop": 47.77,
-      "stop_alt": 59.01,
-      "target": 80.08,
-      "target_partial": 69.69,
-      "target_final": 80.08,
-      "trail_offset": 4.04,
-      "shares": 10,
-      "risk_sar": 432.75,
+      "reason": "شمعة: ابتلاع صاعد: ابتلاع صاعد | تقلّب عالي: ATR% 5.7",
+      "entry": 17.16,
+      "stop": 15.74,
+      "stop_alt": 17.07,
+      "target": 20.71,
+      "target_partial": 18.94,
+      "target_final": 20.71,
+      "trail_offset": 0.5,
+      "shares": 84,
+      "risk_sar": 447.3,
       "allowed": false,
-      "change_pct": 9.21,
-      "last": 59.31,
+      "change_pct": 4.73,
+      "last": 17.16,
       "session_phase": "regular",
       "liquidity": {
-        "rvol": 0.66,
-        "rvol_pace": 1.71,
-        "volume": 728648.0,
-        "avg_volume_20": 1099972.4,
-        "dollar_volume": 43216112.88,
-        "avg_dollar_volume": 65239363.04,
-        "dollar_volume_label": "43.2M$",
-        "avg_dollar_volume_label": "65.2M$",
+        "rvol": 0.51,
+        "rvol_pace": 1.15,
+        "volume": 6098597.0,
+        "avg_volume_20": 11951844.85,
+        "dollar_volume": 104621431.54,
+        "avg_dollar_volume": 205033898.4,
+        "dollar_volume_label": "104.6M$",
+        "avg_dollar_volume_label": "205.0M$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×0.7 · وتيرة ×1.7 · اليوم 43.2M$ · متوسط 65.2M$"
+        "label": "RVOL ×0.5 · وتيرة ×1.2 · اليوم 104.6M$ · متوسط 205.0M$"
       },
-      "rvol": 0.66,
-      "rvol_pace": 1.71,
+      "rvol": 0.51,
+      "rvol_pace": 1.15,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
-      "atr_pct": 3.79,
-      "flow_score": 24.39,
+      "atr_pct": 5.66,
+      "flow_score": 12.09,
       "flow_ok": true,
       "smart": {
         "confidence": "C",
-        "confidence_ar": "منتهية / ضعيفة",
+        "confidence_ar": "ثقة منخفضة — راقب فقط",
         "tags": [
           {
             "key": "confidence",
@@ -1259,11 +882,6 @@
             "key": "candle",
             "ar": "ابتلاع صاعد",
             "tone": "ok"
-          },
-          {
-            "key": "expired",
-            "ar": "الفرصة انتهت",
-            "tone": "bad"
           }
         ],
         "wait_1m_confirm": true,
@@ -1273,40 +891,39 @@
         "vwap": {
           "active": true,
           "side": "stretched",
-          "dist_pct": 8.02,
-          "ar": "ممتد فوق VWAP +8.02% — لا تطارد"
+          "dist_pct": 2.28,
+          "ar": "ممتد فوق VWAP +2.28% — لا تطارد"
         },
         "candle": {
           "name": "ابتلاع صاعد",
           "draw": "📗 █▼→██",
           "ar": "شمعة: ابتلاع صاعد 📗 █▼→██"
         },
-        "stop_alt": 59.01,
-        "stop_main": 47.77,
-        "stop_plan_ar": "وقف بديل≈ $59.01 (ATR) · الرئيسي≈ $47.77",
-        "target_partial": 69.69,
-        "target_final": 80.08,
-        "trail_offset": 4.04,
-        "partial_plan_ar": "جني 50% عند $69.69 ثم وقف متحرك ≈ $4.04 تحت القمة",
+        "stop_alt": 17.07,
+        "stop_main": 15.74,
+        "stop_plan_ar": "وقف بديل≈ $17.07 (ATR) · الرئيسي≈ $15.74",
+        "target_partial": 18.94,
+        "target_final": 20.71,
+        "trail_offset": 0.5,
+        "partial_plan_ar": "جني 50% عند $18.94 ثم وقف متحرك ≈ $0.5 تحت القمة",
         "qqq": {
           "active": false,
-          "corr": 0.06
+          "corr": 0.4
         },
         "near_earnings": false,
         "earnings_ar": "",
-        "expired": true,
-        "expired_ar": "امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
+        "expired": false,
+        "expired_ar": "",
         "exclude": false,
         "exclude_reason": "",
         "notes": [
           "تحرك سريع بسيولة عادية — انتظر تأكيد دقيقة",
-          "ممتد فوق VWAP +8.02% — لا تطارد",
-          "امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
+          "ممتد فوق VWAP +2.28% — لا تطارد",
           "شمعة: ابتلاع صاعد 📗 █▼→██",
-          "وقف بديل≈ $59.01 (ATR) · الرئيسي≈ $47.77",
-          "جني 50% عند $69.69 ثم وقف متحرك ≈ $4.04 تحت القمة"
+          "وقف بديل≈ $17.07 (ATR) · الرئيسي≈ $15.74",
+          "جني 50% عند $18.94 ثم وقف متحرك ≈ $0.5 تحت القمة"
         ],
-        "rvol": 0.66
+        "rvol": 0.51
       },
       "smart_tags": [
         {
@@ -1328,24 +945,18 @@
           "key": "candle",
           "ar": "ابتلاع صاعد",
           "tone": "ok"
-        },
-        {
-          "key": "expired",
-          "ar": "الفرصة انتهت",
-          "tone": "bad"
         }
       ],
       "smart_notes": [
         "تحرك سريع بسيولة عادية — انتظر تأكيد دقيقة",
-        "ممتد فوق VWAP +8.02% — لا تطارد",
-        "امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
+        "ممتد فوق VWAP +2.28% — لا تطارد",
         "شمعة: ابتلاع صاعد 📗 █▼→██",
-        "وقف بديل≈ $59.01 (ATR) · الرئيسي≈ $47.77",
-        "جني 50% عند $69.69 ثم وقف متحرك ≈ $4.04 تحت القمة"
+        "وقف بديل≈ $17.07 (ATR) · الرئيسي≈ $15.74",
+        "جني 50% عند $18.94 ثم وقف متحرك ≈ $0.5 تحت القمة"
       ],
       "wait_1m_confirm": true,
       "fake_liquidity": false,
-      "expired": true,
+      "expired": false,
       "candle": {
         "name": "ابتلاع صاعد",
         "draw": "📗 █▼→██",
@@ -1354,34 +965,64 @@
       "vwap": {
         "active": true,
         "side": "stretched",
-        "dist_pct": 8.02,
-        "ar": "ممتد فوق VWAP +8.02% — لا تطارد"
+        "dist_pct": 2.28,
+        "ar": "ممتد فوق VWAP +2.28% — لا تطارد"
       },
       "qqq": {
         "active": false,
-        "corr": 0.06
+        "corr": 0.4
       },
-      "tv_url": "https://www.tradingview.com/chart/?symbol=CDNA",
-      "tg_share": "https://t.me/share/url?url=&text=CDNA%20راقب دخول%20ثقة%20C%0Aالآن%2059.31%20دخول%2059.31%20وقف%2059.01%20هدف%2080.08%0Aسيولة%20قوي%20وتيرة%20x1.71%20زخم%20+9.21%"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=PL",
+      "tg_share": "https://t.me/share/url?url=&text=PL%20راقب دخول%20ثقة%20C%0Aالآن%2017.16%20دخول%2017.16%20وقف%2017.07%20هدف%2020.71%0Aسيولة%20قوي%20وتيرة%20x1.15%20زخم%20+4.73%"
     }
   ],
-  "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · لا مطاردة الممتد",
+  "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
   "opps_rejected_slow": [
-    "PLTR:زخم ضعيف (+0.03% < 0.45%)",
-    "CXW:وتيرة حجم منخفضة ×0.80 (RVOL خام ×0.31)",
-    "NVDA:زخم ضعيف (-1.37% < 0.45%)"
+    "P:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "TWST:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "NBIS:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "META:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "JPM:زخم ضعيف (+0.00% < 0.45%)",
+    "BAC:زخم ضعيف (+0.22% < 0.45%)",
+    "RKLB:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "CXW:وتيرة حجم منخفضة ×0.82 (RVOL خام ×0.37)",
+    "BLLN:امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
+    "AAPL:زخم ضعيف (+0.21% < 0.45%)",
+    "CRL:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "ILMN:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "TXG:امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
+    "GRAL:امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
+    "AXTI:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "CDNA:امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
+    "UBER:زخم ضعيف (+0.10% < 0.45%)",
+    "IWM:زخم ضعيف (-0.14% < 0.45%)",
+    "PRGO:ممتد جداً فوق VWAP — لا تدخل متأخراً"
   ],
   "gainers": [
     {
+      "symbol": "P",
+      "name": "Everpure, Inc.",
+      "last": 129.9,
+      "change_pct": 18.47,
+      "ref": 109.65,
+      "rth_close": 129.9,
+      "volume": 6710109.0,
+      "dollar_volume": 871643159.1,
+      "dollar_volume_label": "871.6M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=P"
+    },
+    {
       "symbol": "CDNA",
       "name": "CareDx, Inc.",
-      "last": 59.24,
-      "change_pct": 9.08,
+      "last": 59.76,
+      "change_pct": 10.03,
       "ref": 54.31,
-      "rth_close": 59.24,
-      "volume": 728569.0,
-      "dollar_volume": 43160427.56,
-      "dollar_volume_label": "43.2M$",
+      "rth_close": 59.76,
+      "volume": 820102.0,
+      "dollar_volume": 49009295.52,
+      "dollar_volume_label": "49.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CDNA"
@@ -1389,13 +1030,13 @@
     {
       "symbol": "TWST",
       "name": "Twist Bioscience Corporation",
-      "last": 169.2,
-      "change_pct": 6.75,
+      "last": 171.68,
+      "change_pct": 8.32,
       "ref": 158.5,
-      "rth_close": 169.2,
-      "volume": 1598801.0,
-      "dollar_volume": 270517129.2,
-      "dollar_volume_label": "270.5M$",
+      "rth_close": 171.68,
+      "volume": 1734345.0,
+      "dollar_volume": 297752349.6,
+      "dollar_volume_label": "297.8M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=TWST"
@@ -1403,222 +1044,459 @@
     {
       "symbol": "NBIS",
       "name": "Nebius Group N.V.",
-      "last": 241.3,
-      "change_pct": 6.48,
+      "last": 244.88,
+      "change_pct": 8.06,
       "ref": 226.61,
-      "rth_close": 241.3,
-      "volume": 13281730.0,
-      "dollar_volume": 3204881449.0,
-      "dollar_volume_label": "3.2B$",
+      "rth_close": 244.88,
+      "volume": 14424168.0,
+      "dollar_volume": 3532190259.84,
+      "dollar_volume_label": "3.5B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
     },
     {
-      "symbol": "BLLN",
-      "name": "BillionToOne, Inc.",
-      "last": 121.58,
-      "change_pct": 6.26,
-      "ref": 114.42,
-      "rth_close": 121.58,
-      "volume": 386662.0,
-      "dollar_volume": 47010365.96,
-      "dollar_volume_label": "47.0M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=BLLN"
-    },
-    {
-      "symbol": "CXW",
-      "name": "CoreCivic, Inc.",
-      "last": 34.12,
-      "change_pct": 5.7,
-      "ref": 32.28,
-      "rth_close": 34.12,
-      "volume": 580333.0,
-      "dollar_volume": 19800961.96,
-      "dollar_volume_label": "19.8M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=CXW"
-    },
-    {
-      "symbol": "CRL",
-      "name": "Charles River Laboratories Inte",
-      "last": 292.35,
-      "change_pct": 5.41,
-      "ref": 277.33,
-      "rth_close": 292.35,
-      "volume": 478333.0,
-      "dollar_volume": 139840652.55,
-      "dollar_volume_label": "139.8M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=CRL"
-    },
-    {
       "symbol": "WRBY",
       "name": "Warby Parker Inc.",
-      "last": 24.45,
-      "change_pct": 4.71,
+      "last": 25.08,
+      "change_pct": 7.41,
       "ref": 23.35,
-      "rth_close": 24.45,
-      "volume": 1101019.0,
-      "dollar_volume": 26919914.55,
-      "dollar_volume_label": "26.9M$",
+      "rth_close": 25.08,
+      "volume": 1516020.0,
+      "dollar_volume": 38021781.6,
+      "dollar_volume_label": "38.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=WRBY"
     },
     {
-      "symbol": "ASST",
-      "name": "Strive, Inc.",
-      "last": 30.29,
-      "change_pct": 4.48,
-      "ref": 28.99,
-      "rth_close": 30.29,
-      "volume": 4156122.0,
-      "dollar_volume": 125888935.38,
-      "dollar_volume_label": "125.9M$",
+      "symbol": "BLLN",
+      "name": "BillionToOne, Inc.",
+      "last": 122.6,
+      "change_pct": 7.15,
+      "ref": 114.42,
+      "rth_close": 122.6,
+      "volume": 415268.0,
+      "dollar_volume": 50911856.8,
+      "dollar_volume_label": "50.9M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=ASST"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=BLLN"
+    },
+    {
+      "symbol": "CRL",
+      "name": "Charles River Laboratories Inte",
+      "last": 296.02,
+      "change_pct": 6.74,
+      "ref": 277.33,
+      "rth_close": 296.02,
+      "volume": 549651.0,
+      "dollar_volume": 162707689.02,
+      "dollar_volume_label": "162.7M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=CRL"
+    },
+    {
+      "symbol": "CXW",
+      "name": "CoreCivic, Inc.",
+      "last": 34.35,
+      "change_pct": 6.43,
+      "ref": 32.28,
+      "rth_close": 34.35,
+      "volume": 685491.0,
+      "dollar_volume": 23546615.85,
+      "dollar_volume_label": "23.5M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=CXW"
     },
     {
       "symbol": "VCYT",
       "name": "Veracyte, Inc.",
-      "last": 45.67,
-      "change_pct": 4.22,
+      "last": 46.32,
+      "change_pct": 5.71,
       "ref": 43.82,
-      "rth_close": 45.67,
-      "volume": 852594.0,
-      "dollar_volume": 38937967.98,
-      "dollar_volume_label": "38.9M$",
+      "rth_close": 46.32,
+      "volume": 1030830.0,
+      "dollar_volume": 47748045.6,
+      "dollar_volume_label": "47.7M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=VCYT"
     },
     {
-      "symbol": "SECZ",
-      "name": "Securitize Corp.",
-      "last": 14.83,
-      "change_pct": 3.27,
-      "ref": 14.36,
-      "rth_close": 14.83,
-      "volume": 5453676.0,
-      "dollar_volume": 80878015.08,
-      "dollar_volume_label": "80.9M$",
+      "symbol": "ASST",
+      "name": "Strive, Inc.",
+      "last": 30.36,
+      "change_pct": 4.73,
+      "ref": 28.99,
+      "rth_close": 30.36,
+      "volume": 4579715.0,
+      "dollar_volume": 139040147.4,
+      "dollar_volume_label": "139.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=ASST"
+    },
+    {
+      "symbol": "PL",
+      "name": "Planet Labs PBC",
+      "last": 17.16,
+      "change_pct": 4.73,
+      "ref": 16.38,
+      "rth_close": 17.16,
+      "volume": 6057392.0,
+      "dollar_volume": 103944846.72,
+      "dollar_volume_label": "103.9M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=PL"
+    },
+    {
+      "symbol": "ILMN",
+      "name": "Illumina, Inc.",
+      "last": 266.0,
+      "change_pct": 4.16,
+      "ref": 255.38,
+      "rth_close": 266.0,
+      "volume": 1251299.0,
+      "dollar_volume": 332845534.0,
+      "dollar_volume_label": "332.8M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=ILMN"
+    },
+    {
+      "symbol": "WGS",
+      "name": "GeneDx Holdings Corp.",
+      "last": 88.62,
+      "change_pct": 4.02,
+      "ref": 85.2,
+      "rth_close": 88.62,
+      "volume": 1002137.0,
+      "dollar_volume": 88809380.94,
+      "dollar_volume_label": "88.8M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=WGS"
+    },
+    {
+      "symbol": "KNF",
+      "name": "Knife Riv Holding Co.",
+      "last": 53.49,
+      "change_pct": 4.02,
+      "ref": 51.43,
+      "rth_close": 53.49,
+      "volume": 759083.0,
+      "dollar_volume": 40603349.67,
+      "dollar_volume_label": "40.6M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=KNF"
     },
     {
       "symbol": "LLY",
       "name": "Eli Lilly and Company",
-      "last": 1188.26,
-      "change_pct": 3.24,
+      "last": 1196.82,
+      "change_pct": 3.98,
       "ref": 1150.99,
-      "rth_close": 1188.26,
-      "volume": 1010091.0,
-      "dollar_volume": 1200250731.66,
-      "dollar_volume_label": "1.2B$",
+      "rth_close": 1196.82,
+      "volume": 1084458.0,
+      "dollar_volume": 1297901023.56,
+      "dollar_volume_label": "1.3B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=LLY"
     },
     {
-      "symbol": "BFH",
-      "name": "Bread Financial Holdings, Inc.",
-      "last": 102.36,
-      "change_pct": 3.2,
-      "ref": 99.19,
-      "rth_close": 102.36,
-      "volume": 294011.0,
-      "dollar_volume": 30094965.96,
-      "dollar_volume_label": "30.1M$",
+      "symbol": "GDDY",
+      "name": "GoDaddy Inc.",
+      "last": 100.03,
+      "change_pct": 3.79,
+      "ref": 96.38,
+      "rth_close": 100.03,
+      "volume": 6062709.0,
+      "dollar_volume": 606452781.27,
+      "dollar_volume_label": "606.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=BFH"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=GDDY"
     },
     {
-      "symbol": "CRGY",
-      "name": "Crescent Energy Company",
-      "last": 13.6,
-      "change_pct": 3.19,
-      "ref": 13.18,
-      "rth_close": 13.6,
-      "volume": 1373710.0,
-      "dollar_volume": 18682456.0,
-      "dollar_volume_label": "18.7M$",
+      "symbol": "RCL",
+      "name": "Royal Caribbean Cruises Ltd.",
+      "last": 238.99,
+      "change_pct": 3.77,
+      "ref": 230.3,
+      "rth_close": 238.99,
+      "volume": 1813249.0,
+      "dollar_volume": 433348378.51,
+      "dollar_volume_label": "433.3M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=CRGY"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=RCL"
     },
     {
-      "symbol": "MPC",
-      "name": "Marathon Petroleum Corporation",
-      "last": 400.67,
-      "change_pct": 3.16,
-      "ref": 388.38,
-      "rth_close": 400.67,
-      "volume": 583957.0,
-      "dollar_volume": 233974051.19,
-      "dollar_volume_label": "234.0M$",
+      "symbol": "UFPT",
+      "name": "UFP Technologies, Inc.",
+      "last": 298.12,
+      "change_pct": 3.74,
+      "ref": 287.38,
+      "rth_close": 298.12,
+      "volume": 56373.0,
+      "dollar_volume": 16805918.76,
+      "dollar_volume_label": "16.8M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=MPC"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=UFPT"
+    },
+    {
+      "symbol": "RL",
+      "name": "Ralph Lauren Corporation",
+      "last": 349.39,
+      "change_pct": 3.53,
+      "ref": 337.47,
+      "rth_close": 349.39,
+      "volume": 220992.0,
+      "dollar_volume": 77212394.88,
+      "dollar_volume_label": "77.2M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=RL"
     }
   ],
   "gainers_min_price": 5.0,
   "gainers_session_ar": "الجلسة الرسمية الآن",
   "movers": [
     {
-      "symbol": "CDNA",
-      "change_pct": 9.21,
-      "last": 59.31,
-      "rvol": 0.66,
+      "symbol": "P",
+      "change_pct": 18.56,
+      "last": 130.0,
+      "rvol": 0.94,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "43.2M$"
+      "dollar_volume_label": "872.9M$"
+    },
+    {
+      "symbol": "CDNA",
+      "change_pct": 10.31,
+      "last": 59.91,
+      "rvol": 0.74,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "49.3M$"
     },
     {
       "symbol": "TWST",
-      "change_pct": 7.48,
-      "last": 170.35,
-      "rvol": 0.92,
+      "change_pct": 8.78,
+      "last": 172.41,
+      "rvol": 0.99,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "272.4M$"
+      "dollar_volume_label": "299.4M$"
     },
     {
       "symbol": "NBIS",
-      "change_pct": 6.73,
-      "last": 241.86,
-      "rvol": 0.9,
+      "change_pct": 8.16,
+      "last": 245.11,
+      "rvol": 0.97,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "3.2B$"
+      "dollar_volume_label": "3.5B$"
+    },
+    {
+      "symbol": "WRBY",
+      "change_pct": 7.41,
+      "last": 25.08,
+      "rvol": 0.59,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "38.3M$"
     },
     {
       "symbol": "BLLN",
-      "change_pct": 6.25,
-      "last": 121.57,
-      "rvol": 0.66,
+      "change_pct": 7.16,
+      "last": 122.61,
+      "rvol": 0.71,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "47.0M$"
-    },
-    {
-      "symbol": "CXW",
-      "change_pct": 6.16,
-      "last": 34.27,
-      "rvol": 0.31,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "19.9M$"
+      "dollar_volume_label": "51.0M$"
     }
   ],
   "news": [
+    {
+      "symbol": "P",
+      "title": "AI Stock NetApp Hits Early Buy Trigger After Big Support At A Key Level",
+      "title_ar": "سهم AI NetApp يصل إلى مرحلة الشراء المبكر بعد دعم كبير على مستوى رئيسي",
+      "summary": "NetApp stock rallied sharply Thursday, hitting an early buy trigger. The AI name boasts accelerating quarterly earnings and sales growth.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=9ec72a7ac7de7444a32082d1fd244ccc18c47eb0b9e44ee8478b8a68f59506c1",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 15:24 UTC",
+      "published_ts": 1790263493,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "a1bf1ffd9f3f5aefcb855b369713cbfeb9d7f5d9",
+      "source": "finnhub",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "earnings",
+          "ar": "أرباح",
+          "base_impact": 4
+        }
+      ],
+      "catalyst_keys": [
+        "earnings"
+      ],
+      "catalyst_ar": [
+        "أرباح"
+      ],
+      "impact_reason_ar": "أرباح",
+      "officialish": false
+    },
+    {
+      "symbol": "P",
+      "title": "Why Everpure Stock Is Surging To Record Highs",
+      "title_ar": "لماذا يرتفع سهم Everpure إلى مستويات قياسية",
+      "summary": "Everpure stock took a big leap after the enterprise data storage provider gave an updated financial forecast.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=8d3a72a71a298cfda157629f481db244a28a8789bbb0a04e91c36c0506026dcd",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 15:18 UTC",
+      "published_ts": 1790263132,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "0f6fd2b7cda25ad43fc607e0ddc12b6897f5f354",
+      "source": "finnhub",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "guidance",
+          "ar": "توجيهات",
+          "base_impact": 4
+        }
+      ],
+      "catalyst_keys": [
+        "guidance"
+      ],
+      "catalyst_ar": [
+        "توجيهات"
+      ],
+      "impact_reason_ar": "توجيهات",
+      "officialish": false
+    },
+    {
+      "symbol": "P",
+      "title": "Why Everpure Is Today’s Best Stock in the S&P 500",
+      "title_ar": "لماذا يعد Everpure أفضل سهم اليوم في مؤشر S&P 500",
+      "summary": "Everpure stock advances after the data-storage company says revenue growth will continue to accelerate in fiscal 2028.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=772029e2a0ca84c6b9615acf3659b108137308ab2b167d0a794a49d6adbfcad1",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 15:07 UTC",
+      "published_ts": 1790262420,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "7298a0b796c91088dda61f5804758109108ac41e",
+      "source": "finnhub",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "earnings",
+          "ar": "أرباح",
+          "base_impact": 4
+        }
+      ],
+      "catalyst_keys": [
+        "earnings"
+      ],
+      "catalyst_ar": [
+        "أرباح"
+      ],
+      "impact_reason_ar": "أرباح",
+      "officialish": false
+    },
+    {
+      "symbol": "P",
+      "title": "Everpure shares jump 16% as fiscal 2028 outlook tops estimates",
+      "title_ar": "أسهم Everpure تقفز بنسبة 16 ٪ مع توقعات السنة المالية 2028 تتصدر التقديرات",
+      "summary": "Everpure (NYSE:P) shares jumped nearly 16% on Thursday after the data storage company announced ambitious fiscal 2028 targets at its annual analyst day, forecasting revenue of $7 billion to $7.3 billion, or growth of 39% to 45%, well above Wall Street expectations. Analysts broad",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=41da091e937e183d8c1e5c4ad9d8253455ab9ca1469013688038ceeef63575f4",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 15:07 UTC",
+      "published_ts": 1790262420,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "6b0424b0199938f4bc8b965707d612bcb4d13501",
+      "source": "finnhub",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "earnings",
+          "ar": "أرباح",
+          "base_impact": 4
+        },
+        {
+          "key": "guidance",
+          "ar": "توجيهات",
+          "base_impact": 4
+        }
+      ],
+      "catalyst_keys": [
+        "earnings",
+        "guidance"
+      ],
+      "catalyst_ar": [
+        "أرباح",
+        "توجيهات"
+      ],
+      "impact_reason_ar": "أرباح · توجيهات",
+      "officialish": false
+    },
+    {
+      "symbol": "NBIS",
+      "title": "CoreWeave Stock Upgraded On 'Favorable' AI Cloud Pricing Power",
+      "title_ar": "تم ترقية سهم CoreWeave بناءً على قوة التسعير السحابي \"المواتية\" للذكاء الاصطناعي",
+      "summary": "JPMorgan on Thursday upgraded stock to overweight on views that the provider of AI computing infrastructure has leverage to increase prices.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=87323418a885b90889ec2c03a886f17f3d04b94bda2f8f928478367005163002",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 12:28 UTC",
+      "published_ts": 1790252899,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "16b3eebf4625e156877c5dca10e92f90beea8520",
+      "source": "finnhub",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "upgrade",
+          "ar": "ترقية محلل",
+          "base_impact": 2
+        }
+      ],
+      "catalyst_keys": [
+        "upgrade"
+      ],
+      "catalyst_ar": [
+        "ترقية محلل"
+      ],
+      "impact_reason_ar": "ترقية محلل",
+      "officialish": false
+    },
     {
       "symbol": "CRM",
       "title": "F2 Strategy Expands Technology Engineering Capabilities with Acquisition of Callaway Cloud Consulting",
@@ -1653,6 +1531,62 @@
       "officialish": false
     },
     {
+      "symbol": "NBIS",
+      "title": "Prediction: A $1,000 Investment in Nebius Stock Will Be Worth This Much in 2028 (Hint: It Implies a Big Jump)",
+      "title_ar": "التنبؤ: استثمار بقيمة 1000 $ في أسهم Nebius يستحق هذا القدر في عام 2028 (تلميح: إنه ينطوي على قفزة كبيرة)",
+      "summary": "Nebius' red-hot stock market rally is poised to continue over the next couple of years.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=1e273b5b9aaadf156a2663eadd727ec1c8bd88317ded883ce742fcfce653749e",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 11:55 UTC",
+      "published_ts": 1790250901,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "3b5fecb5adc0b46ca51f32ce80ed886964849567",
+      "source": "finnhub",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
+      "symbol": "NBIS",
+      "title": "CoreWeave Wants Shorter Contracts — And JPMorgan Thinks That Could Mean Higher Margins",
+      "title_ar": "تريد CoreWeave عقودًا أقصر — ويعتقد JPMorgan أن ذلك قد يعني هوامش أعلى",
+      "summary": "CoreWeave is leaning into premium short-term AI compute contracts. JPMorgan says the strategy could accelerate revenue and margin growth.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=ab7d4dba52d80eac6065072270fcf242551f419fbd4bd6eca5ae59bf6e7b4a7c",
+      "publisher": "Benzinga",
+      "published": "2026-09-24 09:36 UTC",
+      "published_ts": 1790242567,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "6d8eeeaa934152291475c34cdee1248b62e8ae6d",
+      "source": "finnhub",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "partnership",
+          "ar": "شراكة/عقد",
+          "base_impact": 3
+        }
+      ],
+      "catalyst_keys": [
+        "partnership"
+      ],
+      "catalyst_ar": [
+        "شراكة/عقد"
+      ],
+      "impact_reason_ar": "شراكة/عقد",
+      "officialish": false
+    },
+    {
       "symbol": "CDNA",
       "title": "BTIG Maintains Buy on CareDx, Raises Price Target to $74",
       "title_ar": "BTIG تحافظ على الشراء على CareDx، وترفع السعر المستهدف إلى 74 $",
@@ -1665,29 +1599,6 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "de2ba082957def18a72138955f3129e46c0e53a6",
-      "source": "finnhub",
-      "impact": 5,
-      "impact_ar": "تأثير 5/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
-      "symbol": "CDNA",
-      "title": "5 Top-Ranked High-Efficiency Stocks With Strong Profit Potential",
-      "title_ar": "5 أسهم عالية الكفاءة ذات تصنيف عالي مع إمكانية ربح قوية",
-      "summary": "Five stocks stand out for high efficiency, with strong receivables, asset, inventory and operating margin metrics.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=769a5f0aa18fdfaaa1741fe0419f464d3987dba78bc692ca68962a84128cf57e",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 12:00 UTC",
-      "published_ts": 1790164800,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "cd5e068c363a390c5637747cf48f4371d2244c2c",
       "source": "finnhub",
       "impact": 5,
       "impact_ar": "تأثير 5/5",
@@ -1772,39 +1683,6 @@
       "officialish": false
     },
     {
-      "symbol": "NBIS",
-      "title": "CoreWeave Stock Upgraded On 'Favorable' AI Cloud Pricing Power",
-      "title_ar": "تم ترقية سهم CoreWeave بناءً على قوة التسعير السحابي \"المواتية\" للذكاء الاصطناعي",
-      "summary": "JPMorgan on Thursday upgraded stock to overweight on views that the provider of AI computing infrastructure has leverage to increase prices.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=87323418a885b90889ec2c03a886f17f3d04b94bda2f8f928478367005163002",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 12:28 UTC",
-      "published_ts": 1790252899,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "16b3eebf4625e156877c5dca10e92f90beea8520",
-      "source": "finnhub",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "upgrade",
-          "ar": "ترقية محلل",
-          "base_impact": 2
-        }
-      ],
-      "catalyst_keys": [
-        "upgrade"
-      ],
-      "catalyst_ar": [
-        "ترقية محلل"
-      ],
-      "impact_reason_ar": "ترقية محلل",
-      "officialish": false
-    },
-    {
       "symbol": "CRL",
       "title": "Charles River Highlights Refreshed Strategic Vision to Drive Profitable Growth and Long-Term Value Creation at 2026 Investor Day",
       "title_ar": "تشارلز ريفر يسلط الضوء على الرؤية الاستراتيجية المحدثة لدفع النمو المربح وخلق القيمة على المدى الطويل في يوم المستثمر 2026",
@@ -1817,29 +1695,6 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "79702b9a4035d561b783515f4bec46909aa97d7f",
-      "source": "finnhub",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
-      "symbol": "NBIS",
-      "title": "Prediction: A $1,000 Investment in Nebius Stock Will Be Worth This Much in 2028 (Hint: It Implies a Big Jump)",
-      "title_ar": "التنبؤ: استثمار بقيمة 1000 $ في أسهم Nebius يستحق هذا القدر في عام 2028 (تلميح: إنه ينطوي على قفزة كبيرة)",
-      "summary": "Nebius' red-hot stock market rally is poised to continue over the next couple of years.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=1e273b5b9aaadf156a2663eadd727ec1c8bd88317ded883ce742fcfce653749e",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 11:55 UTC",
-      "published_ts": 1790250901,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "3b5fecb5adc0b46ca51f32ce80ed886964849567",
       "source": "finnhub",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -1884,72 +1739,6 @@
       "officialish": false
     },
     {
-      "symbol": "NBIS",
-      "title": "CoreWeave Wants Shorter Contracts — And JPMorgan Thinks That Could Mean Higher Margins",
-      "title_ar": "تريد CoreWeave عقودًا أقصر — ويعتقد JPMorgan أن ذلك قد يعني هوامش أعلى",
-      "summary": "CoreWeave is leaning into premium short-term AI compute contracts. JPMorgan says the strategy could accelerate revenue and margin growth.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=ab7d4dba52d80eac6065072270fcf242551f419fbd4bd6eca5ae59bf6e7b4a7c",
-      "publisher": "Benzinga",
-      "published": "2026-09-24 09:36 UTC",
-      "published_ts": 1790242567,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "6d8eeeaa934152291475c34cdee1248b62e8ae6d",
-      "source": "finnhub",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "partnership",
-          "ar": "شراكة/عقد",
-          "base_impact": 3
-        }
-      ],
-      "catalyst_keys": [
-        "partnership"
-      ],
-      "catalyst_ar": [
-        "شراكة/عقد"
-      ],
-      "impact_reason_ar": "شراكة/عقد",
-      "officialish": false
-    },
-    {
-      "symbol": "CRM",
-      "title": "Navatar Turns Claude and Salesforce Into a Live AI Deal Engine for Private Equity and M&A",
-      "title_ar": "يحول Navatar كلود و Salesforce إلى محرك صفقة ذكاء اصطناعي مباشر للأسهم الخاصة وعمليات الاندماج والاستحواذ",
-      "summary": "Navatar becomes the live deal operating system for the firm—capturing activity across Claude, AI agents, Salesforce, Outlook, and market-data sources; keeping every team current; and automatically executing the follow-up, enrichment, and workflow tasks that move deals forwardNEW ",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=0d48770676512835e008bfda3bf05416c1708024d7078f4a7071d05d2794ac5d",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 05:00 UTC",
-      "published_ts": 1790226000,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "5616dad4fc2e8b46507e80806156f851cff3e34a",
-      "source": "finnhub",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "guidance",
-          "ar": "توجيهات",
-          "base_impact": 4
-        }
-      ],
-      "catalyst_keys": [
-        "guidance"
-      ],
-      "catalyst_ar": [
-        "توجيهات"
-      ],
-      "impact_reason_ar": "توجيهات",
-      "officialish": false
-    },
-    {
       "symbol": "BLLN",
       "title": "BillionToOne (BLLN) Stock Could Be A Bargain As It Jumps 30% YTD",
       "title_ar": "يمكن أن يكون سهم BillionToOne (BLLN) صفقة حيث يقفز بنسبة 30 ٪ منذ بداية العام",
@@ -1973,98 +1762,19 @@
       "officialish": false
     },
     {
-      "symbol": "VCYT",
-      "title": "Here's Why You Should Hold Bio-Rad Stock in Your Portfolio for Now",
-      "title_ar": "إليك لماذا يجب عليك الاحتفاظ بمخزون Bio - Rad في محفظتك في الوقت الحالي",
-      "summary": "BIO's Clinical Diagnostics strength and international reach support growth, while China weakness, geopolitics and FX remain key risks.",
+      "symbol": "MARKET",
+      "title": "NYSE, Blockchain.com in tie-up to bring tokenized US stocks to crypto users",
+      "title_ar": "بورصة نيويورك، Blockchain.com في شراكة لجلب الأسهم الأمريكية الرمزية لمستخدمي العملات المشفرة",
+      "summary": "Blockchain.com users could gain access to tokenized US stocks and ETFs through NYSE’s planned digital trading platform under a new partnership, as bourses rush to deliver new trading.",
       "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=48cc1443138b430d77c91c876bd01b6c8821c7ad21be8d7223c2fbf3db058a2b",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 15:22 UTC",
-      "published_ts": 1790176920,
+      "url": "https://cointelegraph.com/news/nyse-blockchaincom-team-up-to-bring-tokenized-us-stocks-to-crypto-users?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "publisher": "Cointelegraph",
+      "published": "2026-09-23 15:56 UTC",
+      "published_ts": 1790178980,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "e43a24d99ec6ef54ab02a395af53a48cf3bc2b8e",
-      "source": "finnhub",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
-      "symbol": "VCYT",
-      "title": "Natera's Signatera Wins Japan PMDA Approval as Bladder Cancer CDx",
-      "title_ar": "Natera's Signatera تفوز بالموافقة على PMDA اليابانية كـ CDx لسرطان المثانة",
-      "summary": "NTRA wins Japan PMDA approval for Signatera in muscle-invasive bladder cancer, supporting treatment decisions and a planned 2027 commercial launch.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=0723b004244686d071c22e8c54015ce527c7b84581cc4443a4ad49fbfb432ac7",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 15:13 UTC",
-      "published_ts": 1790176380,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "6edef644bf5ebb42794972126d84684d34292f13",
-      "source": "finnhub",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
-      "symbol": "BLLN",
-      "title": "BillionToOne Stock Jumped 12% Yesterday. Here’s What the Streets Target.",
-      "title_ar": "قفز سهم BillionToOne بنسبة 12% يوم أمس. إليك ما تستهدفه الشوارع.",
-      "summary": "Key TakeawaysNo-Headline Rally: BillionToOne stock jumped 12% to $116 on Tuesday, September 22, without a company release, stretching a run that began near $100 on September 14. Insiders Took Profits: The CEO and general counsel sold ~60K shares for ~$6.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=fe85fdd59d1077de071f992b6b4658ca3188e43fa7b8c9669a19ef593a24d7f7",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 08:06 UTC",
-      "published_ts": 1790150812,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "f41bb1a9cd87f2346fe4db65355de59e5384d5d5",
-      "source": "finnhub",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "insider",
-          "ar": "مطلعون",
-          "base_impact": 3
-        }
-      ],
-      "catalyst_keys": [
-        "insider"
-      ],
-      "catalyst_ar": [
-        "مطلعون"
-      ],
-      "impact_reason_ar": "مطلعون",
-      "officialish": false
-    },
-    {
-      "symbol": "TWST",
-      "title": "Twist Bioscience (TWST) Expands AI Drug Discovery Exposure With Lilly TuneLab Partnership",
-      "title_ar": "تويست بيوسينس (TWST) توسع التعرض لاكتشاف عقاقير الذكاء الاصطناعي مع شراكة ليلي تون لاب",
-      "summary": "Twist Bioscience Corporation (NASDAQ:TWST) is on the cusp of gaining significant exposure to the rapidly evolving artificial intelligence (AI)-driven drug discovery ecosystem. On September 16, the company confirmed a strategic partnership with Lilly TuneLab, a platform created by",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=e1098474219e011b9be543223700072661216dbed12162ce435c750334a0adc1",
-      "publisher": "Yahoo",
-      "published": "2026-09-22 10:08 UTC",
-      "published_ts": 1790071730,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "be51bd795ffd8eebf5e481820ce8bc50ef4e7ee7",
-      "source": "finnhub",
+      "id": "ea4a4fac9530225d46cf328c28e3470e965a39a9",
+      "source": "finnhub:crypto",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
       "sentiment_score": 4,
@@ -2115,6 +1825,29 @@
         "ترقية محلل"
       ],
       "impact_reason_ar": "ترقية محلل",
+      "officialish": false
+    },
+    {
+      "symbol": "CRM",
+      "title": "NOW Expands Legacy Replacement Push With AI Platform: What's Ahead?",
+      "title_ar": "الآن توسع دفعة الاستبدال القديمة مع منصة الذكاء الاصطناعي: ما الذي ينتظرنا ؟",
+      "summary": "ServiceNow is gaining traction, replacing legacy CRM and workflow tools as AI automation boosts expansion across enterprise workflows and drives customer growth.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=991f5333608fc2b80b8fc12197d075e48077f424a1e895bc9c9d53ddb4cc4fc9",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 14:30 UTC",
+      "published_ts": 1790260200,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "4307dcb6da53029dcd2c1bdd6a0d1462b8661448",
+      "source": "finnhub",
+      "impact": 2,
+      "impact_ar": "تأثير 2/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
       "officialish": false
     },
     {
@@ -2280,17 +2013,15 @@
     }
   ],
   "news_excluded_negative": [
-    "CVX",
-    "ILMN",
+    "AXTI",
+    "COIN",
+    "DIS",
+    "GRAL",
     "LIFE",
-    "META",
-    "P",
-    "PBF",
+    "PLTR",
     "PRGO",
-    "SM",
+    "RKLB",
     "TXG",
-    "VLO",
-    "WIX",
     "XOM"
   ],
   "news_note_ar": "بث محفزات: أخبار الشركات + تأثير 1–5 + وسم (FDA/أرباح/شراكة…) — بدون إشاعات",
