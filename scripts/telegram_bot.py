@@ -22,7 +22,6 @@ from bot.config import load_settings
 from bot.extras import (
     format_after_hours,
     format_fed_calendar,
-    format_options_unusual,
     format_premarket_hotlist,
     format_sector_etfs,
     format_stock_news,
@@ -85,7 +84,6 @@ def cmd_help(settings) -> str:
         "/afterhours — ملخص بعد الإغلاق\n"
         "/fed — تقويم الفيدرالي\n"
         "/news — أخبار عاجلة\n"
-        "/options — خيارات بحجم غير طبيعي\n"
         "/sectors — ETF القطاعات\n"
         "/style — نمو vs قيمة\n"
         "/status — هل البوت حي؟\n"
@@ -221,8 +219,6 @@ def handle_message(settings, msg: dict) -> None:
         deliver(settings, "🏛 Fed", format_fed_calendar(), also_channel=True)
     elif cmd == "/news":
         deliver(settings, "📰 News", format_stock_news(settings), also_channel=True)
-    elif cmd == "/options":
-        deliver(settings, "📊 Options", format_options_unusual(settings), also_channel=True)
     elif cmd == "/sectors":
         deliver(settings, "🧭 Sectors", format_sector_etfs(), also_channel=True)
     elif cmd == "/style":

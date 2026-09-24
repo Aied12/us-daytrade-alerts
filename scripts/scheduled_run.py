@@ -17,7 +17,6 @@ from bot.config import load_settings
 from bot.extras import (
     format_after_hours,
     format_fed_calendar,
-    format_options_unusual,
     format_premarket_hotlist,
     format_sector_etfs,
     format_stock_news,
@@ -177,9 +176,8 @@ def run_premarket() -> None:
 
 
 def run_intel() -> None:
-    """Midday intel: options + news + fed reminder."""
+    """Midday intel: news + fed reminder."""
     settings = load_settings()
-    deliver(settings, "📊 Options", format_options_unusual(settings), also_channel=True)
     deliver(settings, "📰 News", format_stock_news(settings), also_channel=True)
     deliver(settings, "🏛 Fed", format_fed_calendar(), also_channel=True)
 

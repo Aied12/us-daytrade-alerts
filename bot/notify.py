@@ -116,7 +116,6 @@ def set_bot_commands(settings: Settings) -> bool:
         {"command": "afterhours", "description": "ملخص بعد الإغلاق"},
         {"command": "fed", "description": "تقويم الفيدرالي"},
         {"command": "news", "description": "أخبار عاجلة للقائمة"},
-        {"command": "options", "description": "خيارات بحجم غير طبيعي"},
         {"command": "sectors", "description": "ETF القطاعات"},
         {"command": "style", "description": "نمو vs قيمة"},
         {"command": "status", "description": "هل البوت حي؟"},
