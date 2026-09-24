@@ -422,6 +422,7 @@
     let MOMENTUM_CACHE = [];
     let CALC_SYM = '';
     let CALC_STOP_USER_EDITED = false;
+    let GAINERS_STATE = [];
 
     function money2(n){
       const v=Number(n);
@@ -597,6 +598,10 @@
         const el=document.getElementById(id);
         if(el) el.addEventListener('input', runStrategyCalc);
       });
+      const capElWatch=document.getElementById('calcCapital');
+      if(capElWatch){
+        capElWatch.addEventListener('input',()=>{ capElWatch.dataset.autofilled='0'; });
+      }
       const btnRun=document.getElementById('btnCalcRun');
       if(btnRun) btnRun.onclick=()=>runStrategyCalc();
       const btnLive=document.getElementById('btnCalcApplyLive');
@@ -876,10 +881,10 @@
         const wait=!!o.wait_1m_confirm;
         const expired=!!(o.expired||(o.smart&&o.smart.expired));
         return `
-        <details class="opp ${o.urgent?'urgent':''} ${wait?'wait':''} ${expired?'expired':''}" ${i<2?'open':''}>
+        <details class="opp ${o.urgent?'urgent':''} ${wait?'wait':''} ${expired?'expired':''}" data-calc-sym="${esc(o.symbol)}" ${i<2?'open':''}>
           <summary>
             <div class="row">
-              <span class="sym">${esc(o.symbol)} ${o.urgent?'🔥 عاجل':''} ${wait?'⏳ تأكيد':''} ${expired?'⛔ انتهت':''}</span>
+              <span class="sym calc-clickable" data-apply-calc="${esc(o.symbol)}">${esc(o.symbol)} ${o.urgent?'🔥 عاجل':''} ${wait?'⏳ تأكيد':''} ${expired?'⛔ انتهت':''}</span>
               <span>
                 <span class="pill conf-${esc(conf)}" title="${esc(confAr)}">ثقة ${esc(conf)}</span>
                 <span class="pill">${esc(o.score_100)}/100</span>
@@ -909,6 +914,7 @@
             ${wait?'⏳ انتظر تأكيد دقيقة قبل الدخول':(o.allowed?'يمكنك التخطيط للدخول':'راقب فقط / لا تدخل الآن')}
           </div>
           <div class="toolbar">
+            <button class="btn" type="button" data-apply-calc="${esc(o.symbol)}">تطبيق على الحاسبة</button>
             <button class="btn secondary" type="button" data-copy="${esc(o.symbol)}|${esc(Number(o.entry).toFixed(2))}|${esc(Number(stopAlt!=null?stopAlt:o.stop).toFixed(2))}|${esc(Number(tFinal).toFixed(2))}">📋 نسخ المستويات</button>
             <a class="btn" href="${esc(o.tg_share)}" target="_blank" rel="noopener">✉️ تيليجرام</a>
           </div>
@@ -920,6 +926,16 @@
           copyText(`${sym}\nدخول: ${entry}\nوقف: ${stop}\nهدف: ${target}`);
         });
       });
+      box.querySelectorAll('[data-apply-calc]').forEach(btn=>{
+        btn.addEventListener('click',(ev)=>{
+          ev.preventDefault();
+          ev.stopPropagation();
+          applyStockToCalc(btn.getAttribute('data-apply-calc'));
+        });
+      });
+      if(CALC_SYM){
+        box.querySelectorAll(`[data-calc-sym="${CALC_SYM}"]`).forEach(el=>el.classList.add('calc-picked'));
+      }
       maybeNotify(list);
       renderLiveTape();
       // Don't call pollAllPrices here — it re-enters while busy and freezes levels
@@ -947,6 +963,12 @@
       lagEl.textContent=lag;
       lagEl.className=d.has_live_quotes?'ok':'warn';
       document.getElementById('capital').textContent=d.capital_sar?Number(d.capital_sar).toLocaleString('ar-SA')+' ر.س':'-';
+      const calcCap=document.getElementById('calcCapital');
+      if(calcCap && d.capital_sar!=null && (!calcCap.value || calcCap.dataset.autofilled!=='0')){
+        calcCap.value=String(Number(d.capital_sar));
+        calcCap.dataset.autofilled='1';
+      }
+      runStrategyCalc();
       document.getElementById('dailyLoss').textContent=d.daily_loss_limit_sar?Number(d.daily_loss_limit_sar).toLocaleString('ar-SA')+' ر.س':'-';
       document.getElementById('reminder').textContent=d.reminder||'لا تدخل إذا وصلت حد الخسارة اليومي';
       document.getElementById('tone').textContent=(d.market&&d.market.tone)||'-';
@@ -1223,7 +1245,6 @@
       };
     });
 
-    let GAINERS_STATE = [];
     const MIN_GAINERS_LIQ = 5_000_000; // $5M — below this = out of liquidity
 
     function moneyLabel(n){
@@ -1259,14 +1280,30 @@
       rows.forEach(r=>keep[r.symbol]=r);
       GAINERS_STATE = GAINERS_STATE.filter(g=>keep[g.symbol]).map(g=>keep[g.symbol]||g);
       body.innerHTML = rows.length ? rows.map((g,i)=>`
-        <tr data-gainer="${esc(g.symbol)}">
+        <tr data-gainer="${esc(g.symbol)}" data-calc-sym="${esc(g.symbol)}" class="calc-clickable" title="اضغط للتطبيق على حاسبة الاستراتيجية">
           <td>${i+1}</td>
           <td><b>${esc(g.symbol)}</b>${g.name?` <span class="muted">${esc(g.name)}</span>`:''}</td>
           <td class="live-cell">$<span data-live-px="${esc(g.symbol)}">${esc(Number(g.last).toFixed(2))}</span><span class="moving-badge" data-moving="${esc(g.symbol)}"><span class="dot"></span>الآن</span></td>
           <td><span class="${clsChg(g.change_pct)}" data-live-chg="${esc(g.symbol)}">${g.change_pct>0?'+':''}${esc(Number(g.change_pct).toFixed(2))}%</span></td>
           <td data-gainer-liq="${esc(g.symbol)}">${esc(g.dollar_volume_label||'-')}</td>
-          <td></td>
+          <td><button class="btn secondary" type="button" data-apply-calc="${esc(g.symbol)}" style="min-height:36px;padding:6px 10px;margin:0;font-size:.85rem">حاسبة</button></td>
         </tr>`).join('') : '<tr><td colspan="6" class="muted">لا صاعدين فوق الفلتر حالياً (أو خرجت السيولة)</td></tr>';
+      body.querySelectorAll('[data-apply-calc]').forEach(btn=>{
+        btn.addEventListener('click',(ev)=>{
+          ev.preventDefault();
+          ev.stopPropagation();
+          applyStockToCalc(btn.getAttribute('data-apply-calc'), {preferOppEntry:false});
+        });
+      });
+      body.querySelectorAll('tr[data-calc-sym]').forEach(tr=>{
+        tr.addEventListener('click',(ev)=>{
+          if(ev.target && ev.target.closest && ev.target.closest('button,a')) return;
+          applyStockToCalc(tr.getAttribute('data-calc-sym'), {preferOppEntry:false});
+        });
+      });
+      if(CALC_SYM){
+        body.querySelectorAll(`[data-calc-sym="${CALC_SYM}"]`).forEach(el=>el.classList.add('calc-picked'));
+      }
     }
 
     function syncGainersAfterQuotes(){
@@ -1352,6 +1389,16 @@
         merged.move_dir = prev.move_dir||0;
       }
       LIVE_CACHE[sym]=merged;
+      if(CALC_SYM && sym===CALC_SYM){
+        const priceEl=document.getElementById('calcPrice');
+        if(priceEl && merged.last>0){
+          // Keep live price synced unless user is mid-edit on price field
+          if(document.activeElement!==priceEl){
+            priceEl.value=String(Number(merged.last.toFixed(4)));
+            runStrategyCalc();
+          }
+        }
+      }
       if(!moved){
         refreshMovingBadges();
         return;
@@ -1522,6 +1569,7 @@
     }
 
     loadPrefs();
+    initStrategyCalc();
     fetchData(true).then(()=>{ renderLiveTape(); pollAllPrices(); pollNewsLive(); });
     setInterval(()=>fetchData(false), AUTO_SEC*1000);
     setInterval(()=>{
