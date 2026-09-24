@@ -87,6 +87,13 @@
     .sym-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
     .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-left:6px;animation:pulse 1.2s infinite}
     @keyframes pulse{0%{opacity:1}50%{opacity:.35}100%{opacity:1}}
+    .news-item{border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0;background:color-mix(in srgb,var(--card) 92%, black)}
+    .news-item a{color:var(--text);text-decoration:none}
+    .news-item a:hover{color:var(--accent)}
+    .news-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
+    .sent-pos{color:var(--ok);font-weight:700}
+    .sent-neg{color:var(--bad);font-weight:700}
+    .sent-neu{color:var(--muted);font-weight:700}
   </style>
 </head>
 <body>
@@ -191,12 +198,9 @@
     </div>
 
     <div class="card">
-      <h2>أداؤك</h2>
-      <div class="row"><span>دفتر الصفقات</span><b id="journal">-</b></div>
-      <div class="row"><span>تنبيهات/فحوصات اليوم</span><b id="alertsToday">-</b></div>
-      <div class="muted" style="margin-top:8px">آخر قرارات</div>
-      <div id="actions"></div>
-      <p class="muted" id="discipline">نسبة الالتزام بالوقف: لاحقاً</p>
+      <h2>أخبار الأسهم</h2>
+      <p class="muted" id="newsNote">عناوين حديثة مترجمة للعربية</p>
+      <div id="newsList"><div class="muted">جاري جلب الأخبار...</div></div>
     </div>
 
     <div class="card">
@@ -475,11 +479,36 @@
         </div>
       `).join('')||'<div class="empty">لا متحركات</div>';
 
-      const perf=d.performance||{};
-      document.getElementById('journal').textContent=(perf.journal&&perf.journal.text)||'-';
-      document.getElementById('alertsToday').textContent=perf.alerts_today??'-';
-      const acts=perf.recent_actions||[];
-      document.getElementById('actions').innerHTML=acts.length?acts.map(a=>`<div class="row"><span>${esc(a.symbol)}</span><span class="pill">${esc(a.action_ar)}</span></div>`).join(''):'<div class="muted">لا قرارات بعد</div>';
+      const news=d.news||[];
+      const note=document.getElementById('newsNote');
+      if(note) note.textContent=d.news_note_ar||'عناوين مترجمة آلياً — تحقق من المصدر قبل أي قرار';
+      const newsBox=document.getElementById('newsList');
+      if(newsBox){
+        const sentCls={pos:'sent-pos',neg:'sent-neg',neu:'sent-neu'};
+        newsBox.innerHTML = news.length ? news.map(n=>{
+          const sent=n.sentiment||'neu';
+          const title=n.title_ar||n.title||'';
+          const sum=n.summary_ar||n.summary||'';
+          const when=n.published||'';
+          const pub=n.publisher||'';
+          const href=n.url||('#');
+          return `<article class="news-item">
+            <a href="${esc(href)}" target="_blank" rel="noopener">
+              <div class="row" style="margin:0 0 6px">
+                <b>${esc(n.symbol||'')}</b>
+                <span class="${sentCls[sent]||'sent-neu'}">${esc(n.sentiment_ar||'')}</span>
+              </div>
+              <div style="font-weight:700;line-height:1.35">${esc(title)}</div>
+              ${sum?`<div class="muted" style="margin-top:6px">${esc(sum)}</div>`:''}
+              <div class="news-meta muted">
+                ${pub?`<span>${esc(pub)}</span>`:''}
+                ${when?`<span>${esc(when)}</span>`:''}
+                <span>المصدر ↗</span>
+              </div>
+            </a>
+          </article>`;
+        }).join('') : '<div class="empty">لا أخبار متاحة الآن — حدّث الصفحة لاحقاً</div>';
+      }
 
       renderOpps();
       tickClocks();
