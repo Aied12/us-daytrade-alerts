@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T16:57:33.467831+00:00",
-  "generated_ts": 1790269053,
-  "generated_local": "2026-09-24 19:57 +03",
+  "generated_at": "2026-09-24T16:58:22.024653+00:00",
+  "generated_ts": 1790269102,
+  "generated_local": "2026-09-24 19:58 +03",
   "status": {
     "ok": true,
     "telegram": "paused",
     "source": "build_pages",
-    "updated_at": "2026-09-24T16:57:33.467689+00:00",
+    "updated_at": "2026-09-24T16:58:22.024531+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24,
@@ -24,20 +24,20 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.04,
+    "avg_change_pct": 0.0,
     "details": {
       "SPY": {
-        "last": 768.27,
-        "change_pct": 0.06,
-        "rsi": 48.0
+        "last": 768.59,
+        "change_pct": 0.1,
+        "rsi": 47.8
       },
       "QQQ": {
-        "last": 741.32,
-        "change_pct": 0.01,
-        "rsi": 66.0
+        "last": 741.93,
+        "change_pct": 0.1,
+        "rsi": 65.9
       },
       "IWM": {
-        "last": 281.35,
+        "last": 281.37,
         "change_pct": -0.2,
         "rsi": 25.2
       }
@@ -45,13 +45,13 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": 0.06,
-        "rsi": 48.0
+        "change_pct": 0.1,
+        "rsi": 47.8
       },
       {
         "symbol": "QQQ",
-        "change_pct": 0.01,
-        "rsi": 66.0
+        "change_pct": 0.1,
+        "rsi": 65.9
       },
       {
         "symbol": "IWM",
@@ -69,8 +69,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 10946,
-    "ny_time": "12:57:33",
+    "seconds_left": 10897,
+    "ny_time": "12:58:22",
     "open": "09:30",
     "close": "16:00"
   },
@@ -78,11 +78,11 @@
     "strongest": [
       {
         "name": "Communication",
-        "change_pct": 1.33
+        "change_pct": 1.35
       },
       {
         "name": "Technology",
-        "change_pct": 0.67
+        "change_pct": 0.73
       },
       {
         "name": "Energy",
@@ -92,21 +92,21 @@
     "weakest": [
       {
         "name": "Industrial",
-        "change_pct": -1.16
+        "change_pct": -1.13
       },
       {
         "name": "Consumer",
-        "change_pct": -0.02
+        "change_pct": 0.05
       },
       {
         "name": "Financials",
-        "change_pct": 0.18
+        "change_pct": 0.15
       }
     ]
   },
   "style": {
-    "growth_avg": 0.65,
-    "value_avg": 0.24,
+    "growth_avg": 0.72,
+    "value_avg": 0.26,
     "leader": "نمو",
     "growth_count": 10,
     "value_count": 11
@@ -268,8 +268,8 @@
       "dollar_volume_label": "59.6M$",
       "rvol": null,
       "liq_grade_ar": "",
-      "impact": 5,
-      "impact_ar": "تأثير 5/5",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
       "has_news": true,
       "news": {
         "symbol": "BLLN",
@@ -285,8 +285,8 @@
         "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
         "id": "baa20671db0f6dc9569237f689c01385e9d4daa6",
         "source": "finnhub",
-        "impact": 5,
-        "impact_ar": "تأثير 5/5",
+        "impact": 4,
+        "impact_ar": "تأثير 4/5",
         "sentiment_score": 4,
         "catalysts": [],
         "catalyst_keys": [],
@@ -436,10 +436,10 @@
     {
       "symbol": "LIFE",
       "name": "",
-      "last": 37.38,
-      "change_pct": 10.23,
-      "dollar_volume": 44976064.56,
-      "dollar_volume_label": "45.0M$",
+      "last": 37.39,
+      "change_pct": 10.26,
+      "dollar_volume": 45061680.2,
+      "dollar_volume_label": "45.1M$",
       "rvol": 1.48,
       "liq_grade_ar": "قوي",
       "impact": 5,
@@ -449,7 +449,7 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +10.2% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +10.3% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=LIFE"
     },
     {
@@ -476,9 +476,9 @@
       "name": "",
       "last": 81.57,
       "change_pct": 7.87,
-      "dollar_volume": 134778681.99,
+      "dollar_volume": 134847934.92,
       "dollar_volume_label": "134.8M$",
-      "rvol": 1.2,
+      "rvol": 1.19,
       "liq_grade_ar": "قوي",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -493,11 +493,11 @@
     {
       "symbol": "GRAL",
       "name": "",
-      "last": 116.87,
-      "change_pct": 7.69,
-      "dollar_volume": 227901174.8,
-      "dollar_volume_label": "227.9M$",
-      "rvol": 3.53,
+      "last": 117.04,
+      "change_pct": 7.85,
+      "dollar_volume": 228570459.04,
+      "dollar_volume_label": "228.6M$",
+      "rvol": 3.51,
       "liq_grade_ar": "قوي",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -506,17 +506,17 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +7.7% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +7.9% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=GRAL"
     },
     {
       "symbol": "PRGO",
       "name": "",
-      "last": 14.9,
-      "change_pct": 7.66,
-      "dollar_volume": 54712680.8,
-      "dollar_volume_label": "54.7M$",
-      "rvol": 2.63,
+      "last": 14.92,
+      "change_pct": 7.8,
+      "dollar_volume": 55303098.64,
+      "dollar_volume_label": "55.3M$",
+      "rvol": 2.64,
       "liq_grade_ar": "قوي",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -525,7 +525,7 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +7.7% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +7.8% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PRGO"
     }
   ],
@@ -545,29 +545,29 @@
         "تقلّب عالي",
         "زخم اتجاه الافتتاح"
       ],
-      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.10%) | تقلّب عالي: ATR% 3.5 | زخم اتجاه الافتتاح: اتجاه الفجوة مستمر",
-      "entry": 240.26,
-      "entry_original": 240.26,
-      "entry_planned": 240.26,
+      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.01%) | تقلّب عالي: ATR% 3.5 | زخم اتجاه الافتتاح: اتجاه الفجوة مستمر",
+      "entry": 240.05,
+      "entry_original": 240.05,
+      "entry_planned": 240.05,
       "stop": 220.83,
-      "stop_alt": 239.06,
-      "target": 275.23,
-      "target_partial": 257.75,
-      "target_final": 275.23,
-      "trail_offset": 6.8,
+      "stop_alt": 238.85,
+      "target": 274.65,
+      "target_partial": 257.35,
+      "target_final": 274.65,
+      "trail_offset": 6.73,
       "shares": 6,
-      "risk_sar": 437.17,
+      "risk_sar": 432.45,
       "allowed": false,
-      "change_pct": 1.13,
-      "last": 240.26,
+      "change_pct": 1.04,
+      "last": 240.05,
       "session_phase": "regular",
       "liquidity": {
         "rvol": 0.27,
         "rvol_pace": 0.5,
-        "volume": 4431120.0,
-        "avg_volume_20": 16684426.0,
-        "dollar_volume": 1064620891.2,
-        "avg_dollar_volume": 4008600190.76,
+        "volume": 4433817.0,
+        "avg_volume_20": 16684560.85,
+        "dollar_volume": 1064337770.85,
+        "avg_dollar_volume": 4005128832.04,
         "dollar_volume_label": "1.1B$",
         "avg_dollar_volume_label": "4.0B$",
         "grade": "strong",
@@ -579,7 +579,7 @@
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 3.5,
-      "flow_score": 2.52,
+      "flow_score": 2.32,
       "flow_ok": true,
       "smart": {
         "confidence": "B",
@@ -613,21 +613,21 @@
         "vwap": {
           "active": true,
           "side": "near",
-          "dist_pct": 0.1,
-          "ar": "قرب VWAP (+0.10%) — منطقة قرار"
+          "dist_pct": 0.01,
+          "ar": "قرب VWAP (+0.01%) — منطقة قرار"
         },
         "candle": {
           "name": "دوجي",
           "draw": "➕ ─●─",
           "ar": "شمعة: دوجي ➕ ─●─"
         },
-        "stop_alt": 239.06,
+        "stop_alt": 238.85,
         "stop_main": 220.83,
-        "stop_plan_ar": "وقف بديل≈ $239.06 (ATR) · الرئيسي≈ $220.83",
-        "target_partial": 257.75,
-        "target_final": 275.23,
-        "trail_offset": 6.8,
-        "partial_plan_ar": "جني 50% عند $257.75 ثم وقف متحرك ≈ $6.8 تحت القمة",
+        "stop_plan_ar": "وقف بديل≈ $238.85 (ATR) · الرئيسي≈ $220.83",
+        "target_partial": 257.35,
+        "target_final": 274.65,
+        "trail_offset": 6.73,
+        "partial_plan_ar": "جني 50% عند $257.35 ثم وقف متحرك ≈ $6.73 تحت القمة",
         "qqq": {
           "active": false,
           "corr": 0.2
@@ -640,10 +640,10 @@
         "exclude_reason": "",
         "notes": [
           "الصعود لم يثبت فوق الافتتاح — انتظر تأكيد دقيقة",
-          "قرب VWAP (+0.10%) — منطقة قرار",
+          "قرب VWAP (+0.01%) — منطقة قرار",
           "شمعة: دوجي ➕ ─●─",
-          "وقف بديل≈ $239.06 (ATR) · الرئيسي≈ $220.83",
-          "جني 50% عند $257.75 ثم وقف متحرك ≈ $6.8 تحت القمة"
+          "وقف بديل≈ $238.85 (ATR) · الرئيسي≈ $220.83",
+          "جني 50% عند $257.35 ثم وقف متحرك ≈ $6.73 تحت القمة"
         ],
         "rvol": 0.27
       },
@@ -671,10 +671,10 @@
       ],
       "smart_notes": [
         "الصعود لم يثبت فوق الافتتاح — انتظر تأكيد دقيقة",
-        "قرب VWAP (+0.10%) — منطقة قرار",
+        "قرب VWAP (+0.01%) — منطقة قرار",
         "شمعة: دوجي ➕ ─●─",
-        "وقف بديل≈ $239.06 (ATR) · الرئيسي≈ $220.83",
-        "جني 50% عند $257.75 ثم وقف متحرك ≈ $6.8 تحت القمة"
+        "وقف بديل≈ $238.85 (ATR) · الرئيسي≈ $220.83",
+        "جني 50% عند $257.35 ثم وقف متحرك ≈ $6.73 تحت القمة"
       ],
       "wait_1m_confirm": true,
       "fake_liquidity": false,
@@ -687,15 +687,15 @@
       "vwap": {
         "active": true,
         "side": "near",
-        "dist_pct": 0.1,
-        "ar": "قرب VWAP (+0.10%) — منطقة قرار"
+        "dist_pct": 0.01,
+        "ar": "قرب VWAP (+0.01%) — منطقة قرار"
       },
       "qqq": {
         "active": false,
         "corr": 0.2
       },
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRM",
-      "tg_share": "https://t.me/share/url?url=&text=CRM%20فكّر في شراء قصير المدى%20ثقة%20B%0Aالآن%20240.26%20دخول%20240.26%20وقف%20239.06%20هدف%20275.23%0Aسيولة%20قوي%20وتيرة%20x0.5%20زخم%20+1.13%"
+      "tg_share": "https://t.me/share/url?url=&text=CRM%20فكّر في شراء قصير المدى%20ثقة%20B%0Aالآن%20240.05%20دخول%20240.05%20وقف%20238.85%20هدف%20274.65%0Aسيولة%20قوي%20وتيرة%20x0.5%20زخم%20+1.04%"
     }
   ],
   "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
@@ -707,18 +707,18 @@
     "NBIS:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "UBER:زخم ضعيف (+0.03% < 0.45%)",
     "GDDY:امتداد يومي قوي — الفرصة انتهت للمطاردة",
-    "JPM:زخم ضعيف (+0.25% < 0.45%)",
-    "BAC:زخم ضعيف (+0.41% < 0.45%)",
+    "JPM:زخم ضعيف (+0.20% < 0.45%)",
+    "BAC:زخم ضعيف (+0.30% < 0.45%)",
     "CXW:وتيرة حجم منخفضة ×0.83 (RVOL خام ×0.44)",
     "RCL:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "BLLN:امتداد يومي قوي — الفرصة انتهت للمطاردة",
-    "AAPL:زخم ضعيف (+0.39% < 0.45%)",
+    "AAPL:زخم ضعيف (+0.44% < 0.45%)",
     "CRL:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "TXG:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "GRAL:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "AXTI:ممتد جداً فوق VWAP — لا تدخل متأخراً",
-    "SPY:زخم ضعيف (+0.06% < 0.45%)",
-    "IWM:زخم ضعيف (-0.20% < 0.45%)",
+    "SPY:زخم ضعيف (+0.11% < 0.45%)",
+    "IWM:زخم ضعيف (-0.16% < 0.45%)",
     "PL:ممتد جداً فوق VWAP — لا تدخل متأخراً"
   ],
   "gainers": [
@@ -994,57 +994,48 @@
   "movers": [
     {
       "symbol": "P",
-      "change_pct": 16.43,
-      "last": 127.67,
+      "change_pct": 16.68,
+      "last": 127.94,
       "rvol": 1.01,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "920.4M$"
+      "dollar_volume_label": "924.7M$"
     },
     {
       "symbol": "CDNA",
-      "change_pct": 12.65,
-      "last": 61.18,
+      "change_pct": 12.5,
+      "last": 61.1,
       "rvol": 0.87,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "59.0M$"
+      "dollar_volume_label": "59.1M$"
     },
     {
       "symbol": "TWST",
-      "change_pct": 10.26,
-      "last": 174.76,
+      "change_pct": 10.25,
+      "last": 174.75,
       "rvol": 1.07,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "328.4M$"
+      "dollar_volume_label": "329.1M$"
+    },
+    {
+      "symbol": "WRBY",
+      "change_pct": 9.16,
+      "last": 25.49,
+      "rvol": 0.82,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "54.5M$"
     },
     {
       "symbol": "NBIS",
-      "change_pct": 8.52,
-      "last": 245.91,
+      "change_pct": 8.96,
+      "last": 246.92,
       "rvol": 1.08,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "4.0B$"
-    },
-    {
-      "symbol": "WRBY",
-      "change_pct": 8.27,
-      "last": 25.28,
-      "rvol": 0.8,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "52.8M$"
-    },
-    {
-      "symbol": "BLLN",
-      "change_pct": 8.19,
-      "last": 123.79,
-      "rvol": 0.82,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "59.9M$"
     }
   ],
   "news": [
@@ -1317,29 +1308,6 @@
       "officialish": false
     },
     {
-      "symbol": "BLLN",
-      "title": "BillionToOne (BLLN) Stock Could Be A Bargain As It Jumps 30% YTD",
-      "title_ar": "يمكن أن يكون سهم BillionToOne (BLLN) صفقة حيث يقفز بنسبة 30 ٪ منذ بداية العام",
-      "summary": "BillionToOne has delivered a strong year to date gain, which puts fresh focus on whether the current share price lines up with the cash the business is expected to generate over time. With the valuation lens firmly on its cash flows, you need to ask whether the recent move reflec",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=1b66e24a7732997a6deb00f457f5c7be6cc8c69e764bad66b23a3e0993cf96ed",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 21:19 UTC",
-      "published_ts": 1790198366,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "baa20671db0f6dc9569237f689c01385e9d4daa6",
-      "source": "finnhub",
-      "impact": 5,
-      "impact_ar": "تأثير 5/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
       "symbol": "CDNA",
       "title": "5 Top-Ranked High-Efficiency Stocks With Strong Profit Potential",
       "title_ar": "5 أسهم عالية الكفاءة ذات تصنيف عالي مع إمكانية ربح قوية",
@@ -1360,39 +1328,6 @@
       "catalyst_keys": [],
       "catalyst_ar": [],
       "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
-      "symbol": "BLLN",
-      "title": "BillionToOne Stock Jumped 12% Yesterday. Here’s What the Streets Target.",
-      "title_ar": "قفز سهم BillionToOne بنسبة 12% يوم أمس. إليك ما تستهدفه الشوارع.",
-      "summary": "Key TakeawaysNo-Headline Rally: BillionToOne stock jumped 12% to $116 on Tuesday, September 22, without a company release, stretching a run that began near $100 on September 14. Insiders Took Profits: The CEO and general counsel sold ~60K shares for ~$6.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=fe85fdd59d1077de071f992b6b4658ca3188e43fa7b8c9669a19ef593a24d7f7",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 08:06 UTC",
-      "published_ts": 1790150812,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "f41bb1a9cd87f2346fe4db65355de59e5384d5d5",
-      "source": "finnhub",
-      "impact": 5,
-      "impact_ar": "تأثير 5/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "insider",
-          "ar": "مطلعون",
-          "base_impact": 3
-        }
-      ],
-      "catalyst_keys": [
-        "insider"
-      ],
-      "catalyst_ar": [
-        "مطلعون"
-      ],
-      "impact_reason_ar": "مطلعون",
       "officialish": false
     },
     {
@@ -1525,6 +1460,29 @@
       "officialish": false
     },
     {
+      "symbol": "BLLN",
+      "title": "BillionToOne (BLLN) Stock Could Be A Bargain As It Jumps 30% YTD",
+      "title_ar": "يمكن أن يكون سهم BillionToOne (BLLN) صفقة حيث يقفز بنسبة 30 ٪ منذ بداية العام",
+      "summary": "BillionToOne has delivered a strong year to date gain, which puts fresh focus on whether the current share price lines up with the cash the business is expected to generate over time. With the valuation lens firmly on its cash flows, you need to ask whether the recent move reflec",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=1b66e24a7732997a6deb00f457f5c7be6cc8c69e764bad66b23a3e0993cf96ed",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 21:19 UTC",
+      "published_ts": 1790198366,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "baa20671db0f6dc9569237f689c01385e9d4daa6",
+      "source": "finnhub",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
       "symbol": "PL",
       "title": "Planet Labs Scales European Manufacturing With Berlin Facility",
       "title_ar": "Planet Labs Scales European Manufacturing With Berlin Facility",
@@ -1555,6 +1513,39 @@
         "شراكة/عقد"
       ],
       "impact_reason_ar": "شراكة/عقد",
+      "officialish": false
+    },
+    {
+      "symbol": "BLLN",
+      "title": "BillionToOne Stock Jumped 12% Yesterday. Here’s What the Streets Target.",
+      "title_ar": "قفز سهم BillionToOne بنسبة 12% يوم أمس. إليك ما تستهدفه الشوارع.",
+      "summary": "Key TakeawaysNo-Headline Rally: BillionToOne stock jumped 12% to $116 on Tuesday, September 22, without a company release, stretching a run that began near $100 on September 14. Insiders Took Profits: The CEO and general counsel sold ~60K shares for ~$6.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=fe85fdd59d1077de071f992b6b4658ca3188e43fa7b8c9669a19ef593a24d7f7",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 08:06 UTC",
+      "published_ts": 1790150812,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "f41bb1a9cd87f2346fe4db65355de59e5384d5d5",
+      "source": "finnhub",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "insider",
+          "ar": "مطلعون",
+          "base_impact": 3
+        }
+      ],
+      "catalyst_keys": [
+        "insider"
+      ],
+      "catalyst_ar": [
+        "مطلعون"
+      ],
+      "impact_reason_ar": "مطلعون",
       "officialish": false
     },
     {
