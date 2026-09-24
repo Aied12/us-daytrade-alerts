@@ -212,7 +212,10 @@ def opportunity_expired(
     # Already extended from suggested entry
     if stretch >= 1.2 and action == Action.CONSIDER_LONG:
         return True, f"فات الدخول — السعر أعلى من الدخول بـ {stretch:.2f}%"
-    # Vertical spike day
+    # Vertical spike day — don't chase a buy after a large green move
+    if action == Action.CONSIDER_LONG and snap.change_pct >= 4.5:
+        return True, "امتداد يومي قوي — الفرصة انتهت للمطاردة"
+    # Vertical spike + overbought RSI
     if snap.change_pct >= 4.5 and snap.rsi_14 >= 78:
         return True, "امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة"
     dist = _vwap_dist_pct(snap)

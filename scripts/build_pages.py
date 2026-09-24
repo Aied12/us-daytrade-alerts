@@ -301,6 +301,17 @@ def main() -> None:
         reverse=True,
     )
     opportunities = opportunities[:12]
+    # Belt-and-suspenders: never publish expired / chase cards to خطط الدخول
+    opportunities = [
+        o
+        for o in opportunities
+        if not o.get("expired")
+        and not (o.get("smart") or {}).get("expired")
+        and not any(
+            (isinstance(t, dict) and (t.get("key") == "expired" or "انتهت" in str(t.get("ar") or "")))
+            for t in (o.get("smart_tags") or [])
+        )
+    ]
 
     movers = sorted(snaps, key=lambda s: abs(s.change_pct), reverse=True)[:8]
 
