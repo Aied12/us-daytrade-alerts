@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T17:08:21.755028+00:00",
-  "generated_ts": 1790269701,
+  "generated_at": "2026-09-24T17:08:25.866748+00:00",
+  "generated_ts": 1790269705,
   "generated_local": "2026-09-24 20:08 +03",
   "status": {
     "ok": true,
     "telegram": "paused",
     "source": "build_pages",
-    "updated_at": "2026-09-24T17:08:21.754878+00:00",
+    "updated_at": "2026-09-24T17:08:25.866609+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24,
@@ -24,38 +24,38 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.0,
+    "avg_change_pct": 0.02,
     "details": {
       "SPY": {
-        "last": 768.145,
-        "change_pct": 0.04,
+        "last": 768.36,
+        "change_pct": 0.07,
         "rsi": 47.4
       },
       "QQQ": {
-        "last": 741.95,
-        "change_pct": 0.1,
-        "rsi": 65.8
+        "last": 742.1,
+        "change_pct": 0.12,
+        "rsi": 65.9
       },
       "IWM": {
-        "last": 281.49,
-        "change_pct": -0.15,
+        "last": 281.52,
+        "change_pct": -0.14,
         "rsi": 25.3
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": 0.04,
+        "change_pct": 0.07,
         "rsi": 47.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": 0.1,
-        "rsi": 65.8
+        "change_pct": 0.12,
+        "rsi": 65.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.15,
+        "change_pct": -0.14,
         "rsi": 25.3
       }
     ],
@@ -69,8 +69,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 10298,
-    "ny_time": "13:08:21",
+    "seconds_left": 10294,
+    "ny_time": "13:08:25",
     "open": "09:30",
     "close": "16:00"
   },
@@ -510,7 +510,7 @@
       "name": "",
       "last": 14.98,
       "change_pct": 8.24,
-      "dollar_volume": 62741677.74,
+      "dollar_volume": 62746740.98,
       "dollar_volume_label": "62.7M$",
       "rvol": 2.82,
       "liq_grade_ar": "قوي",
@@ -548,7 +548,7 @@
       "name": "",
       "last": 116.67,
       "change_pct": 7.51,
-      "dollar_volume": 234550567.92,
+      "dollar_volume": 234552201.3,
       "dollar_volume_label": "234.6M$",
       "rvol": 3.44,
       "liq_grade_ar": "قوي",
@@ -597,10 +597,10 @@
       "liquidity": {
         "rvol": 0.27,
         "rvol_pace": 0.48,
-        "volume": 4517655.0,
-        "avg_volume_20": 16688752.75,
-        "dollar_volume": 1080803782.2,
-        "avg_dollar_volume": 3992617207.91,
+        "volume": 4518343.0,
+        "avg_volume_20": 16688787.15,
+        "dollar_volume": 1080968379.32,
+        "avg_dollar_volume": 3992625437.77,
         "dollar_volume_label": "1.1B$",
         "avg_dollar_volume_label": "4.0B$",
         "grade": "strong",
@@ -722,7 +722,6 @@
   "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
   "opps_rejected_slow": [
     "P:امتداد يومي قوي — الفرصة انتهت للمطاردة",
-    "TWST:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "NBIS:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "META:ممتد جداً فوق VWAP — لا تدخل متأخراً",
     "UBER:زخم ضعيف (+0.03% < 0.45%)",
@@ -732,8 +731,9 @@
     "CXW:وتيرة حجم منخفضة ×0.80 (RVOL خام ×0.45)",
     "RCL:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "BLLN:امتداد يومي قوي — الفرصة انتهت للمطاردة",
-    "AAPL:زخم ضعيف (+0.32% < 0.45%)",
+    "AAPL:زخم ضعيف (+0.38% < 0.45%)",
     "CRL:امتداد يومي قوي — الفرصة انتهت للمطاردة",
+    "TWST:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "TXG:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "GRAL:امتداد يومي قوي — الفرصة انتهت للمطاردة",
     "AXTI:ممتد جداً فوق VWAP — لا تدخل متأخراً",
@@ -1020,7 +1020,7 @@
       "rvol": 1.02,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "934.9M$"
+      "dollar_volume_label": "935.0M$"
     },
     {
       "symbol": "CDNA",
@@ -1038,7 +1038,7 @@
       "rvol": 1.1,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "339.5M$"
+      "dollar_volume_label": "340.1M$"
     },
     {
       "symbol": "WRBY",
