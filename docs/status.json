@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:40:23.359344+00:00",
-  "generated_ts": 1790257223,
-  "generated_local": "2026-09-24 16:40 +03",
+  "generated_at": "2026-09-24T13:41:28.988283+00:00",
+  "generated_ts": 1790257288,
+  "generated_local": "2026-09-24 16:41 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:40:23.359128+00:00",
+    "updated_at": "2026-09-24T13:41:28.988106+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,39 +23,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.41,
+    "avg_change_pct": -0.39,
     "details": {
       "SPY": {
-        "last": 765.0,
-        "change_pct": -0.37,
-        "rsi": 44.9
+        "last": 765.03,
+        "change_pct": -0.36,
+        "rsi": 44.8
       },
       "QQQ": {
-        "last": 737.38,
-        "change_pct": -0.52,
-        "rsi": 62.3
+        "last": 737.11,
+        "change_pct": -0.55,
+        "rsi": 62.2
       },
       "IWM": {
-        "last": 280.96,
-        "change_pct": -0.34,
-        "rsi": 24.9
+        "last": 281.16,
+        "change_pct": -0.27,
+        "rsi": 24.8
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.37,
-        "rsi": 44.9
+        "change_pct": -0.36,
+        "rsi": 44.8
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.52,
-        "rsi": 62.3
+        "change_pct": -0.55,
+        "rsi": 62.2
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.34,
-        "rsi": 24.9
+        "change_pct": -0.27,
+        "rsi": 24.8
       }
     ],
     "no_trade_today": false,
@@ -68,8 +68,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 22776,
-    "ny_time": "09:40:23",
+    "seconds_left": 22711,
+    "ny_time": "09:41:28",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,7 +77,7 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.12
+        "change_pct": 1.25
       },
       {
         "name": "Communication",
@@ -85,7 +85,7 @@
       },
       {
         "name": "Financials",
-        "change_pct": -0.05
+        "change_pct": 0.05
       }
     ],
     "weakest": [
@@ -95,17 +95,17 @@
       },
       {
         "name": "Consumer",
-        "change_pct": -0.21
+        "change_pct": -0.23
       },
       {
         "name": "Technology",
-        "change_pct": -0.1
+        "change_pct": -0.15
       }
     ]
   },
   "style": {
-    "growth_avg": 0.08,
-    "value_avg": 0.02,
+    "growth_avg": 0.06,
+    "value_avg": 0.04,
     "leader": "نمو",
     "growth_count": 10,
     "value_count": 11
@@ -116,26 +116,27 @@
     "P:درجة سيولة ضعيفة",
     "NBIS:درجة سيولة ضعيفة",
     "CRWV:درجة سيولة ضعيفة",
-    "BAC:زخم ضعيف (+0.20% < 0.85%)",
+    "BAC:زخم ضعيف (+0.25% < 0.85%)",
+    "AMD:درجة سيولة ضعيفة",
     "XOM:درجة سيولة ضعيفة",
-    "UBER:زخم ضعيف (+0.26% < 0.85%)",
-    "CVX:زخم ضعيف (+0.74% < 0.85%)",
+    "UBER:زخم ضعيف (+0.45% < 0.85%)",
+    "COIN:زخم ضعيف (+0.18% < 0.85%)",
+    "CVX:درجة سيولة ضعيفة",
     "DIS:RVOL منخفض ×0.06",
-    "COIN:زخم ضعيف (+0.06% < 0.85%)",
-    "NVDA:زخم ضعيف (-1.04% < 0.85%)",
+    "NVDA:زخم ضعيف (-1.19% < 0.85%)",
     "META:درجة سيولة ضعيفة"
   ],
   "gainers": [
     {
       "symbol": "P",
       "name": "Everpure, Inc.",
-      "last": 124.8,
-      "change_pct": 13.73,
+      "last": 126.01,
+      "change_pct": 14.84,
       "ref": 109.73,
-      "rth_close": 124.8,
-      "volume": 1347836.0,
-      "dollar_volume": 168209932.8,
-      "dollar_volume_label": "168.2M$",
+      "rth_close": 126.01,
+      "volume": 1590700.0,
+      "dollar_volume": 200444107.0,
+      "dollar_volume_label": "200.4M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=P"
@@ -143,13 +144,13 @@
     {
       "symbol": "NBIS",
       "name": "Nebius Group N.V.",
-      "last": 240.89,
-      "change_pct": 6.3,
+      "last": 242.4,
+      "change_pct": 6.97,
       "ref": 226.61,
-      "rth_close": 240.89,
-      "volume": 3448119.0,
-      "dollar_volume": 830617385.91,
-      "dollar_volume_label": "830.6M$",
+      "rth_close": 242.41,
+      "volume": 3929109.0,
+      "dollar_volume": 952416021.6,
+      "dollar_volume_label": "952.4M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
@@ -157,16 +158,44 @@
     {
       "symbol": "CRWV",
       "name": "CoreWeave, Inc.",
-      "last": 89.12,
-      "change_pct": 2.55,
+      "last": 89.82,
+      "change_pct": 3.36,
       "ref": 86.9,
-      "rth_close": 89.12,
-      "volume": 5360088.0,
-      "dollar_volume": 477691042.56,
-      "dollar_volume_label": "477.7M$",
+      "rth_close": 89.82,
+      "volume": 5728348.0,
+      "dollar_volume": 514520217.36,
+      "dollar_volume_label": "514.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRWV"
+    },
+    {
+      "symbol": "IONQ",
+      "name": "IonQ, Inc.",
+      "last": 43.17,
+      "change_pct": 1.48,
+      "ref": 42.54,
+      "rth_close": 43.17,
+      "volume": 5922395.0,
+      "dollar_volume": 255669792.15,
+      "dollar_volume_label": "255.7M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=IONQ"
+    },
+    {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices, Inc.",
+      "last": 619.91,
+      "change_pct": 0.86,
+      "ref": 614.61,
+      "rth_close": 619.91,
+      "volume": 3624595.0,
+      "dollar_volume": 2246922686.45,
+      "dollar_volume_label": "2.2B$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=AMD"
     }
   ],
   "gainers_min_price": 5.0,
@@ -176,55 +205,55 @@
       "symbol": "P",
       "change_pct": 13.79,
       "last": 124.77,
-      "rvol": 0.2,
+      "rvol": 0.23,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "168.2M$"
+      "dollar_volume_label": "201.2M$"
     },
     {
       "symbol": "NBIS",
-      "change_pct": 6.29,
-      "last": 240.87,
-      "rvol": 0.26,
+      "change_pct": 6.67,
+      "last": 241.72,
+      "rvol": 0.27,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "889.9M$"
+      "dollar_volume_label": "955.4M$"
     },
     {
       "symbol": "CRWV",
-      "change_pct": 2.49,
-      "last": 89.06,
-      "rvol": 0.2,
+      "change_pct": 2.9,
+      "last": 89.42,
+      "rvol": 0.21,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "495.3M$"
+      "dollar_volume_label": "513.8M$"
     },
     {
       "symbol": "DIS",
-      "change_pct": 1.75,
-      "last": 105.27,
+      "change_pct": 2.0,
+      "last": 105.53,
       "rvol": 0.06,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "49.2M$"
+      "dollar_volume_label": "51.3M$"
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.65,
-      "last": 349.15,
-      "rvol": 0.09,
+      "change_pct": -1.72,
+      "last": 348.9,
+      "rvol": 0.1,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "871.8M$"
+      "dollar_volume_label": "891.0M$"
     },
     {
-      "symbol": "BA",
-      "change_pct": -1.58,
-      "last": 196.77,
-      "rvol": 0.15,
+      "symbol": "XOM",
+      "change_pct": 1.63,
+      "last": 163.86,
+      "rvol": 0.04,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "182.8M$"
+      "dollar_volume_label": "90.8M$"
     }
   ],
   "news": [
@@ -286,6 +315,21 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "786dcaac9c87e2293b455f1af9f065d18bd339b8",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "IONQ",
+      "title": "Everyone’s Talking About IonQ. Smart Money Is Watching Nvidia Instead.",
+      "title_ar": "الجميع يتحدث عن IonQ. المال الذكي يراقب إنفيديا بدلاً من ذلك.",
+      "summary": "IonQ just claimed a genuine quantum computing breakthrough, but its stock tells a bleaker story and its financials tell a bleaker one still. Before you chase the headline, there is a quieter position in the quantum ecosystem worth understanding.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=e0344ec28f1f5146ca3a61efa3f6a06e51319180fa46fa72924e884b6dfa8e03",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 12:05 UTC",
+      "published_ts": 1790251546,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "a16b964ad0fc50ec7423fb416848534a6a20c34c",
       "source": "finnhub"
     },
     {
@@ -454,33 +498,18 @@
       "source": "finnhub"
     },
     {
-      "symbol": "COST",
-      "title": "Dividend Decisions: Costco's Unique Payout vs. Walmart's Stability",
-      "title_ar": "قرارات توزيعات الأرباح: عائد كوستكو الفريد مقابل استقرار وول مارت",
-      "summary": "Costco's special dividends look appealing, but Walmart also looks attractive because of its status as a Dividend King.",
+      "symbol": "IONQ",
+      "title": "The 5% Wall: Treasury Yields Take the Air Out of Wall Street's Muse Rally",
+      "title_ar": "الجدار 5 ٪: عوائد سندات الخزانة تسحب الهواء من رالي MUSE في وول ستريت",
+      "summary": "The 10-year Treasury yield climbed back above 5% on Wednesday and pulled all three major indices lower. A hawkish Fed governor, hot PMI data and a rebound in oil did the damage, while Meta's Muse agent hit travel stocks and McDonald's slid on a sobering investor day.",
       "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=0599423c4f357c06a1c32a63aeece0c7643e9ae7517615ed4aab10fd749c3aa8",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 09:04 UTC",
-      "published_ts": 1790240640,
+      "url": "https://finnhub.io/api/news?id=0518a6ef61f86a74163e1b534a000dc6875b5aad3965135408a293d3293d3fcb",
+      "publisher": "ChartMill",
+      "published": "2026-09-24 07:14 UTC",
+      "published_ts": 1790234071,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "3e1fe0cf98c533415e90dc9d6965eab94cd646e2",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "COST",
-      "title": "Costco Wholesale (COST) Could Be 16% Below Fair Value On DoorDash Delivery Rollout",
-      "title_ar": "يمكن أن تكون تكلفة البيع بالجملة لشركة كوستكو (COSTCO) أقل بنسبة 16 ٪ من القيمة العادلة عند طرح تسليم شركة دور داش (DoorDash)",
-      "summary": "Costco Wholesale (COST) has just taken its DoorDash partnership nationwide, putting same day delivery from every U.S. warehouse a tap away. That shift gives investors a fresh lens on this membership driven retailer. Against this rollout, Costco Wholesale’s 1-day share price retur",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=324d30d46199aa4be75bf23b1cebb2d7875bcd3e724762c193d430873e52c80b",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 07:11 UTC",
-      "published_ts": 1790233910,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "e05b05623a7d09f79c5e0ac796ba9d64d512c722",
+      "id": "035e24d739eadcf883d7bd20f8807fd34f4d0e9b",
       "source": "finnhub"
     },
     {
