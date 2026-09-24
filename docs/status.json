@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:38:21.248112+00:00",
-  "generated_ts": 1790257101,
-  "generated_local": "2026-09-24 16:38 +03",
+  "generated_at": "2026-09-24T13:39:28.150963+00:00",
+  "generated_ts": 1790257168,
+  "generated_local": "2026-09-24 16:39 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:38:21.248000+00:00",
+    "updated_at": "2026-09-24T13:39:28.150822+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,38 +23,38 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.42,
+    "avg_change_pct": -0.45,
     "details": {
       "SPY": {
-        "last": 764.99,
-        "change_pct": -0.37,
-        "rsi": 44.8
+        "last": 764.69,
+        "change_pct": -0.41,
+        "rsi": 44.9
       },
       "QQQ": {
-        "last": 736.86,
-        "change_pct": -0.59,
-        "rsi": 62.2
+        "last": 736.88,
+        "change_pct": -0.58,
+        "rsi": 62.3
       },
       "IWM": {
-        "last": 281.06,
-        "change_pct": -0.31,
+        "last": 280.94,
+        "change_pct": -0.35,
         "rsi": 24.8
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.37,
-        "rsi": 44.8
+        "change_pct": -0.41,
+        "rsi": 44.9
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.59,
-        "rsi": 62.2
+        "change_pct": -0.58,
+        "rsi": 62.3
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.31,
+        "change_pct": -0.35,
         "rsi": 24.8
       }
     ],
@@ -68,45 +68,45 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 22898,
-    "ny_time": "09:38:21",
+    "seconds_left": 22831,
+    "ny_time": "09:39:28",
     "open": "09:30",
     "close": "16:00"
   },
   "sectors": {
     "strongest": [
       {
-        "name": "Communication",
-        "change_pct": 1.18
+        "name": "Energy",
+        "change_pct": 1.14
       },
       {
-        "name": "Energy",
-        "change_pct": 1.15
+        "name": "Communication",
+        "change_pct": 1.12
       },
       {
         "name": "Financials",
-        "change_pct": 0.09
+        "change_pct": -0.02
       }
     ],
     "weakest": [
       {
         "name": "Industrial",
-        "change_pct": -1.62
+        "change_pct": -1.8
       },
       {
         "name": "Consumer",
-        "change_pct": -0.24
+        "change_pct": -0.26
       },
       {
         "name": "Technology",
-        "change_pct": -0.2
+        "change_pct": -0.14
       }
     ]
   },
   "style": {
-    "growth_avg": -0.07,
-    "value_avg": 0.11,
-    "leader": "قيمة",
+    "growth_avg": 0.02,
+    "value_avg": 0.01,
+    "leader": "نمو",
     "growth_count": 10,
     "value_count": 11
   },
@@ -115,14 +115,15 @@
   "opps_rejected_slow": [
     "P:درجة سيولة ضعيفة",
     "NBIS:درجة سيولة ضعيفة",
-    "JPM:زخم ضعيف (+0.03% < 0.85%)",
-    "BAC:زخم ضعيف (+0.34% < 0.85%)",
+    "BAC:زخم ضعيف (+0.16% < 0.85%)",
     "XOM:RVOL منخفض ×0.03",
-    "UBER:زخم ضعيف (+0.26% < 0.85%)",
-    "NFLX:زخم ضعيف (+0.62% < 0.85%)",
-    "CVX:زخم ضعيف (+0.84% < 0.85%)",
+    "UBER:زخم ضعيف (+0.27% < 0.85%)",
+    "NFLX:زخم ضعيف (+0.57% < 0.85%)",
+    "CRWV:درجة سيولة ضعيفة",
+    "CVX:زخم ضعيف (+0.78% < 0.85%)",
     "DIS:RVOL منخفض ×0.05",
-    "NVDA:زخم ضعيف (-1.33% < 0.85%)",
+    "COIN:زخم ضعيف (+0.09% < 0.85%)",
+    "NVDA:زخم ضعيف (-1.27% < 0.85%)",
     "META:درجة سيولة ضعيفة"
   ],
   "gainers": [
@@ -143,16 +144,30 @@
     {
       "symbol": "NBIS",
       "name": "Nebius Group N.V.",
-      "last": 238.87,
-      "change_pct": 5.41,
+      "last": 240.89,
+      "change_pct": 6.3,
       "ref": 226.61,
-      "rth_close": 238.87,
-      "volume": 2984718.0,
-      "dollar_volume": 712959588.66,
-      "dollar_volume_label": "713.0M$",
+      "rth_close": 240.89,
+      "volume": 3448119.0,
+      "dollar_volume": 830617385.91,
+      "dollar_volume_label": "830.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
+    },
+    {
+      "symbol": "CRWV",
+      "name": "CoreWeave, Inc.",
+      "last": 89.12,
+      "change_pct": 2.55,
+      "ref": 86.9,
+      "rth_close": 89.12,
+      "volume": 5360088.0,
+      "dollar_volume": 477691042.56,
+      "dollar_volume_label": "477.7M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=CRWV"
     }
   ],
   "gainers_min_price": 5.0,
@@ -169,57 +184,48 @@
     },
     {
       "symbol": "NBIS",
-      "change_pct": 5.86,
-      "last": 239.89,
-      "rvol": 0.22,
+      "change_pct": 5.52,
+      "last": 239.11,
+      "rvol": 0.24,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "763.8M$"
+      "dollar_volume_label": "828.8M$"
     },
     {
-      "symbol": "DIS",
-      "change_pct": 1.74,
-      "last": 105.26,
-      "rvol": 0.05,
+      "symbol": "CRWV",
+      "change_pct": 2.08,
+      "last": 88.71,
+      "rvol": 0.2,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "42.0M$"
+      "dollar_volume_label": "476.8M$"
     },
     {
       "symbol": "BA",
-      "change_pct": -1.62,
-      "last": 196.69,
-      "rvol": 0.14,
+      "change_pct": -1.8,
+      "last": 196.34,
+      "rvol": 0.15,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "163.9M$"
+      "dollar_volume_label": "176.3M$"
+    },
+    {
+      "symbol": "DIS",
+      "change_pct": 1.66,
+      "last": 105.18,
+      "rvol": 0.05,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "43.4M$"
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.62,
-      "last": 349.24,
+      "change_pct": -1.57,
+      "last": 349.4,
       "rvol": 0.09,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "804.3M$"
-    },
-    {
-      "symbol": "XOM",
-      "change_pct": 1.45,
-      "last": 163.57,
-      "rvol": 0.03,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "73.0M$"
-    },
-    {
-      "symbol": "NVDA",
-      "change_pct": -1.33,
-      "last": 222.52,
-      "rvol": 0.06,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "1.6B$"
+      "dollar_volume_label": "846.4M$"
     }
   ],
   "news": [
@@ -329,6 +335,21 @@
       "source": "finnhub"
     },
     {
+      "symbol": "CRWV",
+      "title": "JPMorgan upgrades CoreWeave on stronger compute pricing",
+      "title_ar": "يقوم JPMorgan بترقية CoreWeave بتسعير حوسبة أقوى",
+      "summary": "Investing.com -- JPMorgan upgraded CoreWeave (NASDAQ: CRWV) to Overweight from Neutral in a note Thursday, telling investors that stronger pricing for computing power and the company's push into short-term contracts at premium rates should lift revenue and margins.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=b7aa75823ab9f3df0ef45a56bdee20093053804a504fb70bac4b183d6ea0c86d",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 11:31 UTC",
+      "published_ts": 1790249509,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "0c6ce9993364a16b6c36ec50c23a47723b08cec1",
+      "source": "finnhub"
+    },
+    {
       "symbol": "P",
       "title": "Everpure Sees AI Demand Underpinning Revenue Growth. This Analyst Says Stock Price Could Double.",
       "title_ar": "ترى Everpure أن الطلب على الذكاء الاصطناعي يدعم نمو الإيرادات. يقول هذا المحلل إن سعر السهم قد يتضاعف.",
@@ -341,51 +362,6 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "c1bddb366d39689bf13940db3ccf9fbbe7f70969",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "JPM",
-      "title": "JPMorgan Announces Cash Distributions for the JPMorgan ETFs",
-      "title_ar": "JPMorgan تعلن عن توزيعات نقدية لصناديق JPMorgan المتداولة",
-      "summary": "TORONTO, Sept. 24, 2026 (GLOBE NEWSWIRE) -- J. P. Morgan Asset Management (JPMAM)* today announced the final September 2026 cash distributions for the below listed JPMorgan ETFs. The JPMorgan ETFs trade on the Toronto Stock Exchange (TSX). Unitholders of record on October 1, 2026",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=cf6b52dffa507cc66a548e6e19c5366028f72454be8d44adcaf5ea6e8ec9ac94",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 11:00 UTC",
-      "published_ts": 1790247600,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "f314670290c2a08e4beb7cf3a82d137fd2f5359d",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "BAC",
-      "title": "Citi Is Rolling Out Higher Rates in New Push for Clients’ Assets",
-      "title_ar": "تقوم Citi بإطلاق أسعار أعلى في دفعة جديدة لأصول العملاء",
-      "summary": "Citigroup wants clients to park more of their cash and investments with the bank. It’s offering incentives to make it happen.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=15476efc5f85ae38c8d5155336bc6ed004219d4520a7afe6518d847f94a62e47",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 11:00 UTC",
-      "published_ts": 1790247600,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "3aba898ead24767e45a549add3b8f003532ea37b",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "BAC",
-      "title": "BofA to Hire 1,000 Additional Apprentices and Invest $150 Million in Workforce Development across the U.S.",
-      "title_ar": "بنك أوف أمريكا يوظف 1000 متدرب إضافي ويستثمر 150 مليون $ في تطوير القوى العاملة في جميع أنحاء الولايات المتحدة",
-      "summary": "Bank of America today announced it will hire 1,000 additional apprentices over the next two years and commit $150 million over five years to workforce development organizations to help strengthen local economies and drive job opportunities along with workforce growth across the U",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=86ddabda4a212087dc4dc441e8ef44ffc1664945e3622d3fa5807893d949cea7",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 11:00 UTC",
-      "published_ts": 1790247600,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "e75ffc0b7703b4de306ccdaa7fe3e8b40388c2b7",
       "source": "finnhub"
     },
     {
@@ -404,6 +380,21 @@
       "source": "finnhub"
     },
     {
+      "symbol": "CRWV",
+      "title": "This Artificial Intelligence (AI) Stock Could Soar by 63%, According to Wall Street",
+      "title_ar": "قد يرتفع سهم الذكاء الاصطناعي هذا بنسبة 63 ٪، وفقًا لوول ستريت",
+      "summary": "It has lagged broader equities so far this year.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=bcb40ae07b63c8e350dcd0c7d02898f63b872fd8c40991dfd256227eda16e7ed",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 10:14 UTC",
+      "published_ts": 1790244841,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "e00ae4330c3b4aeaa0116d4207cff9156b5dd928",
+      "source": "finnhub"
+    },
+    {
       "symbol": "MSFT",
       "title": "Global Digital Agency Granite Acquires Branding and Design Agency Right Hat in Latest US Expansion Move",
       "title_ar": "الوكالة الرقمية العالمية جرانيت تستحوذ على وكالة العلامات التجارية والتصميم في أحدث خطوة توسع في الولايات المتحدة",
@@ -416,21 +407,6 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "1ac4e8e6a8cf364dab817fc232744667fcf70c7a",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "JPM",
-      "title": "JPMorgan’s Peters Favors Stocks as Higher Yields Test Earnings",
-      "title_ar": "بيترز من جي بي مورغان تفضل الأسهم مع ارتفاع أرباح اختبار العائدات",
-      "summary": "Equities can keep climbing even as rising bond yields raise the bar for earnings growth, according to JPMorgan Chase & Co.’s Grace Peters.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=a9b113b6bdf27dff508b870815810dc884ffcf62ca366e58a6cf4e31a37a46ab",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 09:39 UTC",
-      "published_ts": 1790242755,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "d96ac9909d8e364eafbf636ca3feb7e8ec1f753b",
       "source": "finnhub"
     },
     {
@@ -569,6 +545,21 @@
       "source": "finnhub:general"
     },
     {
+      "symbol": "CRWV",
+      "title": "CoreWeave Priced an Upsized $3.7 Billion Convertible Note as Capex Spending Spikes. What That Means for CRWV Stock Fans.",
+      "title_ar": "قامت CoreWeave بتسعير سندات قابلة للتحويل بقيمة 3.7 مليار $ مع ارتفاع الإنفاق الرأسمالي. ماذا يعني ذلك لمحبي الأسهم CRWV.",
+      "summary": "CoreWeave priced an upsized convertible note as capex spending surges, adding debt and equity options to fund AI data-center growth.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=b9260d6261ce854d03facdf397cc69521d54ea68ed78cf4262e5185ce8bf0fd0",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 22:35 UTC",
+      "published_ts": 1790202933,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "528bc4d28fa7bb31044f66e8a16514b43fc7cd9e",
+      "source": "finnhub"
+    },
+    {
       "symbol": "MARKET",
       "title": "A rare Microsoft bear warms up to the stock. Here's what changed their mind",
       "title_ar": "دب نادر من مايكروسوفت يرتفع إلى مستوى السهم. إليك ما غير رأيه",
@@ -582,11 +573,27 @@
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "a504f9cac743fa3db1cb4684e674fb2dc7eb2803",
       "source": "finnhub:general"
+    },
+    {
+      "symbol": "NBIS",
+      "title": "Nebius Group Heads 3 Top Insider Growth Stocks",
+      "title_ar": "مجموعة نيبيوس تتصدر 3 أفضل أسهم النمو من الداخل",
+      "summary": "With US Treasury yields jumping to fresh 19 year highs on strong economic readings, investors are being paid more to sit in cash and bonds. That raises the bar for any growth story. It also creates a window for fast growing businesses where founders and executives still own large",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=3062c51fee6ec02547e5def9589d9f99e06eb0dedf46ab1218a3b6422a343349",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 19:15 UTC",
+      "published_ts": 1790190930,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "946b029ca15f42bb9fd707878e131ace614d8bc4",
+      "source": "finnhub"
     }
   ],
   "news_excluded_negative": [
     "AMZN",
     "CRM",
+    "FRVO",
     "META",
     "NFLX",
     "TSLA"
