@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-09-24T13:32:14.886295+00:00",
-  "generated_ts": 1790256734,
+  "generated_at": "2026-09-24T13:32:59.978173+00:00",
+  "generated_ts": 1790256779,
   "generated_local": "2026-09-24 16:32 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:32:14.886138+00:00",
+    "updated_at": "2026-09-24T13:32:59.978000+00:00",
     "last_mode": "dashboard",
-    "changed": false,
+    "changed": true,
     "symbols": 24
   },
   "telegram_enabled": true,
@@ -26,36 +26,36 @@
     "avg_change_pct": -0.45,
     "details": {
       "SPY": {
-        "last": 764.43,
-        "change_pct": -0.44,
+        "last": 764.37,
+        "change_pct": -0.45,
         "rsi": 44.5
       },
       "QQQ": {
-        "last": 735.6,
-        "change_pct": -0.76,
+        "last": 735.46,
+        "change_pct": -0.78,
         "rsi": 61.2
       },
       "IWM": {
-        "last": 281.58,
-        "change_pct": -0.14,
-        "rsi": 25.4
+        "last": 281.54,
+        "change_pct": -0.13,
+        "rsi": 25.5
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.44,
+        "change_pct": -0.45,
         "rsi": 44.5
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.76,
+        "change_pct": -0.78,
         "rsi": 61.2
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.14,
-        "rsi": 25.4
+        "change_pct": -0.13,
+        "rsi": 25.5
       }
     ],
     "no_trade_today": false,
@@ -68,122 +68,131 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 23265,
-    "ny_time": "09:32:14",
+    "seconds_left": 23220,
+    "ny_time": "09:32:59",
     "open": "09:30",
     "close": "16:00"
   },
   "sectors": {
     "strongest": [
       {
-        "name": "Energy",
-        "change_pct": 0.74
+        "name": "Communication",
+        "change_pct": 1.26
       },
       {
         "name": "Financials",
-        "change_pct": 0.64
+        "change_pct": 0.86
       },
       {
-        "name": "Communication",
-        "change_pct": 0.41
+        "name": "Energy",
+        "change_pct": 0.52
       }
     ],
     "weakest": [
       {
         "name": "Industrial",
-        "change_pct": -0.74
+        "change_pct": -0.63
       },
       {
         "name": "Technology",
-        "change_pct": -0.5
+        "change_pct": -0.48
       },
       {
         "name": "Consumer",
-        "change_pct": -0.33
+        "change_pct": -0.34
       }
     ]
   },
   "style": {
-    "growth_avg": -0.14,
-    "value_avg": -0.08,
-    "leader": "قيمة",
+    "growth_avg": 0.05,
+    "value_avg": -0.06,
+    "leader": "نمو",
     "growth_count": 10,
     "value_count": 11
   },
   "opportunities": [],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
-    "JPM:زخم ضعيف (+0.26% < 0.85%)",
-    "BAC:زخم ضعيف (+0.59% < 0.85%)",
-    "CRM:مدى اليوم ضيق (0.63%)",
-    "DIS:زخم ضعيف (+0.57% < 0.85%)",
-    "COIN:درجة سيولة ضعيفة",
-    "NVDA:زخم ضعيف (-1.22% < 0.85%)",
-    "META:درجة سيولة ضعيفة"
+    "P:درجة سيولة ضعيفة",
+    "NFLX:RVOL منخفض ×0.03",
+    "JPM:زخم ضعيف (+0.06% < 0.85%)",
+    "BAC:زخم ضعيف (+0.50% < 0.85%)",
+    "XOM:زخم ضعيف (+0.66% < 0.85%)",
+    "DIS:تداول بطيء اليوم ($23M · RVOL×0.03)",
+    "COIN:درجة سيولة ضعيفة"
   ],
   "gainers": [
     {
-      "symbol": "IONQ",
-      "name": "IonQ, Inc.",
-      "last": 43.01,
-      "change_pct": 1.1,
-      "ref": 42.54,
-      "rth_close": 43.01,
-      "volume": 3359549.0,
-      "dollar_volume": 144494202.49,
-      "dollar_volume_label": "144.5M$",
+      "symbol": "P",
+      "name": "Everpure, Inc.",
+      "last": 118.69,
+      "change_pct": 8.17,
+      "ref": 109.73,
+      "rth_close": 118.69,
+      "volume": 849104.0,
+      "dollar_volume": 100780153.76,
+      "dollar_volume_label": "100.8M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=IONQ"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=P"
     }
   ],
   "gainers_min_price": 5.0,
   "gainers_session_ar": "الجلسة الرسمية الآن",
   "movers": [
     {
-      "symbol": "AVGO",
-      "change_pct": -1.75,
-      "last": 348.77,
-      "rvol": 0.07,
+      "symbol": "P",
+      "change_pct": 8.86,
+      "last": 119.45,
+      "rvol": 0.13,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "646.6M$"
+      "dollar_volume_label": "109.8M$"
     },
     {
-      "symbol": "MSFT",
-      "change_pct": -1.64,
-      "last": 492.37,
-      "rvol": 0.04,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "434.1M$"
-    },
-    {
-      "symbol": "AMD",
-      "change_pct": -1.29,
-      "last": 606.66,
-      "rvol": 0.09,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "1.2B$"
-    },
-    {
-      "symbol": "NVDA",
-      "change_pct": -1.22,
-      "last": 222.75,
-      "rvol": 0.04,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "962.7M$"
-    },
-    {
-      "symbol": "PLTR",
-      "change_pct": -1.12,
-      "last": 189.64,
+      "symbol": "COIN",
+      "change_pct": 2.03,
+      "last": 202.16,
       "rvol": 0.06,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "292.1M$"
+      "dollar_volume_label": "112.8M$"
+    },
+    {
+      "symbol": "AVGO",
+      "change_pct": -1.82,
+      "last": 348.54,
+      "rvol": 0.07,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "660.9M$"
+    },
+    {
+      "symbol": "MSFT",
+      "change_pct": -1.66,
+      "last": 492.26,
+      "rvol": 0.05,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "457.5M$"
+    },
+    {
+      "symbol": "DIS",
+      "change_pct": 1.63,
+      "last": 105.18,
+      "rvol": 0.03,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "23.2M$"
+    },
+    {
+      "symbol": "NVDA",
+      "change_pct": -1.26,
+      "last": 222.66,
+      "rvol": 0.04,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "1.1B$"
     }
   ],
   "news": [
@@ -246,6 +255,21 @@
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "a18344083e6447b02c4b69e02de04681f7b6c849",
       "source": "finnhub:crypto"
+    },
+    {
+      "symbol": "P",
+      "title": "Everpure Sees AI Demand Underpinning Revenue Growth. This Analyst Says Stock Price Could Double.",
+      "title_ar": "ترى Everpure أن الطلب على الذكاء الاصطناعي يدعم نمو الإيرادات. يقول هذا المحلل إن سعر السهم قد يتضاعف.",
+      "summary": "Everpure stock advances after the data-storage company says revenue growth will continue to accelerate in fiscal 2028.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=4faad82b7d46943b780cd6dcc9003556b008b15dbb3987b9d7b6c8e2b0709e9b",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 11:17 UTC",
+      "published_ts": 1790248620,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "c1bddb366d39689bf13940db3ccf9fbbe7f70969",
+      "source": "finnhub"
     },
     {
       "symbol": "JPM",
@@ -398,21 +422,6 @@
       "source": "finnhub"
     },
     {
-      "symbol": "IONQ",
-      "title": "The 5% Wall: Treasury Yields Take the Air Out of Wall Street's Muse Rally",
-      "title_ar": "الجدار 5 ٪: عوائد سندات الخزانة تسحب الهواء من رالي MUSE في وول ستريت",
-      "summary": "The 10-year Treasury yield climbed back above 5% on Wednesday and pulled all three major indices lower. A hawkish Fed governor, hot PMI data and a rebound in oil did the damage, while Meta's Muse agent hit travel stocks and McDonald's slid on a sobering investor day.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=0518a6ef61f86a74163e1b534a000dc6875b5aad3965135408a293d3293d3fcb",
-      "publisher": "ChartMill",
-      "published": "2026-09-24 07:14 UTC",
-      "published_ts": 1790234071,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "035e24d739eadcf883d7bd20f8807fd34f4d0e9b",
-      "source": "finnhub"
-    },
-    {
       "symbol": "COST",
       "title": "Costco Wholesale (COST) Could Be 16% Below Fair Value On DoorDash Delivery Rollout",
       "title_ar": "يمكن أن تكون تكلفة البيع بالجملة لشركة كوستكو (COSTCO) أقل بنسبة 16 ٪ من القيمة العادلة عند طرح تسليم شركة دور داش (DoorDash)",
@@ -518,21 +527,6 @@
       "source": "finnhub:crypto"
     },
     {
-      "symbol": "IONQ",
-      "title": "Sandisk, Super Micro, IonQ, Six Flags, and More Stocks That Explain Today’s Market",
-      "title_ar": "Sandisk و Super Micro و IonQ و Six Flags والمزيد من الأسهم التي تفسر سوق اليوم",
-      "summary": "Shares of chip and memory companies slip as investors lock in some profit, but AI server makers are having a better time of it.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=581127825b02f6757ed307c06611c91bf051d42cbdb5303100593e7b283df0fa",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 10:18 UTC",
-      "published_ts": 1790158680,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "64297bce6cd8af158230bccc3f8b925ab85dff2b",
-      "source": "finnhub"
-    },
-    {
       "symbol": "AMD",
       "title": "Wondering what's happening in today's S&P500  pre-market session?",
       "title_ar": "هل تتساءل عما يحدث في جلسة ما قبل السوق لمؤشر  S&P500 اليوم ؟",
@@ -546,6 +540,21 @@
       "sentiment_ar": "محايد",
       "id": "cd229c0bdaf1081e3b22f3f92b2971799f54a2b2",
       "source": "finnhub"
+    },
+    {
+      "symbol": "MARKET",
+      "title": "EU's financial regulator to make AI and tokenization a supervisory priority in 2027",
+      "title_ar": "الهيئة التنظيمية المالية في الاتحاد الأوروبي لجعل الذكاء الاصطناعي والرمز أولوية إشرافية في عام 2027",
+      "summary": "",
+      "summary_ar": "",
+      "url": "https://www.coindesk.com/policy/2026/09/24/eu-s-financial-regulator-to-make-ai-and-tokenization-a-supervisory-priority-in-2027",
+      "publisher": "CoinDesk",
+      "published": "2026-09-24 12:26 UTC",
+      "published_ts": 1790252803,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد",
+      "id": "bf8ae6d53bbc0313b6c24f0df06ab765d898861b",
+      "source": "finnhub:crypto"
     }
   ],
   "news_excluded_negative": [
