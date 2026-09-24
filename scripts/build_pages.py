@@ -160,34 +160,49 @@ def main() -> None:
         d.mkdir(parents=True, exist_ok=True)
 
     ctx = market_context()
-    snaps = scan_watchlist(settings.watchlist)
+    phase = session_phase()
+    min_px = max(float(settings.min_price_usd), 5.0)
+
+    # Refresh candidate universe every build: watchlist + live day-gainers
+    gainers = fetch_day_gainers(min_price=min_px, limit=20)
+    gainer_syms = [g["symbol"] for g in (gainers or []) if g.get("symbol")]
+    scan_syms = list(dict.fromkeys([*(settings.watchlist or []), *gainer_syms[:12]]))
+    snaps = scan_watchlist(scan_syms)
     snaps = [s for s in snaps if s.last >= settings.min_price_usd]
+    if not gainers:
+        gainers = watchlist_gainers(snaps, min_price=min_px, limit=15)
+
     pack = build_full_pack(settings, snaps) if snaps else {"signals": []}
     by_sym = {s.symbol: s for s in snaps}
-    phase = session_phase()
 
     opportunities = []
     for sig in pack.get("signals") or []:
         if sig.symbol == "MARKET":
             continue
-        if sig.action not in (
-            Action.CONSIDER_LONG,
-            Action.WATCH_ENTRY,
-            Action.AVOID,
-            Action.TAKE_PROFIT_ZONE,
-        ):
+        # أفضل الفرص = شراء / مراقبة فقط (لا تجنّب ولا بيع قصير)
+        if sig.action not in (Action.CONSIDER_LONG, Action.WATCH_ENTRY):
             continue
         if getattr(sig, "side", None) == "short" or sig.action == Action.CONSIDER_SHORT:
             continue
-        plan = plan_trade(settings, sig)
         snap = by_sym.get(sig.symbol)
+        live_last = round(snap.last, 2) if snap else round(float(sig.entry_hint or 0), 2)
+        if live_last <= 0:
+            continue
+        # Premarket: drop names already red — setup expired
+        if phase == "pre" and snap and snap.change_pct < -0.35:
+            continue
+        plan = plan_trade(settings, sig, live_last=live_last)
+        # Hard rule: long entry must never exceed live price
+        if (sig.side or "long") == "long" and plan.entry > live_last:
+            plan.entry = live_last
         score100 = getattr(sig, "score_100", int(sig.score * 10))
         urgent = sig.action == Action.CONSIDER_LONG and score100 >= 70
-        # During premarket, don't mark urgent if live price is already red vs prior close
         if phase == "pre" and snap and snap.change_pct < 0:
             urgent = False
         liq = liquidity_dict(snap)
-        live_last = round(snap.last, 2) if snap else plan.entry
+        # Require usable liquidity on the board
+        if float(liq.get("dollar_volume") or 0) < 5_000_000 and float(liq.get("rvol") or 0) < 0.5:
+            continue
         opportunities.append(
             {
                 "symbol": sig.symbol,
@@ -198,7 +213,7 @@ def main() -> None:
                 "urgent": urgent,
                 "strategies": (sig.strategies or [])[:4],
                 "reason": sig.reason[:220],
-                "entry": live_last if phase in ("pre", "post") else plan.entry,
+                "entry": plan.entry,
                 "stop": plan.stop,
                 "target": plan.target,
                 "shares": plan.shares,
@@ -215,17 +230,20 @@ def main() -> None:
                 "tg_share": (
                     f"https://t.me/share/url?url=&text="
                     f"{sig.symbol}%20{sig.action.value}%0A"
-                    f"الآن%20{live_last}%20وقف%20{plan.stop}%20هدف%20{plan.target}%0A"
+                    f"الآن%20{live_last}%20دخول%20{plan.entry}%20وقف%20{plan.stop}%20هدف%20{plan.target}%0A"
                     f"سيولة%20{liq['grade_ar']}%20RVOL%20x{liq['rvol']}"
                 ),
             }
         )
 
+    # Rank freshest best setups; keep board moving
+    opportunities.sort(
+        key=lambda o: (1 if o.get("urgent") else 0, o.get("score_100") or 0, o.get("change_pct") or 0),
+        reverse=True,
+    )
+    opportunities = opportunities[:12]
+
     movers = sorted(snaps, key=lambda s: abs(s.change_pct), reverse=True)[:8]
-    min_px = max(float(settings.min_price_usd), 5.0)
-    gainers = fetch_day_gainers(min_price=min_px, limit=20)
-    if not gainers:
-        gainers = watchlist_gainers(snaps, min_price=min_px, limit=15)
     from bot.gainers import session_label_ar
 
     gainers_session = session_label_ar(phase)

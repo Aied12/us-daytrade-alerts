@@ -23,10 +23,41 @@ class PositionPlan:
     note: str
 
 
-def plan_trade(settings: Settings, signal: Signal) -> PositionPlan:
+def reanchor_levels(
+    *,
+    live_last: float,
+    entry: float,
+    stop: float,
+    target: float,
+    side: str = "long",
+) -> tuple[float, float, float]:
+    """Keep entry = live price; preserve stop/target distances from old entry."""
+    last = round(float(live_last), 2)
+    if last <= 0:
+        return round(entry, 2), round(stop, 2), round(target, 2)
+    old_entry = float(entry) if entry and entry > 0 else last
+    if side == "short":
+        stop_dist = max(float(stop) - old_entry, last * 0.008)
+        target_dist = max(old_entry - float(target), last * 0.012)
+        return last, round(last + stop_dist, 2), round(last - target_dist, 2)
+    stop_dist = max(old_entry - float(stop), last * 0.008)
+    target_dist = max(float(target) - old_entry, last * 0.012)
+    return last, round(last - stop_dist, 2), round(last + target_dist, 2)
+
+
+def plan_trade(settings: Settings, signal: Signal, *, live_last: float | None = None) -> PositionPlan:
     entry = signal.entry_hint
     stop = signal.stop_hint
     target = signal.target_hint
+    # Day-trade: entry must track the live quote (never stale above/below market)
+    if live_last is not None and live_last > 0:
+        entry, stop, target = reanchor_levels(
+            live_last=live_last,
+            entry=entry,
+            stop=stop,
+            target=target,
+            side=signal.side or "long",
+        )
 
     if signal.side == "short":
         risk_per_share = max(stop - entry, 0.01)
