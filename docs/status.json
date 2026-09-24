@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:30:16.431939+00:00",
-  "generated_ts": 1790253016,
-  "generated_local": "2026-09-24 15:30 +03",
+  "generated_at": "2026-09-24T12:31:18.246868+00:00",
+  "generated_ts": 1790253078,
+  "generated_local": "2026-09-24 15:31 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:30:16.431838+00:00",
+    "updated_at": "2026-09-24T12:31:18.246774+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,38 +23,38 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.6,
+    "avg_change_pct": -0.57,
     "details": {
       "SPY": {
-        "last": 763.9093,
-        "change_pct": -0.51,
+        "last": 764.015,
+        "change_pct": -0.49,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.14,
-        "change_pct": -0.95,
+        "last": 734.214,
+        "change_pct": -0.94,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 280.98,
-        "change_pct": -0.33,
+        "last": 281.11,
+        "change_pct": -0.29,
         "rsi": 29.0
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.51,
+        "change_pct": -0.49,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.95,
+        "change_pct": -0.94,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.33,
+        "change_pct": -0.29,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 3583,
-    "ny_time": "08:30:16",
+    "seconds_left": 3521,
+    "ny_time": "08:31:18",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,21 +81,21 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.05
+        "change_pct": 0.02
       },
       {
         "name": "Financials",
-        "change_pct": -0.35
+        "change_pct": -0.34
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.18
+        "change_pct": -1.21
       },
       {
         "name": "Consumer",
-        "change_pct": -0.37
+        "change_pct": -0.39
       },
       {
         "name": "Industrial",
@@ -104,7 +104,7 @@
     ]
   },
   "style": {
-    "growth_avg": -1.16,
+    "growth_avg": -1.19,
     "value_avg": 0.01,
     "leader": "قيمة",
     "growth_count": 10,
@@ -509,6 +509,46 @@
       "liq_grade_ar": "متوسط",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CVX",
       "tg_share": "https://t.me/share/url?url=&text=CVX%20راقب دخول%0Aالآن%20207.39%20دخول%20207.39%20وقف%20198.5%20هدف%20223.39%0Aسيولة%20متوسط%20RVOL%20x0.83"
+    },
+    {
+      "symbol": "SPCX",
+      "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
+      "side": "long",
+      "score_100": 59,
+      "urgent": false,
+      "strategies": [
+        "ترتيب متوسطات صاعد",
+        "RSI متوازن",
+        "تقلّب عالي"
+      ],
+      "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 57 | تقلّب عالي: ATR% 4.9",
+      "entry": 148.75,
+      "stop": 137.06,
+      "target": 169.79,
+      "shares": 10,
+      "risk_sar": 438.37,
+      "allowed": false,
+      "change_pct": 0.26,
+      "last": 148.75,
+      "session_phase": "pre",
+      "liquidity": {
+        "rvol": 0.68,
+        "volume": 60280300.0,
+        "avg_volume_20": 89208805.0,
+        "dollar_volume": 8966694625.0,
+        "avg_dollar_volume": 13269809743.75,
+        "dollar_volume_label": "9.0B$",
+        "avg_dollar_volume_label": "13.3B$",
+        "grade": "weak",
+        "grade_ar": "ضعيف",
+        "label": "RVOL ×0.7 · اليوم 9.0B$ · متوسط 13.3B$"
+      },
+      "rvol": 0.68,
+      "liq_grade": "weak",
+      "liq_grade_ar": "ضعيف",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX",
+      "tg_share": "https://t.me/share/url?url=&text=SPCX%20راقب دخول%0Aالآن%20148.75%20دخول%20148.75%20وقف%20137.06%20هدف%20169.79%0Aسيولة%20ضعيف%20RVOL%20x0.68"
     }
   ],
   "gainers": [
@@ -583,6 +623,20 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=APA"
     },
     {
+      "symbol": "SPCX",
+      "name": "Space Exploration Technologies ",
+      "last": 148.75,
+      "change_pct": 0.26,
+      "ref": 148.36,
+      "rth_close": 148.36,
+      "volume": 60046138.0,
+      "dollar_volume": 8931863027.5,
+      "dollar_volume_label": "8.9B$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX"
+    },
+    {
       "symbol": "LTH",
       "name": "Life Time Group Holdings, Inc.",
       "last": 39.74,
@@ -630,8 +684,8 @@
   "movers": [
     {
       "symbol": "AMD",
-      "change_pct": -2.62,
-      "last": 598.5,
+      "change_pct": -2.67,
+      "last": 598.21,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -639,8 +693,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -2.06,
-      "last": 187.84,
+      "change_pct": -2.07,
+      "last": 187.81,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -648,8 +702,8 @@
     },
     {
       "symbol": "META",
-      "change_pct": -1.69,
-      "last": 731.56,
+      "change_pct": -1.82,
+      "last": 730.53,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -666,8 +720,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.46,
-      "last": 349.8,
+      "change_pct": -1.43,
+      "last": 349.93,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -675,8 +729,8 @@
     },
     {
       "symbol": "COIN",
-      "change_pct": -1.36,
-      "last": 195.43,
+      "change_pct": -1.32,
+      "last": 195.51,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -709,7 +763,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 121,
+    "alerts_today": 122,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
