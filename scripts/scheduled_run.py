@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Smart scheduled runner — picks morning/intraday/evening from NY time."""
+"""Scheduled runner — 5-minute ticks from 11:00 to 23:00 Saudi time."""
 
 from __future__ import annotations
 
@@ -13,13 +13,14 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from bot.config import load_settings
-from bot.market_data import scan_watchlist
+from bot.market_data import market_context, scan_watchlist
 from bot.notify import deliver, save_json_snapshot
 from bot.reports import build_full_pack
+from bot.updates import build_tick_message
 
 NY = ZoneInfo("America/New_York")
+RIYADH = ZoneInfo("Asia/Riyadh")
 
-# Rough US market holidays 2026–2027 (extend as needed)
 US_HOLIDAYS = {
     date(2026, 1, 1),
     date(2026, 1, 19),
@@ -27,7 +28,7 @@ US_HOLIDAYS = {
     date(2026, 4, 3),
     date(2026, 5, 25),
     date(2026, 6, 19),
-    date(2026, 7, 3),  # observed Independence
+    date(2026, 7, 3),
     date(2026, 9, 7),
     date(2026, 11, 26),
     date(2026, 12, 25),
@@ -43,100 +44,106 @@ US_HOLIDAYS = {
 }
 
 
-def is_trading_day(now: datetime) -> bool:
-    d = now.date()
-    if now.weekday() >= 5:
+def is_trading_day(now_ny: datetime) -> bool:
+    d = now_ny.date()
+    if now_ny.weekday() >= 5:
         return False
     if d in US_HOLIDAYS:
         return False
     return True
 
 
-def resolve_mode(now: datetime, requested: str) -> str | None:
-    """Return mode to run, or None to skip."""
-    if requested != "auto":
-        return requested
-
-    if not is_trading_day(now):
-        return None
-
-    t = now.time()
-    # Premarket brief: ~04:00 ET (= 11:00 Saudi) through early premarket
-    if time(3, 55) <= t <= time(4, 40):
-        return "morning"
-    # Reminder near cash open: 09:00–09:35 ET
-    if time(9, 0) <= t <= time(9, 35):
-        return "morning"
-    # Intraday scans: 09:45–15:55 ET
-    if time(9, 45) <= t <= time(15, 55):
-        return "intraday"
-    # Evening summary: 16:05–16:40 ET
-    if time(16, 5) <= t <= time(16, 40):
-        return "evening"
-    return None
+def in_saudi_session(now_riyadh: datetime) -> bool:
+    """11:00 inclusive through 23:00 inclusive."""
+    t = now_riyadh.time()
+    return time(11, 0) <= t <= time(23, 0)
 
 
-def run(mode: str) -> None:
+def run_tick() -> None:
     settings = load_settings()
-    print(f"[scheduled] mode={mode} telegram={settings.telegram_enabled}")
+    print(f"[tick] telegram={settings.telegram_enabled}")
+    snapshots = scan_watchlist(settings.watchlist)
+    if not snapshots:
+        deliver(
+            settings,
+            "🔄 تحديث",
+            "تعذّر جلب بيانات السوق الآن — نعيد المحاولة بعد 5 دقائق.",
+        )
+        sys.exit(1)
+
+    pack = build_full_pack(settings, snapshots)
+    ctx = market_context()
+    tone = ctx.get("tone", "غير متاح")
+    change_by = {s.symbol: s.change_pct for s in snapshots}
+    changed, body = build_tick_message(
+        settings,
+        pack["signals"],
+        change_by,
+        tone,
+    )
+    stamp = datetime.now(RIYADH).strftime("%Y%m%d_%H%M%S")
+    save_json_snapshot(settings, pack, f"tick_{stamp}.json")
+    now = datetime.now(RIYADH).strftime("%Y-%m-%d %H:%M")
+    if changed:
+        text = body
+    else:
+        text = f"⏰ {now} (السعودية)\nلا يوجد شي جديد يابطل"
+    deliver(settings, "🔄 تحديث", text)
+
+
+def run_evening() -> None:
+    settings = load_settings()
     snapshots = scan_watchlist(settings.watchlist)
     if not snapshots:
         deliver(settings, "⚠️ فشل الفحص", "تعذّر جلب بيانات السوق.")
         sys.exit(1)
-
     pack = build_full_pack(settings, snapshots)
-    stamp = datetime.now(NY).strftime("%Y%m%d_%H%M%S")
-    save_json_snapshot(settings, pack, f"sched_{mode}_{stamp}.json")
-
-    if mode == "morning":
-        deliver(settings, "🌅 فرص قبل الافتتاح (تلقائي)", pack["morning"])
-    elif mode == "intraday":
-        if not pack["intraday"]:
-            # Quiet during empty scans — log only, avoid spam
-            print("[scheduled] no strong intraday alerts")
-            (settings.logs_dir / "last_intraday_quiet.txt").write_text(
-                f"{stamp}: no alerts\n", encoding="utf-8"
-            )
-        else:
-            for i, msg in enumerate(pack["intraday"], 1):
-                deliver(settings, f"🚨 تنبيه تلقائي #{i}", msg)
-    elif mode == "evening":
-        deliver(settings, "🌙 الملخص المسائي (تلقائي)", pack["evening"])
-    elif mode == "demo":
-        deliver(settings, "🌅 فرص قبل الافتتاح (تلقائي)", pack["morning"])
-        for i, msg in enumerate(pack["intraday"], 1):
-            deliver(settings, f"🚨 تنبيه تلقائي #{i}", msg)
-        deliver(settings, "🌙 الملخص المسائي (تلقائي)", pack["evening"])
-    else:
-        raise SystemExit(f"unknown mode: {mode}")
+    stamp = datetime.now(RIYADH).strftime("%Y%m%d_%H%M%S")
+    save_json_snapshot(settings, pack, f"sched_evening_{stamp}.json")
+    deliver(settings, "🌙 الملخص المسائي (تلقائي)", pack["evening"])
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--mode",
-        default="auto",
-        choices=["auto", "morning", "intraday", "evening", "demo"],
+        default="tick",
+        choices=["tick", "auto", "morning", "intraday", "evening", "demo"],
     )
-    parser.add_argument(
-        "--force",
-        action="store_true",
-        help="Run even on weekends/holidays when mode=auto resolves",
-    )
+    parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
-    now = datetime.now(NY)
-    print(f"[scheduled] now NY={now.isoformat()}")
 
-    if args.mode == "auto" and not args.force and not is_trading_day(now):
-        print("[scheduled] skip — not a US trading day")
+    now_ny = datetime.now(NY)
+    now_sa = datetime.now(RIYADH)
+    print(f"[scheduled] NY={now_ny.isoformat()} SA={now_sa.isoformat()} mode={args.mode}")
+
+    mode = args.mode
+    if mode in ("auto", "morning", "intraday"):
+        mode = "tick"
+
+    if mode == "tick":
+        if not args.force and not is_trading_day(now_ny):
+            print("[scheduled] skip — not a US trading day")
+            return
+        if not args.force and not in_saudi_session(now_sa):
+            print("[scheduled] skip — outside 11:00–23:00 Saudi")
+            return
+        run_tick()
         return
 
-    mode = resolve_mode(now, args.mode)
-    if mode is None:
-        print("[scheduled] skip — outside alert windows")
+    if mode == "evening":
+        if not args.force and not is_trading_day(now_ny):
+            print("[scheduled] skip — not a US trading day")
+            return
+        run_evening()
         return
 
-    run(mode)
+    if mode == "demo":
+        run_tick()
+        run_tick()  # second pass should say لا يوجد شي جديد
+        return
+
+    raise SystemExit(f"unknown mode: {mode}")
 
 
 if __name__ == "__main__":
