@@ -1,0 +1,209 @@
+"""Sniper scanner: cheap stocks + strong momentum + catalyst/news (long-only day trade).
+
+Style inspired by selective “قَنص السنتات” day trading:
+- low price band
+- large % move potential
+- news/catalyst preferred
+- not the conservative liquid large-cap board
+"""
+
+from __future__ import annotations
+
+from typing import Any
+
+from bot.catalyst_scan import enrich_news_item, impact_score_1_5
+from bot.gainers import _money, _yahoo_live, session_label_ar, session_phase, _screener_symbols
+from bot.cacheutil import cached_call
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+# Price band: cheap / near-penny to low single-digit (not APA-style mid/large)
+SNIPER_MIN_PRICE = 0.30
+SNIPER_MAX_PRICE = 8.00
+# Strong move floors (day-trade runners)
+SNIPER_MIN_CHG = 8.0
+SNIPER_MIN_CHG_WITH_NEWS = 5.0
+SNIPER_MIN_CHG_PRE = 6.0
+# Participation — softer than main board, but not empty prints
+SNIPER_MIN_DOLLAR = 400_000
+SNIPER_MIN_DOLLAR_HOT = 200_000  # if move is huge
+
+
+def sniper_passes(row: dict[str, Any], *, phase: str | None = None, has_news: bool = False) -> bool:
+    last = float(row.get("last") or 0)
+    chg = float(row.get("change_pct") or 0)
+    dollar = float(row.get("dollar_volume") or 0)
+    phase = phase or session_phase()
+    if last < SNIPER_MIN_PRICE or last >= SNIPER_MAX_PRICE:
+        return False
+    if chg <= 0:
+        return False
+    floor = SNIPER_MIN_CHG_PRE if phase == "pre" else SNIPER_MIN_CHG
+    if has_news:
+        floor = min(floor, SNIPER_MIN_CHG_WITH_NEWS)
+    if chg < floor:
+        return False
+    min_dol = SNIPER_MIN_DOLLAR_HOT if chg >= 15 else SNIPER_MIN_DOLLAR
+    if dollar > 0 and dollar < min_dol:
+        return False
+    return True
+
+
+def fetch_cheap_runners(*, limit: int = 25) -> list[dict[str, Any]]:
+    """Yahoo day-gainers/actives re-ranked live, kept in cheap price band."""
+
+    def _build() -> list[dict]:
+        phase = session_phase()
+        cand: list[str] = []
+        for scr in ("day_gainers", "most_actives", "small_cap_gainers"):
+            for s in _screener_symbols(scr, 40):
+                if s and s not in cand:
+                    cand.append(s)
+        cand = cand[:55]
+        lives: list[dict] = []
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            futs = {pool.submit(_yahoo_live, s): s for s in cand}
+            for fut in as_completed(futs):
+                row = fut.result()
+                if not row:
+                    continue
+                last = float(row["last"])
+                if last < SNIPER_MIN_PRICE or last >= SNIPER_MAX_PRICE:
+                    continue
+                if float(row["change_pct"]) <= 0:
+                    continue
+                dollar = last * float(row.get("volume") or 0)
+                lives.append(
+                    {
+                        "symbol": row["symbol"],
+                        "name": row.get("name") or "",
+                        "last": last,
+                        "change_pct": float(row["change_pct"]),
+                        "ref": row.get("ref"),
+                        "volume": row.get("volume") or 0,
+                        "dollar_volume": round(dollar, 2),
+                        "dollar_volume_label": _money(dollar),
+                        "phase": row.get("phase") or phase,
+                        "session_ar": session_label_ar(row.get("phase") or phase),
+                        "tv_url": f"https://www.tradingview.com/chart/?symbol={row['symbol']}",
+                    }
+                )
+        # soft filter without main-board $15M floor
+        lives = [x for x in lives if sniper_passes(x, phase=phase, has_news=False)]
+        lives.sort(key=lambda x: x["change_pct"], reverse=True)
+        return lives[:limit]
+
+    cache_key = f"sniper_runners:{session_phase()}:{limit}"
+    try:
+        return list(cached_call(cache_key, _build, ttl=60) or [])
+    except Exception:
+        try:
+            return _build()
+        except Exception:
+            return []
+
+
+def build_sniper_scanner(
+    *,
+    runners: list[dict[str, Any]] | None = None,
+    news: list[dict[str, Any]] | None = None,
+    phase: str | None = None,
+    limit: int = 12,
+) -> list[dict[str, Any]]:
+    """
+    Rank cheap runners; boost names with catalyst/news.
+    Prefer news-backed spikes; still allow pure tape rockets if % is extreme.
+    """
+    phase = phase or session_phase()
+    runners = list(runners or [])
+    by_news: dict[str, list[dict[str, Any]]] = {}
+    for n in news or []:
+        sym = str(n.get("symbol") or "").upper()
+        if not sym or sym == "MARKET":
+            continue
+        # skip hard-negative sentiment for long-only sniper
+        if str(n.get("sentiment") or "") == "neg":
+            continue
+        by_news.setdefault(sym, []).append(n)
+    for sym, rows in by_news.items():
+        rows.sort(
+            key=lambda x: (int(x.get("impact") or 0), float(x.get("published_ts") or 0)),
+            reverse=True,
+        )
+
+    out: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for r in runners:
+        sym = str(r.get("symbol") or "").upper()
+        if not sym or sym in seen:
+            continue
+        related = by_news.get(sym) or []
+        has_news = bool(related)
+        if not sniper_passes(r, phase=phase, has_news=has_news):
+            continue
+        top = related[0] if related else None
+        chg = float(r.get("change_pct") or 0)
+        if top and top.get("impact") is None:
+            top = enrich_news_item(top, change_pct=chg)
+        if top is None and chg >= 12:
+            # tape rocket without headline yet
+            impact = 4 if chg >= 20 else 3
+            reason = "زخم سعري قوي بدون خبر رسمي مرفق بعد"
+            cats: list[str] = []
+            cat_keys: list[str] = []
+            title = ""
+            url = r.get("tv_url") or ""
+        elif top is None:
+            # require news for milder moves
+            continue
+        else:
+            impact = int(top.get("impact") or 3)
+            reason = str(top.get("impact_reason_ar") or top.get("title_ar") or top.get("title") or "")
+            cats = list(top.get("catalyst_ar") or [])
+            cat_keys = list(top.get("catalyst_keys") or [])
+            title = str(top.get("title_ar") or top.get("title") or "")
+            url = str(top.get("url") or r.get("tv_url") or "")
+
+        # score: move × impact × cheapness boost × news boost
+        last = float(r.get("last") or 0)
+        cheap_boost = 1.35 if last < 1.0 else (1.15 if last < 3.0 else 1.0)
+        news_boost = 1.4 if has_news else 1.0
+        dollar = float(r.get("dollar_volume") or 0)
+        dol_boost = 1.0 + min(dollar / 5_000_000.0, 2.0) * 0.15
+        score = abs(chg) * max(impact, 1) * cheap_boost * news_boost * dol_boost
+
+        alert = "قنص — زخم قوي"
+        if has_news and impact >= 4:
+            alert = "قنص + محفز قوي"
+        elif has_news:
+            alert = "قنص + خبر"
+        elif chg >= 20:
+            alert = "صاروخ سعري — راقب الخبر"
+
+        out.append(
+            {
+                "symbol": sym,
+                "name": r.get("name") or "",
+                "last": round(last, 4 if last < 1 else 2),
+                "change_pct": round(chg, 2),
+                "dollar_volume": dollar,
+                "dollar_volume_label": r.get("dollar_volume_label") or _money(dollar),
+                "has_news": has_news,
+                "impact": impact,
+                "impact_ar": f"تأثير {impact}/5",
+                "catalyst_ar": cats,
+                "catalyst_keys": cat_keys,
+                "news_title_ar": title,
+                "news_url": url,
+                "alert_ar": alert,
+                "reason_ar": reason,
+                "score": round(score, 2),
+                "session_ar": r.get("session_ar") or session_label_ar(phase),
+                "tv_url": r.get("tv_url") or f"https://www.tradingview.com/chart/?symbol={sym}",
+                "tier": "sniper",
+                "price_band_ar": f"${SNIPER_MIN_PRICE:.2f}–${SNIPER_MAX_PRICE:.0f}",
+            }
+        )
+        seen.add(sym)
+
+    out.sort(key=lambda x: (1 if x.get("has_news") else 0, float(x.get("score") or 0), float(x.get("change_pct") or 0)), reverse=True)
+    return out[:limit]

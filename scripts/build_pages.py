@@ -29,6 +29,7 @@ from bot.risk import plan_trade, risk_banner
 from bot.signals import Action
 from bot.smart_signals import enrich_smart_signal
 from bot.catalyst_scan import build_momentum_scanner, enrich_news_item, rank_catalyst_news
+from bot.sniper_scan import build_sniper_scanner, fetch_cheap_runners
 
 NY = ZoneInfo("America/New_York")
 
@@ -366,6 +367,19 @@ def main() -> None:
         limit=12,
     )
 
+    # Sniper mode: cheap runners ($0.30–$8) + strong % + news/catalyst (beside main board)
+    cheap_runners = []
+    try:
+        cheap_runners = fetch_cheap_runners(limit=25)
+    except Exception:
+        cheap_runners = []
+    sniper = build_sniper_scanner(
+        runners=cheap_runners,
+        news=news_ar,
+        phase=phase,
+        limit=12,
+    )
+
     from bot.gainers import session_label_ar
 
     gainers_session = session_label_ar(phase)
@@ -409,7 +423,10 @@ def main() -> None:
         "style": _style_board(snaps),
         "momentum_scanner": momentum,
         "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
-        "opportunities": opportunities,
+        "sniper_scanner": sniper,
+        "sniper_note_ar": "ماسح القنص: أسهم رخيصة ($0.30–$8) + زخم قوي (≥5–8%) + خبر/محفز مفضّل — أسلوب قنص السنتات، منفصل عن اللوحة المحافظة",
+        "sniper_price_band": {"min": 0.30, "max": 8.0},
+        "opportunities": opportunities
         "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
         "opps_rejected_slow": rejected_slow[:20],
         "gainers": gainers,
