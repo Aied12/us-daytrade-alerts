@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:24:15.222184+00:00",
-  "generated_ts": 1790252655,
-  "generated_local": "2026-09-24 15:24 +03",
+  "generated_at": "2026-09-24T12:25:19.108174+00:00",
+  "generated_ts": 1790252719,
+  "generated_local": "2026-09-24 15:25 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:24:15.222077+00:00",
+    "updated_at": "2026-09-24T12:25:19.108046+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,20 +23,20 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.55,
+    "avg_change_pct": -0.53,
     "details": {
       "SPY": {
-        "last": 764.2,
-        "change_pct": -0.47,
+        "last": 764.4,
+        "change_pct": -0.44,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.69,
-        "change_pct": -0.88,
+        "last": 734.82,
+        "change_pct": -0.86,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 281.11,
+        "last": 281.09,
         "change_pct": -0.29,
         "rsi": 29.0
       }
@@ -44,12 +44,12 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.47,
+        "change_pct": -0.44,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.88,
+        "change_pct": -0.86,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 3944,
-    "ny_time": "08:24:15",
+    "seconds_left": 3880,
+    "ny_time": "08:25:19",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,7 +81,7 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.26
+        "change_pct": 0.25
       },
       {
         "name": "Industrial",
@@ -91,7 +91,7 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.09
+        "change_pct": -1.08
       },
       {
         "name": "Financials",
@@ -99,59 +99,18 @@
       },
       {
         "name": "Consumer",
-        "change_pct": -0.33
+        "change_pct": -0.31
       }
     ]
   },
   "style": {
-    "growth_avg": -1.04,
-    "value_avg": 0.04,
+    "growth_avg": -1.05,
+    "value_avg": 0.06,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
   },
   "opportunities": [
-    {
-      "symbol": "SECZ",
-      "action": "فكّر في شراء قصير المدى",
-      "action_key": "CONSIDER_LONG",
-      "side": "long",
-      "score_100": 81,
-      "urgent": true,
-      "strategies": [
-        "ارتداد لملء فجوة هابطة",
-        "ترتيب متوسطات صاعد",
-        "حجم غير طبيعي صاعد",
-        "RSI تشبع شرائي"
-      ],
-      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم غير طبيعي صاعد: حجم ×2.5 مع صعود | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقاومة≈$14.11 | تقلّب عالي: ATR% 8.4",
-      "entry": 14.5,
-      "stop": 6.17,
-      "target": 29.49,
-      "shares": 14,
-      "risk_sar": 437.33,
-      "allowed": true,
-      "change_pct": 0.97,
-      "last": 14.5,
-      "session_phase": "pre",
-      "liquidity": {
-        "rvol": 2.52,
-        "volume": 9172100.0,
-        "avg_volume_20": 3636165.0,
-        "dollar_volume": 132995450.0,
-        "avg_dollar_volume": 52724392.5,
-        "dollar_volume_label": "133.0M$",
-        "avg_dollar_volume_label": "52.7M$",
-        "grade": "strong",
-        "grade_ar": "قوي",
-        "label": "RVOL ×2.5 · اليوم 133.0M$ · متوسط 52.7M$"
-      },
-      "rvol": 2.52,
-      "liq_grade": "strong",
-      "liq_grade_ar": "قوي",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ",
-      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.5%20دخول%2014.5%20وقف%206.17%20هدف%2029.49%0Aسيولة%20قوي%20RVOL%20x2.52"
-    },
     {
       "symbol": "SSL",
       "action": "فكّر في شراء قصير المدى",
@@ -192,6 +151,47 @@
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SSL",
       "tg_share": "https://t.me/share/url?url=&text=SSL%20فكّر في شراء قصير المدى%0Aالآن%2014.52%20دخول%2014.52%20وقف%2011.3%20هدف%2020.32%0Aسيولة%20قوي%20RVOL%20x1.6"
+    },
+    {
+      "symbol": "RRR",
+      "action": "فكّر في شراء قصير المدى",
+      "action_key": "CONSIDER_LONG",
+      "side": "long",
+      "score_100": 73,
+      "urgent": true,
+      "strategies": [
+        "ارتداد لملء فجوة هابطة",
+        "ارتداد VWAP",
+        "حجم مرتفع",
+        "تقلّب عالي"
+      ],
+      "reason": "ارتداد لملء فجوة هابطة: فجوة -3.2% مع ارتداد | ارتداد VWAP: قرب/فوق VWAP (+0.07%) | حجم مرتفع: حجم ×2.0 | تقلّب عالي: ATR% 3.3",
+      "entry": 51.3,
+      "stop": 47.78,
+      "target": 60.1,
+      "shares": 34,
+      "risk_sar": 448.8,
+      "allowed": true,
+      "change_pct": 0.79,
+      "last": 51.3,
+      "session_phase": "pre",
+      "liquidity": {
+        "rvol": 2.0,
+        "volume": 2183600.0,
+        "avg_volume_20": 1091005.0,
+        "dollar_volume": 112018680.0,
+        "avg_dollar_volume": 55968556.5,
+        "dollar_volume_label": "112.0M$",
+        "avg_dollar_volume_label": "56.0M$",
+        "grade": "strong",
+        "grade_ar": "قوي",
+        "label": "RVOL ×2.0 · اليوم 112.0M$ · متوسط 56.0M$"
+      },
+      "rvol": 2.0,
+      "liq_grade": "strong",
+      "liq_grade_ar": "قوي",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=RRR",
+      "tg_share": "https://t.me/share/url?url=&text=RRR%20فكّر في شراء قصير المدى%0Aالآن%2051.3%20دخول%2051.3%20وقف%2047.78%20هدف%2060.1%0Aسيولة%20قوي%20RVOL%20x2.0"
     },
     {
       "symbol": "AR",
@@ -315,6 +315,47 @@
       "tg_share": "https://t.me/share/url?url=&text=APA%20فكّر في شراء قصير المدى%0Aالآن%2044.34%20دخول%2044.34%20وقف%2040.85%20هدف%2050.62%0Aسيولة%20قوي%20RVOL%20x1.02"
     },
     {
+      "symbol": "SECZ",
+      "action": "فكّر في شراء قصير المدى",
+      "action_key": "CONSIDER_LONG",
+      "side": "long",
+      "score_100": 68,
+      "urgent": false,
+      "strategies": [
+        "ارتداد لملء فجوة هابطة",
+        "ترتيب متوسطات صاعد",
+        "حجم مرتفع",
+        "RSI تشبع شرائي"
+      ],
+      "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم مرتفع: حجم ×2.5 | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقاومة≈$14.11 | تقلّب عالي: ATR% 8.4",
+      "entry": 14.4,
+      "stop": 6.17,
+      "target": 29.21,
+      "shares": 14,
+      "risk_sar": 432.07,
+      "allowed": true,
+      "change_pct": 0.28,
+      "last": 14.4,
+      "session_phase": "pre",
+      "liquidity": {
+        "rvol": 2.52,
+        "volume": 9172100.0,
+        "avg_volume_20": 3636165.0,
+        "dollar_volume": 132078240.0,
+        "avg_dollar_volume": 52360776.0,
+        "dollar_volume_label": "132.1M$",
+        "avg_dollar_volume_label": "52.4M$",
+        "grade": "strong",
+        "grade_ar": "قوي",
+        "label": "RVOL ×2.5 · اليوم 132.1M$ · متوسط 52.4M$"
+      },
+      "rvol": 2.52,
+      "liq_grade": "strong",
+      "liq_grade_ar": "قوي",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ",
+      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.4%20دخول%2014.4%20وقف%206.17%20هدف%2029.21%0Aسيولة%20قوي%20RVOL%20x2.52"
+    },
+    {
       "symbol": "LTH",
       "action": "راقب دخول",
       "action_key": "WATCH_ENTRY",
@@ -378,8 +419,8 @@
         "rvol": 0.98,
         "volume": 36696000.0,
         "avg_volume_20": 37580485.0,
-        "dollar_volume": 2058645600.0,
-        "avg_dollar_volume": 2108265208.5,
+        "dollar_volume": 2058663948.0,
+        "avg_dollar_volume": 2108283998.74,
         "dollar_volume_label": "2.1B$",
         "avg_dollar_volume_label": "2.1B$",
         "grade": "strong",
@@ -405,21 +446,21 @@
         "تقلّب عالي"
       ],
       "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 57 | تقلّب عالي: ATR% 4.9",
-      "entry": 148.63,
+      "entry": 148.61,
       "stop": 137.06,
-      "target": 169.46,
+      "target": 169.4,
       "shares": 10,
-      "risk_sar": 433.87,
+      "risk_sar": 433.13,
       "allowed": false,
-      "change_pct": 0.18,
-      "last": 148.63,
+      "change_pct": 0.17,
+      "last": 148.61,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.68,
         "volume": 60280300.0,
         "avg_volume_20": 89208805.0,
-        "dollar_volume": 8959460989.0,
-        "avg_dollar_volume": 13259104687.15,
+        "dollar_volume": 8958255383.0,
+        "avg_dollar_volume": 13257320511.05,
         "dollar_volume_label": "9.0B$",
         "avg_dollar_volume_label": "13.3B$",
         "grade": "weak",
@@ -430,7 +471,7 @@
       "liq_grade": "weak",
       "liq_grade_ar": "ضعيف",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX",
-      "tg_share": "https://t.me/share/url?url=&text=SPCX%20راقب دخول%0Aالآن%20148.63%20دخول%20148.63%20وقف%20137.06%20هدف%20169.46%0Aسيولة%20ضعيف%20RVOL%20x0.68"
+      "tg_share": "https://t.me/share/url?url=&text=SPCX%20راقب دخول%0Aالآن%20148.61%20دخول%20148.61%20وقف%20137.06%20هدف%20169.4%0Aسيولة%20ضعيف%20RVOL%20x0.68"
     }
   ],
   "gainers": [
@@ -477,15 +518,29 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=AR"
     },
     {
+      "symbol": "RRR",
+      "name": "Red Rock Resorts, Inc.",
+      "last": 51.3,
+      "change_pct": 0.79,
+      "ref": 50.9,
+      "rth_close": 50.9,
+      "volume": 2132213.0,
+      "dollar_volume": 109382526.9,
+      "dollar_volume_label": "109.4M$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=RRR"
+    },
+    {
       "symbol": "SECZ",
       "name": "Securitize Corp.",
-      "last": 14.5,
-      "change_pct": 0.97,
+      "last": 14.4,
+      "change_pct": 0.28,
       "ref": 14.36,
       "rth_close": 14.36,
       "volume": 9169868.0,
-      "dollar_volume": 132963086.0,
-      "dollar_volume_label": "133.0M$",
+      "dollar_volume": 132046099.2,
+      "dollar_volume_label": "132.0M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ"
@@ -519,32 +574,32 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=PCG"
     },
     {
-      "symbol": "WBD",
-      "name": "Warner Bros. Discovery, Inc. - ",
-      "last": 30.79,
-      "change_pct": 0.1,
-      "ref": 30.76,
-      "rth_close": 30.76,
-      "volume": 110237037.0,
-      "dollar_volume": 3394198369.23,
-      "dollar_volume_label": "3.4B$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=WBD"
-    },
-    {
       "symbol": "SPCX",
       "name": "Space Exploration Technologies ",
-      "last": 148.49,
-      "change_pct": 0.09,
+      "last": 148.56,
+      "change_pct": 0.13,
       "ref": 148.36,
       "rth_close": 148.36,
       "volume": 60046138.0,
-      "dollar_volume": 8916251031.62,
+      "dollar_volume": 8920454261.28,
       "dollar_volume_label": "8.9B$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX"
+    },
+    {
+      "symbol": "WBD",
+      "name": "Warner Bros. Discovery, Inc. - ",
+      "last": 30.78,
+      "change_pct": 0.07,
+      "ref": 30.76,
+      "rth_close": 30.76,
+      "volume": 110237037.0,
+      "dollar_volume": 3393095998.86,
+      "dollar_volume_label": "3.4B$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=WBD"
     }
   ],
   "gainers_min_price": 5.0,
@@ -552,8 +607,8 @@
   "movers": [
     {
       "symbol": "AMD",
-      "change_pct": -2.43,
-      "last": 599.7,
+      "change_pct": -2.4,
+      "last": 599.87,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -561,21 +616,12 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.67,
-      "last": 188.59,
+      "change_pct": -1.79,
+      "last": 188.35,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "6.6B$"
-    },
-    {
-      "symbol": "META",
-      "change_pct": -1.63,
-      "last": 731.94,
-      "rvol": 1.37,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "22.2B$"
     },
     {
       "symbol": "SSL",
@@ -585,6 +631,15 @@
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "45.2M$"
+    },
+    {
+      "symbol": "META",
+      "change_pct": -1.58,
+      "last": 732.34,
+      "rvol": 1.37,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "22.2B$"
     },
     {
       "symbol": "APA",
@@ -631,7 +686,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 115,
+    "alerts_today": 116,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
