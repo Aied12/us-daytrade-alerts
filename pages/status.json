@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:22:16.862553+00:00",
-  "generated_ts": 1790256136,
-  "generated_local": "2026-09-24 16:22 +03",
+  "generated_at": "2026-09-24T13:23:19.128895+00:00",
+  "generated_ts": 1790256199,
+  "generated_local": "2026-09-24 16:23 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:22:16.862397+00:00",
+    "updated_at": "2026-09-24T13:23:19.128743+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,38 +23,38 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.49,
+    "avg_change_pct": -0.5,
     "details": {
       "SPY": {
-        "last": 764.5546,
-        "change_pct": -0.42,
+        "last": 764.47,
+        "change_pct": -0.44,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.9712,
-        "change_pct": -0.84,
+        "last": 735.04,
+        "change_pct": -0.83,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 281.31,
-        "change_pct": -0.22,
+        "last": 281.28,
+        "change_pct": -0.23,
         "rsi": 29.0
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.42,
+        "change_pct": -0.44,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.84,
+        "change_pct": -0.83,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.22,
+        "change_pct": -0.23,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 463,
-    "ny_time": "09:22:16",
+    "seconds_left": 400,
+    "ny_time": "09:23:19",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,31 +81,31 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.12
+        "change_pct": 0.3
       },
       {
         "name": "Financials",
-        "change_pct": -0.14
+        "change_pct": -0.19
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -0.77
-      },
-      {
-        "name": "Consumer",
-        "change_pct": -0.24
+        "change_pct": -0.76
       },
       {
         "name": "Industrial",
         "change_pct": -0.22
+      },
+      {
+        "name": "Consumer",
+        "change_pct": -0.21
       }
     ]
   },
   "style": {
-    "growth_avg": -0.75,
-    "value_avg": 0.11,
+    "growth_avg": -0.71,
+    "value_avg": 0.1,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -257,54 +257,54 @@
         "شمعة: ابتلاع صاعد"
       ],
       "reason": "ارتداد لملء فجوة هابطة: فجوة -1.9% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 62 | شمعة: ابتلاع صاعد: ابتلاع صاعد | تقلّب عالي: ATR% 4.2",
-      "entry": 70.0,
+      "entry": 69.95,
       "stop": 59.85,
-      "target": 88.27,
+      "target": 88.13,
       "shares": 11,
-      "risk_sar": 418.69,
+      "risk_sar": 416.63,
       "allowed": true,
-      "change_pct": 0.73,
-      "last": 70.0,
+      "change_pct": 0.66,
+      "last": 69.95,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.87,
         "volume": 3403000.0,
         "avg_volume_20": 3902140.0,
-        "dollar_volume": 238210000.0,
-        "avg_dollar_volume": 273149800.0,
-        "dollar_volume_label": "238.2M$",
-        "avg_dollar_volume_label": "273.1M$",
+        "dollar_volume": 238039850.0,
+        "avg_dollar_volume": 272954693.0,
+        "dollar_volume_label": "238.0M$",
+        "avg_dollar_volume_label": "273.0M$",
         "grade": "medium",
         "grade_ar": "متوسط",
-        "label": "RVOL ×0.9 · اليوم 238.2M$ · متوسط 273.1M$"
+        "label": "RVOL ×0.9 · اليوم 238.0M$ · متوسط 273.0M$"
       },
       "rvol": 0.87,
       "liq_grade": "medium",
       "liq_grade_ar": "متوسط",
       "atr_pct": 4.25,
-      "flow_score": 2.07,
+      "flow_score": 1.86,
       "flow_ok": true,
       "tv_url": "https://www.tradingview.com/chart/?symbol=DOCU",
-      "tg_share": "https://t.me/share/url?url=&text=DOCU%20فكّر في شراء قصير المدى%0Aالآن%2070.0%20دخول%2070.0%20وقف%2059.85%20هدف%2088.27%0Aسيولة%20متوسط%20RVOL%20x0.87%20زخم%20+0.73%"
+      "tg_share": "https://t.me/share/url?url=&text=DOCU%20فكّر في شراء قصير المدى%0Aالآن%2069.95%20دخول%2069.95%20وقف%2059.85%20هدف%2088.13%0Aسيولة%20متوسط%20RVOL%20x0.87%20زخم%20+0.66%"
     }
   ],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
     "UBER:زخم ضعيف (+0.33% < 0.55%)",
-    "BAC:زخم ضعيف (+0.17% < 0.55%)",
+    "BAC:زخم ضعيف (+0.13% < 0.55%)",
     "DIS:زخم ضعيف (+0.02% < 0.55%)"
   ],
   "gainers": [
     {
       "symbol": "SECZ",
       "name": "Securitize Corp.",
-      "last": 14.84,
-      "change_pct": 3.34,
+      "last": 14.86,
+      "change_pct": 3.45,
       "ref": 14.36,
       "rth_close": 14.36,
       "volume": 9169868.0,
-      "dollar_volume": 136080841.12,
-      "dollar_volume_label": "136.1M$",
+      "dollar_volume": 136264238.48,
+      "dollar_volume_label": "136.3M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ"
@@ -340,13 +340,13 @@
     {
       "symbol": "DOCU",
       "name": "DocuSign, Inc.",
-      "last": 70.0,
-      "change_pct": 0.73,
+      "last": 69.95,
+      "change_pct": 0.66,
       "ref": 69.49,
       "rth_close": 69.49,
       "volume": 3335549.0,
-      "dollar_volume": 233488430.0,
-      "dollar_volume_label": "233.5M$",
+      "dollar_volume": 233321652.55,
+      "dollar_volume_label": "233.3M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=DOCU"
@@ -366,8 +366,8 @@
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.51,
-      "last": 599.2,
+      "change_pct": -2.42,
+      "last": 599.75,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -375,8 +375,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.36,
-      "last": 189.18,
+      "change_pct": -1.35,
+      "last": 189.2,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -384,8 +384,8 @@
     },
     {
       "symbol": "NVDA",
-      "change_pct": -1.22,
-      "last": 222.75,
+      "change_pct": -1.17,
+      "last": 222.88,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -393,8 +393,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.12,
-      "last": 351.01,
+      "change_pct": -1.16,
+      "last": 350.87,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -562,6 +562,21 @@
       "source": "finnhub:general"
     },
     {
+      "symbol": "SECZ",
+      "title": "Securitize Corp (SECZ) Soars to All-Time High Anew, Analysts ‘Highly Bullish’",
+      "title_ar": "شركة Securitize Corp (SECZ) ترتفع إلى أعلى مستوى لها على الإطلاق من جديد، المحللون \"صعوديون للغاية\"",
+      "summary": "Securitize Corp. (NYSE:SECZ) saw its share price climb to a new all-time high on Wednesday, as investors resumed buying positions amid the rosy growth prospects from securities tokenization. In intra-day trading, the stock jumped to its highest price of $14.86 before trimming gai",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=2fbacc41db626df42f5ba240b1d96c872d3f88a64dbca88c5a383ded49bda5be",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 23:43 UTC",
+      "published_ts": 1790207023,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "a88895b33450892b2a484f1c5b25acf3afd09379",
+      "source": "finnhub"
+    },
+    {
       "symbol": "MARKET",
       "title": "Wall Street ends down as oil prices, Treasury yields rise - Reuters",
       "title_ar": "وول ستريت تنتهي مع ارتفاع أسعار النفط وعوائد سندات الخزانة - رويترز",
@@ -619,6 +634,21 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "fb48433acc983b2efba659f65ef4ec0c93d392c5",
+      "source": "finnhub"
+    },
+    {
+      "symbol": "SECZ",
+      "title": "Securitize Stock Jumps 12% as Cantor Bets on a Tokenization Boom",
+      "title_ar": "توريق الأسهم يقفز بنسبة 12 ٪ حيث يراهن قائد الفرقة الموسيقيّة على طفرة التوكن",
+      "summary": "Securitize shares have surged as regulators open a path for tokenized stock trading. Cantor Fitzgerald sees more room to rise.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=9e8b0db4e7decbd629015852ab2992586362131a12005226a1bc8a3194005a50",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 16:55 UTC",
+      "published_ts": 1790182500,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "3f64ec8e00a91aa2f9911892f3b0965a5f635ce5",
       "source": "finnhub"
     },
     {
@@ -697,36 +727,6 @@
       "source": "finnhub"
     },
     {
-      "symbol": "SECZ",
-      "title": "Cantor Fitzgerald Flags 95% Upside in the Firm Putting Stocks Onchain",
-      "title_ar": "أعلام كانتور فيتزجيرالد 95 ٪ رأسا على عقب في الشركة التي تضع الأسهم على السلسلة",
-      "summary": "Cantor Fitzgerald starts Securitize stock at overweight with a $21.20 target, days after the SEC cleared tokenized stock trading.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=be2a354824123bc55b543e2fe85f5a8099d1292713db8fd3e45c32b6eea79c6a",
-      "publisher": "Yahoo",
-      "published": "2026-09-22 07:54 UTC",
-      "published_ts": 1790063682,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "6b477f54db671d1b546ca3721dc149ddef9e3483",
-      "source": "finnhub"
-    },
-    {
-      "symbol": "SECZ",
-      "title": "Securitize (SECZ) Climbs to All-Time High on Tokenized Securities Go-Signal",
-      "title_ar": "توريق (SECZ) يصل إلى أعلى مستوى له على الإطلاق في إشارة انتقال الأوراق المالية المشفرة",
-      "summary": "Securitize Corp. (NYSE:SECZ) soared to a fresh all-time high on Monday, primarily after the Securities and Exchange Commission (SEC) green-lit the trading of tokenized securities. In intra-day trading, the stock jumped to its highest price of $13.93 before paring gains to finish ",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=3813a9a1b9c142703616cd6f1ee14b9731cfd46ef6e4072d33203b9ca0d60805",
-      "publisher": "Yahoo",
-      "published": "2026-09-22 00:45 UTC",
-      "published_ts": 1790037921,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "d9092caa3606ca1e2b88379b92e99b31c6f1ee13",
-      "source": "finnhub"
-    },
-    {
       "symbol": "RRR",
       "title": "Profits Slide At Red Rock Resorts (RRR) Even As Dividends Hold",
       "title_ar": "تنزلق الأرباح في منتجعات ريد روك (RRR) حتى مع الاحتفاظ بتوزيعات الأرباح",
@@ -777,7 +777,6 @@
     "AR",
     "META",
     "NFLX",
-    "PCG",
     "TSLA",
     "XOM"
   ],
