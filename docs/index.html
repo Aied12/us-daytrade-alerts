@@ -507,6 +507,8 @@
       return 3.75;
     }
     function defaultCapitalUsd(){
+      const fromUsd=Number(DATA && DATA.capital_usd);
+      if(Number.isFinite(fromUsd) && fromUsd>0) return Number(fromUsd.toFixed(2));
       const sar=Number(DATA && DATA.capital_sar);
       const fx=displayFxRate();
       if(Number.isFinite(sar) && sar>0 && fx>0) return Number((sar/fx).toFixed(2));

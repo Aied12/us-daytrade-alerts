@@ -389,6 +389,7 @@ def main() -> None:
         "holiday_note": holiday_note(),
         "capital_sar": settings.capital_sar,
         "usd_sar_rate": settings.usd_sar_rate,
+        "capital_usd": round(float(settings.capital_sar) / float(settings.usd_sar_rate or 3.75), 2),
         "daily_loss_limit_sar": settings.daily_loss_budget_sar,
         "risk_banner": risk_banner(settings),
         "market": {
