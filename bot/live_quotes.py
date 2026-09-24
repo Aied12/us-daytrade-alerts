@@ -27,6 +27,7 @@ class LiveQuote:
     source: str
     asof_ts: float
     phase: str = "regular"
+    volume: float = 0.0
 
 
 def _finnhub_key() -> str:
@@ -120,6 +121,7 @@ def _yahoo_ext_one(symbol: str) -> LiveQuote | None:
         if live is None or ref <= 0:
             return None
         chg = (live - ref) / ref * 100
+        volume = float(meta.get("regularMarketVolume") or 0)
         return LiveQuote(
             symbol=symbol.upper(),
             last=round(live, 4),
@@ -128,6 +130,7 @@ def _yahoo_ext_one(symbol: str) -> LiveQuote | None:
             source="yahoo_ext",
             asof_ts=time.time(),
             phase=phase,
+            volume=volume,
         )
     except Exception:
         return None
@@ -194,6 +197,7 @@ def _fetch_alpaca_batch(symbols: list[str]) -> dict[str, LiveQuote]:
             if last <= 0:
                 continue
             chg = ((last - prev_close) / prev_close * 100) if prev_close else 0.0
+            volume = float(day.get("v") or 0)
             out[sym.upper()] = LiveQuote(
                 symbol=sym.upper(),
                 last=last,
@@ -202,6 +206,7 @@ def _fetch_alpaca_batch(symbols: list[str]) -> dict[str, LiveQuote]:
                 source="alpaca",
                 asof_ts=time.time(),
                 phase=session_phase(),
+                volume=volume,
             )
         except Exception:
             continue

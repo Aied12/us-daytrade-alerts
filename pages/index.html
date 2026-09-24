@@ -718,7 +718,10 @@
 
     async function refreshDirect(syms){
       // Parallel Yahoo-via-jina for true movement between server publishes
-      const list=syms.slice(0, 24);
+      // Prefer gainers first so the rise table stays live + liquidity-aware
+      const gainerSet=new Set(GAINERS_STATE.map(g=>String(g.symbol).toUpperCase()));
+      const ranked=[...syms].sort((a,b)=>(gainerSet.has(b)?1:0)-(gainerSet.has(a)?1:0));
+      const list=ranked.slice(0, 24);
       let ok=0;
       await mapPool(list, 6, async (sym)=>{
         const q=await fetchOneLive(sym);

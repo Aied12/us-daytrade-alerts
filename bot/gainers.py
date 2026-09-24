@@ -154,6 +154,8 @@ def fetch_day_gainers(min_price: float = 5.0, limit: int = 20) -> list[dict[str,
                         "tv_url": f"https://www.tradingview.com/chart/?symbol={row['symbol']}",
                     }
                 )
+        # Drop weak liquidity names from the board
+        lives = [x for x in lives if float(x.get("dollar_volume") or 0) >= 5_000_000]
         lives.sort(key=lambda x: x["change_pct"], reverse=True)
         return lives[:limit]
 
@@ -190,5 +192,6 @@ def watchlist_gainers(snaps, min_price: float = 5.0, limit: int = 15) -> list[di
                 "tv_url": f"https://www.tradingview.com/chart/?symbol={s.symbol}",
             }
         )
+    rows = [x for x in rows if float(x.get("dollar_volume") or 0) >= 5_000_000]
     rows.sort(key=lambda x: x["change_pct"], reverse=True)
     return rows[:limit]

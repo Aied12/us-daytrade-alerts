@@ -38,6 +38,7 @@ def main() -> int:
             sym: {
                 "last": round(q.last, 4),
                 "change_pct": round(q.change_pct, 4),
+                "volume": round(float(getattr(q, "volume", 0) or 0), 0),
                 "source": q.source,
             }
             for sym, q in quotes.items()
