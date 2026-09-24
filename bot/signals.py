@@ -46,20 +46,26 @@ def compose_signal(
     *,
     no_trade_today: bool = False,
 ) -> Signal:
+    # Long-only: تجاهل أي نقاط شورت متبقية وحولها لتجنب
+    hits = [
+        StrategyHit(h.name, h.name_ar, h.points, "avoid", h.note)
+        if h.side == "short"
+        else h
+        for h in hits
+    ]
     long_pts = sum(h.points for h in hits if h.side == "long")
-    short_pts = sum(h.points for h in hits if h.side == "short")
     avoid_pts = sum(h.points for h in hits if h.side == "avoid")
     neutral_pts = sum(h.points for h in hits if h.side == "neutral")
 
-    # 33 composite 0-100
-    raw = long_pts * 1.1 + neutral_pts * 0.3 - short_pts * 0.5 - avoid_pts * 1.2
+    # 33 composite 0-100 — بدون شورت
+    raw = long_pts * 1.1 + neutral_pts * 0.3 - avoid_pts * 1.2
     score_100 = int(_clamp(50 + raw, 0, 100))
 
     names = [h.name_ar for h in hits]
     notes = [f"{h.name_ar}: {h.note}" for h in hits]
 
     entry = round(s.last, 2)
-    if long_pts >= short_pts and long_pts > 0:
+    if long_pts > 0:
         stop = round(min(s.day_low, s.support or s.last * 0.988, s.last * 0.988), 2)
         if stop >= entry:
             stop = round(entry * 0.988, 2)
@@ -70,17 +76,6 @@ def compose_signal(
         else:
             target = round(raw_target, 2)
         side = "long"
-    elif short_pts > long_pts:
-        stop = round(max(s.day_high, s.resistance or s.last * 1.012, s.last * 1.012), 2)
-        if stop <= entry:
-            stop = round(entry * 1.012, 2)
-        risk = max(stop - entry, entry * 0.008)
-        raw_target = entry - risk * 1.6
-        if s.support and s.support < entry:
-            target = round(min(raw_target, max(s.support, entry - risk * 2.2)), 2)
-        else:
-            target = round(raw_target, 2)
-        side = "short"
     else:
         stop = round(s.last * 0.99, 2)
         target = round(s.last * 1.01, 2)
@@ -92,8 +87,6 @@ def compose_signal(
     elif avoid_pts >= 12 or (s.news_negative and avoid_pts >= 8):
         action = Action.AVOID
         side = "none"
-    elif side == "short" and short_pts >= 14:
-        action = Action.CONSIDER_SHORT
     elif side == "long" and score_100 >= 68 and long_pts >= 14:
         action = Action.CONSIDER_LONG
     elif side == "long" and score_100 >= 58:
@@ -101,9 +94,6 @@ def compose_signal(
     elif s.rsi_14 >= 78 and s.change_pct > 2:
         action = Action.TAKE_PROFIT_ZONE
         side = "none"
-    elif side == "short" and short_pts >= 8:
-        action = Action.WATCH_ENTRY  # watch short cautiously labeled in reason
-        notes.append("مراقبة بيع قصير — للمتمرس فقط")
     else:
         action = Action.WAIT
 
@@ -120,7 +110,7 @@ def compose_signal(
         entry_hint=entry,
         stop_hint=stop,
         target_hint=target,
-        side=side if action in (Action.CONSIDER_LONG, Action.CONSIDER_SHORT, Action.WATCH_ENTRY) else "none",
+        side=side if action in (Action.CONSIDER_LONG, Action.WATCH_ENTRY) else "none",
         strategies=names,
         strategy_notes=notes,
     )
