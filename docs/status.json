@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-09-24T13:46:15.124985+00:00",
-  "generated_ts": 1790257575,
+  "generated_at": "2026-09-24T13:46:56.544052+00:00",
+  "generated_ts": 1790257616,
   "generated_local": "2026-09-24 16:46 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:46:15.124876+00:00",
+    "updated_at": "2026-09-24T13:46:56.543939+00:00",
     "last_mode": "dashboard",
-    "changed": false,
+    "changed": true,
     "symbols": 24
   },
   "telegram_enabled": true,
@@ -26,35 +26,35 @@
     "avg_change_pct": -0.48,
     "details": {
       "SPY": {
-        "last": 764.79,
-        "change_pct": -0.4,
-        "rsi": 44.8
+        "last": 764.83,
+        "change_pct": -0.39,
+        "rsi": 44.9
       },
       "QQQ": {
-        "last": 737.08,
+        "last": 737.09,
         "change_pct": -0.56,
-        "rsi": 62.3
+        "rsi": 62.5
       },
       "IWM": {
-        "last": 280.64,
-        "change_pct": -0.48,
+        "last": 280.54,
+        "change_pct": -0.49,
         "rsi": 24.5
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.4,
-        "rsi": 44.8
+        "change_pct": -0.39,
+        "rsi": 44.9
       },
       {
         "symbol": "QQQ",
         "change_pct": -0.56,
-        "rsi": 62.3
+        "rsi": 62.5
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.48,
+        "change_pct": -0.49,
         "rsi": 24.5
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 22424,
-    "ny_time": "09:46:15",
+    "seconds_left": 22383,
+    "ny_time": "09:46:56",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,36 +77,36 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.06
+        "change_pct": 1.1
       },
       {
         "name": "Communication",
-        "change_pct": 0.97
+        "change_pct": 1.0
       },
       {
-        "name": "Technology",
-        "change_pct": -0.21
+        "name": "Consumer",
+        "change_pct": -0.22
       }
     ],
     "weakest": [
       {
         "name": "Industrial",
-        "change_pct": -2.45
+        "change_pct": -2.47
       },
       {
         "name": "Financials",
-        "change_pct": -0.36
+        "change_pct": -0.53
       },
       {
-        "name": "Consumer",
-        "change_pct": -0.24
+        "name": "Technology",
+        "change_pct": -0.31
       }
     ]
   },
   "style": {
-    "growth_avg": -0.07,
-    "value_avg": -0.14,
-    "leader": "نمو",
+    "growth_avg": -0.2,
+    "value_avg": -0.13,
+    "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
   },
@@ -114,15 +114,15 @@
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
     "P:درجة سيولة ضعيفة",
-    "INTC:درجة سيولة ضعيفة",
     "NBIS:درجة سيولة ضعيفة",
     "XOM:درجة سيولة ضعيفة",
-    "BAC:زخم ضعيف (+0.13% < 0.85%)",
-    "PLTR:زخم ضعيف (+0.40% < 0.85%)",
     "AMD:درجة سيولة ضعيفة",
-    "UBER:زخم ضعيف (+0.33% < 0.85%)",
+    "INTC:درجة سيولة ضعيفة",
+    "BAC:زخم ضعيف (+0.21% < 0.85%)",
+    "UBER:زخم ضعيف (+0.30% < 0.85%)",
     "CRWV:درجة سيولة ضعيفة",
     "CVX:زخم ضعيف (+0.58% < 0.85%)",
+    "DIS:RVOL منخفض ×0.08",
     "NVDA:زخم ضعيف (-1.23% < 0.85%)",
     "META:درجة سيولة ضعيفة"
   ],
@@ -130,13 +130,13 @@
     {
       "symbol": "P",
       "name": "Everpure, Inc.",
-      "last": 124.88,
-      "change_pct": 13.81,
-      "ref": 109.73,
-      "rth_close": 124.88,
-      "volume": 2057740.0,
-      "dollar_volume": 256970571.2,
-      "dollar_volume_label": "257.0M$",
+      "last": 127.0,
+      "change_pct": 15.82,
+      "ref": 109.65,
+      "rth_close": 127.0,
+      "volume": 2154199.0,
+      "dollar_volume": 273583273.0,
+      "dollar_volume_label": "273.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=P"
@@ -144,12 +144,12 @@
     {
       "symbol": "NBIS",
       "name": "Nebius Group N.V.",
-      "last": 240.2,
-      "change_pct": 6.0,
+      "last": 239.41,
+      "change_pct": 5.65,
       "ref": 226.61,
-      "rth_close": 240.2,
-      "volume": 4525851.0,
-      "dollar_volume": 1087109410.2,
+      "rth_close": 239.41,
+      "volume": 4639902.0,
+      "dollar_volume": 1110838937.82,
       "dollar_volume_label": "1.1B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
@@ -158,41 +158,27 @@
     {
       "symbol": "CRWV",
       "name": "CoreWeave, Inc.",
-      "last": 88.82,
-      "change_pct": 2.21,
+      "last": 88.68,
+      "change_pct": 2.05,
       "ref": 86.9,
-      "rth_close": 88.82,
-      "volume": 6396984.0,
-      "dollar_volume": 568180118.88,
-      "dollar_volume_label": "568.2M$",
+      "rth_close": 88.68,
+      "volume": 6540297.0,
+      "dollar_volume": 579993537.96,
+      "dollar_volume_label": "580.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRWV"
     },
     {
-      "symbol": "BB",
-      "name": "BlackBerry Limited",
-      "last": 8.52,
-      "change_pct": 1.43,
-      "ref": 8.39,
-      "rth_close": 8.52,
-      "volume": 8328004.0,
-      "dollar_volume": 70954594.08,
-      "dollar_volume_label": "71.0M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=BB"
-    },
-    {
       "symbol": "INTC",
       "name": "Intel Corporation",
-      "last": 124.3,
-      "change_pct": 1.39,
+      "last": 124.99,
+      "change_pct": 1.95,
       "ref": 122.6,
-      "rth_close": 124.3,
-      "volume": 15790718.0,
-      "dollar_volume": 1962786247.4,
-      "dollar_volume_label": "2.0B$",
+      "rth_close": 124.99,
+      "volume": 16946238.0,
+      "dollar_volume": 2118110287.62,
+      "dollar_volume_label": "2.1B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=INTC"
@@ -200,16 +186,30 @@
     {
       "symbol": "AMD",
       "name": "Advanced Micro Devices, Inc.",
-      "last": 622.4,
-      "change_pct": 1.27,
+      "last": 622.61,
+      "change_pct": 1.3,
       "ref": 614.61,
-      "rth_close": 622.4,
-      "volume": 4335579.0,
-      "dollar_volume": 2698464369.6,
-      "dollar_volume_label": "2.7B$",
+      "rth_close": 622.62,
+      "volume": 4479169.0,
+      "dollar_volume": 2788775411.09,
+      "dollar_volume_label": "2.8B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=AMD"
+    },
+    {
+      "symbol": "BB",
+      "name": "BlackBerry Limited",
+      "last": 8.46,
+      "change_pct": 0.95,
+      "ref": 8.38,
+      "rth_close": 8.46,
+      "volume": 8598274.0,
+      "dollar_volume": 72741398.04,
+      "dollar_volume_label": "72.7M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=BB"
     }
   ],
   "gainers_min_price": 5.0,
@@ -217,17 +217,17 @@
   "movers": [
     {
       "symbol": "P",
-      "change_pct": 14.87,
-      "last": 125.95,
-      "rvol": 0.31,
+      "change_pct": 16.11,
+      "last": 127.31,
+      "rvol": 0.32,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "269.8M$"
+      "dollar_volume_label": "278.1M$"
     },
     {
       "symbol": "NBIS",
-      "change_pct": 5.67,
-      "last": 239.45,
+      "change_pct": 5.38,
+      "last": 238.8,
       "rvol": 0.32,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -235,39 +235,39 @@
     },
     {
       "symbol": "BA",
-      "change_pct": -2.45,
-      "last": 195.04,
-      "rvol": 0.22,
+      "change_pct": -2.47,
+      "last": 195.0,
+      "rvol": 0.23,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "265.5M$"
-    },
-    {
-      "symbol": "BB",
-      "change_pct": 2.15,
-      "last": 8.56,
-      "rvol": 0.72,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "73.3M$"
+      "dollar_volume_label": "270.2M$"
     },
     {
       "symbol": "CRWV",
-      "change_pct": 1.98,
-      "last": 88.62,
+      "change_pct": 2.17,
+      "last": 88.78,
       "rvol": 0.24,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "576.5M$"
+      "dollar_volume_label": "583.0M$"
+    },
+    {
+      "symbol": "INTC",
+      "change_pct": 2.02,
+      "last": 125.08,
+      "rvol": 0.17,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "2.2B$"
     },
     {
       "symbol": "DIS",
-      "change_pct": 1.91,
-      "last": 105.44,
+      "change_pct": 1.99,
+      "last": 105.52,
       "rvol": 0.08,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "67.2M$"
+      "dollar_volume_label": "69.5M$"
     }
   ],
   "news": [
