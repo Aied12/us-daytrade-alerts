@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:34:17.359094+00:00",
-  "generated_ts": 1790253257,
-  "generated_local": "2026-09-24 15:34 +03",
+  "generated_at": "2026-09-24T12:35:23.423070+00:00",
+  "generated_ts": 1790253323,
+  "generated_local": "2026-09-24 15:35 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:34:17.358925+00:00",
+    "updated_at": "2026-09-24T12:35:23.422906+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,38 +23,38 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.67,
+    "avg_change_pct": -0.68,
     "details": {
       "SPY": {
-        "last": 763.55,
-        "change_pct": -0.55,
+        "last": 763.36,
+        "change_pct": -0.58,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 733.43,
-        "change_pct": -1.05,
+        "last": 733.386,
+        "change_pct": -1.06,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 280.8,
-        "change_pct": -0.4,
+        "last": 280.83,
+        "change_pct": -0.39,
         "rsi": 29.0
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.55,
+        "change_pct": -0.58,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -1.05,
+        "change_pct": -1.06,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.4,
+        "change_pct": -0.39,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 3342,
-    "ny_time": "08:34:17",
+    "seconds_left": 3276,
+    "ny_time": "08:35:23",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,11 +77,11 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.02
+        "change_pct": 1.07
       },
       {
         "name": "Communication",
-        "change_pct": 0.06
+        "change_pct": 0.01
       },
       {
         "name": "Industrial",
@@ -91,21 +91,21 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.32
-      },
-      {
-        "name": "Financials",
-        "change_pct": -0.42
+        "change_pct": -1.33
       },
       {
         "name": "Consumer",
-        "change_pct": -0.4
+        "change_pct": -0.39
+      },
+      {
+        "name": "Financials",
+        "change_pct": -0.38
       }
     ]
   },
   "style": {
     "growth_avg": -1.3,
-    "value_avg": 0.01,
+    "value_avg": 0.02,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -125,32 +125,32 @@
         "تقلّب عالي"
       ],
       "reason": "افتتاح فجوة صاعدة: فجوة +3.0% مع ثبات فوق الافتتاح | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم مرتفع: حجم ×1.6 | تقلّب عالي: ATR% 4.3 | زخم اتجاه الافتتاح: اتجاه الفجوة مستمر",
-      "entry": 14.52,
+      "entry": 14.41,
       "stop": 11.3,
-      "target": 20.32,
-      "shares": 37,
-      "risk_sar": 446.77,
+      "target": 20.01,
+      "shares": 38,
+      "risk_sar": 443.17,
       "allowed": true,
-      "change_pct": 1.59,
-      "last": 14.52,
+      "change_pct": 0.84,
+      "last": 14.41,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 1.6,
         "volume": 3110400.0,
         "avg_volume_20": 1939500.0,
-        "dollar_volume": 45153365.76,
-        "avg_dollar_volume": 28155527.55,
-        "dollar_volume_label": "45.2M$",
-        "avg_dollar_volume_label": "28.2M$",
+        "dollar_volume": 44820864.0,
+        "avg_dollar_volume": 27948195.0,
+        "dollar_volume_label": "44.8M$",
+        "avg_dollar_volume_label": "27.9M$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×1.6 · اليوم 45.2M$ · متوسط 28.2M$"
+        "label": "RVOL ×1.6 · اليوم 44.8M$ · متوسط 27.9M$"
       },
       "rvol": 1.6,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SSL",
-      "tg_share": "https://t.me/share/url?url=&text=SSL%20فكّر في شراء قصير المدى%0Aالآن%2014.52%20دخول%2014.52%20وقف%2011.3%20هدف%2020.32%0Aسيولة%20قوي%20RVOL%20x1.6"
+      "tg_share": "https://t.me/share/url?url=&text=SSL%20فكّر في شراء قصير المدى%0Aالآن%2014.41%20دخول%2014.41%20وقف%2011.3%20هدف%2020.01%0Aسيولة%20قوي%20RVOL%20x1.6"
     },
     {
       "symbol": "RRR",
@@ -274,46 +274,6 @@
       "tg_share": "https://t.me/share/url?url=&text=WBD%20فكّر في شراء قصير المدى%0Aالآن%2030.79%20دخول%2030.79%20وقف%2027.83%20هدف%2036.12%0Aسيولة%20قوي%20RVOL%20x3.25"
     },
     {
-      "symbol": "AAPL",
-      "action": "فكّر في شراء قصير المدى",
-      "action_key": "CONSIDER_LONG",
-      "side": "long",
-      "score_100": 69,
-      "urgent": false,
-      "strategies": [
-        "ارتداد VWAP",
-        "ترتيب متوسطات صاعد",
-        "RSI متوازن"
-      ],
-      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.02%) | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 62",
-      "entry": 337.24,
-      "stop": 309.37,
-      "target": 387.41,
-      "shares": 4,
-      "risk_sar": 418.05,
-      "allowed": true,
-      "change_pct": 0.07,
-      "last": 337.24,
-      "session_phase": "pre",
-      "liquidity": {
-        "rvol": 0.73,
-        "volume": 31587800.0,
-        "avg_volume_20": 43477185.0,
-        "dollar_volume": 10652669672.0,
-        "avg_dollar_volume": 14662245869.4,
-        "dollar_volume_label": "10.7B$",
-        "avg_dollar_volume_label": "14.7B$",
-        "grade": "weak",
-        "grade_ar": "ضعيف",
-        "label": "RVOL ×0.7 · اليوم 10.7B$ · متوسط 14.7B$"
-      },
-      "rvol": 0.73,
-      "liq_grade": "weak",
-      "liq_grade_ar": "ضعيف",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=AAPL",
-      "tg_share": "https://t.me/share/url?url=&text=AAPL%20فكّر في شراء قصير المدى%0Aالآن%20337.24%20دخول%20337.24%20وقف%20309.37%20هدف%20387.41%0Aسيولة%20ضعيف%20RVOL%20x0.73"
-    },
-    {
       "symbol": "SECZ",
       "action": "فكّر في شراء قصير المدى",
       "action_key": "CONSIDER_LONG",
@@ -406,33 +366,33 @@
         "ترتيب متوسطات صاعد",
         "زخم قطاع Energy"
       ],
-      "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | زخم قطاع Energy: قطاع Energy +1.0%",
-      "entry": 162.98,
+      "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | زخم قطاع Energy: قطاع Energy +1.1%",
+      "entry": 163.14,
       "stop": 156.41,
-      "target": 174.81,
-      "shares": 18,
-      "risk_sar": 443.47,
+      "target": 175.25,
+      "shares": 17,
+      "risk_sar": 429.04,
       "allowed": false,
-      "change_pct": 1.09,
-      "last": 162.98,
+      "change_pct": 1.18,
+      "last": 163.14,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.84,
         "volume": 12569300.0,
         "avg_volume_20": 14967795.0,
-        "dollar_volume": 2048544514.0,
-        "avg_dollar_volume": 2439451229.1,
-        "dollar_volume_label": "2.0B$",
+        "dollar_volume": 2050555602.0,
+        "avg_dollar_volume": 2441846076.3,
+        "dollar_volume_label": "2.1B$",
         "avg_dollar_volume_label": "2.4B$",
         "grade": "medium",
         "grade_ar": "متوسط",
-        "label": "RVOL ×0.8 · اليوم 2.0B$ · متوسط 2.4B$"
+        "label": "RVOL ×0.8 · اليوم 2.1B$ · متوسط 2.4B$"
       },
       "rvol": 0.84,
       "liq_grade": "medium",
       "liq_grade_ar": "متوسط",
       "tv_url": "https://www.tradingview.com/chart/?symbol=XOM",
-      "tg_share": "https://t.me/share/url?url=&text=XOM%20راقب دخول%0Aالآن%20162.98%20دخول%20162.98%20وقف%20156.41%20هدف%20174.81%0Aسيولة%20متوسط%20RVOL%20x0.84"
+      "tg_share": "https://t.me/share/url?url=&text=XOM%20راقب دخول%0Aالآن%20163.14%20دخول%20163.14%20وقف%20156.41%20هدف%20175.25%0Aسيولة%20متوسط%20RVOL%20x0.84"
     },
     {
       "symbol": "BAC",
@@ -522,7 +482,7 @@
       "strategies": [
         "زخم قطاع Energy"
       ],
-      "reason": "زخم قطاع Energy: قطاع Energy +1.0%",
+      "reason": "زخم قطاع Energy: قطاع Energy +1.1%",
       "entry": 207.49,
       "stop": 198.5,
       "target": 223.67,
@@ -563,21 +523,21 @@
         "تقلّب عالي"
       ],
       "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 57 | تقلّب عالي: ATR% 4.9",
-      "entry": 148.63,
+      "entry": 148.59,
       "stop": 137.06,
-      "target": 169.46,
+      "target": 169.34,
       "shares": 10,
-      "risk_sar": 433.87,
+      "risk_sar": 432.38,
       "allowed": false,
-      "change_pct": 0.18,
-      "last": 148.63,
+      "change_pct": 0.16,
+      "last": 148.59,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.68,
         "volume": 60280300.0,
         "avg_volume_20": 89208805.0,
-        "dollar_volume": 8959292204.16,
-        "avg_dollar_volume": 13258854902.5,
+        "dollar_volume": 8957194449.72,
+        "avg_dollar_volume": 13255750436.08,
         "dollar_volume_label": "9.0B$",
         "avg_dollar_volume_label": "13.3B$",
         "grade": "weak",
@@ -588,24 +548,10 @@
       "liq_grade": "weak",
       "liq_grade_ar": "ضعيف",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX",
-      "tg_share": "https://t.me/share/url?url=&text=SPCX%20راقب دخول%0Aالآن%20148.63%20دخول%20148.63%20وقف%20137.06%20هدف%20169.46%0Aسيولة%20ضعيف%20RVOL%20x0.68"
+      "tg_share": "https://t.me/share/url?url=&text=SPCX%20راقب دخول%0Aالآن%20148.59%20دخول%20148.59%20وقف%20137.06%20هدف%20169.34%0Aسيولة%20ضعيف%20RVOL%20x0.68"
     }
   ],
   "gainers": [
-    {
-      "symbol": "SSL",
-      "name": "Sasol Ltd.",
-      "last": 14.52,
-      "change_pct": 1.59,
-      "ref": 14.29,
-      "rth_close": 14.29,
-      "volume": 3110388.0,
-      "dollar_volume": 45162833.76,
-      "dollar_volume_label": "45.2M$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SSL"
-    },
     {
       "symbol": "AR",
       "name": "Antero Resources Corporation",
@@ -619,6 +565,20 @@
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=AR"
+    },
+    {
+      "symbol": "SSL",
+      "name": "Sasol Ltd.",
+      "last": 14.41,
+      "change_pct": 0.84,
+      "ref": 14.29,
+      "rth_close": 14.29,
+      "volume": 3110388.0,
+      "dollar_volume": 44820691.08,
+      "dollar_volume_label": "44.8M$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SSL"
     },
     {
       "symbol": "RRR",
@@ -677,20 +637,6 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=PCG"
     },
     {
-      "symbol": "SPCX",
-      "name": "Space Exploration Technologies ",
-      "last": 148.82,
-      "change_pct": 0.31,
-      "ref": 148.36,
-      "rth_close": 148.36,
-      "volume": 60046138.0,
-      "dollar_volume": 8936066257.16,
-      "dollar_volume_label": "8.9B$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX"
-    },
-    {
       "symbol": "LTH",
       "name": "Life Time Group Holdings, Inc.",
       "last": 39.74,
@@ -705,14 +651,28 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=LTH"
     },
     {
+      "symbol": "SPCX",
+      "name": "Space Exploration Technologies ",
+      "last": 148.61,
+      "change_pct": 0.17,
+      "ref": 148.36,
+      "rth_close": 148.36,
+      "volume": 60046138.0,
+      "dollar_volume": 8923456568.18,
+      "dollar_volume_label": "8.9B$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX"
+    },
+    {
       "symbol": "WBD",
       "name": "Warner Bros. Discovery, Inc. - ",
-      "last": 30.78,
-      "change_pct": 0.07,
+      "last": 30.79,
+      "change_pct": 0.1,
       "ref": 30.76,
       "rth_close": 30.76,
       "volume": 110237037.0,
-      "dollar_volume": 3393095998.86,
+      "dollar_volume": 3394198369.23,
       "dollar_volume_label": "3.4B$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
@@ -724,57 +684,48 @@
   "movers": [
     {
       "symbol": "AMD",
-      "change_pct": -3.03,
-      "last": 596.0,
+      "change_pct": -2.99,
+      "last": 596.22,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "9.7B$"
     },
     {
-      "symbol": "META",
-      "change_pct": -2.13,
-      "last": 728.28,
-      "rvol": 1.37,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "22.1B$"
-    },
-    {
       "symbol": "PLTR",
-      "change_pct": -2.1,
-      "last": 187.76,
+      "change_pct": -2.16,
+      "last": 187.64,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "6.6B$"
     },
     {
-      "symbol": "SSL",
-      "change_pct": 1.59,
-      "last": 14.52,
-      "rvol": 1.6,
+      "symbol": "META",
+      "change_pct": -2.03,
+      "last": 729.0,
+      "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "45.2M$"
+      "dollar_volume_label": "22.1B$"
+    },
+    {
+      "symbol": "AVGO",
+      "change_pct": -1.63,
+      "last": 349.2,
+      "rvol": 0.85,
+      "grade": "medium",
+      "grade_ar": "متوسط",
+      "dollar_volume_label": "8.1B$"
     },
     {
       "symbol": "COIN",
-      "change_pct": -1.57,
-      "last": 195.02,
+      "change_pct": -1.44,
+      "last": 195.28,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "1.4B$"
-    },
-    {
-      "symbol": "AVGO",
-      "change_pct": -1.56,
-      "last": 349.46,
-      "rvol": 0.85,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "8.2B$"
     },
     {
       "symbol": "AR",
@@ -787,15 +738,37 @@
     },
     {
       "symbol": "XOM",
-      "change_pct": 1.09,
-      "last": 162.98,
+      "change_pct": 1.18,
+      "last": 163.14,
       "rvol": 0.84,
       "grade": "medium",
       "grade_ar": "متوسط",
-      "dollar_volume_label": "2.0B$"
+      "dollar_volume_label": "2.1B$"
+    },
+    {
+      "symbol": "NVDA",
+      "change_pct": -1.07,
+      "last": 223.1,
+      "rvol": 0.68,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "19.9B$"
     }
   ],
   "news": [
+    {
+      "symbol": "SPCX",
+      "title": "SpaceX President Just Filed to Sell Nearly $52 Million in Stock",
+      "title_ar": "تقدم رئيس سبيس إكس للتو ببيع ما يقرب من 52 مليون دولار من الأسهم",
+      "summary": "Gwynne Shotwell's proposed transaction follows an option exercise and was arranged under a trading plan adopted in June.",
+      "summary_ar": "تتبع الصفقة المقترحة لجوين شوتويل تمرين خيار وتم ترتيبها بموجب خطة تداول تم تبنيها في يونيو.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-president-just-filed-sell-123025797.html",
+      "publisher": "GuruFocus.com",
+      "published": "2026-09-24 12:30:25 UT",
+      "published_ts": 1790253025,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد"
+    },
     {
       "symbol": "WBD",
       "title": "What Would A Real Market Crash Do To Netflix Stock After This Fall?",
@@ -849,19 +822,6 @@
       "sentiment_ar": "محايد"
     },
     {
-      "symbol": "AAPL",
-      "title": "Here's what Wall Street thinks of Meta's new smartglass lineup and first Muse 'holdable'",
-      "title_ar": "إليك ما تعتقده وول ستريت عن تشكيلة ميتا الجديدة من النظارات الذكية وأول ملهم \"قابل للحمل\"",
-      "summary": "The day after Meta Connect.",
-      "summary_ar": "في اليوم التالي لـ Meta Connect.",
-      "url": "https://finance.yahoo.com/markets/stocks/article/heres-what-wall-street-thinks-of-metas-new-smartglass-lineup-and-first-muse-holdable-085705955.html",
-      "publisher": "Yahoo Finance",
-      "published": "2026-09-24 08:57:05 UT",
-      "published_ts": 1790240225,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد"
-    },
-    {
       "symbol": "WBD",
       "title": "3 Low-Volatility Stocks with Open Questions",
       "title_ar": "3 أسهم منخفضة التقلب مع أسئلة مفتوحة",
@@ -873,6 +833,19 @@
       "published_ts": 1790236374,
       "sentiment": "neu",
       "sentiment_ar": "محايد"
+    },
+    {
+      "symbol": "CVX",
+      "title": "Behind the Oil-and-Gas Industry’s Blitz to Try to Defeat a Diesel Export Ban",
+      "title_ar": "وراء الغارة التي شنتها صناعة النفط والغاز في محاولة لهزيمة حظر تصدير الديزل",
+      "summary": "Oil executives and their lobbyists launched a coordinated contingency plan to persuade the Trump administration not to enact a ban on U.S. diesel exports.",
+      "summary_ar": "أطلق المسؤولون التنفيذيون في مجال النفط وجماعات الضغط التابعة لهم خطة طوارئ منسقة لإقناع إدارة ترامب بعدم فرض حظر على صادرات الديزل الأمريكية.",
+      "url": "https://www.wsj.com/politics/policy/behind-the-oil-and-gas-industrys-blitz-to-try-to-defeat-a-diesel-export-ban-4e64d7f5?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "published": "2026-09-24 01:00:00 UT",
+      "published_ts": 1790211600,
+      "sentiment": "neg",
+      "sentiment_ar": "سلبي"
     },
     {
       "symbol": "SECZ",
@@ -912,19 +885,6 @@
       "published_ts": 1790185702,
       "sentiment": "neu",
       "sentiment_ar": "محايد"
-    },
-    {
-      "symbol": "SECZ",
-      "title": "Securitize Stock Jumps 12% as Cantor Bets on a Tokenization Boom",
-      "title_ar": "توريق الأسهم يقفز بنسبة 12 ٪ حيث يراهن قائد الفرقة الموسيقيّة على طفرة التوكن",
-      "summary": "Securitize shares have surged as regulators open a path for tokenized stock trading. Cantor Fitzgerald sees more room to rise.",
-      "summary_ar": "ارتفعت أسهم Securitize حيث فتح المنظمون طريقًا لتداول الأسهم الرمزية. يرى كانتور فيتزجيرالد مساحة أكبر للارتفاع.",
-      "url": "https://www.barrons.com/articles/securitize-stock-price-cantor-tokenization-1bff8d31?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "published": "2026-09-23 16:55:00 UT",
-      "published_ts": 1790182500,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي"
     }
   ],
   "news_note_ar": "عناوين مترجمة آلياً — تحقق من المصدر قبل أي قرار",
