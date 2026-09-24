@@ -1243,23 +1243,38 @@
 
     async function fetchData(bust=false){
       const btn=document.getElementById('btnRefresh');
-      btn.disabled=true; btn.textContent='... جاري التحديث';
+      // لا تعطّل الزر في التحديث التلقائي حتى لا يسرق التركيز ويقفز التمرير
+      if(bust){
+        btn.disabled=true; btn.textContent='... جاري التحديث';
+      }
       try{
-        // Always cache-bust so auto-refresh picks new status.json quickly
         const url='./status.json?ts='+Date.now();
         const res=await fetch(url,{cache:'no-store'});
-        DATA=await res.json();
+        const next=await res.json();
+        const nextTs=Number(next.generated_ts||0);
+        DATA=next;
         sessionLeft=Number((DATA.session&&DATA.session.seconds_left)||0);
+        // نفس المحتوى → تحديث خفيف فقط (بدون إعادة رسم الصفحة)
+        if(!bust && LAST_STATUS_TS && nextTs && nextTs===LAST_STATUS_TS){
+          tickClocks();
+          refreshIn=AUTO_SEC;
+          return;
+        }
+        LAST_STATUS_TS=nextTs||LAST_STATUS_TS;
         renderAll();
         renderLiveTape();
-        pollAllPrices();
+        if(bust || !liveBusy) pollAllPrices();
         refreshIn=AUTO_SEC;
         if(bust) toast('تم التحديث');
       }catch(e){
-        document.getElementById('opps').innerHTML='<div class="empty">تعذّر التحديث — تحقق من النت أو افتح /scan في تيليجرام</div>';
-        toast('فشل التحديث');
+        if(bust){
+          document.getElementById('opps').innerHTML='<div class="empty">تعذّر التحديث — تحقق من النت أو افتح /scan في تيليجرام</div>';
+          toast('فشل التحديث');
+        }
       }finally{
-        btn.disabled=false; btn.textContent='🔄 تحديث الآن';
+        if(bust){
+          btn.disabled=false; btn.textContent='🔄 تحديث الآن';
+        }
       }
     }
 
