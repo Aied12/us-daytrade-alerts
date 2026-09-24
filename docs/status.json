@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:39:20.994787+00:00",
-  "generated_ts": 1790253560,
-  "generated_local": "2026-09-24 15:39 +03",
+  "generated_at": "2026-09-24T12:40:11.811026+00:00",
+  "generated_ts": 1790253611,
+  "generated_local": "2026-09-24 15:40 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:39:20.994658+00:00",
+    "updated_at": "2026-09-24T12:40:11.810873+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,38 +23,38 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.72,
+    "avg_change_pct": -0.71,
     "details": {
       "SPY": {
-        "last": 763.12,
-        "change_pct": -0.61,
+        "last": 763.3077,
+        "change_pct": -0.59,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 733.0485,
-        "change_pct": -1.1,
+        "last": 733.2675,
+        "change_pct": -1.07,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 280.66,
-        "change_pct": -0.45,
+        "last": 280.6,
+        "change_pct": -0.47,
         "rsi": 29.0
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.61,
+        "change_pct": -0.59,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -1.1,
+        "change_pct": -1.07,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.45,
+        "change_pct": -0.47,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 3039,
-    "ny_time": "08:39:20",
+    "seconds_left": 2988,
+    "ny_time": "08:40:11",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,31 +81,31 @@
       },
       {
         "name": "Communication",
-        "change_pct": -0.04
+        "change_pct": -0.02
       },
       {
-        "name": "Industrial",
+        "name": "Consumer",
         "change_pct": -0.38
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.28
-      },
-      {
-        "name": "Consumer",
-        "change_pct": -0.42
+        "change_pct": -1.29
       },
       {
         "name": "Financials",
-        "change_pct": -0.39
+        "change_pct": -0.43
+      },
+      {
+        "name": "Industrial",
+        "change_pct": -0.38
       }
     ]
   },
   "style": {
-    "growth_avg": -1.31,
-    "value_avg": 0.06,
+    "growth_avg": -1.3,
+    "value_avg": 0.05,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -206,32 +206,32 @@
         "زخم اتجاه الافتتاح"
       ],
       "reason": "افتتاح فجوة صاعدة: فجوة +2.7% مع ثبات فوق الافتتاح | تقلّب عالي: ATR% 3.5 | زخم اتجاه الافتتاح: اتجاه الفجوة مستمر",
-      "entry": 36.11,
+      "entry": 36.0,
       "stop": 34.4,
-      "target": 40.18,
-      "shares": 70,
-      "risk_sar": 448.88,
+      "target": 40.0,
+      "shares": 74,
+      "risk_sar": 444.0,
       "allowed": true,
-      "change_pct": 1.29,
-      "last": 36.11,
+      "change_pct": 0.98,
+      "last": 36.0,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 1.49,
         "volume": 5586000.0,
         "avg_volume_20": 3737930.0,
-        "dollar_volume": 201710460.0,
-        "avg_dollar_volume": 134976652.3,
-        "dollar_volume_label": "201.7M$",
-        "avg_dollar_volume_label": "135.0M$",
+        "dollar_volume": 201096000.0,
+        "avg_dollar_volume": 134565480.0,
+        "dollar_volume_label": "201.1M$",
+        "avg_dollar_volume_label": "134.6M$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×1.5 · اليوم 201.7M$ · متوسط 135.0M$"
+        "label": "RVOL ×1.5 · اليوم 201.1M$ · متوسط 134.6M$"
       },
       "rvol": 1.49,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=AR",
-      "tg_share": "https://t.me/share/url?url=&text=AR%20فكّر في شراء قصير المدى%0Aالآن%2036.11%20دخول%2036.11%20وقف%2034.4%20هدف%2040.18%0Aسيولة%20قوي%20RVOL%20x1.49"
+      "tg_share": "https://t.me/share/url?url=&text=AR%20فكّر في شراء قصير المدى%0Aالآن%2036.0%20دخول%2036.0%20وقف%2034.4%20هدف%2040.0%0Aسيولة%20قوي%20RVOL%20x1.49"
     },
     {
       "symbol": "WBD",
@@ -285,22 +285,22 @@
         "ترتيب متوسطات صاعد",
         "RSI متوازن"
       ],
-      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.01%) | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 62",
-      "entry": 337.21,
+      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.03%) | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 62",
+      "entry": 337.28,
       "stop": 309.37,
-      "target": 387.32,
+      "target": 387.52,
       "shares": 4,
-      "risk_sar": 417.6,
+      "risk_sar": 418.65,
       "allowed": true,
-      "change_pct": 0.06,
-      "last": 337.21,
+      "change_pct": 0.08,
+      "last": 337.28,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.73,
         "volume": 31587800.0,
         "avg_volume_20": 43477185.0,
-        "dollar_volume": 10651769419.7,
-        "avg_dollar_volume": 14661006769.63,
+        "dollar_volume": 10653933184.0,
+        "avg_dollar_volume": 14663984956.8,
         "dollar_volume_label": "10.7B$",
         "avg_dollar_volume_label": "14.7B$",
         "grade": "weak",
@@ -311,7 +311,7 @@
       "liq_grade": "weak",
       "liq_grade_ar": "ضعيف",
       "tv_url": "https://www.tradingview.com/chart/?symbol=AAPL",
-      "tg_share": "https://t.me/share/url?url=&text=AAPL%20فكّر في شراء قصير المدى%0Aالآن%20337.21%20دخول%20337.21%20وقف%20309.37%20هدف%20387.32%0Aسيولة%20ضعيف%20RVOL%20x0.73"
+      "tg_share": "https://t.me/share/url?url=&text=AAPL%20فكّر في شراء قصير المدى%0Aالآن%20337.28%20دخول%20337.28%20وقف%20309.37%20هدف%20387.52%0Aسيولة%20ضعيف%20RVOL%20x0.73"
     },
     {
       "symbol": "APA",
@@ -368,32 +368,32 @@
         "RSI تشبع شرائي"
       ],
       "reason": "ارتداد لملء فجوة هابطة: فجوة -1.5% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم مرتفع: حجم ×2.5 | RSI تشبع شرائي: RSI 87 | اختبار/كسر مقاومة: مقاومة≈$14.11 | تقلّب عالي: ATR% 8.4",
-      "entry": 14.4,
+      "entry": 14.36,
       "stop": 6.17,
-      "target": 29.21,
+      "target": 29.1,
       "shares": 14,
-      "risk_sar": 432.07,
+      "risk_sar": 429.97,
       "allowed": true,
-      "change_pct": 0.28,
-      "last": 14.4,
+      "change_pct": 0.02,
+      "last": 14.36,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 2.52,
         "volume": 9172100.0,
         "avg_volume_20": 3636165.0,
-        "dollar_volume": 132078240.0,
-        "avg_dollar_volume": 52360776.0,
-        "dollar_volume_label": "132.1M$",
-        "avg_dollar_volume_label": "52.4M$",
+        "dollar_volume": 131737955.09,
+        "avg_dollar_volume": 52225874.28,
+        "dollar_volume_label": "131.7M$",
+        "avg_dollar_volume_label": "52.2M$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×2.5 · اليوم 132.1M$ · متوسط 52.4M$"
+        "label": "RVOL ×2.5 · اليوم 131.7M$ · متوسط 52.2M$"
       },
       "rvol": 2.52,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ",
-      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.4%20دخول%2014.4%20وقف%206.17%20هدف%2029.21%0Aسيولة%20قوي%20RVOL%20x2.52"
+      "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.36%20دخول%2014.36%20وقف%206.17%20هدف%2029.1%0Aسيولة%20قوي%20RVOL%20x2.52"
     },
     {
       "symbol": "XOM",
@@ -446,21 +446,21 @@
         "تقلّب عالي"
       ],
       "reason": "ارتداد من دعم: دعم≈$70.92 | تقلّب عالي: ATR% 3.3",
-      "entry": 71.45,
-      "stop": 70.59,
-      "target": 73.6,
+      "entry": 71.48,
+      "stop": 70.62,
+      "target": 73.63,
       "shares": 41,
       "risk_sar": 132.22,
       "allowed": false,
-      "change_pct": 0.13,
-      "last": 71.45,
+      "change_pct": 0.17,
+      "last": 71.48,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 1.01,
         "volume": 32756600.0,
         "avg_volume_20": 32363040.0,
-        "dollar_volume": 2340459070.0,
-        "avg_dollar_volume": 2312339208.0,
+        "dollar_volume": 2341441768.0,
+        "avg_dollar_volume": 2313310099.2,
         "dollar_volume_label": "2.3B$",
         "avg_dollar_volume_label": "2.3B$",
         "grade": "strong",
@@ -471,7 +471,7 @@
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=NFLX",
-      "tg_share": "https://t.me/share/url?url=&text=NFLX%20راقب دخول%0Aالآن%2071.45%20دخول%2071.45%20وقف%2070.59%20هدف%2073.6%0Aسيولة%20قوي%20RVOL%20x1.01"
+      "tg_share": "https://t.me/share/url?url=&text=NFLX%20راقب دخول%0Aالآن%2071.48%20دخول%2071.48%20وقف%2070.62%20هدف%2073.63%0Aسيولة%20قوي%20RVOL%20x1.01"
     },
     {
       "symbol": "BAC",
@@ -723,35 +723,35 @@
   "movers": [
     {
       "symbol": "AMD",
-      "change_pct": -2.92,
-      "last": 596.69,
+      "change_pct": -2.93,
+      "last": 596.59,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "9.7B$"
     },
     {
-      "symbol": "META",
-      "change_pct": -2.03,
-      "last": 729.0,
-      "rvol": 1.37,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "22.1B$"
-    },
-    {
       "symbol": "PLTR",
-      "change_pct": -1.99,
-      "last": 187.97,
+      "change_pct": -1.98,
+      "last": 188.0,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "6.6B$"
     },
     {
+      "symbol": "META",
+      "change_pct": -1.98,
+      "last": 729.4,
+      "rvol": 1.37,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "22.1B$"
+    },
+    {
       "symbol": "AVGO",
-      "change_pct": -1.68,
-      "last": 349.02,
+      "change_pct": -1.66,
+      "last": 349.09,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -759,21 +759,12 @@
     },
     {
       "symbol": "COIN",
-      "change_pct": -1.48,
-      "last": 195.2,
+      "change_pct": -1.57,
+      "last": 195.01,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "1.4B$"
-    },
-    {
-      "symbol": "AR",
-      "change_pct": 1.29,
-      "last": 36.11,
-      "rvol": 1.49,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "201.7M$"
     },
     {
       "symbol": "XOM",
@@ -786,12 +777,21 @@
     },
     {
       "symbol": "NVDA",
-      "change_pct": -1.19,
-      "last": 222.82,
+      "change_pct": -1.18,
+      "last": 222.85,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "19.9B$"
+    },
+    {
+      "symbol": "CVX",
+      "change_pct": 1.16,
+      "last": 207.9,
+      "rvol": 0.83,
+      "grade": "medium",
+      "grade_ar": "متوسط",
+      "dollar_volume_label": "1.7B$"
     }
   ],
   "news": [
