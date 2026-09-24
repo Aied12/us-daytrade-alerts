@@ -256,8 +256,6 @@
       const b=document.getElementById('btnLight');
       if(b) b.textContent=on?'📶 خفيفة ✓':'📶 نسخة خفيفة';
       document.body.classList.toggle('light-net', on);
-      const live=document.getElementById('liveCard');
-      if(live) live.style.display=on?'none':'';
       ['movers','risk'].forEach(id=>{
         const el=document.getElementById(id);
         if(el&&el.closest('.card')) el.closest('.card').style.display=on?'none':'';
@@ -459,6 +457,8 @@
         DATA=await res.json();
         sessionLeft=Number((DATA.session&&DATA.session.seconds_left)||0);
         renderAll();
+        renderLiveTape();
+        pollAllPrices();
         refreshIn=AUTO_SEC;
         if(bust) toast('تم التحديث');
       }catch(e){

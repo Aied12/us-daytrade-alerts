@@ -457,6 +457,8 @@
         DATA=await res.json();
         sessionLeft=Number((DATA.session&&DATA.session.seconds_left)||0);
         renderAll();
+        renderLiveTape();
+        pollAllPrices();
         refreshIn=AUTO_SEC;
         if(bust) toast('تم التحديث');
       }catch(e){
