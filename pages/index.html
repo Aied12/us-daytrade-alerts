@@ -398,19 +398,19 @@
       const st=d.style||{};
       document.getElementById('styleBoard').innerHTML=`نمو ${st.growth_avg??'-'}% · قيمة ${st.value_avg??'-'}% · المتقدم: <b>${esc(st.leader||'-')}</b>`;
 
-      const gainers=d.gainers||[];
+      GAINERS_STATE = (d.gainers||[]).map(g=>({
+        symbol: String(g.symbol||'').toUpperCase(),
+        name: g.name||'',
+        last: Number(g.last||0),
+        change_pct: Number(g.change_pct||0),
+        dollar_volume: Number(g.dollar_volume||0),
+        dollar_volume_label: g.dollar_volume_label||'-',
+        tv_url: g.tv_url||''
+      }));
       const gmin=d.gainers_min_price??5;
       const gses=d.gainers_session_ar||'الآن';
-      document.getElementById('gainersNote').textContent=`سعر ≥ $${gmin} · ${gses} · مرتّب حسب الارتفاع الحالي (مو إغلاق أمس)`;
-      document.getElementById('gainersBody').innerHTML = gainers.length ? gainers.map((g,i)=>`
-        <tr>
-          <td>${i+1}</td>
-          <td><b>${esc(g.symbol)}</b>${g.name?` <span class="muted">${esc(g.name)}</span>`:''}</td>
-          <td class="live-cell">$<span data-live-px="${esc(g.symbol)}">${esc(g.last)}</span></td>
-          <td><span class="${clsChg(g.change_pct)}" data-live-chg="${esc(g.symbol)}">${g.change_pct>0?'+':''}${esc(g.change_pct)}%</span></td>
-          <td>${esc(g.dollar_volume_label||'-')}</td>
-          <td></td>
-        </tr>`).join('') : '<tr><td colspan="6" class="muted">لا صاعدين فوق الفلتر في الجلسة الحالية</td></tr>';
+      document.getElementById('gainersNote').textContent=`سعر ≥ $${gmin} · ${gses} · لحظي · يُزال إذا نزل أو ضعفت السيولة`;
+      renderGainersTable();
 
       const movers=d.movers||[];
       document.getElementById('movers').innerHTML=movers.map(m=>`
@@ -505,6 +505,67 @@
       renderOpps();
     };
 
+    let GAINERS_STATE = [];
+    const MIN_GAINERS_LIQ = 5_000_000; // $5M — below this = out of liquidity
+
+    function moneyLabel(n){
+      n=Number(n)||0;
+      if(n>=1e9) return (n/1e9).toFixed(1)+'B$';
+      if(n>=1e6) return (n/1e6).toFixed(1)+'M$';
+      if(n>=1e3) return Math.round(n/1e3)+'K$';
+      return Math.round(n)+'$';
+    }
+
+    function renderGainersTable(){
+      const body=document.getElementById('gainersBody');
+      if(!body) return;
+      const gmin=(DATA&&DATA.gainers_min_price)!=null?Number(DATA.gainers_min_price):5;
+      let rows = GAINERS_STATE.map(g=>{
+        const q=LIVE_CACHE[g.symbol];
+        const last=q&&q.last>0?q.last:g.last;
+        const chg=q&&q.change_pct!=null?q.change_pct:g.change_pct;
+        const vol=q&&q.volume>0?q.volume:null;
+        const dvol = vol!=null ? last*vol : g.dollar_volume;
+        return Object.assign({}, g, {last:last, change_pct:chg, dollar_volume:dvol, dollar_volume_label:moneyLabel(dvol)});
+      });
+      rows = rows.filter(g =>
+        g.last >= gmin &&
+        g.change_pct > 0.01 &&
+        (Number(g.dollar_volume)<=0 || Number(g.dollar_volume) >= MIN_GAINERS_LIQ)
+      );
+      rows.sort((a,b)=>b.change_pct-a.change_pct);
+      const keep={};
+      rows.forEach(r=>keep[r.symbol]=r);
+      GAINERS_STATE = GAINERS_STATE.filter(g=>keep[g.symbol]).map(g=>keep[g.symbol]||g);
+      body.innerHTML = rows.length ? rows.map((g,i)=>`
+        <tr data-gainer="${esc(g.symbol)}">
+          <td>${i+1}</td>
+          <td><b>${esc(g.symbol)}</b>${g.name?` <span class="muted">${esc(g.name)}</span>`:''}</td>
+          <td class="live-cell">$<span data-live-px="${esc(g.symbol)}">${esc(Number(g.last).toFixed(2))}</span></td>
+          <td><span class="${clsChg(g.change_pct)}" data-live-chg="${esc(g.symbol)}">${g.change_pct>0?'+':''}${esc(Number(g.change_pct).toFixed(2))}%</span></td>
+          <td data-gainer-liq="${esc(g.symbol)}">${esc(g.dollar_volume_label||'-')}</td>
+          <td></td>
+        </tr>`).join('') : '<tr><td colspan="6" class="muted">لا صاعدين فوق الفلتر حالياً (أو خرجت السيولة)</td></tr>';
+    }
+
+    function syncGainersAfterQuotes(){
+      if(!GAINERS_STATE.length) return;
+      const before=GAINERS_STATE.length;
+      GAINERS_STATE = GAINERS_STATE.map(g=>{
+        const q=LIVE_CACHE[g.symbol];
+        if(!q) return g;
+        const vol=q.volume>0?q.volume:null;
+        const dvol=vol!=null?(q.last*vol):g.dollar_volume;
+        return Object.assign({}, g, {
+          last:q.last,
+          change_pct:q.change_pct,
+          dollar_volume:dvol,
+          dollar_volume_label:moneyLabel(dvol),
+        });
+      });
+      renderGainersTable();
+    }
+
     const LIVE_CACHE = {};
     let liveBusy = false;
     let liveWave = 0;
@@ -581,7 +642,8 @@
       // Premarket/post: % vs last regular close (rth). RTH: vs previous close.
       const ref = rth>0 ? rth : prev;
       const chg = ref ? ((last-ref)/ref)*100 : 0;
-      return {last:Number(last), change_pct:Number(chg), rth, prev, ts:Date.now()};
+      const volume = Number(meta.regularMarketVolume||0);
+      return {last:Number(last), change_pct:Number(chg), rth, prev, volume, ts:Date.now()};
     }
 
     async function fetchOneLive(sym){
@@ -668,10 +730,12 @@
           directN = await refreshDirect([...new Set(slice)]);
         }
         liveWave++;
+        syncGainersAfterQuotes();
         const clk=document.getElementById('liveClock');
         if(clk){
           clk.textContent = `لحظي: ${directN||batch.n||0} سهم · ${new Date().toLocaleTimeString('ar-SA')}`
-            + (batch.ok?` · ملف ${Math.round(batch.age)}ث`:'');
+            + (batch.ok?` · ملف ${Math.round(batch.age)}ث`:'')
+            + ` · صاعدين ${GAINERS_STATE.length}`;
         }
       } finally {
         liveBusy=false;

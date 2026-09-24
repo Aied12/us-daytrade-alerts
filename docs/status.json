@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T10:23:16.378955+00:00",
-  "generated_ts": 1790245396,
-  "generated_local": "2026-09-24 13:23 +03",
+  "generated_at": "2026-09-24T10:24:14.105433+00:00",
+  "generated_ts": 1790245454,
+  "generated_local": "2026-09-24 13:24 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T10:23:16.378885+00:00",
+    "updated_at": "2026-09-24T10:24:14.105287+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -31,8 +31,8 @@
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 733.3,
-        "change_pct": -1.07,
+        "last": 733.1996,
+        "change_pct": -1.08,
         "rsi": 68.9
       },
       "IWM": {
@@ -49,7 +49,7 @@
       },
       {
         "symbol": "QQQ",
-        "change_pct": -1.07,
+        "change_pct": -1.08,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 11203,
-    "ny_time": "06:23:16",
+    "seconds_left": 11145,
+    "ny_time": "06:24:14",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,7 +81,7 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.14
+        "change_pct": 0.17
       },
       {
         "name": "Industrial",
@@ -91,15 +91,15 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.07
+        "change_pct": -1.08
       },
       {
         "name": "Financials",
-        "change_pct": -0.68
+        "change_pct": -0.65
       },
       {
         "name": "Consumer",
-        "change_pct": -0.41
+        "change_pct": -0.4
       }
     ]
   },
@@ -253,8 +253,8 @@
   "movers": [
     {
       "symbol": "META",
-      "change_pct": -2.5,
-      "last": 725.5,
+      "change_pct": -2.59,
+      "last": 724.8,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -262,8 +262,8 @@
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.27,
-      "last": 600.64,
+      "change_pct": -2.37,
+      "last": 600.02,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -271,8 +271,8 @@
     },
     {
       "symbol": "COIN",
-      "change_pct": -1.68,
-      "last": 194.8,
+      "change_pct": -1.6,
+      "last": 194.96,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -280,26 +280,17 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.35,
-      "last": 350.19,
+      "change_pct": -1.36,
+      "last": 350.15,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "8.2B$"
     },
     {
-      "symbol": "PLTR",
-      "change_pct": -1.2,
-      "last": 189.48,
-      "rvol": 1.26,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "6.6B$"
-    },
-    {
       "symbol": "TSLA",
-      "change_pct": -1.17,
-      "last": 375.68,
+      "change_pct": -1.18,
+      "last": 375.64,
       "rvol": 0.86,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -315,13 +306,22 @@
       "dollar_volume_label": "1.7B$"
     },
     {
-      "symbol": "NVDA",
-      "change_pct": -1.11,
-      "last": 223.0,
-      "rvol": 0.68,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "19.9B$"
+      "symbol": "PLTR",
+      "change_pct": -1.09,
+      "last": 189.71,
+      "rvol": 1.26,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "6.6B$"
+    },
+    {
+      "symbol": "QQQ",
+      "change_pct": -1.08,
+      "last": 733.2,
+      "rvol": 1.01,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "24.3B$"
     }
   ],
   "performance": {
@@ -332,7 +332,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 83,
+    "alerts_today": 84,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
