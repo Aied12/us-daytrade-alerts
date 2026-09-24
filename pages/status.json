@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T09:44:14.548017+00:00",
-  "generated_ts": 1790243054,
-  "generated_local": "2026-09-24 12:44 +03",
+  "generated_at": "2026-09-24T09:45:16.600711+00:00",
+  "generated_ts": 1790243116,
+  "generated_local": "2026-09-24 12:45 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T09:44:14.547908+00:00",
+    "updated_at": "2026-09-24T09:45:16.600644+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,18 +26,18 @@
     "avg_change_pct": -0.84,
     "details": {
       "SPY": {
-        "last": 761.99,
+        "last": 761.97,
         "change_pct": -0.76,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 731.83,
+        "last": 731.77,
         "change_pct": -1.27,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 280.54,
-        "change_pct": -0.49,
+        "last": 280.52,
+        "change_pct": -0.5,
         "rsi": 29.0
       }
     },
@@ -54,7 +54,7 @@
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.49,
+        "change_pct": -0.5,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 13545,
-    "ny_time": "05:44:14",
+    "seconds_left": 13483,
+    "ny_time": "05:45:16",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,7 +81,7 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.0
+        "change_pct": -0.06
       },
       {
         "name": "Industrial",
@@ -91,21 +91,21 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.34
+        "change_pct": -1.33
       },
       {
         "name": "Financials",
-        "change_pct": -0.82
+        "change_pct": -0.83
       },
       {
         "name": "Consumer",
-        "change_pct": -0.61
+        "change_pct": -0.58
       }
     ]
   },
   "style": {
-    "growth_avg": -1.45,
-    "value_avg": -0.04,
+    "growth_avg": -1.46,
+    "value_avg": -0.03,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -149,6 +149,45 @@
       "liq_grade_ar": "متوسط",
       "tv_url": "https://www.tradingview.com/chart/?symbol=XOM",
       "tg_share": "https://t.me/share/url?url=&text=XOM%20راقب دخول%0Aالآن%20162.93%20وقف%20156.41%20هدف%20174.67%0Aسيولة%20متوسط%20RVOL%20x0.84"
+    },
+    {
+      "symbol": "NFLX",
+      "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
+      "side": "long",
+      "score_100": 62,
+      "urgent": false,
+      "strategies": [
+        "ارتداد من دعم",
+        "تقلّب عالي"
+      ],
+      "reason": "ارتداد من دعم: دعم≈$70.92 | تقلّب عالي: ATR% 3.3",
+      "entry": 71.44,
+      "stop": 70.58,
+      "target": 73.59,
+      "shares": 41,
+      "risk_sar": 132.22,
+      "allowed": false,
+      "change_pct": 0.11,
+      "last": 71.44,
+      "session_phase": "pre",
+      "liquidity": {
+        "rvol": 1.01,
+        "volume": 32756600.0,
+        "avg_volume_20": 32363040.0,
+        "dollar_volume": 2340131504.0,
+        "avg_dollar_volume": 2312015577.6,
+        "dollar_volume_label": "2.3B$",
+        "avg_dollar_volume_label": "2.3B$",
+        "grade": "strong",
+        "grade_ar": "قوي",
+        "label": "RVOL ×1.0 · اليوم 2.3B$ · متوسط 2.3B$"
+      },
+      "rvol": 1.01,
+      "liq_grade": "strong",
+      "liq_grade_ar": "قوي",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=NFLX",
+      "tg_share": "https://t.me/share/url?url=&text=NFLX%20راقب دخول%0Aالآن%2071.44%20وقف%2070.58%20هدف%2073.59%0Aسيولة%20قوي%20RVOL%20x1.01"
     },
     {
       "symbol": "CVX",
@@ -221,12 +260,12 @@
     {
       "symbol": "WBD",
       "name": "Warner Bros. Discovery, Inc. - ",
-      "last": 30.79,
-      "change_pct": 0.1,
+      "last": 30.77,
+      "change_pct": 0.03,
       "ref": 30.76,
       "rth_close": 30.76,
       "volume": 110237037.0,
-      "dollar_volume": 3394198369.23,
+      "dollar_volume": 3391993628.49,
       "dollar_volume_label": "3.4B$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
@@ -238,8 +277,8 @@
   "movers": [
     {
       "symbol": "META",
-      "change_pct": -2.76,
-      "last": 723.56,
+      "change_pct": -2.7,
+      "last": 724.0,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -247,17 +286,17 @@
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.55,
-      "last": 598.94,
+      "change_pct": -2.7,
+      "last": 598.02,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "9.8B$"
+      "dollar_volume_label": "9.7B$"
     },
     {
       "symbol": "COIN",
-      "change_pct": -2.34,
-      "last": 193.5,
+      "change_pct": -2.39,
+      "last": 193.4,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -265,8 +304,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.72,
-      "last": 348.9,
+      "change_pct": -1.74,
+      "last": 348.82,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -274,35 +313,35 @@
     },
     {
       "symbol": "TSLA",
-      "change_pct": -1.48,
-      "last": 374.5,
+      "change_pct": -1.45,
+      "last": 374.62,
       "rvol": 0.86,
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "12.5B$"
     },
     {
-      "symbol": "PLTR",
-      "change_pct": -1.39,
-      "last": 189.12,
-      "rvol": 1.26,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "6.6B$"
-    },
-    {
       "symbol": "NVDA",
-      "change_pct": -1.36,
-      "last": 222.44,
+      "change_pct": -1.38,
+      "last": 222.41,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "19.9B$"
     },
     {
+      "symbol": "PLTR",
+      "change_pct": -1.37,
+      "last": 189.16,
+      "rvol": 1.26,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "6.6B$"
+    },
+    {
       "symbol": "QQQ",
       "change_pct": -1.27,
-      "last": 731.83,
+      "last": 731.77,
       "rvol": 1.01,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -317,7 +356,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 52,
+    "alerts_today": 53,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
