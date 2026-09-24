@@ -116,7 +116,7 @@
     <div class="card" id="liveCard">
       <div class="row">
         <h2 style="margin:0">سعر لحظي <span class="pulse" title="بث حي"></span></h2>
-        <span class="pill ok" id="liveBadge">TradingView</span>
+        <span class="pill ok" id="liveBadge">TradingView حي</span>
       </div>
       <div class="live-box">
         <div class="row">
@@ -125,12 +125,14 @@
             <div class="live-price" id="livePrice">--</div>
             <div class="live-sub" id="liveChg">—</div>
           </div>
-          <div class="muted" id="liveClock" style="text-align:left">يتحدث كل 3ث</div>
+          <div class="muted" id="liveClock" style="text-align:left">يتحدث الآن...</div>
         </div>
       </div>
       <div class="toolbar" id="liveChips" style="margin-top:8px"></div>
+      <!-- TradingView Symbol Overview: live price that actually ticks -->
+      <div id="tvOverview" style="height:220px;margin-top:10px;border-radius:14px;overflow:hidden;border:1px solid var(--line)"></div>
       <div id="tvChart"></div>
-      <p class="muted" style="margin:8px 0 0">شارت TradingView حي (1 دقيقة) — اضغط سهم من الفرص أو القائمة لتبديله</p>
+      <p class="muted" style="margin:8px 0 0">السعر والشارت من TradingView مباشرة (لحظي). اضغط «لحظي» على أي سهم.</p>
     </div>
 
     <div class="card">
@@ -335,7 +337,7 @@
               <span class="sym">${esc(o.symbol)} ${o.urgent?'🔥 عاجل':''}</span>
               <span class="pill">${esc(o.score_100)}/100</span>
             </div>
-            <div>${esc(o.action)} · <span class="${clsChg(o.change_pct)}">${o.change_pct>0?'+':''}${esc(o.change_pct)}%</span>${o.last!=null?` · الآن $${esc(o.last)}`:''}</div>
+            <div>${esc(o.action)} · <span class="${clsChg(o.change_pct)}" data-live-chg="${esc(o.symbol)}">${o.change_pct>0?'+':''}${esc(o.change_pct)}%</span> · الآن $<span data-live-px="${esc(o.symbol)}">${esc(o.last!=null?o.last:o.entry)}</span></div>
             <div class="muted" style="margin-top:4px">
               سيولة: <span class="${liqClass(grade)}">${esc(gradeAr)}</span>
               · RVOL ×${esc(rvol)} · اليوم ${esc(dLab)}
@@ -427,8 +429,8 @@
         <tr>
           <td>${i+1}</td>
           <td><button type="button" class="sym-chip" style="min-height:36px;padding:6px 10px" data-live="${esc(g.symbol)}"><b>${esc(g.symbol)}</b></button>${g.name?` <span class="muted">${esc(g.name)}</span>`:''}</td>
-          <td class="live-cell" data-px="${esc(g.symbol)}">$${esc(g.last)}</td>
-          <td class="up live-chg" data-chg="${esc(g.symbol)}">+${esc(g.change_pct)}%</td>
+          <td class="live-cell"><span data-live-px="${esc(g.symbol)}">$${esc(g.last)}</span></td>
+          <td><span class="up" data-live-chg="${esc(g.symbol)}">+${esc(g.change_pct)}%</span></td>
           <td>${esc(g.dollar_volume_label||'-')}</td>
           <td><a href="${esc(g.tv_url)}" target="_blank" rel="noopener">TV</a></td>
         </tr>`).join('') : '<tr><td colspan="6" class="muted">لا صاعدين فوق الفلتر في الجلسة الحالية</td></tr>';
