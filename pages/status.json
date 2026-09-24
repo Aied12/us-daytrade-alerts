@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T16:42:19.389933+00:00",
-  "generated_ts": 1790268139,
+  "generated_at": "2026-09-24T16:42:35.880211+00:00",
+  "generated_ts": 1790268155,
   "generated_local": "2026-09-24 19:42 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T16:42:19.389826+00:00",
+    "updated_at": "2026-09-24T16:42:35.880094+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24,
@@ -24,39 +24,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": 0.09,
+    "avg_change_pct": 0.03,
     "details": {
       "SPY": {
-        "last": 768.68,
-        "change_pct": 0.11,
-        "rsi": 47.8
+        "last": 768.39,
+        "change_pct": 0.08,
+        "rsi": 47.9
       },
       "QQQ": {
-        "last": 741.97,
-        "change_pct": 0.1,
-        "rsi": 65.9
+        "last": 741.49,
+        "change_pct": 0.04,
+        "rsi": 66.0
       },
       "IWM": {
-        "last": 282.1,
-        "change_pct": 0.06,
-        "rsi": 26.3
+        "last": 281.83,
+        "change_pct": -0.03,
+        "rsi": 26.5
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": 0.11,
-        "rsi": 47.8
+        "change_pct": 0.08,
+        "rsi": 47.9
       },
       {
         "symbol": "QQQ",
-        "change_pct": 0.1,
-        "rsi": 65.9
+        "change_pct": 0.04,
+        "rsi": 66.0
       },
       {
         "symbol": "IWM",
-        "change_pct": 0.06,
-        "rsi": 26.3
+        "change_pct": -0.03,
+        "rsi": 26.5
       }
     ],
     "no_trade_today": false,
@@ -69,8 +69,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 11860,
-    "ny_time": "12:42:19",
+    "seconds_left": 11844,
+    "ny_time": "12:42:35",
     "open": "09:30",
     "close": "16:00"
   },
@@ -86,7 +86,7 @@
       },
       {
         "name": "Financials",
-        "change_pct": 0.35
+        "change_pct": 0.23
       }
     ],
     "weakest": [
@@ -105,7 +105,7 @@
     ]
   },
   "style": {
-    "growth_avg": 0.64,
+    "growth_avg": 0.61,
     "value_avg": 0.12,
     "leader": "نمو",
     "growth_count": 10,
@@ -415,11 +415,64 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRL"
     },
     {
+      "symbol": "INFQ",
+      "name": "Infleqtion, Inc.",
+      "last": 14.55,
+      "change_pct": 5.17,
+      "dollar_volume": 90814785.3,
+      "dollar_volume_label": "90.8M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "has_news": true,
+      "news": {
+        "symbol": "INFQ",
+        "title": "Zacks Industry Outlook Highlights Seagate Technology, Hewlett Packard, Silicon Motion Technology and Infleqtion",
+        "title_ar": "توقعات صناعة Zacks تسلط الضوء على تقنية Seagate و Hewlett Packard و Silicon Motion Technology و Infleqtion",
+        "summary": "Seagate Technology, Hewlett Packard Enterprise and Silicon Motion benefit from AI, cloud and integrated systems demand, while Infleqtion advances quantum growth.",
+        "summary_ar": "",
+        "url": "https://finnhub.io/api/news?id=e812575c7f2cd1255b64ac3fa0d0b60210b48d97fe767e9bf7095506c07f2724",
+        "publisher": "Yahoo",
+        "published": "2026-09-24 09:25 UTC",
+        "published_ts": 1790241900,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "e801657cd37662efe9cb95aca8554be925d14ec1",
+        "source": "finnhub",
+        "impact": 4,
+        "impact_ar": "تأثير 4/5",
+        "sentiment_score": 4,
+        "catalysts": [
+          {
+            "key": "guidance",
+            "ar": "توجيهات",
+            "base_impact": 4
+          }
+        ],
+        "catalyst_keys": [
+          "guidance"
+        ],
+        "catalyst_ar": [
+          "توجيهات"
+        ],
+        "impact_reason_ar": "توجيهات",
+        "officialish": false
+      },
+      "news_title_ar": "توقعات صناعة Zacks تسلط الضوء على تقنية Seagate و Hewlett Packard و Silicon Motion Technology و Infleqtion",
+      "news_url": "https://finnhub.io/api/news?id=e812575c7f2cd1255b64ac3fa0d0b60210b48d97fe767e9bf7095506c07f2724",
+      "catalyst_ar": [
+        "توجيهات"
+      ],
+      "alert_ar": "زخم +5.2% · توجيهات",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=INFQ"
+    },
+    {
       "symbol": "LIFE",
       "name": "",
       "last": 37.22,
       "change_pct": 9.76,
-      "dollar_volume": 43065252.12,
+      "dollar_volume": 43072882.22,
       "dollar_volume_label": "43.1M$",
       "rvol": 1.54,
       "liq_grade_ar": "قوي",
@@ -476,9 +529,9 @@
       "name": "",
       "last": 81.45,
       "change_pct": 7.71,
-      "dollar_volume": 124092007.2,
-      "dollar_volume_label": "124.1M$",
-      "rvol": 1.19,
+      "dollar_volume": 124258491.0,
+      "dollar_volume_label": "124.3M$",
+      "rvol": 1.2,
       "liq_grade_ar": "قوي",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -495,8 +548,8 @@
       "name": "",
       "last": 116.2,
       "change_pct": 7.08,
-      "dollar_volume": 219738309.57,
-      "dollar_volume_label": "219.7M$",
+      "dollar_volume": 219753532.42,
+      "dollar_volume_label": "219.8M$",
       "rvol": 3.7,
       "liq_grade_ar": "قوي",
       "impact": 4,
@@ -508,25 +561,6 @@
       "catalyst_ar": [],
       "alert_ar": "زخم +7.1% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=GRAL"
-    },
-    {
-      "symbol": "PRGO",
-      "name": "",
-      "last": 14.81,
-      "change_pct": 7.04,
-      "dollar_volume": 45253943.45,
-      "dollar_volume_label": "45.3M$",
-      "rvol": 2.38,
-      "liq_grade_ar": "متوسط",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": false,
-      "news": null,
-      "news_title_ar": "",
-      "news_url": "",
-      "catalyst_ar": [],
-      "alert_ar": "زخم +7.0% · لا خبر رسمي مرفق بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=PRGO"
     }
   ],
   "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
@@ -563,10 +597,10 @@
       "liquidity": {
         "rvol": 0.26,
         "rvol_pace": 0.52,
-        "volume": 4305553.0,
-        "avg_volume_20": 16678147.65,
-        "dollar_volume": 1032988275.76,
-        "avg_dollar_volume": 4001421184.19,
+        "volume": 4306306.0,
+        "avg_volume_20": 16678185.3,
+        "dollar_volume": 1033168935.52,
+        "avg_dollar_volume": 4001430217.18,
         "dollar_volume_label": "1.0B$",
         "avg_dollar_volume_label": "4.0B$",
         "grade": "strong",
@@ -717,8 +751,8 @@
     "SPY:زخم ضعيف (+0.08% < 0.45%)",
     "CDNA:امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
     "PL:ممتد جداً فوق VWAP — لا تدخل متأخراً",
-    "PRGO:ممتد جداً فوق VWAP — لا تدخل متأخراً",
-    "CXW:وتيرة حجم منخفضة ×0.86 (RVOL خام ×0.42)"
+    "COIN:زخم ضعيف (+0.26% < 0.45%)",
+    "PRGO:ممتد جداً فوق VWAP — لا تدخل متأخراً"
   ],
   "gainers": [
     {
@@ -998,7 +1032,7 @@
       "rvol": 0.98,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "898.4M$"
+      "dollar_volume_label": "898.5M$"
     },
     {
       "symbol": "CDNA",
@@ -1007,7 +1041,7 @@
       "rvol": 0.8,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "53.2M$"
+      "dollar_volume_label": "53.4M$"
     },
     {
       "symbol": "WRBY",
@@ -1043,7 +1077,7 @@
       "rvol": 0.79,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "57.3M$"
+      "dollar_volume_label": "57.4M$"
     }
   ],
   "news": [
@@ -1316,29 +1350,6 @@
       "officialish": false
     },
     {
-      "symbol": "CDNA",
-      "title": "5 Top-Ranked High-Efficiency Stocks With Strong Profit Potential",
-      "title_ar": "5 أسهم عالية الكفاءة ذات تصنيف عالي مع إمكانية ربح قوية",
-      "summary": "Five stocks stand out for high efficiency, with strong receivables, asset, inventory and operating margin metrics.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=769a5f0aa18fdfaaa1741fe0419f464d3987dba78bc692ca68962a84128cf57e",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 12:00 UTC",
-      "published_ts": 1790164800,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "cd5e068c363a390c5637747cf48f4371d2244c2c",
-      "source": "finnhub",
-      "impact": 5,
-      "impact_ar": "تأثير 5/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
       "symbol": "CRL",
       "title": "Contract Research Organization Services Market Forecasts Growth from $107.03B (2025) to $180.56B by 2030, Profiling IQVIA, Charles River, Syneos Health & WuXi AppTec",
       "title_ar": "توقعات السوق لخدمات منظمة أبحاث العقود النمو من 107.03 مليار $ (2025) إلى 180.56 مليار $ بحلول عام 2030، التنميط IQVIA، Charles River، Health & AppTec",
@@ -1468,6 +1479,39 @@
       "officialish": false
     },
     {
+      "symbol": "INFQ",
+      "title": "Zacks Industry Outlook Highlights Seagate Technology, Hewlett Packard, Silicon Motion Technology and Infleqtion",
+      "title_ar": "توقعات صناعة Zacks تسلط الضوء على تقنية Seagate و Hewlett Packard و Silicon Motion Technology و Infleqtion",
+      "summary": "Seagate Technology, Hewlett Packard Enterprise and Silicon Motion benefit from AI, cloud and integrated systems demand, while Infleqtion advances quantum growth.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=e812575c7f2cd1255b64ac3fa0d0b60210b48d97fe767e9bf7095506c07f2724",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 09:25 UTC",
+      "published_ts": 1790241900,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "e801657cd37662efe9cb95aca8554be925d14ec1",
+      "source": "finnhub",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "guidance",
+          "ar": "توجيهات",
+          "base_impact": 4
+        }
+      ],
+      "catalyst_keys": [
+        "guidance"
+      ],
+      "catalyst_ar": [
+        "توجيهات"
+      ],
+      "impact_reason_ar": "توجيهات",
+      "officialish": false
+    },
+    {
       "symbol": "BLLN",
       "title": "BillionToOne (BLLN) Stock Could Be A Bargain As It Jumps 30% YTD",
       "title_ar": "يمكن أن يكون سهم BillionToOne (BLLN) صفقة حيث يقفز بنسبة 30 ٪ منذ بداية العام",
@@ -1480,6 +1524,29 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "baa20671db0f6dc9569237f689c01385e9d4daa6",
+      "source": "finnhub",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
+      "symbol": "INFQ",
+      "title": "Why Quantum World Congress Is Giving Quantum Stocks a Boost",
+      "title_ar": "لماذا يعطي الكونجرس العالمي الكمومي دفعة للأسهم الكمومية",
+      "summary": "The quantum computing sector has seen no shortage of hype this year, and now one of the industry’s largest gatherings—Quantum World Congress—is set to give stocks another push.  Shares of quantum computing companies rallied in the lead-up to the conference, which bills itself as ",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=ec2ce66fbf348355273ffea4a4efc94c5fdd6847835b78ccb938b111a22e1c77",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 20:37 UTC",
+      "published_ts": 1790195820,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "c010106c92631d3c1515f79e1a52222bf4df9a4a",
       "source": "finnhub",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -1521,39 +1588,6 @@
         "شراكة/عقد"
       ],
       "impact_reason_ar": "شراكة/عقد",
-      "officialish": false
-    },
-    {
-      "symbol": "BLLN",
-      "title": "BillionToOne Stock Jumped 12% Yesterday. Here’s What the Streets Target.",
-      "title_ar": "قفز سهم BillionToOne بنسبة 12% يوم أمس. إليك ما تستهدفه الشوارع.",
-      "summary": "Key TakeawaysNo-Headline Rally: BillionToOne stock jumped 12% to $116 on Tuesday, September 22, without a company release, stretching a run that began near $100 on September 14. Insiders Took Profits: The CEO and general counsel sold ~60K shares for ~$6.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=fe85fdd59d1077de071f992b6b4658ca3188e43fa7b8c9669a19ef593a24d7f7",
-      "publisher": "Yahoo",
-      "published": "2026-09-23 08:06 UTC",
-      "published_ts": 1790150812,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "f41bb1a9cd87f2346fe4db65355de59e5384d5d5",
-      "source": "finnhub",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "insider",
-          "ar": "مطلعون",
-          "base_impact": 3
-        }
-      ],
-      "catalyst_keys": [
-        "insider"
-      ],
-      "catalyst_ar": [
-        "مطلعون"
-      ],
-      "impact_reason_ar": "مطلعون",
       "officialish": false
     },
     {
@@ -1754,7 +1788,6 @@
   "news_excluded_negative": [
     "AMD",
     "AXTI",
-    "COIN",
     "DIS",
     "GRAL",
     "LIFE",
