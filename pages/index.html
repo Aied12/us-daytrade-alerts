@@ -52,6 +52,18 @@
     .opp.urgent{background:var(--urgent);border-color:var(--urgentBorder);box-shadow:0 0 0 1px var(--urgentBorder) inset}
     .opp.wait{border-color:color-mix(in srgb,var(--warn) 55%, var(--line));box-shadow:0 0 0 1px color-mix(in srgb,var(--warn) 35%, transparent) inset}
     .opp.expired{opacity:.88;border-style:dashed}
+    .impact{display:inline-flex;gap:2px;align-items:center;font-weight:800;letter-spacing:.02em}
+    .impact-5,.impact-4{color:var(--ok)}
+    .impact-3{color:var(--warn)}
+    .impact-2,.impact-1{color:var(--muted)}
+    .scan-item{border:1px solid var(--line);border-radius:14px;padding:12px;margin:8px 0;background:color-mix(in srgb,var(--card) 92%, black)}
+    .scan-item .alert{margin-top:6px;font-weight:700}
+    .cat-filters{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+    .cat-filters button{
+      border:1px solid var(--line);background:var(--chip);color:inherit;border-radius:10px;padding:6px 10px;cursor:pointer;font:inherit
+    }
+    .cat-filters button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .pill.impact-pill{font-weight:800}
     .opp summary{list-style:none;cursor:pointer}
     .opp summary::-webkit-details-marker{display:none}
     .sym{font-size:1.12rem;font-weight:800}
@@ -187,6 +199,7 @@
     <div class="card">
       <h2>مزاج السوق</h2>
       <p id="tone">-</p>
+      <p class="muted" id="scanMode" style="margin:6px 0 0"></p>
       <div class="grid" style="margin-top:10px">
         <div class="m"><div class="muted">أقوى قطاع</div><div id="secStrong">-</div></div>
         <div class="m"><div class="muted">أضعف قطاع</div><div id="secWeak">-</div></div>
@@ -198,8 +211,29 @@
     </div>
 
     <div class="card">
-      <h2>أفضل الفرص</h2>
-      <p class="muted" id="oppsNote">ذكاء إشارات: ثقة A/B/C · تأكيد دقيقة · فخ سيولة · VWAP · أرباح · هدف 50%</p>
+      <h2>ماسح الزخم</h2>
+      <p class="muted" id="momentumNote">تحرك ≈4%+ مع سيولة — والخبر/المحفز بجانب الحركة (مثل Argus)</p>
+      <div id="momentumList"><div class="empty">جاري المسح...</div></div>
+    </div>
+
+    <div class="card">
+      <h2>بث المحفزات</h2>
+      <p class="muted" id="newsNote">أخبار الشركات + تأثير 1–5 + وسم المحفز — بدون إشاعات</p>
+      <div class="cat-filters" id="catFilters">
+        <button type="button" data-cat="all" class="active">الكل</button>
+        <button type="button" data-cat="fda">FDA</button>
+        <button type="button" data-cat="earnings">أرباح</button>
+        <button type="button" data-cat="mna">اندماج</button>
+        <button type="button" data-cat="partnership">شراكة</button>
+        <button type="button" data-cat="clinical">سريري</button>
+        <button type="button" data-cat="hi">تأثير ≥4</button>
+      </div>
+      <div id="newsList"><div class="muted">جاري جلب المحفزات...</div></div>
+    </div>
+
+    <div class="card">
+      <h2>خطط الدخول</h2>
+      <p class="muted" id="oppsNote">بعد الماسح — ثقة A/B/C · وقف/هدف · لا مطاردة الممتد</p>
       <div class="seg" id="filterSeg">
         <button type="button" data-f="all" class="active">الكل</button>
         <button type="button" data-f="buy">شراء فقط</button>
@@ -240,12 +274,6 @@
     <div class="card">
       <h2>أقوى المتحركات</h2>
       <div id="movers" class="grid"></div>
-    </div>
-
-    <div class="card">
-      <h2>أخبار الأسهم</h2>
-      <p class="muted" id="newsNote">أخبار الموقع فقط · محايد/إيجابي · تتحدّث كل دقيقة</p>
-      <div id="newsList"><div class="muted">جاري جلب الأخبار...</div></div>
     </div>
 
     <div class="card">
