@@ -203,7 +203,7 @@ def main() -> None:
             rejected_slow.append(f"{sig.symbol}:{flow_reason}")
             continue
         smart = enrich_smart_signal(sig, snap, qqq_chg=qqq_chg, live_last=live_last)
-        # 29/30/23 — drop earnings-imminent, expired chase, or severe fake-liquidity junk
+        # 29/23 — drop earnings-imminent or severe fake-liquidity junk (expired stays visible)
         if smart.get("exclude"):
             rejected_slow.append(f"{sig.symbol}:{smart.get('exclude_reason') or 'smart-exclude'}")
             continue
@@ -212,7 +212,12 @@ def main() -> None:
         if (sig.side or "long") == "long" and plan.entry > live_last:
             plan.entry = live_last
         score100 = getattr(sig, "score_100", int(sig.score * 10))
-        urgent = sig.action == Action.CONSIDER_LONG and score100 >= 70 and smart.get("confidence") in ("A", "B")
+        urgent = (
+            sig.action == Action.CONSIDER_LONG
+            and score100 >= 70
+            and smart.get("confidence") in ("A", "B")
+            and not smart.get("expired")
+        )
         if phase == "pre" and snap and snap.change_pct < 0:
             urgent = False
         if smart.get("wait_1m_confirm"):
@@ -247,12 +252,14 @@ def main() -> None:
                 "allowed": plan.allowed
                 and not (phase == "pre" and snap and snap.change_pct < -0.5)
                 and not smart.get("wait_1m_confirm")
+                and not smart.get("expired")
                 and smart.get("confidence") != "C",
                 "change_pct": round(snap.change_pct, 2) if snap else 0.0,
                 "last": live_last,
                 "session_phase": phase,
                 "liquidity": liq,
                 "rvol": liq["rvol"],
+                "rvol_pace": liq.get("rvol_pace"),
                 "liq_grade": liq["grade"],
                 "liq_grade_ar": liq["grade_ar"],
                 "atr_pct": round(float(snap.atr_pct or 0), 2) if snap else 0.0,
@@ -263,6 +270,7 @@ def main() -> None:
                 "smart_notes": smart.get("notes") or [],
                 "wait_1m_confirm": bool(smart.get("wait_1m_confirm")),
                 "fake_liquidity": bool(smart.get("fake_liquidity")),
+                "expired": bool(smart.get("expired")),
                 "candle": smart.get("candle") or {},
                 "vwap": smart.get("vwap") or {},
                 "qqq": smart.get("qqq") or {},
@@ -271,15 +279,16 @@ def main() -> None:
                     f"https://t.me/share/url?url=&text="
                     f"{sig.symbol}%20{sig.action.value}%20ثقة%20{smart.get('confidence')}%0A"
                     f"الآن%20{live_last}%20دخول%20{plan.entry}%20وقف%20{stop_show}%20هدف%20{target_final}%0A"
-                    f"سيولة%20{liq['grade_ar']}%20RVOL%20x{liq['rvol']}%20زخم%20{snap.change_pct:+.2f}%"
+                    f"سيولة%20{liq['grade_ar']}%20وتيرة%20x{liq.get('rvol_pace')}%20زخم%20{snap.change_pct:+.2f}%"
                 ),
             }
         )
 
-    # Rank by confidence then live flow
+    # Rank: fresh setups first, then confidence, then flow
     rank_conf = {"A": 3, "B": 2, "C": 1}
     opportunities.sort(
         key=lambda o: (
+            0 if o.get("expired") else 1,
             rank_conf.get(o.get("confidence") or "C", 0),
             float(o.get("flow_score") or 0),
             1 if o.get("urgent") else 0,
@@ -288,7 +297,7 @@ def main() -> None:
         ),
         reverse=True,
     )
-    opportunities = opportunities[:8]
+    opportunities = opportunities[:12]
 
     movers = sorted(snaps, key=lambda s: abs(s.change_pct), reverse=True)[:8]
 
@@ -364,7 +373,7 @@ def main() -> None:
         "sectors": _sector_board(snaps),
         "style": _style_board(snaps),
         "opportunities": opportunities,
-        "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
+        "opps_note_ar": "يُعرض الزخم الحي مع سيولة بالدولار ووتيرة الحجم حسب وقت الجلسة — الممتد يُوسم «انتهت» دون إخفاء",
         "opps_rejected_slow": rejected_slow[:20],
         "gainers": gainers,
         "gainers_min_price": min_px,

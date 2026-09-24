@@ -286,8 +286,9 @@ def enrich_smart_signal(
     if expired:
         tags.append({"key": "expired", "ar": "الفرصة انتهت", "tone": "bad"})
 
-    exclude = bool(earn_block or expired or (fake and grade == "C"))
-    exclude_reason = earn_ar or expired_ar or (fake_ar if fake else "")
+    # Earnings / severe fake-liq junk are hard drops. "Expired" still shows as watch-only.
+    exclude = bool(earn_block or (fake and grade == "C"))
+    exclude_reason = earn_ar or (fake_ar if fake else "")
 
     notes = [x for x in (wait_ar, fake_ar, vwap.get("ar"), qqq.get("ar"), earn_ar, expired_ar, candle.get("ar"), alt.get("ar"), partial.get("ar")) if x]
 
