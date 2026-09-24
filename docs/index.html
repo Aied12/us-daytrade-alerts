@@ -270,6 +270,8 @@
       const b=document.getElementById('btnLight');
       if(b) b.textContent=on?'📶 خفيفة ✓':'📶 نسخة خفيفة';
       document.body.classList.toggle('light-net', on);
+      const live=document.getElementById('liveCard');
+      if(live) live.style.display=on?'none':'';
       ['movers','risk'].forEach(id=>{
         const el=document.getElementById(id);
         if(el&&el.closest('.card')) el.closest('.card').style.display=on?'none':'';
@@ -498,6 +500,7 @@
       const next=cur==='dark'?'light':'dark';
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem(LS.theme,next);
+      if(LIVE_SYM) setTimeout(()=>mountTv(LIVE_SYM), 80);
     };
     document.getElementById('btnLight').onclick=()=>{
       const next=isLightNet()?'0':'1';
@@ -546,10 +549,11 @@
     function mountTv(sym){
       const el=document.getElementById('tvChart');
       if(!el || typeof TradingView==='undefined') return;
-      el.innerHTML='';
+      const cid='tv_host_'+Date.now();
+      el.innerHTML=`<div id="${cid}" style="height:100%;width:100%"></div>`;
       tvWidget=new TradingView.widget({
         autosize:true,
-        symbol: sym.includes(':')?sym:sym,
+        symbol: String(sym).toUpperCase(),
         interval:'1',
         timezone:'America/New_York',
         theme: themeForTv(),
@@ -560,7 +564,7 @@
         hide_top_toolbar:false,
         hide_legend:false,
         save_image:false,
-        container_id:'tvChart',
+        container_id:cid,
         studies:['Volume@tv-basicstudies'],
         withdateranges:true,
         allow_symbol_change:true,
@@ -651,9 +655,6 @@
     },1000);
     // Live tick every 3s like TradingView feel
     setInterval(()=>pollLivePrice(false), 3000);
-    document.getElementById('btnTheme').addEventListener('click',()=>{
-      setTimeout(()=>{ if(LIVE_SYM) mountTv(LIVE_SYM); }, 50);
-    });
   </script>
 </body>
 </html>
