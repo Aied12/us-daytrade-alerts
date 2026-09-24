@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-09-24T16:28:27.512376+00:00",
-  "generated_ts": 1790267307,
-  "generated_local": "2026-09-24 19:28 +03",
+  "generated_at": "2026-09-24T16:29:12.251460+00:00",
+  "generated_ts": 1790267352,
+  "generated_local": "2026-09-24 19:29 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T16:28:27.512269+00:00",
+    "updated_at": "2026-09-24T16:29:12.251350+00:00",
     "last_mode": "dashboard",
-    "changed": true,
+    "changed": false,
     "symbols": 24,
     "error": "HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=60)"
   },
@@ -24,39 +24,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.25,
+    "avg_change_pct": -0.17,
     "details": {
       "SPY": {
-        "last": 766.61,
-        "change_pct": -0.16,
-        "rsi": 46.5
+        "last": 767.19,
+        "change_pct": -0.08,
+        "rsi": 46.6
       },
       "QQQ": {
-        "last": 738.91,
-        "change_pct": -0.31,
-        "rsi": 64.1
+        "last": 739.685,
+        "change_pct": -0.21,
+        "rsi": 64.3
       },
       "IWM": {
-        "last": 281.12,
-        "change_pct": -0.28,
-        "rsi": 25.1
+        "last": 281.33,
+        "change_pct": -0.21,
+        "rsi": 25.0
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.16,
-        "rsi": 46.5
+        "change_pct": -0.08,
+        "rsi": 46.6
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.31,
-        "rsi": 64.1
+        "change_pct": -0.21,
+        "rsi": 64.3
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.28,
-        "rsi": 25.1
+        "change_pct": -0.21,
+        "rsi": 25.0
       }
     ],
     "no_trade_today": false,
@@ -69,8 +69,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 12692,
-    "ny_time": "12:28:27",
+    "seconds_left": 12647,
+    "ny_time": "12:29:12",
     "open": "09:30",
     "close": "16:00"
   },
@@ -78,35 +78,35 @@
     "strongest": [
       {
         "name": "Communication",
-        "change_pct": 1.01
-      },
-      {
-        "name": "Energy",
-        "change_pct": 0.5
+        "change_pct": 1.22
       },
       {
         "name": "Technology",
-        "change_pct": 0.39
+        "change_pct": 0.47
+      },
+      {
+        "name": "Financials",
+        "change_pct": 0.38
       }
     ],
     "weakest": [
       {
         "name": "Industrial",
-        "change_pct": -0.95
+        "change_pct": -0.89
       },
       {
         "name": "Consumer",
-        "change_pct": -0.51
+        "change_pct": -0.34
       },
       {
-        "name": "Financials",
-        "change_pct": 0.32
+        "name": "Energy",
+        "change_pct": 0.36
       }
     ]
   },
   "style": {
-    "growth_avg": 0.47,
-    "value_avg": -0.01,
+    "growth_avg": 0.58,
+    "value_avg": 0.05,
     "leader": "نمو",
     "growth_count": 10,
     "value_count": 11
@@ -115,10 +115,10 @@
     {
       "symbol": "P",
       "name": "Everpure, Inc.",
-      "last": 129.45,
-      "change_pct": 18.06,
-      "dollar_volume": 876181548.3,
-      "dollar_volume_label": "876.2M$",
+      "last": 129.15,
+      "change_pct": 17.78,
+      "dollar_volume": 876824275.95,
+      "dollar_volume_label": "876.8M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -162,16 +162,16 @@
       "catalyst_ar": [
         "أرباح"
       ],
-      "alert_ar": "زخم +18.1% · أرباح",
+      "alert_ar": "زخم +17.8% · أرباح",
       "tv_url": "https://www.tradingview.com/chart/?symbol=P"
     },
     {
       "symbol": "CDNA",
       "name": "CareDx, Inc.",
-      "last": 60.09,
-      "change_pct": 10.64,
-      "dollar_volume": 50041630.02,
-      "dollar_volume_label": "50.0M$",
+      "last": 60.13,
+      "change_pct": 10.73,
+      "dollar_volume": 50539685.91,
+      "dollar_volume_label": "50.5M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -203,16 +203,69 @@
       "news_title_ar": "BTIG تحافظ على الشراء على CareDx، وترفع السعر المستهدف إلى 74 $",
       "news_url": "https://finnhub.io/api/news?id=3e2513c9d0f2c9e3dc792c4ed05876cefaff21c017dffa4209eb1f04b26ea485",
       "catalyst_ar": [],
-      "alert_ar": "زخم +10.6% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +10.7% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CDNA"
+    },
+    {
+      "symbol": "NBIS",
+      "name": "Nebius Group N.V.",
+      "last": 244.88,
+      "change_pct": 8.06,
+      "dollar_volume": 3640559210.16,
+      "dollar_volume_label": "3.6B$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "has_news": true,
+      "news": {
+        "symbol": "NBIS",
+        "title": "CoreWeave Stock Upgraded On 'Favorable' AI Cloud Pricing Power",
+        "title_ar": "تم ترقية سهم CoreWeave بناءً على قوة التسعير السحابي \"المواتية\" للذكاء الاصطناعي",
+        "summary": "JPMorgan on Thursday upgraded stock to overweight on views that the provider of AI computing infrastructure has leverage to increase prices.",
+        "summary_ar": "",
+        "url": "https://finnhub.io/api/news?id=87323418a885b90889ec2c03a886f17f3d04b94bda2f8f928478367005163002",
+        "publisher": "Yahoo",
+        "published": "2026-09-24 12:28 UTC",
+        "published_ts": 1790252899,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "16b3eebf4625e156877c5dca10e92f90beea8520",
+        "source": "finnhub",
+        "impact": 5,
+        "impact_ar": "تأثير 5/5",
+        "sentiment_score": 4,
+        "catalysts": [
+          {
+            "key": "upgrade",
+            "ar": "ترقية محلل",
+            "base_impact": 2
+          }
+        ],
+        "catalyst_keys": [
+          "upgrade"
+        ],
+        "catalyst_ar": [
+          "ترقية محلل"
+        ],
+        "impact_reason_ar": "ترقية محلل",
+        "officialish": false
+      },
+      "news_title_ar": "تم ترقية سهم CoreWeave بناءً على قوة التسعير السحابي \"المواتية\" للذكاء الاصطناعي",
+      "news_url": "https://finnhub.io/api/news?id=87323418a885b90889ec2c03a886f17f3d04b94bda2f8f928478367005163002",
+      "catalyst_ar": [
+        "ترقية محلل"
+      ],
+      "alert_ar": "زخم +8.1% · ترقية محلل",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
     },
     {
       "symbol": "BLLN",
       "name": "BillionToOne, Inc.",
-      "last": 123.93,
-      "change_pct": 8.31,
-      "dollar_volume": 53528465.25,
-      "dollar_volume_label": "53.5M$",
+      "last": 123.0,
+      "change_pct": 7.5,
+      "dollar_volume": 54518889.0,
+      "dollar_volume_label": "54.5M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -244,69 +297,16 @@
       "news_title_ar": "يمكن أن يكون سهم BillionToOne (BLLN) صفقة حيث يقفز بنسبة 30 ٪ منذ بداية العام",
       "news_url": "https://finnhub.io/api/news?id=1b66e24a7732997a6deb00f457f5c7be6cc8c69e764bad66b23a3e0993cf96ed",
       "catalyst_ar": [],
-      "alert_ar": "زخم +8.3% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +7.5% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=BLLN"
-    },
-    {
-      "symbol": "NBIS",
-      "name": "Nebius Group N.V.",
-      "last": 244.54,
-      "change_pct": 7.91,
-      "dollar_volume": 3627758725.28,
-      "dollar_volume_label": "3.6B$",
-      "rvol": null,
-      "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": true,
-      "news": {
-        "symbol": "NBIS",
-        "title": "CoreWeave Stock Upgraded On 'Favorable' AI Cloud Pricing Power",
-        "title_ar": "تم ترقية سهم CoreWeave بناءً على قوة التسعير السحابي \"المواتية\" للذكاء الاصطناعي",
-        "summary": "JPMorgan on Thursday upgraded stock to overweight on views that the provider of AI computing infrastructure has leverage to increase prices.",
-        "summary_ar": "",
-        "url": "https://finnhub.io/api/news?id=87323418a885b90889ec2c03a886f17f3d04b94bda2f8f928478367005163002",
-        "publisher": "Yahoo",
-        "published": "2026-09-24 12:28 UTC",
-        "published_ts": 1790252899,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "16b3eebf4625e156877c5dca10e92f90beea8520",
-        "source": "finnhub",
-        "impact": 4,
-        "impact_ar": "تأثير 4/5",
-        "sentiment_score": 4,
-        "catalysts": [
-          {
-            "key": "upgrade",
-            "ar": "ترقية محلل",
-            "base_impact": 2
-          }
-        ],
-        "catalyst_keys": [
-          "upgrade"
-        ],
-        "catalyst_ar": [
-          "ترقية محلل"
-        ],
-        "impact_reason_ar": "ترقية محلل",
-        "officialish": false
-      },
-      "news_title_ar": "تم ترقية سهم CoreWeave بناءً على قوة التسعير السحابي \"المواتية\" للذكاء الاصطناعي",
-      "news_url": "https://finnhub.io/api/news?id=87323418a885b90889ec2c03a886f17f3d04b94bda2f8f928478367005163002",
-      "catalyst_ar": [
-        "ترقية محلل"
-      ],
-      "alert_ar": "زخم +7.9% · ترقية محلل",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
     },
     {
       "symbol": "CRL",
       "name": "Charles River Laboratories Inte",
-      "last": 295.89,
-      "change_pct": 6.69,
-      "dollar_volume": 168295426.53,
-      "dollar_volume_label": "168.3M$",
+      "last": 295.99,
+      "change_pct": 6.73,
+      "dollar_volume": 169147925.35,
+      "dollar_volume_label": "169.1M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -364,9 +364,9 @@
     {
       "symbol": "VCYT",
       "name": "Veracyte, Inc.",
-      "last": 46.26,
-      "change_pct": 5.58,
-      "dollar_volume": 48293543.34,
+      "last": 46.19,
+      "change_pct": 5.41,
+      "dollar_volume": 48328319.86,
       "dollar_volume_label": "48.3M$",
       "rvol": null,
       "liq_grade_ar": "",
@@ -399,58 +399,17 @@
       "news_title_ar": "إليك لماذا يجب عليك الاحتفاظ بمخزون Bio - Rad في محفظتك في الوقت الحالي",
       "news_url": "https://finnhub.io/api/news?id=48cc1443138b430d77c91c876bd01b6c8821c7ad21be8d7223c2fbf3db058a2b",
       "catalyst_ar": [],
-      "alert_ar": "زخم +5.6% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +5.4% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=VCYT"
-    },
-    {
-      "symbol": "WGS",
-      "name": "GeneDx Holdings Corp.",
-      "last": 88.94,
-      "change_pct": 4.4,
-      "dollar_volume": 89409958.96,
-      "dollar_volume_label": "89.4M$",
-      "rvol": null,
-      "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": true,
-      "news": {
-        "symbol": "WGS",
-        "title": "GeneDx Stock Is Down 30% In Last 1 Year, Can It Climb Again in 2027?",
-        "title_ar": "انخفض سهم GeneDx بنسبة 30 ٪ في العام الماضي، هل يمكن أن يرتفع مرة أخرى في عام 2027 ؟",
-        "summary": "Key Takeaways:Record Testing Volume: GeneDx delivered over 30,000 exome and genome tests in Q2, up 32% year-over-year, and returned to profitability a quarter ahead of schedule. Price Projection: Based on current assumptions, WGS stock could reach $137 by December 2028.",
-        "summary_ar": "",
-        "url": "https://www.tikr.com/blog/genedx-wgs-stock-valuation-2026?ref=yahoofinance",
-        "publisher": "TIKR",
-        "published": "2026-09-24 13:33:14 UT",
-        "published_ts": 1790256794,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "12f2fb10fa2780e4f0e98ba6e08ffaf783735908",
-        "source": "yahoo",
-        "impact": 4,
-        "impact_ar": "تأثير 4/5",
-        "sentiment_score": 4,
-        "catalysts": [],
-        "catalyst_keys": [],
-        "catalyst_ar": [],
-        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-        "officialish": false
-      },
-      "news_title_ar": "انخفض سهم GeneDx بنسبة 30 ٪ في العام الماضي، هل يمكن أن يرتفع مرة أخرى في عام 2027 ؟",
-      "news_url": "https://www.tikr.com/blog/genedx-wgs-stock-valuation-2026?ref=yahoofinance",
-      "catalyst_ar": [],
-      "alert_ar": "زخم +4.4% · تحرك سعري قوي بدون محفز واضح بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=WGS"
     },
     {
       "symbol": "LIFE",
       "name": "",
       "last": 36.95,
       "change_pct": 8.96,
-      "dollar_volume": 41081970.7,
-      "dollar_volume_label": "41.1M$",
-      "rvol": 1.6,
+      "dollar_volume": 41163704.1,
+      "dollar_volume_label": "41.2M$",
+      "rvol": 1.59,
       "liq_grade_ar": "قوي",
       "impact": 5,
       "impact_ar": "تأثير 5/5",
@@ -465,10 +424,10 @@
     {
       "symbol": "TWST",
       "name": "Twist Bioscience Corporation",
-      "last": 172.43,
-      "change_pct": 8.79,
-      "dollar_volume": 303915289.49,
-      "dollar_volume_label": "303.9M$",
+      "last": 172.23,
+      "change_pct": 8.66,
+      "dollar_volume": 303741900.09,
+      "dollar_volume_label": "303.7M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -478,16 +437,16 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +8.8% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +8.7% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=TWST"
     },
     {
       "symbol": "WRBY",
       "name": "Warby Parker Inc.",
-      "last": 25.31,
-      "change_pct": 8.39,
-      "dollar_volume": 40337989.67,
-      "dollar_volume_label": "40.3M$",
+      "last": 25.33,
+      "change_pct": 8.48,
+      "dollar_volume": 40593326.07,
+      "dollar_volume_label": "40.6M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -497,17 +456,17 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +8.4% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +8.5% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=WRBY"
     },
     {
       "symbol": "TXG",
       "name": "",
-      "last": 81.77,
-      "change_pct": 8.13,
-      "dollar_volume": 117446005.69,
-      "dollar_volume_label": "117.4M$",
-      "rvol": 1.22,
+      "last": 81.67,
+      "change_pct": 8.0,
+      "dollar_volume": 117551959.51,
+      "dollar_volume_label": "117.6M$",
+      "rvol": 1.21,
       "liq_grade_ar": "قوي",
       "impact": 5,
       "impact_ar": "تأثير 5/5",
@@ -516,27 +475,46 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +8.1% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +8.0% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=TXG"
     },
     {
       "symbol": "PRGO",
       "name": "",
-      "last": 14.95,
-      "change_pct": 8.02,
-      "dollar_volume": 33787388.7,
+      "last": 14.92,
+      "change_pct": 7.8,
+      "dollar_volume": 33788473.56,
       "dollar_volume_label": "33.8M$",
-      "rvol": 1.93,
+      "rvol": 1.92,
       "liq_grade_ar": "متوسط",
-      "impact": 5,
-      "impact_ar": "تأثير 5/5",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
       "has_news": false,
       "news": null,
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +8.0% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +7.8% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PRGO"
+    },
+    {
+      "symbol": "GRAL",
+      "name": "",
+      "last": 115.5,
+      "change_pct": 6.43,
+      "dollar_volume": 213486042.0,
+      "dollar_volume_label": "213.5M$",
+      "rvol": 3.88,
+      "liq_grade_ar": "قوي",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "has_news": false,
+      "news": null,
+      "news_title_ar": "",
+      "news_url": "",
+      "catalyst_ar": [],
+      "alert_ar": "زخم +6.4% · لا خبر رسمي مرفق بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=GRAL"
     }
   ],
   "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
@@ -556,29 +534,29 @@
         "تقلّب عالي",
         "زخم اتجاه الافتتاح"
       ],
-      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.09%) | شمعة: دوجي: دوجي | تقلّب عالي: ATR% 3.5 | زخم اتجاه الافتتاح: اتجاه الفجوة مستمر",
-      "entry": 240.26,
-      "entry_original": 240.26,
-      "entry_planned": 240.26,
+      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.11%) | شمعة: دوجي: دوجي | تقلّب عالي: ATR% 3.5 | زخم اتجاه الافتتاح: اتجاه الفجوة مستمر",
+      "entry": 240.3,
+      "entry_original": 240.3,
+      "entry_planned": 240.3,
       "stop": 220.83,
-      "stop_alt": 239.06,
-      "target": 275.23,
-      "target_partial": 257.75,
-      "target_final": 275.23,
-      "trail_offset": 6.8,
+      "stop_alt": 239.1,
+      "target": 275.35,
+      "target_partial": 257.83,
+      "target_final": 275.35,
+      "trail_offset": 6.81,
       "shares": 6,
-      "risk_sar": 437.17,
+      "risk_sar": 438.07,
       "allowed": false,
-      "change_pct": 1.13,
-      "last": 240.26,
+      "change_pct": 1.14,
+      "last": 240.3,
       "session_phase": "regular",
       "liquidity": {
         "rvol": 0.25,
         "rvol_pace": 0.55,
-        "volume": 4178142.0,
-        "avg_volume_20": 16671777.1,
-        "dollar_volume": 1003840396.92,
-        "avg_dollar_volume": 4005561166.05,
+        "volume": 4181408.0,
+        "avg_volume_20": 16671940.4,
+        "dollar_volume": 1004792342.4,
+        "avg_dollar_volume": 4006267278.12,
         "dollar_volume_label": "1.0B$",
         "avg_dollar_volume_label": "4.0B$",
         "grade": "strong",
@@ -590,7 +568,7 @@
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 3.49,
-      "flow_score": 2.77,
+      "flow_score": 2.81,
       "flow_ok": true,
       "smart": {
         "confidence": "B",
@@ -624,21 +602,21 @@
         "vwap": {
           "active": true,
           "side": "near",
-          "dist_pct": 0.09,
-          "ar": "قرب VWAP (+0.09%) — منطقة قرار"
+          "dist_pct": 0.11,
+          "ar": "قرب VWAP (+0.11%) — منطقة قرار"
         },
         "candle": {
           "name": "دوجي",
           "draw": "➕ ─●─",
           "ar": "شمعة: دوجي ➕ ─●─"
         },
-        "stop_alt": 239.06,
+        "stop_alt": 239.1,
         "stop_main": 220.83,
-        "stop_plan_ar": "وقف بديل≈ $239.06 (ATR) · الرئيسي≈ $220.83",
-        "target_partial": 257.75,
-        "target_final": 275.23,
-        "trail_offset": 6.8,
-        "partial_plan_ar": "جني 50% عند $257.75 ثم وقف متحرك ≈ $6.8 تحت القمة",
+        "stop_plan_ar": "وقف بديل≈ $239.1 (ATR) · الرئيسي≈ $220.83",
+        "target_partial": 257.83,
+        "target_final": 275.35,
+        "trail_offset": 6.81,
+        "partial_plan_ar": "جني 50% عند $257.83 ثم وقف متحرك ≈ $6.81 تحت القمة",
         "qqq": {
           "active": false,
           "corr": 0.19
@@ -651,10 +629,10 @@
         "exclude_reason": "",
         "notes": [
           "الصعود لم يثبت فوق الافتتاح — انتظر تأكيد دقيقة",
-          "قرب VWAP (+0.09%) — منطقة قرار",
+          "قرب VWAP (+0.11%) — منطقة قرار",
           "شمعة: دوجي ➕ ─●─",
-          "وقف بديل≈ $239.06 (ATR) · الرئيسي≈ $220.83",
-          "جني 50% عند $257.75 ثم وقف متحرك ≈ $6.8 تحت القمة"
+          "وقف بديل≈ $239.1 (ATR) · الرئيسي≈ $220.83",
+          "جني 50% عند $257.83 ثم وقف متحرك ≈ $6.81 تحت القمة"
         ],
         "rvol": 0.25
       },
@@ -682,10 +660,10 @@
       ],
       "smart_notes": [
         "الصعود لم يثبت فوق الافتتاح — انتظر تأكيد دقيقة",
-        "قرب VWAP (+0.09%) — منطقة قرار",
+        "قرب VWAP (+0.11%) — منطقة قرار",
         "شمعة: دوجي ➕ ─●─",
-        "وقف بديل≈ $239.06 (ATR) · الرئيسي≈ $220.83",
-        "جني 50% عند $257.75 ثم وقف متحرك ≈ $6.8 تحت القمة"
+        "وقف بديل≈ $239.1 (ATR) · الرئيسي≈ $220.83",
+        "جني 50% عند $257.83 ثم وقف متحرك ≈ $6.81 تحت القمة"
       ],
       "wait_1m_confirm": true,
       "fake_liquidity": false,
@@ -698,15 +676,15 @@
       "vwap": {
         "active": true,
         "side": "near",
-        "dist_pct": 0.09,
-        "ar": "قرب VWAP (+0.09%) — منطقة قرار"
+        "dist_pct": 0.11,
+        "ar": "قرب VWAP (+0.11%) — منطقة قرار"
       },
       "qqq": {
         "active": false,
         "corr": 0.19
       },
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRM",
-      "tg_share": "https://t.me/share/url?url=&text=CRM%20فكّر في شراء قصير المدى%20ثقة%20B%0Aالآن%20240.26%20دخول%20240.26%20وقف%20239.06%20هدف%20275.23%0Aسيولة%20قوي%20وتيرة%20x0.55%20زخم%20+1.13%"
+      "tg_share": "https://t.me/share/url?url=&text=CRM%20فكّر في شراء قصير المدى%20ثقة%20B%0Aالآن%20240.3%20دخول%20240.3%20وقف%20239.1%20هدف%20275.35%0Aسيولة%20قوي%20وتيرة%20x0.55%20زخم%20+1.14%"
     },
     {
       "symbol": "ASST",
@@ -741,22 +719,22 @@
       "liquidity": {
         "rvol": 0.44,
         "rvol_pace": 0.95,
-        "volume": 4639585.0,
-        "avg_volume_20": 10650424.25,
-        "dollar_volume": 141233606.98,
-        "avg_dollar_volume": 324209564.59,
-        "dollar_volume_label": "141.2M$",
+        "volume": 4643491.0,
+        "avg_volume_20": 10650619.55,
+        "dollar_volume": 141352509.53,
+        "avg_dollar_volume": 324215509.72,
+        "dollar_volume_label": "141.4M$",
         "avg_dollar_volume_label": "324.2M$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×0.4 · وتيرة ×1.0 · اليوم 141.2M$ · متوسط 324.2M$"
+        "label": "RVOL ×0.4 · وتيرة ×0.9 · اليوم 141.4M$ · متوسط 324.2M$"
       },
       "rvol": 0.44,
       "rvol_pace": 0.95,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
-      "atr_pct": 6.85,
-      "flow_score": 12.29,
+      "atr_pct": 6.84,
+      "flow_score": 12.3,
       "flow_ok": true,
       "smart": {
         "confidence": "C",
@@ -864,34 +842,36 @@
   "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
   "opps_rejected_slow": [
     "P:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "RKLB:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "CDNA:امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
     "TWST:ممتد جداً فوق VWAP — لا تدخل متأخراً",
     "NBIS:ممتد جداً فوق VWAP — لا تدخل متأخراً",
-    "BAC:زخم ضعيف (+0.02% < 0.45%)",
-    "RKLB:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "BAC:زخم ضعيف (+0.09% < 0.45%)",
     "CXW:وتيرة حجم منخفضة ×0.81 (RVOL خام ×0.37)",
     "BLLN:امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
-    "PRGO:ممتد جداً فوق VWAP — لا تدخل متأخراً",
-    "AAPL:زخم ضعيف (+0.15% < 0.45%)",
+    "AAPL:زخم ضعيف (+0.22% < 0.45%)",
     "CRL:ممتد جداً فوق VWAP — لا تدخل متأخراً",
     "ILMN:ممتد جداً فوق VWAP — لا تدخل متأخراً",
     "TXG:امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
     "GRAL:امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
-    "CDNA:امتداد مفرط (RSI مرتفع) — الفرصة انتهت للمطاردة",
-    "IWM:زخم ضعيف (-0.28% < 0.45%)",
+    "UBER:زخم ضعيف (-0.01% < 0.45%)",
+    "IWM:زخم ضعيف (-0.25% < 0.45%)",
     "PL:ممتد جداً فوق VWAP — لا تدخل متأخراً",
-    "META:ممتد جداً فوق VWAP — لا تدخل متأخراً"
+    "PRGO:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "META:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "INFQ:ممتد جداً فوق VWAP — لا تدخل متأخراً"
   ],
   "gainers": [
     {
       "symbol": "P",
       "name": "Everpure, Inc.",
-      "last": 129.45,
-      "change_pct": 18.06,
+      "last": 129.15,
+      "change_pct": 17.78,
       "ref": 109.65,
-      "rth_close": 129.45,
-      "volume": 6768494.0,
-      "dollar_volume": 876181548.3,
-      "dollar_volume_label": "876.2M$",
+      "rth_close": 129.15,
+      "volume": 6789193.0,
+      "dollar_volume": 876824275.95,
+      "dollar_volume_label": "876.8M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=P"
@@ -899,13 +879,13 @@
     {
       "symbol": "CDNA",
       "name": "CareDx, Inc.",
-      "last": 60.09,
-      "change_pct": 10.64,
+      "last": 60.13,
+      "change_pct": 10.73,
       "ref": 54.31,
-      "rth_close": 60.09,
-      "volume": 832778.0,
-      "dollar_volume": 50041630.02,
-      "dollar_volume_label": "50.0M$",
+      "rth_close": 60.13,
+      "volume": 840507.0,
+      "dollar_volume": 50539685.91,
+      "dollar_volume_label": "50.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CDNA"
@@ -913,13 +893,13 @@
     {
       "symbol": "TWST",
       "name": "Twist Bioscience Corporation",
-      "last": 172.43,
-      "change_pct": 8.79,
+      "last": 172.23,
+      "change_pct": 8.66,
       "ref": 158.5,
-      "rth_close": 172.44,
-      "volume": 1762543.0,
-      "dollar_volume": 303915289.49,
-      "dollar_volume_label": "303.9M$",
+      "rth_close": 172.23,
+      "volume": 1763583.0,
+      "dollar_volume": 303741900.09,
+      "dollar_volume_label": "303.7M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=TWST"
@@ -927,55 +907,55 @@
     {
       "symbol": "WRBY",
       "name": "Warby Parker Inc.",
-      "last": 25.31,
-      "change_pct": 8.39,
+      "last": 25.33,
+      "change_pct": 8.48,
       "ref": 23.35,
-      "rth_close": 25.31,
-      "volume": 1593757.0,
-      "dollar_volume": 40337989.67,
-      "dollar_volume_label": "40.3M$",
+      "rth_close": 25.33,
+      "volume": 1602579.0,
+      "dollar_volume": 40593326.07,
+      "dollar_volume_label": "40.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=WRBY"
     },
     {
-      "symbol": "BLLN",
-      "name": "BillionToOne, Inc.",
-      "last": 123.93,
-      "change_pct": 8.31,
-      "ref": 114.42,
-      "rth_close": 123.93,
-      "volume": 431925.0,
-      "dollar_volume": 53528465.25,
-      "dollar_volume_label": "53.5M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=BLLN"
-    },
-    {
       "symbol": "NBIS",
       "name": "Nebius Group N.V.",
-      "last": 244.54,
-      "change_pct": 7.91,
+      "last": 244.88,
+      "change_pct": 8.06,
       "ref": 226.61,
-      "rth_close": 244.54,
-      "volume": 14835032.0,
-      "dollar_volume": 3627758725.28,
+      "rth_close": 244.88,
+      "volume": 14866707.0,
+      "dollar_volume": 3640559210.16,
       "dollar_volume_label": "3.6B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
     },
     {
+      "symbol": "BLLN",
+      "name": "BillionToOne, Inc.",
+      "last": 123.0,
+      "change_pct": 7.5,
+      "ref": 114.42,
+      "rth_close": 123.0,
+      "volume": 443243.0,
+      "dollar_volume": 54518889.0,
+      "dollar_volume_label": "54.5M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=BLLN"
+    },
+    {
       "symbol": "CRL",
       "name": "Charles River Laboratories Inte",
-      "last": 295.89,
-      "change_pct": 6.69,
+      "last": 295.99,
+      "change_pct": 6.73,
       "ref": 277.33,
-      "rth_close": 295.89,
-      "volume": 568777.0,
-      "dollar_volume": 168295426.53,
-      "dollar_volume_label": "168.3M$",
+      "rth_close": 295.99,
+      "volume": 571465.0,
+      "dollar_volume": 169147925.35,
+      "dollar_volume_label": "169.1M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRL"
@@ -987,54 +967,96 @@
       "change_pct": 6.35,
       "ref": 32.28,
       "rth_close": 34.33,
-      "volume": 694172.0,
-      "dollar_volume": 23830924.76,
-      "dollar_volume_label": "23.8M$",
+      "volume": 699444.0,
+      "dollar_volume": 24011912.52,
+      "dollar_volume_label": "24.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CXW"
     },
     {
+      "symbol": "PL",
+      "name": "Planet Labs PBC",
+      "last": 17.38,
+      "change_pct": 6.07,
+      "ref": 16.38,
+      "rth_close": 17.38,
+      "volume": 6427755.0,
+      "dollar_volume": 111714381.9,
+      "dollar_volume_label": "111.7M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=PL"
+    },
+    {
       "symbol": "VCYT",
       "name": "Veracyte, Inc.",
-      "last": 46.26,
-      "change_pct": 5.58,
+      "last": 46.19,
+      "change_pct": 5.41,
       "ref": 43.82,
-      "rth_close": 46.27,
-      "volume": 1043959.0,
-      "dollar_volume": 48293543.34,
+      "rth_close": 46.19,
+      "volume": 1046294.0,
+      "dollar_volume": 48328319.86,
       "dollar_volume_label": "48.3M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=VCYT"
     },
     {
-      "symbol": "PL",
-      "name": "Planet Labs PBC",
-      "last": 17.23,
-      "change_pct": 5.16,
-      "ref": 16.38,
-      "rth_close": 17.23,
-      "volume": 6251842.0,
-      "dollar_volume": 107719237.66,
-      "dollar_volume_label": "107.7M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=PL"
-    },
-    {
       "symbol": "ASST",
       "name": "Strive, Inc.",
-      "last": 30.4,
-      "change_pct": 4.86,
+      "last": 30.44,
+      "change_pct": 5.0,
       "ref": 28.99,
-      "rth_close": 30.4,
-      "volume": 4636119.0,
-      "dollar_volume": 140938017.6,
-      "dollar_volume_label": "140.9M$",
+      "rth_close": 30.44,
+      "volume": 4642559.0,
+      "dollar_volume": 141319495.96,
+      "dollar_volume_label": "141.3M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=ASST"
+    },
+    {
+      "symbol": "INFQ",
+      "name": "Infleqtion, Inc.",
+      "last": 14.45,
+      "change_pct": 4.5,
+      "ref": 13.83,
+      "rth_close": 14.45,
+      "volume": 5842899.0,
+      "dollar_volume": 84429890.55,
+      "dollar_volume_label": "84.4M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=INFQ"
+    },
+    {
+      "symbol": "ILMN",
+      "name": "Illumina, Inc.",
+      "last": 266.8,
+      "change_pct": 4.47,
+      "ref": 255.38,
+      "rth_close": 266.81,
+      "volume": 1268004.0,
+      "dollar_volume": 338303467.2,
+      "dollar_volume_label": "338.3M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=ILMN"
+    },
+    {
+      "symbol": "RCL",
+      "name": "Royal Caribbean Cruises Ltd.",
+      "last": 240.49,
+      "change_pct": 4.42,
+      "ref": 230.3,
+      "rth_close": 240.49,
+      "volume": 1945494.0,
+      "dollar_volume": 467871852.06,
+      "dollar_volume_label": "467.9M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=RCL"
     },
     {
       "symbol": "WGS",
@@ -1043,110 +1065,82 @@
       "change_pct": 4.4,
       "ref": 85.2,
       "rth_close": 88.94,
-      "volume": 1005284.0,
-      "dollar_volume": 89409958.96,
-      "dollar_volume_label": "89.4M$",
+      "volume": 1005968.0,
+      "dollar_volume": 89470793.92,
+      "dollar_volume_label": "89.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=WGS"
     },
     {
-      "symbol": "RCL",
-      "name": "Royal Caribbean Cruises Ltd.",
-      "last": 240.36,
-      "change_pct": 4.37,
-      "ref": 230.3,
-      "rth_close": 240.36,
-      "volume": 1927800.0,
-      "dollar_volume": 463366008.0,
-      "dollar_volume_label": "463.4M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=RCL"
-    },
-    {
-      "symbol": "AXTI",
-      "name": "AXT Inc",
-      "last": 76.07,
-      "change_pct": 4.23,
-      "ref": 72.98,
-      "rth_close": 76.07,
-      "volume": 4248779.0,
-      "dollar_volume": 323204618.53,
-      "dollar_volume_label": "323.2M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=AXTI"
-    },
-    {
-      "symbol": "INFQ",
-      "name": "Infleqtion, Inc.",
-      "last": 14.39,
-      "change_pct": 4.01,
-      "ref": 13.83,
-      "rth_close": 14.38,
-      "volume": 5786453.0,
-      "dollar_volume": 83267058.67,
-      "dollar_volume_label": "83.3M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=INFQ"
-    },
-    {
       "symbol": "IONQ",
       "name": "IonQ, Inc.",
-      "last": 44.2,
-      "change_pct": 3.9,
+      "last": 44.37,
+      "change_pct": 4.3,
       "ref": 42.54,
-      "rth_close": 44.2,
-      "volume": 19908649.0,
-      "dollar_volume": 879962285.8,
-      "dollar_volume_label": "880.0M$",
+      "rth_close": 44.37,
+      "volume": 20119592.0,
+      "dollar_volume": 892706297.04,
+      "dollar_volume_label": "892.7M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=IONQ"
     },
     {
-      "symbol": "UFPT",
-      "name": "UFP Technologies, Inc.",
-      "last": 298.27,
-      "change_pct": 3.79,
-      "ref": 287.38,
-      "rth_close": 298.27,
-      "volume": 59449.0,
-      "dollar_volume": 17731853.23,
-      "dollar_volume_label": "17.7M$",
+      "symbol": "AXTI",
+      "name": "AXT Inc",
+      "last": 75.92,
+      "change_pct": 4.03,
+      "ref": 72.98,
+      "rth_close": 75.92,
+      "volume": 4278306.0,
+      "dollar_volume": 324808991.52,
+      "dollar_volume_label": "324.8M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=UFPT"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=AXTI"
     },
     {
       "symbol": "LLY",
       "name": "Eli Lilly and Company",
-      "last": 1194.34,
-      "change_pct": 3.77,
+      "last": 1194.02,
+      "change_pct": 3.74,
       "ref": 1150.99,
-      "rth_close": 1194.34,
-      "volume": 1110451.0,
-      "dollar_volume": 1326256047.34,
+      "rth_close": 1194.02,
+      "volume": 1113416.0,
+      "dollar_volume": 1329440972.32,
       "dollar_volume_label": "1.3B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=LLY"
     },
     {
-      "symbol": "RL",
-      "name": "Ralph Lauren Corporation",
-      "last": 349.36,
-      "change_pct": 3.52,
-      "ref": 337.47,
-      "rth_close": 349.37,
-      "volume": 226624.0,
-      "dollar_volume": 79173360.64,
-      "dollar_volume_label": "79.2M$",
+      "symbol": "GDDY",
+      "name": "GoDaddy Inc.",
+      "last": 99.95,
+      "change_pct": 3.7,
+      "ref": 96.38,
+      "rth_close": 99.95,
+      "volume": 6100917.0,
+      "dollar_volume": 609786654.15,
+      "dollar_volume_label": "609.8M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=RL"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=GDDY"
+    },
+    {
+      "symbol": "UFPT",
+      "name": "UFP Technologies, Inc.",
+      "last": 297.9,
+      "change_pct": 3.66,
+      "ref": 287.38,
+      "rth_close": 297.9,
+      "volume": 59793.0,
+      "dollar_volume": 17812334.7,
+      "dollar_volume_label": "17.8M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=UFPT"
     }
   ],
   "gainers_min_price": 5.0,
@@ -1154,48 +1148,48 @@
   "movers": [
     {
       "symbol": "P",
-      "change_pct": 18.06,
-      "last": 129.45,
+      "change_pct": 17.64,
+      "last": 128.99,
       "rvol": 0.95,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "877.0M$"
+      "dollar_volume_label": "876.0M$"
     },
     {
       "symbol": "CDNA",
-      "change_pct": 10.5,
-      "last": 60.01,
+      "change_pct": 10.73,
+      "last": 60.13,
       "rvol": 0.76,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "50.3M$"
+      "dollar_volume_label": "50.5M$"
+    },
+    {
+      "symbol": "WRBY",
+      "change_pct": 8.74,
+      "last": 25.39,
+      "rvol": 0.62,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "40.8M$"
     },
     {
       "symbol": "TWST",
-      "change_pct": 8.83,
-      "last": 172.5,
+      "change_pct": 8.66,
+      "last": 172.23,
       "rvol": 1.01,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "304.2M$"
+      "dollar_volume_label": "303.8M$"
     },
     {
       "symbol": "NBIS",
-      "change_pct": 7.98,
-      "last": 244.7,
+      "change_pct": 8.12,
+      "last": 245.0,
       "rvol": 1.0,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "3.6B$"
-    },
-    {
-      "symbol": "WRBY",
-      "change_pct": 7.88,
-      "last": 25.19,
-      "rvol": 0.62,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "40.3M$"
     }
   ],
   "news": [
@@ -1339,6 +1333,39 @@
       "officialish": false
     },
     {
+      "symbol": "NBIS",
+      "title": "CoreWeave Stock Upgraded On 'Favorable' AI Cloud Pricing Power",
+      "title_ar": "تم ترقية سهم CoreWeave بناءً على قوة التسعير السحابي \"المواتية\" للذكاء الاصطناعي",
+      "summary": "JPMorgan on Thursday upgraded stock to overweight on views that the provider of AI computing infrastructure has leverage to increase prices.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=87323418a885b90889ec2c03a886f17f3d04b94bda2f8f928478367005163002",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 12:28 UTC",
+      "published_ts": 1790252899,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "16b3eebf4625e156877c5dca10e92f90beea8520",
+      "source": "finnhub",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "upgrade",
+          "ar": "ترقية محلل",
+          "base_impact": 2
+        }
+      ],
+      "catalyst_keys": [
+        "upgrade"
+      ],
+      "catalyst_ar": [
+        "ترقية محلل"
+      ],
+      "impact_reason_ar": "ترقية محلل",
+      "officialish": false
+    },
+    {
       "symbol": "CRM",
       "title": "F2 Strategy Expands Technology Engineering Capabilities with Acquisition of Callaway Cloud Consulting",
       "title_ar": "استراتيجية F2 توسع قدرات هندسة التكنولوجيا من خلال الاستحواذ على Callaway Cloud Consulting",
@@ -1372,6 +1399,62 @@
       "officialish": false
     },
     {
+      "symbol": "NBIS",
+      "title": "Prediction: A $1,000 Investment in Nebius Stock Will Be Worth This Much in 2028 (Hint: It Implies a Big Jump)",
+      "title_ar": "التنبؤ: استثمار بقيمة 1000 $ في أسهم Nebius يستحق هذا القدر في عام 2028 (تلميح: إنه ينطوي على قفزة كبيرة)",
+      "summary": "Nebius' red-hot stock market rally is poised to continue over the next couple of years.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=1e273b5b9aaadf156a2663eadd727ec1c8bd88317ded883ce742fcfce653749e",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 11:55 UTC",
+      "published_ts": 1790250901,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "3b5fecb5adc0b46ca51f32ce80ed886964849567",
+      "source": "finnhub",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
+      "symbol": "NBIS",
+      "title": "CoreWeave Wants Shorter Contracts — And JPMorgan Thinks That Could Mean Higher Margins",
+      "title_ar": "تريد CoreWeave عقودًا أقصر — ويعتقد JPMorgan أن ذلك قد يعني هوامش أعلى",
+      "summary": "CoreWeave is leaning into premium short-term AI compute contracts. JPMorgan says the strategy could accelerate revenue and margin growth.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=ab7d4dba52d80eac6065072270fcf242551f419fbd4bd6eca5ae59bf6e7b4a7c",
+      "publisher": "Benzinga",
+      "published": "2026-09-24 09:36 UTC",
+      "published_ts": 1790242567,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "6d8eeeaa934152291475c34cdee1248b62e8ae6d",
+      "source": "finnhub",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "partnership",
+          "ar": "شراكة/عقد",
+          "base_impact": 3
+        }
+      ],
+      "catalyst_keys": [
+        "partnership"
+      ],
+      "catalyst_ar": [
+        "شراكة/عقد"
+      ],
+      "impact_reason_ar": "شراكة/عقد",
+      "officialish": false
+    },
+    {
       "symbol": "CDNA",
       "title": "BTIG Maintains Buy on CareDx, Raises Price Target to $74",
       "title_ar": "BTIG تحافظ على الشراء على CareDx، وترفع السعر المستهدف إلى 74 $",
@@ -1387,29 +1470,6 @@
       "source": "finnhub",
       "impact": 5,
       "impact_ar": "تأثير 5/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
-      "symbol": "WGS",
-      "title": "GeneDx Stock Is Down 30% In Last 1 Year, Can It Climb Again in 2027?",
-      "title_ar": "انخفض سهم GeneDx بنسبة 30 ٪ في العام الماضي، هل يمكن أن يرتفع مرة أخرى في عام 2027 ؟",
-      "summary": "Key Takeaways:Record Testing Volume: GeneDx delivered over 30,000 exome and genome tests in Q2, up 32% year-over-year, and returned to profitability a quarter ahead of schedule. Price Projection: Based on current assumptions, WGS stock could reach $137 by December 2028.",
-      "summary_ar": "",
-      "url": "https://www.tikr.com/blog/genedx-wgs-stock-valuation-2026?ref=yahoofinance",
-      "publisher": "TIKR",
-      "published": "2026-09-24 13:33:14 UT",
-      "published_ts": 1790256794,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "12f2fb10fa2780e4f0e98ba6e08ffaf783735908",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
       "sentiment_score": 4,
       "catalysts": [],
       "catalyst_keys": [],
@@ -1491,39 +1551,6 @@
       "officialish": false
     },
     {
-      "symbol": "NBIS",
-      "title": "CoreWeave Stock Upgraded On 'Favorable' AI Cloud Pricing Power",
-      "title_ar": "تم ترقية سهم CoreWeave بناءً على قوة التسعير السحابي \"المواتية\" للذكاء الاصطناعي",
-      "summary": "JPMorgan on Thursday upgraded stock to overweight on views that the provider of AI computing infrastructure has leverage to increase prices.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=87323418a885b90889ec2c03a886f17f3d04b94bda2f8f928478367005163002",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 12:28 UTC",
-      "published_ts": 1790252899,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "16b3eebf4625e156877c5dca10e92f90beea8520",
-      "source": "finnhub",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "upgrade",
-          "ar": "ترقية محلل",
-          "base_impact": 2
-        }
-      ],
-      "catalyst_keys": [
-        "upgrade"
-      ],
-      "catalyst_ar": [
-        "ترقية محلل"
-      ],
-      "impact_reason_ar": "ترقية محلل",
-      "officialish": false
-    },
-    {
       "symbol": "CRL",
       "title": "Charles River Highlights Refreshed Strategic Vision to Drive Profitable Growth and Long-Term Value Creation at 2026 Investor Day",
       "title_ar": "تشارلز ريفر يسلط الضوء على الرؤية الاستراتيجية المحدثة لدفع النمو المربح وخلق القيمة على المدى الطويل في يوم المستثمر 2026",
@@ -1536,29 +1563,6 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "79702b9a4035d561b783515f4bec46909aa97d7f",
-      "source": "finnhub",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
-      "symbol": "NBIS",
-      "title": "Prediction: A $1,000 Investment in Nebius Stock Will Be Worth This Much in 2028 (Hint: It Implies a Big Jump)",
-      "title_ar": "التنبؤ: استثمار بقيمة 1000 $ في أسهم Nebius يستحق هذا القدر في عام 2028 (تلميح: إنه ينطوي على قفزة كبيرة)",
-      "summary": "Nebius' red-hot stock market rally is poised to continue over the next couple of years.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=1e273b5b9aaadf156a2663eadd727ec1c8bd88317ded883ce742fcfce653749e",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 11:55 UTC",
-      "published_ts": 1790250901,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "3b5fecb5adc0b46ca51f32ce80ed886964849567",
       "source": "finnhub",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -1603,39 +1607,6 @@
       "officialish": false
     },
     {
-      "symbol": "NBIS",
-      "title": "CoreWeave Wants Shorter Contracts — And JPMorgan Thinks That Could Mean Higher Margins",
-      "title_ar": "تريد CoreWeave عقودًا أقصر — ويعتقد JPMorgan أن ذلك قد يعني هوامش أعلى",
-      "summary": "CoreWeave is leaning into premium short-term AI compute contracts. JPMorgan says the strategy could accelerate revenue and margin growth.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=ab7d4dba52d80eac6065072270fcf242551f419fbd4bd6eca5ae59bf6e7b4a7c",
-      "publisher": "Benzinga",
-      "published": "2026-09-24 09:36 UTC",
-      "published_ts": 1790242567,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "6d8eeeaa934152291475c34cdee1248b62e8ae6d",
-      "source": "finnhub",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "partnership",
-          "ar": "شراكة/عقد",
-          "base_impact": 3
-        }
-      ],
-      "catalyst_keys": [
-        "partnership"
-      ],
-      "catalyst_ar": [
-        "شراكة/عقد"
-      ],
-      "impact_reason_ar": "شراكة/عقد",
-      "officialish": false
-    },
-    {
       "symbol": "BLLN",
       "title": "BillionToOne (BLLN) Stock Could Be A Bargain As It Jumps 30% YTD",
       "title_ar": "يمكن أن يكون سهم BillionToOne (BLLN) صفقة حيث يقفز بنسبة 30 ٪ منذ بداية العام",
@@ -1671,6 +1642,29 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "e43a24d99ec6ef54ab02a395af53a48cf3bc2b8e",
+      "source": "finnhub",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
+      "symbol": "VCYT",
+      "title": "Natera's Signatera Wins Japan PMDA Approval as Bladder Cancer CDx",
+      "title_ar": "Natera's Signatera تفوز بالموافقة على PMDA اليابانية كـ CDx لسرطان المثانة",
+      "summary": "NTRA wins Japan PMDA approval for Signatera in muscle-invasive bladder cancer, supporting treatment decisions and a planned 2027 commercial launch.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=0723b004244686d071c22e8c54015ce527c7b84581cc4443a4ad49fbfb432ac7",
+      "publisher": "Yahoo",
+      "published": "2026-09-23 15:13 UTC",
+      "published_ts": 1790176380,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "6edef644bf5ebb42794972126d84684d34292f13",
       "source": "finnhub",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -1880,12 +1874,13 @@
     "COIN",
     "DIS",
     "GRAL",
-    "ILMN",
     "LIFE",
+    "NFLX",
     "PLTR",
     "PRGO",
     "RKLB",
-    "TXG"
+    "TXG",
+    "XOM"
   ],
   "news_note_ar": "بث محفزات: أخبار الشركات + تأثير 1–5 + وسم (FDA/أرباح/شراكة…) — بدون إشاعات",
   "scan_mode_ar": "مسح StockTitan-style: محفز رسمي ← تأثير ← زخم سعري مربوط بالخبر",
