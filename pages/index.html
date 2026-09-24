@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لوحة تنبيهات الأسهم</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --card: #101a2c;
+      --line: #243247;
+      --text: #e8eefc;
+      --muted: #9fb0d0;
+      --ok: #4ade80;
+      --warn: #fbbf24;
+      --accent: #3b82f6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, system-ui, sans-serif;
+      background: radial-gradient(1200px 600px at 80% -10%, #123056 0%, var(--bg) 55%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 18px 14px 40px; }
+    h1 { font-size: 1.35rem; margin: 8px 0 4px; }
+    .muted { color: var(--muted); font-size: .92rem; }
+    .card {
+      background: color-mix(in srgb, var(--card) 92%, black);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      margin: 12px 0;
+    }
+    .row { display: flex; justify-content: space-between; gap: 10px; margin: 8px 0; }
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #1e293b;
+      font-size: .85rem;
+    }
+    .ok { color: var(--ok); }
+    .warn { color: var(--warn); }
+    a.btn {
+      display: inline-block;
+      margin: 6px 4px 0 0;
+      padding: 11px 14px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    code { background: #0b1526; padding: 2px 6px; border-radius: 6px; }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #0b1526;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: .82rem;
+      direction: ltr;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>لوحة تنبيهات الأسهم الأمريكية</h1>
+    <p class="muted">مجانية ودائمة عبر GitHub Pages · تعليمي فقط · بدون تنفيذ أوامر</p>
+
+    <div class="card">
+      <div class="row"><span>الحالة</span><span id="alive" class="pill">...</span></div>
+      <div class="row"><span>آخر تحديث</span><span id="updated" class="muted">-</span></div>
+      <div class="row"><span>يوم تداول؟</span><span id="trading">-</span></div>
+      <div class="row"><span>الوضع</span><span id="mode">-</span></div>
+      <p class="muted" id="note"></p>
+    </div>
+
+    <div class="card">
+      <h1>البوت على تيليجرام</h1>
+      <p>هذه اللوحة للقراءة. التحكم والتنبيهات على تيليجرام.</p>
+      <a class="btn" href="https://t.me/Aied01_bot">فتح @Aied01_bot</a>
+      <a class="btn" href="https://t.me/aied01">القناة @aied01</a>
+      <p class="muted" style="margin-top:10px">أوامر مفيدة: <code>/status</code> <code>/scan</code> <code>/premarket</code> <code>/help</code></p>
+    </div>
+
+    <div class="card">
+      <h1>تفاصيل الحالة</h1>
+      <pre id="raw">جاري التحميل...</pre>
+    </div>
+  </div>
+  <script>
+    async function load() {
+      try {
+        const res = await fetch('./status.json?ts=' + Date.now());
+        const data = await res.json();
+        const ok = !!(data.status && data.status.ok);
+        document.getElementById('alive').textContent = ok ? 'شغال' : 'تحقق';
+        document.getElementById('alive').className = 'pill ' + (ok ? 'ok' : 'warn');
+        document.getElementById('updated').textContent = (data.status && data.status.updated_at) || data.generated_at || '-';
+        document.getElementById('trading').textContent = data.trading_day ? 'نعم' : 'لا';
+        document.getElementById('mode').textContent = data.mode || '-';
+        document.getElementById('note').textContent = data.holiday_note || '';
+        document.getElementById('raw').textContent = JSON.stringify(data, null, 2);
+      } catch (e) {
+        document.getElementById('alive').textContent = 'لا بيانات بعد';
+        document.getElementById('alive').className = 'pill warn';
+        document.getElementById('raw').textContent = 'ارفع المشروع على GitHub وفعّل Actions لنشر status.json تلقائيًا.';
+      }
+    }
+    load();
+    setInterval(load, 60000);
+  </script>
+</body>
+</html>

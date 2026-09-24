@@ -11,6 +11,11 @@ on:
         description: "premarket | tick | evening | intel | ping"
         required: true
         default: "tick"
+  push:
+    branches: ["main", "master"]
+
+permissions:
+  contents: write
 
 jobs:
   run-alerts:
@@ -38,7 +43,7 @@ jobs:
           printf 'TELEGRAM_EXTRA_CHAT_IDS=%s\n' "$TELEGRAM_EXTRA_CHAT_IDS" >> .env
           printf 'CAPITAL_SAR=%s\n' "${CAPITAL_SAR:-45000}" >> .env
           printf 'LIGHT_MODE=1\nAPI_THRIFT=1\nUSER_MODE=beginner\nMIN_PRICE_USD=5\nTIMEZONE=Asia/Riyadh\n' >> .env
-      - name: Run
+      - name: Run bot job
         run: |
           MODE="${{ github.event.inputs.mode }}"
           if [ -z "$MODE" ]; then
@@ -49,7 +54,14 @@ jobs:
             fi
           fi
           if [ "$MODE" = "ping" ]; then
-            python scripts/telegram_ping.py
+            python scripts/telegram_ping.py || true
           else
-            python scripts/scheduled_run.py --mode "$MODE" --force
+            python scripts/scheduled_run.py --mode "$MODE" --force || true
           fi
+          python scripts/build_pages.py || true
+      - name: Deploy GitHub Pages (permanent free dashboard)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./pages
+          force_orphan: true
