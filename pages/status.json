@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:53:19.643118+00:00",
-  "generated_ts": 1790254399,
-  "generated_local": "2026-09-24 15:53 +03",
+  "generated_at": "2026-09-24T12:54:10.483142+00:00",
+  "generated_ts": 1790254450,
+  "generated_local": "2026-09-24 15:54 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:53:19.642960+00:00",
+    "updated_at": "2026-09-24T12:54:10.483012+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,12 +26,12 @@
     "avg_change_pct": -0.61,
     "details": {
       "SPY": {
-        "last": 763.84,
-        "change_pct": -0.52,
+        "last": 763.89,
+        "change_pct": -0.51,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.06,
+        "last": 734.07,
         "change_pct": -0.96,
         "rsi": 68.9
       },
@@ -44,7 +44,7 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.52,
+        "change_pct": -0.51,
         "rsi": 53.4
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 2200,
-    "ny_time": "08:53:19",
+    "seconds_left": 2149,
+    "ny_time": "08:54:10",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,17 +81,17 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.13
+        "change_pct": 0.18
       },
       {
         "name": "Consumer",
-        "change_pct": -0.32
+        "change_pct": -0.33
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.13
+        "change_pct": -1.1
       },
       {
         "name": "Industrial",
@@ -99,12 +99,12 @@
       },
       {
         "name": "Financials",
-        "change_pct": -0.33
+        "change_pct": -0.35
       }
     ]
   },
   "style": {
-    "growth_avg": -1.11,
+    "growth_avg": -1.08,
     "value_avg": 0.07,
     "leader": "قيمة",
     "growth_count": 10,
@@ -202,7 +202,7 @@
   ],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
-    "UBER:زخم ضعيف (+0.17% < 0.55%)",
+    "UBER:زخم ضعيف (+0.23% < 0.55%)",
     "BAC:زخم ضعيف (+0.16% < 0.55%)",
     "DIS:زخم ضعيف (+0.04% < 0.55%)"
   ],
@@ -240,22 +240,22 @@
   "gainers_session_ar": "Premarket الآن (قبل الافتتاح)",
   "movers": [
     {
-      "symbol": "META",
-      "change_pct": -1.67,
-      "last": 731.69,
-      "rvol": 1.37,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "22.2B$"
-    },
-    {
       "symbol": "PLTR",
-      "change_pct": -1.66,
-      "last": 188.6,
+      "change_pct": -1.64,
+      "last": 188.65,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "6.6B$"
+    },
+    {
+      "symbol": "META",
+      "change_pct": -1.54,
+      "last": 732.65,
+      "rvol": 1.37,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "22.2B$"
     },
     {
       "symbol": "AVGO",
@@ -276,6 +276,15 @@
       "dollar_volume_label": "247.7M$"
     },
     {
+      "symbol": "AMZN",
+      "change_pct": -1.25,
+      "last": 246.16,
+      "rvol": 1.26,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "10.8B$"
+    },
+    {
       "symbol": "COIN",
       "change_pct": -1.23,
       "last": 195.69,
@@ -283,15 +292,6 @@
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "1.4B$"
-    },
-    {
-      "symbol": "AMZN",
-      "change_pct": -1.22,
-      "last": 246.24,
-      "rvol": 1.26,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "10.8B$"
     }
   ],
   "news": [
