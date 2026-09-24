@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:43:29.328910+00:00",
-  "generated_ts": 1790253809,
-  "generated_local": "2026-09-24 15:43 +03",
+  "generated_at": "2026-09-24T12:44:12.361265+00:00",
+  "generated_ts": 1790253852,
+  "generated_local": "2026-09-24 15:44 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:43:29.328758+00:00",
+    "updated_at": "2026-09-24T12:44:12.361123+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,21 +23,21 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.62,
+    "avg_change_pct": -0.61,
     "details": {
       "SPY": {
-        "last": 763.89,
+        "last": 763.93,
         "change_pct": -0.51,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 733.9599,
-        "change_pct": -0.98,
+        "last": 734.0946,
+        "change_pct": -0.96,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 280.9177,
-        "change_pct": -0.36,
+        "last": 280.89,
+        "change_pct": -0.37,
         "rsi": 29.0
       }
     },
@@ -49,12 +49,12 @@
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.98,
+        "change_pct": -0.96,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.36,
+        "change_pct": -0.37,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 2790,
-    "ny_time": "08:43:29",
+    "seconds_left": 2747,
+    "ny_time": "08:44:12",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,11 +77,11 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.2
+        "change_pct": 1.16
       },
       {
         "name": "Communication",
-        "change_pct": 0.0
+        "change_pct": -0.04
       },
       {
         "name": "Consumer",
@@ -91,20 +91,20 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.18
+        "change_pct": -1.17
       },
       {
         "name": "Industrial",
-        "change_pct": -0.44
+        "change_pct": -0.39
       },
       {
         "name": "Financials",
-        "change_pct": -0.32
+        "change_pct": -0.37
       }
     ]
   },
   "style": {
-    "growth_avg": -1.17,
+    "growth_avg": -1.18,
     "value_avg": 0.08,
     "leader": "قيمة",
     "growth_count": 10,
@@ -194,84 +194,44 @@
       "tg_share": "https://t.me/share/url?url=&text=RRR%20فكّر في شراء قصير المدى%0Aالآن%2051.3%20دخول%2051.3%20وقف%2047.78%20هدف%2060.1%0Aسيولة%20قوي%20RVOL%20x2.0"
     },
     {
-      "symbol": "AR",
-      "action": "فكّر في شراء قصير المدى",
-      "action_key": "CONSIDER_LONG",
-      "side": "long",
-      "score_100": 71,
-      "urgent": true,
-      "strategies": [
-        "افتتاح فجوة صاعدة",
-        "تقلّب عالي",
-        "زخم اتجاه الافتتاح"
-      ],
-      "reason": "افتتاح فجوة صاعدة: فجوة +2.7% مع ثبات فوق الافتتاح | تقلّب عالي: ATR% 3.5 | زخم اتجاه الافتتاح: اتجاه الفجوة مستمر",
-      "entry": 36.0,
-      "stop": 34.4,
-      "target": 40.0,
-      "shares": 74,
-      "risk_sar": 444.0,
-      "allowed": true,
-      "change_pct": 0.98,
-      "last": 36.0,
-      "session_phase": "pre",
-      "liquidity": {
-        "rvol": 1.49,
-        "volume": 5586000.0,
-        "avg_volume_20": 3737930.0,
-        "dollar_volume": 201096000.0,
-        "avg_dollar_volume": 134565480.0,
-        "dollar_volume_label": "201.1M$",
-        "avg_dollar_volume_label": "134.6M$",
-        "grade": "strong",
-        "grade_ar": "قوي",
-        "label": "RVOL ×1.5 · اليوم 201.1M$ · متوسط 134.6M$"
-      },
-      "rvol": 1.49,
-      "liq_grade": "strong",
-      "liq_grade_ar": "قوي",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=AR",
-      "tg_share": "https://t.me/share/url?url=&text=AR%20فكّر في شراء قصير المدى%0Aالآن%2036.0%20دخول%2036.0%20وقف%2034.4%20هدف%2040.0%0Aسيولة%20قوي%20RVOL%20x1.49"
-    },
-    {
-      "symbol": "WBD",
+      "symbol": "AAPL",
       "action": "فكّر في شراء قصير المدى",
       "action_key": "CONSIDER_LONG",
       "side": "long",
       "score_100": 69,
       "urgent": false,
       "strategies": [
+        "ارتداد VWAP",
         "ترتيب متوسطات صاعد",
-        "حجم مرتفع",
-        "اختبار/كسر مقاومة"
+        "RSI متوازن"
       ],
-      "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | حجم مرتفع: حجم ×3.3 | اختبار/كسر مقاومة: مقاومة≈$30.24",
-      "entry": 30.79,
-      "stop": 27.83,
-      "target": 36.12,
-      "shares": 40,
-      "risk_sar": 444.0,
+      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.01%) | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 62",
+      "entry": 337.21,
+      "stop": 309.37,
+      "target": 387.32,
+      "shares": 4,
+      "risk_sar": 417.6,
       "allowed": true,
-      "change_pct": 0.1,
-      "last": 30.79,
+      "change_pct": 0.06,
+      "last": 337.21,
       "session_phase": "pre",
       "liquidity": {
-        "rvol": 3.25,
-        "volume": 111086700.0,
-        "avg_volume_20": 34141375.0,
-        "dollar_volume": 3420359493.0,
-        "avg_dollar_volume": 1051212936.25,
-        "dollar_volume_label": "3.4B$",
-        "avg_dollar_volume_label": "1.1B$",
-        "grade": "strong",
-        "grade_ar": "قوي",
-        "label": "RVOL ×3.3 · اليوم 3.4B$ · متوسط 1.1B$"
+        "rvol": 0.73,
+        "volume": 31587800.0,
+        "avg_volume_20": 43477185.0,
+        "dollar_volume": 10651718879.22,
+        "avg_dollar_volume": 14660937206.13,
+        "dollar_volume_label": "10.7B$",
+        "avg_dollar_volume_label": "14.7B$",
+        "grade": "weak",
+        "grade_ar": "ضعيف",
+        "label": "RVOL ×0.7 · اليوم 10.7B$ · متوسط 14.7B$"
       },
-      "rvol": 3.25,
-      "liq_grade": "strong",
-      "liq_grade_ar": "قوي",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=WBD",
-      "tg_share": "https://t.me/share/url?url=&text=WBD%20فكّر في شراء قصير المدى%0Aالآن%2030.79%20دخول%2030.79%20وقف%2027.83%20هدف%2036.12%0Aسيولة%20قوي%20RVOL%20x3.25"
+      "rvol": 0.73,
+      "liq_grade": "weak",
+      "liq_grade_ar": "ضعيف",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=AAPL",
+      "tg_share": "https://t.me/share/url?url=&text=AAPL%20فكّر في شراء قصير المدى%0Aالآن%20337.21%20دخول%20337.21%20وقف%20309.37%20هدف%20387.32%0Aسيولة%20ضعيف%20RVOL%20x0.73"
     },
     {
       "symbol": "APA",
@@ -328,21 +288,21 @@
         "ارتداد من دعم"
       ],
       "reason": "تقاطع متوسطات هابط: MA20 قطع MA50 للأسفل | RSI تشبع بيعي + ارتداد: RSI 22 | شمعة: دوجي: دوجي | ارتداد من دعم: دعم≈$69.11 | تقلّب عالي: ATR% 2.9",
-      "entry": 69.43,
+      "entry": 69.46,
       "stop": 68.55,
-      "target": 71.63,
+      "target": 71.73,
       "shares": 43,
-      "risk_sar": 141.9,
+      "risk_sar": 146.74,
       "allowed": true,
-      "change_pct": 0.01,
-      "last": 69.43,
+      "change_pct": 0.06,
+      "last": 69.46,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.96,
         "volume": 17977000.0,
         "avg_volume_20": 18700240.0,
-        "dollar_volume": 1248126930.7,
-        "avg_dollar_volume": 1298340832.98,
+        "dollar_volume": 1248682420.0,
+        "avg_dollar_volume": 1298918670.4,
         "dollar_volume_label": "1.2B$",
         "avg_dollar_volume_label": "1.3B$",
         "grade": "strong",
@@ -353,46 +313,7 @@
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=UBER",
-      "tg_share": "https://t.me/share/url?url=&text=UBER%20فكّر في شراء قصير المدى%0Aالآن%2069.43%20دخول%2069.43%20وقف%2068.55%20هدف%2071.63%0Aسيولة%20قوي%20RVOL%20x0.96"
-    },
-    {
-      "symbol": "XOM",
-      "action": "راقب دخول",
-      "action_key": "WATCH_ENTRY",
-      "side": "long",
-      "score_100": 66,
-      "urgent": false,
-      "strategies": [
-        "ترتيب متوسطات صاعد",
-        "زخم قطاع Energy"
-      ],
-      "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | زخم قطاع Energy: قطاع Energy +1.2%",
-      "entry": 163.24,
-      "stop": 156.41,
-      "target": 175.53,
-      "shares": 17,
-      "risk_sar": 435.41,
-      "allowed": false,
-      "change_pct": 1.25,
-      "last": 163.24,
-      "session_phase": "pre",
-      "liquidity": {
-        "rvol": 0.84,
-        "volume": 12569300.0,
-        "avg_volume_20": 14967795.0,
-        "dollar_volume": 2051812532.0,
-        "avg_dollar_volume": 2443342855.8,
-        "dollar_volume_label": "2.1B$",
-        "avg_dollar_volume_label": "2.4B$",
-        "grade": "medium",
-        "grade_ar": "متوسط",
-        "label": "RVOL ×0.8 · اليوم 2.1B$ · متوسط 2.4B$"
-      },
-      "rvol": 0.84,
-      "liq_grade": "medium",
-      "liq_grade_ar": "متوسط",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=XOM",
-      "tg_share": "https://t.me/share/url?url=&text=XOM%20راقب دخول%0Aالآن%20163.24%20دخول%20163.24%20وقف%20156.41%20هدف%20175.53%0Aسيولة%20متوسط%20RVOL%20x0.84"
+      "tg_share": "https://t.me/share/url?url=&text=UBER%20فكّر في شراء قصير المدى%0Aالآن%2069.46%20دخول%2069.46%20وقف%2068.55%20هدف%2071.73%0Aسيولة%20قوي%20RVOL%20x0.96"
     },
     {
       "symbol": "BAC",
@@ -471,84 +392,6 @@
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=LTH",
       "tg_share": "https://t.me/share/url?url=&text=LTH%20راقب دخول%0Aالآن%2039.74%20دخول%2039.74%20وقف%2036.52%20هدف%2045.54%0Aسيولة%20قوي%20RVOL%20x1.8"
-    },
-    {
-      "symbol": "CVX",
-      "action": "راقب دخول",
-      "action_key": "WATCH_ENTRY",
-      "side": "long",
-      "score_100": 59,
-      "urgent": false,
-      "strategies": [
-        "زخم قطاع Energy"
-      ],
-      "reason": "زخم قطاع Energy: قطاع Energy +1.2%",
-      "entry": 207.9,
-      "stop": 198.5,
-      "target": 224.82,
-      "shares": 12,
-      "risk_sar": 423.0,
-      "allowed": false,
-      "change_pct": 1.16,
-      "last": 207.9,
-      "session_phase": "pre",
-      "liquidity": {
-        "rvol": 0.83,
-        "volume": 8257800.0,
-        "avg_volume_20": 9972730.0,
-        "dollar_volume": 1716796620.0,
-        "avg_dollar_volume": 2073330567.0,
-        "dollar_volume_label": "1.7B$",
-        "avg_dollar_volume_label": "2.1B$",
-        "grade": "medium",
-        "grade_ar": "متوسط",
-        "label": "RVOL ×0.8 · اليوم 1.7B$ · متوسط 2.1B$"
-      },
-      "rvol": 0.83,
-      "liq_grade": "medium",
-      "liq_grade_ar": "متوسط",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=CVX",
-      "tg_share": "https://t.me/share/url?url=&text=CVX%20راقب دخول%0Aالآن%20207.9%20دخول%20207.9%20وقف%20198.5%20هدف%20224.82%0Aسيولة%20متوسط%20RVOL%20x0.83"
-    },
-    {
-      "symbol": "SPCX",
-      "action": "راقب دخول",
-      "action_key": "WATCH_ENTRY",
-      "side": "long",
-      "score_100": 59,
-      "urgent": false,
-      "strategies": [
-        "ترتيب متوسطات صاعد",
-        "RSI متوازن",
-        "تقلّب عالي"
-      ],
-      "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 57 | تقلّب عالي: ATR% 4.9",
-      "entry": 148.57,
-      "stop": 137.06,
-      "target": 169.29,
-      "shares": 10,
-      "risk_sar": 431.62,
-      "allowed": false,
-      "change_pct": 0.14,
-      "last": 148.57,
-      "session_phase": "pre",
-      "liquidity": {
-        "rvol": 0.68,
-        "volume": 60280300.0,
-        "avg_volume_20": 89208805.0,
-        "dollar_volume": 8955844171.0,
-        "avg_dollar_volume": 13253752158.85,
-        "dollar_volume_label": "9.0B$",
-        "avg_dollar_volume_label": "13.3B$",
-        "grade": "weak",
-        "grade_ar": "ضعيف",
-        "label": "RVOL ×0.7 · اليوم 9.0B$ · متوسط 13.3B$"
-      },
-      "rvol": 0.68,
-      "liq_grade": "weak",
-      "liq_grade_ar": "ضعيف",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX",
-      "tg_share": "https://t.me/share/url?url=&text=SPCX%20راقب دخول%0Aالآن%20148.57%20دخول%20148.57%20وقف%20137.06%20هدف%20169.29%0Aسيولة%20ضعيف%20RVOL%20x0.68"
     }
   ],
   "gainers": [
@@ -565,20 +408,6 @@
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=APA"
-    },
-    {
-      "symbol": "AR",
-      "name": "Antero Resources Corporation",
-      "last": 36.0,
-      "change_pct": 0.98,
-      "ref": 35.65,
-      "rth_close": 35.65,
-      "volume": 5583552.0,
-      "dollar_volume": 201007872.0,
-      "dollar_volume_label": "201.0M$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=AR"
     },
     {
       "symbol": "SSL",
@@ -609,20 +438,6 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=RRR"
     },
     {
-      "symbol": "PCG",
-      "name": "Pacific Gas & Electric Co.",
-      "last": 12.45,
-      "change_pct": 0.32,
-      "ref": 12.41,
-      "rth_close": 12.41,
-      "volume": 47281720.0,
-      "dollar_volume": 588657414.0,
-      "dollar_volume_label": "588.7M$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=PCG"
-    },
-    {
       "symbol": "LTH",
       "name": "Life Time Group Holdings, Inc.",
       "last": 39.74,
@@ -635,34 +450,6 @@
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=LTH"
-    },
-    {
-      "symbol": "SPCX",
-      "name": "Space Exploration Technologies ",
-      "last": 148.56,
-      "change_pct": 0.13,
-      "ref": 148.36,
-      "rth_close": 148.36,
-      "volume": 60046138.0,
-      "dollar_volume": 8920454261.28,
-      "dollar_volume_label": "8.9B$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX"
-    },
-    {
-      "symbol": "WBD",
-      "name": "Warner Bros. Discovery, Inc. - ",
-      "last": 30.79,
-      "change_pct": 0.1,
-      "ref": 30.76,
-      "rth_close": 30.76,
-      "volume": 110237037.0,
-      "dollar_volume": 3394198369.23,
-      "dollar_volume_label": "3.4B$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=WBD"
     }
   ],
   "gainers_min_price": 5.0,
@@ -670,8 +457,8 @@
   "movers": [
     {
       "symbol": "AMD",
-      "change_pct": -2.75,
-      "last": 597.7,
+      "change_pct": -2.72,
+      "last": 597.91,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -679,8 +466,8 @@
     },
     {
       "symbol": "META",
-      "change_pct": -1.86,
-      "last": 730.24,
+      "change_pct": -1.84,
+      "last": 730.4,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -688,8 +475,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.86,
-      "last": 188.22,
+      "change_pct": -1.8,
+      "last": 188.35,
       "rvol": 1.26,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -697,8 +484,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.49,
-      "last": 349.7,
+      "change_pct": -1.54,
+      "last": 349.51,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -714,176 +501,185 @@
       "dollar_volume_label": "247.6M$"
     },
     {
-      "symbol": "XOM",
-      "change_pct": 1.25,
-      "last": 163.24,
-      "rvol": 0.84,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "2.1B$"
-    },
-    {
       "symbol": "COIN",
-      "change_pct": -1.22,
-      "last": 195.72,
+      "change_pct": -1.37,
+      "last": 195.42,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "1.4B$"
-    },
-    {
-      "symbol": "CVX",
-      "change_pct": 1.16,
-      "last": 207.9,
-      "rvol": 0.83,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "1.7B$"
     }
   ],
-  "news": {
-    "news": [
-      {
-        "symbol": "BAC",
-        "title": "Citi Is Rolling Out Higher Rates in New Push for Clients’ Assets",
-        "title_ar": "تقوم Citi بإطلاق أسعار أعلى في دفعة جديدة لأصول العملاء",
-        "summary": "Citigroup wants clients to park more of their cash and investments with the bank. It’s offering incentives to make it happen.",
-        "summary_ar": "يريد سيتي جروب من العملاء إيداع المزيد من أموالهم واستثماراتهم لدى البنك. إنه يقدم حوافز لتحقيق ذلك.",
-        "url": "https://www.barrons.com/articles/citi-higher-savings-rates-premium-boost-48814915?siteid=yhoof2&yptr=yahoo",
-        "publisher": "Barrons.com",
-        "published": "2026-09-24 11:00:00 UT",
-        "published_ts": 1790247600,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-      },
-      {
-        "symbol": "PCG",
-        "title": "Sector Update: Energy Stocks Rise Late Afternoon",
-        "title_ar": "تحديث القطاع: مخزونات الطاقة ترتفع في وقت متأخر بعد الظهر",
-        "summary": "Energy stocks rose late Wednesday afternoon with the NYSE Energy Sector Index rising 0.9% and the St",
-        "summary_ar": "ارتفعت أسهم الطاقة في وقت متأخر من بعد ظهر الأربعاء مع ارتفاع مؤشر قطاع الطاقة في بورصة نيويورك بنسبة 0.9 ٪ و St",
-        "url": "https://finance.yahoo.com/energy/articles/sector-energy-stocks-rise-afternoon-195603421.html",
-        "publisher": "MT Newswires",
-        "published": "2026-09-23 19:56:03 UT",
-        "published_ts": 1790193363,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-      },
-      {
-        "symbol": "PCG",
-        "title": "Edison International’s Dividend Looks Attractive. The $40 Billion Question Is What Comes Next",
-        "title_ar": "أرباح إديسون الدولية تبدو جذابة. السؤال الذي تبلغ قيمته 40 مليار $ هو ما سيأتي بعد ذلك",
-        "summary": "Southern California Edison shareholders are funding a $40 billion grid transformation while absorbing wildfire liability that regulators have not yet resolved. Whether that 6% yield compensates for the risk or signals something more troubling depends entirely on a question manage",
-        "summary_ar": "يمول مساهمو جنوب كاليفورنيا إديسون تحولًا في الشبكة بقيمة 40 مليار دولار مع استيعاب مسؤولية حرائق الغابات التي لم يحلها المنظمون بعد. ما إذا كان العائد بنسبة 6 ٪ يعوض عن المخاطر أو يشير إلى شيء أكثر إثارة للقلق يعتمد كليًا على إدارة السؤال",
-        "url": "https://247wallst.com/investing/2026/09/23/edison-international-pays-a-big-dividend-while-rebuilding-its-grid-can-it-afford-both/",
-        "publisher": "24/7 Wall St.",
-        "published": "2026-09-23 17:57:36 UT",
-        "published_ts": 1790186256,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-      },
-      {
-        "symbol": "APA",
-        "title": "Is EOG Resources Stock A Buy For Its Shrinking Share Count?",
-        "title_ar": "هل تقوم شركة EOG RESOURCES بالشراء بسبب عدد أسهمها المتقلص ؟",
-        "summary": "EOG Resources (EOG) has gained about 25% over the past year. The company pays a growing dividend and keeps buying back stock, so each remaining share owns a little more of the business every year. Over the last three years, though, that has not made the earnings behind your share",
-        "summary_ar": "اكتسبت موارد EOG (EOG) حوالي 25 ٪ خلال العام الماضي. تدفع الشركة أرباحًا متزايدة وتستمر في إعادة شراء الأسهم، لذلك يمتلك كل سهم متبقٍ المزيد من الأعمال كل عام. على مدى السنوات الثلاث الماضية، على الرغم من أن هذا لم يجعل الأرباح وراء حصتك",
-        "url": "https://www.trefis.com/articles/616299/is-eog-resources-stock-a-buy-for-its-shrinking-share-count/2026-09-23",
-        "publisher": "Trefis",
-        "published": "2026-09-23 17:48:22 UT",
-        "published_ts": 1790185702,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-      },
-      {
-        "symbol": "LTH",
-        "title": "Life Time Group Holdings (LTH) Plans to More Than Double Its Current Location Count",
-        "title_ar": "تخطط مجموعة لايف تايم القابضة (LTH) لأكثر من ضعف عدد مواقعها الحالية",
-        "summary": "Osterweis Capital Management, an investment management firm, released its Q2 2026 investor update for its “Osterweis Opportunity Fund”. You can download a copy of the letter here. The fund returned 35.34% in the quarter, significantly outperforming the Russell 2000 Growth Index’s",
-        "summary_ar": "أصدرت Osterweis Capital Management، وهي شركة لإدارة الاستثمار، تحديثها للمستثمرين للربع الثاني من عام 2026 لـ \"صندوق Osterweis Opportunity Fund\". يمكنك تنزيل نسخة من الخطاب من هنا. عاد الصندوق بنسبة 35.34 ٪ في الربع، متفوقًا بشكل كبير على مؤشر راسل 2000 للنمو",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/life-time-group-holdings-lth-142935624.html",
-        "publisher": "Insider Monkey",
-        "published": "2026-09-23 14:29:35 UT",
-        "published_ts": 1790173775,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-      },
-      {
-        "symbol": "APA",
-        "title": "Should Value Investors Buy APA (APA) Stock?",
-        "title_ar": "هل يجب على مستثمري القيمة شراء أسهم APA (APA )؟",
-        "summary": "Here at Zacks, our focus is on the proven Zacks Rank system, which emphasizes earnings estimates and estimate revisions to find great stocks. Nevertheless, we are always paying attention to the latest value, growth, and momentum trends to underscore strong picks.",
-        "summary_ar": "هنا في Zacks، ينصب تركيزنا على نظام Zacks Rank المثبت، والذي يؤكد على تقديرات الأرباح وتقدير المراجعات للعثور على أسهم رائعة. ومع ذلك، فإننا نولي دائمًا اهتمامًا لأحدث اتجاهات القيمة والنمو والزخم للتأكيد على الخيارات القوية.",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/value-investors-buy-apa-apa-134004346.html",
-        "publisher": "Zacks",
-        "published": "2026-09-23 13:40:04 UT",
-        "published_ts": 1790170804,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-      },
-      {
-        "symbol": "SSL",
-        "title": "Is Sasol (SSL) a Great Value Stock Right Now?",
-        "title_ar": "هل Sasol (SSL) سهم ذو قيمة كبيرة الآن ؟",
-        "summary": "Here at Zacks, our focus is on the proven Zacks Rank system, which emphasizes earnings estimates and estimate revisions to find great stocks. Nevertheless, we are always paying attention to the latest value, growth, and momentum trends to underscore strong picks.",
-        "summary_ar": "هنا في Zacks، ينصب تركيزنا على نظام Zacks Rank المثبت، والذي يؤكد على تقديرات الأرباح وتقدير المراجعات للعثور على أسهم رائعة. ومع ذلك، فإننا نولي دائمًا اهتمامًا لأحدث اتجاهات القيمة والنمو والزخم للتأكيد على الخيارات القوية.",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/sasol-ssl-great-value-stock-134002207.html",
-        "publisher": "Zacks",
-        "published": "2026-09-10 13:40:02 UT",
-        "published_ts": 1789047602,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-      },
-      {
-        "symbol": "SSL",
-        "title": "Why Sasol Stock Soared Nearly 10% Higher Today",
-        "title_ar": "لماذا ارتفع سهم ساسول بنسبة 10 ٪ تقريبًا اليوم",
-        "summary": "An analyst at an American bank has become notably more bullish on the South African company's prospects.",
-        "summary_ar": "أصبح المحلل في أحد البنوك الأمريكية أكثر تفاؤلاً بشكل ملحوظ بشأن آفاق الشركة في جنوب إفريقيا.",
-        "url": "https://www.fool.com/investing/2026/09/09/why-sasol-stock-soared-nearly-10-higher-today/",
-        "publisher": "Motley Fool",
-        "published": "2026-09-09 23:22:04 UT",
-        "published_ts": 1788996124,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
-      },
-      {
-        "symbol": "SPCX",
-        "title": "SpaceX President Just Filed to Sell Nearly $52 Million in Stock",
-        "title_ar": "تقدم رئيس سبيس إكس للتو ببيع ما يقرب من 52 مليون دولار من الأسهم",
-        "summary": "Gwynne Shotwell's proposed transaction follows an option exercise and was arranged under a trading plan adopted in June.",
-        "summary_ar": "تتبع الصفقة المقترحة لجوين شوتويل تمرين خيار وتم ترتيبها بموجب خطة تداول تم تبنيها في يونيو.",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-president-just-filed-sell-123025797.html",
-        "publisher": "GuruFocus.com",
-        "published": "2026-09-24 12:30:25 UT",
-        "published_ts": 1790253025,
-        "sentiment": "neu",
-        "sentiment_ar": "محايد"
-      },
-      {
-        "symbol": "UBER",
-        "title": "Delivery Hero CEO Niklas Östberg to stay amid Uber takeover",
-        "title_ar": "الرئيس التنفيذي لشركة \"ديليفري هيرو\" نيكلاس أوستبرغ سيبقى وسط استحواذ أوبر",
-        "summary": "The company had announced in May that Niklas Östberg would step down in March 2027, but Uber's pending acquisition changed the plan",
-        "summary_ar": "كانت الشركة قد أعلنت في مايو/أيار أن نيكلاس أوستبرغ سيتنحى في مارس/آذار 2027، لكن استحواذ أوبر المنتظر غيّر الخطة",
-        "url": "https://qz.com/delivery-hero-ceo-niklas-ostberg-staying-uber-takeover-092426",
-        "publisher": "Quartz",
-        "published": "2026-09-24 11:08:02 UT",
-        "published_ts": 1790248082,
-        "sentiment": "neu",
-        "sentiment_ar": "محايد"
-      }
-    ],
-    "negative_symbols": [
-      "AR",
-      "CVX",
-      "MSFT",
-      "NVDA",
-      "WBD",
-      "XOM"
-    ]
-  },
-  "news_note_ar": "عناوين مترجمة آلياً — تحقق من المصدر قبل أي قرار",
+  "news": [
+    {
+      "symbol": "BAC",
+      "title": "Citi Is Rolling Out Higher Rates in New Push for Clients’ Assets",
+      "title_ar": "تقوم Citi بإطلاق أسعار أعلى في دفعة جديدة لأصول العملاء",
+      "summary": "Citigroup wants clients to park more of their cash and investments with the bank. It’s offering incentives to make it happen.",
+      "summary_ar": "يريد سيتي جروب من العملاء إيداع المزيد من أموالهم واستثماراتهم لدى البنك. إنه يقدم حوافز لتحقيق ذلك.",
+      "url": "https://www.barrons.com/articles/citi-higher-savings-rates-premium-boost-48814915?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "published": "2026-09-24 11:00:00 UT",
+      "published_ts": 1790247600,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
+      "symbol": "APA",
+      "title": "Is EOG Resources Stock A Buy For Its Shrinking Share Count?",
+      "title_ar": "هل تقوم شركة EOG RESOURCES بالشراء بسبب عدد أسهمها المتقلص ؟",
+      "summary": "EOG Resources (EOG) has gained about 25% over the past year. The company pays a growing dividend and keeps buying back stock, so each remaining share owns a little more of the business every year. Over the last three years, though, that has not made the earnings behind your share",
+      "summary_ar": "اكتسبت موارد EOG (EOG) حوالي 25 ٪ خلال العام الماضي. تدفع الشركة أرباحًا متزايدة وتستمر في إعادة شراء الأسهم، لذلك يمتلك كل سهم متبقٍ المزيد من الأعمال كل عام. على مدى السنوات الثلاث الماضية، على الرغم من أن هذا لم يجعل الأرباح وراء حصتك",
+      "url": "https://www.trefis.com/articles/616299/is-eog-resources-stock-a-buy-for-its-shrinking-share-count/2026-09-23",
+      "publisher": "Trefis",
+      "published": "2026-09-23 17:48:22 UT",
+      "published_ts": 1790185702,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
+      "symbol": "LTH",
+      "title": "Life Time Group Holdings (LTH) Plans to More Than Double Its Current Location Count",
+      "title_ar": "تخطط مجموعة لايف تايم القابضة (LTH) لأكثر من ضعف عدد مواقعها الحالية",
+      "summary": "Osterweis Capital Management, an investment management firm, released its Q2 2026 investor update for its “Osterweis Opportunity Fund”. You can download a copy of the letter here. The fund returned 35.34% in the quarter, significantly outperforming the Russell 2000 Growth Index’s",
+      "summary_ar": "أصدرت Osterweis Capital Management، وهي شركة لإدارة الاستثمار، تحديثها للمستثمرين للربع الثاني من عام 2026 لـ \"صندوق Osterweis Opportunity Fund\". يمكنك تنزيل نسخة من الخطاب من هنا. عاد الصندوق بنسبة 35.34 ٪ في الربع، متفوقًا بشكل كبير على مؤشر راسل 2000 للنمو",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/life-time-group-holdings-lth-142935624.html",
+      "publisher": "Insider Monkey",
+      "published": "2026-09-23 14:29:35 UT",
+      "published_ts": 1790173775,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
+      "symbol": "APA",
+      "title": "Should Value Investors Buy APA (APA) Stock?",
+      "title_ar": "هل يجب على مستثمري القيمة شراء أسهم APA (APA )؟",
+      "summary": "Here at Zacks, our focus is on the proven Zacks Rank system, which emphasizes earnings estimates and estimate revisions to find great stocks. Nevertheless, we are always paying attention to the latest value, growth, and momentum trends to underscore strong picks.",
+      "summary_ar": "هنا في Zacks، ينصب تركيزنا على نظام Zacks Rank المثبت، والذي يؤكد على تقديرات الأرباح وتقدير المراجعات للعثور على أسهم رائعة. ومع ذلك، فإننا نولي دائمًا اهتمامًا لأحدث اتجاهات القيمة والنمو والزخم للتأكيد على الخيارات القوية.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/value-investors-buy-apa-apa-134004346.html",
+      "publisher": "Zacks",
+      "published": "2026-09-23 13:40:04 UT",
+      "published_ts": 1790170804,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
+      "symbol": "LTH",
+      "title": "Life Time Group Holdings (LTH) Stock Could Be 23% Overvalued Following Trainer Hiring News",
+      "title_ar": "يمكن أن يكون سهم مجموعة لايف تايم القابضة (LTH) مبالغًا في تقييمه بنسبة 23 ٪ بعد أخبار توظيف المدرب",
+      "summary": "Life Time Group Holdings has delivered a strong 3 year share price run, yet the real test for investors now is whether the current US$40.75 price can be explained by the cash the business is expected to generate. With the stock pulling back in recent weeks after a sizeable multi ",
+      "summary_ar": "حققت Life Time Group Holdings أداءً قويًا لسعر السهم لمدة 3 سنوات، ومع ذلك فإن للمستثمرين الآن هو ما إذا كان يمكن تفسير السعر الحالي البالغ 40.75 $ بالنقد الذي من أن تحققه الشركة. مع تراجع السهم في الأسابيع الأخيرة بعد",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/life-time-group-holdings-lth-020928461.html",
+      "publisher": "Simply Wall St.",
+      "published": "2026-09-19 02:09:28 UT",
+      "published_ts": 1789783768,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
+      "symbol": "SSL",
+      "title": "Is Sasol (SSL) a Great Value Stock Right Now?",
+      "title_ar": "هل Sasol (SSL) سهم ذو قيمة كبيرة الآن ؟",
+      "summary": "Here at Zacks, our focus is on the proven Zacks Rank system, which emphasizes earnings estimates and estimate revisions to find great stocks. Nevertheless, we are always paying attention to the latest value, growth, and momentum trends to underscore strong picks.",
+      "summary_ar": "هنا في Zacks، ينصب تركيزنا على نظام Zacks Rank المثبت، والذي يؤكد على تقديرات الأرباح وتقدير المراجعات للعثور على أسهم رائعة. ومع ذلك، فإننا نولي دائمًا اهتمامًا لأحدث اتجاهات القيمة والنمو والزخم للتأكيد على الخيارات القوية.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/sasol-ssl-great-value-stock-134002207.html",
+      "publisher": "Zacks",
+      "published": "2026-09-10 13:40:02 UT",
+      "published_ts": 1789047602,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
+      "symbol": "SSL",
+      "title": "Why Sasol Stock Soared Nearly 10% Higher Today",
+      "title_ar": "لماذا ارتفع سهم ساسول بنسبة 10 ٪ تقريبًا اليوم",
+      "summary": "An analyst at an American bank has become notably more bullish on the South African company's prospects.",
+      "summary_ar": "أصبح المحلل في أحد البنوك الأمريكية أكثر تفاؤلاً بشكل ملحوظ بشأن آفاق الشركة في جنوب إفريقيا.",
+      "url": "https://www.fool.com/investing/2026/09/09/why-sasol-stock-soared-nearly-10-higher-today/",
+      "publisher": "Motley Fool",
+      "published": "2026-09-09 23:22:04 UT",
+      "published_ts": 1788996124,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع"
+    },
+    {
+      "symbol": "AAPL",
+      "title": "The S&P 500 has never been this concentrated in just 2 stocks",
+      "title_ar": "لم يكن مؤشر S&P 500 بهذا التركيز في سهمين فقط",
+      "summary": "Apple and Nvidia have truly become the straws that stir the stock market's drink.",
+      "summary_ar": "أصبحت Apple و Nvidia حقًا القش الذي يحرك مشروب سوق الأسهم.",
+      "url": "https://finance.yahoo.com/markets/article/the-sp-500-has-never-been-this-concentrated-in-just-2-stocks-122519280.html",
+      "publisher": "Yahoo Finance",
+      "published": "2026-09-24 12:25:19 UT",
+      "published_ts": 1790252719,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد"
+    },
+    {
+      "symbol": "UBER",
+      "title": "Delivery Hero CEO Niklas Östberg to stay amid Uber takeover",
+      "title_ar": "الرئيس التنفيذي لشركة \"ديليفري هيرو\" نيكلاس أوستبرغ سيبقى وسط استحواذ أوبر",
+      "summary": "The company had announced in May that Niklas Östberg would step down in March 2027, but Uber's pending acquisition changed the plan",
+      "summary_ar": "كانت الشركة قد أعلنت في مايو/أيار أن نيكلاس أوستبرغ سيتنحى في مارس/آذار 2027، لكن استحواذ أوبر المنتظر غيّر الخطة",
+      "url": "https://qz.com/delivery-hero-ceo-niklas-ostberg-staying-uber-takeover-092426",
+      "publisher": "Quartz",
+      "published": "2026-09-24 11:08:02 UT",
+      "published_ts": 1790248082,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد"
+    },
+    {
+      "symbol": "BAC",
+      "title": "27% of Gen Z workers score stock awards as 'benefit-maxxing' trend pushes young employees to grab every workplace perk",
+      "title_ar": "27 ٪ من عمال الجيل Z يسجلون جوائز الأسهم حيث يدفع اتجاه \" زيادة الفائدة\" الموظفين الشباب للاستيلاء على كل امتيازات مكان العمل",
+      "summary": "Many young employees are more financially literate than their parents’ generation, experts say.",
+      "summary_ar": "يقول الخبراء إن العديد من الموظفين الشباب أكثر إلمامًا بالقراءة والكتابة من جيل آبائهم.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/27-gen-z-workers-score-094500485.html",
+      "publisher": "Moneywise",
+      "published": "2026-09-24 09:45:00 UT",
+      "published_ts": 1790243100,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد"
+    },
+    {
+      "symbol": "BAC",
+      "title": "Bank of America to hire 1,000 more apprentices, invest $150M in workforce development",
+      "title_ar": "بنك أوف أميركا يوظف 1000 متدرب إضافي، ويستثمر 150 مليون $ في تطوير",
+      "summary": "Bank of America is adding 1,000 apprentices and committing $150 million to workforce development in a push to expand career pathways beyond traditional college degrees.",
+      "summary_ar": "أضاف بنك أوف أمريكا 1000 متدرب وخصص 150 مليون دولار لتطوير القوى العاملة في محاولة لتوسيع المسارات الوظيفية بما يتجاوز الشهادات الجامعية التقليدية.",
+      "url": "https://www.foxbusiness.com/economy/bank-of-america-hire-1000-more-apprentices-invest-150m-workforce-development",
+      "publisher": "Fox Business",
+      "published": "2026-09-24 09:00:48 UT",
+      "published_ts": 1790240448,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد"
+    },
+    {
+      "symbol": "AAPL",
+      "title": "Here's what Wall Street thinks of Meta's new smartglass lineup and first Muse 'holdable'",
+      "title_ar": "إليك ما تعتقده وول ستريت عن تشكيلة ميتا الجديدة من النظارات الذكية وأول ملهم \"قابل للحمل\"",
+      "summary": "The day after Meta Connect.",
+      "summary_ar": "في اليوم التالي لـ Meta Connect.",
+      "url": "https://finance.yahoo.com/markets/stocks/article/heres-what-wall-street-thinks-of-metas-new-smartglass-lineup-and-first-muse-holdable-085705955.html",
+      "publisher": "Yahoo Finance",
+      "published": "2026-09-24 08:57:05 UT",
+      "published_ts": 1790240225,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد"
+    }
+  ],
+  "news_excluded_negative": [
+    "AR",
+    "CVX",
+    "MSFT",
+    "NFLX",
+    "NVDA",
+    "PCG",
+    "SPCX",
+    "WBD",
+    "XOM"
+  ],
+  "news_note_ar": "محايد + إيجابي متوقع يدعم الارتفاع فقط — الأسهم ذات خبر سلبي تُزال من اللوحة",
   "bot": "@Aied01_bot",
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",

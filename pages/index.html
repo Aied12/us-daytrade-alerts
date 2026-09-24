@@ -199,7 +199,7 @@
 
     <div class="card">
       <h2>أخبار الأسهم</h2>
-      <p class="muted" id="newsNote">عناوين حديثة مترجمة للعربية</p>
+      <p class="muted" id="newsNote">محايد + إيجابي متوقع يدعم الارتفاع — بدون أخبار سلبية</p>
       <div id="newsList"><div class="muted">جاري جلب الأخبار...</div></div>
     </div>
 
@@ -479,14 +479,22 @@
         </div>
       `).join('')||'<div class="empty">لا متحركات</div>';
 
-      const news=d.news||[];
+      const news=(d.news||[]).filter(n=>n.sentiment!=='neg');
+      const blocked=new Set((d.news_excluded_negative||[]).map(s=>String(s).toUpperCase()));
+      if(blocked.size && Array.isArray(d.opportunities)){
+        d.opportunities=d.opportunities.filter(o=>!blocked.has(String(o.symbol||'').toUpperCase()));
+      }
+      if(blocked.size && Array.isArray(d.gainers)){
+        d.gainers=d.gainers.filter(g=>!blocked.has(String(g.symbol||'').toUpperCase()));
+      }
       const note=document.getElementById('newsNote');
-      if(note) note.textContent=d.news_note_ar||'عناوين مترجمة آلياً — تحقق من المصدر قبل أي قرار';
+      if(note) note.textContent=d.news_note_ar||'محايد + إيجابي متوقع يدعم الارتفاع فقط — الأسهم ذات خبر سلبي تُزال';
       const newsBox=document.getElementById('newsList');
       if(newsBox){
         const sentCls={pos:'sent-pos',neg:'sent-neg',neu:'sent-neu'};
         newsBox.innerHTML = news.length ? news.map(n=>{
           const sent=n.sentiment||'neu';
+          if(sent==='neg') return '';
           const title=n.title_ar||n.title||'';
           const sum=n.summary_ar||n.summary||'';
           const when=n.published||'';
@@ -507,7 +515,7 @@
               </div>
             </a>
           </article>`;
-        }).join('') : '<div class="empty">لا أخبار متاحة الآن — حدّث الصفحة لاحقاً</div>';
+        }).join('') : '<div class="empty">لا أخبار محايدة/إيجابية الآن</div>';
       }
 
       renderOpps();
