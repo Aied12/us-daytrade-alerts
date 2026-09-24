@@ -204,9 +204,9 @@ def main() -> None:
             rejected_slow.append(f"{sig.symbol}:{flow_reason}")
             continue
         smart = enrich_smart_signal(sig, snap, qqq_chg=qqq_chg, live_last=live_last)
-        # 29/23 — drop earnings-imminent or severe fake-liquidity junk (expired stays visible)
-        if smart.get("exclude"):
-            rejected_slow.append(f"{sig.symbol}:{smart.get('exclude_reason') or 'smart-exclude'}")
+        # 29/30/23 — drop earnings-imminent, expired chase, or severe fake-liquidity junk
+        if smart.get("exclude") or smart.get("expired"):
+            rejected_slow.append(f"{sig.symbol}:{smart.get('exclude_reason') or smart.get('expired_ar') or 'منتهية'}")
             continue
         plan = plan_trade(settings, sig, live_last=live_last)
         # Hard rule: long entry must never exceed live price
@@ -285,11 +285,10 @@ def main() -> None:
             }
         )
 
-    # Rank: fresh setups first, then confidence, then flow
+    # Rank: confidence then flow
     rank_conf = {"A": 3, "B": 2, "C": 1}
     opportunities.sort(
         key=lambda o: (
-            0 if o.get("expired") else 1,
             rank_conf.get(o.get("confidence") or "C", 0),
             float(o.get("flow_score") or 0),
             1 if o.get("urgent") else 0,
@@ -395,7 +394,7 @@ def main() -> None:
         "momentum_scanner": momentum,
         "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
         "opportunities": opportunities,
-        "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · لا مطاردة الممتد",
+        "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
         "opps_rejected_slow": rejected_slow[:20],
         "gainers": gainers,
         "gainers_min_price": min_px,
