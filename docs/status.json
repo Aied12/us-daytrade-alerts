@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T10:30:15.141646+00:00",
-  "generated_ts": 1790245815,
-  "generated_local": "2026-09-24 13:30 +03",
+  "generated_at": "2026-09-24T10:31:16.400402+00:00",
+  "generated_ts": 1790245876,
+  "generated_local": "2026-09-24 13:31 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T10:30:15.141552+00:00",
+    "updated_at": "2026-09-24T10:31:16.400322+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,12 +26,12 @@
     "avg_change_pct": -0.73,
     "details": {
       "SPY": {
-        "last": 762.82,
-        "change_pct": -0.65,
+        "last": 762.93,
+        "change_pct": -0.64,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 733.2,
+        "last": 733.22,
         "change_pct": -1.08,
         "rsi": 68.9
       },
@@ -44,7 +44,7 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.65,
+        "change_pct": -0.64,
         "rsi": 53.4
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 10784,
-    "ny_time": "06:30:15",
+    "seconds_left": 10723,
+    "ny_time": "06:31:16",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,7 +77,7 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.05
+        "change_pct": 1.06
       },
       {
         "name": "Communication",
@@ -91,11 +91,11 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.08
+        "change_pct": -1.14
       },
       {
         "name": "Financials",
-        "change_pct": -0.57
+        "change_pct": -0.62
       },
       {
         "name": "Consumer",
@@ -104,7 +104,7 @@
     ]
   },
   "style": {
-    "growth_avg": -1.13,
+    "growth_avg": -1.19,
     "value_avg": 0.03,
     "leader": "قيمة",
     "growth_count": 10,
@@ -123,22 +123,22 @@
         "ترتيب متوسطات صاعد",
         "زخم قطاع Energy"
       ],
-      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.34%) | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | زخم قطاع Energy: قطاع Energy +1.1%",
-      "entry": 162.73,
+      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.36%) | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | زخم قطاع Energy: قطاع Energy +1.1%",
+      "entry": 162.77,
       "stop": 156.41,
-      "target": 174.11,
+      "target": 174.22,
       "shares": 18,
-      "risk_sar": 426.6,
+      "risk_sar": 429.3,
       "allowed": true,
-      "change_pct": 0.93,
-      "last": 162.73,
+      "change_pct": 0.96,
+      "last": 162.77,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.84,
         "volume": 12569300.0,
         "avg_volume_20": 14967795.0,
-        "dollar_volume": 2045402189.0,
-        "avg_dollar_volume": 2435709280.35,
+        "dollar_volume": 2045904961.0,
+        "avg_dollar_volume": 2436307992.15,
         "dollar_volume_label": "2.0B$",
         "avg_dollar_volume_label": "2.4B$",
         "grade": "medium",
@@ -149,7 +149,7 @@
       "liq_grade": "medium",
       "liq_grade_ar": "متوسط",
       "tv_url": "https://www.tradingview.com/chart/?symbol=XOM",
-      "tg_share": "https://t.me/share/url?url=&text=XOM%20فكّر في شراء قصير المدى%0Aالآن%20162.73%20وقف%20156.41%20هدف%20174.11%0Aسيولة%20متوسط%20RVOL%20x0.84"
+      "tg_share": "https://t.me/share/url?url=&text=XOM%20فكّر في شراء قصير المدى%0Aالآن%20162.77%20وقف%20156.41%20هدف%20174.22%0Aسيولة%20متوسط%20RVOL%20x0.84"
     },
     {
       "symbol": "CVX",
@@ -239,8 +239,8 @@
   "movers": [
     {
       "symbol": "META",
-      "change_pct": -2.43,
-      "last": 726.0,
+      "change_pct": -2.57,
+      "last": 724.95,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -248,8 +248,8 @@
     },
     {
       "symbol": "AMD",
-      "change_pct": -2.3,
-      "last": 600.5,
+      "change_pct": -2.31,
+      "last": 600.39,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -257,8 +257,8 @@
     },
     {
       "symbol": "COIN",
-      "change_pct": -1.59,
-      "last": 194.99,
+      "change_pct": -1.72,
+      "last": 194.72,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -266,8 +266,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.29,
-      "last": 350.42,
+      "change_pct": -1.39,
+      "last": 350.07,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -275,12 +275,21 @@
     },
     {
       "symbol": "NVDA",
-      "change_pct": -1.18,
-      "last": 222.85,
+      "change_pct": -1.24,
+      "last": 222.71,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "19.9B$"
+    },
+    {
+      "symbol": "PLTR",
+      "change_pct": -1.18,
+      "last": 189.52,
+      "rvol": 1.26,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "6.6B$"
     },
     {
       "symbol": "CVX",
@@ -293,21 +302,12 @@
     },
     {
       "symbol": "TSLA",
-      "change_pct": -1.14,
-      "last": 375.78,
+      "change_pct": -1.15,
+      "last": 375.76,
       "rvol": 0.86,
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "12.6B$"
-    },
-    {
-      "symbol": "QQQ",
-      "change_pct": -1.08,
-      "last": 733.2,
-      "rvol": 1.01,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "24.3B$"
     }
   ],
   "performance": {
@@ -318,7 +318,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 90,
+    "alerts_today": 91,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
