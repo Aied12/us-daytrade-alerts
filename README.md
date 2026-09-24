@@ -71,3 +71,14 @@ python main.py journal
 
 ## تنبيه قانوني
 هذا أداة تعليمية للمساعدة في التنظيم والتنبيهات. ليست نصيحة استثمارية، ولا تضمن ربحًا، ولا تنفّذ أوامر نيابةً عنك.
+
+
+## بنية تحتية (81–95)
+- GitHub Actions: `.github/workflows/alerts.yml` (أضف Secrets)
+- لوحة ويب: `python web/app.py` ثم افتح `http://HOST:8080/?token=...`
+- Docker: `docker compose up -d`
+- `/status` في تيليجرام
+- `LIGHT_MODE=1` و `API_THRIFT=1` للنت الضعيف
+- `TELEGRAM_EXTRA_CHAT_IDS` لأكثر من مستخدم
+- نسخ احتياطي تلقائي في `data/backups/`
+- Watchdog كل 10 دقائق + اختبار اتصال يومي

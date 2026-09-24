@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-# Cron: session ticks + premarket/intel/afterhours + bot poller
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 RUN="$ROOT/scripts/run_cron.sh"
 BOT="$ROOT/scripts/run_bot_once.sh"
-chmod +x "$RUN" "$BOT" "$ROOT/scripts/"*.py "$ROOT/scripts/"*.sh 2>/dev/null || true
+WATCH="$ROOT/scripts/watchdog.sh"
+PING="$ROOT/.venv/bin/python $ROOT/scripts/telegram_ping.py"
+chmod +x "$RUN" "$BOT" "$WATCH" "$ROOT/scripts/"*.sh "$ROOT/scripts/"*.py 2>/dev/null || true
 
 MARKER_BEGIN="# BEGIN us-daytrade-alerts"
 MARKER_END="# END us-daytrade-alerts"
@@ -19,12 +20,16 @@ PATH=/usr/bin:/bin
 # تحديث السوق كل 5 دقائق 11ص–11م السعودية
 */5 8-19 * * 1-5 $RUN tick
 0 20 * * 1-5 $RUN tick
-# Intel (خيارات/أخبار/فيد) ظهرًا تقريبًا 16:00 السعودية
+# Intel ظهرًا ≈16:00 السعودية
 0 13 * * 1-5 $RUN intel
-# ملخص مسائي + after-hours
+# ملخص مسائي
 5 20 * * 1-5 $RUN evening
-# مستمع أوامر/أزرار تيليجرام كل دقيقة
+# اختبار اتصال تيليجرام يومي ≈10:30 ص السعودية
+30 7 * * 1-5 $PING
+# مستمع أوامر/أزرار كل دقيقة
 * * * * * $BOT
+# Watchdog كل 10 دقائق
+*/10 * * * * $WATCH
 $MARKER_END
 EOF
 )

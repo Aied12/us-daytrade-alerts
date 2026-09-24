@@ -1,0 +1,36 @@
+# انسخ هذا الملف إلى .env وعبّي القيم
+TELEGRAM_BOT_TOKEN=8869102018:AAHsBV1WjAuRahjibH_Dki8g2cZ-GFz4K_c
+TELEGRAM_CHAT_ID=54823841
+
+# رأس المال بالريال (افتراضي 45000)
+CAPITAL_SAR=45000
+
+# سعر صرف تقريبي USD/SAR
+USD_SAR_RATE=3.75
+
+# نسبة المخاطرة لكل صفقة (1% = 0.01)
+RISK_PER_TRADE=0.01
+
+# حد الخسارة اليومي من رأس المال (2% = 0.02)
+DAILY_LOSS_LIMIT=0.02
+
+# أقصى عدد تنبيهات دخول في اليوم
+MAX_ALERTS_PER_DAY=5
+
+# فلتر: لا ترسل أسهم تحت هذا السعر بالدولار
+MIN_PRICE_USD=5
+
+# حد قوة الإشارة للتنبيه العاجل
+URGENT_MIN_SCORE=5
+
+# beginner أو pro
+USER_MODE=pro
+
+# قناة تيليجرام عامة (اختياري) مثل @mychannel أو -100...
+TELEGRAM_CHANNEL_ID=@aied01
+
+TIMEZONE=Asia/Riyadh
+API_THRIFT=0
+LIGHT_MODE=0
+TELEGRAM_EXTRA_CHAT_IDS=
+DASHBOARD_TOKEN=aied-dash-2026

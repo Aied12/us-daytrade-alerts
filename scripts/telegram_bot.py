@@ -90,6 +90,7 @@ def cmd_help(settings) -> str:
         "/options — خيارات بحجم غير طبيعي\n"
         "/sectors — ETF القطاعات\n"
         "/style — نمو vs قيمة\n"
+        "/status — هل البوت حي؟\n"
         "/risk /journal /mode /chart /voice /strategies\n"
         "/help — هذه القائمة\n\n"
         f"الوضع الحالي: {'مبتدئ' if settings.is_beginner else 'محترف'}\n"
@@ -230,6 +231,29 @@ def handle_message(settings, msg: dict) -> None:
         deliver(settings, "🧭 Sectors", format_sector_etfs(), also_channel=True)
     elif cmd == "/style":
         deliver(settings, "🌱🏦 Style", format_style_board(settings), also_channel=True)
+    elif cmd == "/status":
+        from bot.backup import backup_settings, mask_token
+        from bot.holidays import holiday_note, is_trading_day
+        from bot.ops import read_status, recent_errors
+
+        st = read_status()
+        errs = recent_errors(1)
+        msg = (
+            f"🩺 /status\n"
+            f"telegram: {'OK' if settings.telegram_enabled else 'OFF'}\n"
+            f"users: {len(settings.all_private_chat_ids)}\n"
+            f"token: {mask_token(settings.telegram_bot_token)}\n"
+            f"mode: {settings.user_mode}\n"
+            f"tz: {settings.timezone_name}\n"
+            f"light: {settings.light_mode} thrift: {settings.api_thrift}\n"
+            f"trading_day: {is_trading_day()}\n"
+            f"note: {holiday_note() or '-'}\n"
+            f"last: {st.get('updated_at', '-')} ok={st.get('ok')}\n"
+        )
+        if errs:
+            msg += "\nآخر خطأ:\n" + errs[-1][:350]
+        send_telegram(settings, msg)
+        backup_settings(settings)
     elif cmd == "/strategies":
         # /strategies فجوة|كسر  or defaults
         raw = text[len("/strategies"):].strip()

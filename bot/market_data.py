@@ -76,19 +76,54 @@ def _rsi(series: pd.Series, period: int = 14) -> float:
 
 
 def fetch_history(symbol: str, period: str = "6mo", interval: str = "1d") -> pd.DataFrame:
-    df = yf.download(
-        symbol,
-        period=period,
-        interval=interval,
-        progress=False,
-        auto_adjust=True,
-        threads=False,
-    )
-    if df is None or df.empty:
+    from bot.cacheutil import API_THRIFT, LIGHT_MODE, cached_call
+
+    # 85/86/95 — shorter history + disk cache in thrift/light modes
+    if LIGHT_MODE and period in ("6mo", "3mo"):
+        period = "3mo" if interval == "1d" else period
+
+    cache_key = f"hist:{symbol}:{period}:{interval}"
+
+    def _download():
+        df = yf.download(
+            symbol,
+            period=period,
+            interval=interval,
+            progress=False,
+            auto_adjust=True,
+            threads=False,
+        )
+        if df is None or df.empty:
+            return []
+        if isinstance(df.columns, pd.MultiIndex):
+            df.columns = [c[0] for c in df.columns]
+        df = df.dropna()
+        # serialize for cache
+        out = []
+        for idx, row in df.iterrows():
+            out.append(
+                {
+                    "Date": str(idx),
+                    "Open": float(row["Open"]),
+                    "High": float(row["High"]),
+                    "Low": float(row["Low"]),
+                    "Close": float(row["Close"]),
+                    "Volume": float(row["Volume"]),
+                }
+            )
+        return out
+
+    try:
+        raw = cached_call(cache_key, _download) if (API_THRIFT or LIGHT_MODE) else _download()
+    except Exception:
+        raw = _download()
+
+    if not raw:
         return pd.DataFrame()
-    if isinstance(df.columns, pd.MultiIndex):
-        df.columns = [c[0] for c in df.columns]
-    return df.dropna()
+    df = pd.DataFrame(raw)
+    df["Date"] = pd.to_datetime(df["Date"])
+    df = df.set_index("Date")
+    return df
 
 
 def _atr_pct(df: pd.DataFrame, period: int = 14) -> float:
@@ -340,6 +375,9 @@ def sector_momentum(snapshots: list[QuoteSnapshot]) -> dict[str, float]:
 
 
 def scan_watchlist(symbols: list[str]) -> list[QuoteSnapshot]:
+    from bot.cacheutil import light_watchlist
+
+    symbols = light_watchlist(symbols)
     snaps: list[QuoteSnapshot] = []
     for sym in symbols:
         try:

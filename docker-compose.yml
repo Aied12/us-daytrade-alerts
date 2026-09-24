@@ -1,0 +1,21 @@
+services:
+  dashboard:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  worker:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    command: ["bash", "-lc", "bash scripts/install_cron.sh && cron -f"]
+    restart: unless-stopped

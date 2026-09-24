@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass, field
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from dotenv import load_dotenv
 
@@ -26,10 +27,15 @@ class Settings:
     max_morning_picks: int = 7
     telegram_bot_token: str = ""
     telegram_chat_id: str = ""
-    telegram_channel_id: str = ""  # public channel (optional)
+    telegram_channel_id: str = ""
+    extra_chat_ids: list[str] = field(default_factory=list)  # 89 multi-user
     min_price_usd: float = 5.0
     urgent_min_score: float = 5.0
-    user_mode: str = "beginner"  # beginner | pro
+    user_mode: str = "beginner"
+    timezone_name: str = "Asia/Riyadh"  # 93
+    light_mode: bool = False  # 95
+    api_thrift: bool = False  # 85
+    dashboard_token: str = ""  # 90 simple web auth
     watchlist: list[str] = field(default_factory=lambda: list(DEFAULT_WATCHLIST))
     data_dir: Path = ROOT / "data"
     logs_dir: Path = ROOT / "logs"
@@ -58,6 +64,23 @@ class Settings:
     def is_beginner(self) -> bool:
         return self.user_mode.lower() != "pro"
 
+    @property
+    def local_tz(self) -> ZoneInfo:
+        try:
+            return ZoneInfo(self.timezone_name)
+        except Exception:
+            return ZoneInfo("Asia/Riyadh")
+
+    @property
+    def all_private_chat_ids(self) -> list[str]:
+        ids = []
+        if self.telegram_chat_id:
+            ids.append(self.telegram_chat_id)
+        for cid in self.extra_chat_ids:
+            if cid and cid not in ids:
+                ids.append(cid)
+        return ids
+
 
 def load_settings() -> Settings:
     watchlist_raw = os.getenv("WATCHLIST", "")
@@ -66,9 +89,18 @@ def load_settings() -> Settings:
         if watchlist_raw
         else list(DEFAULT_WATCHLIST)
     )
+    extras = [
+        x.strip()
+        for x in os.getenv("TELEGRAM_EXTRA_CHAT_IDS", "").split(",")
+        if x.strip()
+    ]
     mode = os.getenv("USER_MODE", "beginner").strip().lower()
     if mode not in ("beginner", "pro"):
         mode = "beginner"
+    light = os.getenv("LIGHT_MODE", "0").strip().lower() in ("1", "true", "yes")
+    thrift = os.getenv("API_THRIFT", "1" if light else "0").strip().lower() in (
+        "1", "true", "yes"
+    )
     settings = Settings(
         capital_sar=float(os.getenv("CAPITAL_SAR", "45000")),
         usd_sar_rate=float(os.getenv("USD_SAR_RATE", "3.75")),
@@ -78,9 +110,14 @@ def load_settings() -> Settings:
         telegram_bot_token=os.getenv("TELEGRAM_BOT_TOKEN", "").strip(),
         telegram_chat_id=os.getenv("TELEGRAM_CHAT_ID", "").strip(),
         telegram_channel_id=os.getenv("TELEGRAM_CHANNEL_ID", "").strip(),
+        extra_chat_ids=extras,
         min_price_usd=float(os.getenv("MIN_PRICE_USD", "5")),
         urgent_min_score=float(os.getenv("URGENT_MIN_SCORE", "5")),
         user_mode=mode,
+        timezone_name=os.getenv("TIMEZONE", "Asia/Riyadh").strip() or "Asia/Riyadh",
+        light_mode=light,
+        api_thrift=thrift,
+        dashboard_token=os.getenv("DASHBOARD_TOKEN", "").strip(),
         watchlist=watchlist,
     )
     settings.data_dir.mkdir(parents=True, exist_ok=True)

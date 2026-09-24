@@ -34,7 +34,10 @@ def send_telegram(
 ) -> bool:
     if not settings.telegram_bot_token:
         return False
-    targets = [chat_id or settings.telegram_chat_id]
+    if chat_id:
+        targets = [chat_id]
+    else:
+        targets = list(settings.all_private_chat_ids)
     if also_channel and settings.telegram_channel_id:
         targets.append(settings.telegram_channel_id)
 
@@ -52,8 +55,7 @@ def send_telegram(
                 "text": chunk,
                 "disable_web_page_preview": True,
             }
-            # buttons only on private first chunk
-            if reply_markup and target == settings.telegram_chat_id and i == 0:
+            if reply_markup and target != settings.telegram_channel_id and i == 0:
                 payload["reply_markup"] = json.dumps(reply_markup, ensure_ascii=False)
             data = _post(settings, "sendMessage", json=payload)
             ok_any = ok_any or bool(data.get("ok"))
@@ -118,6 +120,7 @@ def set_bot_commands(settings: Settings) -> bool:
         {"command": "options", "description": "خيارات بحجم غير طبيعي"},
         {"command": "sectors", "description": "ETF القطاعات"},
         {"command": "style", "description": "نمو vs قيمة"},
+        {"command": "status", "description": "هل البوت حي؟"},
         {"command": "risk", "description": "عرض المخاطرة ورأس المال"},
         {"command": "journal", "description": "ملخص دفتر الصفقات"},
         {"command": "mode", "description": "مبتدئ أو محترف"},
