@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T10:17:15.406240+00:00",
-  "generated_ts": 1790245035,
-  "generated_local": "2026-09-24 13:17 +03",
+  "generated_at": "2026-09-24T10:18:15.013478+00:00",
+  "generated_ts": 1790245095,
+  "generated_local": "2026-09-24 13:18 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T10:17:15.406113+00:00",
+    "updated_at": "2026-09-24T10:18:15.013411+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -26,13 +26,13 @@
     "avg_change_pct": -0.68,
     "details": {
       "SPY": {
-        "last": 763.25,
-        "change_pct": -0.59,
+        "last": 763.33,
+        "change_pct": -0.58,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 733.69,
-        "change_pct": -1.01,
+        "last": 733.619,
+        "change_pct": -1.02,
         "rsi": 68.9
       },
       "IWM": {
@@ -44,12 +44,12 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.59,
+        "change_pct": -0.58,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -1.01,
+        "change_pct": -1.02,
         "rsi": 68.9
       },
       {
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 11564,
-    "ny_time": "06:17:15",
+    "seconds_left": 11504,
+    "ny_time": "06:18:15",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,35 +77,35 @@
     "strongest": [
       {
         "name": "Energy",
-        "change_pct": 1.12
+        "change_pct": 1.09
       },
       {
         "name": "Communication",
-        "change_pct": 0.1
+        "change_pct": 0.18
       },
       {
         "name": "Industrial",
-        "change_pct": -0.27
+        "change_pct": -0.24
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.06
+        "change_pct": -1.04
       },
       {
         "name": "Financials",
-        "change_pct": -0.6
+        "change_pct": -0.62
       },
       {
         "name": "Consumer",
-        "change_pct": -0.36
+        "change_pct": -0.35
       }
     ]
   },
   "style": {
-    "growth_avg": -1.09,
-    "value_avg": 0.03,
+    "growth_avg": -1.07,
+    "value_avg": 0.04,
     "leader": "قيمة",
     "growth_count": 10,
     "value_count": 11
@@ -123,21 +123,21 @@
         "زخم قطاع Energy"
       ],
       "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | زخم قطاع Energy: قطاع Energy +1.1%",
-      "entry": 162.97,
+      "entry": 162.87,
       "stop": 156.41,
-      "target": 174.78,
+      "target": 174.5,
       "shares": 18,
-      "risk_sar": 442.8,
+      "risk_sar": 436.05,
       "allowed": false,
-      "change_pct": 1.08,
-      "last": 162.97,
+      "change_pct": 1.02,
+      "last": 162.87,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.84,
         "volume": 12569300.0,
         "avg_volume_20": 14967795.0,
-        "dollar_volume": 2048418821.0,
-        "avg_dollar_volume": 2439301551.15,
+        "dollar_volume": 2047161891.0,
+        "avg_dollar_volume": 2437804771.65,
         "dollar_volume_label": "2.0B$",
         "avg_dollar_volume_label": "2.4B$",
         "grade": "medium",
@@ -148,7 +148,7 @@
       "liq_grade": "medium",
       "liq_grade_ar": "متوسط",
       "tv_url": "https://www.tradingview.com/chart/?symbol=XOM",
-      "tg_share": "https://t.me/share/url?url=&text=XOM%20راقب دخول%0Aالآن%20162.97%20وقف%20156.41%20هدف%20174.78%0Aسيولة%20متوسط%20RVOL%20x0.84"
+      "tg_share": "https://t.me/share/url?url=&text=XOM%20راقب دخول%0Aالآن%20162.87%20وقف%20156.41%20هدف%20174.5%0Aسيولة%20متوسط%20RVOL%20x0.84"
     },
     {
       "symbol": "CVX",
@@ -233,6 +233,20 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=WBD"
     },
     {
+      "symbol": "NU",
+      "name": "Nu Holdings Ltd.",
+      "last": 13.63,
+      "change_pct": 0.07,
+      "ref": 13.62,
+      "rth_close": 13.62,
+      "volume": 62807015.0,
+      "dollar_volume": 856059614.45,
+      "dollar_volume_label": "856.1M$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=NU"
+    },
+    {
       "symbol": "AR",
       "name": "Antero Resources Corporation",
       "last": 35.66,
@@ -251,27 +265,27 @@
   "gainers_session_ar": "Premarket الآن (قبل الافتتاح)",
   "movers": [
     {
-      "symbol": "META",
-      "change_pct": -2.31,
-      "last": 726.9,
-      "rvol": 1.37,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "22.1B$"
-    },
-    {
       "symbol": "AMD",
-      "change_pct": -2.29,
-      "last": 600.56,
+      "change_pct": -2.31,
+      "last": 600.42,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "9.8B$"
     },
     {
+      "symbol": "META",
+      "change_pct": -2.3,
+      "last": 726.98,
+      "rvol": 1.37,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "22.1B$"
+    },
+    {
       "symbol": "COIN",
-      "change_pct": -1.45,
-      "last": 195.26,
+      "change_pct": -1.51,
+      "last": 195.14,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -279,8 +293,8 @@
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.43,
-      "last": 349.93,
+      "change_pct": -1.35,
+      "last": 350.19,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
@@ -297,30 +311,30 @@
     },
     {
       "symbol": "NVDA",
-      "change_pct": -1.12,
-      "last": 222.97,
+      "change_pct": -1.14,
+      "last": 222.94,
       "rvol": 0.68,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "19.9B$"
     },
     {
-      "symbol": "XOM",
-      "change_pct": 1.08,
-      "last": 162.97,
-      "rvol": 0.84,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "2.0B$"
+      "symbol": "PLTR",
+      "change_pct": -1.03,
+      "last": 189.81,
+      "rvol": 1.26,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "6.6B$"
     },
     {
-      "symbol": "TSLA",
-      "change_pct": -1.04,
-      "last": 376.18,
-      "rvol": 0.86,
-      "grade": "medium",
-      "grade_ar": "متوسط",
-      "dollar_volume_label": "12.6B$"
+      "symbol": "QQQ",
+      "change_pct": -1.02,
+      "last": 733.62,
+      "rvol": 1.01,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "24.3B$"
     }
   ],
   "performance": {
@@ -331,7 +345,7 @@
       "pnl_sar": 0.0,
       "text": "لا صفقات مسجّلة بعد"
     },
-    "alerts_today": 77,
+    "alerts_today": 78,
     "recent_actions": [],
     "stop_discipline_pct": null
   },
