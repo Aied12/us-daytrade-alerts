@@ -1412,7 +1412,7 @@
         box.innerHTML=`<div class="empty">لا قنص ${hint?`(${hint}) `:''}الآن ضمن $0.30–$8</div>`;
         return;
       }
-      const sig=SNIPER_FILTER+'|'+list.map(r=>`${r.symbol}:${r.change_pct}:${r.impact}:${r.has_news?1:0}:${r.score||0}`).join('|');
+      const sig=SNIPER_FILTER+'|'+list.map(r=>`${r.symbol}:${r.change_pct}:${r.impact}:${r.has_news?1:0}:${r.score||0}:${r.appeared_ts||0}`).join('|');
       if(box.dataset.sig===sig) return;
       box.dataset.sig=sig;
       box.innerHTML=list.map(r=>{
@@ -1423,6 +1423,8 @@
         const href=r.news_url||r.tv_url||'#';
         const px=Number(r.last||0);
         const pxTxt=px>0 && px<1 ? px.toFixed(4) : px.toFixed(2);
+        const appearTxt = r.appeared_ar
+          || (r.appeared_ts ? fmtSniperAppear(r.appeared_ts) : '');
         return `<div class="scan-item">
           <div class="row">
             <span class="sym">${esc(r.symbol)} <span class="${clsChg(r.change_pct)}" data-live-chg="${esc(r.symbol)}">${r.change_pct>0?'+':''}${esc(r.change_pct)}%</span></span>
@@ -1434,9 +1436,9 @@
           </div>
           <div class="muted">الآن $<span data-live-px="${esc(r.symbol)}">${esc(pxTxt)}</span>
             ${r.dollar_volume_label?` · ${esc(r.dollar_volume_label)}`:''}
-            ${r.price_band_ar?` · ${esc(r.price_band_ar)}`:''}
             ${r.session_ar?` · ${esc(r.session_ar)}`:''}
           </div>
+          ${appearTxt?`<div class="muted" style="margin-top:4px">${esc(appearTxt)}</div>`:''}
           <div class="alert">${esc(r.alert_ar||'')}</div>
           <div style="margin-top:4px">${cats}</div>
           ${newsLine}
@@ -1446,6 +1448,25 @@
         </div>`;
       }).join('');
       });
+    }
+
+    function fmtSniperAppear(ts){
+      const t=Number(ts);
+      if(!Number.isFinite(t) || t<=0) return '';
+      const sec=Math.max(0, Math.floor(Date.now()/1000 - t));
+      let ago='الآن';
+      if(sec>=90 && sec<3600) ago=`منذ ${Math.floor(sec/60)} دقيقة`;
+      else if(sec>=45 && sec<90) ago='منذ دقيقة';
+      else if(sec>=3600 && sec<86400){
+        const h=Math.floor(sec/3600), m=Math.floor((sec%3600)/60);
+        ago=m?`منذ ${h}س ${m}د`:`منذ ${h} ساعة`;
+      }else if(sec>=86400) ago=`منذ ${Math.floor(sec/86400)} يوم`;
+      try{
+        const clock=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Riyadh',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(t*1000));
+        return `ظهر ${ago} · ${clock}`;
+      }catch(e){
+        return `ظهر ${ago}`;
+      }
     }
 
     function filteredCatalystNews(news){

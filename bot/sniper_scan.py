@@ -9,15 +9,24 @@ Style inspired by selective “قَنص السنتات” day trading:
 
 from __future__ import annotations
 
+import json
+from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+import requests
 
 from bot.catalyst_scan import enrich_news_item, impact_score_1_5
 from bot.gainers import _money, session_label_ar, session_phase, _screener_symbols
 from bot.cacheutil import cached_call
-from concurrent.futures import ThreadPoolExecutor, as_completed
-import requests
 
 UA = {"User-Agent": "Mozilla/5.0"}
+ROOT = Path(__file__).resolve().parent.parent
+SEEN_PATH = ROOT / "data" / "sniper_seen.json"
+RIYADH = ZoneInfo("Asia/Riyadh")
+NY = ZoneInfo("America/New_York")
 
 # Price band: cheap / near-penny to low single-digit (not APA-style mid/large)
 SNIPER_MIN_PRICE = 0.30
@@ -29,6 +38,87 @@ SNIPER_MIN_CHG_PRE = 6.0
 # Participation — softer than main board, but not empty prints
 SNIPER_MIN_DOLLAR = 400_000
 SNIPER_MIN_DOLLAR_HOT = 200_000  # if move is huge
+# Drop first-seen entries older than this — next session starts clean
+SEEN_TTL_SEC = 20 * 3600
+
+
+def _load_seen() -> dict[str, float]:
+    try:
+        data = json.loads(SEEN_PATH.read_text(encoding="utf-8"))
+        if not isinstance(data, dict):
+            return {}
+        now = datetime.now(timezone.utc).timestamp()
+        return {
+            str(k).upper(): float(v)
+            for k, v in data.items()
+            if float(v) > now - SEEN_TTL_SEC
+        }
+    except Exception:
+        return {}
+
+
+def _save_seen(seen: dict[str, float]) -> None:
+    try:
+        SEEN_PATH.parent.mkdir(parents=True, exist_ok=True)
+        items = sorted(seen.items(), key=lambda kv: kv[1], reverse=True)[:200]
+        SEEN_PATH.write_text(
+            json.dumps(dict(items), ensure_ascii=False),
+            encoding="utf-8",
+        )
+    except Exception:
+        pass
+
+
+def _stamp_appeared(ts: float) -> dict[str, Any]:
+    """Clock + relative Arabic label for first appearance on sniper board."""
+    dt = datetime.fromtimestamp(ts, tz=timezone.utc)
+    local = dt.astimezone(RIYADH)
+    ny = dt.astimezone(NY)
+    now = datetime.now(timezone.utc).timestamp()
+    sec = max(0, int(now - ts))
+    if sec < 45:
+        ago = "الآن"
+    elif sec < 90:
+        ago = "منذ دقيقة"
+    elif sec < 3600:
+        ago = f"منذ {sec // 60} دقيقة"
+    elif sec < 86400:
+        h = sec // 3600
+        m = (sec % 3600) // 60
+        ago = f"منذ {h}س {m}د" if m else f"منذ {h} ساعة"
+    else:
+        ago = f"منذ {sec // 86400} يوم"
+    clock = local.strftime("%H:%M")
+    return {
+        "appeared_ts": int(ts),
+        "appeared_at": dt.isoformat(),
+        "appeared_local": local.strftime("%Y-%m-%d %H:%M %Z"),
+        "appeared_ny": ny.strftime("%H:%M %Z"),
+        "appeared_clock_ar": clock,
+        "appeared_ago_ar": ago,
+        "appeared_ar": f"ظهر {ago} · {clock}",
+    }
+
+
+def track_sniper_appearances(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Persist first-seen time per symbol and attach appeared_* fields."""
+    seen = _load_seen()
+    now = datetime.now(timezone.utc).timestamp()
+    dirty = False
+    out: list[dict[str, Any]] = []
+    for row in rows:
+        sym = str(row.get("symbol") or "").upper()
+        if not sym:
+            continue
+        if sym not in seen:
+            seen[sym] = now
+            dirty = True
+        stamped = dict(row)
+        stamped.update(_stamp_appeared(float(seen[sym])))
+        out.append(stamped)
+    if dirty or rows:
+        _save_seen(seen)
+    return out
 
 
 def _sniper_live(symbol: str) -> dict[str, Any] | None:
@@ -256,4 +346,4 @@ def build_sniper_scanner(
         seen.add(sym)
 
     out.sort(key=lambda x: (1 if x.get("has_news") else 0, float(x.get("score") or 0), float(x.get("change_pct") or 0)), reverse=True)
-    return out[:limit]
+    return track_sniper_appearances(out[:limit])
