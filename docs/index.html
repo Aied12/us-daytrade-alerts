@@ -1010,6 +1010,9 @@
       lastUrgent=new Set(urgent);
     }
     function renderAll(){
+      withPreservedScroll(()=>_renderAllBody());
+    }
+    function _renderAllBody(){
       const d=DATA; if(!d) return;
       const ok=!!(d.status&&d.status.ok);
       document.getElementById('alive').textContent=ok?'شغال':'تحقق';
@@ -1110,11 +1113,15 @@
     function renderMomentum(rows){
       const box=document.getElementById('momentumList');
       if(!box) return;
+      withPreservedScroll(()=>{
       const list=rows||[];
       if(!list.length){
         box.innerHTML='<div class="empty">لا زخم ≥ العتبة الآن — راقب البث</div>';
         return;
       }
+      const sig=list.map(r=>`${r.symbol}:${r.change_pct}:${r.impact}:${r.has_news?1:0}`).join('|');
+      if(box.dataset.sig===sig) return;
+      box.dataset.sig=sig;
       box.innerHTML=list.map(r=>{
         const cats=(r.catalyst_ar||[]).map(c=>`<span class="tag tone-ok">${esc(c)}</span>`).join('');
         const newsLine=r.news_title_ar
@@ -1141,6 +1148,7 @@
           </div>
         </div>`;
       }).join('');
+      });
     }
 
     function filteredCatalystNews(news){
@@ -1154,9 +1162,13 @@
     function renderNewsList(news){
       const newsBox=document.getElementById('newsList');
       if(!newsBox) return;
+      withPreservedScroll(()=>{
       NEWS_CACHE=news||NEWS_CACHE;
       const list=filteredCatalystNews(NEWS_CACHE);
       const sentCls={pos:'sent-pos',neg:'sent-neg',neu:'sent-neu'};
+      const sig=list.map(n=>`${n.id||n.symbol}:${n.impact}:${n.title_ar||n.title||''}`).join('|').slice(0,1200);
+      if(newsBox.dataset.sig===sig && newsBox.querySelector('.news-item')) return;
+      newsBox.dataset.sig=sig;
       newsBox.innerHTML = list.length ? list.map(n=>{
         const sent=n.sentiment||'neu';
         const title=n.title_ar||n.title||'';
@@ -1187,6 +1199,7 @@
           </a>
         </article>`;
       }).join('') : '<div class="empty">لا محفزات ضمن الفلتر الحالي</div>';
+      });
     }
 
     async function pollNewsLive(){
@@ -1317,6 +1330,7 @@
     function renderGainersTable(){
       const body=document.getElementById('gainersBody');
       if(!body) return;
+      withPreservedScroll(()=>{
       const gmin=(DATA&&DATA.gainers_min_price)!=null?Number(DATA.gainers_min_price):5;
       let rows = GAINERS_STATE.map(g=>{
         const q=LIVE_CACHE[g.symbol];
@@ -1338,6 +1352,10 @@
       const keep={};
       rows.forEach(r=>keep[r.symbol]=r);
       GAINERS_STATE = GAINERS_STATE.filter(g=>keep[g.symbol]).map(g=>keep[g.symbol]||g);
+      // تجنّب إعادة الرسم إن لم يتغيّر ترتيب/قيم الصفوف بشكل جوهري
+      const sig = rows.map(g=>`${g.symbol}:${Number(g.last).toFixed(2)}:${Number(g.change_pct).toFixed(2)}`).join('|');
+      if(body.dataset.sig===sig && body.querySelector('tr[data-calc-sym]')) return;
+      body.dataset.sig=sig;
       body.innerHTML = rows.length ? rows.map((g,i)=>`
         <tr data-gainer="${esc(g.symbol)}" data-calc-sym="${esc(g.symbol)}" class="calc-clickable" title="اضغط للتطبيق على حاسبة الاستراتيجية">
           <td>${i+1}</td>
@@ -1351,18 +1369,19 @@
         btn.addEventListener('click',(ev)=>{
           ev.preventDefault();
           ev.stopPropagation();
-          applyStockToCalc(btn.getAttribute('data-apply-calc'), {preferOppEntry:false});
+          applyStockToCalc(btn.getAttribute('data-apply-calc'), {preferOppEntry:false, scroll:true});
         });
       });
       body.querySelectorAll('tr[data-calc-sym]').forEach(tr=>{
         tr.addEventListener('click',(ev)=>{
           if(ev.target && ev.target.closest && ev.target.closest('button,a')) return;
-          applyStockToCalc(tr.getAttribute('data-calc-sym'), {preferOppEntry:false});
+          applyStockToCalc(tr.getAttribute('data-calc-sym'), {preferOppEntry:false, scroll:true});
         });
       });
       if(CALC_SYM){
         body.querySelectorAll(`[data-calc-sym="${CALC_SYM}"]`).forEach(el=>el.classList.add('calc-picked'));
       }
+      });
     }
 
     function syncGainersAfterQuotes(){
