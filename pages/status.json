@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T13:35:20.104698+00:00",
-  "generated_ts": 1790256920,
-  "generated_local": "2026-09-24 16:35 +03",
+  "generated_at": "2026-09-24T13:36:15.277819+00:00",
+  "generated_ts": 1790256975,
+  "generated_local": "2026-09-24 16:36 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T13:35:20.104592+00:00",
+    "updated_at": "2026-09-24T13:36:15.277708+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,39 +23,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.46,
+    "avg_change_pct": -0.47,
     "details": {
       "SPY": {
-        "last": 764.72,
-        "change_pct": -0.4,
-        "rsi": 44.6
+        "last": 764.63,
+        "change_pct": -0.41,
+        "rsi": 44.7
       },
       "QQQ": {
-        "last": 735.45,
-        "change_pct": -0.78,
-        "rsi": 61.3
+        "last": 735.84,
+        "change_pct": -0.72,
+        "rsi": 61.8
       },
       "IWM": {
-        "last": 281.32,
-        "change_pct": -0.21,
-        "rsi": 24.9
+        "last": 281.09,
+        "change_pct": -0.29,
+        "rsi": 24.8
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.4,
-        "rsi": 44.6
+        "change_pct": -0.41,
+        "rsi": 44.7
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.78,
-        "rsi": 61.3
+        "change_pct": -0.72,
+        "rsi": 61.8
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.21,
-        "rsi": 24.9
+        "change_pct": -0.29,
+        "rsi": 24.8
       }
     ],
     "no_trade_today": false,
@@ -68,8 +68,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 23079,
-    "ny_time": "09:35:20",
+    "seconds_left": 23024,
+    "ny_time": "09:36:15",
     "open": "09:30",
     "close": "16:00"
   },
@@ -77,36 +77,36 @@
     "strongest": [
       {
         "name": "Communication",
-        "change_pct": 1.26
-      },
-      {
-        "name": "Financials",
-        "change_pct": 0.85
+        "change_pct": 1.28
       },
       {
         "name": "Energy",
-        "change_pct": 0.55
+        "change_pct": 0.71
+      },
+      {
+        "name": "Financials",
+        "change_pct": 0.65
       }
     ],
     "weakest": [
       {
         "name": "Industrial",
-        "change_pct": -0.9
+        "change_pct": -1.04
       },
       {
         "name": "Technology",
-        "change_pct": -0.36
+        "change_pct": -0.22
       },
       {
         "name": "Consumer",
-        "change_pct": -0.09
+        "change_pct": -0.16
       }
     ]
   },
   "style": {
-    "growth_avg": 0.02,
-    "value_avg": 0.13,
-    "leader": "قيمة",
+    "growth_avg": 0.12,
+    "value_avg": 0.1,
+    "leader": "نمو",
     "growth_count": 10,
     "value_count": 11
   },
@@ -116,24 +116,26 @@
     "P:درجة سيولة ضعيفة",
     "NBIS:درجة سيولة ضعيفة",
     "CRCL:درجة سيولة ضعيفة",
-    "NFLX:زخم ضعيف (+0.76% < 0.85%)",
-    "JPM:زخم ضعيف (+0.41% < 0.85%)",
-    "BAC:زخم ضعيف (+0.70% < 0.85%)",
-    "XOM:زخم ضعيف (+0.55% < 0.85%)",
-    "DIS:تداول بطيء اليوم ($30M · RVOL×0.04)",
-    "COIN:درجة سيولة ضعيفة"
+    "JPM:زخم ضعيف (+0.22% < 0.85%)",
+    "BAC:زخم ضعيف (+0.63% < 0.85%)",
+    "PLTR:زخم ضعيف (+0.07% < 0.85%)",
+    "UBER:زخم ضعيف (+0.78% < 0.85%)",
+    "NFLX:زخم ضعيف (+0.69% < 0.85%)",
+    "DIS:تداول بطيء اليوم ($37M · RVOL×0.04)",
+    "COIN:درجة سيولة ضعيفة",
+    "META:درجة سيولة ضعيفة"
   ],
   "gainers": [
     {
       "symbol": "P",
       "name": "Everpure, Inc.",
-      "last": 124.21,
-      "change_pct": 13.2,
+      "last": 124.8,
+      "change_pct": 13.73,
       "ref": 109.73,
-      "rth_close": 124.22,
-      "volume": 1292237.0,
-      "dollar_volume": 160508757.77,
-      "dollar_volume_label": "160.5M$",
+      "rth_close": 124.8,
+      "volume": 1347836.0,
+      "dollar_volume": 168209932.8,
+      "dollar_volume_label": "168.2M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=P"
@@ -141,13 +143,13 @@
     {
       "symbol": "NBIS",
       "name": "Nebius Group N.V.",
-      "last": 235.26,
-      "change_pct": 3.81,
+      "last": 238.13,
+      "change_pct": 5.08,
       "ref": 226.61,
-      "rth_close": 235.25,
-      "volume": 2304451.0,
-      "dollar_volume": 542145142.26,
-      "dollar_volume_label": "542.1M$",
+      "rth_close": 238.13,
+      "volume": 2584320.0,
+      "dollar_volume": 615404121.6,
+      "dollar_volume_label": "615.4M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
@@ -158,51 +160,66 @@
   "movers": [
     {
       "symbol": "P",
-      "change_pct": 11.35,
-      "last": 122.1,
-      "rvol": 0.19,
+      "change_pct": 13.55,
+      "last": 124.51,
+      "rvol": 0.2,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "162.2M$"
+      "dollar_volume_label": "167.8M$"
     },
     {
       "symbol": "NBIS",
-      "change_pct": 4.56,
-      "last": 236.95,
-      "rvol": 0.16,
+      "change_pct": 3.84,
+      "last": 235.31,
+      "rvol": 0.18,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "553.5M$"
+      "dollar_volume_label": "612.1M$"
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.97,
-      "last": 348.0,
+      "change_pct": -1.92,
+      "last": 348.16,
       "rvol": 0.08,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "721.6M$"
+      "dollar_volume_label": "743.7M$"
     },
     {
       "symbol": "DIS",
-      "change_pct": 1.77,
-      "last": 105.29,
+      "change_pct": 1.87,
+      "last": 105.39,
       "rvol": 0.04,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "29.7M$"
+      "dollar_volume_label": "37.0M$"
     },
     {
       "symbol": "NVDA",
-      "change_pct": -1.69,
-      "last": 221.69,
+      "change_pct": -1.6,
+      "last": 221.9,
       "rvol": 0.05,
       "grade": "weak",
       "grade_ar": "ضعيف",
-      "dollar_volume_label": "1.3B$"
+      "dollar_volume_label": "1.4B$"
     }
   ],
   "news": [
+    {
+      "symbol": "MARKET",
+      "title": "Our top 10 things to watch in the stock market Thursday",
+      "title_ar": "أفضل 10 أشياء يجب مشاهدتها في سوق الأسهم يوم الخميس",
+      "summary": "The Trump-Xi summit kicks off today, and Meta delivers a big boost to its hardware lineup.",
+      "summary_ar": "",
+      "url": "https://www.cnbc.com/2026/09/24/our-top-10-things-to-watch-in-the-stock-market-thursday.html",
+      "publisher": "CNBC",
+      "published": "2026-09-24 13:24 UTC",
+      "published_ts": 1790256284,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "72320fe1b7c43900bd2f3ea23667fcbb5615df77",
+      "source": "finnhub:general"
+    },
     {
       "symbol": "MARKET",
       "title": "The Elmet Group to Acquire 4.99% Stake in Masan High-Tech Materials and Enter Multi-Year Tungsten Supply Partnership for the U.S. Market",
@@ -546,21 +563,6 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "f5250bd6cc29f52848451ffeb0838905137c48d1",
-      "source": "finnhub:crypto"
-    },
-    {
-      "symbol": "MARKET",
-      "title": "NYSE, Blockchain.com in tie-up to bring tokenized US stocks to crypto users",
-      "title_ar": "بورصة نيويورك، Blockchain.com في شراكة لجلب الأسهم الأمريكية الرمزية لمستخدمي العملات المشفرة",
-      "summary": "Blockchain.com users could gain access to tokenized US stocks and ETFs through NYSE’s planned digital trading platform under a new partnership, as bourses rush to deliver new trading.",
-      "summary_ar": "",
-      "url": "https://cointelegraph.com/news/nyse-blockchaincom-team-up-to-bring-tokenized-us-stocks-to-crypto-users?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "publisher": "Cointelegraph",
-      "published": "2026-09-23 15:56 UTC",
-      "published_ts": 1790178980,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "ea4a4fac9530225d46cf328c28e3470e965a39a9",
       "source": "finnhub:crypto"
     }
   ],
