@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:52:16.888057+00:00",
-  "generated_ts": 1790254336,
-  "generated_local": "2026-09-24 15:52 +03",
+  "generated_at": "2026-09-24T12:53:19.643118+00:00",
+  "generated_ts": 1790254399,
+  "generated_local": "2026-09-24 15:53 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:52:16.887912+00:00",
+    "updated_at": "2026-09-24T12:53:19.642960+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,7 +23,7 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.62,
+    "avg_change_pct": -0.61,
     "details": {
       "SPY": {
         "last": 763.84,
@@ -31,13 +31,13 @@
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 734.04,
-        "change_pct": -0.97,
+        "last": 734.06,
+        "change_pct": -0.96,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 280.89,
-        "change_pct": -0.37,
+        "last": 280.896,
+        "change_pct": -0.36,
         "rsi": 29.0
       }
     },
@@ -49,12 +49,12 @@
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.97,
+        "change_pct": -0.96,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.37,
+        "change_pct": -0.36,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 2263,
-    "ny_time": "08:52:16",
+    "seconds_left": 2200,
+    "ny_time": "08:53:19",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,30 +81,30 @@
       },
       {
         "name": "Communication",
-        "change_pct": 0.09
+        "change_pct": 0.13
       },
       {
-        "name": "Financials",
-        "change_pct": -0.31
+        "name": "Consumer",
+        "change_pct": -0.32
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.14
+        "change_pct": -1.13
       },
       {
         "name": "Industrial",
         "change_pct": -0.39
       },
       {
-        "name": "Consumer",
-        "change_pct": -0.38
+        "name": "Financials",
+        "change_pct": -0.33
       }
     ]
   },
   "style": {
-    "growth_avg": -1.14,
+    "growth_avg": -1.11,
     "value_avg": 0.07,
     "leader": "قيمة",
     "growth_count": 10,
@@ -125,35 +125,35 @@
         "تقلّب عالي"
       ],
       "reason": "ارتداد لملء فجوة هابطة: فجوة -2.2% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 48 | تقلّب عالي: ATR% 3.7",
-      "entry": 44.49,
+      "entry": 44.34,
       "stop": 40.85,
-      "target": 51.04,
-      "shares": 32,
-      "risk_sar": 436.8,
+      "target": 50.62,
+      "shares": 34,
+      "risk_sar": 444.98,
       "allowed": true,
-      "change_pct": 1.82,
-      "last": 44.49,
+      "change_pct": 1.46,
+      "last": 44.34,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 1.02,
         "volume": 5587000.0,
         "avg_volume_20": 5459010.0,
-        "dollar_volume": 248593006.3,
-        "avg_dollar_volume": 242898104.05,
-        "dollar_volume_label": "248.6M$",
-        "avg_dollar_volume_label": "242.9M$",
+        "dollar_volume": 247727580.0,
+        "avg_dollar_volume": 242052503.4,
+        "dollar_volume_label": "247.7M$",
+        "avg_dollar_volume_label": "242.1M$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×1.0 · اليوم 248.6M$ · متوسط 242.9M$"
+        "label": "RVOL ×1.0 · اليوم 247.7M$ · متوسط 242.1M$"
       },
       "rvol": 1.02,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 3.66,
-      "flow_score": 6.01,
+      "flow_score": 4.83,
       "flow_ok": true,
       "tv_url": "https://www.tradingview.com/chart/?symbol=APA",
-      "tg_share": "https://t.me/share/url?url=&text=APA%20فكّر في شراء قصير المدى%0Aالآن%2044.49%20دخول%2044.49%20وقف%2040.85%20هدف%2051.04%0Aسيولة%20قوي%20RVOL%20x1.02%20زخم%20+1.82%"
+      "tg_share": "https://t.me/share/url?url=&text=APA%20فكّر في شراء قصير المدى%0Aالآن%2044.34%20دخول%2044.34%20وقف%2040.85%20هدف%2050.62%0Aسيولة%20قوي%20RVOL%20x1.02%20زخم%20+1.46%"
     },
     {
       "symbol": "RRR",
@@ -202,22 +202,21 @@
   ],
   "opps_note_ar": "يُعرض فقط ما فيه زخم يومي + RVOL مرتفع + سيولة كافية — البطيء يُستبعد",
   "opps_rejected_slow": [
-    "UBER:زخم ضعيف (+0.01% < 0.55%)",
-    "NFLX:زخم ضعيف (+0.14% < 0.55%)",
-    "BAC:زخم ضعيف (+0.21% < 0.55%)",
+    "UBER:زخم ضعيف (+0.17% < 0.55%)",
+    "BAC:زخم ضعيف (+0.16% < 0.55%)",
     "DIS:زخم ضعيف (+0.04% < 0.55%)"
   ],
   "gainers": [
     {
       "symbol": "APA",
       "name": "APA Corporation",
-      "last": 44.49,
-      "change_pct": 1.82,
+      "last": 44.34,
+      "change_pct": 1.46,
       "ref": 43.7,
       "rth_close": 43.7,
       "volume": 5586877.0,
-      "dollar_volume": 248560157.73,
-      "dollar_volume_label": "248.6M$",
+      "dollar_volume": 247722126.18,
+      "dollar_volume_label": "247.7M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=APA"
@@ -241,58 +240,58 @@
   "gainers_session_ar": "Premarket الآن (قبل الافتتاح)",
   "movers": [
     {
-      "symbol": "APA",
-      "change_pct": 1.82,
-      "last": 44.49,
-      "rvol": 1.02,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "248.6M$"
-    },
-    {
-      "symbol": "PLTR",
-      "change_pct": -1.79,
-      "last": 188.35,
-      "rvol": 1.26,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "6.6B$"
-    },
-    {
       "symbol": "META",
-      "change_pct": -1.69,
-      "last": 731.5,
+      "change_pct": -1.67,
+      "last": 731.69,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "22.2B$"
     },
     {
+      "symbol": "PLTR",
+      "change_pct": -1.66,
+      "last": 188.6,
+      "rvol": 1.26,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "6.6B$"
+    },
+    {
       "symbol": "AVGO",
-      "change_pct": -1.43,
-      "last": 349.93,
+      "change_pct": -1.5,
+      "last": 349.66,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "8.2B$"
     },
     {
-      "symbol": "AMZN",
-      "change_pct": -1.27,
-      "last": 246.11,
-      "rvol": 1.26,
+      "symbol": "APA",
+      "change_pct": 1.46,
+      "last": 44.34,
+      "rvol": 1.02,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "10.8B$"
+      "dollar_volume_label": "247.7M$"
     },
     {
       "symbol": "COIN",
       "change_pct": -1.23,
-      "last": 195.7,
+      "last": 195.69,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
       "dollar_volume_label": "1.4B$"
+    },
+    {
+      "symbol": "AMZN",
+      "change_pct": -1.22,
+      "last": 246.24,
+      "rvol": 1.26,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "10.8B$"
     }
   ],
   "news": [
