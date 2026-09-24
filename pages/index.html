@@ -506,17 +506,23 @@
     };
 
     const LIVE_CACHE = {};
-    let liveRotate = 0;
+    let liveBusy = false;
+    let liveWave = 0;
+    const LIVE_JSON_URLS = [
+      './prices-live.json',
+      'https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/prices-live.json',
+      './live.json',
+    ];
 
     function allPageSymbols(){
       const set=new Set();
-      (DATA&&DATA.opportunities||[]).forEach(o=>o.symbol&&set.add(o.symbol));
-      (DATA&&DATA.gainers||[]).forEach(g=>g.symbol&&set.add(g.symbol));
-      (DATA&&DATA.movers||[]).forEach(m=>m.symbol&&set.add(m.symbol));
-      ((DATA&&DATA.market&&DATA.market.indexes)||[]).forEach(x=>x.symbol&&set.add(x.symbol));
+      (DATA&&DATA.opportunities||[]).forEach(o=>o.symbol&&set.add(String(o.symbol).toUpperCase()));
+      (DATA&&DATA.gainers||[]).forEach(g=>g.symbol&&set.add(String(g.symbol).toUpperCase()));
+      (DATA&&DATA.movers||[]).forEach(m=>m.symbol&&set.add(String(m.symbol).toUpperCase()));
+      ((DATA&&DATA.market&&DATA.market.indexes)||[]).forEach(x=>x.symbol&&set.add(String(x.symbol).toUpperCase()));
       ['SPY','QQQ','IWM'].forEach(s=>set.add(s));
       document.querySelectorAll('[data-live-px]').forEach(n=>{
-        const s=n.getAttribute('data-live-px'); if(s) set.add(s);
+        const s=(n.getAttribute('data-live-px')||'').toUpperCase(); if(s) set.add(s);
       });
       return [...set];
     }
@@ -524,101 +530,152 @@
     function renderLiveTape(){
       const box=document.getElementById('liveTape');
       if(!box) return;
-      const syms=allPageSymbols().slice(0,24);
-      box.innerHTML = syms.map(s=>{
-        const q=LIVE_CACHE[s];
-        const last=q?q.last.toFixed(2):'—';
-        const chg=q?q.change_pct:null;
-        const cls=chg==null?'':(chg>=0?'up':'down');
-        const chgTxt=chg==null?'…':((chg>=0?'+':'')+chg.toFixed(2)+'%');
-        return `<div class="m">
-          <div class="row"><b>${esc(s)}</b><span class="${cls}" data-live-chg="${esc(s)}">${chgTxt}</span></div>
-          <div class="live-price" style="font-size:1.15rem" >$<span data-live-px="${esc(s)}">${last}</span></div>
-        </div>`;
-      }).join('') || '<div class="empty">لا أسهم</div>';
+      const syms=allPageSymbols().slice(0,30);
+      // Don't wipe DOM every time if already built — keep nodes for smooth updates
+      if(!box.dataset.built || box.querySelectorAll('[data-live-px]').length!==syms.length){
+        box.innerHTML = syms.map(s=>{
+          const q=LIVE_CACHE[s];
+          const last=q?q.last.toFixed(2):'—';
+          const chg=q?q.change_pct:null;
+          const cls=chg==null?'muted':(chg>=0?'up':'down');
+          const chgTxt=chg==null?'…':((chg>=0?'+':'')+chg.toFixed(2)+'%');
+          return `<div class="m" data-tape="${esc(s)}">
+            <div class="row"><b>${esc(s)}</b><span class="${cls}" data-live-chg="${esc(s)}">${chgTxt}</span></div>
+            <div class="live-price" style="font-size:1.15rem">$<span data-live-px="${esc(s)}">${last}</span></div>
+          </div>`;
+        }).join('') || '<div class="empty">لا أسهم</div>';
+        box.dataset.built='1';
+      }
     }
 
     function applyQuoteToDom(sym, q){
       if(!q || !(q.last>0)) return;
+      sym=String(sym).toUpperCase();
+      const prev=LIVE_CACHE[sym];
+      // ignore unchanged to reduce flicker, but still write first time
+      if(prev && Math.abs(prev.last-q.last)<0.0001 && Math.abs((prev.change_pct||0)-(q.change_pct||0))<0.001) return;
       LIVE_CACHE[sym]=q;
       document.querySelectorAll('[data-live-px="'+sym+'"]').forEach(el=>{
         el.textContent = Number(q.last).toFixed(2);
+        el.style.transition='color .15s';
+        el.style.color = (prev && q.last>prev.last) ? 'var(--ok)' : ((prev && q.last<prev.last) ? 'var(--bad)' : '');
+        setTimeout(()=>{ el.style.color=''; }, 700);
       });
       document.querySelectorAll('[data-live-chg="'+sym+'"]').forEach(el=>{
         el.textContent=(q.change_pct>=0?'+':'')+Number(q.change_pct).toFixed(2)+'%';
-        el.classList.remove('up','down');
+        el.classList.remove('up','down','muted');
         el.classList.add(q.change_pct>=0?'up':'down');
       });
     }
 
-    async function fetchBatchLive(){
-      // 1) same-origin prices-live.json (all symbols at once)
-      try{
-        const r=await fetch('./prices-live.json?ts='+Date.now(),{cache:'no-store'});
-        if(r.ok){
-          const j=await r.json();
-          const quotes=j.quotes||{};
-          let n=0;
-          Object.keys(quotes).forEach(sym=>{
-            const row=quotes[sym];
-            if(row&&row.last){
-              applyQuoteToDom(sym,{last:Number(row.last), change_pct:Number(row.change_pct||0)});
-              n++;
-            }
-          });
-          if(n){
-            const clk=document.getElementById('liveClock');
-            if(clk) clk.textContent=`تم تحديث ${n} سهم · ${new Date().toLocaleTimeString('ar-SA')} · مصدر الأسعار الحية`;
-            renderLiveTape();
-            return true;
-          }
-        }
-      }catch(e){}
-      return false;
+    function parseYahooChart(data){
+      const res0=((data.chart||{}).result||[])[0];
+      if(!res0) throw new Error('empty');
+      const meta=res0.meta||{};
+      const closes=(((res0.indicators||{}).quote||[])[0]||{}).close||[];
+      let last=null;
+      for(let i=closes.length-1;i>=0;i--){ if(closes[i]!=null){ last=Number(closes[i]); break; } }
+      const rth=Number(meta.regularMarketPrice||0);
+      const prev=Number(meta.chartPreviousClose||meta.previousClose||0);
+      if(!(last>0)) last=rth;
+      // Premarket/post: % vs last regular close (rth). RTH: vs previous close.
+      const ref = rth>0 ? rth : prev;
+      const chg = ref ? ((last-ref)/ref)*100 : 0;
+      return {last:Number(last), change_pct:Number(chg), rth, prev, ts:Date.now()};
     }
 
-    async function fetchOneYahoo(sym){
+    async function fetchOneLive(sym){
+      // Prefer jina (works in browser, includes pre/post)
       const jina='https://r.jina.ai/http://query1.finance.yahoo.com/v8/finance/chart/'
         +encodeURIComponent(sym)+'?range=1d&interval=1m&includePrePost=true';
       const r=await fetch(jina,{cache:'no-store', headers:{'Accept':'application/json'}});
-      if(!r.ok) throw new Error('fail');
+      if(!r.ok) throw new Error('jina '+r.status);
       const payload=await r.json();
       let content=(payload.data&&payload.data.content)||payload.content||'';
       if(typeof content==='string'){
         const a=content.indexOf('{'), b=content.lastIndexOf('}');
-        content=content.slice(a,b+1);
-        content=JSON.parse(content);
+        if(a<0||b<=a) throw new Error('parse');
+        content=JSON.parse(content.slice(a,b+1));
       }
-      const res0=((content.chart||{}).result||[])[0];
-      const meta=res0.meta||{};
-      const closes=(((res0.indicators||{}).quote||[])[0]||{}).close||[];
-      let last=null;
-      for(let i=closes.length-1;i>=0;i--){ if(closes[i]!=null){ last=closes[i]; break; } }
-      const rth=Number(meta.regularMarketPrice||0);
-      const prev=Number(meta.chartPreviousClose||meta.previousClose||0);
-      if(last==null) last=rth;
-      const ref=prev>0?prev:(rth>0?rth:last);
-      const chg=ref?((last-ref)/ref)*100:0;
-      return {last:Number(last), change_pct:chg};
+      return parseYahooChart(content);
+    }
+
+    async function fetchBatchLive(){
+      let best=null;
+      for(const base of LIVE_JSON_URLS){
+        try{
+          const r=await fetch(base+(base.includes('?')?'&':'?')+'ts='+Date.now(),{cache:'no-store'});
+          if(!r.ok) continue;
+          const j=await r.json();
+          const age=j.generated_ts ? (Date.now()/1000 - Number(j.generated_ts)) : 9999;
+          if(!best || age < best.age) best={j, age, base};
+        }catch(e){}
+      }
+      if(!best) return {ok:false, age:9999};
+      const quotes=best.j.quotes||{};
+      let n=0;
+      Object.keys(quotes).forEach(sym=>{
+        const row=quotes[sym];
+        if(row&&row.last){
+          applyQuoteToDom(sym,{last:Number(row.last), change_pct:Number(row.change_pct||0), ts:Date.now()});
+          n++;
+        }
+      });
+      return {ok:n>0, age:best.age, n};
+    }
+
+    async function mapPool(items, limit, fn){
+      const ret=[];
+      let i=0;
+      async function worker(){
+        while(i<items.length){
+          const idx=i++;
+          try{ ret[idx]=await fn(items[idx], idx);}catch(e){ ret[idx]=null; }
+        }
+      }
+      await Promise.all(Array.from({length:Math.min(limit,items.length)},()=>worker()));
+      return ret;
+    }
+
+    async function refreshDirect(syms){
+      // Parallel Yahoo-via-jina for true movement between server publishes
+      const list=syms.slice(0, 24);
+      let ok=0;
+      await mapPool(list, 6, async (sym)=>{
+        const q=await fetchOneLive(sym);
+        applyQuoteToDom(sym, q);
+        ok++;
+      });
+      return ok;
     }
 
     async function pollAllPrices(){
-      const ok=await fetchBatchLive();
-      if(ok) return;
-      // fallback: rotate a few symbols via jina so numbers still move
-      const syms=allPageSymbols();
-      if(!syms.length) return;
-      const chunk=3;
-      const start=liveRotate % Math.max(syms.length,1);
-      liveRotate = start + chunk;
-      const slice=syms.slice(start, start+chunk);
-      if(slice.length<chunk) slice.push(...syms.slice(0, chunk-slice.length));
-      for(const sym of slice){
-        try{ applyQuoteToDom(sym, await fetchOneYahoo(sym)); }catch(e){}
+      if(liveBusy) return;
+      liveBusy=true;
+      try{
+        const batch=await fetchBatchLive();
+        const syms=allPageSymbols();
+        renderLiveTape();
+        // Always refresh directly too — batch alone freezes due to Pages cache
+        // Wave through symbols so we don't hammer: full set every other cycle
+        let directN=0;
+        if(liveWave % 2 === 0){
+          directN = await refreshDirect(syms);
+        } else {
+          // smaller wave
+          const start=(liveWave*5)%Math.max(syms.length,1);
+          const slice=[...syms.slice(start,start+8), ...syms.slice(0, Math.max(0, 8-(syms.length-start)))];
+          directN = await refreshDirect([...new Set(slice)]);
+        }
+        liveWave++;
+        const clk=document.getElementById('liveClock');
+        if(clk){
+          clk.textContent = `لحظي: ${directN||batch.n||0} سهم · ${new Date().toLocaleTimeString('ar-SA')}`
+            + (batch.ok?` · ملف ${Math.round(batch.age)}ث`:'');
+        }
+      } finally {
+        liveBusy=false;
       }
-      renderLiveTape();
-      const clk=document.getElementById('liveClock');
-      if(clk) clk.textContent='تحديث جزئي · '+new Date().toLocaleTimeString('ar-SA');
     }
 
     loadPrefs();
@@ -631,8 +688,7 @@
       if(hint) hint.textContent=`تحديث تلقائي · التالي خلال ${refreshIn}ث`;
       tickClocks();
     },1000);
-    // All page prices every 3 seconds
-    setInterval(()=>pollAllPrices(), 3000);
+    setInterval(()=>pollAllPrices(), 5000);
   </script>
 </body>
 </html>
