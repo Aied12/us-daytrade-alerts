@@ -423,6 +423,45 @@
     let CALC_SYM = '';
     let CALC_STOP_USER_EDITED = false;
     let GAINERS_STATE = [];
+    let OPEN_OPP_SYMS = new Set();
+    let LAST_STATUS_TS = 0;
+
+    function withPreservedScroll(fn){
+      const x = window.scrollX || window.pageXOffset || 0;
+      const y = window.scrollY || window.pageYOffset || 0;
+      const active = document.activeElement;
+      const activeId = active && active.id ? active.id : null;
+      const activeTag = active && active.tagName ? active.tagName.toLowerCase() : '';
+      const keepFocus = activeTag==='input' || activeTag==='select' || activeTag==='textarea';
+      try { fn(); }
+      finally {
+        const restore = ()=>{
+          window.scrollTo(x, y);
+          if(keepFocus && activeId){
+            const el=document.getElementById(activeId);
+            if(el && typeof el.focus==='function'){
+              try{ el.focus({preventScroll:true}); }catch(e){ try{ el.focus(); }catch(_){} }
+            }
+          }
+        };
+        restore();
+        requestAnimationFrame(restore);
+        setTimeout(restore, 0);
+      }
+    }
+    function rememberOpenOpps(){
+      OPEN_OPP_SYMS = new Set();
+      document.querySelectorAll('#opps details.opp[open]').forEach(d=>{
+        const s=d.getAttribute('data-calc-sym')||'';
+        if(s) OPEN_OPP_SYMS.add(s.toUpperCase());
+      });
+    }
+    function isMostlyVisible(el){
+      if(!el) return false;
+      const r=el.getBoundingClientRect();
+      const vh=window.innerHeight||document.documentElement.clientHeight||0;
+      return r.top < vh*0.75 && r.bottom > vh*0.15;
+    }
 
     function money2(n){
       const v=Number(n);
@@ -499,8 +538,16 @@
       document.querySelectorAll(`[data-calc-sym="${s}"]`).forEach(el=>el.classList.add('calc-picked'));
       runStrategyCalc();
       const card=document.getElementById('strategyCalcCard');
-      if(card && opts.scroll!==false){
-        card.scrollIntoView({behavior:'smooth', block:'start'});
+      // لا تقفز لأعلى/للحاسبة إلا إذا كانت خارج الشاشة
+      if(card && opts.scroll!==false && !isMostlyVisible(card)){
+        const y=window.scrollY||0;
+        card.scrollIntoView({behavior:'smooth', block:'nearest'});
+        // إن قفز المتصفح بعيداً جداً، أعد قريباً من موضع المستخدم
+        setTimeout(()=>{
+          if(Math.abs((window.scrollY||0)-y) > window.innerHeight){
+            window.scrollTo({top:y, behavior:'auto'});
+          }
+        }, 50);
       }
       toast(`تم تطبيق ${s} على الحاسبة`);
     }
@@ -860,6 +907,8 @@
     function renderOpps(){
       const list=filteredOpps();
       const box=document.getElementById('opps');
+      withPreservedScroll(()=>{
+      rememberOpenOpps();
       if(!list.length){ box.innerHTML='<div class="empty">لا توجد فرص ضمن الفلتر الحالي</div>'; return; }
       box.innerHTML=list.map((o,i)=>{
         const L=o.liquidity||{};
@@ -880,8 +929,10 @@
         const trail=o.trail_offset!=null?o.trail_offset:(o.smart&&o.smart.trail_offset);
         const wait=!!o.wait_1m_confirm;
         const expired=!!(o.expired||(o.smart&&o.smart.expired));
+        const symU=String(o.symbol||'').toUpperCase();
+        const shouldOpen = OPEN_OPP_SYMS.size ? OPEN_OPP_SYMS.has(symU) : i<2;
         return `
-        <details class="opp ${o.urgent?'urgent':''} ${wait?'wait':''} ${expired?'expired':''}" data-calc-sym="${esc(o.symbol)}" ${i<2?'open':''}>
+        <details class="opp ${o.urgent?'urgent':''} ${wait?'wait':''} ${expired?'expired':''}" data-calc-sym="${esc(o.symbol)}" ${shouldOpen?'open':''}>
           <summary>
             <div class="row">
               <span class="sym calc-clickable" data-apply-calc="${esc(o.symbol)}">${esc(o.symbol)} ${o.urgent?'🔥 عاجل':''} ${wait?'⏳ تأكيد':''} ${expired?'⛔ انتهت':''}</span>
@@ -930,7 +981,14 @@
         btn.addEventListener('click',(ev)=>{
           ev.preventDefault();
           ev.stopPropagation();
-          applyStockToCalc(btn.getAttribute('data-apply-calc'));
+          applyStockToCalc(btn.getAttribute('data-apply-calc'), {scroll:true});
+        });
+      });
+      box.querySelectorAll('details.opp').forEach(d=>{
+        d.addEventListener('toggle',()=>{
+          const s=(d.getAttribute('data-calc-sym')||'').toUpperCase();
+          if(!s) return;
+          if(d.open) OPEN_OPP_SYMS.add(s); else OPEN_OPP_SYMS.delete(s);
         });
       });
       if(CALC_SYM){
@@ -939,6 +997,7 @@
       maybeNotify(list);
       renderLiveTape();
       // Don't call pollAllPrices here — it re-enters while busy and freezes levels
+      });
     }
     function maybeNotify(list){
       if(localStorage.getItem(LS.notify)!=='1') return;
