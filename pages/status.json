@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-24T12:40:18.039808+00:00",
-  "generated_ts": 1790253618,
-  "generated_local": "2026-09-24 15:40 +03",
+  "generated_at": "2026-09-24T12:41:24.187880+00:00",
+  "generated_ts": 1790253684,
+  "generated_local": "2026-09-24 15:41 +03",
   "status": {
     "ok": true,
     "telegram": "ping-ok",
     "source": "build_pages",
-    "updated_at": "2026-09-24T12:40:18.039644+00:00",
+    "updated_at": "2026-09-24T12:41:24.187704+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24
@@ -23,38 +23,38 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: محترف",
   "market": {
     "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.71,
+    "avg_change_pct": -0.68,
     "details": {
       "SPY": {
-        "last": 763.3077,
-        "change_pct": -0.59,
+        "last": 763.5404,
+        "change_pct": -0.56,
         "rsi": 53.4
       },
       "QQQ": {
-        "last": 733.2675,
-        "change_pct": -1.07,
+        "last": 733.39,
+        "change_pct": -1.06,
         "rsi": 68.9
       },
       "IWM": {
-        "last": 280.6,
-        "change_pct": -0.47,
+        "last": 280.77,
+        "change_pct": -0.41,
         "rsi": 29.0
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.59,
+        "change_pct": -0.56,
         "rsi": 53.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": -1.07,
+        "change_pct": -1.06,
         "rsi": 68.9
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.47,
+        "change_pct": -0.41,
         "rsi": 29.0
       }
     ],
@@ -68,8 +68,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 2981,
-    "ny_time": "08:40:18",
+    "seconds_left": 2915,
+    "ny_time": "08:41:24",
     "open": "09:30",
     "close": "16:00"
   },
@@ -81,30 +81,30 @@
       },
       {
         "name": "Communication",
-        "change_pct": -0.02
+        "change_pct": -0.01
       },
       {
-        "name": "Consumer",
-        "change_pct": -0.38
+        "name": "Financials",
+        "change_pct": -0.34
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.29
-      },
-      {
-        "name": "Financials",
-        "change_pct": -0.43
+        "change_pct": -1.24
       },
       {
         "name": "Industrial",
         "change_pct": -0.38
+      },
+      {
+        "name": "Consumer",
+        "change_pct": -0.37
       }
     ]
   },
   "style": {
-    "growth_avg": -1.3,
+    "growth_avg": -1.22,
     "value_avg": 0.05,
     "leader": "قيمة",
     "growth_count": 10,
@@ -285,22 +285,22 @@
         "ترتيب متوسطات صاعد",
         "RSI متوازن"
       ],
-      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.03%) | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 62",
-      "entry": 337.28,
+      "reason": "ارتداد VWAP: قرب/فوق VWAP (+0.02%) | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 62",
+      "entry": 337.23,
       "stop": 309.37,
-      "target": 387.52,
+      "target": 387.38,
       "shares": 4,
-      "risk_sar": 418.65,
+      "risk_sar": 417.9,
       "allowed": true,
-      "change_pct": 0.08,
-      "last": 337.28,
+      "change_pct": 0.06,
+      "last": 337.23,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.73,
         "volume": 31587800.0,
         "avg_volume_20": 43477185.0,
-        "dollar_volume": 10653933184.0,
-        "avg_dollar_volume": 14663984956.8,
+        "dollar_volume": 10652353794.0,
+        "avg_dollar_volume": 14661811097.55,
         "dollar_volume_label": "10.7B$",
         "avg_dollar_volume_label": "14.7B$",
         "grade": "weak",
@@ -311,7 +311,7 @@
       "liq_grade": "weak",
       "liq_grade_ar": "ضعيف",
       "tv_url": "https://www.tradingview.com/chart/?symbol=AAPL",
-      "tg_share": "https://t.me/share/url?url=&text=AAPL%20فكّر في شراء قصير المدى%0Aالآن%20337.28%20دخول%20337.28%20وقف%20309.37%20هدف%20387.52%0Aسيولة%20ضعيف%20RVOL%20x0.73"
+      "tg_share": "https://t.me/share/url?url=&text=AAPL%20فكّر في شراء قصير المدى%0Aالآن%20337.23%20دخول%20337.23%20وقف%20309.37%20هدف%20387.38%0Aسيولة%20ضعيف%20RVOL%20x0.73"
     },
     {
       "symbol": "APA",
@@ -396,6 +396,47 @@
       "tg_share": "https://t.me/share/url?url=&text=SECZ%20فكّر في شراء قصير المدى%0Aالآن%2014.36%20دخول%2014.36%20وقف%206.17%20هدف%2029.1%0Aسيولة%20قوي%20RVOL%20x2.52"
     },
     {
+      "symbol": "UBER",
+      "action": "فكّر في شراء قصير المدى",
+      "action_key": "CONSIDER_LONG",
+      "side": "long",
+      "score_100": 68,
+      "urgent": false,
+      "strategies": [
+        "تقاطع متوسطات هابط",
+        "RSI تشبع بيعي + ارتداد",
+        "شمعة: دوجي",
+        "ارتداد من دعم"
+      ],
+      "reason": "تقاطع متوسطات هابط: MA20 قطع MA50 للأسفل | RSI تشبع بيعي + ارتداد: RSI 22 | شمعة: دوجي: دوجي | ارتداد من دعم: دعم≈$69.11 | تقلّب عالي: ATR% 2.9",
+      "entry": 69.43,
+      "stop": 68.55,
+      "target": 71.63,
+      "shares": 43,
+      "risk_sar": 141.9,
+      "allowed": true,
+      "change_pct": 0.01,
+      "last": 69.43,
+      "session_phase": "pre",
+      "liquidity": {
+        "rvol": 0.96,
+        "volume": 17977000.0,
+        "avg_volume_20": 18700240.0,
+        "dollar_volume": 1248126930.7,
+        "avg_dollar_volume": 1298340832.98,
+        "dollar_volume_label": "1.2B$",
+        "avg_dollar_volume_label": "1.3B$",
+        "grade": "strong",
+        "grade_ar": "قوي",
+        "label": "RVOL ×1.0 · اليوم 1.2B$ · متوسط 1.3B$"
+      },
+      "rvol": 0.96,
+      "liq_grade": "strong",
+      "liq_grade_ar": "قوي",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=UBER",
+      "tg_share": "https://t.me/share/url?url=&text=UBER%20فكّر في شراء قصير المدى%0Aالآن%2069.43%20دخول%2069.43%20وقف%2068.55%20هدف%2071.63%0Aسيولة%20قوي%20RVOL%20x0.96"
+    },
+    {
       "symbol": "XOM",
       "action": "راقب دخول",
       "action_key": "WATCH_ENTRY",
@@ -435,45 +476,6 @@
       "tg_share": "https://t.me/share/url?url=&text=XOM%20راقب دخول%0Aالآن%20163.24%20دخول%20163.24%20وقف%20156.41%20هدف%20175.53%0Aسيولة%20متوسط%20RVOL%20x0.84"
     },
     {
-      "symbol": "NFLX",
-      "action": "راقب دخول",
-      "action_key": "WATCH_ENTRY",
-      "side": "long",
-      "score_100": 62,
-      "urgent": false,
-      "strategies": [
-        "ارتداد من دعم",
-        "تقلّب عالي"
-      ],
-      "reason": "ارتداد من دعم: دعم≈$70.92 | تقلّب عالي: ATR% 3.3",
-      "entry": 71.48,
-      "stop": 70.62,
-      "target": 73.63,
-      "shares": 41,
-      "risk_sar": 132.22,
-      "allowed": false,
-      "change_pct": 0.17,
-      "last": 71.48,
-      "session_phase": "pre",
-      "liquidity": {
-        "rvol": 1.01,
-        "volume": 32756600.0,
-        "avg_volume_20": 32363040.0,
-        "dollar_volume": 2341441768.0,
-        "avg_dollar_volume": 2313310099.2,
-        "dollar_volume_label": "2.3B$",
-        "avg_dollar_volume_label": "2.3B$",
-        "grade": "strong",
-        "grade_ar": "قوي",
-        "label": "RVOL ×1.0 · اليوم 2.3B$ · متوسط 2.3B$"
-      },
-      "rvol": 1.01,
-      "liq_grade": "strong",
-      "liq_grade_ar": "قوي",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=NFLX",
-      "tg_share": "https://t.me/share/url?url=&text=NFLX%20راقب دخول%0Aالآن%2071.48%20دخول%2071.48%20وقف%2070.62%20هدف%2073.63%0Aسيولة%20قوي%20RVOL%20x1.01"
-    },
-    {
       "symbol": "BAC",
       "action": "راقب دخول",
       "action_key": "WATCH_ENTRY",
@@ -484,21 +486,21 @@
         "RSI تشبع بيعي + ارتداد"
       ],
       "reason": "RSI تشبع بيعي + ارتداد: RSI 15",
-      "entry": 56.14,
-      "stop": 55.47,
-      "target": 57.82,
+      "entry": 56.12,
+      "stop": 55.45,
+      "target": 57.79,
       "shares": 53,
       "risk_sar": 133.16,
       "allowed": false,
-      "change_pct": 0.25,
-      "last": 56.14,
+      "change_pct": 0.21,
+      "last": 56.12,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.98,
         "volume": 36696000.0,
         "avg_volume_20": 37580485.0,
-        "dollar_volume": 2060113440.0,
-        "avg_dollar_volume": 2109768427.9,
+        "dollar_volume": 2059379520.0,
+        "avg_dollar_volume": 2109016818.2,
         "dollar_volume_label": "2.1B$",
         "avg_dollar_volume_label": "2.1B$",
         "grade": "strong",
@@ -509,7 +511,7 @@
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "tv_url": "https://www.tradingview.com/chart/?symbol=BAC",
-      "tg_share": "https://t.me/share/url?url=&text=BAC%20راقب دخول%0Aالآن%2056.14%20دخول%2056.14%20وقف%2055.47%20هدف%2057.82%0Aسيولة%20قوي%20RVOL%20x0.98"
+      "tg_share": "https://t.me/share/url?url=&text=BAC%20راقب دخول%0Aالآن%2056.12%20دخول%2056.12%20وقف%2055.45%20هدف%2057.79%0Aسيولة%20قوي%20RVOL%20x0.98"
     },
     {
       "symbol": "LTH",
@@ -594,13 +596,13 @@
     {
       "symbol": "AR",
       "name": "Antero Resources Corporation",
-      "last": 36.11,
-      "change_pct": 1.29,
+      "last": 36.0,
+      "change_pct": 0.98,
       "ref": 35.65,
       "rth_close": 35.65,
       "volume": 5583552.0,
-      "dollar_volume": 201622062.72,
-      "dollar_volume_label": "201.6M$",
+      "dollar_volume": 201007872.0,
+      "dollar_volume_label": "201.0M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=AR"
@@ -662,20 +664,6 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=PCG"
     },
     {
-      "symbol": "SECZ",
-      "name": "Securitize Corp.",
-      "last": 14.4,
-      "change_pct": 0.28,
-      "ref": 14.36,
-      "rth_close": 14.36,
-      "volume": 9169868.0,
-      "dollar_volume": 132046099.2,
-      "dollar_volume_label": "132.0M$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ"
-    },
-    {
       "symbol": "LTH",
       "name": "Life Time Group Holdings, Inc.",
       "last": 39.74,
@@ -706,16 +694,30 @@
     {
       "symbol": "SPCX",
       "name": "Space Exploration Technologies ",
-      "last": 148.47,
-      "change_pct": 0.07,
+      "last": 148.45,
+      "change_pct": 0.06,
       "ref": 148.36,
       "rth_close": 148.36,
       "volume": 60046138.0,
-      "dollar_volume": 8915050108.86,
+      "dollar_volume": 8913849186.1,
       "dollar_volume_label": "8.9B$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX"
+    },
+    {
+      "symbol": "SECZ",
+      "name": "Securitize Corp.",
+      "last": 14.36,
+      "change_pct": 0.02,
+      "ref": 14.36,
+      "rth_close": 14.36,
+      "volume": 9169868.0,
+      "dollar_volume": 131679304.48,
+      "dollar_volume_label": "131.7M$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ"
     }
   ],
   "gainers_min_price": 5.0,
@@ -723,8 +725,8 @@
   "movers": [
     {
       "symbol": "AMD",
-      "change_pct": -2.93,
-      "last": 596.59,
+      "change_pct": -2.8,
+      "last": 597.39,
       "rvol": 0.78,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -741,26 +743,26 @@
     },
     {
       "symbol": "META",
-      "change_pct": -1.98,
-      "last": 729.4,
+      "change_pct": -1.89,
+      "last": 730.0,
       "rvol": 1.37,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "22.1B$"
+      "dollar_volume_label": "22.2B$"
     },
     {
       "symbol": "AVGO",
-      "change_pct": -1.66,
-      "last": 349.09,
+      "change_pct": -1.56,
+      "last": 349.46,
       "rvol": 0.85,
       "grade": "medium",
       "grade_ar": "متوسط",
-      "dollar_volume_label": "8.1B$"
+      "dollar_volume_label": "8.2B$"
     },
     {
       "symbol": "COIN",
-      "change_pct": -1.57,
-      "last": 195.01,
+      "change_pct": -1.27,
+      "last": 195.62,
       "rvol": 0.7,
       "grade": "weak",
       "grade_ar": "ضعيف",
@@ -776,15 +778,6 @@
       "dollar_volume_label": "2.1B$"
     },
     {
-      "symbol": "NVDA",
-      "change_pct": -1.18,
-      "last": 222.85,
-      "rvol": 0.68,
-      "grade": "weak",
-      "grade_ar": "ضعيف",
-      "dollar_volume_label": "19.9B$"
-    },
-    {
       "symbol": "CVX",
       "change_pct": 1.16,
       "last": 207.9,
@@ -792,6 +785,15 @@
       "grade": "medium",
       "grade_ar": "متوسط",
       "dollar_volume_label": "1.7B$"
+    },
+    {
+      "symbol": "NVDA",
+      "change_pct": -1.12,
+      "last": 222.98,
+      "rvol": 0.68,
+      "grade": "weak",
+      "grade_ar": "ضعيف",
+      "dollar_volume_label": "19.9B$"
     }
   ],
   "news": [
@@ -820,6 +822,19 @@
       "published_ts": 1790248955,
       "sentiment": "neg",
       "sentiment_ar": "سلبي"
+    },
+    {
+      "symbol": "UBER",
+      "title": "Delivery Hero CEO Niklas Östberg to stay amid Uber takeover",
+      "title_ar": "الرئيس التنفيذي لشركة \"ديليفري هيرو\" نيكلاس أوستبرغ سيبقى وسط استحواذ أوبر",
+      "summary": "The company had announced in May that Niklas Östberg would step down in March 2027, but Uber's pending acquisition changed the plan",
+      "summary_ar": "كانت الشركة قد أعلنت في مايو/أيار أن نيكلاس أوستبرغ سيتنحى في مارس/آذار 2027، لكن استحواذ أوبر المنتظر غيّر الخطة",
+      "url": "https://qz.com/delivery-hero-ceo-niklas-ostberg-staying-uber-takeover-092426",
+      "publisher": "Quartz",
+      "published": "2026-09-24 11:08:02 UT",
+      "published_ts": 1790248082,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد"
     },
     {
       "symbol": "BAC",
@@ -861,6 +876,19 @@
       "sentiment_ar": "محايد"
     },
     {
+      "symbol": "UBER",
+      "title": "Delivery Hero Cancels CEO Exit Plans Due to Uber’s $14.8 Billion Takeover Bid",
+      "title_ar": "بطل التوصيل يلغي خطط خروج الرئيس التنفيذي بسبب عرض استحواذ أوبر بقيمة 14.8 مليار $",
+      "summary": "Delivery Hero  scrapped plans for co-founder  Niklas Östberg  to step down as chief executive, citing  Uber Technologies’  $14.8 billion takeover bid.  The German food-delivery company had said in May that  Östberg would step down in March of next year under plans for a leadershi",
+      "summary_ar": "ألغى Delivery Hero خططًا لتخلي المؤسس المشارك  Niklas Östberg عن منصبه كرئيس تنفيذي، مشيرًا إلى عرض الاستحواذ من Uber Technologies بقيمة 14.8 $. كانت شركة توصيل الطعام الألمانية قد قالت في مايو/أيار إن  أوستبرغ سيتنحى في مارس/آذار من العام المقبل بموجب خطط",
+      "url": "https://www.wsj.com/business/delivery-hero-cancels-ceo-exit-plans-due-to-ubers-14-8-billion-takeover-bid-de155bf8?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "published": "2026-09-24 08:04:00 UT",
+      "published_ts": 1790237040,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد"
+    },
+    {
       "symbol": "WBD",
       "title": "3 Low-Volatility Stocks with Open Questions",
       "title_ar": "3 أسهم منخفضة التقلب مع أسئلة مفتوحة",
@@ -896,32 +924,6 @@
       "publisher": "Zacks",
       "published": "2026-09-23 23:15:00 UT",
       "published_ts": 1790205300,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي"
-    },
-    {
-      "symbol": "APA",
-      "title": "Is EOG Resources Stock A Buy For Its Shrinking Share Count?",
-      "title_ar": "هل تقوم شركة EOG RESOURCES بالشراء بسبب عدد أسهمها المتقلص ؟",
-      "summary": "EOG Resources (EOG) has gained about 25% over the past year. The company pays a growing dividend and keeps buying back stock, so each remaining share owns a little more of the business every year. Over the last three years, though, that has not made the earnings behind your share",
-      "summary_ar": "اكتسبت موارد EOG (EOG) حوالي 25 ٪ خلال العام الماضي. تدفع الشركة أرباحًا متزايدة وتستمر في إعادة شراء الأسهم، لذلك يمتلك كل سهم متبقٍ المزيد من الأعمال كل عام. على مدى السنوات الثلاث الماضية، على الرغم من أن هذا لم يجعل الأرباح وراء حصتك",
-      "url": "https://www.trefis.com/articles/616299/is-eog-resources-stock-a-buy-for-its-shrinking-share-count/2026-09-23",
-      "publisher": "Trefis",
-      "published": "2026-09-23 17:48:22 UT",
-      "published_ts": 1790185702,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد"
-    },
-    {
-      "symbol": "SECZ",
-      "title": "Securitize Stock Jumps 12% as Cantor Bets on a Tokenization Boom",
-      "title_ar": "توريق الأسهم يقفز بنسبة 12 ٪ حيث يراهن قائد الفرقة الموسيقيّة على طفرة التوكن",
-      "summary": "Securitize shares have surged as regulators open a path for tokenized stock trading. Cantor Fitzgerald sees more room to rise.",
-      "summary_ar": "ارتفعت أسهم Securitize حيث فتح المنظمون طريقًا لتداول الأسهم الرمزية. يرى كانتور فيتزجيرالد مساحة أكبر للارتفاع.",
-      "url": "https://www.barrons.com/articles/securitize-stock-price-cantor-tokenization-1bff8d31?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "published": "2026-09-23 16:55:00 UT",
-      "published_ts": 1790182500,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي"
     }
