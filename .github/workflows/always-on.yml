@@ -112,11 +112,14 @@ jobs:
           exit 1
 
       - name: Optional Cloudflare live mirror
-        if: ${{ secrets.LIVE_API_URL != '' && secrets.LIVE_API_TOKEN != '' }}
         env:
           LIVE_API_URL: ${{ secrets.LIVE_API_URL }}
           LIVE_API_TOKEN: ${{ secrets.LIVE_API_TOKEN }}
         run: |
+          if [ -z "$LIVE_API_URL" ] || [ -z "$LIVE_API_TOKEN" ]; then
+            echo "Cloudflare mirror not configured — skip"
+            exit 0
+          fi
           curl -fsS -X POST "$LIVE_API_URL/ingest" \
             -H "Authorization: Bearer $LIVE_API_TOKEN" \
             -H "Content-Type: application/json" \
