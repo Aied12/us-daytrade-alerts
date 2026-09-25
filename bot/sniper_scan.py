@@ -28,7 +28,7 @@ SEEN_PATH = ROOT / "data" / "sniper_seen.json"
 RIYADH = ZoneInfo("Asia/Riyadh")
 NY = ZoneInfo("America/New_York")
 
-# Price band: cheap / near-penny to low single-digit (not APA-style mid/large)
+# Price band: cheap / near-penny to low single-digit (our sniper universe)
 SNIPER_MIN_PRICE = 0.30
 SNIPER_MAX_PRICE = 8.00
 # Strong move floors (day-trade runners) — vs prior close (يوم كامل)
