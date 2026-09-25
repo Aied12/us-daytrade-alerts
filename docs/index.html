@@ -281,6 +281,7 @@
         <button type="button" data-section="calc">حاسبة الاستراتيجية</button>
         <button type="button" data-section="gainers">أعلى ارتفاعاً</button>
         <button type="button" data-section="movers">أقوى التحركات</button>
+        <button type="button" data-section="track">متابعة الأداء</button>
         <button type="button" data-section="more">المزيد</button>
       </div>
     </div>
@@ -500,6 +501,26 @@
       <div id="movers" class="grid"></div>
     </div>
 
+    <div class="card panel" id="panel-track" data-section-panel="track">
+      <h2>متابعة أداء الاستراتيجيات</h2>
+      <p class="muted" id="trackNote">متابعة ورقية: هل وصلت الأسهم الممسوحة للهدف أو الوقف بعد الإشارة؟</p>
+      <div class="grid" id="trackKpis" style="margin-top:10px">
+        <div class="m"><div class="muted">نسبة النجاح</div><div id="trackWinRate" class="sym">—</div></div>
+        <div class="m"><div class="muted">متوسط الربح/الخسارة %</div><div id="trackAvgPnl">—</div></div>
+        <div class="m"><div class="muted">مفتوحة الآن</div><div id="trackOpen">—</div></div>
+        <div class="m"><div class="muted">مغلقة / رابحة / خاسرة</div><div id="trackClosed">—</div></div>
+      </div>
+      <h2 style="margin-top:16px;font-size:1rem">حسب المصدر</h2>
+      <div id="trackBySource"><div class="empty">لا بيانات بعد — تظهر بعد أول إشارات</div></div>
+      <h2 style="margin-top:16px;font-size:1rem">أقوى الاستراتيجيات</h2>
+      <div id="trackByStrategy"><div class="empty">—</div></div>
+      <h2 style="margin-top:16px;font-size:1rem">صفقات مفتوحة</h2>
+      <div id="trackOpenList"><div class="empty">لا صفقات مفتوحة</div></div>
+      <h2 style="margin-top:16px;font-size:1rem">آخر النتائج</h2>
+      <div id="trackClosedList"><div class="empty">لا نتائج مغلقة بعد</div></div>
+      <p class="muted" style="margin-top:12px;font-size:.82rem">تعليمي فقط — ليست أرباح محفظة حقيقية. القياس: وصول السعر للهدف/الوقف بعد ظهور الإشارة في الماسحات.</p>
+    </div>
+
     <div class="card panel" id="panel-more" data-section-panel="more">
       <h2>المزيد</h2>
       <div class="card pwa-install-card" id="pwaInstallHelp" style="margin:10px 0 14px;padding:12px">
@@ -532,7 +553,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=20;
+    window.__STATUS_V=21;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -549,7 +570,7 @@
       sniper: 'dash_sniper_filter',
       jamal: 'dash_jamal_settings',
     };
-    const SECTION_IDS = ['live','market','mood','momentum','sniper','jamal','news','opps','calc','gainers','movers','more'];
+    const SECTION_IDS = ['live','market','mood','momentum','sniper','jamal','news','opps','calc','gainers','movers','track','more'];
     let CURRENT_SECTION = 'momentum';
     let DATA = null;
     let lastUrgent = new Set();
@@ -1449,6 +1470,7 @@
         syncJamalSettingsUi();
       }
       renderJamal(JAMAL_CACHE);
+      renderStrategyTrack(d.strategy_track||{});
       const note=document.getElementById('newsNote');
       if(note) note.textContent=d.news_note_ar||'بث محفزات · تأثير 1–5';
       NEWS_CACHE=news;
@@ -1462,6 +1484,78 @@
     function impactDots(n){
       const v=Math.max(1, Math.min(5, Number(n)||1));
       return `<span class="impact impact-${v}" title="تأثير ${v}/5">${'●'.repeat(v)}${'○'.repeat(5-v)}</span>`;
+    }
+
+    function renderStrategyTrack(tr){
+      tr=tr||{};
+      const note=document.getElementById('trackNote');
+      if(note) note.textContent=tr.note_ar||DATA&&DATA.strategy_track_note_ar||note.textContent;
+      const wr=document.getElementById('trackWinRate');
+      if(wr){
+        wr.textContent = tr.win_rate==null ? '— بانتظار نتائج' : (tr.win_rate+'%');
+        wr.className = 'sym '+(tr.win_rate==null?'':(tr.win_rate>=55?'ok':(tr.win_rate>=45?'warn':'bad')));
+      }
+      const ap=document.getElementById('trackAvgPnl');
+      if(ap){
+        const v=tr.avg_pnl_pct;
+        ap.textContent = (v==null||v===0 && !tr.closed) ? '—' : ((v>0?'+':'')+Number(v).toFixed(2)+'%');
+        ap.className = (v>0?'ok':(v<0?'bad':''));
+      }
+      const op=document.getElementById('trackOpen');
+      if(op) op.textContent=String(tr.open||0);
+      const cl=document.getElementById('trackClosed');
+      if(cl) cl.textContent=`${tr.closed||0} / ✓${tr.wins||0} / ✗${tr.losses||0}`;
+
+      const srcBox=document.getElementById('trackBySource');
+      if(srcBox){
+        const rows=tr.by_source||[];
+        srcBox.innerHTML = rows.length ? rows.map(r=>`
+          <div class="row" style="border-bottom:1px solid var(--line);padding:8px 0">
+            <div><b>${esc(r.name)}</b><div class="muted" style="font-size:.8rem">${r.n||0} إشارة · مفتوح ${r.open||0}</div></div>
+            <div style="text-align:left">
+              <b class="${r.win_rate==null?'':(r.win_rate>=55?'ok':(r.win_rate>=45?'warn':'bad'))}">${r.win_rate==null?'—':r.win_rate+'%'}</b>
+              <div class="muted" style="font-size:.8rem">✓${r.wins||0} / ✗${r.losses||0}</div>
+            </div>
+          </div>`).join('') : '<div class="empty">لا بيانات مصدر بعد</div>';
+      }
+      const stBox=document.getElementById('trackByStrategy');
+      if(stBox){
+        const rows=(tr.by_strategy||[]).filter(r=>(r.closed||0)>=1 || (r.n||0)>=2).slice(0,12);
+        stBox.innerHTML = rows.length ? rows.map(r=>`
+          <div class="row" style="border-bottom:1px solid var(--line);padding:8px 0">
+            <div><b>${esc(r.name)}</b><div class="muted" style="font-size:.8rem">${r.closed||0} مغلقة · ${r.n||0} إجمالي</div></div>
+            <div style="text-align:left">
+              <b class="${r.win_rate==null?'':(r.win_rate>=55?'ok':'bad')}">${r.win_rate==null?'—':r.win_rate+'%'}</b>
+              <div class="muted" style="font-size:.8rem">${r.avg_pnl_pct==null?'':((r.avg_pnl_pct>0?'+':'')+r.avg_pnl_pct+'%')}</div>
+            </div>
+          </div>`).join('') : '<div class="empty">بعد إغلاق أول الصفقات الورقية تظهر النسب هنا</div>';
+      }
+      const openBox=document.getElementById('trackOpenList');
+      if(openBox){
+        const rows=tr.recent_open||[];
+        openBox.innerHTML = rows.length ? rows.map(r=>{
+          const pnl=Number(r.pnl_pct||0);
+          return `<div class="scan-item">
+            <div class="row"><span class="sym">${esc(r.symbol)}</span><span class="pill">${esc(r.source_ar||'')}</span></div>
+            <div class="muted" style="margin-top:4px">${(r.strategies||[]).map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div>
+            <div class="row" style="margin-top:6px"><span class="muted">دخول ${r.entry} · الآن ${r.last}</span><b class="${pnl>=0?'ok':'bad'}">${pnl>=0?'+':''}${pnl.toFixed(2)}%</b></div>
+            <div class="muted" style="font-size:.82rem">وقف ${r.stop} · هدف1 ${r.tp1} · منذ ${esc(r.opened_local||'')}</div>
+          </div>`;
+        }).join('') : '<div class="empty">لا صفقات مفتوحة</div>';
+      }
+      const closedBox=document.getElementById('trackClosedList');
+      if(closedBox){
+        const rows=tr.recent_closed||[];
+        closedBox.innerHTML = rows.length ? rows.map(r=>{
+          const pnl=Number(r.pnl_pct||0);
+          return `<div class="scan-item">
+            <div class="row"><span class="sym">${esc(r.symbol)}</span><span class="pill ${pnl>=0?'ok':'bad'}">${esc(r.result_ar||'')}</span></div>
+            <div class="muted" style="margin-top:4px">${esc(r.source_ar||'')} · ${(r.strategies||[]).map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div>
+            <div class="row" style="margin-top:6px"><span class="muted">${r.entry} → ${r.exit}</span><b class="${pnl>=0?'ok':'bad'}">${pnl>=0?'+':''}${pnl.toFixed(2)}%${r.r_multiple!=null?` · ${r.r_multiple}R`:''}</b></div>
+            <div class="muted" style="font-size:.82rem">${esc(r.opened_local||'')} → ${esc(r.exit_local||'')}</div>
+          </div>`;
+        }).join('') : '<div class="empty">لا نتائج مغلقة بعد — تُحسب عند لمس الهدف أو الوقف</div>';
+      }
     }
 
     function renderMomentum(rows){

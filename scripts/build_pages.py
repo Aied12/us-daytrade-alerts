@@ -35,6 +35,7 @@ from bot.signals import Action
 from bot.smart_signals import enrich_smart_signal
 from bot.catalyst_scan import build_momentum_scanner, enrich_news_item, rank_catalyst_news
 from bot.sniper_scan import build_sniper_scanner, fetch_cheap_runners
+from bot.strategy_tracker import sync_from_boards
 
 NY = ZoneInfo("America/New_York")
 
@@ -412,11 +413,44 @@ def main() -> None:
                     o["smart_tags"] = tags
                     o["jamal"] = jo.get("jamal") or jo
                     o["tag_ar"] = "🎯 استراتيجية جمال"
+                    # أيضاً وسم نصي في strategies للمتابعة
+                    st = list(o.get("strategies") or [])
+                    if "استراتيجية جمال" not in st:
+                        o["strategies"] = (["استراتيجية جمال"] + st)[:5]
                     break
         else:
             opportunities.append(jo)
             seen_opp.add(sym)
     opportunities = opportunities[:16]
+
+    # —— متابعة أداء الاستراتيجيات (ورقي تعليمي) ——
+    price_map: dict[str, float] = {}
+    for s in snaps:
+        try:
+            if s.symbol and float(s.last or 0) > 0:
+                price_map[str(s.symbol).upper()] = float(s.last)
+        except Exception:
+            pass
+    try:
+        strategy_track = sync_from_boards(
+            opportunities=opportunities,
+            sniper=sniper,
+            jamal=jamal_cards,
+            price_by_symbol=price_map,
+        )
+    except Exception as e:
+        strategy_track = {
+            "open": 0,
+            "closed": 0,
+            "wins": 0,
+            "losses": 0,
+            "win_rate": None,
+            "by_source": [],
+            "by_strategy": [],
+            "recent_closed": [],
+            "recent_open": [],
+            "note_ar": f"تعذّر تحديث المتابعة: {e}",
+        }
 
     from bot.gainers import session_label_ar
 
@@ -485,6 +519,8 @@ def main() -> None:
         "opportunities": opportunities,
         "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · يشمل 🎯 استراتيجية جمال عند التوافق",
         "opps_rejected_slow": rejected_slow[:20],
+        "strategy_track": strategy_track,
+        "strategy_track_note_ar": strategy_track.get("note_ar") or "متابعة ورقية لنجاح الاستراتيجيات على الأسهم التي مسحها المشروع",
         "gainers": gainers,
         "gainers_min_price": min_px,
         "gainers_session_ar": gainers_session,
