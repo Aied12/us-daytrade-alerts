@@ -73,18 +73,14 @@ def main() -> int:
     rc = run(["git", "commit", "-m", msg])
     if rc != 0:
         return 0
-    # Push main (Pages source)
-    try:
-        branch = subprocess.check_output(
-            ["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=ROOT, text=True
-        ).strip()
-    except Exception:
-        branch = "main"
-    if branch != "main":
-        run(["git", "push", "-u", "origin", branch])
-    # pull --rebase briefly if behind, then push (avoid long stalls)
-    run(["git", "pull", "--rebase", "--autostash", "origin", "main"])
+    # Always publish docs to main (Pages source). Skip if another push is mid-flight.
+    run(["git", "fetch", "origin", "main"])
     rc = run(["git", "push", "origin", "HEAD:main"])
+    if rc != 0:
+        # one retry after short wait (Pages/git races)
+        time.sleep(3)
+        run(["git", "pull", "--rebase", "--autostash", "origin", "main"])
+        rc = run(["git", "push", "origin", "HEAD:main"])
     print("[publish] done" if rc == 0 else "[publish] push failed")
     return 0  # don't fail cron on push issues
 
