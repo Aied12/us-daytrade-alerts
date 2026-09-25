@@ -296,11 +296,11 @@
 
     <div class="card panel" id="panel-sniper" data-section-panel="sniper">
       <h2>ماسح القنص</h2>
-      <p class="muted" id="sniperNote">قنص تلقائي بأسلوب ملكة السنتات: تحت $1 / $1–$2 + زخم + خبر + خطة دخول/وقف/جني — بدون تدخل يدوي</p>
+      <p class="muted" id="sniperNote">ماسح القنص مستقل عن ≥$51 و$5–$51 — نطاقه تحت $5 فقط (سنتات + $1–<$5) · خطة تلقائية</p>
       <div class="seg" id="sniperSeg">
         <button type="button" data-sf="all" class="active">الكل</button>
         <button type="button" data-sf="cents">سنتات &lt;$1</button>
-        <button type="button" data-sf="prime">برايم $1–$2</button>
+        <button type="button" data-sf="prime">$1–&lt;$5</button>
         <button type="button" data-sf="news">مع خبر</button>
         <button type="button" data-sf="rocket">صاروخ ≥15%</button>
       </div>
@@ -458,7 +458,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=13;
+    window.__STATUS_V=14;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -530,7 +530,7 @@
       renderOpps();
       renderGainersTable();
       renderMomentum(MOMENTUM_CACHE);
-      renderSniper(SNIPER_CACHE);
+      // ماسح القنص مستقل — لا يُربَط بشريحة ≥$51 ولا $5–$51
       renderNewsList(NEWS_CACHE);
       if(DATA){
         const moversBox=document.getElementById('movers');
@@ -995,7 +995,7 @@
         b.classList.toggle('active', b.dataset.cat===CAT_FILTER);
       });
       SNIPER_FILTER = localStorage.getItem(LS.sniper)||'all';
-      if(!['all','news','rocket'].includes(SNIPER_FILTER)) SNIPER_FILTER='all';
+      if(!['all','cents','prime','news','rocket'].includes(SNIPER_FILTER)) SNIPER_FILTER='all';
       document.querySelectorAll('#sniperSeg button').forEach(b=>{
         b.classList.toggle('active', b.dataset.sf===SNIPER_FILTER);
       });
@@ -1414,8 +1414,13 @@
 
     function filteredSniper(rows){
       let list=(rows||[]).slice();
+      // نطاق القنص ثابت: تحت $5 — لا يستخدم PRICE_TIER (≥$51 / $5–$51)
+      list=list.filter(r=>{
+        const px=Number(r.last||0);
+        return Number.isFinite(px) && px>=0.10 && px<5;
+      });
       if(SNIPER_FILTER==='cents') list=list.filter(r=>(r.tier_key==='cents') || (Number(r.last||0)>0 && Number(r.last)<1));
-      else if(SNIPER_FILTER==='prime') list=list.filter(r=>(r.tier_key==='prime') || (Number(r.last||0)>=1 && Number(r.last)<=2));
+      else if(SNIPER_FILTER==='prime') list=list.filter(r=>(r.tier_key==='prime') || (Number(r.last||0)>=1 && Number(r.last)<5));
       else if(SNIPER_FILTER==='news') list=list.filter(r=>r.has_news);
       else if(SNIPER_FILTER==='rocket') list=list.filter(r=>Number(r.change_pct||0)>=15);
       return list;
@@ -1427,9 +1432,9 @@
       withPreservedScroll(()=>{
       let list=filteredSniper(rows||[]);
       if(!list.length){
-        const hints={news:'مع خبر',rocket:'صاروخ ≥15%',cents:'سنتات <$1',prime:'برايم $1–$2'};
+        const hints={news:'مع خبر',rocket:'صاروخ ≥15%',cents:'سنتات <$1',prime:'$1–<$5'};
         const hint=hints[SNIPER_FILTER]||'';
-        box.innerHTML=`<div class="empty">لا قنص ${hint?`(${hint}) `:''}الآن ضمن $0.10–$2 — المسح تلقائي كل دقيقة</div>`;
+        box.innerHTML=`<div class="empty">لا قنص ${hint?`(${hint}) `:''}الآن ضمن تحت $5 (مستقل عن ≥$51 و$5–$51)</div>`;
         return;
       }
       const sig=SNIPER_FILTER+'|'+list.map(r=>`${r.symbol}:${r.change_pct}:${r.impact}:${r.has_news?1:0}:${r.score||0}:${r.appeared_ts||0}:${r.entry||0}:${r.stop||0}`).join('|');
@@ -1439,7 +1444,7 @@
         const cats=(r.catalyst_ar||[]).map(c=>`<span class="tag tone-ok">${esc(c)}</span>`).join('');
         const newsLine=r.news_title_ar
           ? `<div class="muted" style="margin-top:6px">${esc(r.news_title_ar)}</div>`
-          : `<div class="muted" style="margin-top:6px">${esc(r.reason_ar||'زخم سنتات — راقب ظهور الخبر')}</div>`;
+          : `<div class="muted" style="margin-top:6px">${esc(r.reason_ar||'زخم تحت $5 — راقب ظهور الخبر')}</div>`;
         const href=r.news_url||r.tv_url||'#';
         const px=Number(r.last||0);
         const pxTxt=px>0 && px<1 ? px.toFixed(4) : px.toFixed(2);
@@ -1447,7 +1452,7 @@
           || (r.appeared_ts ? fmtSniperAppear(r.appeared_ts) : '');
         const tierPill=r.tier_key==='cents'
           ? '<span class="pill ok">سنتات</span>'
-          : '<span class="pill">برايم</span>';
+          : '<span class="pill">تحت $5</span>';
         const planBlock = (r.entry && r.stop && r.tp1)
           ? `<div class="alert" style="margin-top:8px;line-height:1.55">
               <div><strong>خطة تلقائية</strong> ${esc(r.plan_ar||'')}</div>

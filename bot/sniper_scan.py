@@ -1,11 +1,11 @@
 """Hessa-style sniper: automatic «ملكة السنتات» board (no manual picks).
 
-Mirrors the public mechanism used by @iHessa_xx-style cent sniping — fully
-automated on every always-on tick (no human curation):
+Fully automated on every always-on tick. Independent of the dashboard
+price-tier buttons (≥$51 and $5–$51) — sniper only covers under $5:
 
-- Primary: stocks under $1 (سنتات) — shared freely in her model
-- Secondary: $1–$2 (برايم-style tier)
-- Strong day momentum + preferred news/catalyst (نشاط الشركة)
+- Primary: stocks under $1 (سنتات)
+- Secondary: $1 – under $5
+- Strong day momentum + preferred news/catalyst
 - Auto trade card: دخول / وقف / جني / دعم / مقاومة
 - Long-only day-trade; separate from the conservative liquid board
 """
@@ -31,11 +31,11 @@ SEEN_PATH = ROOT / "data" / "sniper_seen.json"
 RIYADH = ZoneInfo("Asia/Riyadh")
 NY = ZoneInfo("America/New_York")
 
-# —— Hessa-style price universe ——
+# —— Sniper universe: تحت $5 فقط (خارج شرائح ≥$51 و $5–$51) ——
 SNIPER_MIN_PRICE = 0.10
-SNIPER_CENTS_MAX = 1.00          # سنتات (الشريحة العامة)
-SNIPER_PRIME_MAX = 2.00          # امتداد برايم-ستايل
-SNIPER_MAX_PRICE = SNIPER_PRIME_MAX
+SNIPER_CENTS_MAX = 1.00          # سنتات
+SNIPER_MAX_PRICE = 4.999         # أقل من $5 — لا يدخل شريحة $5–$51
+SNIPER_PRIME_MAX = SNIPER_MAX_PRICE  # $1 – <$5
 
 # Momentum floors (day % vs prior close)
 SNIPER_MIN_CHG = 8.0             # بدون خبر — حركة واضحة
@@ -243,7 +243,7 @@ def sniper_tier(last: float) -> str | None:
         return None
     if last < SNIPER_CENTS_MAX:
         return "cents"       # سنتات
-    return "prime"           # $1–$2
+    return "prime"           # $1 – <$5
 
 
 def sniper_passes(row: dict[str, Any], *, phase: str | None = None, has_news: bool = False) -> bool:
@@ -404,11 +404,11 @@ def build_sniper_scanner(
         if tier == "cents":
             alert = "قنص سنتات — طرح تلقائي"
         else:
-            alert = "قنص برايم ($1–$2) — طرح تلقائي"
+            alert = "قنص تحت $5 — طرح تلقائي"
         if has_news and impact >= 4:
-            alert = ("سنتات" if tier == "cents" else "برايم") + " + محفز قوي"
+            alert = ("سنتات" if tier == "cents" else "تحت $5") + " + محفز قوي"
         elif has_news:
-            alert = ("سنتات" if tier == "cents" else "برايم") + " + خبر/نشاط"
+            alert = ("سنتات" if tier == "cents" else "تحت $5") + " + خبر/نشاط"
         elif chg >= 25:
             alert = "صاروخ سنتات — راقب الخبر"
 
@@ -440,8 +440,8 @@ def build_sniper_scanner(
                 "tv_url": r.get("tv_url") or f"https://www.tradingview.com/chart/?symbol={sym}",
                 "tier": "sniper",
                 "tier_key": tier,
-                "tier_ar": "سنتات (<$1)" if tier == "cents" else "برايم ($1–$2)",
-                "price_band_ar": f"${SNIPER_MIN_PRICE:.2f}–${SNIPER_MAX_PRICE:.0f}",
+                "tier_ar": "سنتات (<$1)" if tier == "cents" else "تحت $5 ($1–<$5)",
+                "price_band_ar": f"${SNIPER_MIN_PRICE:.2f}–<$5",
                 "auto": True,
                 "source_style": "hessa_cents_auto",
                 **plan,
