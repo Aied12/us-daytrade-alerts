@@ -41,8 +41,12 @@ def is_trading_day(now_ny: datetime) -> bool:
 
 
 def in_saudi_session(now_riyadh: datetime) -> bool:
+    """Active board window: ~11:00 → 03:00 next day (Riyadh).
+
+    Covers US premarket through after-hours; wraps past midnight.
+    """
     t = now_riyadh.time()
-    return time(11, 0) <= t <= time(23, 0)
+    return t >= time(11, 0) or t <= time(3, 0)
 
 
 def maybe_send_daily_poster(settings) -> None:
