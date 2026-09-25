@@ -6,6 +6,16 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta name="theme-color" content="#07111f" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="تنبيهات الأسهم" />
+  <meta name="application-name" content="تنبيهات الأسهم" />
+  <meta name="description" content="لوحة تنبيهات وتداول يومي للأسهم الأمريكية — أسعار لحظية وماسحات وخطط دخول" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png" />
   <title>لوحة تنبيهات الأسهم</title>
   <style>
     :root, [data-theme="dark"] {
@@ -209,6 +219,19 @@
     .panel{display:none}
     .panel.active{display:block}
     .sticky .toolbar{margin-top:2px}
+    .pwa-banner{
+      display:none;margin:10px 0 0;padding:12px 14px;border-radius:14px;
+      border:1px solid color-mix(in srgb,var(--accent) 45%, var(--line));
+      background:color-mix(in srgb,var(--accent) 14%, var(--card));
+    }
+    .pwa-banner.on{display:block}
+    .pwa-banner .row{margin:0;align-items:flex-start}
+    .pwa-banner p{margin:0;font-size:.9rem;line-height:1.45}
+    .pwa-banner .actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .pwa-banner .btn{min-height:40px;padding:8px 12px;margin:0;font-size:.9rem}
+    .pwa-install-card ol{margin:8px 0 0;padding-inline-start:1.25rem;line-height:1.55}
+    .pwa-install-card li{margin:4px 0}
+    .pwa-status{font-size:.85rem;margin-top:8px}
   </style>
 </head>
 <body>
@@ -235,6 +258,16 @@
         </div>
       </div>
       <p class="muted" id="priceTierHint" style="margin:6px 0 0;font-size:.82rem">عرض: أسهم أعلى قيمة (≥ $51)</p>
+      <div class="pwa-banner" id="pwaBanner" role="status">
+        <div class="row">
+          <p id="pwaBannerText">ثبّت اللوحة كتطبيق على الشاشة الرئيسية للوصول السريع بدون شريط المتصفح.</p>
+          <button class="btn ghost" type="button" id="btnPwaDismiss" aria-label="إخفاء" style="min-height:36px;padding:6px 10px;margin:0">✕</button>
+        </div>
+        <div class="actions">
+          <button class="btn" type="button" id="btnPwaInstall">تثبيت التطبيق</button>
+          <button class="btn secondary" type="button" id="btnPwaHow">كيف أثبّت على الآيفون؟</button>
+        </div>
+      </div>
       <div class="section-nav" id="sectionNav" role="tablist" aria-label="أقسام اللوحة">
         <button type="button" data-section="live" class="active">أسعار لحظية</button>
         <button type="button" data-section="market">السوق</button>
@@ -468,6 +501,20 @@
 
     <div class="card panel" id="panel-more" data-section-panel="more">
       <h2>المزيد</h2>
+      <div class="card pwa-install-card" id="pwaInstallHelp" style="margin:10px 0 14px;padding:12px">
+        <h2 style="margin:0;font-size:1rem">تثبيت كتطبيق على الآيفون</h2>
+        <p class="muted" style="margin:6px 0 0;font-size:.9rem">يعمل كتطبيق من الشاشة الرئيسية (PWA) بدون App Store.</p>
+        <ol class="muted" style="font-size:.9rem">
+          <li>افتح الصفحة في <b>Safari</b> (مهم على الآيفون).</li>
+          <li>اضغط زر <b>مشاركة</b> ⎙ في الأسفل.</li>
+          <li>اختر <b>إضافة إلى الشاشة الرئيسية</b>.</li>
+          <li>أكد الاسم ثم <b>إضافة</b> — يظهر أيقونة مثل التطبيقات.</li>
+        </ol>
+        <p class="pwa-status muted" id="pwaStatus">حالة التطبيق: جاري التحقق...</p>
+        <div class="toolbar" style="margin-top:8px">
+          <button class="btn" type="button" id="btnPwaInstallMore">تثبيت (أندرويد / كروم)</button>
+        </div>
+      </div>
       <h2 style="margin-top:14px;font-size:1rem">المخاطرة</h2>
       <pre id="risk" class="muted" style="white-space:pre-wrap;margin:0;font-family:inherit"></pre>
       <h2 style="margin-top:18px;font-size:1rem">تيليجرام</h2>
@@ -480,7 +527,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=16;
+    window.__STATUS_V=17;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -2270,6 +2317,7 @@
     loadPrefs();
     initSectionNav();
     initStrategyCalc();
+    initPwaInstall();
     fetchData(true).then(()=>{ renderLiveTape(); pollAllPrices(); pollNewsLive(); });
     setInterval(()=>fetchData(false), AUTO_SEC*1000);
     setInterval(()=>{
@@ -2282,6 +2330,109 @@
     setInterval(()=>pollAllPrices(), PRICE_POLL_SEC*1000);
     setInterval(()=>pollNewsLive(), 15000);
     setInterval(()=>refreshMovingBadges(), 1000);
+
+    function initPwaInstall(){
+      const LS_DISMISS='dash_pwa_dismiss';
+      const banner=document.getElementById('pwaBanner');
+      const statusEl=document.getElementById('pwaStatus');
+      const btnInstall=document.getElementById('btnPwaInstall');
+      const btnInstallMore=document.getElementById('btnPwaInstallMore');
+      const btnHow=document.getElementById('btnPwaHow');
+      const btnDismiss=document.getElementById('btnPwaDismiss');
+      const bannerText=document.getElementById('pwaBannerText');
+      let deferredPrompt=null;
+      const isStandalone=window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone===true;
+      const ua=navigator.userAgent||'';
+      const isIOS=/iPad|iPhone|iPod/.test(ua) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+      const isSafari=/Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS|Chrome|Android/.test(ua);
+
+      function setStatus(msg){ if(statusEl) statusEl.textContent=msg; }
+
+      function showBanner(force){
+        if(!banner) return;
+        if(isStandalone){ banner.classList.remove('on'); return; }
+        if(!force && localStorage.getItem(LS_DISMISS)==='1') return;
+        banner.classList.add('on');
+      }
+
+      function hideBanner(persist){
+        if(banner) banner.classList.remove('on');
+        if(persist) localStorage.setItem(LS_DISMISS,'1');
+      }
+
+      async function triggerInstall(){
+        if(deferredPrompt){
+          deferredPrompt.prompt();
+          try{
+            const choice=await deferredPrompt.userChoice;
+            setStatus(choice && choice.outcome==='accepted'
+              ? 'حالة التطبيق: تم التثبيت'
+              : 'حالة التطبيق: أُلغي التثبيت');
+          }catch(_){}
+          deferredPrompt=null;
+          hideBanner(true);
+          return;
+        }
+        if(isIOS){
+          setStatus('حالة التطبيق: على الآيفون استخدم Safari ← مشاركة ← إضافة إلى الشاشة الرئيسية');
+          showSection('more');
+          const help=document.getElementById('pwaInstallHelp');
+          if(help) help.scrollIntoView({behavior:'smooth', block:'start'});
+          return;
+        }
+        setStatus('حالة التطبيق: المتصفح لا يعرض زر تثبيت الآن — افتح من كروم أو استخدم «المزيد» للتعليمات');
+        showSection('more');
+      }
+
+      if(isStandalone){
+        setStatus('حالة التطبيق: يعمل كتطبيق مثبت ✓');
+      }else if(isIOS){
+        setStatus(isSafari
+          ? 'حالة التطبيق: غير مثبت — من Safari: مشاركة ← إضافة إلى الشاشة الرئيسية'
+          : 'حالة التطبيق: افتح الرابط في Safari ثم: مشاركة ← إضافة إلى الشاشة الرئيسية');
+        if(bannerText) bannerText.textContent='على الآيفون: Safari → مشاركة → إضافة إلى الشاشة الرئيسية.';
+        showBanner(false);
+      }else{
+        setStatus('حالة التطبيق: غير مثبت — يمكن التثبيت من كروم/إيدج عند ظهور الزر');
+        showBanner(false);
+      }
+
+      window.addEventListener('beforeinstallprompt', (e)=>{
+        e.preventDefault();
+        deferredPrompt=e;
+        localStorage.removeItem(LS_DISMISS);
+        if(bannerText) bannerText.textContent='ثبّت اللوحة كتطبيق للوصول السريع بدون شريط المتصفح.';
+        showBanner(true);
+        setStatus('حالة التطبيق: جاهز للتثبيت — اضغط «تثبيت التطبيق»');
+      });
+      window.addEventListener('appinstalled', ()=>{
+        deferredPrompt=null;
+        hideBanner(true);
+        setStatus('حالة التطبيق: تم التثبيت ✓');
+      });
+
+      if(btnInstall) btnInstall.addEventListener('click', triggerInstall);
+      if(btnInstallMore) btnInstallMore.addEventListener('click', triggerInstall);
+      if(btnHow) btnHow.addEventListener('click', ()=>{
+        showSection('more');
+        const help=document.getElementById('pwaInstallHelp');
+        if(help) help.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+      if(btnDismiss) btnDismiss.addEventListener('click', ()=>hideBanner(true));
+
+      if('serviceWorker' in navigator){
+        const swUrl=new URL('sw.js', window.location.href).pathname;
+        navigator.serviceWorker.register(swUrl, {scope: new URL('./', window.location.href).pathname})
+          .then((reg)=>{
+            if(!isStandalone) setStatus((statusEl && statusEl.textContent) || 'حالة التطبيق: جاهز');
+            if(reg && reg.update) try{ reg.update(); }catch(_){}
+          })
+          .catch(()=>{
+            if(!isStandalone) setStatus('حالة التطبيق: تعذّر تسجيل التخزين المؤقت (التثبيت اليدوي ما زال يعمل)');
+          });
+      }
+    }
   </script>
 </body>
 </html>

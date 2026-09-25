@@ -77,6 +77,10 @@ jobs:
           cp -f pages/prices-live.json docs/prices-live.json 2>/dev/null || true
           cp -f pages/live.json docs/live.json 2>/dev/null || true
           cp -f pages/news-live.json docs/news-live.json 2>/dev/null || true
+          mkdir -p docs/icons
+          cp -f pages/manifest.webmanifest docs/manifest.webmanifest 2>/dev/null || true
+          cp -f pages/sw.js docs/sw.js 2>/dev/null || true
+          cp -f pages/icons/*.png docs/icons/ 2>/dev/null || true
           python - <<'PY'
           import json, time
           from pathlib import Path
@@ -112,7 +116,12 @@ jobs:
             cp -f "$STAGE/data/jamal_board.json" data/jamal_board.json 2>/dev/null || true
             # أبقِ docs/index.html متزامناً مع نسخة الكود الحالية على main
             cp -f pages/index.html docs/index.html 2>/dev/null || true
+            mkdir -p docs/icons
+            cp -f pages/manifest.webmanifest docs/manifest.webmanifest 2>/dev/null || true
+            cp -f pages/sw.js docs/sw.js 2>/dev/null || true
+            cp -f pages/icons/*.png docs/icons/ 2>/dev/null || true
             git add docs/status.json docs/prices-live.json docs/live.json docs/news-live.json docs/index.html \
+              docs/manifest.webmanifest docs/sw.js docs/icons \
               pages/status.json pages/prices-live.json pages/live.json pages/news-live.json \
               data/sniper_seen.json data/sniper_board.json data/jamal_board.json || true
             if git diff --cached --quiet; then

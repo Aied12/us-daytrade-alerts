@@ -513,6 +513,18 @@ def main() -> None:
         )
         if html_src.exists() and d != ROOT / "pages":
             (d / "index.html").write_text(html_src.read_text(encoding="utf-8"), encoding="utf-8")
+            # Keep PWA shell assets in sync with pages/ (manifest, SW, icons)
+            pages_dir = ROOT / "pages"
+            for name in ("manifest.webmanifest", "sw.js"):
+                src = pages_dir / name
+                if src.exists():
+                    (d / name).write_bytes(src.read_bytes())
+            icons_src = pages_dir / "icons"
+            if icons_src.is_dir():
+                icons_dst = d / "icons"
+                icons_dst.mkdir(parents=True, exist_ok=True)
+                for icon in icons_src.glob("*.png"):
+                    (icons_dst / icon.name).write_bytes(icon.read_bytes())
         print("wrote", d / "status.json")
 
 
