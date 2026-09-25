@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-25T14:56:09.324641+00:00",
-  "generated_ts": 1790348169,
-  "generated_local": "2026-09-25 17:56 +03",
+  "generated_at": "2026-09-25T14:57:45.904348+00:00",
+  "generated_ts": 1790348265,
+  "generated_local": "2026-09-25 17:57 +03",
   "status": {
     "ok": true,
     "last_mode": "dashboard",
     "changed": true,
     "symbols": 12,
-    "updated_at": "2026-09-25T14:56:09.324405+00:00",
+    "updated_at": "2026-09-25T14:57:45.904152+00:00",
     "source": "build_pages"
   },
   "telegram_enabled": false,
@@ -24,20 +24,20 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: مبتدئ",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": 0.03,
+    "avg_change_pct": 0.04,
     "details": {
       "SPY": {
-        "last": 768.51,
-        "change_pct": 0.17,
-        "rsi": 49.9
+        "last": 768.585,
+        "change_pct": 0.18,
+        "rsi": 50.3
       },
       "QQQ": {
-        "last": 742.5601,
-        "change_pct": 0.2,
-        "rsi": 65.3
+        "last": 742.7237,
+        "change_pct": 0.22,
+        "rsi": 65.6
       },
       "IWM": {
-        "last": 280.87,
+        "last": 280.86,
         "change_pct": -0.28,
         "rsi": 22.4
       }
@@ -45,13 +45,13 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": 0.17,
-        "rsi": 49.9
+        "change_pct": 0.18,
+        "rsi": 50.3
       },
       {
         "symbol": "QQQ",
-        "change_pct": 0.2,
-        "rsi": 65.3
+        "change_pct": 0.22,
+        "rsi": 65.6
       },
       {
         "symbol": "IWM",
@@ -69,8 +69,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 18230,
-    "ny_time": "10:56:09",
+    "seconds_left": 18134,
+    "ny_time": "10:57:45",
     "open": "09:30",
     "close": "16:00"
   },
@@ -78,35 +78,35 @@
     "strongest": [
       {
         "name": "Financials",
-        "change_pct": 0.27
+        "change_pct": 0.31
       },
       {
         "name": "Technology",
-        "change_pct": -0.01
+        "change_pct": 0.02
       },
       {
         "name": "Energy",
-        "change_pct": -0.68
+        "change_pct": -0.69
       }
     ],
     "weakest": [
       {
         "name": "Consumer",
-        "change_pct": -1.24
+        "change_pct": -1.16
       },
       {
         "name": "Energy",
-        "change_pct": -0.68
+        "change_pct": -0.69
       },
       {
         "name": "Technology",
-        "change_pct": -0.01
+        "change_pct": 0.02
       }
     ]
   },
   "style": {
-    "growth_avg": -1.25,
-    "value_avg": 0.66,
+    "growth_avg": -1.21,
+    "value_avg": 0.68,
     "leader": "قيمة",
     "growth_count": 5,
     "value_count": 5
@@ -115,10 +115,10 @@
     {
       "symbol": "ALM",
       "name": "Almonty Industries Inc.",
-      "last": 13.71,
-      "change_pct": 10.57,
-      "dollar_volume": 34757687.97,
-      "dollar_volume_label": "34.8M$",
+      "last": 13.8,
+      "change_pct": 11.29,
+      "dollar_volume": 35635270.8,
+      "dollar_volume_label": "35.6M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -150,16 +150,16 @@
       "news_title_ar": "يبدأ Stifel Almonty بسعر مستهدف قدره 25 $ على توسع التنغستن",
       "news_url": "https://finance.yahoo.com/markets/stocks/articles/stifel-starts-almonty-25-price-141807347.html",
       "catalyst_ar": [],
-      "alert_ar": "زخم +10.6% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +11.3% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
     },
     {
       "symbol": "PPLI",
       "name": "People Incorporated",
-      "last": 39.18,
-      "change_pct": 9.05,
-      "dollar_volume": 28619226.9,
-      "dollar_volume_label": "28.6M$",
+      "last": 39.21,
+      "change_pct": 9.13,
+      "dollar_volume": 28856011.35,
+      "dollar_volume_label": "28.9M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -209,10 +209,10 @@
     {
       "symbol": "SYNA",
       "name": "Synaptics Incorporated",
-      "last": 100.78,
-      "change_pct": 4.09,
-      "dollar_volume": 8670405.74,
-      "dollar_volume_label": "8.7M$",
+      "last": 101.08,
+      "change_pct": 4.4,
+      "dollar_volume": 8863503.04,
+      "dollar_volume_label": "8.9M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -256,16 +256,16 @@
       "catalyst_ar": [
         "اندماج/استحواذ"
       ],
-      "alert_ar": "زخم +4.1% · اندماج/استحواذ",
+      "alert_ar": "زخم +4.4% · اندماج/استحواذ",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SYNA"
     },
     {
       "symbol": "FLEX",
       "name": "Flex Ltd.",
-      "last": 116.9,
-      "change_pct": 4.0,
-      "dollar_volume": 146170707.9,
-      "dollar_volume_label": "146.2M$",
+      "last": 117.1,
+      "change_pct": 4.18,
+      "dollar_volume": 147212499.2,
+      "dollar_volume_label": "147.2M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -317,16 +317,16 @@
         "توجيهات",
         "ترقية محلل"
       ],
-      "alert_ar": "زخم +4.0% · توجيهات · ترقية محلل",
+      "alert_ar": "زخم +4.2% · توجيهات · ترقية محلل",
       "tv_url": "https://www.tradingview.com/chart/?symbol=FLEX"
     },
     {
       "symbol": "MXL",
       "name": "MaxLinear, Inc",
-      "last": 91.2,
-      "change_pct": 6.9,
-      "dollar_volume": 122548176.0,
-      "dollar_volume_label": "122.5M$",
+      "last": 91.53,
+      "change_pct": 7.29,
+      "dollar_volume": 123966492.93,
+      "dollar_volume_label": "124.0M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -358,16 +358,16 @@
       "news_title_ar": "MXL مقابل VICR: أيهما لديه فرصة أفضل للبنية التحتية للذكاء الاصطناعي ؟",
       "news_url": "https://finance.yahoo.com/technology/ai/articles/mxl-vs-vicr-better-ai-182600283.html",
       "catalyst_ar": [],
-      "alert_ar": "زخم +6.9% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +7.3% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=MXL"
     },
     {
       "symbol": "BE",
       "name": "Bloom Energy Corporation",
-      "last": 282.97,
-      "change_pct": 6.12,
-      "dollar_volume": 1949560581.89,
-      "dollar_volume_label": "1.9B$",
+      "last": 284.04,
+      "change_pct": 6.52,
+      "dollar_volume": 1978304231.16,
+      "dollar_volume_label": "2.0B$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -399,16 +399,16 @@
       "news_title_ar": "مؤشر داو جونز للعقود الآجلة ينتعش للسوق المرن ؛ تسلا، أكاماي، تايوان شبه مركزة",
       "news_url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rally-resilient-yields-oil-prices-rising-tesla-semi-event/?src=A00220&yptr=yahoo",
       "catalyst_ar": [],
-      "alert_ar": "زخم +6.1% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +6.5% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=BE"
     },
     {
       "symbol": "DDOG",
       "name": "Datadog, Inc.",
-      "last": 271.21,
-      "change_pct": 5.56,
-      "dollar_volume": 589205352.26,
-      "dollar_volume_label": "589.2M$",
+      "last": 271.81,
+      "change_pct": 5.79,
+      "dollar_volume": 594438956.65,
+      "dollar_volume_label": "594.4M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -440,16 +440,16 @@
       "news_title_ar": "توسع Datadog العالمي يتسارع: هل يمكنه تحقيق المزيد من الإيرادات ؟",
       "news_url": "https://finance.yahoo.com/markets/stocks/articles/datadogs-global-expansion-accelerates-drive-113700535.html",
       "catalyst_ar": [],
-      "alert_ar": "زخم +5.6% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +5.8% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=DDOG"
     },
     {
       "symbol": "JBL",
       "name": "Jabil Inc.",
-      "last": 325.79,
-      "change_pct": 4.86,
-      "dollar_volume": 90380661.8,
-      "dollar_volume_label": "90.4M$",
+      "last": 325.96,
+      "change_pct": 4.91,
+      "dollar_volume": 91222839.64,
+      "dollar_volume_label": "91.2M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -500,9 +500,9 @@
       "symbol": "PYPL",
       "name": "PayPal Holdings, Inc.",
       "last": 54.85,
-      "change_pct": 4.27,
-      "dollar_volume": 373658110.55,
-      "dollar_volume_label": "373.7M$",
+      "change_pct": 4.28,
+      "dollar_volume": 380753451.7,
+      "dollar_volume_label": "380.8M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -557,7 +557,7 @@
       "name": "Surf Air Mobility Inc.",
       "last": 1.07,
       "change_pct": 16.05,
-      "dollar_volume": 7656031.9,
+      "dollar_volume": 7684374.06,
       "dollar_volume_label": "7.7M$",
       "has_news": false,
       "impact": 3,
@@ -592,8 +592,8 @@
       "appeared_local": "2026-09-25 16:43 +03",
       "appeared_ny": "09:43 EDT",
       "appeared_clock_ar": "16:43",
-      "appeared_ago_ar": "منذ 1س 12د",
-      "appeared_ar": "ظهر منذ 1س 12د · 16:43"
+      "appeared_ago_ar": "منذ 1س 14د",
+      "appeared_ar": "ظهر منذ 1س 14د · 16:43"
     }
   ],
   "sniper_note_ar": "ماسح القنص مستقل عن زري ≥$51 و$5–$51 — نطاقه تحت $5 فقط (سنتات <$1 و$1–<$5) + زخم + خبر + خطة تلقائية",
@@ -608,21 +608,21 @@
   "opportunities": [],
   "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
   "opps_rejected_slow": [
-    "QQQ:زخم ضعيف (+0.20% < 0.35%)",
+    "QQQ:زخم ضعيف (+0.22% < 0.35%)",
     "MSFT:ممتد جداً فوق VWAP — لا تدخل متأخراً",
-    "SPY:زخم ضعيف (+0.17% < 0.35%)"
+    "SPY:زخم ضعيف (+0.18% < 0.35%)"
   ],
   "gainers": [
     {
       "symbol": "ALM",
       "name": "Almonty Industries Inc.",
-      "last": 13.71,
-      "change_pct": 10.57,
+      "last": 13.8,
+      "change_pct": 11.29,
       "ref": 12.4,
-      "rth_close": 13.71,
-      "volume": 2535207.0,
-      "dollar_volume": 34757687.97,
-      "dollar_volume_label": "34.8M$",
+      "rth_close": 13.8,
+      "volume": 2582266.0,
+      "dollar_volume": 35635270.8,
+      "dollar_volume_label": "35.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
@@ -630,13 +630,13 @@
     {
       "symbol": "PPLI",
       "name": "People Incorporated",
-      "last": 39.18,
-      "change_pct": 9.05,
+      "last": 39.21,
+      "change_pct": 9.13,
       "ref": 35.93,
-      "rth_close": 39.18,
-      "volume": 730455.0,
-      "dollar_volume": 28619226.9,
-      "dollar_volume_label": "28.6M$",
+      "rth_close": 39.21,
+      "volume": 735935.0,
+      "dollar_volume": 28856011.35,
+      "dollar_volume_label": "28.9M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PPLI"
@@ -644,13 +644,13 @@
     {
       "symbol": "MXL",
       "name": "MaxLinear, Inc",
-      "last": 91.2,
-      "change_pct": 6.9,
+      "last": 91.53,
+      "change_pct": 7.29,
       "ref": 85.31,
-      "rth_close": 91.19,
-      "volume": 1343730.0,
-      "dollar_volume": 122548176.0,
-      "dollar_volume_label": "122.5M$",
+      "rth_close": 91.53,
+      "volume": 1354381.0,
+      "dollar_volume": 123966492.93,
+      "dollar_volume_label": "124.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=MXL"
@@ -658,13 +658,13 @@
     {
       "symbol": "BE",
       "name": "Bloom Energy Corporation",
-      "last": 282.97,
-      "change_pct": 6.12,
+      "last": 284.04,
+      "change_pct": 6.52,
       "ref": 266.65,
-      "rth_close": 282.97,
-      "volume": 6889637.0,
-      "dollar_volume": 1949560581.89,
-      "dollar_volume_label": "1.9B$",
+      "rth_close": 284.04,
+      "volume": 6964879.0,
+      "dollar_volume": 1978304231.16,
+      "dollar_volume_label": "2.0B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=BE"
@@ -672,13 +672,13 @@
     {
       "symbol": "DDOG",
       "name": "Datadog, Inc.",
-      "last": 271.21,
-      "change_pct": 5.56,
+      "last": 271.81,
+      "change_pct": 5.79,
       "ref": 256.92,
-      "rth_close": 271.21,
-      "volume": 2172506.0,
-      "dollar_volume": 589205352.26,
-      "dollar_volume_label": "589.2M$",
+      "rth_close": 271.81,
+      "volume": 2186965.0,
+      "dollar_volume": 594438956.65,
+      "dollar_volume_label": "594.4M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=DDOG"
@@ -686,55 +686,55 @@
     {
       "symbol": "JBL",
       "name": "Jabil Inc.",
-      "last": 325.79,
-      "change_pct": 4.86,
+      "last": 325.96,
+      "change_pct": 4.91,
       "ref": 310.69,
-      "rth_close": 325.79,
-      "volume": 277420.0,
-      "dollar_volume": 90380661.8,
-      "dollar_volume_label": "90.4M$",
+      "rth_close": 325.96,
+      "volume": 279859.0,
+      "dollar_volume": 91222839.64,
+      "dollar_volume_label": "91.2M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=JBL"
     },
     {
-      "symbol": "PYPL",
-      "name": "PayPal Holdings, Inc.",
-      "last": 54.85,
-      "change_pct": 4.27,
-      "ref": 52.6,
-      "rth_close": 54.84,
-      "volume": 6812363.0,
-      "dollar_volume": 373658110.55,
-      "dollar_volume_label": "373.7M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=PYPL"
-    },
-    {
       "symbol": "SYNA",
       "name": "Synaptics Incorporated",
-      "last": 100.78,
-      "change_pct": 4.09,
+      "last": 101.08,
+      "change_pct": 4.4,
       "ref": 96.82,
-      "rth_close": 100.78,
-      "volume": 86033.0,
-      "dollar_volume": 8670405.74,
-      "dollar_volume_label": "8.7M$",
+      "rth_close": 101.08,
+      "volume": 87688.0,
+      "dollar_volume": 8863503.04,
+      "dollar_volume_label": "8.9M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SYNA"
     },
     {
+      "symbol": "PYPL",
+      "name": "PayPal Holdings, Inc.",
+      "last": 54.85,
+      "change_pct": 4.28,
+      "ref": 52.6,
+      "rth_close": 54.85,
+      "volume": 6941722.0,
+      "dollar_volume": 380753451.7,
+      "dollar_volume_label": "380.8M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=PYPL"
+    },
+    {
       "symbol": "FLEX",
       "name": "Flex Ltd.",
-      "last": 116.9,
-      "change_pct": 4.0,
+      "last": 117.1,
+      "change_pct": 4.18,
       "ref": 112.4,
-      "rth_close": 116.9,
-      "volume": 1250391.0,
-      "dollar_volume": 146170707.9,
-      "dollar_volume_label": "146.2M$",
+      "rth_close": 117.1,
+      "volume": 1257152.0,
+      "dollar_volume": 147212499.2,
+      "dollar_volume_label": "147.2M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=FLEX"
@@ -742,58 +742,58 @@
     {
       "symbol": "SNX",
       "name": "TD SYNNEX Corporation",
-      "last": 269.66,
-      "change_pct": 3.93,
+      "last": 269.69,
+      "change_pct": 3.94,
       "ref": 259.47,
-      "rth_close": 269.66,
-      "volume": 371222.0,
-      "dollar_volume": 100103724.52,
-      "dollar_volume_label": "100.1M$",
+      "rth_close": 269.69,
+      "volume": 377438.0,
+      "dollar_volume": 101791254.22,
+      "dollar_volume_label": "101.8M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SNX"
     },
     {
-      "symbol": "GNRC",
-      "name": "Generac Holdlings Inc.",
-      "last": 205.57,
-      "change_pct": 3.8,
-      "ref": 198.05,
-      "rth_close": 205.57,
-      "volume": 326099.0,
-      "dollar_volume": 67036171.43,
-      "dollar_volume_label": "67.0M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=GNRC"
-    },
-    {
       "symbol": "EQPT",
       "name": "EquipmentShare.com Inc",
-      "last": 16.93,
-      "change_pct": 3.74,
+      "last": 16.95,
+      "change_pct": 3.86,
       "ref": 16.32,
-      "rth_close": 16.93,
-      "volume": 992767.0,
-      "dollar_volume": 16807545.31,
-      "dollar_volume_label": "16.8M$",
+      "rth_close": 16.95,
+      "volume": 998404.0,
+      "dollar_volume": 16922947.8,
+      "dollar_volume_label": "16.9M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=EQPT"
     },
     {
-      "symbol": "LPLA",
-      "name": "LPL Financial Holdings Inc.",
-      "last": 314.03,
-      "change_pct": 3.72,
-      "ref": 302.76,
-      "rth_close": 314.03,
-      "volume": 317495.0,
-      "dollar_volume": 99702954.85,
-      "dollar_volume_label": "99.7M$",
+      "symbol": "FIGS",
+      "name": "FIGS, Inc.",
+      "last": 12.97,
+      "change_pct": 3.84,
+      "ref": 12.49,
+      "rth_close": 12.97,
+      "volume": 769334.0,
+      "dollar_volume": 9978261.98,
+      "dollar_volume_label": "10.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=LPLA"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=FIGS"
+    },
+    {
+      "symbol": "AAON",
+      "name": "AAON, Inc.",
+      "last": 87.48,
+      "change_pct": 3.81,
+      "ref": 84.27,
+      "rth_close": 87.48,
+      "volume": 446098.0,
+      "dollar_volume": 39024653.04,
+      "dollar_volume_label": "39.0M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=AAON"
     }
   ],
   "gainers_min_price": 5.0,
@@ -801,26 +801,26 @@
   "movers": [
     {
       "symbol": "MSFT",
-      "change_pct": 3.67,
-      "last": 516.18,
-      "rvol": 0.67,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "7.1B$"
-    },
-    {
-      "symbol": "META",
-      "change_pct": -3.52,
-      "last": 750.2,
-      "rvol": 0.44,
+      "change_pct": 3.75,
+      "last": 516.62,
+      "rvol": 0.69,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "7.3B$"
     },
     {
+      "symbol": "META",
+      "change_pct": -3.61,
+      "last": 749.5,
+      "rvol": 0.45,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "7.5B$"
+    },
+    {
       "symbol": "TSLA",
-      "change_pct": -2.1,
-      "last": 369.99,
+      "change_pct": -1.9,
+      "last": 370.78,
       "rvol": 0.59,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -828,8 +828,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.01,
-      "last": 190.65,
+      "change_pct": -0.89,
+      "last": 190.88,
       "rvol": 0.23,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -837,17 +837,17 @@
     },
     {
       "symbol": "XOM",
-      "change_pct": -0.68,
-      "last": 161.04,
+      "change_pct": -0.69,
+      "last": 161.03,
       "rvol": 0.15,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "347.9M$"
+      "dollar_volume_label": "350.0M$"
     },
     {
       "symbol": "AMD",
-      "change_pct": 0.47,
-      "last": 632.22,
+      "change_pct": 0.5,
+      "last": 632.4,
       "rvol": 0.35,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -855,8 +855,8 @@
     },
     {
       "symbol": "AAPL",
-      "change_pct": 0.41,
-      "last": 337.31,
+      "change_pct": 0.47,
+      "last": 337.51,
       "rvol": 0.14,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -864,8 +864,8 @@
     },
     {
       "symbol": "AMZN",
-      "change_pct": -0.38,
-      "last": 248.43,
+      "change_pct": -0.43,
+      "last": 248.31,
       "rvol": 0.29,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -1565,10 +1565,10 @@
     }
   ],
   "news_excluded_negative": [
-    "AAON",
     "AKAM",
     "BIRK",
     "DELL",
+    "GNRC",
     "HUM",
     "IT",
     "MUFG",
@@ -1584,6 +1584,6 @@
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
   "reminder": "تداول المحفز لا المطاردة — راجع المصدر قبل الدخول",
-  "heartbeat_ts": 1790348169,
+  "heartbeat_ts": 1790348266,
   "publisher": "github-actions-always-on"
 }
