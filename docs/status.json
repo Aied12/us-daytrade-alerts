@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-25T13:31:33.102571+00:00",
-  "generated_ts": 1790343093,
-  "generated_local": "2026-09-25 16:31 +03",
+  "generated_at": "2026-09-25T13:33:08.023991+00:00",
+  "generated_ts": 1790343188,
+  "generated_local": "2026-09-25 16:33 +03",
   "status": {
     "ok": true,
     "last_mode": "dashboard",
     "changed": true,
     "symbols": 12,
-    "updated_at": "2026-09-25T13:31:33.102287+00:00",
+    "updated_at": "2026-09-25T13:33:08.023801+00:00",
     "source": "build_pages"
   },
   "telegram_enabled": false,
@@ -24,39 +24,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: مبتدئ",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": 0.14,
+    "avg_change_pct": 0.12,
     "details": {
       "SPY": {
-        "last": 768.193,
-        "change_pct": 0.12,
-        "rsi": 49.9
+        "last": 768.39,
+        "change_pct": 0.15,
+        "rsi": 50.5
       },
       "QQQ": {
-        "last": 742.33,
-        "change_pct": 0.17,
-        "rsi": 65.5
+        "last": 741.82,
+        "change_pct": 0.1,
+        "rsi": 65.4
       },
       "IWM": {
-        "last": 282.02,
+        "last": 282.04,
         "change_pct": 0.12,
-        "rsi": 24.5
+        "rsi": 24.8
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": 0.12,
-        "rsi": 49.9
+        "change_pct": 0.15,
+        "rsi": 50.5
       },
       {
         "symbol": "QQQ",
-        "change_pct": 0.17,
-        "rsi": 65.5
+        "change_pct": 0.1,
+        "rsi": 65.4
       },
       {
         "symbol": "IWM",
         "change_pct": 0.12,
-        "rsi": 24.5
+        "rsi": 24.8
       }
     ],
     "no_trade_today": false,
@@ -69,303 +69,239 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 23306,
-    "ny_time": "09:31:33",
+    "seconds_left": 23211,
+    "ny_time": "09:33:08",
     "open": "09:30",
     "close": "16:00"
   },
   "sectors": {
     "strongest": [
       {
-        "name": "Consumer",
-        "change_pct": 0.91
-      },
-      {
         "name": "Financials",
-        "change_pct": 0.44
+        "change_pct": 0.47
       },
       {
         "name": "Technology",
-        "change_pct": 0.01
+        "change_pct": -0.19
+      },
+      {
+        "name": "Consumer",
+        "change_pct": -0.27
       }
     ],
     "weakest": [
       {
         "name": "Energy",
-        "change_pct": -1.09
+        "change_pct": -1.22
+      },
+      {
+        "name": "Consumer",
+        "change_pct": -0.27
       },
       {
         "name": "Technology",
-        "change_pct": 0.01
-      },
-      {
-        "name": "Financials",
-        "change_pct": 0.44
+        "change_pct": -0.19
       }
     ]
   },
   "style": {
-    "growth_avg": 0.33,
-    "value_avg": -0.08,
-    "leader": "نمو",
+    "growth_avg": -0.38,
+    "value_avg": -0.11,
+    "leader": "قيمة",
     "growth_count": 5,
     "value_count": 5
   },
-  "momentum_scanner": [],
+  "momentum_scanner": [
+    {
+      "symbol": "DDOG",
+      "name": "Datadog, Inc.",
+      "last": 270.3,
+      "change_pct": 5.21,
+      "dollar_volume": 75624534.0,
+      "dollar_volume_label": "75.6M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "has_news": true,
+      "news": {
+        "symbol": "DDOG",
+        "title": "Dow Jones Futures Signal Rebound For Resilient Market; Tesla, Akamai, Taiwan Semi In Focus",
+        "title_ar": "مؤشر داو جونز للعقود الآجلة ينتعش للسوق المرن ؛ تسلا، أكاماي، تايوان شبه مركزة",
+        "summary": "Futures rose, with the market showing resilience even as yields keep rising. Taiwan Semi is a buy. Tesla held a Semi event.",
+        "summary_ar": "",
+        "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rally-resilient-yields-oil-prices-rising-tesla-semi-event/?src=A00220&yptr=yahoo",
+        "publisher": "Investor's Business Daily",
+        "published": "2026-09-25 12:04:53 UT",
+        "published_ts": 1790337893,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "f7d9e13ad464b79df9f809a29855ede71f88029e",
+        "source": "yahoo",
+        "impact": 4,
+        "impact_ar": "تأثير 4/5",
+        "sentiment_score": 4,
+        "catalysts": [],
+        "catalyst_keys": [],
+        "catalyst_ar": [],
+        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+        "officialish": false
+      },
+      "news_title_ar": "مؤشر داو جونز للعقود الآجلة ينتعش للسوق المرن ؛ تسلا، أكاماي، تايوان شبه مركزة",
+      "news_url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rally-resilient-yields-oil-prices-rising-tesla-semi-event/?src=A00220&yptr=yahoo",
+      "catalyst_ar": [],
+      "alert_ar": "زخم +5.2% · تحرك سعري قوي بدون محفز واضح بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=DDOG"
+    }
+  ],
   "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
-  "sniper_scanner": [],
+  "sniper_scanner": [
+    {
+      "symbol": "STEM",
+      "name": "Stem, Inc.",
+      "last": 4.38,
+      "change_pct": 12.74,
+      "dollar_volume": 478120.8,
+      "dollar_volume_label": "478K$",
+      "has_news": false,
+      "impact": 3,
+      "impact_ar": "تأثير 3/5",
+      "catalyst_ar": [],
+      "catalyst_keys": [],
+      "news_title_ar": "",
+      "news_url": "https://www.tradingview.com/chart/?symbol=STEM",
+      "alert_ar": "قنص — زخم قوي",
+      "reason_ar": "زخم سعري قوي بدون خبر رسمي مرفق بعد",
+      "score": 38.77,
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=STEM",
+      "tier": "sniper",
+      "price_band_ar": "$0.30–$8",
+      "appeared_ts": 1790343160,
+      "appeared_at": "2026-09-25T13:32:40.453750+00:00",
+      "appeared_local": "2026-09-25 16:32 +03",
+      "appeared_ny": "09:32 EDT",
+      "appeared_clock_ar": "16:32",
+      "appeared_ago_ar": "الآن",
+      "appeared_ar": "ظهر الآن · 16:32"
+    }
+  ],
   "sniper_note_ar": "ماسح القنص: أسهم رخيصة ($0.30–$8) + زخم قوي (≥5–8%) + خبر/محفز مفضّل — أسلوب قنص السنتات، منفصل عن اللوحة المحافظة",
   "sniper_price_band": {
     "min": 0.3,
     "max": 8.0
   },
-  "opportunities": [
-    {
-      "symbol": "AMD",
-      "action": "فكّر في شراء قصير المدى",
-      "action_key": "CONSIDER_LONG",
-      "side": "long",
-      "score_100": 100,
-      "confidence": "A",
-      "confidence_ar": "ثقة عالية",
-      "urgent": true,
-      "strategies": [
-        "ارتداد لملء فجوة هابطة",
-        "ترتيب متوسطات صاعد",
-        "كسر قمة 20 يوم",
-        "RSI تشبع شرائي"
-      ],
-      "reason": "ارتداد لملء فجوة هابطة: فجوة -2.3% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | كسر قمة 20 يوم: قرب/فوق قمة 20ي $630.80 | RSI تشبع شرائي: RSI 82 — لا تطارد | شمعة: ابتلاع صاعد: ابتلاع صاعد | اختبار/كسر مقاوم",
-      "entry": 634.3,
-      "entry_original": 634.3,
-      "entry_planned": 634.3,
-      "stop": 448.39,
-      "stop_alt": 631.13,
-      "target": 968.94,
-      "target_partial": 801.62,
-      "target_final": 968.94,
-      "trail_offset": 65.07,
-      "shares": 0,
-      "risk_sar": 0.0,
-      "allowed": false,
-      "change_pct": 0.8,
-      "last": 634.3,
-      "session_phase": "regular",
-      "liquidity": {
-        "rvol": 1.17,
-        "rvol_pace": 26.42,
-        "volume": 25259300.0,
-        "avg_volume_20": 21564805.0,
-        "dollar_volume": 16021973990.0,
-        "avg_dollar_volume": 13678555811.5,
-        "dollar_volume_label": "16.0B$",
-        "avg_dollar_volume_label": "13.7B$",
-        "grade": "strong",
-        "grade_ar": "قوي",
-        "label": "RVOL ×1.2 · وتيرة ×26.4 · اليوم 16.0B$ · متوسط 13.7B$"
-      },
-      "rvol": 1.17,
-      "rvol_pace": 26.42,
-      "liq_grade": "strong",
-      "liq_grade_ar": "قوي",
-      "atr_pct": 4.27,
-      "flow_score": 97.58,
-      "flow_ok": true,
-      "smart": {
-        "confidence": "A",
-        "confidence_ar": "ثقة عالية",
-        "tags": [
-          {
-            "key": "confidence",
-            "ar": "ثقة A",
-            "tone": "ok"
-          },
-          {
-            "key": "vwap",
-            "ar": "VWAP",
-            "tone": "bad"
-          },
-          {
-            "key": "candle",
-            "ar": "ابتلاع صاعد",
-            "tone": "ok"
-          }
-        ],
-        "wait_1m_confirm": false,
-        "wait_1m_ar": "",
-        "fake_liquidity": false,
-        "fake_liquidity_ar": "",
-        "vwap": {
-          "active": true,
-          "side": "stretched",
-          "dist_pct": 5.7,
-          "ar": "ممتد فوق VWAP +5.70% — لا تطارد"
-        },
-        "candle": {
-          "name": "ابتلاع صاعد",
-          "draw": "📗 █▼→██",
-          "ar": "شمعة: ابتلاع صاعد 📗 █▼→██"
-        },
-        "stop_alt": 631.13,
-        "stop_main": 448.39,
-        "stop_plan_ar": "وقف بديل≈ $631.13 (ATR) · الرئيسي≈ $448.39",
-        "target_partial": 801.62,
-        "target_final": 968.94,
-        "trail_offset": 65.07,
-        "partial_plan_ar": "جني 50% عند $801.62 ثم وقف متحرك ≈ $65.07 تحت القمة",
-        "qqq": {
-          "active": false,
-          "corr": 0.68
-        },
-        "near_earnings": false,
-        "earnings_ar": "",
-        "expired": false,
-        "expired_ar": "",
-        "exclude": false,
-        "exclude_reason": "",
-        "notes": [
-          "ممتد فوق VWAP +5.70% — لا تطارد",
-          "شمعة: ابتلاع صاعد 📗 █▼→██",
-          "وقف بديل≈ $631.13 (ATR) · الرئيسي≈ $448.39",
-          "جني 50% عند $801.62 ثم وقف متحرك ≈ $65.07 تحت القمة"
-        ],
-        "rvol": 1.17
-      },
-      "smart_tags": [
-        {
-          "key": "confidence",
-          "ar": "ثقة A",
-          "tone": "ok"
-        },
-        {
-          "key": "vwap",
-          "ar": "VWAP",
-          "tone": "bad"
-        },
-        {
-          "key": "candle",
-          "ar": "ابتلاع صاعد",
-          "tone": "ok"
-        }
-      ],
-      "smart_notes": [
-        "ممتد فوق VWAP +5.70% — لا تطارد",
-        "شمعة: ابتلاع صاعد 📗 █▼→██",
-        "وقف بديل≈ $631.13 (ATR) · الرئيسي≈ $448.39",
-        "جني 50% عند $801.62 ثم وقف متحرك ≈ $65.07 تحت القمة"
-      ],
-      "wait_1m_confirm": false,
-      "fake_liquidity": false,
-      "expired": false,
-      "candle": {
-        "name": "ابتلاع صاعد",
-        "draw": "📗 █▼→██",
-        "ar": "شمعة: ابتلاع صاعد 📗 █▼→██"
-      },
-      "vwap": {
-        "active": true,
-        "side": "stretched",
-        "dist_pct": 5.7,
-        "ar": "ممتد فوق VWAP +5.70% — لا تطارد"
-      },
-      "qqq": {
-        "active": false,
-        "corr": 0.68
-      },
-      "tv_url": "https://www.tradingview.com/chart/?symbol=AMD",
-      "tg_share": "https://t.me/share/url?url=&text=AMD%20فكّر في شراء قصير المدى%20ثقة%20A%0Aالآن%20634.3%20دخول%20634.3%20وقف%20631.13%20هدف%20968.94%0Aسيولة%20قوي%20وتيرة%20x26.42%20زخم%20+0.80%"
-    }
-  ],
+  "opportunities": [],
   "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
   "opps_rejected_slow": [
-    "TSLA:ممتد جداً فوق VWAP — لا تدخل متأخراً",
-    "NVDA:زخم ضعيف (+0.21% < 0.35%)",
-    "PLTR:زخم ضعيف (+0.19% < 0.35%)",
-    "SPY:زخم ضعيف (+0.12% < 0.35%)",
-    "QQQ:زخم ضعيف (+0.17% < 0.35%)"
+    "QQQ:زخم ضعيف (+0.10% < 0.35%)",
+    "SPY:زخم ضعيف (+0.15% < 0.35%)"
   ],
   "gainers": [
     {
-      "symbol": "ONDS",
-      "name": "Ondas Inc",
-      "last": 7.72,
-      "change_pct": 1.62,
-      "ref": 7.6,
-      "rth_close": 7.72,
-      "volume": 1616292.0,
-      "dollar_volume": 12477774.24,
-      "dollar_volume_label": "12.5M$",
+      "symbol": "DDOG",
+      "name": "Datadog, Inc.",
+      "last": 270.3,
+      "change_pct": 5.21,
+      "ref": 256.92,
+      "rth_close": 270.3,
+      "volume": 279780.0,
+      "dollar_volume": 75624534.0,
+      "dollar_volume_label": "75.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=ONDS"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=DDOG"
     },
     {
-      "symbol": "TEM",
-      "name": "Tempus AI, Inc.",
-      "last": 83.25,
-      "change_pct": 1.23,
-      "ref": 82.24,
-      "rth_close": 83.25,
-      "volume": 350766.0,
-      "dollar_volume": 29201269.5,
-      "dollar_volume_label": "29.2M$",
+      "symbol": "CRDO",
+      "name": "Credo Technology Group Holding ",
+      "last": 202.07,
+      "change_pct": 3.11,
+      "ref": 195.97,
+      "rth_close": 202.07,
+      "volume": 458883.0,
+      "dollar_volume": 92726487.81,
+      "dollar_volume_label": "92.7M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=TEM"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=CRDO"
     },
     {
-      "symbol": "NTRA",
-      "name": "Natera, Inc.",
-      "last": 411.01,
-      "change_pct": 0.54,
-      "ref": 408.79,
-      "rth_close": 411.01,
-      "volume": 22351.0,
-      "dollar_volume": 9186484.51,
-      "dollar_volume_label": "9.2M$",
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices, Inc.",
+      "last": 633.39,
+      "change_pct": 0.66,
+      "ref": 629.26,
+      "rth_close": 633.38,
+      "volume": 1973275.0,
+      "dollar_volume": 1249852652.25,
+      "dollar_volume_label": "1.2B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=NTRA"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=AMD"
+    },
+    {
+      "symbol": "PLTR",
+      "name": "Palantir Technologies Inc.",
+      "last": 193.28,
+      "change_pct": 0.36,
+      "ref": 192.59,
+      "rth_close": 193.28,
+      "volume": 1041525.0,
+      "dollar_volume": 201305952.0,
+      "dollar_volume_label": "201.3M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=PLTR"
     }
   ],
   "gainers_min_price": 5.0,
   "gainers_session_ar": "الجلسة الرسمية الآن",
   "movers": [
     {
-      "symbol": "XOM",
-      "change_pct": -1.09,
-      "last": 160.27,
-      "rvol": 0.85,
+      "symbol": "META",
+      "change_pct": -2.7,
+      "last": 756.63,
+      "rvol": 0.08,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "2.0B$"
+      "dollar_volume_label": "1.3B$"
+    },
+    {
+      "symbol": "XOM",
+      "change_pct": -1.22,
+      "last": 160.05,
+      "rvol": 0.03,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "65.4M$"
     },
     {
       "symbol": "AMD",
-      "change_pct": 0.8,
-      "last": 634.3,
-      "rvol": 1.17,
+      "change_pct": 0.65,
+      "last": 633.38,
+      "rvol": 0.09,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "16.0B$"
+      "dollar_volume_label": "1.2B$"
+    },
+    {
+      "symbol": "PLTR",
+      "change_pct": -0.49,
+      "last": 191.64,
+      "rvol": 0.04,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "199.3M$"
     },
     {
       "symbol": "JPM",
-      "change_pct": 0.44,
-      "last": 339.88,
-      "rvol": 0.02,
+      "change_pct": 0.47,
+      "last": 340.01,
+      "rvol": 0.03,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "56.0M$"
-    },
-    {
-      "symbol": "AAPL",
-      "change_pct": -0.36,
-      "last": 334.71,
-      "rvol": 0.57,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "8.3B$"
+      "dollar_volume_label": "81.5M$"
     }
   ],
   "news": [
@@ -443,18 +379,87 @@
       "officialish": false
     },
     {
-      "symbol": "XOM",
-      "title": "Could TotalEnergies (TTE)’ LNG Growth Give it an Edge Over ExxonMobil (XOM)?",
-      "title_ar": "هل يمكن لنمو الغاز الطبيعي المسال من TotalEnergies (TTE) أن يمنحها ميزة على ExxonMobil (XOM )؟",
-      "summary": "TotalEnergies SE (NYSE:TTE) announced on September 7, 2026, that the 5.6 Mtpa Papua LNG project achieved critical commercial and contractual milestones toward a Final Investment Decision (FID). Key steps include completing the EPC tendering process and establishing a joint market",
+      "symbol": "DDOG",
+      "title": "Dow Jones Futures Signal Rebound For Resilient Market; Tesla, Akamai, Taiwan Semi In Focus",
+      "title_ar": "مؤشر داو جونز للعقود الآجلة ينتعش للسوق المرن ؛ تسلا، أكاماي، تايوان شبه مركزة",
+      "summary": "Futures rose, with the market showing resilience even as yields keep rising. Taiwan Semi is a buy. Tesla held a Semi event.",
       "summary_ar": "",
-      "url": "https://finance.yahoo.com/energy/articles/could-totalenergies-tte-lng-growth-210805612.html",
-      "publisher": "Insider Monkey",
-      "published": "2026-09-24 21:08:05 UT",
-      "published_ts": 1790284085,
+      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rally-resilient-yields-oil-prices-rising-tesla-semi-event/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "published": "2026-09-25 12:04:53 UT",
+      "published_ts": 1790337893,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "84c29e55e8a8c1c88583e37efa91feb5f571298f",
+      "id": "f7d9e13ad464b79df9f809a29855ede71f88029e",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
+      "symbol": "DDOG",
+      "title": "Datadog's Global Expansion Accelerates: Can It Drive More Revenues?",
+      "title_ar": "توسع Datadog العالمي يتسارع: هل يمكنه تحقيق المزيد من الإيرادات ؟",
+      "summary": "DDOG's international expansion across EMEA and APAC could support revenue growth as recurring subscriptions drive broader platform adoption.",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/datadogs-global-expansion-accelerates-drive-113700535.html",
+      "publisher": "Zacks",
+      "published": "2026-09-25 11:37:00 UT",
+      "published_ts": 1790336220,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "0ecfd569467f537ef242512f9bdcebbde58137f2",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
+      "symbol": "DDOG",
+      "title": "Datadog (DDOG) Rallies On AI Demand, Is The Stock Still Cheap?",
+      "title_ar": "ارتفاع Datadog (DDOG) عند الطلب على الذكاء الاصطناعي، هل لا يزال السهم رخيصًا ؟",
+      "summary": "Datadog (DDOG) has drawn fresh attention after recent gains left the stock up 15.2% over the past month and 7.2% in the past 3 months, sharply outpacing many software peers. Short term momentum has picked up for Datadog, with a 1 day share price return of 2.16% building on a 7 da",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/datadog-ddog-rallies-ai-demand-001952703.html",
+      "publisher": "Simply Wall St.",
+      "published": "2026-09-25 00:19:52 UT",
+      "published_ts": 1790295592,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "a194ae2957656415ca8b32890489abe7321df465",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
+      "symbol": "CRDO",
+      "title": "3 AI Infrastructure Stocks Investors Should Watch As Data Center Spending Builds",
+      "title_ar": "3 أسهم البنية التحتية للذكاء الاصطناعي يجب على المستثمرين مراقبتها بينما يتزايد إنفاق مركز البيانات",
+      "summary": "AI and data-center spending now sit at the crossroads of higher rates, fragile growth and jumpy energy markets, which is exactly where big shifts in market leadership are often born. Investors focused only on rate-sensitive sectors risk missing how capital keeps flowing toward th",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/technology/ai/articles/3-ai-infrastructure-stocks-investors-091849195.html",
+      "publisher": "Simply Wall St.",
+      "published": "2026-09-22 09:18:49 UT",
+      "published_ts": 1790068729,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "a10554f902690dec22be7b0d2273646d49a25277",
       "source": "yahoo",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -464,78 +469,15 @@
           "key": "earnings",
           "ar": "أرباح",
           "base_impact": 4
-        },
-        {
-          "key": "partnership",
-          "ar": "شراكة/عقد",
-          "base_impact": 3
         }
       ],
       "catalyst_keys": [
-        "earnings",
-        "partnership"
+        "earnings"
       ],
       "catalyst_ar": [
-        "أرباح",
-        "شراكة/عقد"
+        "أرباح"
       ],
-      "impact_reason_ar": "أرباح · شراكة/عقد",
-      "officialish": false
-    },
-    {
-      "symbol": "TEM",
-      "title": "Tempus AI (TEM) Has a $75 Goldman Sachs Target, But Its Data Business Faces a Bigger Test",
-      "title_ar": "TEMPUS AI () لديه هدف جولدمان ساكس بقيمة 75 $، لكن أعمال البيانات الخاصة به تواجه اختبارًا أكبر",
-      "summary": "Goldman Sachs’ Neutral initiation of Tempus AI, Inc. (NASDAQ:TEM) on September 21 puts the company’s fastest-growing businesses under different tests: diagnostics offers visible near-term growth, while the data and applications segment faces renewal risk as several major contract",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/healthcare/articles/tempus-ai-tem-75-goldman-204805322.html",
-      "publisher": "Insider Monkey",
-      "published": "2026-09-22 20:48:05 UT",
-      "published_ts": 1790110085,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "df8f61043451894089a7614dec00f5b3963b2dc5",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "partnership",
-          "ar": "شراكة/عقد",
-          "base_impact": 3
-        }
-      ],
-      "catalyst_keys": [
-        "partnership"
-      ],
-      "catalyst_ar": [
-        "شراكة/عقد"
-      ],
-      "impact_reason_ar": "شراكة/عقد",
-      "officialish": false
-    },
-    {
-      "symbol": "NTRA",
-      "title": "NTRA Stock Hits All-Time High, OMER Stock Scales 5-Year Peak – What’s Driving Investors’ Enthusiasm Today?",
-      "title_ar": "سهم NTRA يسجل أعلى مستوى له على الإطلاق، OMER Stock Scales 5 – Year Peak – ما الذي يدفع حماسة المستثمرين اليوم ؟",
-      "summary": "Natera’s Signatera test secured a key regulatory approval, while Cantor raised its sales expectations for Omeros’ lead drug, Yartemlea.",
-      "summary_ar": "",
-      "url": "https://stocktwits.com/news-articles/markets/equity/ntra-stock-hits-all-time-high-omer-stock-scales-5-year-peak/cZMPvc7RB77",
-      "publisher": "Stocktwits",
-      "published": "2026-09-22 17:50:50 UT",
-      "published_ts": 1790099450,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "b55dd95ed3a7329e8b0868f6bc8da3ed7b7959e4",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "impact_reason_ar": "أرباح",
       "officialish": false
     },
     {
@@ -562,36 +504,118 @@
       "officialish": true
     },
     {
-      "symbol": "XOM",
-      "title": "Caterpillar or Exxon: Which Dividend Has More Room to Grow?",
-      "title_ar": "كاتربيلر أو إكسون: ما هي الأرباح التي لديها مجال أكبر للنمو ؟",
-      "summary": "Caterpillar just hit $20 billion in quarterly sales for the first time ever, while Exxon pumped out $23.6 billion in operating cash flow. Both companies raised their dividends, but their very different balance sheets tell a story about which payout has genuine room to run.",
+      "symbol": "PLTR",
+      "title": "EXCLUSIVE: Palantir Is ‘Not Really an AI Company’ but an ‘Incredible Data Architecture Company,’ Defense AI CEO Says",
+      "title_ar": "حصري: يقول الرئيس التنفيذي للذكاء الاصطناعي في وزارة الدفاع إن بالانتير \"ليست حقًا شركة ذكاء اصطناعي\" ولكنها \"شركة هندسة بيانات لا تصدق\"",
+      "summary": "Palantir Technologies Inc. (NASDAQ:PLTR) is widely treated as an artificial-intelligence stock, but one defense AI CEO says its real strength is the “plumbing” around AI models, not the models themselves.“They’re not really an AI company. They’re an incredible data architecture..",
       "summary_ar": "",
-      "url": "https://247wallst.com/investing/2026/09/24/caterpillar-or-exxon-which-dividend-has-more-room-to-grow/",
-      "publisher": "24/7 Wall St.",
-      "published": "2026-09-24 13:25:18 UT",
-      "published_ts": 1790256318,
+      "url": "https://www.benzinga.com/markets/prediction-markets/26/09/61993852/palantir-ai-data-architecture-edgerunner?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral",
+      "publisher": "Benzinga Prediction Markets",
+      "published": "2026-09-25 13:01:44 UT",
+      "published_ts": 1790341304,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد",
+      "id": "fd0cf406c1742f90ce0192226446e165f7ae8e06",
+      "source": "yahoo",
+      "impact": 3,
+      "impact_ar": "تأثير 3/5",
+      "sentiment_score": 3,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": true
+    },
+    {
+      "symbol": "META",
+      "title": "'Meta is having its moment' as stock's monster rally vindicates the bulls: Chart of the Day",
+      "title_ar": "\"ميتا تحظى بلحظتها\" حيث أن ارتفاع وحوش الأسهم يبرر المضاربين على الصعود: مخطط اليوم",
+      "summary": "Meta stock has rallied 16% over the past week on the heels of the company's AI agent release.",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/article/meta-is-having-its-moment-as-stocks-monster-rally-vindicates-the-bulls-chart-of-the-day-121302619.html",
+      "publisher": "Yahoo Finance",
+      "published": "2026-09-25 12:13:02 UT",
+      "published_ts": 1790338382,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "a8ab01072e6b2bface0955a42f59cc0049e2d641",
+      "id": "a32b9bd866fef17fe3df92cc72da28958268c6dc",
       "source": "yahoo",
       "impact": 3,
       "impact_ar": "تأثير 3/5",
       "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "dividend",
-          "ar": "توزيعات",
-          "base_impact": 2
-        }
-      ],
-      "catalyst_keys": [
-        "dividend"
-      ],
-      "catalyst_ar": [
-        "توزيعات"
-      ],
-      "impact_reason_ar": "توزيعات",
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": false
+    },
+    {
+      "symbol": "META",
+      "title": "Meta's stock surges as it moves from AI laggard to leader",
+      "title_ar": "سهم ميتا يرتفع مع انتقاله من الذكاء الاصطناعي المتخلف إلى القائد",
+      "summary": "KeyBanc Capital Markets Managing Director Justin Patterson joins Market Domination's Brooke DiPalma to discuss the resurgence of Meta (META) stock and how its upcoming product releases could usher it into the next phase of growth.",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/video/metas-stock-surges-moves-ai-194025560.html",
+      "publisher": "Yahoo Finance Video",
+      "published": "2026-09-24 19:40:25 UT",
+      "published_ts": 1790278825,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "9301299a8b51d0f9253e19853850d00fdf7de968",
+      "source": "yahoo",
+      "impact": 3,
+      "impact_ar": "تأثير 3/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": false
+    },
+    {
+      "symbol": "META",
+      "title": "Meta's $14 billion AI bet looks like it's finally paying off",
+      "title_ar": "يبدو أن رهان Meta للذكاء الاصطناعي بقيمة 14 $ يبدو أنه يؤتي ثماره أخيرًا",
+      "summary": "Mark Zuckerberg's Scale AI deal changed the view of Meta being late to the AI game to outright leading it.",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/technology/article/metas-14-billion-ai-bet-looks-like-its-finally-paying-off-155139007.html",
+      "publisher": "Yahoo Finance",
+      "published": "2026-09-24 15:51:39 UT",
+      "published_ts": 1790265099,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "c9935a367b5304bbb37745e3dc2078671f771d87",
+      "source": "yahoo",
+      "impact": 3,
+      "impact_ar": "تأثير 3/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": false
+    },
+    {
+      "symbol": "CRDO",
+      "title": "One Under-the-Radar Stock With 100% Upside Potential",
+      "title_ar": "سهم واحد تحت الرادار مع احتمالية صعود بنسبة 100 ٪",
+      "summary": "A small-cap silicon photonics company has quietly built a cash fortress and locked in a major anchor customer, positioning itself to compete in a $26 billion AI optics market where the giants are not paying attention yet.",
+      "summary_ar": "",
+      "url": "https://247wallst.com/investing/2026/09/22/one-under-the-radar-stock-with-100-upside-potential/",
+      "publisher": "24/7 Wall St.",
+      "published": "2026-09-22 17:00:13 UT",
+      "published_ts": 1790096413,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "dc124dee72b0e715e498e6c67f12591163a9845e",
+      "source": "yahoo",
+      "impact": 3,
+      "impact_ar": "تأثير 3/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
       "officialish": false
     },
     {
@@ -665,178 +689,17 @@
     },
     {
       "symbol": "AMD",
-      "title": "AMD Stock Gets A Price Target Hike With Anthropic-Akamai Deal Strengthening CPU Case In Agentic AI, BofA Says",
-      "title_ar": "سهم AMD يحصل على ارتفاع مستهدف للسعر مع صفقة أنثروبيك أكاماي تعزيز حالة وحدة المعالجة المركزية في الذكاء الاصطناعي الوكيل، يقول بنك أوف أمريكا",
-      "summary": "BofA said the Anthropic-Akamai infrastructure deal “further supports CPU importance in the agentic era.”",
+      "title": "No Nvidia Needed: Akamai Lands $11.6 Billion Anthropic AI Deal",
+      "title_ar": "لا حاجة إلى إنفيديا: أكاماي لاندز صفقة ذكاء اصطناعي أنثروبي بقيمة 11.6 مليار $",
+      "summary": "Akamai stock surged on a big AI infrastructure deal with Anthropic that will use AI accelerators called \"CPUs,\" not Nvidia-made GPUs.",
       "summary_ar": "",
-      "url": "https://stocktwits.com/news-articles/markets/equity/amd-stock-eyes-fresh-record-high-anthropic-akamai-deal-boosts-cpu-demand/cZMO7f8RBax",
-      "publisher": "Stocktwits",
-      "published": "2026-09-25 12:44:17 UT",
-      "published_ts": 1790340257,
+      "url": "https://www.investors.com/news/technology/akamai-stock-akam-surges-anthropic-artificial-intelligence-computing/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "published": "2026-09-25 12:55:41 UT",
+      "published_ts": 1790340941,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "3027ab163c5c42719f35c8f02be15e9939660e83",
-      "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
-      "symbol": "AAPL",
-      "title": "Block Expands Square and Cash App's Reach With Apple & Workday Deals",
-      "title_ar": "Block يوسع نطاق وصول تطبيق Square و Cash مع عروض Apple و Workday",
-      "summary": "XYZ expands Square and Cash App through Apple and Workday integrations, aiming to boost merchant discovery, direct deposits and engagement.",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/technology/articles/block-expands-square-cash-apps-111700290.html",
-      "publisher": "Zacks",
-      "published": "2026-09-25 11:17:00 UT",
-      "published_ts": 1790335020,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "cdfe7879f5094787053a5aa85d5032d2698c62da",
-      "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
-      "symbol": "GOOGL",
-      "title": "Meta's stock surges as it moves from AI laggard to leader",
-      "title_ar": "سهم ميتا يرتفع مع انتقاله من الذكاء الاصطناعي المتخلف إلى القائد",
-      "summary": "KeyBanc Capital Markets Managing Director Justin Patterson joins Market Domination's Brooke DiPalma to discuss the resurgence of Meta (META) stock and how its upcoming product releases could usher it into the next phase of growth.",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/video/metas-stock-surges-moves-ai-194025560.html",
-      "publisher": "Yahoo Finance Video",
-      "published": "2026-09-24 19:40:25 UT",
-      "published_ts": 1790278825,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "60f2f7a10ba689aff26062bf58f8bff2a6e324d5",
-      "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
-      "symbol": "ONDS",
-      "title": "Unusual Machines Jumps 6% as Drone Names Bounce Together; Ondas Climbs 4%, Red Cat Rises 3%",
-      "title_ar": "تقفز الآلات غير العادية بنسبة 6 ٪ حيث ترتد أسماء الطائرات بدون طيار معًا ؛ تتسلق Ondas بنسبة 4 ٪، وترتفع القطة الحمراء بنسبة 3 ٪",
-      "summary": "Drone stocks are surging together while the broader market sits flat, and the pattern of who is gaining the most reveals exactly where traders are placing their bets right now.",
-      "summary_ar": "",
-      "url": "https://247wallst.com/investing/2026/09/24/unusual-machines-jumps-6-as-drone-names-bounce-together-ondas-climbs-4-red-cat-rises-3/",
-      "publisher": "24/7 Wall St.",
-      "published": "2026-09-24 18:02:51 UT",
-      "published_ts": 1790272971,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "1ec21fc82975f523132aba7b462c890ae5ca7a42",
-      "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
-      "symbol": "TEM",
-      "title": "Tempus AI Chief Accounting Officer Sells $529,650 of Stock",
-      "title_ar": "كبير مسؤولي المحاسبة في تيمبوس AI يبيع 529,650 $ من الأسهم",
-      "summary": "Sale follows 30% rebound in the stock year to date.",
-      "summary_ar": "",
-      "url": "https://www.fool.com/coverage/filings/2026/09/24/tempus-ai-chief-accounting-officer-sells-usd529-650-of-stock/",
-      "publisher": "Motley Fool",
-      "published": "2026-09-24 13:00:01 UT",
-      "published_ts": 1790254801,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "9ab6ee635e534810d20e8a28624c6e29a5f99f5b",
-      "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
-      "symbol": "NTRA",
-      "title": "Natera's Signatera Wins Japan PMDA Approval as Bladder Cancer CDx",
-      "title_ar": "Natera's Signatera تفوز بالموافقة على PMDA اليابانية كـ CDx لسرطان المثانة",
-      "summary": "NTRA wins Japan PMDA approval for Signatera in muscle-invasive bladder cancer, supporting treatment decisions and a planned 2027 commercial launch.",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/healthcare/articles/nateras-signatera-wins-japan-pmda-151300906.html",
-      "publisher": "Zacks",
-      "published": "2026-09-23 15:13:00 UT",
-      "published_ts": 1790176380,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "240b9c15ccbbc502778d37ad782dfc1ba394c543",
-      "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
-      "symbol": "NTRA",
-      "title": "Why Is Natera (NTRA) Stock Soaring Today",
-      "title_ar": "لماذا يرتفع سهم ناتيرا (NTRA) اليوم",
-      "summary": "Shares of genetic testing company Natera (NASDAQ:NTRA) jumped 5.2% in the afternoon session after the company announced that Japan's Pharmaceuticals and Medical Devices Agency granted regulatory approval for its Signatera test as a companion diagnostic in muscle-invasive bladder ",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/why-natera-ntra-stock-soaring-213346274.html",
-      "publisher": "StockStory",
-      "published": "2026-09-22 21:33:46 UT",
-      "published_ts": 1790112826,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "8e2eea5b0bd17a52d7d1cdd6965c75532ebbe0f1",
-      "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
-      "symbol": "TEM",
-      "title": "Tempus AI Sees Pricing, Data Growth Fueling Long-Term Expansion",
-      "title_ar": "يرى Tempus AI التسعير، ونمو البيانات يغذي التوسع على المدى الطويل",
-      "summary": "Tempus AI (NASDAQ:TEM) Founder and CEO Eric Lefkofsky said the company’s second-quarter performance was supported by continued demand for comprehensive genomic profiling and growth in its data-licensing business. Speaking at Morgan Stanley’s Global Healthcare Conference, Lefkofsk",
-      "summary_ar": "",
-      "url": "https://www.marketbeat.com/instant-alerts/event-tempus-ai-sees-pricing-data-growth-fueling-long-term-expansion-2026-09-21/?utm_source=yahoofinance&utm_medium=yahoofinance",
-      "publisher": "MarketBeat",
-      "published": "2026-09-22 00:02:02 UT",
-      "published_ts": 1790035322,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "1fdecaa8d834cd378162eea1e15c2368d322d7f0",
+      "id": "2c45cac3a309c67aa789b4810dc5402979565bfc",
       "source": "yahoo",
       "impact": 2,
       "impact_ar": "تأثير 2/5",
@@ -963,6 +826,62 @@
       "officialish": false
     },
     {
+      "symbol": "COST",
+      "title": "Bernstein unveils top European medtech stock picks to buy for H2",
+      "title_ar": "برنشتاين يكشف النقاب عن أفضل اختيارات أسهم ميدتيك الأوروبية للشراء مقابل H2",
+      "summary": "Investing.com -- European medtech has had another bruising year, with only Demant and Sonova outperforming the Stoxx 600 in 2026 as the sector’s once-premium valuation continues to de-rate.",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/healthcare/articles/bernstein-unveils-top-european-medtech-123559511.html",
+      "publisher": "Investing.com",
+      "published": "2026-09-25 12:35:59 UT",
+      "published_ts": 1790339759,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد",
+      "id": "0bd3090fc24c73c76970176eb5b37f2e12255fec",
+      "source": "yahoo",
+      "impact": 2,
+      "impact_ar": "تأثير 2/5",
+      "sentiment_score": 3,
+      "catalysts": [
+        {
+          "key": "upgrade",
+          "ar": "ترقية محلل",
+          "base_impact": 2
+        }
+      ],
+      "catalyst_keys": [
+        "upgrade"
+      ],
+      "catalyst_ar": [
+        "ترقية محلل"
+      ],
+      "impact_reason_ar": "ترقية محلل",
+      "officialish": false
+    },
+    {
+      "symbol": "COST",
+      "title": "Costco Has Moved Sideways and Down for 1 Year: One Of The Most Respected Wall Street Firms Says 45% Returns Lie Ahead",
+      "title_ar": "تحركت كوستكو جانبًا وهبوطًا لمدة عام واحد: واحدة من أكثر شركات وول ستريت احترامًا تقول إن 45 ٪ من العائدات تنتظرنا",
+      "summary": "Costco just posted one of its strongest quarters in years while its stock quietly bled lower for twelve months, and now one of Wall Street's most respected firms sees a setup that almost no one is talking about.",
+      "summary_ar": "",
+      "url": "https://247wallst.com/investing/2026/09/25/costco-has-moved-sideways-and-down-for-1-year-one-of-the-most-respected-wall-street-firms-says-45-returns-lie-ahead/",
+      "publisher": "24/7 Wall St.",
+      "published": "2026-09-25 12:35:26 UT",
+      "published_ts": 1790339726,
+      "sentiment": "neu",
+      "sentiment_ar": "محايد",
+      "id": "0b28c238cb4ff61e84085a30a7c53acfea871689",
+      "source": "yahoo",
+      "impact": 2,
+      "impact_ar": "تأثير 2/5",
+      "sentiment_score": 3,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": false
+    },
+    {
       "symbol": "AAPL",
       "title": "Apple Stock Approaches Buy Point Following Launch Of New iPhone, New CEO",
       "title_ar": "سهم Apple يقترب من نقطة الشراء بعد إطلاق iPhone الجديد، الرئيس التنفيذي الجديد",
@@ -987,18 +906,18 @@
     }
   ],
   "news_excluded_negative": [
-    "AAL",
     "AKAM",
     "AMZN",
-    "BAC",
+    "ARM",
     "CRM",
-    "CVX",
-    "META",
+    "FSLY",
     "MSFT",
+    "MUFG",
     "NFLX",
     "NVDA",
-    "SPY",
-    "TSLA"
+    "SNPS",
+    "TSLA",
+    "VKTX"
   ],
   "news_note_ar": "بث محفزات: أخبار الشركات + تأثير 1–5 + وسم (FDA/أرباح/شراكة…) — بدون إشاعات",
   "scan_mode_ar": "مسح StockTitan-style: محفز رسمي ← تأثير ← زخم سعري مربوط بالخبر",
@@ -1006,6 +925,6 @@
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
   "reminder": "تداول المحفز لا المطاردة — راجع المصدر قبل الدخول",
-  "heartbeat_ts": 1790343093,
+  "heartbeat_ts": 1790343188,
   "publisher": "github-actions-always-on"
 }
