@@ -24,8 +24,8 @@ PATH=/usr/bin:/bin
 * 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_live.py
 # أخبار الموقع كل دقيقة (بدون تيليجرام)
 * 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_news.py
-# نشر لوحة كامل كل دقيقتين — فرص متحركة
-*/2 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_pages.py
+# نشر لوحة كامل كل دقيقة — فرص + ماسح القنص
+* 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_pages.py
 # Intel ظهرًا ≈16:00 السعودية
 0 13 * * 1-5 $RUN intel
 # ملخص مسائي
