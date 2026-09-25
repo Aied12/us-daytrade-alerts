@@ -3,8 +3,8 @@ name: always-on-dashboard
 # ناشر سحابي دائم — لا يعتمد على جهاز Cloud Agent الذي ينام
 on:
   schedule:
-    # كل دقيقة أثناء الجلسة (GitHub قد يؤخر الجدولة؛ يوجد keepalive أدناه يعوّض التأخير)
-    - cron: "* 8-20 * * 1-5"
+    # احتياطي كل 5 دقائق — التحديث الأساسي من keepalive بعد كل نجاح
+    - cron: "*/5 8-20 * * 1-5"
     - cron: "0 8 * * 1-5"
     - cron: "5 20 * * 1-5"
   workflow_dispatch:
@@ -147,7 +147,6 @@ jobs:
             echo "outside market window — skip keepalive"
             exit 0
           fi
-          # انتظر ~75ث حتى لا نكدّس طوابير؛ ثم شغّل tick جديد
-          sleep 75
+          # بدون انتظار: التشغيل التالي يدخل الطابور ويبدأ فور انتهاء الحالي (~كل 1.5–2 د)
           gh workflow run always-on-dashboard --ref main -f mode=tick
           echo "queued next always-on tick"
