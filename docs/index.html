@@ -510,9 +510,14 @@
           <li>اختر <b>إضافة إلى الشاشة الرئيسية</b>.</li>
           <li>أكد الاسم ثم <b>إضافة</b> — يظهر أيقونة مثل التطبيقات.</li>
         </ol>
+        <p class="muted" style="margin:10px 0 0;font-size:.88rem;line-height:1.45">
+          للتحديث داخل التطبيق: اضغط <b>تحديث الآن</b> أعلى الصفحة.
+          لإعادة تحميل كاملة (إذا علقت نسخة قديمة): <b>اضغط مطوّلاً</b> على نفس الزر.
+        </p>
         <p class="pwa-status muted" id="pwaStatus">حالة التطبيق: جاري التحقق...</p>
         <div class="toolbar" style="margin-top:8px">
           <button class="btn" type="button" id="btnPwaInstallMore">تثبيت (أندرويد / كروم)</button>
+          <button class="btn secondary" type="button" id="btnPwaHardReload">إعادة تحميل كاملة</button>
         </div>
       </div>
       <h2 style="margin-top:14px;font-size:1rem">المخاطرة</h2>
@@ -527,7 +532,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=18;
+    window.__STATUS_V=19;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -1892,7 +1897,57 @@
     const PRICE_POLL_SEC = isLightNet()?6:4;
     let refreshIn = AUTO_SEC;
 
-    document.getElementById('btnRefresh').onclick=()=>fetchData(true);
+    document.getElementById('btnRefresh').onclick=()=>hardRefreshBoard(false);
+    // ضغطة طويلة = إعادة تحميل كاملة للتطبيق (مفيد على الآيفون بدون زر متصفح)
+    (function(){
+      const btn=document.getElementById('btnRefresh');
+      if(!btn) return;
+      let pressTimer=null;
+      const clear=()=>{ if(pressTimer){ clearTimeout(pressTimer); pressTimer=null; } };
+      btn.addEventListener('touchstart', ()=>{
+        clear();
+        pressTimer=setTimeout(()=>hardRefreshBoard(true), 650);
+      }, {passive:true});
+      btn.addEventListener('touchend', clear);
+      btn.addEventListener('touchcancel', clear);
+      btn.addEventListener('contextmenu', (e)=>{ e.preventDefault(); hardRefreshBoard(true); });
+    })();
+
+    async function clearPwaCaches(){
+      try{
+        if('caches' in window){
+          const keys=await caches.keys();
+          await Promise.all(keys.map((k)=>caches.delete(k)));
+        }
+      }catch(_){}
+      try{
+        const regs=await navigator.serviceWorker.getRegistrations();
+        for(const reg of regs){
+          if(reg.waiting) reg.waiting.postMessage({type:'SKIP_WAITING'});
+          if(reg.active) reg.active.postMessage({type:'CLEAR_CACHE'});
+        }
+      }catch(_){}
+    }
+
+    async function hardRefreshBoard(fullReload){
+      const btn=document.getElementById('btnRefresh');
+      if(btn){ btn.disabled=true; btn.textContent='... جاري التحديث'; }
+      try{
+        await clearPwaCaches();
+        if(fullReload){
+          toast('إعادة تحميل التطبيق...');
+          const u=new URL(window.location.href);
+          u.searchParams.set('_r', String(Date.now()));
+          window.location.replace(u.toString());
+          return;
+        }
+        await fetchData(true);
+      }finally{
+        if(btn && !fullReload){
+          btn.disabled=false; btn.textContent='🔄 تحديث الآن';
+        }
+      }
+    }
     document.getElementById('btnTheme').onclick=()=>{
       const cur=document.documentElement.getAttribute('data-theme')||'dark';
       const next=cur==='dark'?'light':'dark';
@@ -2431,13 +2486,46 @@
       if(btnInstallMore) btnInstallMore.addEventListener('click', triggerInstall);
       if(btnHow) btnHow.addEventListener('click', goToInstallHelp);
       if(btnDismiss) btnDismiss.addEventListener('click', ()=>hideBanner(true));
+      const btnHard=document.getElementById('btnPwaHardReload');
+      if(btnHard) btnHard.addEventListener('click', ()=>hardRefreshBoard(true));
+
+      // عند الرجوع للتطبيق من الخلفية: حدّث البيانات فوراً (بديل سحب التحديث على الآيفون)
+      document.addEventListener('visibilitychange', ()=>{
+        if(document.visibilityState==='visible'){
+          fetchData(true).catch(()=>{});
+        }
+      });
+      window.addEventListener('pageshow', (ev)=>{
+        if(ev.persisted) fetchData(true).catch(()=>{});
+      });
 
       if('serviceWorker' in navigator){
+        let refreshing=false;
+        navigator.serviceWorker.addEventListener('controllerchange', ()=>{
+          if(refreshing) return;
+          refreshing=true;
+          // نسخة جديدة من التطبيق وصلت — أعد التحميل مرة واحدة
+          const u=new URL(window.location.href);
+          u.searchParams.set('_sw', String(Date.now()));
+          window.location.replace(u.toString());
+        });
         const swUrl=new URL('sw.js', window.location.href).pathname;
         navigator.serviceWorker.register(swUrl, {scope: new URL('./', window.location.href).pathname})
           .then((reg)=>{
-            if(!isStandalone) setStatus((statusEl && statusEl.textContent) || 'حالة التطبيق: جاهز');
-            if(reg && reg.update) try{ reg.update(); }catch(_){}
+            if(isStandalone) setStatus('حالة التطبيق: يعمل كتطبيق مثبت ✓ — استخدم «تحديث الآن» أعلى الصفحة');
+            else if(!isStandalone) setStatus((statusEl && statusEl.textContent) || 'حالة التطبيق: جاهز');
+            if(reg){
+              try{ reg.update(); }catch(_){}
+              reg.addEventListener('updatefound', ()=>{
+                const nw=reg.installing;
+                if(!nw) return;
+                nw.addEventListener('statechange', ()=>{
+                  if(nw.state==='installed' && navigator.serviceWorker.controller){
+                    nw.postMessage({type:'SKIP_WAITING'});
+                  }
+                });
+              });
+            }
           })
           .catch(()=>{
             if(!isStandalone) setStatus('حالة التطبيق: تعذّر تسجيل التخزين المؤقت (التثبيت اليدوي ما زال يعمل)');
