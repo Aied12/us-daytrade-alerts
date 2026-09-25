@@ -89,29 +89,44 @@ jobs:
           print("heartbeat", d["heartbeat_ts"], "generated", d.get("generated_local"))
           PY
 
-      - name: Commit + push (with rebase retries)
+      - name: Commit + push (conflict-proof)
+        id: publish
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/ pages/status.json pages/index.html pages/prices-live.json pages/live.json pages/news-live.json data/sniper_seen.json || true
-          if git diff --cached --quiet; then
-            echo "no changes"
-            exit 0
-          fi
-          git commit -m "Always-on live dashboard update"
-          for i in 1 2 3 4 5; do
+          # احفظ مخرجات هذا الفحص ثم أعد البناء فوق أحدث main (يتجنب تعارض JSON)
+          STAGE=$(mktemp -d)
+          mkdir -p "$STAGE/docs" "$STAGE/pages" "$STAGE/data"
+          cp -f docs/index.html docs/status.json "$STAGE/docs/" 2>/dev/null || true
+          cp -f docs/prices-live.json docs/live.json docs/news-live.json "$STAGE/docs/" 2>/dev/null || true
+          cp -f pages/index.html pages/status.json pages/prices-live.json pages/live.json pages/news-live.json "$STAGE/pages/" 2>/dev/null || true
+          cp -f data/sniper_seen.json "$STAGE/data/" 2>/dev/null || true
+
+          for i in 1 2 3 4 5 6; do
             git fetch origin main
-            git pull --rebase --autostash origin main || { git rebase --abort || true; }
+            git reset --hard origin/main
+            cp -f "$STAGE/docs/"* docs/ 2>/dev/null || true
+            cp -f "$STAGE/pages/"* pages/ 2>/dev/null || true
+            cp -f "$STAGE/data/sniper_seen.json" data/sniper_seen.json 2>/dev/null || true
+            git add docs/ pages/status.json pages/index.html pages/prices-live.json pages/live.json pages/news-live.json data/sniper_seen.json || true
+            if git diff --cached --quiet; then
+              echo "no changes vs origin/main"
+              exit 0
+            fi
+            git commit -m "Always-on live dashboard update" || true
             if git push origin HEAD:main; then
               echo "pushed ok"
               exit 0
             fi
-            echo "push failed try $i"
-            sleep $((i*3))
+            echo "push failed try $i — retry from latest main"
+            sleep $((i*2))
           done
+          echo "push failed after retries"
           exit 1
 
       - name: Optional Cloudflare live mirror
+        if: success()
         env:
           LIVE_API_URL: ${{ secrets.LIVE_API_URL }}
           LIVE_API_TOKEN: ${{ secrets.LIVE_API_TOKEN }}
@@ -130,15 +145,14 @@ jobs:
             --data-binary @docs/prices-live.json || true
           echo "mirrored to Cloudflare"
 
-      # يعوّض تأخر جدولة GitHub (أحياناً 5–15 دقيقة) بإعادة تشغيل ذاتية أثناء الجلسة
+      # يعوّض تأخر جدولة GitHub؛ يستمر حتى لو فشل push مرة (داخل ساعات السوق)
       - name: Keepalive next tick
-        if: success()
+        if: always()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           HOUR=$(date -u +%H)
           DOW=$(date -u +%u)
-          # خارج أيام/ساعات السوق — لا نُعيد التشغيل
           if [ "$DOW" -gt 5 ]; then
             echo "weekend — skip keepalive"
             exit 0
@@ -147,6 +161,5 @@ jobs:
             echo "outside market window — skip keepalive"
             exit 0
           fi
-          # بدون انتظار: التشغيل التالي يدخل الطابور ويبدأ فور انتهاء الحالي (~كل 1.5–2 د)
           gh workflow run always-on-dashboard --ref main -f mode=tick
           echo "queued next always-on tick"
