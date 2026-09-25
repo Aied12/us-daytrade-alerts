@@ -6,13 +6,13 @@
     "tp1": 350.39,
     "tp2": 355.09,
     "state": "WATCH",
-    "updated_ts": 1790364832.524146,
+    "updated_ts": 1790364950.864614,
     "card": {
       "symbol": "JPM",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 341.95,
+      "last": 342.27,
       "score": 36,
       "score_max": 90,
       "state": "WATCH",
@@ -20,10 +20,10 @@
       "signal_ts": 1790364176,
       "signal_clock_et": "15:22:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.9,
       "watch_since_ar": "وقت مراقبة السهم: 15:22:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 343.34,
       "entry_trigger": 343.34,
       "stop": 338.64,
@@ -40,7 +40,7 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 0.60x VMA",
+          "ar": "Volume 0.61x VMA",
           "need": true
         },
         {
@@ -69,13 +69,13 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 0.60x VMA",
+        "✗ Volume 0.61x VMA",
         "✗ MFI 14.3",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $343.0",
         "✗ تحت المتوسط القصير"
       ],
-      "vol_ratio": 0.6,
+      "vol_ratio": 0.61,
       "mfi": 14.3,
       "mfi_prev": 10.4,
       "mfi_rising": true,
@@ -91,7 +91,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 26.12459756666667,
+      "mins_to_close": 24.15225643333333,
       "sizing": {
         "shares": 0,
         "position_usd": 0.0,
@@ -101,7 +101,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790364832,
+      "updated_ts": 1790364950,
       "created_ts": 1790364176
     }
   },
@@ -112,13 +112,13 @@
     "tp1": 165.2,
     "tp2": 167.37,
     "state": "WATCH",
-    "updated_ts": 1790364832.51987,
+    "updated_ts": 1790364950.860409,
     "card": {
       "symbol": "XOM",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 160.62,
+      "last": 160.6,
       "score": 54,
       "score_max": 90,
       "state": "WATCH",
@@ -126,10 +126,10 @@
       "signal_ts": 1790364176,
       "signal_clock_et": "15:22:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.9,
       "watch_since_ar": "وقت مراقبة السهم: 15:22:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 161.95,
       "entry_trigger": 161.95,
       "stop": 159.78,
@@ -146,7 +146,7 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 0.42x VMA",
+          "ar": "Volume 0.43x VMA",
           "need": true
         },
         {
@@ -175,13 +175,13 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 0.42x VMA",
+        "✗ Volume 0.43x VMA",
         "✓ MFI 70.6",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $161.79",
         "✗ تحت المتوسط القصير"
       ],
-      "vol_ratio": 0.42,
+      "vol_ratio": 0.43,
       "mfi": 70.6,
       "mfi_prev": 67.3,
       "mfi_rising": true,
@@ -197,7 +197,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 26.12466883333333,
+      "mins_to_close": 24.15232651666667,
       "sizing": {
         "shares": 0,
         "position_usd": 0.0,
@@ -207,24 +207,24 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790364832,
+      "updated_ts": 1790364950,
       "created_ts": 1790364176
     }
   },
   "PLTR": {
     "created_ts": 1790364176.472218,
     "entry_trigger": 194.41,
-    "stop": 190.17,
-    "tp1": 200.77,
-    "tp2": 205.01,
+    "stop": 190.52,
+    "tp1": 200.24,
+    "tp2": 204.13,
     "state": "WATCH",
-    "updated_ts": 1790364832.515583,
+    "updated_ts": 1790364950.856153,
     "card": {
       "symbol": "PLTR",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 190.2,
+      "last": 190.0,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -232,16 +232,16 @@
       "signal_ts": 1790364176,
       "signal_clock_et": "15:22:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.9,
       "watch_since_ar": "وقت مراقبة السهم: 15:22:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 194.41,
       "entry_trigger": 194.41,
-      "stop": 190.17,
-      "tp1": 200.77,
-      "tp2": 205.01,
-      "risk_ps": 4.24,
+      "stop": 190.52,
+      "tp1": 200.24,
+      "tp2": 204.13,
+      "risk_ps": 3.89,
       "rr_ar": "1 : 1.5 / 1 : 2.5",
       "tp1_rr": 1.5,
       "tp2_rr": 2.5,
@@ -292,7 +292,7 @@
       "mfi_prev": 68.5,
       "mfi_rising": true,
       "short_high": 194.21,
-      "short_low": 190.17,
+      "short_low": 165.22,
       "buffer_pct": 0.1,
       "max_chase_pct": 1.0,
       "stop_loss_pct": 2.0,
@@ -303,7 +303,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 26.12474028333333,
+      "mins_to_close": 24.152397450000002,
       "sizing": {
         "shares": 0,
         "position_usd": 0.0,
@@ -313,7 +313,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790364832,
+      "updated_ts": 1790364950,
       "created_ts": 1790364176
     }
   },
@@ -324,13 +324,13 @@
     "tp1": 642.0,
     "tp2": 648.59,
     "state": "WATCH",
-    "updated_ts": 1790364832.511353,
+    "updated_ts": 1790364950.851939,
     "card": {
       "symbol": "AMD",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 629.73,
+      "last": 628.48,
       "score": 54,
       "score_max": 90,
       "state": "WATCH",
@@ -338,10 +338,10 @@
       "signal_ts": 1790364176,
       "signal_clock_et": "15:22:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.9,
       "watch_since_ar": "وقت مراقبة السهم: 15:22:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 632.11,
       "entry_trigger": 632.11,
       "stop": 625.52,
@@ -409,7 +409,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 26.12481078333333,
+      "mins_to_close": 24.152467683333334,
       "sizing": {
         "shares": 0,
         "position_usd": 0.0,
@@ -419,7 +419,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790364832,
+      "updated_ts": 1790364950,
       "created_ts": 1790364176
     }
   },
@@ -430,13 +430,13 @@
     "tp1": 257.05,
     "tp2": 261.0,
     "state": "WATCH",
-    "updated_ts": 1790364832.506958,
+    "updated_ts": 1790364950.84712,
     "card": {
       "symbol": "AMZN",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 249.79,
+      "last": 249.94,
       "score": 18,
       "score_max": 90,
       "state": "WATCH",
@@ -444,10 +444,10 @@
       "signal_ts": 1790364176,
       "signal_clock_et": "15:22:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.9,
       "watch_since_ar": "وقت مراقبة السهم: 15:22:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 251.13,
       "entry_trigger": 251.13,
       "stop": 247.18,
@@ -515,7 +515,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 26.124884033333334,
+      "mins_to_close": 24.152548000000003,
       "sizing": {
         "shares": 0,
         "position_usd": 0.0,
@@ -525,7 +525,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790364832,
+      "updated_ts": 1790364950,
       "created_ts": 1790364176
     }
   },
@@ -536,13 +536,13 @@
     "tp1": 806.04,
     "tp2": 829.84,
     "state": "WATCH",
-    "updated_ts": 1790364832.502659,
+    "updated_ts": 1790364950.842778,
     "card": {
       "symbol": "META",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 750.43,
+      "last": 751.41,
       "score": 54,
       "score_max": 90,
       "state": "WATCH",
@@ -550,10 +550,10 @@
       "signal_ts": 1790364176,
       "signal_clock_et": "15:22:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.9,
       "watch_since_ar": "وقت مراقبة السهم: 15:22:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 770.34,
       "entry_trigger": 770.34,
       "stop": 746.54,
@@ -621,7 +621,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 26.124955683333333,
+      "mins_to_close": 24.152620366666667,
       "sizing": {
         "shares": 0,
         "position_usd": 0.0,
@@ -631,7 +631,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790364832,
+      "updated_ts": 1790364950,
       "created_ts": 1790364176
     }
   },
@@ -642,13 +642,13 @@
     "tp1": 397.82,
     "tp2": 405.54,
     "state": "WATCH",
-    "updated_ts": 1790364832.498386,
+    "updated_ts": 1790364950.838532,
     "card": {
       "symbol": "TSLA",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 371.67,
+      "last": 371.25,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -656,10 +656,10 @@
       "signal_ts": 1790364176,
       "signal_clock_et": "15:22:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.9,
       "watch_since_ar": "وقت مراقبة السهم: 15:22:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 386.24,
       "entry_trigger": 386.24,
       "stop": 378.52,
@@ -676,7 +676,7 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 0.98x VMA",
+          "ar": "Volume 0.99x VMA",
           "need": true
         },
         {
@@ -705,13 +705,13 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 0.98x VMA",
+        "✗ Volume 0.99x VMA",
         "✓ MFI 57.7",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $385.86",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "vol_ratio": 0.98,
+      "vol_ratio": 0.99,
       "mfi": 57.7,
       "mfi_prev": 55.1,
       "mfi_rising": true,
@@ -727,7 +727,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 26.1250269,
+      "mins_to_close": 24.152691133333335,
       "sizing": {
         "shares": 0,
         "position_usd": 0.0,
@@ -737,7 +737,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790364832,
+      "updated_ts": 1790364950,
       "created_ts": 1790364176
     }
   },
@@ -748,13 +748,13 @@
     "tp1": 233.23,
     "tp2": 237.27,
     "state": "WATCH",
-    "updated_ts": 1790364832.494113,
+    "updated_ts": 1790364950.834202,
     "card": {
       "symbol": "NVDA",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 224.0,
+      "last": 223.9,
       "score": 54,
       "score_max": 90,
       "state": "WATCH",
@@ -762,10 +762,10 @@
       "signal_ts": 1790364176,
       "signal_clock_et": "15:22:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.9,
       "watch_since_ar": "وقت مراقبة السهم: 15:22:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 227.17,
       "entry_trigger": 227.17,
       "stop": 223.13,
@@ -833,7 +833,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 26.125098116666667,
+      "mins_to_close": 24.1527633,
       "sizing": {
         "shares": 0,
         "position_usd": 0.0,
@@ -843,7 +843,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790364832,
+      "updated_ts": 1790364950,
       "created_ts": 1790364176
     }
   },
@@ -854,13 +854,13 @@
     "tp1": 533.67,
     "tp2": 544.03,
     "state": "WATCH",
-    "updated_ts": 1790364832.489791,
+    "updated_ts": 1790364950.829679,
     "card": {
       "symbol": "MSFT",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 515.93,
+      "last": 515.76,
       "score": 90,
       "score_max": 90,
       "state": "WATCH",
@@ -868,10 +868,10 @@
       "signal_ts": 1790364176,
       "signal_clock_et": "15:22:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.9,
       "watch_since_ar": "وقت مراقبة السهم: 15:22:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 518.13,
       "entry_trigger": 518.13,
       "stop": 507.77,
@@ -939,7 +939,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 26.12517015,
+      "mins_to_close": 24.152838683333336,
       "sizing": {
         "shares": 0,
         "position_usd": 0.0,
@@ -949,7 +949,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790364832,
+      "updated_ts": 1790364950,
       "created_ts": 1790364176
     }
   },
@@ -960,13 +960,13 @@
     "tp1": 350.25,
     "tp2": 356.55,
     "state": "WATCH",
-    "updated_ts": 1790364832.484432,
+    "updated_ts": 1790364950.824425,
     "card": {
       "symbol": "AAPL",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 340.2,
+      "last": 340.23,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -974,10 +974,10 @@
       "signal_ts": 1790364176,
       "signal_clock_et": "15:22:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.9,
       "watch_since_ar": "وقت مراقبة السهم: 15:22:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 340.82,
       "entry_trigger": 340.82,
       "stop": 334.53,
@@ -1045,7 +1045,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 26.125259466666666,
+      "mins_to_close": 24.15292625,
       "sizing": {
         "shares": 0,
         "position_usd": 0.0,
@@ -1055,7 +1055,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790364832,
+      "updated_ts": 1790364950,
       "created_ts": 1790364176
     }
   },
