@@ -2,8 +2,11 @@ name: us-daytrade-alerts
 
 on:
   schedule:
+    # Premarket ≈ 11:00 السعودية (08:00 UTC)
     - cron: "0 8 * * 1-5"
-    - cron: "*/15 13-19 * * 1-5"
+    # أثناء الجلسة كل 10 دقائق 11ص–11م السعودية (08–20 UTC)
+    - cron: "*/10 8-20 * * 1-5"
+    # ملخص مسائي ≈ 23:05 السعودية
     - cron: "5 20 * * 1-5"
   workflow_dispatch:
     inputs:
@@ -11,8 +14,8 @@ on:
         description: "premarket | tick | evening | intel | ping"
         required: true
         default: "tick"
-  push:
-    branches: ["main", "master"]
+  # لا تشغّل البوت الثقيل على كل push — يكفي الجدولة + يدوي
+  # (النشر من الجهاز المحلي/الـ watchdog يدفع docs/ مباشرة)
 
 permissions:
   contents: write
@@ -50,12 +53,12 @@ jobs:
           else
             printf 'TELEGRAM_ENABLED=1\n' >> .env
           fi
-      - name: Run bot job
+      - name: Run bot job + rebuild dashboard
         run: |
           MODE="${{ github.event.inputs.mode }}"
           if [ -z "$MODE" ]; then
             HOUR=$(date -u +%H)
-            if [ "$HOUR" = "08" ]; then MODE=premarket
+            if [ "$HOUR" = "08" ] && [ "$(date -u +%M)" = "00" ]; then MODE=premarket
             elif [ "$HOUR" = "20" ]; then MODE=evening
             else MODE=tick
             fi
@@ -65,10 +68,22 @@ jobs:
           else
             python scripts/scheduled_run.py --mode "$MODE" --force || true
           fi
-          python scripts/build_pages.py || true
-      - name: Deploy GitHub Pages (permanent free dashboard)
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./pages
-          force_orphan: true
+          python scripts/build_pages.py
+          python scripts/write_live_json.py || true
+          cp -f pages/index.html docs/index.html
+          cp -f pages/status.json docs/status.json
+          cp -f pages/prices-live.json docs/prices-live.json 2>/dev/null || true
+          cp -f pages/live.json docs/live.json 2>/dev/null || true
+      - name: Commit docs to main (GitHub Pages source)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html docs/status.json docs/prices-live.json docs/live.json \
+                  pages/index.html pages/status.json pages/prices-live.json pages/live.json \
+                  data/sniper_seen.json || true
+          if git diff --cached --quiet; then
+            echo "[publish] no dashboard changes"
+            exit 0
+          fi
+          git commit -m "Auto-update dashboard (Actions)"
+          git push origin HEAD:main
