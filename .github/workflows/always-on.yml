@@ -3,9 +3,8 @@ name: always-on-dashboard
 # ناشر سحابي دائم — لا يعتمد على جهاز Cloud Agent الذي ينام
 on:
   schedule:
-    # كل دقيقتين أثناء جلسة السوق الأمريكية (تقريباً 11ص–11م السعودية)
-    # ملاحظة: GitHub قد يؤخر الجدولة قليلاً تحت الضغط، لذلك يوجد أيضاً workflow_dispatch
-    - cron: "*/2 8-20 * * 1-5"
+    # كل دقيقة أثناء الجلسة (GitHub قد يؤخر الجدولة؛ يوجد keepalive أدناه يعوّض التأخير)
+    - cron: "* 8-20 * * 1-5"
     - cron: "0 8 * * 1-5"
     - cron: "5 20 * * 1-5"
   workflow_dispatch:
@@ -21,6 +20,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   publish:
@@ -129,3 +129,25 @@ jobs:
             -H "Content-Type: application/json" \
             --data-binary @docs/prices-live.json || true
           echo "mirrored to Cloudflare"
+
+      # يعوّض تأخر جدولة GitHub (أحياناً 5–15 دقيقة) بإعادة تشغيل ذاتية أثناء الجلسة
+      - name: Keepalive next tick
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          HOUR=$(date -u +%H)
+          DOW=$(date -u +%u)
+          # خارج أيام/ساعات السوق — لا نُعيد التشغيل
+          if [ "$DOW" -gt 5 ]; then
+            echo "weekend — skip keepalive"
+            exit 0
+          fi
+          if [ "$HOUR" -lt 8 ] || [ "$HOUR" -gt 20 ]; then
+            echo "outside market window — skip keepalive"
+            exit 0
+          fi
+          # انتظر ~75ث حتى لا نكدّس طوابير؛ ثم شغّل tick جديد
+          sleep 75
+          gh workflow run always-on-dashboard --ref main -f mode=tick
+          echo "queued next always-on tick"

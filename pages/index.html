@@ -456,7 +456,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=10;
+    window.__STATUS_V=11;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -1586,7 +1586,21 @@
         else document.getElementById('countdown').textContent=fmtCountdown(sessionLeft);
       }
       if(DATA&&DATA.generated_ts){
-        document.getElementById('ago').textContent=`آخر فحص: ${fmtAgo(DATA.generated_ts)} · ${DATA.generated_local||''}`;
+        const ageSec=Math.max(0, Math.floor(Date.now()/1000 - Number(DATA.generated_ts)));
+        const stale=ageSec > 3*60;
+        const alive=document.getElementById('alive');
+        if(alive){
+          if(stale){ alive.textContent='متأخر'; alive.className='pill warn'; }
+          else {
+            const ok=!!(DATA.status&&DATA.status.ok);
+            alive.textContent=ok?'شغال':'تحقق';
+            alive.className='pill '+(ok?'ok':'warn');
+          }
+        }
+        const srcMap={live:' · بث حي', raw:' · مباشر', pages:' · صفحات'};
+        const srcTag=srcMap[window.__STATUS_SRC]||'';
+        const pub=DATA.publisher==='github-actions-always-on'?' · سحابي':'';
+        document.getElementById('ago').textContent=`آخر فحص: ${fmtAgo(DATA.generated_ts)} · ${DATA.generated_local||''}${srcTag}${pub}`;
       }
     }
 
