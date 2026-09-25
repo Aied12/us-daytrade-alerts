@@ -54,8 +54,8 @@ class JamalSettings:
     buffer_pct: float = 0.10          # Entry = short_high * (1 + buffer/100)
     max_chase_pct: float = 1.0        # فوق Entry بهذا القدر → NO_CHASE
     stop_loss_pct: float = 2.0        # احتياطي إن لم يتوفر دعم
-    tp1_rr: float = 1.5
-    tp2_rr: float = 2.5
+    tp1_rr: float = 1.0               # هدف أول أقرب ≈ 1R (كان 1.5)
+    tp2_rr: float = 2.0               # هدف ثاني ≈ 2R (كان 2.5)
     trailing_enabled: bool = True
     trailing_pct: float = 1.0
     signal_expiry_min: float = 15.0

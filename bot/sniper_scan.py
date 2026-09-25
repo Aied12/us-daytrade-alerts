@@ -52,8 +52,8 @@ SNIPER_MIN_DOLLAR_HOT = 120_000  # if move is huge
 
 # Auto plan (long day-trade) — نسب قنص السنتات
 PLAN_STOP_PCT = 0.07             # وقف ≈ 7% تحت الدخول
-PLAN_TP1_PCT = 0.15              # جني1 ≈ +15%
-PLAN_TP2_PCT = 0.35              # جني2 ≈ +35% (انفجار السنتات)
+PLAN_TP1_PCT = 0.06              # جني1 ≈ +6% (قريب وقابل للتحقق)
+PLAN_TP2_PCT = 0.14              # جني2 ≈ +14% للامتداد / الصاروخ
 
 SEEN_TTL_SEC = 20 * 3600
 # بعد الظهور: ابقِ السهم على اللوحة حتى لو ضعف الزخم مؤقتاً
