@@ -26,7 +26,8 @@ LOG_FILE="$LOG_DIR/cron_${MODE}_${STAMP}.log"
   set +a
   "$PYTHON" "$ROOT/scripts/scheduled_run.py" --mode "$MODE"
   # Refresh GitHub Pages JSON after market scans so the dashboard auto-updates
-  if [[ "$MODE" == "tick" || "$MODE" == "auto" || "$MODE" == "premarket" || "$MODE" == "intraday" || "$MODE" == "morning" ]]; then
+  # Skip on every tick — dedicated */2 publish_pages cron owns the push (avoids pile-ups)
+  if [[ "$MODE" == "premarket" || "$MODE" == "morning" || "$MODE" == "evening" || "$MODE" == "intel" ]]; then
     echo "==== publish pages $(date -u -Iseconds) ===="
     "$PYTHON" "$ROOT/scripts/publish_pages.py" || echo "publish_pages failed (non-fatal)"
   fi

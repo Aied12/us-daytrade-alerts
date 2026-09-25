@@ -1252,7 +1252,7 @@
       const d=DATA; if(!d) return;
       const ok=!!(d.status&&d.status.ok);
       const ageSec=d.generated_ts ? Math.max(0, Math.floor(Date.now()/1000 - Number(d.generated_ts))) : 99999;
-      const stale=ageSec > 20*60;
+      const stale=ageSec > 3*60;
       const alive=document.getElementById('alive');
       if(stale){
         alive.textContent='متأخر';
