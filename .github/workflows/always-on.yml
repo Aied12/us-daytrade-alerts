@@ -3,8 +3,10 @@ name: always-on-dashboard
 # ناشر سحابي دائم — لا يعتمد على جهاز Cloud Agent الذي ينام
 on:
   schedule:
-    # احتياطي كل 5 دقائق — التحديث الأساسي من keepalive بعد كل نجاح
-    - cron: "*/5 8-20 * * 1-5"
+    # نافذة الرياض ≈ 11:00 → 03:00+ (Premarket حتى نهاية After-hours الأمريكي)
+    # UTC 08–23 أيام الاثنين–الجمعة + ذيل بعد منتصف الليل UTC الثلاثاء–السبت
+    - cron: "*/5 8-23 * * 1-5"
+    - cron: "*/5 0-2 * * 2-6"
     - cron: "0 8 * * 1-5"
     - cron: "5 20 * * 1-5"
   workflow_dispatch:
@@ -159,20 +161,25 @@ jobs:
             --data-binary @docs/prices-live.json || true
           echo "mirrored to Cloudflare"
 
-      # يعوّض تأخر جدولة GitHub؛ يستمر حتى لو فشل push مرة (داخل ساعات السوق)
+      # يعوّض تأخر جدولة GitHub؛ يستمر طوال Premarket + الجلسة + After-hours
       - name: Keepalive next tick
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          HOUR=$(date -u +%H)
+          HOUR=$((10#$(date -u +%H)))
           DOW=$(date -u +%u)
-          if [ "$DOW" -gt 5 ]; then
-            echo "weekend — skip keepalive"
-            exit 0
+          IN_WINDOW=0
+          # Mon–Fri UTC 08–23 ≈ Riyadh 11:00–02:59
+          if [ "$DOW" -le 5 ] && [ "$HOUR" -ge 8 ] && [ "$HOUR" -le 23 ]; then
+            IN_WINDOW=1
           fi
-          if [ "$HOUR" -lt 8 ] || [ "$HOUR" -gt 20 ]; then
-            echo "outside market window — skip keepalive"
+          # After midnight UTC (Tue–Sat 00–02) = late After-hours in Riyadh
+          if [ "$DOW" -ge 2 ] && [ "$DOW" -le 6 ] && [ "$HOUR" -le 2 ]; then
+            IN_WINDOW=1
+          fi
+          if [ "$IN_WINDOW" -ne 1 ]; then
+            echo "outside extended market window — skip keepalive (UTC hour=$HOUR dow=$DOW)"
             exit 0
           fi
           gh workflow run always-on-dashboard --ref main -f mode=tick
