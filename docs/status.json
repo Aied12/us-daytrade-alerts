@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-25T08:56:30.460399+00:00",
-  "generated_ts": 1790326590,
+  "generated_at": "2026-09-25T08:56:33.926213+00:00",
+  "generated_ts": 1790326593,
   "generated_local": "2026-09-25 11:56 +03",
   "status": {
     "ok": true,
     "telegram": "paused",
     "source": "build_pages",
-    "updated_at": "2026-09-25T08:56:30.460345+00:00",
+    "updated_at": "2026-09-25T08:56:33.926158+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24,
@@ -71,8 +71,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 16409,
-    "ny_time": "04:56:30",
+    "seconds_left": 16406,
+    "ny_time": "04:56:33",
     "open": "09:30",
     "close": "16:00"
   },
@@ -1943,20 +1943,6 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=SPCX"
     },
     {
-      "symbol": "NVDA",
-      "name": "NVIDIA Corporation",
-      "last": 226.3,
-      "change_pct": 0.76,
-      "ref": 224.58,
-      "rth_close": 224.58,
-      "volume": 76420503.0,
-      "dollar_volume": 17293959828.9,
-      "dollar_volume_label": "17.3B$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=NVDA"
-    },
-    {
       "symbol": "NU",
       "name": "Nu Holdings Ltd.",
       "last": 13.65,
@@ -2349,6 +2335,39 @@
       "officialish": false
     },
     {
+      "symbol": "MARKET",
+      "title": "US Treasury accepted $4.078 billion in buyback operation - Reuters",
+      "title_ar": "وزارة الخزانة الأمريكية 4.078 $ في عملية إعادة الشراء -",
+      "summary": "US Treasury accepted $4.078 billion in buyback operation  Reuters",
+      "summary_ar": "",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNTGU1d0pSel80SGZ6SkFjblpLdG5yQXVJcE5yU0VQbmp0dFpvR0xFdXY5QXVLSmJXblhUMmJac1N5ZEgtSGZ4cjMxeUV0cFhyMFhwbkM2cDR2ZlluOTc5ZTVNamlRdXJmR1JxWG03TGk2OGNJeTNaWHdxRFBzemZ4aEM1U2ZjM2ZTQ0ZnbGhBT0VqbExMM0FzSw?oc=5",
+      "publisher": "Reuters",
+      "published": "2026-09-24 18:19 UTC",
+      "published_ts": 1790273983,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "780fedd9aa91a85129da0b7b4bdd1c3d5e2f9f0c",
+      "source": "finnhub:general",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "buyback",
+          "ar": "إعادة شراء",
+          "base_impact": 3
+        }
+      ],
+      "catalyst_keys": [
+        "buyback"
+      ],
+      "catalyst_ar": [
+        "إعادة شراء"
+      ],
+      "impact_reason_ar": "إعادة شراء",
+      "officialish": false
+    },
+    {
       "symbol": "P",
       "title": "Review & Preview: It’s All About the Yields",
       "title_ar": "المراجعة والمعاينة: الأمر كله يتعلق بالعائدات",
@@ -2477,29 +2496,6 @@
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "14004bccd56e0a856e6434b5600ee99977ede7ca",
       "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
-      "symbol": "NVDA",
-      "title": "Meet the 6 Categories That Drove Costco’s 19.5% Digitally Enabled Sales Comps in Its Latest Quarter.",
-      "title_ar": "تعرف على الفئات الست التي قادت مبيعات Costco التي تم تمكينها رقميًا بنسبة 19.5 ٪ في الربع الأخير.",
-      "summary": "The growth figure was high, given how little the company hypes that channel.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=3a93e7bc32ebda45d01defd308a611300e146586528544905db7214d69873aa0",
-      "publisher": "Yahoo",
-      "published": "2026-09-25 05:54 UTC",
-      "published_ts": 1790315668,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "028684c6a300be9c826eb7775897691eac0b25e9",
-      "source": "finnhub",
       "impact": 2,
       "impact_ar": "تأثير 2/5",
       "sentiment_score": 4,
@@ -2730,6 +2726,7 @@
   "news_excluded_negative": [
     "AAL",
     "CDE",
+    "NVDA",
     "QQQ",
     "SITM",
     "TXG"
