@@ -6,7 +6,7 @@
     "tp1": 351.07,
     "tp2": 356.04,
     "state": "WATCH",
-    "updated_ts": 1790367297.50202,
+    "updated_ts": 1790367379.53895,
     "card": {
       "symbol": "JPM",
       "strategy": "jamal",
@@ -20,10 +20,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 4.6,
+      "age_min": 6.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 4 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 5 د",
       "entry": 343.61,
       "entry_trigger": 343.61,
       "stop": 338.64,
@@ -40,13 +40,13 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 0.75x VMA",
+          "ar": "Volume 0.96x VMA",
           "need": true
         },
         {
           "key": "mfi",
           "ok": false,
-          "ar": "MFI 15.1",
+          "ar": "MFI 16.2",
           "need": true
         },
         {
@@ -58,7 +58,7 @@
         {
           "key": "breakout_level",
           "ok": true,
-          "ar": "أقرب قمة قصيرة $343.27",
+          "ar": "أقرب قمة قصيرة $343.31",
           "need": true
         },
         {
@@ -69,17 +69,17 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 0.75x VMA",
-        "✗ MFI 15.1",
+        "✗ Volume 0.96x VMA",
+        "✗ MFI 16.2",
         "✓ MFI صاعد ↑",
-        "✓ أقرب قمة قصيرة $343.27",
+        "✓ أقرب قمة قصيرة $343.31",
         "✗ تحت المتوسط القصير"
       ],
-      "vol_ratio": 0.75,
-      "mfi": 15.1,
+      "vol_ratio": 0.96,
+      "mfi": 16.2,
       "mfi_prev": 10.4,
       "mfi_rising": true,
-      "short_high": 343.27,
+      "short_high": 343.31,
       "short_low": 338.64,
       "buffer_pct": 0.1,
       "max_chase_pct": 1.0,
@@ -101,7 +101,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367297,
+      "updated_ts": 1790367379,
       "created_ts": 1790367020
     }
   },
@@ -112,7 +112,7 @@
     "tp1": 165.2,
     "tp2": 167.37,
     "state": "WATCH",
-    "updated_ts": 1790367297.497891,
+    "updated_ts": 1790367379.534718,
     "card": {
       "symbol": "XOM",
       "strategy": "jamal",
@@ -126,10 +126,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 4.6,
+      "age_min": 6.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 4 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 5 د",
       "entry": 161.95,
       "entry_trigger": 161.95,
       "stop": 159.78,
@@ -146,13 +146,13 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 0.55x VMA",
+          "ar": "Volume 0.73x VMA",
           "need": true
         },
         {
           "key": "mfi",
           "ok": true,
-          "ar": "MFI 70.0",
+          "ar": "MFI 69.1",
           "need": true
         },
         {
@@ -175,14 +175,14 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 0.55x VMA",
-        "✓ MFI 70.0",
+        "✗ Volume 0.73x VMA",
+        "✓ MFI 69.1",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $161.79",
         "✗ تحت المتوسط القصير"
       ],
-      "vol_ratio": 0.55,
-      "mfi": 70.0,
+      "vol_ratio": 0.73,
+      "mfi": 69.1,
       "mfi_prev": 67.3,
       "mfi_rising": true,
       "short_high": 161.79,
@@ -207,7 +207,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367297,
+      "updated_ts": 1790367379,
       "created_ts": 1790367020
     }
   },
@@ -218,13 +218,13 @@
     "tp1": 202.0,
     "tp2": 207.06,
     "state": "WATCH",
-    "updated_ts": 1790367297.49378,
+    "updated_ts": 1790367379.530463,
     "card": {
       "symbol": "PLTR",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 189.64,
+      "last": 189.55,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -232,10 +232,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 4.6,
+      "age_min": 6.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 4 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 5 د",
       "entry": 194.41,
       "entry_trigger": 194.41,
       "stop": 189.35,
@@ -252,13 +252,13 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 0.60x VMA",
+          "ar": "Volume 0.67x VMA",
           "need": true
         },
         {
           "key": "mfi",
           "ok": true,
-          "ar": "MFI 70.7",
+          "ar": "MFI 70.3",
           "need": true
         },
         {
@@ -281,14 +281,14 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 0.60x VMA",
-        "✓ MFI 70.7",
+        "✗ Volume 0.67x VMA",
+        "✓ MFI 70.3",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $194.21",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "vol_ratio": 0.6,
-      "mfi": 70.7,
+      "vol_ratio": 0.67,
+      "mfi": 70.3,
       "mfi_prev": 68.5,
       "mfi_rising": true,
       "short_high": 194.21,
@@ -313,7 +313,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367297,
+      "updated_ts": 1790367379,
       "created_ts": 1790367020
     }
   },
@@ -324,13 +324,13 @@
     "tp1": 642.0,
     "tp2": 648.59,
     "state": "WATCH",
-    "updated_ts": 1790367297.489658,
+    "updated_ts": 1790367379.526218,
     "card": {
       "symbol": "AMD",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 630.69,
+      "last": 630.51,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -338,10 +338,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 4.6,
+      "age_min": 6.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 4 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 5 د",
       "entry": 632.11,
       "entry_trigger": 632.11,
       "stop": 625.52,
@@ -358,7 +358,7 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 0.79x VMA",
+          "ar": "Volume 0.80x VMA",
           "need": true
         },
         {
@@ -387,13 +387,13 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 0.79x VMA",
+        "✗ Volume 0.80x VMA",
         "✓ MFI 84.0",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $631.48",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "vol_ratio": 0.79,
+      "vol_ratio": 0.8,
       "mfi": 84.0,
       "mfi_prev": 83.9,
       "mfi_rising": true,
@@ -419,7 +419,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367297,
+      "updated_ts": 1790367379,
       "created_ts": 1790367020
     }
   },
@@ -430,24 +430,24 @@
     "tp1": 257.05,
     "tp2": 261.0,
     "state": "WATCH",
-    "updated_ts": 1790367297.485543,
+    "updated_ts": 1790367379.521892,
     "card": {
       "symbol": "AMZN",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 249.61,
-      "score": 18,
+      "last": 249.6,
+      "score": 36,
       "score_max": 90,
       "state": "WATCH",
       "state_ar": "🟡 مراقبة",
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 4.6,
+      "age_min": 6.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 4 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 5 د",
       "entry": 251.13,
       "entry_trigger": 251.13,
       "stop": 247.18,
@@ -464,19 +464,19 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 0.90x VMA",
+          "ar": "Volume 0.93x VMA",
           "need": true
         },
         {
           "key": "mfi",
           "ok": false,
-          "ar": "MFI 37.3",
+          "ar": "MFI 37.5",
           "need": true
         },
         {
           "key": "mfi_up",
-          "ok": false,
-          "ar": "MFI غير صاعد",
+          "ok": true,
+          "ar": "MFI صاعد ↑",
           "need": true
         },
         {
@@ -493,16 +493,16 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 0.90x VMA",
-        "✗ MFI 37.3",
-        "✗ MFI غير صاعد",
+        "✗ Volume 0.93x VMA",
+        "✗ MFI 37.5",
+        "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $250.88",
         "✗ تحت المتوسط القصير"
       ],
-      "vol_ratio": 0.9,
-      "mfi": 37.3,
+      "vol_ratio": 0.93,
+      "mfi": 37.5,
       "mfi_prev": 37.4,
-      "mfi_rising": false,
+      "mfi_rising": true,
       "short_high": 250.88,
       "short_low": 247.18,
       "buffer_pct": 0.1,
@@ -525,7 +525,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367297,
+      "updated_ts": 1790367379,
       "created_ts": 1790367020
     }
   },
@@ -536,13 +536,13 @@
     "tp1": 806.04,
     "tp2": 829.84,
     "state": "WATCH",
-    "updated_ts": 1790367297.481363,
+    "updated_ts": 1790367379.517623,
     "card": {
       "symbol": "META",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 750.5,
+      "last": 750.29,
       "score": 54,
       "score_max": 90,
       "state": "WATCH",
@@ -550,10 +550,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 4.6,
+      "age_min": 6.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 4 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 5 د",
       "entry": 770.34,
       "entry_trigger": 770.34,
       "stop": 746.54,
@@ -570,7 +570,7 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 1.09x VMA",
+          "ar": "Volume 1.11x VMA",
           "need": true
         },
         {
@@ -599,13 +599,13 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 1.09x VMA",
+        "✗ Volume 1.11x VMA",
         "✓ MFI 79.5",
         "✗ MFI غير صاعد",
         "✓ أقرب قمة قصيرة $769.57",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "vol_ratio": 1.09,
+      "vol_ratio": 1.11,
       "mfi": 79.5,
       "mfi_prev": 86.6,
       "mfi_rising": false,
@@ -631,7 +631,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367297,
+      "updated_ts": 1790367379,
       "created_ts": 1790367020
     }
   },
@@ -642,13 +642,13 @@
     "tp1": 397.82,
     "tp2": 405.54,
     "state": "WATCH",
-    "updated_ts": 1790367297.477133,
+    "updated_ts": 1790367379.513359,
     "card": {
       "symbol": "TSLA",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 372.22,
+      "last": 372.27,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -656,10 +656,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 4.6,
+      "age_min": 6.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 4 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 5 د",
       "entry": 386.24,
       "entry_trigger": 386.24,
       "stop": 378.52,
@@ -676,13 +676,13 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 1.11x VMA",
+          "ar": "Volume 1.12x VMA",
           "need": true
         },
         {
           "key": "mfi",
           "ok": true,
-          "ar": "MFI 57.1",
+          "ar": "MFI 57.0",
           "need": true
         },
         {
@@ -705,14 +705,14 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 1.11x VMA",
-        "✓ MFI 57.1",
+        "✗ Volume 1.12x VMA",
+        "✓ MFI 57.0",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $385.86",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "vol_ratio": 1.11,
-      "mfi": 57.1,
+      "vol_ratio": 1.12,
+      "mfi": 57.0,
       "mfi_prev": 55.1,
       "mfi_rising": true,
       "short_high": 385.86,
@@ -737,7 +737,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367297,
+      "updated_ts": 1790367379,
       "created_ts": 1790367020
     }
   },
@@ -748,13 +748,13 @@
     "tp1": 233.23,
     "tp2": 237.27,
     "state": "WATCH",
-    "updated_ts": 1790367297.472836,
+    "updated_ts": 1790367379.509018,
     "card": {
       "symbol": "NVDA",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 225.05,
+      "last": 225.03,
       "score": 54,
       "score_max": 90,
       "state": "WATCH",
@@ -762,10 +762,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 4.6,
+      "age_min": 6.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 4 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 5 د",
       "entry": 227.17,
       "entry_trigger": 227.17,
       "stop": 223.13,
@@ -843,7 +843,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367297,
+      "updated_ts": 1790367379,
       "created_ts": 1790367020
     }
   },
@@ -854,13 +854,13 @@
     "tp1": 533.67,
     "tp2": 544.03,
     "state": "WATCH",
-    "updated_ts": 1790367297.468437,
+    "updated_ts": 1790367379.504684,
     "card": {
       "symbol": "MSFT",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 516.4,
+      "last": 516.3,
       "score": 90,
       "score_max": 90,
       "state": "WATCH",
@@ -868,10 +868,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 4.6,
+      "age_min": 6.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 4 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 5 د",
       "entry": 518.13,
       "entry_trigger": 518.13,
       "stop": 507.77,
@@ -888,13 +888,13 @@
         {
           "key": "vol",
           "ok": true,
-          "ar": "Volume 1.70x VMA",
+          "ar": "Volume 1.74x VMA",
           "need": true
         },
         {
           "key": "mfi",
           "ok": true,
-          "ar": "MFI 54.2",
+          "ar": "MFI 54.4",
           "need": true
         },
         {
@@ -917,14 +917,14 @@
         }
       ],
       "checks_ar": [
-        "✓ Volume 1.70x VMA",
-        "✓ MFI 54.2",
+        "✓ Volume 1.74x VMA",
+        "✓ MFI 54.4",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $517.61",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "vol_ratio": 1.7,
-      "mfi": 54.2,
+      "vol_ratio": 1.74,
+      "mfi": 54.4,
       "mfi_prev": 44.5,
       "mfi_rising": true,
       "short_high": 517.61,
@@ -949,7 +949,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367297,
+      "updated_ts": 1790367379,
       "created_ts": 1790367020
     }
   },
@@ -960,13 +960,13 @@
     "tp1": 353.23,
     "tp2": 360.71,
     "state": "WATCH",
-    "updated_ts": 1790367297.463182,
+    "updated_ts": 1790367379.49947,
     "card": {
       "symbol": "AAPL",
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 340.93,
+      "last": 340.92,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -974,10 +974,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 4.6,
+      "age_min": 6.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 4 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 5 د",
       "entry": 342.01,
       "entry_trigger": 342.01,
       "stop": 334.53,
@@ -994,7 +994,7 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 0.65x VMA",
+          "ar": "Volume 0.69x VMA",
           "need": true
         },
         {
@@ -1023,13 +1023,13 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 0.65x VMA",
+        "✗ Volume 0.69x VMA",
         "✓ MFI 69.7",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $341.67",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "vol_ratio": 0.65,
+      "vol_ratio": 0.69,
       "mfi": 69.7,
       "mfi_prev": 63.9,
       "mfi_rising": true,
@@ -1055,7 +1055,7 @@
         "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367297,
+      "updated_ts": 1790367379,
       "created_ts": 1790367020
     }
   },
