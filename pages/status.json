@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-25T19:49:50.798242+00:00",
-  "generated_ts": 1790365790,
-  "generated_local": "2026-09-25 22:49 +03",
+  "generated_at": "2026-09-25T19:51:24.277945+00:00",
+  "generated_ts": 1790365884,
+  "generated_local": "2026-09-25 22:51 +03",
   "status": {
     "ok": true,
     "last_mode": "dashboard",
     "changed": true,
     "symbols": 12,
-    "updated_at": "2026-09-25T19:49:50.798058+00:00",
+    "updated_at": "2026-09-25T19:51:24.277762+00:00",
     "source": "build_pages"
   },
   "telegram_enabled": false,
@@ -24,39 +24,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: مبتدئ",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": 0.46,
+    "avg_change_pct": 0.53,
     "details": {
       "SPY": {
-        "last": 771.7128,
-        "change_pct": 0.59,
-        "rsi": 52.9
+        "last": 772.24,
+        "change_pct": 0.66,
+        "rsi": 53.1
       },
       "QQQ": {
-        "last": 744.861,
-        "change_pct": 0.51,
-        "rsi": 66.6
+        "last": 745.47,
+        "change_pct": 0.59,
+        "rsi": 66.7
       },
       "IWM": {
-        "last": 282.49,
-        "change_pct": 0.29,
-        "rsi": 25.9
+        "last": 282.59,
+        "change_pct": 0.33,
+        "rsi": 25.8
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": 0.59,
-        "rsi": 52.9
+        "change_pct": 0.66,
+        "rsi": 53.1
       },
       {
         "symbol": "QQQ",
-        "change_pct": 0.51,
-        "rsi": 66.6
+        "change_pct": 0.59,
+        "rsi": 66.7
       },
       {
         "symbol": "IWM",
-        "change_pct": 0.29,
-        "rsi": 25.9
+        "change_pct": 0.33,
+        "rsi": 25.8
       }
     ],
     "no_trade_today": false,
@@ -69,8 +69,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 609,
-    "ny_time": "15:49:50",
+    "seconds_left": 515,
+    "ny_time": "15:51:24",
     "open": "09:30",
     "close": "16:00"
   },
@@ -78,88 +78,47 @@
     "strongest": [
       {
         "name": "Financials",
-        "change_pct": 1.23
+        "change_pct": 1.27
       },
       {
         "name": "Technology",
-        "change_pct": 0.15
+        "change_pct": 0.25
       },
       {
         "name": "Consumer",
-        "change_pct": -0.57
+        "change_pct": -0.52
       }
     ],
     "weakest": [
       {
         "name": "Energy",
-        "change_pct": -0.93
+        "change_pct": -0.86
       },
       {
         "name": "Consumer",
-        "change_pct": -0.57
+        "change_pct": -0.52
       },
       {
         "name": "Technology",
-        "change_pct": 0.15
+        "change_pct": 0.25
       }
     ]
   },
   "style": {
-    "growth_avg": -1.16,
-    "value_avg": 1.17,
+    "growth_avg": -1.09,
+    "value_avg": 1.26,
     "leader": "قيمة",
     "growth_count": 5,
     "value_count": 5
   },
   "momentum_scanner": [
     {
-      "symbol": "ALM",
-      "name": "Almonty Industries Inc.",
-      "last": 13.86,
-      "change_pct": 11.77,
-      "dollar_volume": 131530457.52,
-      "dollar_volume_label": "131.5M$",
-      "rvol": null,
-      "liq_grade_ar": "",
-      "impact": 5,
-      "impact_ar": "تأثير 5/5",
-      "has_news": true,
-      "news": {
-        "symbol": "ALM",
-        "title": "Stifel starts Almonty with $25 price target on Western tungsten expansion",
-        "title_ar": "يبدأ Stifel Almonty بسعر مستهدف قدره 25 $ على توسع التنغستن",
-        "summary": "Investing.com -- Shares of Almonty Industries Inc (NASDAQ:ALM) gained nearly 8% in early Friday trading following a bullish initiation from Stifel, which highlighted the company’s expanding production footprint and strategic positioning in the global tungsten market.",
-        "summary_ar": "",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/stifel-starts-almonty-25-price-141807347.html",
-        "publisher": "Investing.com",
-        "published": "2026-09-25 14:18:07 UT",
-        "published_ts": 1790345887,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "54fd8b2e9a978e80686e51ba60981d510a1f1824",
-        "source": "yahoo",
-        "impact": 5,
-        "impact_ar": "تأثير 5/5",
-        "sentiment_score": 4,
-        "catalysts": [],
-        "catalyst_keys": [],
-        "catalyst_ar": [],
-        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-        "officialish": false
-      },
-      "news_title_ar": "يبدأ Stifel Almonty بسعر مستهدف قدره 25 $ على توسع التنغستن",
-      "news_url": "https://finance.yahoo.com/markets/stocks/articles/stifel-starts-almonty-25-price-141807347.html",
-      "catalyst_ar": [],
-      "alert_ar": "زخم +11.8% · تحرك سعري قوي بدون محفز واضح بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
-    },
-    {
       "symbol": "PPLI",
       "name": "People Incorporated",
-      "last": 40.1,
-      "change_pct": 11.62,
-      "dollar_volume": 100808994.0,
-      "dollar_volume_label": "100.8M$",
+      "last": 40.07,
+      "change_pct": 11.52,
+      "dollar_volume": 101652621.32,
+      "dollar_volume_label": "101.7M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -203,16 +162,57 @@
       "catalyst_ar": [
         "اندماج/استحواذ"
       ],
-      "alert_ar": "زخم +11.6% · اندماج/استحواذ",
+      "alert_ar": "زخم +11.5% · اندماج/استحواذ",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PPLI"
+    },
+    {
+      "symbol": "ALM",
+      "name": "Almonty Industries Inc.",
+      "last": 13.82,
+      "change_pct": 11.49,
+      "dollar_volume": 132231045.26,
+      "dollar_volume_label": "132.2M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "has_news": true,
+      "news": {
+        "symbol": "ALM",
+        "title": "Stifel starts Almonty with $25 price target on Western tungsten expansion",
+        "title_ar": "يبدأ Stifel Almonty بسعر مستهدف قدره 25 $ على توسع التنغستن",
+        "summary": "Investing.com -- Shares of Almonty Industries Inc (NASDAQ:ALM) gained nearly 8% in early Friday trading following a bullish initiation from Stifel, which highlighted the company’s expanding production footprint and strategic positioning in the global tungsten market.",
+        "summary_ar": "",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/stifel-starts-almonty-25-price-141807347.html",
+        "publisher": "Investing.com",
+        "published": "2026-09-25 14:18:07 UT",
+        "published_ts": 1790345887,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "54fd8b2e9a978e80686e51ba60981d510a1f1824",
+        "source": "yahoo",
+        "impact": 5,
+        "impact_ar": "تأثير 5/5",
+        "sentiment_score": 4,
+        "catalysts": [],
+        "catalyst_keys": [],
+        "catalyst_ar": [],
+        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+        "officialish": false
+      },
+      "news_title_ar": "يبدأ Stifel Almonty بسعر مستهدف قدره 25 $ على توسع التنغستن",
+      "news_url": "https://finance.yahoo.com/markets/stocks/articles/stifel-starts-almonty-25-price-141807347.html",
+      "catalyst_ar": [],
+      "alert_ar": "زخم +11.5% · تحرك سعري قوي بدون محفز واضح بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
     },
     {
       "symbol": "MXL",
       "name": "MaxLinear, Inc",
-      "last": 93.89,
-      "change_pct": 10.06,
-      "dollar_volume": 330816438.83,
-      "dollar_volume_label": "330.8M$",
+      "last": 93.84,
+      "change_pct": 10.0,
+      "dollar_volume": 334494744.48,
+      "dollar_volume_label": "334.5M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -244,15 +244,15 @@
       "news_title_ar": "MXL مقابل VICR: أيهما لديه فرصة أفضل للبنية التحتية للذكاء الاصطناعي ؟",
       "news_url": "https://finance.yahoo.com/technology/ai/articles/mxl-vs-vicr-better-ai-182600283.html",
       "catalyst_ar": [],
-      "alert_ar": "زخم +10.1% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +10.0% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=MXL"
     },
     {
       "symbol": "BE",
       "name": "Bloom Energy Corporation",
-      "last": 292.5,
-      "change_pct": 9.69,
-      "dollar_volume": 4518549652.5,
+      "last": 291.55,
+      "change_pct": 9.34,
+      "dollar_volume": 4536436074.45,
       "dollar_volume_label": "4.5B$",
       "rvol": null,
       "liq_grade_ar": "",
@@ -285,16 +285,69 @@
       "news_title_ar": "أسهم Bloom Energy هي أفضل أداء لمؤشر S&P 500 اليوم. لديها الكثير لتفعله مع أوراكل.",
       "news_url": "https://www.barrons.com/articles/bloom-energy-stock-oracle-ai-50802d99?siteid=yhoof2&yptr=yahoo",
       "catalyst_ar": [],
-      "alert_ar": "زخم +9.7% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +9.3% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=BE"
+    },
+    {
+      "symbol": "PS",
+      "name": "Pershing Square Inc.",
+      "last": 56.94,
+      "change_pct": 8.91,
+      "dollar_volume": 16712630.22,
+      "dollar_volume_label": "16.7M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "has_news": true,
+      "news": {
+        "symbol": "PS",
+        "title": "IPO Stock Of The Week: Bill Ackman-Led Pershing Square Hits Another Buy Point",
+        "title_ar": "أسهم الاكتتاب العام لهذا الأسبوع: بيل أكمان بقيادة بيرشينج سكوير يضرب نقطة شراء أخرى",
+        "summary": "Pershing Stock: The Bill Ackman-led name is breaking out past another buy point as the stock market rally continues.",
+        "summary_ar": "",
+        "url": "https://www.investors.com/stock-lists/ipo-analysis/bill-ackman-stock-pershing-square-ps-stock/?src=A00220&yptr=yahoo",
+        "publisher": "Investor's Business Daily",
+        "published": "2026-09-25 19:20:32 UT",
+        "published_ts": 1790364032,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "86fb8547242ee4e1149138e0b6d1d4a5264f4830",
+        "source": "yahoo",
+        "impact": 5,
+        "impact_ar": "تأثير 5/5",
+        "sentiment_score": 4,
+        "catalysts": [
+          {
+            "key": "ipo",
+            "ar": "طرح عام",
+            "base_impact": 4
+          }
+        ],
+        "catalyst_keys": [
+          "ipo"
+        ],
+        "catalyst_ar": [
+          "طرح عام"
+        ],
+        "impact_reason_ar": "طرح عام",
+        "officialish": false
+      },
+      "news_title_ar": "أسهم الاكتتاب العام لهذا الأسبوع: بيل أكمان بقيادة بيرشينج سكوير يضرب نقطة شراء أخرى",
+      "news_url": "https://www.investors.com/stock-lists/ipo-analysis/bill-ackman-stock-pershing-square-ps-stock/?src=A00220&yptr=yahoo",
+      "catalyst_ar": [
+        "طرح عام"
+      ],
+      "alert_ar": "زخم +8.9% · طرح عام",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=PS"
     },
     {
       "symbol": "SYNA",
       "name": "Synaptics Incorporated",
-      "last": 102.47,
-      "change_pct": 5.84,
-      "dollar_volume": 37771056.82,
-      "dollar_volume_label": "37.8M$",
+      "last": 102.46,
+      "change_pct": 5.83,
+      "dollar_volume": 38667686.78,
+      "dollar_volume_label": "38.7M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -342,64 +395,11 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=SYNA"
     },
     {
-      "symbol": "PS",
-      "name": "Pershing Square Inc.",
-      "last": 56.46,
-      "change_pct": 7.99,
-      "dollar_volume": 16545772.38,
-      "dollar_volume_label": "16.5M$",
-      "rvol": null,
-      "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": true,
-      "news": {
-        "symbol": "PS",
-        "title": "IPO Stock Of The Week: Bill Ackman-Led Pershing Square Hits Another Buy Point",
-        "title_ar": "أسهم الاكتتاب العام لهذا الأسبوع: بيل أكمان بقيادة بيرشينج سكوير يضرب نقطة شراء أخرى",
-        "summary": "Pershing Stock: The Bill Ackman-led name is breaking out past another buy point as the stock market rally continues.",
-        "summary_ar": "",
-        "url": "https://www.investors.com/stock-lists/ipo-analysis/bill-ackman-stock-pershing-square-ps-stock/?src=A00220&yptr=yahoo",
-        "publisher": "Investor's Business Daily",
-        "published": "2026-09-25 19:20:32 UT",
-        "published_ts": 1790364032,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "86fb8547242ee4e1149138e0b6d1d4a5264f4830",
-        "source": "yahoo",
-        "impact": 4,
-        "impact_ar": "تأثير 4/5",
-        "sentiment_score": 4,
-        "catalysts": [
-          {
-            "key": "ipo",
-            "ar": "طرح عام",
-            "base_impact": 4
-          }
-        ],
-        "catalyst_keys": [
-          "ipo"
-        ],
-        "catalyst_ar": [
-          "طرح عام"
-        ],
-        "impact_reason_ar": "طرح عام",
-        "officialish": false
-      },
-      "news_title_ar": "أسهم الاكتتاب العام لهذا الأسبوع: بيل أكمان بقيادة بيرشينج سكوير يضرب نقطة شراء أخرى",
-      "news_url": "https://www.investors.com/stock-lists/ipo-analysis/bill-ackman-stock-pershing-square-ps-stock/?src=A00220&yptr=yahoo",
-      "catalyst_ar": [
-        "طرح عام"
-      ],
-      "alert_ar": "زخم +8.0% · طرح عام",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=PS"
-    },
-    {
       "symbol": "CRDO",
       "name": "Credo Technology Group Holding ",
-      "last": 210.93,
-      "change_pct": 7.64,
-      "dollar_volume": 2135215914.45,
+      "last": 210.5,
+      "change_pct": 7.41,
+      "dollar_volume": 2138299837.0,
       "dollar_volume_label": "2.1B$",
       "rvol": null,
       "liq_grade_ar": "",
@@ -408,40 +408,40 @@
       "has_news": true,
       "news": {
         "symbol": "CRDO",
-        "title": "Credo vs. Nvidia: Which AI Chip Stock Is a Better Buy in 2026?",
-        "title_ar": "Credo مقابل Nvidia: ما هي أسهم رقائق الذكاء الاصطناعي التي من الأفضل شراؤها في عام 2026 ؟",
-        "summary": "Credo more than tripled revenue last year but leans on 10 customers for 90% of sales, while Nvidia is doubling revenue at a scale nobody else in AI hardware can match.",
+        "title": "One Under-the-Radar Stock With 100% Upside Potential",
+        "title_ar": "سهم واحد تحت الرادار مع احتمالية صعود بنسبة 100 ٪",
+        "summary": "A small-cap silicon photonics company has quietly built a cash fortress and locked in a major anchor customer, positioning itself to compete in a $26 billion AI optics market where the giants are not paying attention yet.",
         "summary_ar": "",
-        "url": "https://www.fool.com/coverage/better-buy/2026/09/25/credo-vs-nvidia-ai-chip-stock-better-buy-2026/",
-        "publisher": "Motley Fool",
-        "published": "2026-09-25 19:20:01 UT",
-        "published_ts": 1790364001,
-        "sentiment": "neu",
-        "sentiment_ar": "محايد",
-        "id": "5a8bd153b88ed85c1c4f0d1af5d10778f085c088",
+        "url": "https://247wallst.com/investing/2026/09/22/one-under-the-radar-stock-with-100-upside-potential/",
+        "publisher": "24/7 Wall St.",
+        "published": "2026-09-22 17:00:13 UT",
+        "published_ts": 1790096413,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "dc124dee72b0e715e498e6c67f12591163a9845e",
         "source": "yahoo",
         "impact": 4,
         "impact_ar": "تأثير 4/5",
-        "sentiment_score": 3,
+        "sentiment_score": 4,
         "catalysts": [],
         "catalyst_keys": [],
         "catalyst_ar": [],
         "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
         "officialish": false
       },
-      "news_title_ar": "Credo مقابل Nvidia: ما هي أسهم رقائق الذكاء الاصطناعي التي من الأفضل شراؤها في عام 2026 ؟",
-      "news_url": "https://www.fool.com/coverage/better-buy/2026/09/25/credo-vs-nvidia-ai-chip-stock-better-buy-2026/",
+      "news_title_ar": "سهم واحد تحت الرادار مع احتمالية صعود بنسبة 100 ٪",
+      "news_url": "https://247wallst.com/investing/2026/09/22/one-under-the-radar-stock-with-100-upside-potential/",
       "catalyst_ar": [],
-      "alert_ar": "زخم +7.6% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +7.4% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRDO"
     },
     {
       "symbol": "HHH",
       "name": "Howard Hughes Holdings Inc.",
-      "last": 69.13,
-      "change_pct": 7.05,
-      "dollar_volume": 58765892.14,
-      "dollar_volume_label": "58.8M$",
+      "last": 69.18,
+      "change_pct": 7.12,
+      "dollar_volume": 59361974.4,
+      "dollar_volume_label": "59.4M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -485,16 +485,57 @@
       "catalyst_ar": [
         "أرباح"
       ],
-      "alert_ar": "زخم +7.0% · أرباح",
+      "alert_ar": "زخم +7.1% · أرباح",
       "tv_url": "https://www.tradingview.com/chart/?symbol=HHH"
+    },
+    {
+      "symbol": "ACLS",
+      "name": "Axcelis Technologies, Inc.",
+      "last": 122.76,
+      "change_pct": 5.7,
+      "dollar_volume": 32618314.08,
+      "dollar_volume_label": "32.6M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "has_news": true,
+      "news": {
+        "symbol": "ACLS",
+        "title": "Why Did Axcelis Technologies (ACLS) Shares Climb After Its Latest Update?",
+        "title_ar": "لماذا ارتفعت أسهم Axcelis Technologies (ACLS) بعد آخر تحديث لها ؟",
+        "summary": "Axcelis Technologies (ACLS) has drawn fresh attention after announcing a planned US$35 million ion implantation manufacturing facility in Pyeongtaek, Korea. This capacity move puts the stock’s recent performance into sharper focus. The Axcelis Technologies share price has picked ",
+        "summary_ar": "",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/why-did-axcelis-technologies-acls-211612763.html",
+        "publisher": "Simply Wall St.",
+        "published": "2026-09-22 21:16:12 UT",
+        "published_ts": 1790111772,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "0412bb3f0f691c0d8c1214407e466997157ff90f",
+        "source": "yahoo",
+        "impact": 4,
+        "impact_ar": "تأثير 4/5",
+        "sentiment_score": 4,
+        "catalysts": [],
+        "catalyst_keys": [],
+        "catalyst_ar": [],
+        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+        "officialish": false
+      },
+      "news_title_ar": "لماذا ارتفعت أسهم Axcelis Technologies (ACLS) بعد آخر تحديث لها ؟",
+      "news_url": "https://finance.yahoo.com/markets/stocks/articles/why-did-axcelis-technologies-acls-211612763.html",
+      "catalyst_ar": [],
+      "alert_ar": "زخم +5.7% · تحرك سعري قوي بدون محفز واضح بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=ACLS"
     },
     {
       "symbol": "FLY",
       "name": "Firefly Aerospace Inc.",
-      "last": 24.41,
-      "change_pct": 5.7,
-      "dollar_volume": 108461758.53,
-      "dollar_volume_label": "108.5M$",
+      "last": 24.39,
+      "change_pct": 5.63,
+      "dollar_volume": 108782814.6,
+      "dollar_volume_label": "108.8M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -526,35 +567,16 @@
       "news_title_ar": "هل يمكن لـ Firefly Aerospace (FLY) إطلاق المستثمرين إلى آفاق جديدة ؟",
       "news_url": "https://finance.yahoo.com/markets/stocks/articles/firefly-aerospace-fly-launch-investors-114956087.html",
       "catalyst_ar": [],
-      "alert_ar": "زخم +5.7% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +5.6% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=FLY"
     },
     {
       "symbol": "BIRK",
       "name": "Birkenstock Holding plc",
-      "last": 33.59,
-      "change_pct": 5.66,
-      "dollar_volume": 98163886.26,
-      "dollar_volume_label": "98.2M$",
-      "rvol": null,
-      "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": false,
-      "news": null,
-      "news_title_ar": "",
-      "news_url": "",
-      "catalyst_ar": [],
-      "alert_ar": "زخم +5.7% · لا خبر رسمي مرفق بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=BIRK"
-    },
-    {
-      "symbol": "ACLS",
-      "name": "Axcelis Technologies, Inc.",
-      "last": 122.68,
-      "change_pct": 5.63,
-      "dollar_volume": 32442726.0,
-      "dollar_volume_label": "32.4M$",
+      "last": 33.57,
+      "change_pct": 5.6,
+      "dollar_volume": 99137782.62,
+      "dollar_volume_label": "99.1M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -565,14 +587,14 @@
       "news_url": "",
       "catalyst_ar": [],
       "alert_ar": "زخم +5.6% · لا خبر رسمي مرفق بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=ACLS"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=BIRK"
     },
     {
       "symbol": "DELL",
       "name": "Dell Technologies Inc.",
-      "last": 565.97,
-      "change_pct": 5.59,
-      "dollar_volume": 4477797300.34,
+      "last": 565.87,
+      "change_pct": 5.57,
+      "dollar_volume": 4495170555.14,
       "dollar_volume_label": "4.5B$",
       "rvol": null,
       "liq_grade_ar": "",
@@ -592,9 +614,9 @@
     {
       "symbol": "EVTL",
       "name": "Vertical Aerospace Ltd.",
-      "last": 0.7401,
-      "change_pct": 9.3,
-      "dollar_volume": 6822355.04,
+      "last": 0.7406,
+      "change_pct": 9.39,
+      "dollar_volume": 6830482.7,
       "dollar_volume_label": "6.8M$",
       "has_news": false,
       "impact": 3,
@@ -605,7 +627,7 @@
       "news_url": "https://www.tradingview.com/chart/?symbol=EVTL",
       "alert_ar": "قنص سنتات — طرح تلقائي",
       "reason_ar": "زخم سعري ضمن نطاق القنص — راقب الخبر/النشاط",
-      "score": 56.22,
+      "score": 56.76,
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=EVTL",
       "tier": "sniper",
@@ -615,13 +637,13 @@
       "auto": true,
       "source_style": "hessa_cents_auto",
       "sticky": false,
-      "entry": 0.7401,
-      "stop": 0.6883,
-      "tp1": 0.8511,
-      "tp2": 0.9991,
+      "entry": 0.7406,
+      "stop": 0.6888,
+      "tp1": 0.8517,
+      "tp2": 0.9998,
       "support": 0.699,
       "resistance": 0.797,
-      "plan_ar": "دخول $0.7401 · وقف $0.6883 · جني1 $0.8511 · جني2 $0.9991",
+      "plan_ar": "دخول $0.7406 · وقف $0.6888 · جني1 $0.8517 · جني2 $0.9998",
       "levels_ar": "دعم $0.699 · مقاومة $0.797",
       "auto_plan": true,
       "style": "hessa_cents",
@@ -630,16 +652,16 @@
       "appeared_local": "2026-09-25 18:22 +03",
       "appeared_ny": "11:22 EDT",
       "appeared_clock_ar": "18:22",
-      "appeared_ago_ar": "منذ 4س 27د",
-      "appeared_ar": "ظهر منذ 4س 27د · 18:22"
+      "appeared_ago_ar": "منذ 4س 29د",
+      "appeared_ar": "ظهر منذ 4س 29د · 18:22"
     },
     {
       "symbol": "SRFM",
       "name": "Surf Air Mobility Inc.",
       "last": 1.12,
-      "change_pct": 21.9,
-      "dollar_volume": 18021890.88,
-      "dollar_volume_label": "18.0M$",
+      "change_pct": 21.61,
+      "dollar_volume": 18065488.0,
+      "dollar_volume_label": "18.1M$",
       "has_news": false,
       "impact": 3,
       "impact_ar": "تأثير 3/5",
@@ -649,7 +671,7 @@
       "news_url": "https://www.tradingview.com/chart/?symbol=SRFM",
       "alert_ar": "صاروخ سنتات — راقب الخبر",
       "reason_ar": "زخم سنتات قوي — راقب الخبر/النشاط",
-      "score": 98.22,
+      "score": 96.92,
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SRFM",
       "tier": "sniper",
@@ -674,16 +696,16 @@
       "appeared_local": "2026-09-25 16:43 +03",
       "appeared_ny": "09:43 EDT",
       "appeared_clock_ar": "16:43",
-      "appeared_ago_ar": "منذ 6س 6د",
-      "appeared_ar": "ظهر منذ 6س 6د · 16:43"
+      "appeared_ago_ar": "منذ 6س 7د",
+      "appeared_ar": "ظهر منذ 6س 7د · 16:43"
     },
     {
       "symbol": "STEM",
       "name": "Stem, Inc.",
-      "last": 4.5,
-      "change_pct": 15.38,
-      "dollar_volume": 2998066.5,
-      "dollar_volume_label": "3.0M$",
+      "last": 4.51,
+      "change_pct": 15.77,
+      "dollar_volume": 3078995.04,
+      "dollar_volume_label": "3.1M$",
       "has_news": false,
       "impact": 3,
       "impact_ar": "تأثير 3/5",
@@ -693,7 +715,7 @@
       "news_url": "https://www.tradingview.com/chart/?symbol=STEM",
       "alert_ar": "صاروخ سنتات — راقب الخبر",
       "reason_ar": "زخم سنتات قوي — راقب الخبر/النشاط",
-      "score": 61.02,
+      "score": 62.78,
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=STEM",
       "tier": "sniper",
@@ -703,13 +725,13 @@
       "auto": true,
       "source_style": "hessa_cents_auto",
       "sticky": false,
-      "entry": 4.5,
-      "stop": 4.18,
-      "tp1": 5.17,
-      "tp2": 6.08,
+      "entry": 4.51,
+      "stop": 4.19,
+      "tp1": 5.19,
+      "tp2": 6.09,
       "support": 4.25,
       "resistance": 4.67,
-      "plan_ar": "دخول $4.5 · وقف $4.18 · جني1 $5.17 · جني2 $6.08",
+      "plan_ar": "دخول $4.51 · وقف $4.19 · جني1 $5.19 · جني2 $6.09",
       "levels_ar": "دعم $4.25 · مقاومة $4.67",
       "auto_plan": true,
       "style": "hessa_cents",
@@ -718,16 +740,16 @@
       "appeared_local": "2026-09-25 16:32 +03",
       "appeared_ny": "09:32 EDT",
       "appeared_clock_ar": "16:32",
-      "appeared_ago_ar": "منذ 6س 17د",
-      "appeared_ar": "ظهر منذ 6س 17د · 16:32"
+      "appeared_ago_ar": "منذ 6س 18د",
+      "appeared_ar": "ظهر منذ 6س 18د · 16:32"
     },
     {
       "symbol": "FLX",
       "name": "BINGEX LIMITED",
       "last": 1.15,
-      "change_pct": 15.09,
-      "dollar_volume": 244467.0,
-      "dollar_volume_label": "244K$",
+      "change_pct": 15.01,
+      "dollar_volume": 245044.3,
+      "dollar_volume_label": "245K$",
       "has_news": false,
       "impact": 3,
       "impact_ar": "تأثير 3/5",
@@ -737,7 +759,7 @@
       "news_url": "https://www.tradingview.com/chart/?symbol=FLX",
       "alert_ar": "صاروخ سنتات — راقب الخبر",
       "reason_ar": "زخم سنتات قوي — راقب الخبر/النشاط",
-      "score": 52.7,
+      "score": 52.42,
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=FLX",
       "tier": "sniper",
@@ -762,8 +784,8 @@
       "appeared_local": "2026-09-25 18:53 +03",
       "appeared_ny": "11:53 EDT",
       "appeared_clock_ar": "18:53",
-      "appeared_ago_ar": "منذ 3س 56د",
-      "appeared_ar": "ظهر منذ 3س 56د · 18:53"
+      "appeared_ago_ar": "منذ 3س 57د",
+      "appeared_ar": "ظهر منذ 3س 57د · 18:53"
     }
   ],
   "sniper_note_ar": "ماسح القنص مستقل عن ≥$51 و$5–$51 — تحت $5 فقط · الأسهم الظاهرة تثبت ~30 د حتى لا تختفي وترجع فجأة",
@@ -782,7 +804,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 515.44,
+      "last": 516.26,
       "score": 90,
       "score_max": 90,
       "state": "WATCH",
@@ -790,10 +812,10 @@
       "signal_ts": 1790365136,
       "signal_clock_et": "15:38:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.5,
       "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 518.13,
       "entry_trigger": 518.13,
       "stop": 507.77,
@@ -810,13 +832,13 @@
         {
           "key": "vol",
           "ok": true,
-          "ar": "Volume 1.46x VMA",
+          "ar": "Volume 1.47x VMA",
           "need": true
         },
         {
           "key": "mfi",
           "ok": true,
-          "ar": "MFI 53.3",
+          "ar": "MFI 53.4",
           "need": true
         },
         {
@@ -839,14 +861,14 @@
         }
       ],
       "checks_ar": [
-        "✓ Volume 1.46x VMA",
-        "✓ MFI 53.3",
+        "✓ Volume 1.47x VMA",
+        "✓ MFI 53.4",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $517.61",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "vol_ratio": 1.46,
-      "mfi": 53.3,
+      "vol_ratio": 1.47,
+      "mfi": 53.4,
       "mfi_prev": 44.5,
       "mfi_rising": true,
       "short_high": 517.61,
@@ -861,7 +883,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 10.154049316666667,
+      "mins_to_close": 8.596060066666666,
       "sizing": {
         "shares": 11,
         "position_usd": 5699.43,
@@ -871,7 +893,7 @@
         "note_ar": "11 سهم · صفقة $5699.43 · مخاطرة $113.96"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790365790,
+      "updated_ts": 1790365884,
       "created_ts": 1790365136,
       "shares": 11,
       "position_usd": 5699.43,
@@ -882,7 +904,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 371.89,
+      "last": 372.07,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -890,10 +912,10 @@
       "signal_ts": 1790365136,
       "signal_clock_et": "15:38:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.5,
       "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 386.24,
       "entry_trigger": 386.24,
       "stop": 378.52,
@@ -961,7 +983,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 10.153897733333334,
+      "mins_to_close": 8.59590105,
       "sizing": {
         "shares": 15,
         "position_usd": 5793.6,
@@ -971,7 +993,7 @@
         "note_ar": "15 سهم · صفقة $5793.6 · مخاطرة $115.8"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790365790,
+      "updated_ts": 1790365884,
       "created_ts": 1790365136,
       "shares": 15,
       "position_usd": 5793.6,
@@ -982,7 +1004,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 190.04,
+      "last": 190.35,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -990,10 +1012,10 @@
       "signal_ts": 1790365136,
       "signal_clock_et": "15:38:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.5,
       "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 194.41,
       "entry_trigger": 194.41,
       "stop": 189.64,
@@ -1010,13 +1032,13 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 0.50x VMA",
+          "ar": "Volume 0.51x VMA",
           "need": true
         },
         {
           "key": "mfi",
           "ok": true,
-          "ar": "MFI 71.3",
+          "ar": "MFI 71.2",
           "need": true
         },
         {
@@ -1039,14 +1061,14 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 0.50x VMA",
-        "✓ MFI 71.3",
+        "✗ Volume 0.51x VMA",
+        "✓ MFI 71.2",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $194.21",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "vol_ratio": 0.5,
-      "mfi": 71.3,
+      "vol_ratio": 0.51,
+      "mfi": 71.2,
       "mfi_prev": 68.5,
       "mfi_rising": true,
       "short_high": 194.21,
@@ -1061,7 +1083,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 10.153598683333334,
+      "mins_to_close": 8.595601533333333,
       "sizing": {
         "shares": 25,
         "position_usd": 4860.25,
@@ -1071,7 +1093,7 @@
         "note_ar": "25 سهم · صفقة $4860.25 · مخاطرة $119.25"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790365790,
+      "updated_ts": 1790365884,
       "created_ts": 1790365136,
       "shares": 25,
       "position_usd": 4860.25,
@@ -1082,7 +1104,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 341.26,
+      "last": 341.58,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -1090,10 +1112,10 @@
       "signal_ts": 1790365136,
       "signal_clock_et": "15:38:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.5,
       "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 340.82,
       "entry_trigger": 340.82,
       "stop": 334.53,
@@ -1110,7 +1132,7 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 0.49x VMA",
+          "ar": "Volume 0.50x VMA",
           "need": true
         },
         {
@@ -1128,7 +1150,7 @@
         {
           "key": "breakout_level",
           "ok": true,
-          "ar": "أقرب قمة قصيرة $341.3",
+          "ar": "أقرب قمة قصيرة $342.9",
           "need": true
         },
         {
@@ -1139,17 +1161,17 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 0.49x VMA",
+        "✗ Volume 0.50x VMA",
         "✓ MFI 69.3",
         "✓ MFI صاعد ↑",
-        "✓ أقرب قمة قصيرة $341.3",
+        "✓ أقرب قمة قصيرة $342.9",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "vol_ratio": 0.49,
+      "vol_ratio": 0.5,
       "mfi": 69.3,
       "mfi_prev": 63.9,
       "mfi_rising": true,
-      "short_high": 341.3,
+      "short_high": 342.9,
       "short_low": 334.53,
       "buffer_pct": 0.1,
       "max_chase_pct": 1.0,
@@ -1161,7 +1183,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 10.1541374,
+      "mins_to_close": 8.59615055,
       "sizing": {
         "shares": 19,
         "position_usd": 6475.58,
@@ -1171,7 +1193,7 @@
         "note_ar": "19 سهم · صفقة $6475.58 · مخاطرة $119.51"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790365790,
+      "updated_ts": 1790365884,
       "created_ts": 1790365136,
       "shares": 19,
       "position_usd": 6475.58,
@@ -1182,7 +1204,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 752.5,
+      "last": 752.22,
       "score": 54,
       "score_max": 90,
       "state": "WATCH",
@@ -1190,10 +1212,10 @@
       "signal_ts": 1790365136,
       "signal_clock_et": "15:38:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.5,
       "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 770.34,
       "entry_trigger": 770.34,
       "stop": 746.54,
@@ -1261,7 +1283,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 10.153821850000002,
+      "mins_to_close": 8.595826783333333,
       "sizing": {
         "shares": 5,
         "position_usd": 3851.7,
@@ -1271,7 +1293,7 @@
         "note_ar": "5 سهم · صفقة $3851.7 · مخاطرة $119.0"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790365790,
+      "updated_ts": 1790365884,
       "created_ts": 1790365136,
       "shares": 5,
       "position_usd": 3851.7,
@@ -1282,7 +1304,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 631.17,
+      "last": 631.84,
       "score": 54,
       "score_max": 90,
       "state": "WATCH",
@@ -1290,10 +1312,10 @@
       "signal_ts": 1790365136,
       "signal_clock_et": "15:38:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.5,
       "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 632.11,
       "entry_trigger": 632.11,
       "stop": 625.52,
@@ -1328,7 +1350,7 @@
         {
           "key": "breakout_level",
           "ok": true,
-          "ar": "أقرب قمة قصيرة $631.48",
+          "ar": "أقرب قمة قصيرة $638.95",
           "need": true
         },
         {
@@ -1342,14 +1364,14 @@
         "✗ Volume 0.68x VMA",
         "✓ MFI 83.9",
         "✗ MFI غير صاعد",
-        "✓ أقرب قمة قصيرة $631.48",
+        "✓ أقرب قمة قصيرة $638.95",
         "✓ السعر فوق المتوسط القصير"
       ],
       "vol_ratio": 0.68,
       "mfi": 83.9,
       "mfi_prev": 83.9,
       "mfi_rising": false,
-      "short_high": 631.48,
+      "short_high": 638.95,
       "short_low": 625.52,
       "buffer_pct": 0.1,
       "max_chase_pct": 1.0,
@@ -1361,7 +1383,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 10.15367325,
+      "mins_to_close": 8.595677683333333,
       "sizing": {
         "shares": 18,
         "position_usd": 11377.98,
@@ -1371,7 +1393,7 @@
         "note_ar": "18 سهم · صفقة $11377.98 · مخاطرة $118.62"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790365790,
+      "updated_ts": 1790365884,
       "created_ts": 1790365136,
       "shares": 18,
       "position_usd": 11377.98,
@@ -1382,7 +1404,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 224.69,
+      "last": 224.86,
       "score": 54,
       "score_max": 90,
       "state": "WATCH",
@@ -1390,10 +1412,10 @@
       "signal_ts": 1790365136,
       "signal_clock_et": "15:38:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.5,
       "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 227.17,
       "entry_trigger": 227.17,
       "stop": 223.13,
@@ -1410,13 +1432,13 @@
         {
           "key": "vol",
           "ok": false,
-          "ar": "Volume 0.55x VMA",
+          "ar": "Volume 0.56x VMA",
           "need": true
         },
         {
           "key": "mfi",
           "ok": true,
-          "ar": "MFI 57.4",
+          "ar": "MFI 57.5",
           "need": true
         },
         {
@@ -1439,14 +1461,14 @@
         }
       ],
       "checks_ar": [
-        "✗ Volume 0.55x VMA",
-        "✓ MFI 57.4",
+        "✗ Volume 0.56x VMA",
+        "✓ MFI 57.5",
         "✗ MFI غير صاعد",
         "✓ أقرب قمة قصيرة $226.94",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "vol_ratio": 0.55,
-      "mfi": 57.4,
+      "vol_ratio": 0.56,
+      "mfi": 57.5,
       "mfi_prev": 59.6,
       "mfi_rising": false,
       "short_high": 226.94,
@@ -1461,7 +1483,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 10.153973366666666,
+      "mins_to_close": 8.595984816666666,
       "sizing": {
         "shares": 29,
         "position_usd": 6587.93,
@@ -1471,7 +1493,7 @@
         "note_ar": "29 سهم · صفقة $6587.93 · مخاطرة $117.16"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790365790,
+      "updated_ts": 1790365884,
       "created_ts": 1790365136,
       "shares": 29,
       "position_usd": 6587.93,
@@ -1482,7 +1504,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 160.64,
+      "last": 160.74,
       "score": 54,
       "score_max": 90,
       "state": "WATCH",
@@ -1490,10 +1512,10 @@
       "signal_ts": 1790365136,
       "signal_clock_et": "15:38:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.5,
       "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 161.95,
       "entry_trigger": 161.95,
       "stop": 159.78,
@@ -1516,7 +1538,7 @@
         {
           "key": "mfi",
           "ok": true,
-          "ar": "MFI 70.5",
+          "ar": "MFI 70.4",
           "need": true
         },
         {
@@ -1540,13 +1562,13 @@
       ],
       "checks_ar": [
         "✗ Volume 0.46x VMA",
-        "✓ MFI 70.5",
+        "✓ MFI 70.4",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $161.79",
         "✗ تحت المتوسط القصير"
       ],
       "vol_ratio": 0.46,
-      "mfi": 70.5,
+      "mfi": 70.4,
       "mfi_prev": 67.3,
       "mfi_rising": true,
       "short_high": 161.79,
@@ -1561,7 +1583,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 10.153524016666667,
+      "mins_to_close": 8.5955268,
       "sizing": {
         "shares": 55,
         "position_usd": 8907.25,
@@ -1571,7 +1593,7 @@
         "note_ar": "55 سهم · صفقة $8907.25 · مخاطرة $119.35"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790365790,
+      "updated_ts": 1790365884,
       "created_ts": 1790365136,
       "shares": 55,
       "position_usd": 8907.25,
@@ -1582,7 +1604,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 342.71,
+      "last": 342.85,
       "score": 36,
       "score_max": 90,
       "state": "WATCH",
@@ -1590,10 +1612,10 @@
       "signal_ts": 1790365136,
       "signal_clock_et": "15:38:56",
       "trigger_clock_et": "—",
-      "age_min": 10.9,
+      "age_min": 12.5,
       "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 343.34,
       "entry_trigger": 343.34,
       "stop": 338.64,
@@ -1661,7 +1683,7 @@
       "order_book_available": false,
       "order_book_ok": null,
       "order_book_note_ar": "Order Book غير متاح",
-      "mins_to_close": 10.153449283333334,
+      "mins_to_close": 8.595447799999999,
       "sizing": {
         "shares": 25,
         "position_usd": 8583.5,
@@ -1671,7 +1693,7 @@
         "note_ar": "25 سهم · صفقة $8583.5 · مخاطرة $117.5"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790365790,
+      "updated_ts": 1790365884,
       "created_ts": 1790365136,
       "shares": 25,
       "position_usd": 8583.5,
@@ -1705,7 +1727,7 @@
       "strategies": [
         "استراتيجية جمال"
       ],
-      "reason": "✓ Volume 1.46x VMA · ✓ MFI 53.3 · ✓ MFI صاعد ↑ · ✓ أقرب قمة قصيرة $517.61 · ✓ السعر فوق المتوسط القصير",
+      "reason": "✓ Volume 1.47x VMA · ✓ MFI 53.4 · ✓ MFI صاعد ↑ · ✓ أقرب قمة قصيرة $517.61 · ✓ السعر فوق المتوسط القصير",
       "entry": 518.13,
       "entry_original": 518.13,
       "entry_planned": 518.13,
@@ -1717,7 +1739,7 @@
       "risk_usd": 113.96,
       "allowed": false,
       "change_pct": 0,
-      "last": 515.44,
+      "last": 516.26,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -1725,7 +1747,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 515.44,
+        "last": 516.26,
         "score": 90,
         "score_max": 90,
         "state": "WATCH",
@@ -1733,10 +1755,10 @@
         "signal_ts": 1790365136,
         "signal_clock_et": "15:38:56",
         "trigger_clock_et": "—",
-        "age_min": 10.9,
+        "age_min": 12.5,
         "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 518.13,
         "entry_trigger": 518.13,
         "stop": 507.77,
@@ -1753,13 +1775,13 @@
           {
             "key": "vol",
             "ok": true,
-            "ar": "Volume 1.46x VMA",
+            "ar": "Volume 1.47x VMA",
             "need": true
           },
           {
             "key": "mfi",
             "ok": true,
-            "ar": "MFI 53.3",
+            "ar": "MFI 53.4",
             "need": true
           },
           {
@@ -1782,14 +1804,14 @@
           }
         ],
         "checks_ar": [
-          "✓ Volume 1.46x VMA",
-          "✓ MFI 53.3",
+          "✓ Volume 1.47x VMA",
+          "✓ MFI 53.4",
           "✓ MFI صاعد ↑",
           "✓ أقرب قمة قصيرة $517.61",
           "✓ السعر فوق المتوسط القصير"
         ],
-        "vol_ratio": 1.46,
-        "mfi": 53.3,
+        "vol_ratio": 1.47,
+        "mfi": 53.4,
         "mfi_prev": 44.5,
         "mfi_rising": true,
         "short_high": 517.61,
@@ -1804,7 +1826,7 @@
         "order_book_available": false,
         "order_book_ok": null,
         "order_book_note_ar": "Order Book غير متاح",
-        "mins_to_close": 10.154049316666667,
+        "mins_to_close": 8.596060066666666,
         "sizing": {
           "shares": 11,
           "position_usd": 5699.43,
@@ -1814,7 +1836,7 @@
           "note_ar": "11 سهم · صفقة $5699.43 · مخاطرة $113.96"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790365790,
+        "updated_ts": 1790365884,
         "created_ts": 1790365136,
         "shares": 11,
         "position_usd": 5699.43,
@@ -1827,8 +1849,8 @@
         }
       ],
       "smart_notes": [
-        "✓ Volume 1.46x VMA",
-        "✓ MFI 53.3",
+        "✓ Volume 1.47x VMA",
+        "✓ MFI 53.4",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $517.61",
         "✓ السعر فوق المتوسط القصير"
@@ -1860,7 +1882,7 @@
       "risk_usd": 115.8,
       "allowed": false,
       "change_pct": 0,
-      "last": 371.89,
+      "last": 372.07,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -1868,7 +1890,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 371.89,
+        "last": 372.07,
         "score": 72,
         "score_max": 90,
         "state": "WATCH",
@@ -1876,10 +1898,10 @@
         "signal_ts": 1790365136,
         "signal_clock_et": "15:38:56",
         "trigger_clock_et": "—",
-        "age_min": 10.9,
+        "age_min": 12.5,
         "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 386.24,
         "entry_trigger": 386.24,
         "stop": 378.52,
@@ -1947,7 +1969,7 @@
         "order_book_available": false,
         "order_book_ok": null,
         "order_book_note_ar": "Order Book غير متاح",
-        "mins_to_close": 10.153897733333334,
+        "mins_to_close": 8.59590105,
         "sizing": {
           "shares": 15,
           "position_usd": 5793.6,
@@ -1957,7 +1979,7 @@
           "note_ar": "15 سهم · صفقة $5793.6 · مخاطرة $115.8"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790365790,
+        "updated_ts": 1790365884,
         "created_ts": 1790365136,
         "shares": 15,
         "position_usd": 5793.6,
@@ -1991,7 +2013,7 @@
       "strategies": [
         "استراتيجية جمال"
       ],
-      "reason": "✗ Volume 0.50x VMA · ✓ MFI 71.3 · ✓ MFI صاعد ↑ · ✓ أقرب قمة قصيرة $194.21 · ✓ السعر فوق المتوسط القصير",
+      "reason": "✗ Volume 0.51x VMA · ✓ MFI 71.2 · ✓ MFI صاعد ↑ · ✓ أقرب قمة قصيرة $194.21 · ✓ السعر فوق المتوسط القصير",
       "entry": 194.41,
       "entry_original": 194.41,
       "entry_planned": 194.41,
@@ -2003,7 +2025,7 @@
       "risk_usd": 119.25,
       "allowed": false,
       "change_pct": 0,
-      "last": 190.04,
+      "last": 190.35,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2011,7 +2033,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 190.04,
+        "last": 190.35,
         "score": 72,
         "score_max": 90,
         "state": "WATCH",
@@ -2019,10 +2041,10 @@
         "signal_ts": 1790365136,
         "signal_clock_et": "15:38:56",
         "trigger_clock_et": "—",
-        "age_min": 10.9,
+        "age_min": 12.5,
         "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 194.41,
         "entry_trigger": 194.41,
         "stop": 189.64,
@@ -2039,13 +2061,13 @@
           {
             "key": "vol",
             "ok": false,
-            "ar": "Volume 0.50x VMA",
+            "ar": "Volume 0.51x VMA",
             "need": true
           },
           {
             "key": "mfi",
             "ok": true,
-            "ar": "MFI 71.3",
+            "ar": "MFI 71.2",
             "need": true
           },
           {
@@ -2068,14 +2090,14 @@
           }
         ],
         "checks_ar": [
-          "✗ Volume 0.50x VMA",
-          "✓ MFI 71.3",
+          "✗ Volume 0.51x VMA",
+          "✓ MFI 71.2",
           "✓ MFI صاعد ↑",
           "✓ أقرب قمة قصيرة $194.21",
           "✓ السعر فوق المتوسط القصير"
         ],
-        "vol_ratio": 0.5,
-        "mfi": 71.3,
+        "vol_ratio": 0.51,
+        "mfi": 71.2,
         "mfi_prev": 68.5,
         "mfi_rising": true,
         "short_high": 194.21,
@@ -2090,7 +2112,7 @@
         "order_book_available": false,
         "order_book_ok": null,
         "order_book_note_ar": "Order Book غير متاح",
-        "mins_to_close": 10.153598683333334,
+        "mins_to_close": 8.595601533333333,
         "sizing": {
           "shares": 25,
           "position_usd": 4860.25,
@@ -2100,7 +2122,7 @@
           "note_ar": "25 سهم · صفقة $4860.25 · مخاطرة $119.25"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790365790,
+        "updated_ts": 1790365884,
         "created_ts": 1790365136,
         "shares": 25,
         "position_usd": 4860.25,
@@ -2113,8 +2135,8 @@
         }
       ],
       "smart_notes": [
-        "✗ Volume 0.50x VMA",
-        "✓ MFI 71.3",
+        "✗ Volume 0.51x VMA",
+        "✓ MFI 71.2",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $194.21",
         "✓ السعر فوق المتوسط القصير"
@@ -2146,7 +2168,7 @@
       "risk_usd": 119.0,
       "allowed": false,
       "change_pct": 0,
-      "last": 752.5,
+      "last": 752.22,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2154,7 +2176,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 752.5,
+        "last": 752.22,
         "score": 54,
         "score_max": 90,
         "state": "WATCH",
@@ -2162,10 +2184,10 @@
         "signal_ts": 1790365136,
         "signal_clock_et": "15:38:56",
         "trigger_clock_et": "—",
-        "age_min": 10.9,
+        "age_min": 12.5,
         "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 770.34,
         "entry_trigger": 770.34,
         "stop": 746.54,
@@ -2233,7 +2255,7 @@
         "order_book_available": false,
         "order_book_ok": null,
         "order_book_note_ar": "Order Book غير متاح",
-        "mins_to_close": 10.153821850000002,
+        "mins_to_close": 8.595826783333333,
         "sizing": {
           "shares": 5,
           "position_usd": 3851.7,
@@ -2243,7 +2265,7 @@
           "note_ar": "5 سهم · صفقة $3851.7 · مخاطرة $119.0"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790365790,
+        "updated_ts": 1790365884,
         "created_ts": 1790365136,
         "shares": 5,
         "position_usd": 3851.7,
@@ -2277,7 +2299,7 @@
       "strategies": [
         "استراتيجية جمال"
       ],
-      "reason": "✗ Volume 0.68x VMA · ✓ MFI 83.9 · ✗ MFI غير صاعد · ✓ أقرب قمة قصيرة $631.48 · ✓ السعر فوق المتوسط القصير",
+      "reason": "✗ Volume 0.68x VMA · ✓ MFI 83.9 · ✗ MFI غير صاعد · ✓ أقرب قمة قصيرة $638.95 · ✓ السعر فوق المتوسط القصير",
       "entry": 632.11,
       "entry_original": 632.11,
       "entry_planned": 632.11,
@@ -2289,7 +2311,7 @@
       "risk_usd": 118.62,
       "allowed": false,
       "change_pct": 0,
-      "last": 631.17,
+      "last": 631.84,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2297,7 +2319,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 631.17,
+        "last": 631.84,
         "score": 54,
         "score_max": 90,
         "state": "WATCH",
@@ -2305,10 +2327,10 @@
         "signal_ts": 1790365136,
         "signal_clock_et": "15:38:56",
         "trigger_clock_et": "—",
-        "age_min": 10.9,
+        "age_min": 12.5,
         "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 632.11,
         "entry_trigger": 632.11,
         "stop": 625.52,
@@ -2343,7 +2365,7 @@
           {
             "key": "breakout_level",
             "ok": true,
-            "ar": "أقرب قمة قصيرة $631.48",
+            "ar": "أقرب قمة قصيرة $638.95",
             "need": true
           },
           {
@@ -2357,14 +2379,14 @@
           "✗ Volume 0.68x VMA",
           "✓ MFI 83.9",
           "✗ MFI غير صاعد",
-          "✓ أقرب قمة قصيرة $631.48",
+          "✓ أقرب قمة قصيرة $638.95",
           "✓ السعر فوق المتوسط القصير"
         ],
         "vol_ratio": 0.68,
         "mfi": 83.9,
         "mfi_prev": 83.9,
         "mfi_rising": false,
-        "short_high": 631.48,
+        "short_high": 638.95,
         "short_low": 625.52,
         "buffer_pct": 0.1,
         "max_chase_pct": 1.0,
@@ -2376,7 +2398,7 @@
         "order_book_available": false,
         "order_book_ok": null,
         "order_book_note_ar": "Order Book غير متاح",
-        "mins_to_close": 10.15367325,
+        "mins_to_close": 8.595677683333333,
         "sizing": {
           "shares": 18,
           "position_usd": 11377.98,
@@ -2386,7 +2408,7 @@
           "note_ar": "18 سهم · صفقة $11377.98 · مخاطرة $118.62"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790365790,
+        "updated_ts": 1790365884,
         "created_ts": 1790365136,
         "shares": 18,
         "position_usd": 11377.98,
@@ -2402,7 +2424,7 @@
         "✗ Volume 0.68x VMA",
         "✓ MFI 83.9",
         "✗ MFI غير صاعد",
-        "✓ أقرب قمة قصيرة $631.48",
+        "✓ أقرب قمة قصيرة $638.95",
         "✓ السعر فوق المتوسط القصير"
       ],
       "expired": false,
@@ -2420,7 +2442,7 @@
       "strategies": [
         "استراتيجية جمال"
       ],
-      "reason": "✗ Volume 0.55x VMA · ✓ MFI 57.4 · ✗ MFI غير صاعد · ✓ أقرب قمة قصيرة $226.94 · ✓ السعر فوق المتوسط القصير",
+      "reason": "✗ Volume 0.56x VMA · ✓ MFI 57.5 · ✗ MFI غير صاعد · ✓ أقرب قمة قصيرة $226.94 · ✓ السعر فوق المتوسط القصير",
       "entry": 227.17,
       "entry_original": 227.17,
       "entry_planned": 227.17,
@@ -2432,7 +2454,7 @@
       "risk_usd": 117.16,
       "allowed": false,
       "change_pct": 0,
-      "last": 224.69,
+      "last": 224.86,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2440,7 +2462,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 224.69,
+        "last": 224.86,
         "score": 54,
         "score_max": 90,
         "state": "WATCH",
@@ -2448,10 +2470,10 @@
         "signal_ts": 1790365136,
         "signal_clock_et": "15:38:56",
         "trigger_clock_et": "—",
-        "age_min": 10.9,
+        "age_min": 12.5,
         "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 227.17,
         "entry_trigger": 227.17,
         "stop": 223.13,
@@ -2468,13 +2490,13 @@
           {
             "key": "vol",
             "ok": false,
-            "ar": "Volume 0.55x VMA",
+            "ar": "Volume 0.56x VMA",
             "need": true
           },
           {
             "key": "mfi",
             "ok": true,
-            "ar": "MFI 57.4",
+            "ar": "MFI 57.5",
             "need": true
           },
           {
@@ -2497,14 +2519,14 @@
           }
         ],
         "checks_ar": [
-          "✗ Volume 0.55x VMA",
-          "✓ MFI 57.4",
+          "✗ Volume 0.56x VMA",
+          "✓ MFI 57.5",
           "✗ MFI غير صاعد",
           "✓ أقرب قمة قصيرة $226.94",
           "✓ السعر فوق المتوسط القصير"
         ],
-        "vol_ratio": 0.55,
-        "mfi": 57.4,
+        "vol_ratio": 0.56,
+        "mfi": 57.5,
         "mfi_prev": 59.6,
         "mfi_rising": false,
         "short_high": 226.94,
@@ -2519,7 +2541,7 @@
         "order_book_available": false,
         "order_book_ok": null,
         "order_book_note_ar": "Order Book غير متاح",
-        "mins_to_close": 10.153973366666666,
+        "mins_to_close": 8.595984816666666,
         "sizing": {
           "shares": 29,
           "position_usd": 6587.93,
@@ -2529,7 +2551,7 @@
           "note_ar": "29 سهم · صفقة $6587.93 · مخاطرة $117.16"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790365790,
+        "updated_ts": 1790365884,
         "created_ts": 1790365136,
         "shares": 29,
         "position_usd": 6587.93,
@@ -2542,8 +2564,8 @@
         }
       ],
       "smart_notes": [
-        "✗ Volume 0.55x VMA",
-        "✓ MFI 57.4",
+        "✗ Volume 0.56x VMA",
+        "✓ MFI 57.5",
         "✗ MFI غير صاعد",
         "✓ أقرب قمة قصيرة $226.94",
         "✓ السعر فوق المتوسط القصير"
@@ -2563,7 +2585,7 @@
       "strategies": [
         "استراتيجية جمال"
       ],
-      "reason": "✗ Volume 0.46x VMA · ✓ MFI 70.5 · ✓ MFI صاعد ↑ · ✓ أقرب قمة قصيرة $161.79 · ✗ تحت المتوسط القصير",
+      "reason": "✗ Volume 0.46x VMA · ✓ MFI 70.4 · ✓ MFI صاعد ↑ · ✓ أقرب قمة قصيرة $161.79 · ✗ تحت المتوسط القصير",
       "entry": 161.95,
       "entry_original": 161.95,
       "entry_planned": 161.95,
@@ -2575,7 +2597,7 @@
       "risk_usd": 119.35,
       "allowed": false,
       "change_pct": 0,
-      "last": 160.64,
+      "last": 160.74,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2583,7 +2605,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 160.64,
+        "last": 160.74,
         "score": 54,
         "score_max": 90,
         "state": "WATCH",
@@ -2591,10 +2613,10 @@
         "signal_ts": 1790365136,
         "signal_clock_et": "15:38:56",
         "trigger_clock_et": "—",
-        "age_min": 10.9,
+        "age_min": 12.5,
         "watch_since_ar": "وقت مراقبة السهم: 15:38:56 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 161.95,
         "entry_trigger": 161.95,
         "stop": 159.78,
@@ -2617,7 +2639,7 @@
           {
             "key": "mfi",
             "ok": true,
-            "ar": "MFI 70.5",
+            "ar": "MFI 70.4",
             "need": true
           },
           {
@@ -2641,13 +2663,13 @@
         ],
         "checks_ar": [
           "✗ Volume 0.46x VMA",
-          "✓ MFI 70.5",
+          "✓ MFI 70.4",
           "✓ MFI صاعد ↑",
           "✓ أقرب قمة قصيرة $161.79",
           "✗ تحت المتوسط القصير"
         ],
         "vol_ratio": 0.46,
-        "mfi": 70.5,
+        "mfi": 70.4,
         "mfi_prev": 67.3,
         "mfi_rising": true,
         "short_high": 161.79,
@@ -2662,7 +2684,7 @@
         "order_book_available": false,
         "order_book_ok": null,
         "order_book_note_ar": "Order Book غير متاح",
-        "mins_to_close": 10.153524016666667,
+        "mins_to_close": 8.5955268,
         "sizing": {
           "shares": 55,
           "position_usd": 8907.25,
@@ -2672,7 +2694,7 @@
           "note_ar": "55 سهم · صفقة $8907.25 · مخاطرة $119.35"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790365790,
+        "updated_ts": 1790365884,
         "created_ts": 1790365136,
         "shares": 55,
         "position_usd": 8907.25,
@@ -2686,7 +2708,7 @@
       ],
       "smart_notes": [
         "✗ Volume 0.46x VMA",
-        "✓ MFI 70.5",
+        "✓ MFI 70.4",
         "✓ MFI صاعد ↑",
         "✓ أقرب قمة قصيرة $161.79",
         "✗ تحت المتوسط القصير"
@@ -2697,47 +2719,48 @@
   ],
   "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · يشمل 🎯 استراتيجية جمال عند التوافق",
   "opps_rejected_slow": [
-    "MSFT:ممتد جداً فوق VWAP — لا تدخل متأخراً"
+    "MSFT:ممتد جداً فوق VWAP — لا تدخل متأخراً",
+    "AMD:زخم ضعيف (+0.41% < 0.45%)"
   ],
   "gainers": [
     {
-      "symbol": "ALM",
-      "name": "Almonty Industries Inc.",
-      "last": 13.86,
-      "change_pct": 11.77,
-      "ref": 12.4,
-      "rth_close": 13.86,
-      "volume": 9489932.0,
-      "dollar_volume": 131530457.52,
-      "dollar_volume_label": "131.5M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
-    },
-    {
       "symbol": "PPLI",
       "name": "People Incorporated",
-      "last": 40.1,
-      "change_pct": 11.62,
+      "last": 40.07,
+      "change_pct": 11.52,
       "ref": 35.93,
-      "rth_close": 40.1,
-      "volume": 2513940.0,
-      "dollar_volume": 100808994.0,
-      "dollar_volume_label": "100.8M$",
+      "rth_close": 40.07,
+      "volume": 2536876.0,
+      "dollar_volume": 101652621.32,
+      "dollar_volume_label": "101.7M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PPLI"
     },
     {
+      "symbol": "ALM",
+      "name": "Almonty Industries Inc.",
+      "last": 13.82,
+      "change_pct": 11.49,
+      "ref": 12.4,
+      "rth_close": 13.82,
+      "volume": 9568093.0,
+      "dollar_volume": 132231045.26,
+      "dollar_volume_label": "132.2M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
+    },
+    {
       "symbol": "MXL",
       "name": "MaxLinear, Inc",
-      "last": 93.89,
-      "change_pct": 10.06,
+      "last": 93.84,
+      "change_pct": 10.0,
       "ref": 85.31,
-      "rth_close": 93.89,
-      "volume": 3523447.0,
-      "dollar_volume": 330816438.83,
-      "dollar_volume_label": "330.8M$",
+      "rth_close": 93.84,
+      "volume": 3564522.0,
+      "dollar_volume": 334494744.48,
+      "dollar_volume_label": "334.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=MXL"
@@ -2745,12 +2768,12 @@
     {
       "symbol": "BE",
       "name": "Bloom Energy Corporation",
-      "last": 292.5,
-      "change_pct": 9.69,
+      "last": 291.55,
+      "change_pct": 9.34,
       "ref": 266.65,
-      "rth_close": 292.5,
-      "volume": 15448033.0,
-      "dollar_volume": 4518549652.5,
+      "rth_close": 291.55,
+      "volume": 15559719.0,
+      "dollar_volume": 4536436074.45,
       "dollar_volume_label": "4.5B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
@@ -2759,13 +2782,13 @@
     {
       "symbol": "PS",
       "name": "Pershing Square Inc.",
-      "last": 56.46,
-      "change_pct": 7.99,
+      "last": 56.94,
+      "change_pct": 8.91,
       "ref": 52.28,
-      "rth_close": 56.45,
-      "volume": 293053.0,
-      "dollar_volume": 16545772.38,
-      "dollar_volume_label": "16.5M$",
+      "rth_close": 56.94,
+      "volume": 293513.0,
+      "dollar_volume": 16712630.22,
+      "dollar_volume_label": "16.7M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PS"
@@ -2773,12 +2796,12 @@
     {
       "symbol": "CRDO",
       "name": "Credo Technology Group Holding ",
-      "last": 210.93,
-      "change_pct": 7.64,
+      "last": 210.5,
+      "change_pct": 7.41,
       "ref": 195.97,
-      "rth_close": 210.94,
-      "volume": 10122865.0,
-      "dollar_volume": 2135215914.45,
+      "rth_close": 210.5,
+      "volume": 10158194.0,
+      "dollar_volume": 2138299837.0,
       "dollar_volume_label": "2.1B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
@@ -2787,13 +2810,13 @@
     {
       "symbol": "HHH",
       "name": "Howard Hughes Holdings Inc.",
-      "last": 69.13,
-      "change_pct": 7.05,
+      "last": 69.18,
+      "change_pct": 7.12,
       "ref": 64.58,
-      "rth_close": 69.13,
-      "volume": 850078.0,
-      "dollar_volume": 58765892.14,
-      "dollar_volume_label": "58.8M$",
+      "rth_close": 69.18,
+      "volume": 858080.0,
+      "dollar_volume": 59361974.4,
+      "dollar_volume_label": "59.4M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=HHH"
@@ -2801,27 +2824,41 @@
     {
       "symbol": "SYNA",
       "name": "Synaptics Incorporated",
-      "last": 102.47,
-      "change_pct": 5.84,
+      "last": 102.46,
+      "change_pct": 5.83,
       "ref": 96.82,
-      "rth_close": 102.47,
-      "volume": 368606.0,
-      "dollar_volume": 37771056.82,
-      "dollar_volume_label": "37.8M$",
+      "rth_close": 102.46,
+      "volume": 377393.0,
+      "dollar_volume": 38667686.78,
+      "dollar_volume_label": "38.7M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SYNA"
     },
     {
+      "symbol": "ACLS",
+      "name": "Axcelis Technologies, Inc.",
+      "last": 122.76,
+      "change_pct": 5.7,
+      "ref": 116.14,
+      "rth_close": 122.76,
+      "volume": 265708.0,
+      "dollar_volume": 32618314.08,
+      "dollar_volume_label": "32.6M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=ACLS"
+    },
+    {
       "symbol": "FLY",
       "name": "Firefly Aerospace Inc.",
-      "last": 24.41,
-      "change_pct": 5.7,
+      "last": 24.39,
+      "change_pct": 5.63,
       "ref": 23.09,
-      "rth_close": 24.41,
-      "volume": 4443333.0,
-      "dollar_volume": 108461758.53,
-      "dollar_volume_label": "108.5M$",
+      "rth_close": 24.39,
+      "volume": 4460140.0,
+      "dollar_volume": 108782814.6,
+      "dollar_volume_label": "108.8M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=FLY"
@@ -2829,100 +2866,100 @@
     {
       "symbol": "BIRK",
       "name": "Birkenstock Holding plc",
-      "last": 33.59,
-      "change_pct": 5.66,
+      "last": 33.57,
+      "change_pct": 5.6,
       "ref": 31.79,
-      "rth_close": 33.59,
-      "volume": 2922414.0,
-      "dollar_volume": 98163886.26,
-      "dollar_volume_label": "98.2M$",
+      "rth_close": 33.57,
+      "volume": 2953166.0,
+      "dollar_volume": 99137782.62,
+      "dollar_volume_label": "99.1M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=BIRK"
     },
     {
-      "symbol": "ACLS",
-      "name": "Axcelis Technologies, Inc.",
-      "last": 122.68,
-      "change_pct": 5.63,
-      "ref": 116.14,
-      "rth_close": 122.67,
-      "volume": 264450.0,
-      "dollar_volume": 32442726.0,
-      "dollar_volume_label": "32.4M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=ACLS"
-    },
-    {
       "symbol": "DELL",
       "name": "Dell Technologies Inc.",
-      "last": 565.97,
-      "change_pct": 5.59,
+      "last": 565.87,
+      "change_pct": 5.57,
       "ref": 536.02,
-      "rth_close": 565.98,
-      "volume": 7911722.0,
-      "dollar_volume": 4477797300.34,
+      "rth_close": 565.87,
+      "volume": 7943822.0,
+      "dollar_volume": 4495170555.14,
       "dollar_volume_label": "4.5B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=DELL"
     },
     {
+      "symbol": "TSEM",
+      "name": "Tower Semiconductor Ltd.",
+      "last": 229.25,
+      "change_pct": 5.51,
+      "ref": 217.28,
+      "rth_close": 229.25,
+      "volume": 1664921.0,
+      "dollar_volume": 381683139.25,
+      "dollar_volume_label": "381.7M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=TSEM"
+    },
+    {
       "symbol": "COHU",
       "name": "Cohu, Inc.",
-      "last": 67.19,
-      "change_pct": 5.48,
+      "last": 67.16,
+      "change_pct": 5.43,
       "ref": 63.7,
-      "rth_close": 67.19,
-      "volume": 615316.0,
-      "dollar_volume": 41343082.04,
-      "dollar_volume_label": "41.3M$",
+      "rth_close": 67.16,
+      "volume": 619629.0,
+      "dollar_volume": 41614283.64,
+      "dollar_volume_label": "41.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=COHU"
     },
     {
+      "symbol": "GNRC",
+      "name": "Generac Holdlings Inc.",
+      "last": 208.76,
+      "change_pct": 5.41,
+      "ref": 198.05,
+      "rth_close": 208.75,
+      "volume": 918991.0,
+      "dollar_volume": 191848561.16,
+      "dollar_volume_label": "191.8M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=GNRC"
+    },
+    {
       "symbol": "MCHP",
       "name": "Microchip Technology Incorporat",
-      "last": 78.77,
-      "change_pct": 5.46,
+      "last": 78.69,
+      "change_pct": 5.36,
       "ref": 74.69,
-      "rth_close": 78.77,
-      "volume": 6082453.0,
-      "dollar_volume": 479114822.81,
-      "dollar_volume_label": "479.1M$",
+      "rth_close": 78.69,
+      "volume": 6183536.0,
+      "dollar_volume": 486582447.84,
+      "dollar_volume_label": "486.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=MCHP"
     },
     {
-      "symbol": "ON",
-      "name": "ON Semiconductor Corporation",
-      "last": 77.1,
-      "change_pct": 5.39,
-      "ref": 73.15,
-      "rth_close": 77.09,
-      "volume": 8169345.0,
-      "dollar_volume": 629856499.5,
-      "dollar_volume_label": "629.9M$",
+      "symbol": "ESAB",
+      "name": "ESAB Corporation",
+      "last": 71.52,
+      "change_pct": 5.35,
+      "ref": 67.89,
+      "rth_close": 71.52,
+      "volume": 678155.0,
+      "dollar_volume": 48501645.6,
+      "dollar_volume_label": "48.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=ON"
-    },
-    {
-      "symbol": "GNRC",
-      "name": "Generac Holdlings Inc.",
-      "last": 208.6,
-      "change_pct": 5.32,
-      "ref": 198.05,
-      "rth_close": 208.59,
-      "volume": 910369.0,
-      "dollar_volume": 189902973.4,
-      "dollar_volume_label": "189.9M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=GNRC"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=ESAB"
     }
   ],
   "gainers_min_price": 5.0,
@@ -2930,51 +2967,84 @@
   "movers": [
     {
       "symbol": "MSFT",
-      "change_pct": 3.52,
-      "last": 515.44,
-      "rvol": 1.46,
+      "change_pct": 3.68,
+      "last": 516.26,
+      "rvol": 1.47,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "16.1B$"
+      "dollar_volume_label": "16.3B$"
     },
     {
       "symbol": "META",
-      "change_pct": -3.23,
-      "last": 752.5,
+      "change_pct": -3.26,
+      "last": 752.22,
       "rvol": 0.91,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "15.5B$"
+      "dollar_volume_label": "15.6B$"
     },
     {
       "symbol": "TSLA",
-      "change_pct": -1.6,
-      "last": 371.89,
+      "change_pct": -1.55,
+      "last": 372.07,
       "rvol": 1.01,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "14.7B$"
+      "dollar_volume_label": "14.8B$"
     },
     {
       "symbol": "PLTR",
-      "change_pct": -1.32,
-      "last": 190.04,
-      "rvol": 0.5,
+      "change_pct": -1.16,
+      "last": 190.35,
+      "rvol": 0.51,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "2.5B$"
     },
     {
       "symbol": "XOM",
-      "change_pct": -0.93,
-      "last": 160.64,
+      "change_pct": -0.86,
+      "last": 160.74,
       "rvol": 0.46,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "1.0B$"
+      "dollar_volume_label": "1.1B$"
     }
   ],
   "news": [
+    {
+      "symbol": "PS",
+      "title": "IPO Stock Of The Week: Bill Ackman-Led Pershing Square Hits Another Buy Point",
+      "title_ar": "أسهم الاكتتاب العام لهذا الأسبوع: بيل أكمان بقيادة بيرشينج سكوير يضرب نقطة شراء أخرى",
+      "summary": "Pershing Stock: The Bill Ackman-led name is breaking out past another buy point as the stock market rally continues.",
+      "summary_ar": "",
+      "url": "https://www.investors.com/stock-lists/ipo-analysis/bill-ackman-stock-pershing-square-ps-stock/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "published": "2026-09-25 19:20:32 UT",
+      "published_ts": 1790364032,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "86fb8547242ee4e1149138e0b6d1d4a5264f4830",
+      "source": "yahoo",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "ipo",
+          "ar": "طرح عام",
+          "base_impact": 4
+        }
+      ],
+      "catalyst_keys": [
+        "ipo"
+      ],
+      "catalyst_ar": [
+        "طرح عام"
+      ],
+      "impact_reason_ar": "طرح عام",
+      "officialish": false
+    },
     {
       "symbol": "BE",
       "title": "Bloom Energy Stock Is Today’s Top S&P 500 Performer. It Has a Lot to Do With Oracle.",
@@ -3335,85 +3405,6 @@
       "officialish": false
     },
     {
-      "symbol": "BE",
-      "title": "Prediction: These 4 Stocks Will 4x in the Next 10 Years",
-      "title_ar": "التنبؤ: هذه الأسهم الأربعة سوف تتضاعف 4 مرات في السنوات العشر القادمة",
-      "summary": "Opendoor, NIO, and Strategy could quadruple over the next decade.",
-      "summary_ar": "",
-      "url": "https://www.fool.com/investing/2026/09/25/prediction-these-4-stocks-will-4x-in-the-next-10-y/",
-      "publisher": "Motley Fool",
-      "published": "2026-09-25 17:25:00 UT",
-      "published_ts": 1790357100,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد",
-      "id": "99c8ec76803f93d5e6d607f69eb44685a9ed9d70",
-      "source": "yahoo",
-      "impact": 5,
-      "impact_ar": "تأثير 5/5",
-      "sentiment_score": 3,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
-      "symbol": "PPLI",
-      "title": "Barry Diller Couldn’t Buy MGM, So MGM Is Trying to Buy Diller’s People",
-      "title_ar": "لم يتمكن باري ديلر من شراء إم جي إم، لذلك تحاول إم جي إم شراء موظفي ديلر",
-      "summary": "People Inc. stock was surging as MGM Resorts considers whether to launch a bid for the Barry Diller-owned media company.",
-      "summary_ar": "",
-      "url": "https://www.barrons.com/articles/mgm-stock-buy-deal-diller-people-3a9d9df6?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "published": "2026-09-25 14:07:00 UT",
-      "published_ts": 1790345220,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد",
-      "id": "7e30cad4e7b128b100947a0ede987445c8ac1f78",
-      "source": "yahoo",
-      "impact": 5,
-      "impact_ar": "تأثير 5/5",
-      "sentiment_score": 3,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
-      "symbol": "PS",
-      "title": "IPO Stock Of The Week: Bill Ackman-Led Pershing Square Hits Another Buy Point",
-      "title_ar": "أسهم الاكتتاب العام لهذا الأسبوع: بيل أكمان بقيادة بيرشينج سكوير يضرب نقطة شراء أخرى",
-      "summary": "Pershing Stock: The Bill Ackman-led name is breaking out past another buy point as the stock market rally continues.",
-      "summary_ar": "",
-      "url": "https://www.investors.com/stock-lists/ipo-analysis/bill-ackman-stock-pershing-square-ps-stock/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "published": "2026-09-25 19:20:32 UT",
-      "published_ts": 1790364032,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "86fb8547242ee4e1149138e0b6d1d4a5264f4830",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "ipo",
-          "ar": "طرح عام",
-          "base_impact": 4
-        }
-      ],
-      "catalyst_keys": [
-        "ipo"
-      ],
-      "catalyst_ar": [
-        "طرح عام"
-      ],
-      "impact_reason_ar": "طرح عام",
-      "officialish": false
-    },
-    {
       "symbol": "FLY",
       "title": "Can Firefly Aerospace (FLY) Launch Investors to New Heights?",
       "title_ar": "هل يمكن لـ Firefly Aerospace (FLY) إطلاق المستثمرين إلى آفاق جديدة ؟",
@@ -3483,6 +3474,29 @@
       "officialish": false
     },
     {
+      "symbol": "ACLS",
+      "title": "Why Did Axcelis Technologies (ACLS) Shares Climb After Its Latest Update?",
+      "title_ar": "لماذا ارتفعت أسهم Axcelis Technologies (ACLS) بعد آخر تحديث لها ؟",
+      "summary": "Axcelis Technologies (ACLS) has drawn fresh attention after announcing a planned US$35 million ion implantation manufacturing facility in Pyeongtaek, Korea. This capacity move puts the stock’s recent performance into sharper focus. The Axcelis Technologies share price has picked ",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/why-did-axcelis-technologies-acls-211612763.html",
+      "publisher": "Simply Wall St.",
+      "published": "2026-09-22 21:16:12 UT",
+      "published_ts": 1790111772,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "0412bb3f0f691c0d8c1214407e466997157ff90f",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
       "symbol": "CRDO",
       "title": "One Under-the-Radar Stock With 100% Upside Potential",
       "title_ar": "سهم واحد تحت الرادار مع احتمالية صعود بنسبة 100 ٪",
@@ -3539,6 +3553,29 @@
       "officialish": false
     },
     {
+      "symbol": "ACLS",
+      "title": "Axcelis Technologies (ACLS) Is Up 7.4% After Announcing Major Korean Manufacturing Expansion Plan - Has The Bull Case Changed?",
+      "title_ar": "ارتفعت Axcelis Technologies (ACLS) بنسبة 7.4 ٪ بعد الإعلان عن خطة توسع التصنيع الكورية الكبرى - هل تغيرت حالة الثور ؟",
+      "summary": "Axcelis Technologies has announced plans to invest US$35,000,000 in a new 200,000-square-foot ion implantation equipment manufacturing facility in Pyeongtaek, Korea, with integrated cleanrooms, warehousing, and training capabilities, following an investment declaration ceremony w",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/axcelis-technologies-acls-7-4-131724331.html",
+      "publisher": "Simply Wall St.",
+      "published": "2026-09-22 13:17:24 UT",
+      "published_ts": 1790083044,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "148d24a854d5ac4b2361700ae2c9b70656cf4ab7",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
       "symbol": "CRDO",
       "title": "3 AI Infrastructure Stocks Investors Should Watch As Data Center Spending Builds",
       "title_ar": "3 أسهم البنية التحتية للذكاء الاصطناعي يجب على المستثمرين مراقبتها بينما يتزايد إنفاق مركز البيانات",
@@ -3551,6 +3588,39 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "a10554f902690dec22be7b0d2273646d49a25277",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "earnings",
+          "ar": "أرباح",
+          "base_impact": 4
+        }
+      ],
+      "catalyst_keys": [
+        "earnings"
+      ],
+      "catalyst_ar": [
+        "أرباح"
+      ],
+      "impact_reason_ar": "أرباح",
+      "officialish": false
+    },
+    {
+      "symbol": "ACLS",
+      "title": "KLIC Up 93.6% in a Year: Should Investors Bet on the Stock Now?",
+      "title_ar": "KLIC مرتفعة بنسبة 93.6 ٪ في السنة: هل يجب على المستثمرين المراهنة على الأسهم الآن ؟",
+      "summary": "Kulicke & Soffa's 93.6% one-year surge is backed by AI demand, advanced packaging growth, robust earnings & rising estimates, with TCB adding another catalyst.",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/klic-93-6-investors-bet-153400907.html",
+      "publisher": "Zacks",
+      "published": "2026-09-21 15:34:00 UT",
+      "published_ts": 1790004840,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "d466535a88c0b6dc0b53a515d05ad1dc8bf020d2",
       "source": "yahoo",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -3593,29 +3663,6 @@
       "catalyst_ar": [],
       "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
       "officialish": false
-    },
-    {
-      "symbol": "CRDO",
-      "title": "Credo vs. Nvidia: Which AI Chip Stock Is a Better Buy in 2026?",
-      "title_ar": "Credo مقابل Nvidia: ما هي أسهم رقائق الذكاء الاصطناعي التي من الأفضل شراؤها في عام 2026 ؟",
-      "summary": "Credo more than tripled revenue last year but leans on 10 customers for 90% of sales, while Nvidia is doubling revenue at a scale nobody else in AI hardware can match.",
-      "summary_ar": "",
-      "url": "https://www.fool.com/coverage/better-buy/2026/09/25/credo-vs-nvidia-ai-chip-stock-better-buy-2026/",
-      "publisher": "Motley Fool",
-      "published": "2026-09-25 19:20:01 UT",
-      "published_ts": 1790364001,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد",
-      "id": "5a8bd153b88ed85c1c4f0d1af5d10778f085c088",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 3,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
     }
   ],
   "news_excluded_negative": [
@@ -3629,7 +3676,6 @@
     "PENG",
     "QQQ",
     "SPY",
-    "TSEM",
     "VECO",
     "VIAV"
   ],
@@ -3639,6 +3685,6 @@
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
   "reminder": "تداول المحفز لا المطاردة — راجع المصدر قبل الدخول",
-  "heartbeat_ts": 1790365790,
+  "heartbeat_ts": 1790365884,
   "publisher": "github-actions-always-on"
 }
