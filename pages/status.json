@@ -1,14 +1,12 @@
 {
-  "generated_at": "2026-09-25T20:20:42.233360+00:00",
-  "generated_ts": 1790367642,
-  "generated_local": "2026-09-25 23:20 +03",
+  "generated_at": "2026-09-25T20:22:23.135817+00:00",
+  "generated_ts": 1790367743,
+  "generated_local": "2026-09-25 23:22 +03",
   "status": {
     "ok": true,
+    "source": "build_pages",
     "last_mode": "dashboard",
-    "changed": false,
-    "symbols": 12,
-    "updated_at": "2026-09-25T20:20:42.233159+00:00",
-    "source": "build_pages"
+    "updated_at": "2026-09-25T20:22:23.135734+00:00"
   },
   "telegram_enabled": false,
   "mode": "beginner",
@@ -27,18 +25,18 @@
     "avg_change_pct": -0.0,
     "details": {
       "SPY": {
-        "last": 771.22,
+        "last": 771.19,
         "change_pct": -0.02,
         "rsi": 52.5
       },
       "QQQ": {
-        "last": 744.43,
-        "change_pct": -0.01,
+        "last": 744.3501,
+        "change_pct": -0.02,
         "rsi": 66.4
       },
       "IWM": {
-        "last": 282.02,
-        "change_pct": 0.02,
+        "last": 282.04,
+        "change_pct": 0.03,
         "rsi": 24.0
       }
     },
@@ -50,12 +48,12 @@
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.01,
+        "change_pct": -0.02,
         "rsi": 66.4
       },
       {
         "symbol": "IWM",
-        "change_pct": 0.02,
+        "change_pct": 0.03,
         "rsi": 24.0
       }
     ],
@@ -70,19 +68,19 @@
     "phase": "after_close",
     "label_ar": "مغلق",
     "seconds_left": 0,
-    "ny_time": "16:20:42",
+    "ny_time": "16:22:23",
     "open": "09:30",
     "close": "16:00"
   },
   "sectors": {
     "strongest": [
       {
-        "name": "Consumer",
-        "change_pct": -0.0
-      },
-      {
         "name": "Energy",
         "change_pct": 0.0
+      },
+      {
+        "name": "Consumer",
+        "change_pct": -0.02
       },
       {
         "name": "Financials",
@@ -92,21 +90,21 @@
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -0.04
+        "change_pct": -0.05
       },
       {
         "name": "Financials",
         "change_pct": -0.02
       },
       {
-        "name": "Energy",
-        "change_pct": 0.0
+        "name": "Consumer",
+        "change_pct": -0.02
       }
     ]
   },
   "style": {
-    "growth_avg": -0.06,
-    "value_avg": 0.0,
+    "growth_avg": -0.07,
+    "value_avg": -0.0,
     "leader": "قيمة",
     "growth_count": 5,
     "value_count": 5
@@ -155,8 +153,8 @@
       "appeared_local": "2026-09-25 18:22 +03",
       "appeared_ny": "11:22 EDT",
       "appeared_clock_ar": "18:22",
-      "appeared_ago_ar": "منذ 4س 58د",
-      "appeared_ar": "ظهر منذ 4س 58د · 18:22"
+      "appeared_ago_ar": "منذ 5 ساعة",
+      "appeared_ar": "ظهر منذ 5 ساعة · 18:22"
     },
     {
       "symbol": "MSC",
@@ -199,16 +197,16 @@
       "appeared_local": "2026-09-25 18:51 +03",
       "appeared_ny": "11:51 EDT",
       "appeared_clock_ar": "18:51",
-      "appeared_ago_ar": "منذ 4س 29د",
-      "appeared_ar": "ظهر منذ 4س 29د · 18:51"
+      "appeared_ago_ar": "منذ 4س 30د",
+      "appeared_ar": "ظهر منذ 4س 30د · 18:51"
     },
     {
       "symbol": "SRFM",
       "name": "Surf Air Mobility Inc.",
-      "last": 1.13,
-      "change_pct": 22.56,
-      "dollar_volume": 18919600.17,
-      "dollar_volume_label": "18.9M$",
+      "last": 1.14,
+      "change_pct": 23.59,
+      "dollar_volume": 19087030.26,
+      "dollar_volume_label": "19.1M$",
       "has_news": false,
       "impact": 3,
       "impact_ar": "تأثير 3/5",
@@ -218,7 +216,7 @@
       "news_url": "https://www.tradingview.com/chart/?symbol=SRFM",
       "alert_ar": "صاروخ سنتات — راقب الخبر",
       "reason_ar": "زخم سنتات قوي — راقب الخبر/النشاط",
-      "score": 101.18,
+      "score": 105.8,
       "session_ar": "After-hours الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SRFM",
       "tier": "sniper",
@@ -228,14 +226,14 @@
       "auto": true,
       "source_style": "hessa_cents_auto",
       "sticky": false,
-      "entry": 1.13,
-      "stop": 0.9944,
-      "tp1": 1.3,
-      "tp2": 1.53,
+      "entry": 1.14,
+      "stop": 1.0,
+      "tp1": 1.31,
+      "tp2": 1.54,
       "support": 0.944,
-      "resistance": 1.14,
-      "plan_ar": "دخول $1.13 · وقف $0.9944 · جني1 $1.3 · جني2 $1.53",
-      "levels_ar": "دعم $0.944 · مقاومة $1.14",
+      "resistance": 1.31,
+      "plan_ar": "دخول $1.14 · وقف $1.0 · جني1 $1.31 · جني2 $1.54",
+      "levels_ar": "دعم $0.944 · مقاومة $1.31",
       "auto_plan": true,
       "style": "hessa_cents",
       "appeared_ts": 1790343813,
@@ -243,8 +241,8 @@
       "appeared_local": "2026-09-25 16:43 +03",
       "appeared_ny": "09:43 EDT",
       "appeared_clock_ar": "16:43",
-      "appeared_ago_ar": "منذ 6س 37د",
-      "appeared_ar": "ظهر منذ 6س 37د · 16:43"
+      "appeared_ago_ar": "منذ 6س 38د",
+      "appeared_ar": "ظهر منذ 6س 38د · 16:43"
     },
     {
       "symbol": "STEM",
@@ -287,8 +285,8 @@
       "appeared_local": "2026-09-25 16:32 +03",
       "appeared_ny": "09:32 EDT",
       "appeared_clock_ar": "16:32",
-      "appeared_ago_ar": "منذ 6س 48د",
-      "appeared_ar": "ظهر منذ 6س 48د · 16:32"
+      "appeared_ago_ar": "منذ 6س 49د",
+      "appeared_ar": "ظهر منذ 6س 49د · 16:32"
     },
     {
       "symbol": "FLX",
@@ -331,16 +329,16 @@
       "appeared_local": "2026-09-25 18:53 +03",
       "appeared_ny": "11:53 EDT",
       "appeared_clock_ar": "18:53",
-      "appeared_ago_ar": "منذ 4س 27د",
-      "appeared_ar": "ظهر منذ 4س 27د · 18:53"
+      "appeared_ago_ar": "منذ 4س 28د",
+      "appeared_ar": "ظهر منذ 4س 28د · 18:53"
     },
     {
       "symbol": "KLXE",
       "name": "KLX Energy Services Holdings, I",
-      "last": 1.64,
-      "change_pct": 11.56,
-      "dollar_volume": 3942481.28,
-      "dollar_volume_label": "3.9M$",
+      "last": 1.6,
+      "change_pct": 9.52,
+      "dollar_volume": 3846323.2,
+      "dollar_volume_label": "3.8M$",
       "has_news": false,
       "impact": 3,
       "impact_ar": "تأثير 3/5",
@@ -350,7 +348,7 @@
       "news_url": "https://www.tradingview.com/chart/?symbol=KLXE",
       "alert_ar": "قنص تحت $5 — طرح تلقائي",
       "reason_ar": "زخم سعري ضمن نطاق القنص — راقب الخبر/النشاط",
-      "score": 47.74,
+      "score": 39.16,
       "session_ar": "After-hours الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=KLXE",
       "tier": "sniper",
@@ -360,14 +358,14 @@
       "auto": true,
       "source_style": "hessa_cents_auto",
       "sticky": false,
-      "entry": 1.64,
-      "stop": 1.44,
-      "tp1": 1.89,
-      "tp2": 2.21,
+      "entry": 1.6,
+      "stop": 1.41,
+      "tp1": 1.84,
+      "tp2": 2.16,
       "support": 1.35,
-      "resistance": 1.89,
-      "plan_ar": "دخول $1.64 · وقف $1.44 · جني1 $1.89 · جني2 $2.21",
-      "levels_ar": "دعم $1.35 · مقاومة $1.89",
+      "resistance": 1.63,
+      "plan_ar": "دخول $1.6 · وقف $1.41 · جني1 $1.84 · جني2 $2.16",
+      "levels_ar": "دعم $1.35 · مقاومة $1.63",
       "auto_plan": true,
       "style": "hessa_cents",
       "appeared_ts": 1790366161,
@@ -375,8 +373,8 @@
       "appeared_local": "2026-09-25 22:56 +03",
       "appeared_ny": "15:56 EDT",
       "appeared_clock_ar": "22:56",
-      "appeared_ago_ar": "منذ 24 دقيقة",
-      "appeared_ar": "ظهر منذ 24 دقيقة · 22:56"
+      "appeared_ago_ar": "منذ 26 دقيقة",
+      "appeared_ar": "ظهر منذ 26 دقيقة · 22:56"
     },
     {
       "symbol": "STKE",
@@ -419,8 +417,8 @@
       "appeared_local": "2026-09-25 22:52 +03",
       "appeared_ny": "15:52 EDT",
       "appeared_clock_ar": "22:52",
-      "appeared_ago_ar": "منذ 28 دقيقة",
-      "appeared_ar": "ظهر منذ 28 دقيقة · 22:52"
+      "appeared_ago_ar": "منذ 29 دقيقة",
+      "appeared_ar": "ظهر منذ 29 دقيقة · 22:52"
     },
     {
       "symbol": "CCIF",
@@ -463,8 +461,8 @@
       "appeared_local": "2026-09-25 22:58 +03",
       "appeared_ny": "15:58 EDT",
       "appeared_clock_ar": "22:58",
-      "appeared_ago_ar": "منذ 22 دقيقة",
-      "appeared_ar": "ظهر منذ 22 دقيقة · 22:58"
+      "appeared_ago_ar": "منذ 24 دقيقة",
+      "appeared_ar": "ظهر منذ 24 دقيقة · 22:58"
     },
     {
       "symbol": "JELD",
@@ -507,8 +505,8 @@
       "appeared_local": "2026-09-25 23:00 +03",
       "appeared_ny": "16:00 EDT",
       "appeared_clock_ar": "23:00",
-      "appeared_ago_ar": "منذ 19 دقيقة",
-      "appeared_ar": "ظهر منذ 19 دقيقة · 23:00"
+      "appeared_ago_ar": "منذ 21 دقيقة",
+      "appeared_ar": "ظهر منذ 21 دقيقة · 23:00"
     },
     {
       "symbol": "CVRX",
@@ -551,8 +549,8 @@
       "appeared_local": "2026-09-25 23:00 +03",
       "appeared_ny": "16:00 EDT",
       "appeared_clock_ar": "23:00",
-      "appeared_ago_ar": "منذ 19 دقيقة",
-      "appeared_ar": "ظهر منذ 19 دقيقة · 23:00"
+      "appeared_ago_ar": "منذ 21 دقيقة",
+      "appeared_ar": "ظهر منذ 21 دقيقة · 23:00"
     },
     {
       "symbol": "DAVA",
@@ -595,8 +593,8 @@
       "appeared_local": "2026-09-25 18:15 +03",
       "appeared_ny": "11:15 EDT",
       "appeared_clock_ar": "18:15",
-      "appeared_ago_ar": "منذ 5س 5د",
-      "appeared_ar": "ظهر منذ 5س 5د · 18:15"
+      "appeared_ago_ar": "منذ 5س 7د",
+      "appeared_ar": "ظهر منذ 5س 7د · 18:15"
     },
     {
       "symbol": "HEPS",
@@ -639,8 +637,8 @@
       "appeared_local": "2026-09-25 23:00 +03",
       "appeared_ny": "16:00 EDT",
       "appeared_clock_ar": "23:00",
-      "appeared_ago_ar": "منذ 19 دقيقة",
-      "appeared_ar": "ظهر منذ 19 دقيقة · 23:00"
+      "appeared_ago_ar": "منذ 21 دقيقة",
+      "appeared_ar": "ظهر منذ 21 دقيقة · 23:00"
     }
   ],
   "sniper_note_ar": "ماسح القنص مستقل عن ≥$51 و$5–$51 — تحت $5 فقط · الأسهم الظاهرة تثبت ~30 د حتى لا تختفي وترجع فجأة",
@@ -659,7 +657,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 516.76,
+      "last": 516.75,
       "score": 90,
       "score_max": 90,
       "state": "WATCH",
@@ -667,10 +665,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 10.4,
+      "age_min": 12.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 518.13,
       "entry_trigger": 518.13,
       "stop": 507.77,
@@ -748,7 +746,7 @@
         "note_ar": "11 سهم · صفقة $5699.43 · مخاطرة $113.96"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367642,
+      "updated_ts": 1790367743,
       "created_ts": 1790367020,
       "shares": 11,
       "position_usd": 5699.43,
@@ -759,7 +757,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 372.18,
+      "last": 372.14,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -767,10 +765,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 10.4,
+      "age_min": 12.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 386.24,
       "entry_trigger": 386.24,
       "stop": 378.52,
@@ -848,7 +846,7 @@
         "note_ar": "15 سهم · صفقة $5793.6 · مخاطرة $115.8"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367642,
+      "updated_ts": 1790367743,
       "created_ts": 1790367020,
       "shares": 15,
       "position_usd": 5793.6,
@@ -859,7 +857,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 630.47,
+      "last": 630.25,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -867,10 +865,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 10.4,
+      "age_min": 12.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 632.11,
       "entry_trigger": 632.11,
       "stop": 625.52,
@@ -948,7 +946,7 @@
         "note_ar": "18 سهم · صفقة $11377.98 · مخاطرة $118.62"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367642,
+      "updated_ts": 1790367743,
       "created_ts": 1790367020,
       "shares": 18,
       "position_usd": 11377.98,
@@ -959,7 +957,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 340.87,
+      "last": 340.9,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -967,10 +965,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 10.4,
+      "age_min": 12.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 342.01,
       "entry_trigger": 342.01,
       "stop": 334.53,
@@ -1048,7 +1046,7 @@
         "note_ar": "16 سهم · صفقة $5472.16 · مخاطرة $119.68"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367642,
+      "updated_ts": 1790367743,
       "created_ts": 1790367020,
       "shares": 16,
       "position_usd": 5472.16,
@@ -1059,7 +1057,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 189.63,
+      "last": 189.56,
       "score": 72,
       "score_max": 90,
       "state": "WATCH",
@@ -1067,10 +1065,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 10.4,
+      "age_min": 12.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 194.41,
       "entry_trigger": 194.41,
       "stop": 189.35,
@@ -1148,7 +1146,7 @@
         "note_ar": "23 سهم · صفقة $4471.43 · مخاطرة $116.38"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367642,
+      "updated_ts": 1790367743,
       "created_ts": 1790367020,
       "shares": 23,
       "position_usd": 4471.43,
@@ -1167,10 +1165,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 10.4,
+      "age_min": 12.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 343.61,
       "entry_trigger": 343.61,
       "stop": 338.64,
@@ -1248,7 +1246,7 @@
         "note_ar": "24 سهم · صفقة $8246.64 · مخاطرة $119.28"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367642,
+      "updated_ts": 1790367743,
       "created_ts": 1790367020,
       "shares": 24,
       "position_usd": 8246.64,
@@ -1259,7 +1257,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 749.99,
+      "last": 749.98,
       "score": 54,
       "score_max": 90,
       "state": "WATCH",
@@ -1267,10 +1265,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 10.4,
+      "age_min": 12.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 770.34,
       "entry_trigger": 770.34,
       "stop": 746.54,
@@ -1348,7 +1346,7 @@
         "note_ar": "5 سهم · صفقة $3851.7 · مخاطرة $119.0"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367642,
+      "updated_ts": 1790367743,
       "created_ts": 1790367020,
       "shares": 5,
       "position_usd": 3851.7,
@@ -1359,7 +1357,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 224.97,
+      "last": 224.98,
       "score": 54,
       "score_max": 90,
       "state": "WATCH",
@@ -1367,10 +1365,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 10.4,
+      "age_min": 12.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 227.17,
       "entry_trigger": 227.17,
       "stop": 223.13,
@@ -1448,7 +1446,7 @@
         "note_ar": "29 سهم · صفقة $6587.93 · مخاطرة $117.16"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367642,
+      "updated_ts": 1790367743,
       "created_ts": 1790367020,
       "shares": 29,
       "position_usd": 6587.93,
@@ -1467,10 +1465,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 10.4,
+      "age_min": 12.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 161.95,
       "entry_trigger": 161.95,
       "stop": 159.78,
@@ -1548,7 +1546,7 @@
         "note_ar": "55 سهم · صفقة $8907.25 · مخاطرة $119.35"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367642,
+      "updated_ts": 1790367743,
       "created_ts": 1790367020,
       "shares": 55,
       "position_usd": 8907.25,
@@ -1559,7 +1557,7 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 249.61,
+      "last": 249.55,
       "score": 36,
       "score_max": 90,
       "state": "WATCH",
@@ -1567,10 +1565,10 @@
       "signal_ts": 1790367020,
       "signal_clock_et": "16:10:20",
       "trigger_clock_et": "—",
-      "age_min": 10.4,
+      "age_min": 12.0,
       "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
       "entry": 251.13,
       "entry_trigger": 251.13,
       "stop": 247.18,
@@ -1648,7 +1646,7 @@
         "note_ar": "30 سهم · صفقة $7533.9 · مخاطرة $118.5"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790367642,
+      "updated_ts": 1790367743,
       "created_ts": 1790367020,
       "shares": 30,
       "position_usd": 7533.9,
@@ -1694,7 +1692,7 @@
       "risk_usd": 113.96,
       "allowed": false,
       "change_pct": 0,
-      "last": 516.76,
+      "last": 516.75,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -1702,7 +1700,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 516.76,
+        "last": 516.75,
         "score": 90,
         "score_max": 90,
         "state": "WATCH",
@@ -1710,10 +1708,10 @@
         "signal_ts": 1790367020,
         "signal_clock_et": "16:10:20",
         "trigger_clock_et": "—",
-        "age_min": 10.4,
+        "age_min": 12.0,
         "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 518.13,
         "entry_trigger": 518.13,
         "stop": 507.77,
@@ -1791,7 +1789,7 @@
           "note_ar": "11 سهم · صفقة $5699.43 · مخاطرة $113.96"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790367642,
+        "updated_ts": 1790367743,
         "created_ts": 1790367020,
         "shares": 11,
         "position_usd": 5699.43,
@@ -1837,7 +1835,7 @@
       "risk_usd": 115.8,
       "allowed": false,
       "change_pct": 0,
-      "last": 372.18,
+      "last": 372.14,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -1845,7 +1843,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 372.18,
+        "last": 372.14,
         "score": 72,
         "score_max": 90,
         "state": "WATCH",
@@ -1853,10 +1851,10 @@
         "signal_ts": 1790367020,
         "signal_clock_et": "16:10:20",
         "trigger_clock_et": "—",
-        "age_min": 10.4,
+        "age_min": 12.0,
         "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 386.24,
         "entry_trigger": 386.24,
         "stop": 378.52,
@@ -1934,7 +1932,7 @@
           "note_ar": "15 سهم · صفقة $5793.6 · مخاطرة $115.8"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790367642,
+        "updated_ts": 1790367743,
         "created_ts": 1790367020,
         "shares": 15,
         "position_usd": 5793.6,
@@ -1980,7 +1978,7 @@
       "risk_usd": 118.62,
       "allowed": false,
       "change_pct": 0,
-      "last": 630.47,
+      "last": 630.25,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -1988,7 +1986,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 630.47,
+        "last": 630.25,
         "score": 72,
         "score_max": 90,
         "state": "WATCH",
@@ -1996,10 +1994,10 @@
         "signal_ts": 1790367020,
         "signal_clock_et": "16:10:20",
         "trigger_clock_et": "—",
-        "age_min": 10.4,
+        "age_min": 12.0,
         "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 632.11,
         "entry_trigger": 632.11,
         "stop": 625.52,
@@ -2077,7 +2075,7 @@
           "note_ar": "18 سهم · صفقة $11377.98 · مخاطرة $118.62"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790367642,
+        "updated_ts": 1790367743,
         "created_ts": 1790367020,
         "shares": 18,
         "position_usd": 11377.98,
@@ -2123,7 +2121,7 @@
       "risk_usd": 119.68,
       "allowed": false,
       "change_pct": 0,
-      "last": 340.87,
+      "last": 340.9,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2131,7 +2129,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 340.87,
+        "last": 340.9,
         "score": 72,
         "score_max": 90,
         "state": "WATCH",
@@ -2139,10 +2137,10 @@
         "signal_ts": 1790367020,
         "signal_clock_et": "16:10:20",
         "trigger_clock_et": "—",
-        "age_min": 10.4,
+        "age_min": 12.0,
         "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 342.01,
         "entry_trigger": 342.01,
         "stop": 334.53,
@@ -2220,7 +2218,7 @@
           "note_ar": "16 سهم · صفقة $5472.16 · مخاطرة $119.68"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790367642,
+        "updated_ts": 1790367743,
         "created_ts": 1790367020,
         "shares": 16,
         "position_usd": 5472.16,
@@ -2266,7 +2264,7 @@
       "risk_usd": 116.38,
       "allowed": false,
       "change_pct": 0,
-      "last": 189.63,
+      "last": 189.56,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2274,7 +2272,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 189.63,
+        "last": 189.56,
         "score": 72,
         "score_max": 90,
         "state": "WATCH",
@@ -2282,10 +2280,10 @@
         "signal_ts": 1790367020,
         "signal_clock_et": "16:10:20",
         "trigger_clock_et": "—",
-        "age_min": 10.4,
+        "age_min": 12.0,
         "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 194.41,
         "entry_trigger": 194.41,
         "stop": 189.35,
@@ -2363,7 +2361,7 @@
           "note_ar": "23 سهم · صفقة $4471.43 · مخاطرة $116.38"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790367642,
+        "updated_ts": 1790367743,
         "created_ts": 1790367020,
         "shares": 23,
         "position_usd": 4471.43,
@@ -2409,7 +2407,7 @@
       "risk_usd": 119.0,
       "allowed": false,
       "change_pct": 0,
-      "last": 749.99,
+      "last": 749.98,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2417,7 +2415,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 749.99,
+        "last": 749.98,
         "score": 54,
         "score_max": 90,
         "state": "WATCH",
@@ -2425,10 +2423,10 @@
         "signal_ts": 1790367020,
         "signal_clock_et": "16:10:20",
         "trigger_clock_et": "—",
-        "age_min": 10.4,
+        "age_min": 12.0,
         "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 770.34,
         "entry_trigger": 770.34,
         "stop": 746.54,
@@ -2506,7 +2504,7 @@
           "note_ar": "5 سهم · صفقة $3851.7 · مخاطرة $119.0"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790367642,
+        "updated_ts": 1790367743,
         "created_ts": 1790367020,
         "shares": 5,
         "position_usd": 3851.7,
@@ -2552,7 +2550,7 @@
       "risk_usd": 117.16,
       "allowed": false,
       "change_pct": 0,
-      "last": 224.97,
+      "last": 224.98,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2560,7 +2558,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 224.97,
+        "last": 224.98,
         "score": 54,
         "score_max": 90,
         "state": "WATCH",
@@ -2568,10 +2566,10 @@
         "signal_ts": 1790367020,
         "signal_clock_et": "16:10:20",
         "trigger_clock_et": "—",
-        "age_min": 10.4,
+        "age_min": 12.0,
         "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 227.17,
         "entry_trigger": 227.17,
         "stop": 223.13,
@@ -2649,7 +2647,7 @@
           "note_ar": "29 سهم · صفقة $6587.93 · مخاطرة $117.16"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790367642,
+        "updated_ts": 1790367743,
         "created_ts": 1790367020,
         "shares": 29,
         "position_usd": 6587.93,
@@ -2695,7 +2693,7 @@
       "risk_usd": 118.5,
       "allowed": false,
       "change_pct": 0,
-      "last": 249.61,
+      "last": 249.55,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2703,7 +2701,7 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 249.61,
+        "last": 249.55,
         "score": 36,
         "score_max": 90,
         "state": "WATCH",
@@ -2711,10 +2709,10 @@
         "signal_ts": 1790367020,
         "signal_clock_et": "16:10:20",
         "trigger_clock_et": "—",
-        "age_min": 10.4,
+        "age_min": 12.0,
         "watch_since_ar": "وقت مراقبة السهم: 16:10:20 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 10 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 12 د",
         "entry": 251.13,
         "entry_trigger": 251.13,
         "stop": 247.18,
@@ -2792,7 +2790,7 @@
           "note_ar": "30 سهم · صفقة $7533.9 · مخاطرة $118.5"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790367642,
+        "updated_ts": 1790367743,
         "created_ts": 1790367020,
         "shares": 30,
         "position_usd": 7533.9,
@@ -2836,6 +2834,20 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=PRGO"
     },
     {
+      "symbol": "PPLI",
+      "name": "People Incorporated",
+      "last": 40.4,
+      "change_pct": 0.99,
+      "ref": 40.0,
+      "rth_close": 40.0,
+      "volume": 3091885.0,
+      "dollar_volume": 124912154.0,
+      "dollar_volume_label": "124.9M$",
+      "phase": "post",
+      "session_ar": "After-hours الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=PPLI"
+    },
+    {
       "symbol": "ALM",
       "name": "Almonty Industries Inc.",
       "last": 13.8,
@@ -2856,7 +2868,7 @@
     {
       "symbol": "META",
       "change_pct": -0.22,
-      "last": 749.99,
+      "last": 749.98,
       "rvol": 1.11,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -2865,68 +2877,167 @@
     {
       "symbol": "MSFT",
       "change_pct": 0.11,
-      "last": 516.76,
+      "last": 516.75,
       "rvol": 1.74,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "19.6B$"
     },
     {
-      "symbol": "AAPL",
-      "change_pct": -0.06,
-      "last": 340.87,
-      "rvol": 0.69,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "10.0B$"
-    },
-    {
-      "symbol": "NVDA",
-      "change_pct": -0.04,
-      "last": 224.97,
-      "rvol": 0.75,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "19.6B$"
-    },
-    {
       "symbol": "AMD",
-      "change_pct": -0.03,
-      "last": 630.47,
+      "change_pct": -0.06,
+      "last": 630.25,
       "rvol": 0.8,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "10.9B$"
     },
     {
-      "symbol": "AMZN",
-      "change_pct": -0.02,
-      "last": 249.61,
-      "rvol": 0.93,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "8.2B$"
-    },
-    {
       "symbol": "PLTR",
-      "change_pct": -0.02,
-      "last": 189.63,
+      "change_pct": -0.06,
+      "last": 189.56,
       "rvol": 0.67,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "3.3B$"
     },
     {
-      "symbol": "TSLA",
-      "change_pct": 0.02,
-      "last": 372.18,
-      "rvol": 1.12,
+      "symbol": "AAPL",
+      "change_pct": -0.05,
+      "last": 340.9,
+      "rvol": 0.69,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "16.6B$"
+      "dollar_volume_label": "10.0B$"
+    },
+    {
+      "symbol": "AMZN",
+      "change_pct": -0.05,
+      "last": 249.55,
+      "rvol": 0.93,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "8.2B$"
+    },
+    {
+      "symbol": "NVDA",
+      "change_pct": -0.04,
+      "last": 224.98,
+      "rvol": 0.75,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "19.6B$"
+    },
+    {
+      "symbol": "SPY",
+      "change_pct": -0.02,
+      "last": 771.19,
+      "rvol": 0.78,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "26.3B$"
     }
   ],
   "news": [
+    {
+      "symbol": "PPLI",
+      "title": "People Incorporated shares rise over 10% on potential MGM takeover bid",
+      "title_ar": "ارتفعت أسهم شركة People Incorporated بأكثر من 10 ٪ في مناقصة الاستحواذ المحتملة لشركة MGM",
+      "summary": "People Incorporated (NASDAQ:PPLI) shares rose 10% to $39.74 on Friday noon after a Wall Street Journal (WSJ) report that MGM Resorts International (NYSE:MGM) is considering a potential takeover bid for the media company. The stock was up $3.81 from Thursday's close of $35.93, ext",
+      "summary_ar": "",
+      "url": "https://www.proactiveinvestors.com/companies/news/1099158/people-incorporated-shares-rise-over-10-on-potential-mgm-takeover-bid-1099158.html",
+      "publisher": "Proactive",
+      "published": "2026-09-25 16:30:00 UT",
+      "published_ts": 1790353800,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "6a4268e36a5ff459969fa50be50fd03d21bba6b3",
+      "source": "yahoo",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "mna",
+          "ar": "اندماج/استحواذ",
+          "base_impact": 5
+        }
+      ],
+      "catalyst_keys": [
+        "mna"
+      ],
+      "catalyst_ar": [
+        "اندماج/استحواذ"
+      ],
+      "impact_reason_ar": "اندماج/استحواذ",
+      "officialish": false
+    },
+    {
+      "symbol": "PPLI",
+      "title": "MGM, People Inc. Switch Places In Merger Talks. People Inc. Soars.",
+      "title_ar": "MGM، People Inc. تبديل الأماكن في محادثات الاندماج. People Inc. Soars.",
+      "summary": "People Inc. and MGM Resorts played a round of musical chairs in the midst of their ongoing merger talks.  MGM Resorts is now exploring a bid to buy People Inc., reversing their previous roles, according to The Wall Street Journal.  Meanwhile, MGM Resorts had much more muted gains",
+      "summary_ar": "",
+      "url": "https://www.investors.com/news/mgm-people-barry-diller-las-vegas-casino-betting-merger/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "published": "2026-09-25 14:08:29 UT",
+      "published_ts": 1790345309,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "2b8c3c46bf483d4e2dd2744b741ae1a9043db7c2",
+      "source": "yahoo",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "mna",
+          "ar": "اندماج/استحواذ",
+          "base_impact": 5
+        }
+      ],
+      "catalyst_keys": [
+        "mna"
+      ],
+      "catalyst_ar": [
+        "اندماج/استحواذ"
+      ],
+      "impact_reason_ar": "اندماج/استحواذ",
+      "officialish": false
+    },
+    {
+      "symbol": "PPLI",
+      "title": "Akamai Technologies Soars on Anthropic Deal; Costco Earnings Beat | Stock Movers",
+      "title_ar": "أكاماي تكنولوجيز تتفوق على الصفقة الأنثروبية ؛ أرباح كوستكو تتفوق | محركات الأسهم",
+      "summary": "On this episode of Stock Movers: - Akamai Technologies (AKAM) shares soar after the cloud provider inked a seven-year $11.6 billion deal to provide computing power to Anthropic. Analysts say the deal should boost Akamai's growth and its profitability profile looks attractive, giv",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/video/akamai-technologies-soars-anthropic-deal-144308416.html",
+      "publisher": "Bloomberg",
+      "published": "2026-09-25 14:43:08 UT",
+      "published_ts": 1790347388,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "ec1ccf53b4d460e489eb774540e4e83910c09d8d",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "earnings",
+          "ar": "أرباح",
+          "base_impact": 4
+        }
+      ],
+      "catalyst_keys": [
+        "earnings"
+      ],
+      "catalyst_ar": [
+        "أرباح"
+      ],
+      "impact_reason_ar": "أرباح",
+      "officialish": false
+    },
     {
       "symbol": "CRM",
       "title": "3 Software ETFs to Buy as the SaaSpocalypse Bottoms Out",
@@ -3093,60 +3204,27 @@
       "officialish": false
     },
     {
-      "symbol": "AVGO",
-      "title": "Is AMD Stock Priced Right Against Its Chip Peers?",
-      "title_ar": "هل يتم تسعير سهم AMD مقابل نظرائه من الرقائق ؟",
-      "summary": "Advanced Micro Devices (AMD) stock returned 291% over the past year, the best of five big chipmakers. It is also the priciest on earnings of the four with a comparable multiple, yet it keeps the lowest operating margin. Is AMD growing fast enough and getting more profitable fast ",
+      "symbol": "MSFT",
+      "title": "Qualcomm's CMO reveals the secret behind Snapdragon's rise",
+      "title_ar": "مدير التسويق في كوالكوم يكشف السر وراء صعود Snapdragon",
+      "summary": "Qualcomm CMO Don McGuire joins In The Loop host Ejaaz Ahamadeen at Qualcomm’s Snapdragon Summit in Maui, for an in-depth look at how a chip you can't even buy off a shelf became one of the biggest brands in tech, sports, and AI. He breaks down the brand strategy turning an invisi",
       "summary_ar": "",
-      "url": "https://www.trefis.com/articles/616631/is-amd-stock-priced-right-against-its-chip-peers/2026-09-25",
-      "publisher": "Trefis",
-      "published": "2026-09-25 18:34:30 UT",
-      "published_ts": 1790361270,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد",
-      "id": "c65ff1c64e9d561a380b8c4d540cc56d48598de2",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 3,
-      "catalysts": [
-        {
-          "key": "earnings",
-          "ar": "أرباح",
-          "base_impact": 4
-        }
-      ],
-      "catalyst_keys": [
-        "earnings"
-      ],
-      "catalyst_ar": [
-        "أرباح"
-      ],
-      "impact_reason_ar": "أرباح",
-      "officialish": false
-    },
-    {
-      "symbol": "META",
-      "title": "Stock Market Today: Dow Gains 400 Points On U.S-Iran Peace Hopes; Micron Rises (Live Coverage)",
-      "title_ar": "سوق الأسهم اليوم: مؤشر داو جونز يكسب 400 نقطة على آمال السلام بين الولايات المتحدة وإيران ؛ ميكرون يرتفع (تغطية حية)",
-      "summary": "Stock Market Today: The Dow Jones index rises Friday on U.S.-Iran peace hopes. Stock indexes found support from sliding oil prices.",
-      "summary_ar": "",
-      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-peace-hopes-micron-sandisk/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "published": "2026-09-25 19:37:41 UT",
-      "published_ts": 1790365061,
+      "url": "https://finance.yahoo.com/video/qualcomms-cmo-reveals-secret-behind-140705053.html",
+      "publisher": "Yahoo Finance Video",
+      "published": "2026-09-25 14:07:05 UT",
+      "published_ts": 1790345225,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "432218f58941bad7d91edabefbab50790052951d",
+      "id": "2652ef9fa16a2d5aa5ddd5242da78ba618e660d3",
       "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
+      "impact": 3,
+      "impact_ar": "تأثير 3/5",
       "sentiment_score": 4,
       "catalysts": [],
       "catalyst_keys": [],
       "catalyst_ar": [],
       "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
+      "officialish": true
     },
     {
       "symbol": "AAPL",
@@ -3195,18 +3273,18 @@
       "officialish": false
     },
     {
-      "symbol": "AVGO",
-      "title": "Marvell’s 203% YTD Surge Sets High Bar but We See More Runway Ahead",
-      "title_ar": "ارتفاع معدل زيادة مارفيل بنسبة 203 ٪ منذ بداية العام حتى تاريخه، لكننا نرى المزيد من المدرجات في المستقبل",
-      "summary": "After a 200-plus percent run this year, Marvell sits at a crossroads where one upcoming investor day could either justify its stretched valuation or expose a critical flaw at the heart of its AI growth story.",
+      "symbol": "AMZN",
+      "title": "Musk’s ‘Zuckerberg moment,’ mortgage rates, and Google’s space bet",
+      "title_ar": "ماسك \"لحظة زوكربيرج\"، ومعدلات الرهن العقاري، ورهان غوغل الفضائي",
+      "summary": "In this episode on Sozzi Unleashed, Yahoo Finance Executive Editor Brian Sozzi breaks down what mortgage rate surges mean for home improvement stocks, why Elon Musk may be the next leader to have a 'Mark Zuckerberg moment,' and what Alphabet's (GOOGL, GOOG) venture into space cou",
       "summary_ar": "",
-      "url": "https://247wallst.com/investing/2026/09/25/marvells-203-ytd-surge-sets-high-bar-but-we-see-more-runway-ahead/",
-      "publisher": "24/7 Wall St.",
-      "published": "2026-09-25 17:30:12 UT",
-      "published_ts": 1790357412,
+      "url": "https://finance.yahoo.com/video/musk-zuckerberg-moment-mortgage-rates-153258991.html",
+      "publisher": "Yahoo Finance Video",
+      "published": "2026-09-25 15:32:58 UT",
+      "published_ts": 1790350378,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "f6cf459ffef1e9893e8b6a45ffe999df750e544c",
+      "id": "b6b72cdb6629d1b45f53a5589e6a8c94b8a2c1fd",
       "source": "yahoo",
       "impact": 2,
       "impact_ar": "تأثير 2/5",
@@ -3218,18 +3296,18 @@
       "officialish": false
     },
     {
-      "symbol": "AVGO",
-      "title": "What Does NVIDIA Offer That Texas Instruments Does Not?",
-      "title_ar": "ما الذي تقدمه NVIDIA ولا تقدمه Texas Instruments ؟",
-      "summary": "Texas Instruments (TXN) and NVIDIA both sell chips for the data centers now being built. Data centers bring in nearly all of NVIDIA's revenue, while TI sells to industrial and automotive customers as well as data centers. You pay 38.2 times the yearly profit for TI, yet only 28.1",
+      "symbol": "NVDA",
+      "title": "What mortgage rate surges mean for home improvement stocks",
+      "title_ar": "ما الذي تعنيه طفرات معدل الرهن العقاري لأسهم تحسين المنازل",
+      "summary": "Yahoo Finance Executive Editor Brian Sozzi sounds the alarm that higher 10-year Treasury yields are pushing mortgage rates to their highest level in two years and could start to affect stocks in the home improvement sector.",
       "summary_ar": "",
-      "url": "https://www.trefis.com/articles/616640/what-does-nvidia-offer-that-texas-instruments-does-not/2026-09-25",
-      "publisher": "Trefis",
-      "published": "2026-09-25 14:27:52 UT",
-      "published_ts": 1790346472,
+      "url": "https://finance.yahoo.com/video/mortgage-rate-surges-mean-home-143052293.html",
+      "publisher": "Yahoo Finance Video",
+      "published": "2026-09-25 14:30:52 UT",
+      "published_ts": 1790346652,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "e947fae95b12013bd9ea303db4c830a54d2e1520",
+      "id": "30bfafb9fdd5c2441ab3783efc61e70ec37ef7f7",
       "source": "yahoo",
       "impact": 2,
       "impact_ar": "تأثير 2/5",
@@ -3264,7 +3342,30 @@
       "officialish": false
     },
     {
-      "symbol": "AMD",
+      "symbol": "AAPL",
+      "title": "These are stocks getting lifted up by Meta's Muse",
+      "title_ar": "هذه هي الأسهم التي يتم رفعها من قبل ميوز ميتا",
+      "summary": "The 8:30 Hosts Julie Hyman, Jake Conley, and Pras Subramanian discuss the stocks that have seen gains amid the buzz around Meta's (META) Muse and whether investors should expect that to continue in the long term.",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/video/stocks-getting-lifted-metas-muse-135520851.html",
+      "publisher": "Yahoo Finance Video",
+      "published": "2026-09-25 13:55:20 UT",
+      "published_ts": 1790344520,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "f3eaeac3874a734919163da7eb07276f755cb982",
+      "source": "yahoo",
+      "impact": 2,
+      "impact_ar": "تأثير 2/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": false
+    },
+    {
+      "symbol": "META",
       "title": "Tech stocks gain after tech titan dinner with Trump and China's Xi Jinping: AlphaCheck",
       "title_ar": "أسهم التكنولوجيا تكسب بعد عشاء عملاق التكنولوجيا مع ترامب والصين شي جين بينغ: AlphaCheck",
       "summary": "Here's a check of the markets in the first few minutes of trading.",
@@ -3275,7 +3376,7 @@
       "published_ts": 1790344267,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "a3375b19bc1c7fcc62ba2dbb79c8756f5728c395",
+      "id": "d0e02f548fb953a9517eaa3f0a2cefb5db98f775",
       "source": "yahoo",
       "impact": 2,
       "impact_ar": "تأثير 2/5",
@@ -3402,29 +3503,6 @@
       "officialish": false
     },
     {
-      "symbol": "TSLA",
-      "title": "Exclusive: Tesla Optimus Commercialization Next Year Is ‘Very Realistic,’ Faraday Chairman Says",
-      "title_ar": "حصري: يقول رئيس مجلس إدارة فاراداي إن تسويق تسلا أوبتيموس العام المقبل \"واقعي للغاية\"",
-      "summary": "Faraday Future (NASDAQ:FFAI) Global Executive Chairman Jerry Wang says Tesla Inc. (NASDAQ:TSLA) could realistically turn its Optimus humanoid into a commercial product next year, arguing the biggest barrier is no longer building the robot, but teaching it what to do....",
-      "summary_ar": "",
-      "url": "https://www.benzinga.com/markets/prediction-markets/26/09/62007129/tesla-optimus-commercialization-faraday-chairman?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral",
-      "publisher": "Benzinga Prediction Markets",
-      "published": "2026-09-25 19:43:01 UT",
-      "published_ts": 1790365381,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد",
-      "id": "47a30d03d4d63be406580c144076fc5cda0ec5b4",
-      "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 3,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
       "symbol": "AAPL",
       "title": "Trump says China's Xi 'seemed to like' renaming AI as super intelligence",
       "title_ar": "يقول ترامب إن الرئيس الصيني شي \"بدا وكأنه يحب\" إعادة تسمية الذكاء الاصطناعي على أنه ذكاء فائق",
@@ -3471,29 +3549,6 @@
       "officialish": false
     },
     {
-      "symbol": "AMZN",
-      "title": "Is CoreWeave Stock Making Your Portfolio's Bad Days Worse?",
-      "title_ar": "هل أسهم CoreWeave تجعل الأيام السيئة لمحفظتك أسوأ ؟",
-      "summary": "CoreWeave (CRWV) has climbed 12.8% over the last five trading days, while the S&P 500 added 0.9%. The run coincided with a sale of convertible senior notes, and it stirs the urge to chase. But where CoreWeave goes next week is not the question for your money. What matters is how ",
-      "summary_ar": "",
-      "url": "https://www.trefis.com/articles/616601/is-coreweave-stock-making-your-portfolios-bad-days-worse/2026-09-25",
-      "publisher": "Trefis",
-      "published": "2026-09-25 17:41:49 UT",
-      "published_ts": 1790358109,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد",
-      "id": "c45c447ff3b5bcb568ec2223ac5ff1b5d9920925",
-      "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 3,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
       "symbol": "META",
       "title": "Why this early Uber investor would short OpenAI",
       "title_ar": "لماذا قام مستثمر أوبر المبكر هذا ببيع OpenAI",
@@ -3515,32 +3570,10 @@
       "catalyst_ar": [],
       "impact_reason_ar": "خبر عام / تأثير محدود",
       "officialish": false
-    },
-    {
-      "symbol": "CRM",
-      "title": "Can Palantir’s AI moat survive the competition?",
-      "title_ar": "هل يمكن لخندق بالنتير للذكاء الاصطناعي أن ينجو من المنافسة ؟",
-      "summary": "Meta Platforms (META) has seemingly brought new value to the AI trade with the release of its Muse AI chatbot this week. Can Palantir Technologies' (PLTR) own AI compete with growing competition in the space? Today's Market Hang panel consists of Host Turney Duff, Yahoo Finance E",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/video/palantir-ai-moat-survive-competition-172500938.html",
-      "publisher": "Yahoo Finance Video",
-      "published": "2026-09-25 17:25:00 UT",
-      "published_ts": 1790357100,
-      "sentiment": "neu",
-      "sentiment_ar": "محايد",
-      "id": "bf62b920ff331fb4126257e4ba5360a4e004742d",
-      "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 3,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
     }
   ],
   "news_excluded_negative": [
+    "AVGO",
     "BAC",
     "COHU",
     "COST",
@@ -3549,8 +3582,7 @@
     "GOOGL",
     "JPM",
     "NFLX",
-    "PPLI",
-    "SPY",
+    "TSEM",
     "XOM"
   ],
   "news_note_ar": "بث محفزات: أخبار الشركات + تأثير 1–5 + وسم (FDA/أرباح/شراكة…) — بدون إشاعات",
@@ -3559,6 +3591,6 @@
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
   "reminder": "تداول المحفز لا المطاردة — راجع المصدر قبل الدخول",
-  "heartbeat_ts": 1790367642,
+  "heartbeat_ts": 1790367743,
   "publisher": "github-actions-always-on"
 }
