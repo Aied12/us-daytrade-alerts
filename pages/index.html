@@ -454,7 +454,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=7;
+    window.__STATUS_V=8;
     const LS = {
       theme: 'dash_theme',
       filter: 'dash_filter',
@@ -1581,6 +1581,28 @@
       }
     }
 
+    const STATUS_URLS = [
+      './status.json',
+      'https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/status.json',
+    ];
+
+    async function fetchFreshestStatus(){
+      const ts=Date.now();
+      const v=window.__STATUS_V||'7';
+      let best=null;
+      await Promise.all(STATUS_URLS.map(async (base)=>{
+        try{
+          const url=base+(base.includes('?')?'&':'?')+'ts='+ts+'&v='+v;
+          const res=await fetch(url,{cache:'no-store', headers:{'Cache-Control':'no-cache','Pragma':'no-cache'}});
+          if(!res.ok) return;
+          const next=await res.json();
+          const nextTs=Number(next.generated_ts||0);
+          if(!best || nextTs > best.ts) best={j:next, ts:nextTs, base};
+        }catch(e){}
+      }));
+      return best;
+    }
+
     async function fetchData(bust=false){
       const btn=document.getElementById('btnRefresh');
       // لا تعطّل الزر في التحديث التلقائي حتى لا يسرق التركيز ويقفز التمرير
@@ -1588,9 +1610,9 @@
         btn.disabled=true; btn.textContent='... جاري التحديث';
       }
       try{
-        const url='./status.json?ts='+Date.now()+'&v='+(window.__STATUS_V||'3');
-        const res=await fetch(url,{cache:'no-store', headers:{'Cache-Control':'no-cache','Pragma':'no-cache'}});
-        const next=await res.json();
+        const best=await fetchFreshestStatus();
+        if(!best) throw new Error('no status');
+        const next=best.j;
         const nextTs=Number(next.generated_ts||0);
         DATA=next;
         // دائماً احذف المنتهية فور وصول البيانات (حتى لو الكاش قديم)
