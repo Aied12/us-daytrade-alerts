@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-25T09:11:13.149101+00:00",
+  "generated_at": "2026-09-25T09:11:13.546197+00:00",
   "generated_ts": 1790327473,
   "generated_local": "2026-09-25 12:11 +03",
   "status": {
     "ok": true,
     "telegram": "paused",
     "source": "build_pages",
-    "updated_at": "2026-09-25T09:11:13.149043+00:00",
+    "updated_at": "2026-09-25T09:11:13.546135+00:00",
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 24,
@@ -211,10 +211,10 @@
     {
       "symbol": "PL",
       "name": "Planet Labs PBC",
-      "last": 18.47,
-      "change_pct": 4.82,
-      "dollar_volume": 285857678.08,
-      "dollar_volume_label": "285.9M$",
+      "last": 18.6,
+      "change_pct": 5.54,
+      "dollar_volume": 287869670.4,
+      "dollar_volume_label": "287.9M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -224,7 +224,7 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +4.8% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +5.5% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PL"
     },
     {
@@ -894,161 +894,6 @@
       },
       "tv_url": "https://www.tradingview.com/chart/?symbol=HBAN",
       "tg_share": "https://t.me/share/url?url=&text=HBAN%20فكّر في شراء قصير المدى%20ثقة%20A%0Aالآن%2015.5%20دخول%2015.5%20وقف%2015.42%20هدف%2016.28%0Aسيولة%20قوي%20وتيرة%20x54.48%20زخم%20+1.24%"
-    },
-    {
-      "symbol": "MRNA",
-      "action": "فكّر في شراء قصير المدى",
-      "action_key": "CONSIDER_LONG",
-      "side": "long",
-      "score_100": 95,
-      "confidence": "A",
-      "confidence_ar": "ثقة عالية",
-      "urgent": true,
-      "strategies": [
-        "ترتيب متوسطات صاعد",
-        "كسر قمة 20 يوم",
-        "شمعة: ابتلاع صاعد",
-        "اختبار/كسر مقاومة"
-      ],
-      "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | كسر قمة 20 يوم: قرب/فوق قمة 20ي $195.71 | شمعة: ابتلاع صاعد: ابتلاع صاعد | اختبار/كسر مقاومة: مقاومة≈$191.74 | تقلّب عالي: ATR% 6.1",
-      "entry": 196.5,
-      "entry_original": 196.5,
-      "entry_planned": 196.5,
-      "stop": 132.52,
-      "stop_alt": 195.52,
-      "target": 311.66,
-      "target_partial": 254.08,
-      "target_final": 311.66,
-      "trail_offset": 22.39,
-      "shares": 1,
-      "risk_sar": 239.92,
-      "allowed": true,
-      "change_pct": 0.86,
-      "last": 196.5,
-      "session_phase": "pre",
-      "liquidity": {
-        "rvol": 1.01,
-        "rvol_pace": 33.51,
-        "volume": 16549200.0,
-        "avg_volume_20": 16461090.0,
-        "dollar_volume": 3251917800.0,
-        "avg_dollar_volume": 3234604185.0,
-        "dollar_volume_label": "3.3B$",
-        "avg_dollar_volume_label": "3.2B$",
-        "grade": "strong",
-        "grade_ar": "قوي",
-        "label": "RVOL ×1.0 · وتيرة ×33.5 · اليوم 3.3B$ · متوسط 3.2B$"
-      },
-      "rvol": 1.01,
-      "rvol_pace": 33.51,
-      "liq_grade": "strong",
-      "liq_grade_ar": "قوي",
-      "atr_pct": 6.13,
-      "flow_score": 142.75,
-      "flow_ok": true,
-      "smart": {
-        "confidence": "A",
-        "confidence_ar": "ثقة عالية",
-        "tags": [
-          {
-            "key": "confidence",
-            "ar": "ثقة A",
-            "tone": "ok"
-          },
-          {
-            "key": "vwap",
-            "ar": "VWAP",
-            "tone": "bad"
-          },
-          {
-            "key": "candle",
-            "ar": "ابتلاع صاعد",
-            "tone": "ok"
-          }
-        ],
-        "wait_1m_confirm": false,
-        "wait_1m_ar": "",
-        "fake_liquidity": false,
-        "fake_liquidity_ar": "",
-        "vwap": {
-          "active": true,
-          "side": "stretched",
-          "dist_pct": 12.18,
-          "ar": "ممتد فوق VWAP +12.18% — لا تطارد"
-        },
-        "candle": {
-          "name": "ابتلاع صاعد",
-          "draw": "📗 █▼→██",
-          "ar": "شمعة: ابتلاع صاعد 📗 █▼→██"
-        },
-        "stop_alt": 195.52,
-        "stop_main": 132.52,
-        "stop_plan_ar": "وقف بديل≈ $195.52 (ATR) · الرئيسي≈ $132.52",
-        "target_partial": 254.08,
-        "target_final": 311.66,
-        "trail_offset": 22.39,
-        "partial_plan_ar": "جني 50% عند $254.08 ثم وقف متحرك ≈ $22.39 تحت القمة",
-        "qqq": {
-          "active": false,
-          "corr": 0.33
-        },
-        "near_earnings": false,
-        "earnings_ar": "",
-        "expired": false,
-        "expired_ar": "",
-        "exclude": false,
-        "exclude_reason": "",
-        "notes": [
-          "ممتد فوق VWAP +12.18% — لا تطارد",
-          "شمعة: ابتلاع صاعد 📗 █▼→██",
-          "وقف بديل≈ $195.52 (ATR) · الرئيسي≈ $132.52",
-          "جني 50% عند $254.08 ثم وقف متحرك ≈ $22.39 تحت القمة"
-        ],
-        "rvol": 1.01
-      },
-      "smart_tags": [
-        {
-          "key": "confidence",
-          "ar": "ثقة A",
-          "tone": "ok"
-        },
-        {
-          "key": "vwap",
-          "ar": "VWAP",
-          "tone": "bad"
-        },
-        {
-          "key": "candle",
-          "ar": "ابتلاع صاعد",
-          "tone": "ok"
-        }
-      ],
-      "smart_notes": [
-        "ممتد فوق VWAP +12.18% — لا تطارد",
-        "شمعة: ابتلاع صاعد 📗 █▼→██",
-        "وقف بديل≈ $195.52 (ATR) · الرئيسي≈ $132.52",
-        "جني 50% عند $254.08 ثم وقف متحرك ≈ $22.39 تحت القمة"
-      ],
-      "wait_1m_confirm": false,
-      "fake_liquidity": false,
-      "expired": false,
-      "candle": {
-        "name": "ابتلاع صاعد",
-        "draw": "📗 █▼→██",
-        "ar": "شمعة: ابتلاع صاعد 📗 █▼→██"
-      },
-      "vwap": {
-        "active": true,
-        "side": "stretched",
-        "dist_pct": 12.18,
-        "ar": "ممتد فوق VWAP +12.18% — لا تطارد"
-      },
-      "qqq": {
-        "active": false,
-        "corr": 0.33
-      },
-      "tv_url": "https://www.tradingview.com/chart/?symbol=MRNA",
-      "tg_share": "https://t.me/share/url?url=&text=MRNA%20فكّر في شراء قصير المدى%20ثقة%20A%0Aالآن%20196.5%20دخول%20196.5%20وقف%20195.52%20هدف%20311.66%0Aسيولة%20قوي%20وتيرة%20x33.51%20زخم%20+0.86%"
     },
     {
       "symbol": "FLY",
@@ -2002,6 +1847,20 @@
   ],
   "gainers": [
     {
+      "symbol": "PL",
+      "name": "Planet Labs PBC",
+      "last": 18.6,
+      "change_pct": 5.54,
+      "ref": 17.62,
+      "rth_close": 17.62,
+      "volume": 15476864.0,
+      "dollar_volume": 287869670.4,
+      "dollar_volume_label": "287.9M$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=PL"
+    },
+    {
       "symbol": "SECZ",
       "name": "Securitize Corp.",
       "last": 17.39,
@@ -2014,20 +1873,6 @@
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SECZ"
-    },
-    {
-      "symbol": "PL",
-      "name": "Planet Labs PBC",
-      "last": 18.47,
-      "change_pct": 4.82,
-      "ref": 17.62,
-      "rth_close": 17.62,
-      "volume": 15476864.0,
-      "dollar_volume": 285857678.08,
-      "dollar_volume_label": "285.9M$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=PL"
     },
     {
       "symbol": "P",
@@ -2072,6 +1917,20 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=TWST"
     },
     {
+      "symbol": "NBIS",
+      "name": "Nebius Group N.V.",
+      "last": 248.85,
+      "change_pct": 2.21,
+      "ref": 243.48,
+      "rth_close": 243.48,
+      "volume": 24256977.0,
+      "dollar_volume": 6036348726.45,
+      "dollar_volume_label": "6.0B$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
+    },
+    {
       "symbol": "NOK",
       "name": "Nokia Corporation Sponsored",
       "last": 10.66,
@@ -2086,28 +1945,14 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=NOK"
     },
     {
-      "symbol": "NBIS",
-      "name": "Nebius Group N.V.",
-      "last": 248.73,
-      "change_pct": 2.16,
-      "ref": 243.48,
-      "rth_close": 243.48,
-      "volume": 24256977.0,
-      "dollar_volume": 6033437889.21,
-      "dollar_volume_label": "6.0B$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=NBIS"
-    },
-    {
       "symbol": "INTC",
       "name": "Intel Corporation",
-      "last": 129.97,
-      "change_pct": 2.03,
+      "last": 129.9,
+      "change_pct": 1.97,
       "ref": 127.39,
       "rth_close": 127.39,
       "volume": 118581605.0,
-      "dollar_volume": 15412051201.85,
+      "dollar_volume": 15403750489.5,
       "dollar_volume_label": "15.4B$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
@@ -2158,40 +2003,26 @@
     {
       "symbol": "KRMN",
       "name": "Karman Holdings Inc.",
-      "last": 35.28,
-      "change_pct": 1.04,
+      "last": 35.26,
+      "change_pct": 0.97,
       "ref": 34.92,
       "rth_close": 34.92,
       "volume": 4720101.0,
-      "dollar_volume": 166525163.28,
-      "dollar_volume_label": "166.5M$",
+      "dollar_volume": 166430761.26,
+      "dollar_volume_label": "166.4M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=KRMN"
     },
     {
-      "symbol": "MRNA",
-      "name": "Moderna, Inc.",
-      "last": 196.8,
-      "change_pct": 1.02,
-      "ref": 194.82,
-      "rth_close": 194.82,
-      "volume": 16480135.0,
-      "dollar_volume": 3243290568.0,
-      "dollar_volume_label": "3.2B$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=MRNA"
-    },
-    {
       "symbol": "SPCX",
       "name": "Space Exploration Technologies ",
-      "last": 149.49,
-      "change_pct": 0.99,
+      "last": 149.38,
+      "change_pct": 0.91,
       "ref": 148.03,
       "rth_close": 148.03,
       "volume": 72496135.0,
-      "dollar_volume": 10837447221.15,
+      "dollar_volume": 10829472646.3,
       "dollar_volume_label": "10.8B$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
@@ -2214,16 +2045,30 @@
     {
       "symbol": "NVDA",
       "name": "NVIDIA Corporation",
-      "last": 226.5,
-      "change_pct": 0.85,
+      "last": 226.45,
+      "change_pct": 0.83,
       "ref": 224.58,
       "rth_close": 224.58,
       "volume": 76420503.0,
-      "dollar_volume": 17309243929.5,
+      "dollar_volume": 17305422904.35,
       "dollar_volume_label": "17.3B$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=NVDA"
+    },
+    {
+      "symbol": "MRNA",
+      "name": "Moderna, Inc.",
+      "last": 196.31,
+      "change_pct": 0.77,
+      "ref": 194.82,
+      "rth_close": 194.82,
+      "volume": 16480135.0,
+      "dollar_volume": 3235215301.85,
+      "dollar_volume_label": "3.2B$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=MRNA"
     },
     {
       "symbol": "SOFI",
@@ -2849,29 +2694,6 @@
       "officialish": false
     },
     {
-      "symbol": "MRNA",
-      "title": "MRNA On Track To Be September's No. 2 S&P 500 Stock — But These 5 Smaller Health Care Names Did Even Better",
-      "title_ar": "MRNA على المسار الصحيح ليكون سهم S&P 500 رقم 2 في سبتمبر — ولكن هذه الأسماء الخمسة الأصغر للرعاية الصحية كانت أفضل",
-      "summary": "Five smaller stocks with market caps above $100 million beat MRNA’s monthly gain: INDP rose 249%, CYPH 124%, MNOV 85%, GRAL 58% and SRZN 53%.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=70f140ccdd3ef73bfe1021f5281a43c699cb88dc3919b70c5378fbbb27e02a74",
-      "publisher": "Yahoo",
-      "published": "2026-09-25 03:23 UTC",
-      "published_ts": 1790306616,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "5eeb48c1be390d02b07d8edf7c641b3c84e55ef5",
-      "source": "finnhub",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
       "symbol": "BAC",
       "title": "Bank of America has strong message for Merck stock investors",
       "title_ar": "لدى بنك أوف أمريكا رسالة قوية لمستثمري أسهم شركة ميرك",
@@ -2884,52 +2706,6 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "15d69640a1aaea48842e4e9dc9eb9dfdfa106dff",
-      "source": "finnhub",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
-      "symbol": "MRNA",
-      "title": "Moderna Inc. (MRNA) Holds High-Level Investment Talks With UAE, Soars to 4-Year Peak",
-      "title_ar": "تجري شركة موديرنا (MRNA) محادثات استثمارية رفيعة المستوى مع الإمارات العربية المتحدة، وترتفع إلى ذروتها لمدة 4 سنوات",
-      "summary": "Moderna Inc. (NASDAQ:MRNA) saw its share price climb to a new four-year high on Thursday, as investors cheered news that it was exploring investment opportunities in the Middle East. In intra-day trading, the stock climbed to a record high of $195.71 before trimming gains to fini",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=c7960b8bc529353866cfac1d931c119daf2ef705acaf37b2e27770dec14a2537",
-      "publisher": "Yahoo",
-      "published": "2026-09-25 00:46 UTC",
-      "published_ts": 1790297219,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "0878dd28d10405e6b148f84c45ebc14eac937676",
-      "source": "finnhub",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
-      "symbol": "MRNA",
-      "title": "From $63 To $195: Moderna’s Two-Month Rerating Isn’t Done",
-      "title_ar": "من 63 $ إلى 195 $: لم يتم إعادة ترتيب لمدة شهرين",
-      "summary": "The stock was most recently helped by the company CEO’s optimism on its potential outside of COVID vaccines.",
-      "summary_ar": "",
-      "url": "https://finnhub.io/api/news?id=6d1f929b6e1003bb063ccf91eb7dd8f124e97a3267139c015926ec398eb0f9f1",
-      "publisher": "Yahoo",
-      "published": "2026-09-24 22:41 UTC",
-      "published_ts": 1790289671,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "bc70a677ed73377ae718ac234e2f658dc539406d",
       "source": "finnhub",
       "impact": 2,
       "impact_ar": "تأثير 2/5",
@@ -3008,11 +2784,91 @@
       "catalyst_ar": [],
       "impact_reason_ar": "خبر عام / تأثير محدود",
       "officialish": false
+    },
+    {
+      "symbol": "INTC",
+      "title": "This Analyst Just Upgraded Synopsys Stock. Here's Why.",
+      "title_ar": "قام هذا المحلل للتو بترقية أسهم Synopsys. إليك السبب.",
+      "summary": "Synopsys shares rally as BNP Paribas upgrades them to \"Neutral.\" Here’s what made analyst Andrew DeGasperi upgrade SNPS stock today.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=b2fafca8e2439e636e1ae4b3fce1091eebb1063490af0db414cdabb107d49076",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 20:02 UTC",
+      "published_ts": 1790280150,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "6763d4e6a0cb9d9497ebafe8a6e492082e3217cf",
+      "source": "finnhub",
+      "impact": 2,
+      "impact_ar": "تأثير 2/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "upgrade",
+          "ar": "ترقية محلل",
+          "base_impact": 2
+        }
+      ],
+      "catalyst_keys": [
+        "upgrade"
+      ],
+      "catalyst_ar": [
+        "ترقية محلل"
+      ],
+      "impact_reason_ar": "ترقية محلل",
+      "officialish": false
+    },
+    {
+      "symbol": "BAC",
+      "title": "Top Stock Reports for Tesla, Bank of America & Coca-Cola",
+      "title_ar": "أفضل تقارير الأسهم لـ Tesla و Bank of America و Coca - Cola",
+      "summary": "Tesla, Bank of America and Coca-Cola headline today's research, with growth drivers, investment plans and key risks in focus.",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=06486dec57fd728835475884e196e299d45e921f3c7692c30f8b299f17d29284",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 19:55 UTC",
+      "published_ts": 1790279700,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "dfc40e5b18ea5e3105468a8d8de0c3f728639745",
+      "source": "finnhub",
+      "impact": 2,
+      "impact_ar": "تأثير 2/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": false
+    },
+    {
+      "symbol": "HBAN",
+      "title": "3 Regional Bank Stocks Retail Investors Are Watching As Higher Rates Lift Margins",
+      "title_ar": "3 أسهم البنك الإقليمي يراقب مستثمرو التجزئة ارتفاع هوامش الفائدة",
+      "summary": "Higher interest rates are starting to bite growth stocks, yet they can quietly reshape the opportunity set for financials that live and breathe yield curves. When Fed officials talk about more “modest” hikes and longer bond yields climb to levels last seen in 2004, the gap betwee",
+      "summary_ar": "",
+      "url": "https://finnhub.io/api/news?id=bed1b7934895a9c510079b356477719a30e40f1d48ce7838bffd8028320da4ff",
+      "publisher": "Yahoo",
+      "published": "2026-09-24 19:13 UTC",
+      "published_ts": 1790277204,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "a28c7579a3f96f6f4d4b1740cb75475b4795bb08",
+      "source": "finnhub",
+      "impact": 2,
+      "impact_ar": "تأثير 2/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": false
     }
   ],
   "news_excluded_negative": [
     "AAL",
     "CDE",
+    "QQQ",
     "SITM",
     "TXG"
   ],
