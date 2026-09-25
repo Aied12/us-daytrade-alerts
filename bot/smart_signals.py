@@ -153,16 +153,28 @@ def alt_stop_plan(entry: float, stop: float, snap: QuoteSnapshot, side: str = "l
 
 
 def partial_target_plan(entry: float, target: float, stop: float, side: str = "long") -> dict[str, Any]:
-    """27 — take 50% at midpoint, trail remainder."""
+    """Take first scale-out near 1R (or ~40% to final), not halfway to a far final."""
     if side != "long" or entry <= 0:
         return {}
-    mid = round(entry + (target - entry) * 0.5, 2)
-    trail = round(max(entry * 0.004, (entry - stop) * 0.35), 2)
+    risk = max(entry - stop, entry * 0.005)
+    one_r = entry + risk
+    toward_final = entry + max(target - entry, 0) * 0.4
+    # أقرب هدف أول منطقي للمضاربة اليومية
+    mid = round(min(one_r, toward_final), 2)
+    if mid <= entry:
+        mid = round(entry + risk * 0.9, 2)
+    # لا تبعد الهدف الأول أكثر من ~5% في الأسهم العادية
+    mid = min(mid, round(entry * 1.05, 2))
+    if target > mid:
+        final = round(target, 2)
+    else:
+        final = round(entry + risk * 2.0, 2)
+    trail = round(max(entry * 0.004, risk * 0.35), 2)
     return {
         "target_partial": mid,
-        "target_final": round(target, 2),
+        "target_final": final,
         "trail_offset": trail,
-        "ar": f"جني 50% عند ${mid} ثم وقف متحرك ≈ ${trail} تحت القمة",
+        "ar": f"جني أول (≈1R) عند ${mid} ثم هدف أبعد ${final} · وقف متحرك ≈ ${trail}",
     }
 
 

@@ -70,9 +70,10 @@ def compose_signal(
         if stop >= entry:
             stop = round(entry * 0.988, 2)
         risk = max(entry - stop, entry * 0.008)
-        raw_target = entry + risk * 1.8
+        # هدف أول واقعي للمضاربة ≈ 1.2R (كان 1.8R وغالباً بعيد)
+        raw_target = entry + risk * 1.2
         if s.resistance and s.resistance > entry:
-            target = round(max(raw_target, min(s.resistance, entry + risk * 2.5)), 2)
+            target = round(max(raw_target, min(s.resistance, entry + risk * 1.8)), 2)
         else:
             target = round(raw_target, 2)
         side = "long"

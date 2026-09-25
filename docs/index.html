@@ -352,8 +352,8 @@
           <div class="calc-field"><label>Buffer %</label><input id="jamalBuffer" type="number" step="0.01" min="0" value="0.10" /></div>
           <div class="calc-field"><label>Max Chase %</label><input id="jamalChase" type="number" step="0.1" min="0" value="1.0" /></div>
           <div class="calc-field"><label>Stop Loss %</label><input id="jamalStopPct" type="number" step="0.1" min="0.1" value="2.0" /></div>
-          <div class="calc-field"><label>TP1 R:R</label><input id="jamalTp1" type="number" step="0.1" min="0.5" value="1.5" /></div>
-          <div class="calc-field"><label>TP2 R:R</label><input id="jamalTp2" type="number" step="0.1" min="0.5" value="2.5" /></div>
+          <div class="calc-field"><label>TP1 R:R</label><input id="jamalTp1" type="number" step="0.1" min="0.5" value="1.0" /></div>
+          <div class="calc-field"><label>TP2 R:R</label><input id="jamalTp2" type="number" step="0.1" min="0.5" value="2.0" /></div>
           <div class="calc-field"><label>Signal Expiry (د)</label><input id="jamalExpiry" type="number" step="1" min="1" value="15" /></div>
           <div class="calc-field"><label>خروج قبل الإغلاق (د)</label><input id="jamalExitClose" type="number" step="1" min="1" value="15" /></div>
           <div class="calc-field"><label>Trailing Stop %</label><input id="jamalTrail" type="number" step="0.1" min="0" value="1.0" /></div>
@@ -585,7 +585,7 @@
     let JAMAL_CACHE = [];
     let JAMAL_SETTINGS = {
       buffer_pct:0.10, max_chase_pct:1.0, stop_loss_pct:2.0,
-      tp1_rr:1.5, tp2_rr:2.5, signal_expiry_min:15, exit_before_close_min:15,
+      tp1_rr:1.0, tp2_rr:2.0, signal_expiry_min:15, exit_before_close_min:15,
       trailing_pct:1.0, trailing_enabled:true
     };
     let CALC_SYM = '';
