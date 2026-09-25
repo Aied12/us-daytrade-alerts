@@ -76,11 +76,16 @@ jobs:
           cp -f pages/prices-live.json docs/prices-live.json 2>/dev/null || true
           cp -f pages/live.json docs/live.json 2>/dev/null || true
           cp -f pages/news-live.json docs/news-live.json 2>/dev/null || true
+          mkdir -p docs/icons
+          cp -f pages/manifest.webmanifest docs/manifest.webmanifest 2>/dev/null || true
+          cp -f pages/sw.js docs/sw.js 2>/dev/null || true
+          cp -f pages/icons/*.png docs/icons/ 2>/dev/null || true
       - name: Commit docs to main
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/ pages/status.json pages/index.html pages/prices-live.json pages/live.json pages/news-live.json data/sniper_seen.json || true
+          git add docs/ pages/status.json pages/index.html pages/prices-live.json pages/live.json pages/news-live.json \
+            pages/manifest.webmanifest pages/sw.js pages/icons data/sniper_seen.json || true
           if git diff --cached --quiet; then
             echo "[publish] no dashboard changes"
             exit 0
