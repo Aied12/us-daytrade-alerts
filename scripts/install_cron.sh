@@ -25,7 +25,7 @@ PATH=/usr/bin:/bin
 # أخبار الموقع كل دقيقة (بدون تيليجرام)
 * 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_news.py
 # نشر لوحة كامل كل دقيقتين (قفل يمنع التداخل مع tick)
-*/2 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_pages.py
+*/3 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_pages.py
 # Intel ظهرًا ≈16:00 السعودية
 0 13 * * 1-5 $RUN intel
 # ملخص مسائي
