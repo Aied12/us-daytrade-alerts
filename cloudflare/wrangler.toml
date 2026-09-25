@@ -1,0 +1,12 @@
+name = "us-daytrade-live"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+# بعد الإنشاء: wrangler kv namespace create LIVE_KV
+# ثم ضع الـ id هنا
+# [[kv_namespaces]]
+# binding = "LIVE_KV"
+# id = "REPLACE_WITH_KV_ID"
+
+[vars]
+SERVICE_NAME = "us-daytrade-live"

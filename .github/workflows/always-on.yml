@@ -1,0 +1,128 @@
+name: always-on-dashboard
+
+# ناشر سحابي دائم — لا يعتمد على جهاز Cloud Agent الذي ينام
+on:
+  schedule:
+    # كل دقيقتين أثناء جلسة السوق الأمريكية (تقريباً 11ص–11م السعودية)
+    # ملاحظة: GitHub قد يؤخر الجدولة قليلاً تحت الضغط، لذلك يوجد أيضاً workflow_dispatch
+    - cron: "*/2 8-20 * * 1-5"
+    - cron: "0 8 * * 1-5"
+    - cron: "5 20 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "tick | premarket | evening"
+        required: true
+        default: "tick"
+
+concurrency:
+  group: always-on-dashboard
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: |
+          python -m pip install -U pip
+          pip install -r requirements.txt
+
+      - name: Env
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          TELEGRAM_EXTRA_CHAT_IDS: ${{ secrets.TELEGRAM_EXTRA_CHAT_IDS }}
+          CAPITAL_SAR: ${{ secrets.CAPITAL_SAR }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+        run: |
+          printf 'TELEGRAM_BOT_TOKEN=%s\n' "$TELEGRAM_BOT_TOKEN" > .env
+          printf 'TELEGRAM_CHAT_ID=%s\n' "$TELEGRAM_CHAT_ID" >> .env
+          printf 'TELEGRAM_CHANNEL_ID=%s\n' "$TELEGRAM_CHANNEL_ID" >> .env
+          printf 'TELEGRAM_EXTRA_CHAT_IDS=%s\n' "$TELEGRAM_EXTRA_CHAT_IDS" >> .env
+          printf 'CAPITAL_SAR=%s\n' "${CAPITAL_SAR:-45000}" >> .env
+          printf 'FINNHUB_API_KEY=%s\n' "$FINNHUB_API_KEY" >> .env
+          printf 'LIGHT_MODE=1\nAPI_THRIFT=1\nUSER_MODE=beginner\nMIN_PRICE_USD=5\nTIMEZONE=Asia/Riyadh\nTELEGRAM_ENABLED=0\n' >> .env
+          if [ -f data/telegram_paused ]; then printf 'TELEGRAM_ENABLED=0\n' >> .env; fi
+
+      - name: Scan + rebuild live JSON
+        run: |
+          MODE="${{ github.event.inputs.mode }}"
+          if [ -z "$MODE" ]; then
+            HOUR=$(date -u +%H)
+            if [ "$HOUR" = "08" ]; then MODE=premarket
+            elif [ "$HOUR" = "20" ]; then MODE=evening
+            else MODE=tick
+            fi
+          fi
+          python scripts/scheduled_run.py --mode "$MODE" --force || true
+          python scripts/write_live_json.py || true
+          python scripts/publish_news.py || true
+          python scripts/build_pages.py
+          cp -f pages/index.html docs/index.html
+          cp -f pages/status.json docs/status.json
+          cp -f pages/prices-live.json docs/prices-live.json 2>/dev/null || true
+          cp -f pages/live.json docs/live.json 2>/dev/null || true
+          cp -f pages/news-live.json docs/news-live.json 2>/dev/null || true
+          python - <<'PY'
+          import json, time
+          from pathlib import Path
+          p = Path("docs/status.json")
+          d = json.loads(p.read_text(encoding="utf-8"))
+          d["heartbeat_ts"] = int(time.time())
+          d["publisher"] = "github-actions-always-on"
+          p.write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
+          Path("pages/status.json").write_text(p.read_text(encoding="utf-8"), encoding="utf-8")
+          print("heartbeat", d["heartbeat_ts"], "generated", d.get("generated_local"))
+          PY
+
+      - name: Commit + push (with rebase retries)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/ pages/status.json pages/index.html pages/prices-live.json pages/live.json pages/news-live.json data/sniper_seen.json || true
+          if git diff --cached --quiet; then
+            echo "no changes"
+            exit 0
+          fi
+          git commit -m "Always-on live dashboard update"
+          for i in 1 2 3 4 5; do
+            git fetch origin main
+            git pull --rebase --autostash origin main || { git rebase --abort || true; }
+            if git push origin HEAD:main; then
+              echo "pushed ok"
+              exit 0
+            fi
+            echo "push failed try $i"
+            sleep $((i*3))
+          done
+          exit 1
+
+      - name: Optional Cloudflare live mirror
+        if: ${{ secrets.LIVE_API_URL != '' && secrets.LIVE_API_TOKEN != '' }}
+        env:
+          LIVE_API_URL: ${{ secrets.LIVE_API_URL }}
+          LIVE_API_TOKEN: ${{ secrets.LIVE_API_TOKEN }}
+        run: |
+          curl -fsS -X POST "$LIVE_API_URL/ingest" \
+            -H "Authorization: Bearer $LIVE_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data-binary @docs/status.json
+          curl -fsS -X POST "$LIVE_API_URL/ingest/prices" \
+            -H "Authorization: Bearer $LIVE_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data-binary @docs/prices-live.json || true
+          echo "mirrored to Cloudflare"

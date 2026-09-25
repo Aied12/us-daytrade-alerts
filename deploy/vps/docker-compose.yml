@@ -1,0 +1,17 @@
+# تشغيل مستمر على VPS (Docker)
+
+services:
+  daytrade-bot:
+    build:
+      context: ..
+      dockerfile: deploy/vps/Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    volumes:
+      - ../data:/app/data
+      - ../docs:/app/docs
+      - ../pages:/app/pages
+      - ../logs:/app/logs
+    working_dir: /app
+    command: ["python", "scripts/vps_loop.py"]

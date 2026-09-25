@@ -1,12 +1,10 @@
 name: us-daytrade-alerts
 
+# المهام الثقيلة فقط (يدوي أو مرة عند الافتتاح/الإغلاق)
+# التحديث المستمر انتقل إلى always-on.yml لتجنب التعارض
 on:
   schedule:
-    # Premarket ≈ 11:00 السعودية (08:00 UTC)
     - cron: "0 8 * * 1-5"
-    # أثناء الجلسة كل 3 دقائق — الناشر الوحيد السحابي الموثوق
-    - cron: "*/3 8-20 * * 1-5"
-    # ملخص مسائي ≈ 23:05 السعودية
     - cron: "5 20 * * 1-5"
   workflow_dispatch:
     inputs:
@@ -16,7 +14,7 @@ on:
         default: "tick"
 
 concurrency:
-  group: dashboard-publish
+  group: always-on-dashboard
   cancel-in-progress: false
 
 permissions:
@@ -52,16 +50,15 @@ jobs:
           printf 'LIGHT_MODE=1\nAPI_THRIFT=1\nUSER_MODE=beginner\nMIN_PRICE_USD=5\nTIMEZONE=Asia/Riyadh\n' >> .env
           if [ -f data/telegram_paused ]; then
             printf 'TELEGRAM_ENABLED=0\n' >> .env
-            echo "[telegram] paused via data/telegram_paused"
           else
-            printf 'TELEGRAM_ENABLED=1\n' >> .env
+            printf 'TELEGRAM_ENABLED=0\n' >> .env
           fi
       - name: Run bot job + rebuild dashboard
         run: |
           MODE="${{ github.event.inputs.mode }}"
           if [ -z "$MODE" ]; then
             HOUR=$(date -u +%H)
-            if [ "$HOUR" = "08" ] && [ "$(date -u +%M)" = "00" ]; then MODE=premarket
+            if [ "$HOUR" = "08" ]; then MODE=premarket
             elif [ "$HOUR" = "20" ]; then MODE=evening
             else MODE=tick
             fi
@@ -83,22 +80,18 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html docs/status.json docs/prices-live.json docs/live.json docs/news-live.json \
-                  pages/index.html pages/status.json pages/prices-live.json pages/live.json pages/news-live.json \
-                  data/sniper_seen.json || true
+          git add docs/ pages/status.json pages/index.html pages/prices-live.json pages/live.json pages/news-live.json data/sniper_seen.json || true
           if git diff --cached --quiet; then
             echo "[publish] no dashboard changes"
             exit 0
           fi
           git commit -m "Auto-update dashboard (Actions)"
-          # rebase if local VM pushed meanwhile
           for i in 1 2 3; do
             git pull --rebase --autostash origin main || git rebase --abort || true
             if git push origin HEAD:main; then
               echo "[publish] pushed"
               exit 0
             fi
-            echo "[publish] push rejected — retry $i"
             sleep 5
           done
           exit 1

@@ -20,12 +20,12 @@ PATH=/usr/bin:/bin
 # تحديث السوق كل دقيقة 11ص–11م السعودية
 * 8-19 * * 1-5 $RUN tick
 0 20 * * 1-5 $RUN tick
-# أسعار live.json كل دقيقة محلياً فقط (بدون git push)
-* 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_live.py
-# أخبار الموقع كل دقيقة محلياً فقط (بدون git push)
+# أخبار محلية فقط (بدون git push) — النشر السحابي عبر GitHub Actions always-on
 * 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_news.py
-# ناشر واحد للوحة كل 3 دقائق — commit/push واحد يمنع انهيار Pages
-*/3 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_pages.py
+# تعطيل النشر المحلي لتجنب تعارض الدفع مع always-on.yml
+# */3 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_pages.py
+# أسعار محلية فقط (بدون git push)
+* 7-20 * * 1-5 $ROOT/.venv/bin/python $ROOT/scripts/publish_live.py
 # Intel ظهرًا ≈16:00 السعودية
 0 13 * * 1-5 $RUN intel
 # ملخص مسائي

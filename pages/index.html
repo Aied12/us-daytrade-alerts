@@ -456,7 +456,10 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=9;
+    window.__STATUS_V=10;
+    // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
+    window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
+
     const LS = {
       theme: 'dash_theme',
       filter: 'dash_filter',
@@ -1263,8 +1266,10 @@
         alive.textContent=ok?'شغال':'تحقق';
         alive.className='pill '+(ok?'ok':'warn');
       }
-      const srcTag = window.__STATUS_SRC==='raw' ? ' · مباشر' : '';
-      document.getElementById('ago').textContent=`آخر فحص: ${fmtAgo(d.generated_ts)} · ${d.generated_local||''}${srcTag}`;
+      const srcMap={live:' · بث حي', raw:' · مباشر', pages:' · صفحات'};
+      const srcTag=srcMap[window.__STATUS_SRC]||'';
+      const pub=d.publisher==='github-actions-always-on'?' · سحابي':'';
+      document.getElementById('ago').textContent=`آخر فحص: ${fmtAgo(d.generated_ts)} · ${d.generated_local||''}${srcTag}${pub}`;
       const lag=d.price_lag_ar||(d.market&&d.market.price_lag_ar)||'تأخير Yahoo ≈ 15 دقيقة';
       const lagEl=document.getElementById('priceLag');
       if(lagEl){
@@ -1547,7 +1552,8 @@
 
     async function pollNewsLive(){
       try{
-        const urls=['https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/news-live.json','./news-live.json'];
+        const urls=(window.__LIVE_API?[window.__LIVE_API+'/news-live.json']:[])
+          .concat(['https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/news-live.json','./news-live.json']);
         let best=null;
         for(const u of urls){
           try{
@@ -1584,23 +1590,26 @@
       }
     }
 
-    // raw أولاً: يتحدّث مع كل push دون انتظار بناء GitHub Pages (سبب «متأخر»)
-    const STATUS_URLS = [
-      'https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/status.json',
-      './status.json',
-    ];
+    // مصدر حي أولاً (Cloudflare إن وُجد) ثم raw — لا نعتمد على كاش Pages للبيانات
+    function statusUrls(){
+      const u=[];
+      if(window.__LIVE_API) u.push(window.__LIVE_API+'/status.json');
+      u.push('https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/status.json');
+      u.push('./status.json');
+      return u;
+    }
 
     async function fetchFreshestStatus(){
       const ts=Date.now();
-      const v=window.__STATUS_V||'9';
+      const v=window.__STATUS_V||'10';
       let best=null;
-      await Promise.all(STATUS_URLS.map(async (base)=>{
+      await Promise.all(statusUrls().map(async (base)=>{
         try{
           const url=base+(base.includes('?')?'&':'?')+'ts='+ts+'&v='+v+'&nocache='+ts;
           const res=await fetch(url,{cache:'no-store', headers:{'Cache-Control':'no-cache','Pragma':'no-cache'}});
           if(!res.ok) return;
           const next=await res.json();
-          const nextTs=Number(next.generated_ts||0);
+          const nextTs=Number(next.generated_ts||next.heartbeat_ts||0);
           if(!best || nextTs > best.ts) best={j:next, ts:nextTs, base};
         }catch(e){}
       }));
@@ -1629,7 +1638,8 @@
           return;
         }
         LAST_STATUS_TS=nextTs||LAST_STATUS_TS;
-        window.__STATUS_SRC = (best.base||'').includes('raw.githubusercontent') ? 'raw' : 'pages';
+        window.__STATUS_SRC = (best.base||'').includes('workers.dev') || (best.base||'').includes('LIVE') || (window.__LIVE_API && (best.base||'').startsWith(window.__LIVE_API))
+          ? 'live' : ((best.base||'').includes('raw.githubusercontent') ? 'raw' : 'pages');
         renderAll();
         renderLiveTape();
         if(bust || !liveBusy) pollAllPrices();
@@ -1647,8 +1657,8 @@
       }
     }
 
-    const AUTO_SEC = isLightNet()?20:12;
-    const PRICE_POLL_SEC = isLightNet()?8:5;
+    const AUTO_SEC = isLightNet()?12:8;
+    const PRICE_POLL_SEC = isLightNet()?6:4;
     let refreshIn = AUTO_SEC;
 
     document.getElementById('btnRefresh').onclick=()=>fetchData(true);
@@ -1801,12 +1811,17 @@
     const LIVE_CACHE = {};
     let liveBusy = false;
     let liveWave = 0;
-    const LIVE_JSON_URLS = [
-      'https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/prices-live.json',
-      'https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/live.json',
-      './prices-live.json',
-      './live.json',
-    ];
+    const LIVE_JSON_URLS = (()=>{
+      const u=[];
+      if(window.__LIVE_API){
+        u.push(window.__LIVE_API+'/prices-live.json');
+      }
+      u.push('https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/prices-live.json');
+      u.push('https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/live.json');
+      u.push('./prices-live.json');
+      u.push('./live.json');
+      return u;
+    })();
 
     function allPageSymbols(){
       const set=new Set();
