@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-25T18:23:26.705569+00:00",
-  "generated_ts": 1790360606,
-  "generated_local": "2026-09-25 21:23 +03",
+  "generated_at": "2026-09-25T18:25:07.024111+00:00",
+  "generated_ts": 1790360707,
+  "generated_local": "2026-09-25 21:25 +03",
   "status": {
     "ok": true,
     "last_mode": "dashboard",
     "changed": true,
     "symbols": 12,
-    "updated_at": "2026-09-25T18:23:26.705392+00:00",
+    "updated_at": "2026-09-25T18:25:07.023950+00:00",
     "source": "build_pages"
   },
   "telegram_enabled": false,
@@ -24,39 +24,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: مبتدئ",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": 0.4,
+    "avg_change_pct": 0.43,
     "details": {
       "SPY": {
-        "last": 771.15,
-        "change_pct": 0.52,
+        "last": 771.3176,
+        "change_pct": 0.54,
         "rsi": 52.4
       },
       "QQQ": {
-        "last": 745.0499,
-        "change_pct": 0.53,
-        "rsi": 66.6
+        "last": 745.189,
+        "change_pct": 0.55,
+        "rsi": 66.7
       },
       "IWM": {
-        "last": 282.09,
-        "change_pct": 0.15,
-        "rsi": 24.3
+        "last": 282.19,
+        "change_pct": 0.19,
+        "rsi": 24.5
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": 0.52,
+        "change_pct": 0.54,
         "rsi": 52.4
       },
       {
         "symbol": "QQQ",
-        "change_pct": 0.53,
-        "rsi": 66.6
+        "change_pct": 0.55,
+        "rsi": 66.7
       },
       {
         "symbol": "IWM",
-        "change_pct": 0.15,
-        "rsi": 24.3
+        "change_pct": 0.19,
+        "rsi": 24.5
       }
     ],
     "no_trade_today": false,
@@ -69,8 +69,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 5793,
-    "ny_time": "14:23:26",
+    "seconds_left": 5692,
+    "ny_time": "14:25:07",
     "open": "09:30",
     "close": "16:00"
   },
@@ -78,35 +78,35 @@
     "strongest": [
       {
         "name": "Financials",
-        "change_pct": 0.82
+        "change_pct": 0.87
       },
       {
         "name": "Technology",
-        "change_pct": 0.31
+        "change_pct": 0.32
       },
       {
         "name": "Consumer",
-        "change_pct": -0.48
+        "change_pct": -0.53
       }
     ],
     "weakest": [
       {
         "name": "Energy",
-        "change_pct": -1.06
+        "change_pct": -1.04
       },
       {
         "name": "Consumer",
-        "change_pct": -0.48
+        "change_pct": -0.53
       },
       {
         "name": "Technology",
-        "change_pct": 0.31
+        "change_pct": 0.32
       }
     ]
   },
   "style": {
-    "growth_avg": -0.93,
-    "value_avg": 1.06,
+    "growth_avg": -0.94,
+    "value_avg": 1.07,
     "leader": "قيمة",
     "growth_count": 5,
     "value_count": 5
@@ -115,9 +115,9 @@
     {
       "symbol": "ALM",
       "name": "Almonty Industries Inc.",
-      "last": 14.04,
-      "change_pct": 13.23,
-      "dollar_volume": 102802775.4,
+      "last": 14.02,
+      "change_pct": 13.1,
+      "dollar_volume": 102767539.34,
       "dollar_volume_label": "102.8M$",
       "rvol": null,
       "liq_grade_ar": "",
@@ -150,7 +150,7 @@
       "news_title_ar": "يبدأ Stifel Almonty بسعر مستهدف قدره 25 $ على توسع التنغستن",
       "news_url": "https://finance.yahoo.com/markets/stocks/articles/stifel-starts-almonty-25-price-141807347.html",
       "catalyst_ar": [],
-      "alert_ar": "زخم +13.2% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +13.1% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
     },
     {
@@ -158,7 +158,7 @@
       "name": "People Incorporated",
       "last": 40.2,
       "change_pct": 11.88,
-      "dollar_volume": 71151346.8,
+      "dollar_volume": 71171205.6,
       "dollar_volume_label": "71.2M$",
       "rvol": null,
       "liq_grade_ar": "",
@@ -209,10 +209,10 @@
     {
       "symbol": "MXL",
       "name": "MaxLinear, Inc",
-      "last": 94.16,
-      "change_pct": 10.37,
-      "dollar_volume": 288645220.16,
-      "dollar_volume_label": "288.6M$",
+      "last": 94.21,
+      "change_pct": 10.43,
+      "dollar_volume": 288999726.52,
+      "dollar_volume_label": "289.0M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -250,10 +250,10 @@
     {
       "symbol": "FLY",
       "name": "Firefly Aerospace Inc.",
-      "last": 25.11,
-      "change_pct": 8.75,
-      "dollar_volume": 82740237.21,
-      "dollar_volume_label": "82.7M$",
+      "last": 25.12,
+      "change_pct": 8.79,
+      "dollar_volume": 82821594.56,
+      "dollar_volume_label": "82.8M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -291,9 +291,9 @@
     {
       "symbol": "BE",
       "name": "Bloom Energy Corporation",
-      "last": 289.39,
-      "change_pct": 8.53,
-      "dollar_volume": 3863079264.38,
+      "last": 289.46,
+      "change_pct": 8.55,
+      "dollar_volume": 3866140359.94,
       "dollar_volume_label": "3.9B$",
       "rvol": null,
       "liq_grade_ar": "",
@@ -338,15 +338,15 @@
       "catalyst_ar": [
         "شراكة/عقد"
       ],
-      "alert_ar": "زخم +8.5% · شراكة/عقد",
+      "alert_ar": "زخم +8.6% · شراكة/عقد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=BE"
     },
     {
       "symbol": "CRDO",
       "name": "Credo Technology Group Holding ",
-      "last": 212.42,
-      "change_pct": 8.4,
-      "dollar_volume": 1832805430.3,
+      "last": 212.67,
+      "change_pct": 8.52,
+      "dollar_volume": 1837774194.12,
       "dollar_volume_label": "1.8B$",
       "rvol": null,
       "liq_grade_ar": "",
@@ -379,7 +379,7 @@
       "news_title_ar": "سهم واحد تحت الرادار مع احتمالية صعود بنسبة 100 ٪",
       "news_url": "https://247wallst.com/investing/2026/09/22/one-under-the-radar-stock-with-100-upside-potential/",
       "catalyst_ar": [],
-      "alert_ar": "زخم +8.4% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +8.5% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRDO"
     },
     {
@@ -387,7 +387,7 @@
       "name": "Synaptics Incorporated",
       "last": 102.89,
       "change_pct": 6.27,
-      "dollar_volume": 29924836.27,
+      "dollar_volume": 29927614.3,
       "dollar_volume_label": "29.9M$",
       "rvol": null,
       "liq_grade_ar": "",
@@ -438,10 +438,10 @@
     {
       "symbol": "PRGO",
       "name": "Perrigo Company plc",
-      "last": 15.58,
-      "change_pct": 6.13,
-      "dollar_volume": 35348901.12,
-      "dollar_volume_label": "35.3M$",
+      "last": 15.6,
+      "change_pct": 6.23,
+      "dollar_volume": 35444635.2,
+      "dollar_volume_label": "35.4M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -485,16 +485,16 @@
       "catalyst_ar": [
         "أرباح"
       ],
-      "alert_ar": "زخم +6.1% · أرباح",
+      "alert_ar": "زخم +6.2% · أرباح",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PRGO"
     },
     {
       "symbol": "CDNA",
       "name": "CareDx, Inc.",
-      "last": 64.82,
-      "change_pct": 5.62,
-      "dollar_volume": 92125036.08,
-      "dollar_volume_label": "92.1M$",
+      "last": 64.96,
+      "change_pct": 5.85,
+      "dollar_volume": 92530583.04,
+      "dollar_volume_label": "92.5M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -538,15 +538,15 @@
       "catalyst_ar": [
         "أرباح"
       ],
-      "alert_ar": "زخم +5.6% · أرباح",
+      "alert_ar": "زخم +5.8% · أرباح",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CDNA"
     },
     {
       "symbol": "HHH",
       "name": "Howard Hughes Holdings Inc.",
-      "last": 68.18,
-      "change_pct": 5.57,
-      "dollar_volume": 43187666.48,
+      "last": 68.14,
+      "change_pct": 5.52,
+      "dollar_volume": 43237487.46,
       "dollar_volume_label": "43.2M$",
       "rvol": null,
       "liq_grade_ar": "",
@@ -555,71 +555,93 @@
       "has_news": true,
       "news": {
         "symbol": "HHH",
-        "title": "Howard Hughes Stock Rises After Executives Buy Shares Following Ackman Post",
-        "title_ar": "ارتفاع أسهم هوارد هيوز بعد شراء المديرين التنفيذيين للأسهم بعد مشاركة أكمان",
-        "summary": "Howard Hughes executives Marc Grandisson and Andrew Davis bought shares Wednesday, according to SEC filings.",
+        "title": "Howard Hughes Holdings (HHH) Moves 8.9% Higher: Will This Strength Last?",
+        "title_ar": "شركة هوارد هيوز القابضة (HHH) ترتفع بنسبة 8.9 ٪: هل ستستمر هذه القوة ؟",
+        "summary": "Howard Hughes Holdings (HHH) was a big mover last session on higher-than-average trading volume. The latest trend in earnings estimate revisions might not help the stock continue moving higher in the near term.",
         "summary_ar": "",
-        "url": "https://www.barrons.com/articles/howard-hughes-stock-executive-buys-ackman-cc2ecb69?siteid=yhoof2&yptr=yahoo",
-        "publisher": "Barrons.com",
-        "published": "2026-09-25 15:24:00 UT",
-        "published_ts": 1790349840,
+        "url": "https://finance.yahoo.com/markets/stocks/articles/howard-hughes-holdings-hhh-moves-140500067.html",
+        "publisher": "Zacks",
+        "published": "2026-09-22 14:05:00 UT",
+        "published_ts": 1790085900,
         "sentiment": "pos",
         "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "f9fc6403e08c537b652499b2e5c375711028ecdb",
+        "id": "b4949c50899c61cf4699b20afc1d601db98ec4c7",
         "source": "yahoo",
         "impact": 4,
         "impact_ar": "تأثير 4/5",
         "sentiment_score": 4,
         "catalysts": [
           {
-            "key": "sec",
-            "ar": "إفصاح SEC",
-            "base_impact": 3
+            "key": "earnings",
+            "ar": "أرباح",
+            "base_impact": 4
           }
         ],
         "catalyst_keys": [
-          "sec"
+          "earnings"
         ],
         "catalyst_ar": [
-          "إفصاح SEC"
+          "أرباح"
         ],
-        "impact_reason_ar": "إفصاح SEC",
+        "impact_reason_ar": "أرباح",
         "officialish": false
       },
-      "news_title_ar": "ارتفاع أسهم هوارد هيوز بعد شراء المديرين التنفيذيين للأسهم بعد مشاركة أكمان",
-      "news_url": "https://www.barrons.com/articles/howard-hughes-stock-executive-buys-ackman-cc2ecb69?siteid=yhoof2&yptr=yahoo",
+      "news_title_ar": "شركة هوارد هيوز القابضة (HHH) ترتفع بنسبة 8.9 ٪: هل ستستمر هذه القوة ؟",
+      "news_url": "https://finance.yahoo.com/markets/stocks/articles/howard-hughes-holdings-hhh-moves-140500067.html",
       "catalyst_ar": [
-        "إفصاح SEC"
+        "أرباح"
       ],
-      "alert_ar": "زخم +5.6% · إفصاح SEC",
+      "alert_ar": "زخم +5.5% · أرباح",
       "tv_url": "https://www.tradingview.com/chart/?symbol=HHH"
-    },
-    {
-      "symbol": "PLNT",
-      "name": "Planet Fitness, Inc.",
-      "last": 42.85,
-      "change_pct": 5.24,
-      "dollar_volume": 75579515.6,
-      "dollar_volume_label": "75.6M$",
-      "rvol": null,
-      "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": false,
-      "news": null,
-      "news_title_ar": "",
-      "news_url": "",
-      "catalyst_ar": [],
-      "alert_ar": "زخم +5.2% · لا خبر رسمي مرفق بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=PLNT"
     },
     {
       "symbol": "AMBA",
       "name": "Ambarella, Inc.",
-      "last": 73.5,
-      "change_pct": 5.21,
-      "dollar_volume": 87854917.5,
-      "dollar_volume_label": "87.9M$",
+      "last": 73.64,
+      "change_pct": 5.41,
+      "dollar_volume": 88154517.64,
+      "dollar_volume_label": "88.2M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "has_news": true,
+      "news": {
+        "symbol": "AMBA",
+        "title": "Can LSCC's FPGA Portfolio Expansion With Mach-N2 Drive Growth?",
+        "title_ar": "هل يمكن توسيع محفظة FPGA الخاصة بشركة LSCC مع نمو Mach - N2 ؟",
+        "summary": "Lattice launches Mach-N2 FPGAs with up to 2x logic density, advanced connectivity and security for long-lifecycle infrastructure systems.",
+        "summary_ar": "",
+        "url": "https://finance.yahoo.com/technology/articles/lsccs-fpga-portfolio-expansion-mach-151400983.html",
+        "publisher": "Zacks",
+        "published": "2026-09-17 15:14:00 UT",
+        "published_ts": 1789658040,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "2d7a7f08c622ff0de6bffdf9a353fc819094ebb1",
+        "source": "yahoo",
+        "impact": 4,
+        "impact_ar": "تأثير 4/5",
+        "sentiment_score": 4,
+        "catalysts": [],
+        "catalyst_keys": [],
+        "catalyst_ar": [],
+        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+        "officialish": false
+      },
+      "news_title_ar": "هل يمكن توسيع محفظة FPGA الخاصة بشركة LSCC مع نمو Mach - N2 ؟",
+      "news_url": "https://finance.yahoo.com/technology/articles/lsccs-fpga-portfolio-expansion-mach-151400983.html",
+      "catalyst_ar": [],
+      "alert_ar": "زخم +5.4% · تحرك سعري قوي بدون محفز واضح بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=AMBA"
+    },
+    {
+      "symbol": "PLNT",
+      "name": "Planet Fitness, Inc.",
+      "last": 42.87,
+      "change_pct": 5.28,
+      "dollar_volume": 75980130.06,
+      "dollar_volume_label": "76.0M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -629,8 +651,8 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +5.2% · لا خبر رسمي مرفق بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=AMBA"
+      "alert_ar": "زخم +5.3% · لا خبر رسمي مرفق بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=PLNT"
     }
   ],
   "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
@@ -638,9 +660,9 @@
     {
       "symbol": "EVTL",
       "name": "Vertical Aerospace Ltd.",
-      "last": 0.7545,
-      "change_pct": 11.45,
-      "dollar_volume": 6489526.93,
+      "last": 0.7547,
+      "change_pct": 11.48,
+      "dollar_volume": 6492946.74,
       "dollar_volume_label": "6.5M$",
       "has_news": false,
       "impact": 3,
@@ -651,7 +673,7 @@
       "news_url": "https://www.tradingview.com/chart/?symbol=EVTL",
       "alert_ar": "قنص سنتات — طرح تلقائي",
       "reason_ar": "زخم سعري ضمن نطاق القنص — راقب الخبر/النشاط",
-      "score": 69.22,
+      "score": 69.4,
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=EVTL",
       "tier": "sniper",
@@ -661,13 +683,13 @@
       "auto": true,
       "source_style": "hessa_cents_auto",
       "sticky": false,
-      "entry": 0.7545,
+      "entry": 0.7547,
       "stop": 0.6955,
-      "tp1": 0.8677,
+      "tp1": 0.8679,
       "tp2": 1.02,
       "support": 0.699,
       "resistance": 0.797,
-      "plan_ar": "دخول $0.7545 · وقف $0.6955 · جني1 $0.8677 · جني2 $1.02",
+      "plan_ar": "دخول $0.7547 · وقف $0.6955 · جني1 $0.8679 · جني2 $1.02",
       "levels_ar": "دعم $0.699 · مقاومة $0.797",
       "auto_plan": true,
       "style": "hessa_cents",
@@ -676,16 +698,16 @@
       "appeared_local": "2026-09-25 18:22 +03",
       "appeared_ny": "11:22 EDT",
       "appeared_clock_ar": "18:22",
-      "appeared_ago_ar": "منذ 3س 1د",
-      "appeared_ar": "ظهر منذ 3س 1د · 18:22"
+      "appeared_ago_ar": "منذ 3س 3د",
+      "appeared_ar": "ظهر منذ 3س 3د · 18:22"
     },
     {
       "symbol": "SRFM",
       "name": "Surf Air Mobility Inc.",
-      "last": 1.1,
-      "change_pct": 19.27,
-      "dollar_volume": 16020946.7,
-      "dollar_volume_label": "16.0M$",
+      "last": 1.11,
+      "change_pct": 19.85,
+      "dollar_volume": 16171796.46,
+      "dollar_volume_label": "16.2M$",
       "has_news": false,
       "impact": 3,
       "impact_ar": "تأثير 3/5",
@@ -695,7 +717,7 @@
       "news_url": "https://www.tradingview.com/chart/?symbol=SRFM",
       "alert_ar": "صاروخ سنتات — راقب الخبر",
       "reason_ar": "زخم سنتات قوي — راقب الخبر/النشاط",
-      "score": 86.43,
+      "score": 89.03,
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SRFM",
       "tier": "sniper",
@@ -705,13 +727,13 @@
       "auto": true,
       "source_style": "hessa_cents_auto",
       "sticky": false,
-      "entry": 1.1,
-      "stop": 0.968,
-      "tp1": 1.26,
-      "tp2": 1.49,
+      "entry": 1.11,
+      "stop": 0.9768,
+      "tp1": 1.28,
+      "tp2": 1.5,
       "support": 0.944,
       "resistance": 1.14,
-      "plan_ar": "دخول $1.1 · وقف $0.968 · جني1 $1.26 · جني2 $1.49",
+      "plan_ar": "دخول $1.11 · وقف $0.9768 · جني1 $1.28 · جني2 $1.5",
       "levels_ar": "دعم $0.944 · مقاومة $1.14",
       "auto_plan": true,
       "style": "hessa_cents",
@@ -720,15 +742,15 @@
       "appeared_local": "2026-09-25 16:43 +03",
       "appeared_ny": "09:43 EDT",
       "appeared_clock_ar": "16:43",
-      "appeared_ago_ar": "منذ 4س 39د",
-      "appeared_ar": "ظهر منذ 4س 39د · 16:43"
+      "appeared_ago_ar": "منذ 4س 41د",
+      "appeared_ar": "ظهر منذ 4س 41د · 16:43"
     },
     {
       "symbol": "STEM",
       "name": "Stem, Inc.",
       "last": 4.43,
-      "change_pct": 13.74,
-      "dollar_volume": 2098251.78,
+      "change_pct": 13.72,
+      "dollar_volume": 2098397.97,
       "dollar_volume_label": "2.1M$",
       "has_news": false,
       "impact": 3,
@@ -739,7 +761,7 @@
       "news_url": "https://www.tradingview.com/chart/?symbol=STEM",
       "alert_ar": "قنص تحت $5 — طرح تلقائي",
       "reason_ar": "زخم سعري ضمن نطاق القنص — راقب الخبر/النشاط",
-      "score": 52.38,
+      "score": 52.3,
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=STEM",
       "tier": "sniper",
@@ -764,8 +786,8 @@
       "appeared_local": "2026-09-25 16:32 +03",
       "appeared_ny": "09:32 EDT",
       "appeared_clock_ar": "16:32",
-      "appeared_ago_ar": "منذ 4س 50د",
-      "appeared_ar": "ظهر منذ 4س 50د · 16:32"
+      "appeared_ago_ar": "منذ 4س 52د",
+      "appeared_ar": "ظهر منذ 4س 52د · 16:32"
     }
   ],
   "sniper_note_ar": "ماسح القنص مستقل عن ≥$51 و$5–$51 — تحت $5 فقط · الأسهم الظاهرة تثبت ~30 د حتى لا تختفي وترجع فجأة",
@@ -787,12 +809,12 @@
     {
       "symbol": "ALM",
       "name": "Almonty Industries Inc.",
-      "last": 14.04,
-      "change_pct": 13.23,
+      "last": 14.02,
+      "change_pct": 13.1,
       "ref": 12.4,
-      "rth_close": 14.04,
-      "volume": 7322135.0,
-      "dollar_volume": 102802775.4,
+      "rth_close": 14.03,
+      "volume": 7330067.0,
+      "dollar_volume": 102767539.34,
       "dollar_volume_label": "102.8M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
@@ -805,8 +827,8 @@
       "change_pct": 11.88,
       "ref": 35.93,
       "rth_close": 40.2,
-      "volume": 1769934.0,
-      "dollar_volume": 71151346.8,
+      "volume": 1770428.0,
+      "dollar_volume": 71171205.6,
       "dollar_volume_label": "71.2M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
@@ -815,13 +837,13 @@
     {
       "symbol": "MXL",
       "name": "MaxLinear, Inc",
-      "last": 94.16,
-      "change_pct": 10.37,
+      "last": 94.21,
+      "change_pct": 10.43,
       "ref": 85.31,
-      "rth_close": 94.16,
-      "volume": 3065476.0,
-      "dollar_volume": 288645220.16,
-      "dollar_volume_label": "288.6M$",
+      "rth_close": 94.2,
+      "volume": 3067612.0,
+      "dollar_volume": 288999726.52,
+      "dollar_volume_label": "289.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=MXL"
@@ -829,13 +851,13 @@
     {
       "symbol": "FLY",
       "name": "Firefly Aerospace Inc.",
-      "last": 25.11,
-      "change_pct": 8.75,
+      "last": 25.12,
+      "change_pct": 8.79,
       "ref": 23.09,
-      "rth_close": 25.11,
-      "volume": 3295111.0,
-      "dollar_volume": 82740237.21,
-      "dollar_volume_label": "82.7M$",
+      "rth_close": 25.12,
+      "volume": 3297038.0,
+      "dollar_volume": 82821594.56,
+      "dollar_volume_label": "82.8M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=FLY"
@@ -843,12 +865,12 @@
     {
       "symbol": "BE",
       "name": "Bloom Energy Corporation",
-      "last": 289.39,
-      "change_pct": 8.53,
+      "last": 289.46,
+      "change_pct": 8.55,
       "ref": 266.65,
-      "rth_close": 289.39,
-      "volume": 13349042.0,
-      "dollar_volume": 3863079264.38,
+      "rth_close": 289.46,
+      "volume": 13356389.0,
+      "dollar_volume": 3866140359.94,
       "dollar_volume_label": "3.9B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
@@ -857,12 +879,12 @@
     {
       "symbol": "CRDO",
       "name": "Credo Technology Group Holding ",
-      "last": 212.42,
-      "change_pct": 8.4,
+      "last": 212.67,
+      "change_pct": 8.52,
       "ref": 195.97,
-      "rth_close": 212.42,
-      "volume": 8628215.0,
-      "dollar_volume": 1832805430.3,
+      "rth_close": 212.67,
+      "volume": 8641436.0,
+      "dollar_volume": 1837774194.12,
       "dollar_volume_label": "1.8B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
@@ -875,8 +897,8 @@
       "change_pct": 6.27,
       "ref": 96.82,
       "rth_close": 102.89,
-      "volume": 290843.0,
-      "dollar_volume": 29924836.27,
+      "volume": 290870.0,
+      "dollar_volume": 29927614.3,
       "dollar_volume_label": "29.9M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
@@ -885,13 +907,13 @@
     {
       "symbol": "PRGO",
       "name": "Perrigo Company plc",
-      "last": 15.58,
-      "change_pct": 6.13,
+      "last": 15.6,
+      "change_pct": 6.23,
       "ref": 14.68,
-      "rth_close": 15.58,
-      "volume": 2268864.0,
-      "dollar_volume": 35348901.12,
-      "dollar_volume_label": "35.3M$",
+      "rth_close": 15.6,
+      "volume": 2272092.0,
+      "dollar_volume": 35444635.2,
+      "dollar_volume_label": "35.4M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PRGO"
@@ -899,13 +921,13 @@
     {
       "symbol": "CDNA",
       "name": "CareDx, Inc.",
-      "last": 64.82,
-      "change_pct": 5.62,
+      "last": 64.96,
+      "change_pct": 5.85,
       "ref": 61.37,
-      "rth_close": 64.82,
-      "volume": 1421244.0,
-      "dollar_volume": 92125036.08,
-      "dollar_volume_label": "92.1M$",
+      "rth_close": 64.96,
+      "volume": 1424424.0,
+      "dollar_volume": 92530583.04,
+      "dollar_volume_label": "92.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CDNA"
@@ -913,44 +935,72 @@
     {
       "symbol": "HHH",
       "name": "Howard Hughes Holdings Inc.",
-      "last": 68.18,
-      "change_pct": 5.57,
+      "last": 68.14,
+      "change_pct": 5.52,
       "ref": 64.58,
-      "rth_close": 68.18,
-      "volume": 633436.0,
-      "dollar_volume": 43187666.48,
+      "rth_close": 68.14,
+      "volume": 634539.0,
+      "dollar_volume": 43237487.46,
       "dollar_volume_label": "43.2M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=HHH"
     },
     {
+      "symbol": "AMBA",
+      "name": "Ambarella, Inc.",
+      "last": 73.64,
+      "change_pct": 5.41,
+      "ref": 69.86,
+      "rth_close": 73.64,
+      "volume": 1197101.0,
+      "dollar_volume": 88154517.64,
+      "dollar_volume_label": "88.2M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=AMBA"
+    },
+    {
       "symbol": "PLNT",
       "name": "Planet Fitness, Inc.",
-      "last": 42.85,
-      "change_pct": 5.24,
+      "last": 42.87,
+      "change_pct": 5.28,
       "ref": 40.72,
-      "rth_close": 42.85,
-      "volume": 1763816.0,
-      "dollar_volume": 75579515.6,
-      "dollar_volume_label": "75.6M$",
+      "rth_close": 42.87,
+      "volume": 1772338.0,
+      "dollar_volume": 75980130.06,
+      "dollar_volume_label": "76.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PLNT"
     },
     {
-      "symbol": "AMBA",
-      "name": "Ambarella, Inc.",
-      "last": 73.5,
-      "change_pct": 5.21,
-      "ref": 69.86,
-      "rth_close": 73.5,
-      "volume": 1195305.0,
-      "dollar_volume": 87854917.5,
-      "dollar_volume_label": "87.9M$",
+      "symbol": "QCOM",
+      "name": "QUALCOMM Incorporated",
+      "last": 204.45,
+      "change_pct": 5.25,
+      "ref": 194.26,
+      "rth_close": 204.49,
+      "volume": 11018775.0,
+      "dollar_volume": 2252788548.75,
+      "dollar_volume_label": "2.3B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=AMBA"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=QCOM"
+    },
+    {
+      "symbol": "ACLS",
+      "name": "Axcelis Technologies, Inc.",
+      "last": 122.06,
+      "change_pct": 5.1,
+      "ref": 116.14,
+      "rth_close": 122.06,
+      "volume": 192318.0,
+      "dollar_volume": 23474335.08,
+      "dollar_volume_label": "23.5M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=ACLS"
     },
     {
       "symbol": "GNRC",
@@ -959,40 +1009,26 @@
       "change_pct": 5.03,
       "ref": 198.05,
       "rth_close": 208.01,
-      "volume": 717738.0,
-      "dollar_volume": 149296681.38,
-      "dollar_volume_label": "149.3M$",
+      "volume": 718979.0,
+      "dollar_volume": 149554821.79,
+      "dollar_volume_label": "149.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=GNRC"
     },
     {
-      "symbol": "MHK",
-      "name": "Mohawk Industries, Inc.",
-      "last": 125.48,
-      "change_pct": 5.03,
-      "ref": 119.47,
-      "rth_close": 125.48,
-      "volume": 553398.0,
-      "dollar_volume": 69440381.04,
-      "dollar_volume_label": "69.4M$",
+      "symbol": "HRI",
+      "name": "Herc Holdings Inc.",
+      "last": 137.42,
+      "change_pct": 4.95,
+      "ref": 130.94,
+      "rth_close": 137.42,
+      "volume": 229415.0,
+      "dollar_volume": 31526209.3,
+      "dollar_volume_label": "31.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=MHK"
-    },
-    {
-      "symbol": "AEHR",
-      "name": "Aehr Test Systems",
-      "last": 102.29,
-      "change_pct": 4.99,
-      "ref": 97.42,
-      "rth_close": 102.28,
-      "volume": 1699646.0,
-      "dollar_volume": 173856789.34,
-      "dollar_volume_label": "173.9M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=AEHR"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=HRI"
     }
   ],
   "gainers_min_price": 5.0,
@@ -1000,9 +1036,9 @@
   "movers": [
     {
       "symbol": "MSFT",
-      "change_pct": 4.19,
-      "last": 518.77,
-      "rvol": 1.29,
+      "change_pct": 4.13,
+      "last": 518.47,
+      "rvol": 1.3,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "14.3B$"
@@ -1010,16 +1046,16 @@
     {
       "symbol": "META",
       "change_pct": -3.39,
-      "last": 751.23,
+      "last": 751.24,
       "rvol": 0.79,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "13.3B$"
+      "dollar_volume_label": "13.4B$"
     },
     {
       "symbol": "AAPL",
-      "change_pct": 1.18,
-      "last": 339.88,
+      "change_pct": 1.24,
+      "last": 340.1,
       "rvol": 0.34,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -1027,8 +1063,8 @@
     },
     {
       "symbol": "TSLA",
-      "change_pct": -1.1,
-      "last": 373.77,
+      "change_pct": -1.21,
+      "last": 373.38,
       "rvol": 0.91,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -1036,17 +1072,17 @@
     },
     {
       "symbol": "XOM",
-      "change_pct": -1.06,
-      "last": 160.43,
+      "change_pct": -1.04,
+      "last": 160.45,
       "rvol": 0.36,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "829.1M$"
+      "dollar_volume_label": "830.1M$"
     },
     {
       "symbol": "JPM",
-      "change_pct": 0.82,
-      "last": 341.32,
+      "change_pct": 0.87,
+      "last": 341.52,
       "rvol": 0.48,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -1054,8 +1090,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -0.63,
-      "last": 191.38,
+      "change_pct": -0.57,
+      "last": 191.5,
       "rvol": 0.4,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -1502,62 +1538,6 @@
       "officialish": false
     },
     {
-      "symbol": "MXL",
-      "title": "MXL's AI Optical Growth Accelerates: Can It Challenge AVGO & MRVL?",
-      "title_ar": "تسارع النمو البصري للذكاء الاصطناعي من MXL: هل يمكن أن يتحدى AVGO و MRVL ؟",
-      "summary": "MaxLinear's Keystone ramp, rising 800G demand and next-generation 1.6T pipeline strengthens its AI optical push against larger rivals.",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/technology/ai/articles/mxls-ai-optical-growth-accelerates-171600411.html",
-      "publisher": "Zacks",
-      "published": "2026-08-26 17:16:00 UT",
-      "published_ts": 1787764560,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "93d30b60091bbf6bed728f5c3edc2a4ff22dd5e7",
-      "source": "yahoo",
-      "impact": 5,
-      "impact_ar": "تأثير 5/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
-      "symbol": "HHH",
-      "title": "Howard Hughes Stock Rises After Executives Buy Shares Following Ackman Post",
-      "title_ar": "ارتفاع أسهم هوارد هيوز بعد شراء المديرين التنفيذيين للأسهم بعد مشاركة أكمان",
-      "summary": "Howard Hughes executives Marc Grandisson and Andrew Davis bought shares Wednesday, according to SEC filings.",
-      "summary_ar": "",
-      "url": "https://www.barrons.com/articles/howard-hughes-stock-executive-buys-ackman-cc2ecb69?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "published": "2026-09-25 15:24:00 UT",
-      "published_ts": 1790349840,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "f9fc6403e08c537b652499b2e5c375711028ecdb",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "sec",
-          "ar": "إفصاح SEC",
-          "base_impact": 3
-        }
-      ],
-      "catalyst_keys": [
-        "sec"
-      ],
-      "catalyst_ar": [
-        "إفصاح SEC"
-      ],
-      "impact_reason_ar": "إفصاح SEC",
-      "officialish": false
-    },
-    {
       "symbol": "PRGO",
       "title": "Perrigo (PRGO) Moves 6.1% Higher: Will This Strength Last?",
       "title_ar": "Perrigo (PRGO) يتحرك بنسبة 6.1 ٪ أعلى: هل ستستمر هذه القوة ؟",
@@ -1680,6 +1660,52 @@
       "officialish": false
     },
     {
+      "symbol": "HHH",
+      "title": "2 Growth Stocks with All-Star Potential and 1 We Avoid",
+      "title_ar": "2 أسهم نمو مع إمكانات كل النجوم و 1 نتجنبها",
+      "summary": "Growth is oxygen. But when it evaporates, the consequences can be severe - ask anyone who bought Cisco in the Dot-Com Bubble or newer investors who lived through the 2020 to 2022 COVID cycle.",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/2-growth-stocks-star-potential-144625514.html",
+      "publisher": "StockStory",
+      "published": "2026-09-21 14:46:25 UT",
+      "published_ts": 1790001985,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "23357107fb649f0b8cf2118b978b37646e3e7496",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
+      "symbol": "AMBA",
+      "title": "Can LSCC's FPGA Portfolio Expansion With Mach-N2 Drive Growth?",
+      "title_ar": "هل يمكن توسيع محفظة FPGA الخاصة بشركة LSCC مع نمو Mach - N2 ؟",
+      "summary": "Lattice launches Mach-N2 FPGAs with up to 2x logic density, advanced connectivity and security for long-lifecycle infrastructure systems.",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/technology/articles/lsccs-fpga-portfolio-expansion-mach-151400983.html",
+      "publisher": "Zacks",
+      "published": "2026-09-17 15:14:00 UT",
+      "published_ts": 1789658040,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "2d7a7f08c622ff0de6bffdf9a353fc819094ebb1",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
       "symbol": "CDNA",
       "title": "4 Healthcare Stocks to Play Safe as Fed Gears Up for Rate Hike",
       "title_ar": "4 أسهم للرعاية الصحية للعب بأمان بينما يستعد بنك الاحتياطي الفيدرالي لرفع أسعار الفائدة",
@@ -1733,7 +1759,6 @@
     "DELL",
     "HUM",
     "ON",
-    "QCOM",
     "QQQ",
     "SPY",
     "TSEM",
@@ -1746,6 +1771,6 @@
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
   "reminder": "تداول المحفز لا المطاردة — راجع المصدر قبل الدخول",
-  "heartbeat_ts": 1790360606,
+  "heartbeat_ts": 1790360707,
   "publisher": "github-actions-always-on"
 }
