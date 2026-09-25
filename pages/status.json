@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-25T13:52:04.066113+00:00",
-  "generated_ts": 1790344324,
-  "generated_local": "2026-09-25 16:52 +03",
+  "generated_at": "2026-09-25T13:53:36.060299+00:00",
+  "generated_ts": 1790344416,
+  "generated_local": "2026-09-25 16:53 +03",
   "status": {
     "ok": true,
     "last_mode": "dashboard",
-    "changed": true,
+    "changed": false,
     "symbols": 12,
-    "updated_at": "2026-09-25T13:52:04.065909+00:00",
+    "updated_at": "2026-09-25T13:53:36.060083+00:00",
     "source": "build_pages"
   },
   "telegram_enabled": false,
@@ -24,39 +24,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: مبتدئ",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": 0.25,
+    "avg_change_pct": 0.26,
     "details": {
       "SPY": {
-        "last": 769.78,
+        "last": 769.76,
         "change_pct": 0.34,
-        "rsi": 51.1
+        "rsi": 51.2
       },
       "QQQ": {
-        "last": 744.15,
-        "change_pct": 0.41,
-        "rsi": 66.3
+        "last": 744.53,
+        "change_pct": 0.46,
+        "rsi": 66.4
       },
       "IWM": {
-        "last": 281.7,
-        "change_pct": 0.0,
-        "rsi": 23.1
+        "last": 281.62,
+        "change_pct": -0.02,
+        "rsi": 23.0
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
         "change_pct": 0.34,
-        "rsi": 51.1
+        "rsi": 51.2
       },
       {
         "symbol": "QQQ",
-        "change_pct": 0.41,
-        "rsi": 66.3
+        "change_pct": 0.46,
+        "rsi": 66.4
       },
       {
         "symbol": "IWM",
-        "change_pct": 0.0,
-        "rsi": 23.1
+        "change_pct": -0.02,
+        "rsi": 23.0
       }
     ],
     "no_trade_today": false,
@@ -69,8 +69,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 22075,
-    "ny_time": "09:52:04",
+    "seconds_left": 21983,
+    "ny_time": "09:53:36",
     "open": "09:30",
     "close": "16:00"
   },
@@ -78,35 +78,35 @@
     "strongest": [
       {
         "name": "Financials",
-        "change_pct": 0.48
+        "change_pct": 0.44
       },
       {
         "name": "Technology",
-        "change_pct": 0.29
+        "change_pct": 0.37
       },
       {
-        "name": "Energy",
-        "change_pct": -0.74
+        "name": "Consumer",
+        "change_pct": -0.76
       }
     ],
     "weakest": [
       {
-        "name": "Consumer",
-        "change_pct": -0.85
+        "name": "Energy",
+        "change_pct": -0.99
       },
       {
-        "name": "Energy",
-        "change_pct": -0.74
+        "name": "Consumer",
+        "change_pct": -0.76
       },
       {
         "name": "Technology",
-        "change_pct": 0.29
+        "change_pct": 0.37
       }
     ]
   },
   "style": {
-    "growth_avg": -0.67,
-    "value_avg": 0.62,
+    "growth_avg": -0.57,
+    "value_avg": 0.6,
     "leader": "قيمة",
     "growth_count": 5,
     "value_count": 5
@@ -117,8 +117,8 @@
       "name": "People Incorporated",
       "last": 39.19,
       "change_pct": 9.07,
-      "dollar_volume": 8772799.07,
-      "dollar_volume_label": "8.8M$",
+      "dollar_volume": 9554561.19,
+      "dollar_volume_label": "9.6M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -156,10 +156,10 @@
     {
       "symbol": "DDOG",
       "name": "Datadog, Inc.",
-      "last": 277.62,
-      "change_pct": 8.06,
-      "dollar_volume": 301936735.8,
-      "dollar_volume_label": "301.9M$",
+      "last": 278.53,
+      "change_pct": 8.41,
+      "dollar_volume": 326895620.38,
+      "dollar_volume_label": "326.9M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -191,16 +191,57 @@
       "news_title_ar": "سوق الأسهم اليوم: مؤشر داو جونز يرتفع على آمال السلام بين الولايات المتحدة وإيران ؛ ميكرون، ارتفاع سانديسك، لكن أسهم ميتا تنخفض (تغطية حية)",
       "news_url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-peace-hopes-micron-sandisk/?src=A00220&yptr=yahoo",
       "catalyst_ar": [],
-      "alert_ar": "زخم +8.1% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +8.4% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=DDOG"
+    },
+    {
+      "symbol": "ALM",
+      "name": "Almonty Industries Inc.",
+      "last": 13.4,
+      "change_pct": 8.02,
+      "dollar_volume": 18020748.8,
+      "dollar_volume_label": "18.0M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "has_news": true,
+      "news": {
+        "symbol": "ALM",
+        "title": "Almonty Industries (ALM) Could Be 64% Undervalued After Its New Tungsten Offtake Deal",
+        "title_ar": "يمكن أن تكون شركة ألمونتي للصناعات (ALM) مقومة بأقل من قيمتها بنسبة 64 ٪ بعد صفقة التنغستن الجديدة",
+        "summary": "Almonty Industries (NasdaqCM:ALM) just signed a multi-year tungsten concentrate offtake deal with Wolfram Bergbau und Hütten AG, including a conditional US$3.0 million upfront payment and take-or-pay terms tied to restarting Spain’s Los Santos tailings retreatment. Almonty Indust",
+        "summary_ar": "",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/almonty-industries-alm-could-64-101453359.html",
+        "publisher": "Simply Wall St.",
+        "published": "2026-09-22 10:14:53 UT",
+        "published_ts": 1790072093,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "dc1afb9f73829be8e6795e0a4c9c560adb0e2b4c",
+        "source": "yahoo",
+        "impact": 5,
+        "impact_ar": "تأثير 5/5",
+        "sentiment_score": 4,
+        "catalysts": [],
+        "catalyst_keys": [],
+        "catalyst_ar": [],
+        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+        "officialish": false
+      },
+      "news_title_ar": "يمكن أن تكون شركة ألمونتي للصناعات (ALM) مقومة بأقل من قيمتها بنسبة 64 ٪ بعد صفقة التنغستن الجديدة",
+      "news_url": "https://finance.yahoo.com/markets/stocks/articles/almonty-industries-alm-could-64-101453359.html",
+      "catalyst_ar": [],
+      "alert_ar": "زخم +8.0% · تحرك سعري قوي بدون محفز واضح بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
     },
     {
       "symbol": "FLEX",
       "name": "Flex Ltd.",
-      "last": 117.29,
-      "change_pct": 4.35,
-      "dollar_volume": 24612837.34,
-      "dollar_volume_label": "24.6M$",
+      "last": 117.2,
+      "change_pct": 4.27,
+      "dollar_volume": 26649170.4,
+      "dollar_volume_label": "26.6M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -256,53 +297,12 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=FLEX"
     },
     {
-      "symbol": "ALM",
-      "name": "Almonty Industries Inc.",
-      "last": 13.33,
-      "change_pct": 7.5,
-      "dollar_volume": 17561821.78,
-      "dollar_volume_label": "17.6M$",
-      "rvol": null,
-      "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": true,
-      "news": {
-        "symbol": "ALM",
-        "title": "Almonty Industries (ALM) Could Be 64% Undervalued After Its New Tungsten Offtake Deal",
-        "title_ar": "يمكن أن تكون شركة ألمونتي للصناعات (ALM) مقومة بأقل من قيمتها بنسبة 64 ٪ بعد صفقة التنغستن الجديدة",
-        "summary": "Almonty Industries (NasdaqCM:ALM) just signed a multi-year tungsten concentrate offtake deal with Wolfram Bergbau und Hütten AG, including a conditional US$3.0 million upfront payment and take-or-pay terms tied to restarting Spain’s Los Santos tailings retreatment. Almonty Indust",
-        "summary_ar": "",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/almonty-industries-alm-could-64-101453359.html",
-        "publisher": "Simply Wall St.",
-        "published": "2026-09-22 10:14:53 UT",
-        "published_ts": 1790072093,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "dc1afb9f73829be8e6795e0a4c9c560adb0e2b4c",
-        "source": "yahoo",
-        "impact": 4,
-        "impact_ar": "تأثير 4/5",
-        "sentiment_score": 4,
-        "catalysts": [],
-        "catalyst_keys": [],
-        "catalyst_ar": [],
-        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-        "officialish": false
-      },
-      "news_title_ar": "يمكن أن تكون شركة ألمونتي للصناعات (ALM) مقومة بأقل من قيمتها بنسبة 64 ٪ بعد صفقة التنغستن الجديدة",
-      "news_url": "https://finance.yahoo.com/markets/stocks/articles/almonty-industries-alm-could-64-101453359.html",
-      "catalyst_ar": [],
-      "alert_ar": "زخم +7.5% · تحرك سعري قوي بدون محفز واضح بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
-    },
-    {
       "symbol": "SNX",
       "name": "TD SYNNEX Corporation",
-      "last": 277.12,
-      "change_pct": 6.8,
-      "dollar_volume": 52490130.56,
-      "dollar_volume_label": "52.5M$",
+      "last": 278.49,
+      "change_pct": 7.33,
+      "dollar_volume": 53777532.96,
+      "dollar_volume_label": "53.8M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -354,16 +354,16 @@
         "أرباح",
         "توجيهات"
       ],
-      "alert_ar": "زخم +6.8% · أرباح · توجيهات",
+      "alert_ar": "زخم +7.3% · أرباح · توجيهات",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SNX"
     },
     {
       "symbol": "JBL",
       "name": "Jabil Inc.",
-      "last": 327.68,
-      "change_pct": 5.44,
-      "dollar_volume": 43976294.4,
-      "dollar_volume_label": "44.0M$",
+      "last": 327.11,
+      "change_pct": 5.25,
+      "dollar_volume": 45333520.68,
+      "dollar_volume_label": "45.3M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -407,16 +407,69 @@
       "catalyst_ar": [
         "أرباح"
       ],
-      "alert_ar": "زخم +5.4% · أرباح",
+      "alert_ar": "زخم +5.2% · أرباح",
       "tv_url": "https://www.tradingview.com/chart/?symbol=JBL"
     },
     {
       "symbol": "LBRT",
       "name": "Liberty Energy Inc.",
-      "last": 19.14,
-      "change_pct": 4.93,
-      "dollar_volume": 8791365.66,
-      "dollar_volume_label": "8.8M$",
+      "last": 19.06,
+      "change_pct": 4.49,
+      "dollar_volume": 8878090.82,
+      "dollar_volume_label": "8.9M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "has_news": true,
+      "news": {
+        "symbol": "LBRT",
+        "title": "DWSN Stock Soars 89% Over the Past Year: Is There More Upside Ahead?",
+        "title_ar": "سهم DWSN يرتفع بنسبة 89 ٪ خلال العام الماضي: هل هناك المزيد من الاتجاه الصعودي للأمام ؟",
+        "summary": "Dawson Geophysical's 89% rally comes as revenue, profitability, project opportunities and seismic technology investments strengthen its outlook.",
+        "summary_ar": "",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/dwsn-stock-soars-89-over-131500568.html",
+        "publisher": "Zacks",
+        "published": "2026-09-18 13:15:00 UT",
+        "published_ts": 1789737300,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "5b5a289ddbd4b7d01e17653fc04e25d16b75f941",
+        "source": "yahoo",
+        "impact": 4,
+        "impact_ar": "تأثير 4/5",
+        "sentiment_score": 4,
+        "catalysts": [
+          {
+            "key": "guidance",
+            "ar": "توجيهات",
+            "base_impact": 4
+          }
+        ],
+        "catalyst_keys": [
+          "guidance"
+        ],
+        "catalyst_ar": [
+          "توجيهات"
+        ],
+        "impact_reason_ar": "توجيهات",
+        "officialish": false
+      },
+      "news_title_ar": "سهم DWSN يرتفع بنسبة 89 ٪ خلال العام الماضي: هل هناك المزيد من الاتجاه الصعودي للأمام ؟",
+      "news_url": "https://finance.yahoo.com/markets/stocks/articles/dwsn-stock-soars-89-over-131500568.html",
+      "catalyst_ar": [
+        "توجيهات"
+      ],
+      "alert_ar": "زخم +4.5% · توجيهات",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=LBRT"
+    },
+    {
+      "symbol": "MXL",
+      "name": "MaxLinear, Inc",
+      "last": 88.85,
+      "change_pct": 4.15,
+      "dollar_volume": 34408228.7,
+      "dollar_volume_label": "34.4M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -426,8 +479,8 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +4.9% · لا خبر رسمي مرفق بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=LBRT"
+      "alert_ar": "زخم +4.2% · لا خبر رسمي مرفق بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=MXL"
     }
   ],
   "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
@@ -435,10 +488,10 @@
     {
       "symbol": "SRFM",
       "name": "Surf Air Mobility Inc.",
-      "last": 1.03,
-      "change_pct": 12.22,
-      "dollar_volume": 2620783.5,
-      "dollar_volume_label": "2.6M$",
+      "last": 1.04,
+      "change_pct": 12.8,
+      "dollar_volume": 2760938.96,
+      "dollar_volume_label": "2.8M$",
       "has_news": false,
       "impact": 3,
       "impact_ar": "تأثير 3/5",
@@ -448,7 +501,7 @@
       "news_url": "https://www.tradingview.com/chart/?symbol=SRFM",
       "alert_ar": "قنص — زخم قوي",
       "reason_ar": "زخم سعري قوي بدون خبر رسمي مرفق بعد",
-      "score": 45.47,
+      "score": 47.82,
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SRFM",
       "tier": "sniper",
@@ -458,16 +511,16 @@
       "appeared_local": "2026-09-25 16:43 +03",
       "appeared_ny": "09:43 EDT",
       "appeared_clock_ar": "16:43",
-      "appeared_ago_ar": "منذ 8 دقيقة",
-      "appeared_ar": "ظهر منذ 8 دقيقة · 16:43"
+      "appeared_ago_ar": "منذ 10 دقيقة",
+      "appeared_ar": "ظهر منذ 10 دقيقة · 16:43"
     },
     {
       "symbol": "STEM",
       "name": "Stem, Inc.",
       "last": 4.33,
-      "change_pct": 10.95,
-      "dollar_volume": 636713.51,
-      "dollar_volume_label": "637K$",
+      "change_pct": 11.03,
+      "dollar_volume": 644390.6,
+      "dollar_volume_label": "644K$",
       "has_news": false,
       "impact": 3,
       "impact_ar": "تأثير 3/5",
@@ -477,7 +530,7 @@
       "news_url": "https://www.tradingview.com/chart/?symbol=STEM",
       "alert_ar": "قنص — زخم قوي",
       "reason_ar": "زخم سعري قوي بدون خبر رسمي مرفق بعد",
-      "score": 33.48,
+      "score": 33.73,
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=STEM",
       "tier": "sniper",
@@ -487,8 +540,8 @@
       "appeared_local": "2026-09-25 16:32 +03",
       "appeared_ny": "09:32 EDT",
       "appeared_clock_ar": "16:32",
-      "appeared_ago_ar": "منذ 19 دقيقة",
-      "appeared_ar": "ظهر منذ 19 دقيقة · 16:32"
+      "appeared_ago_ar": "منذ 20 دقيقة",
+      "appeared_ar": "ظهر منذ 20 دقيقة · 16:32"
     }
   ],
   "sniper_note_ar": "ماسح القنص: أسهم رخيصة ($0.30–$8) + زخم قوي (≥5–8%) + خبر/محفز مفضّل — أسلوب قنص السنتات، منفصل عن اللوحة المحافظة",
@@ -510,9 +563,9 @@
       "change_pct": 9.07,
       "ref": 35.93,
       "rth_close": 39.19,
-      "volume": 223853.0,
-      "dollar_volume": 8772799.07,
-      "dollar_volume_label": "8.8M$",
+      "volume": 243801.0,
+      "dollar_volume": 9554561.19,
+      "dollar_volume_label": "9.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PPLI"
@@ -520,13 +573,13 @@
     {
       "symbol": "DDOG",
       "name": "Datadog, Inc.",
-      "last": 277.62,
-      "change_pct": 8.06,
+      "last": 278.53,
+      "change_pct": 8.41,
       "ref": 256.92,
-      "rth_close": 277.61,
-      "volume": 1087590.0,
-      "dollar_volume": 301936735.8,
-      "dollar_volume_label": "301.9M$",
+      "rth_close": 278.53,
+      "volume": 1173646.0,
+      "dollar_volume": 326895620.38,
+      "dollar_volume_label": "326.9M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=DDOG"
@@ -534,13 +587,13 @@
     {
       "symbol": "ALM",
       "name": "Almonty Industries Inc.",
-      "last": 13.33,
-      "change_pct": 7.5,
+      "last": 13.4,
+      "change_pct": 8.02,
       "ref": 12.4,
-      "rth_close": 13.33,
-      "volume": 1317466.0,
-      "dollar_volume": 17561821.78,
-      "dollar_volume_label": "17.6M$",
+      "rth_close": 13.39,
+      "volume": 1344832.0,
+      "dollar_volume": 18020748.8,
+      "dollar_volume_label": "18.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
@@ -548,13 +601,13 @@
     {
       "symbol": "SNX",
       "name": "TD SYNNEX Corporation",
-      "last": 277.12,
-      "change_pct": 6.8,
+      "last": 278.49,
+      "change_pct": 7.33,
       "ref": 259.47,
-      "rth_close": 277.12,
-      "volume": 189413.0,
-      "dollar_volume": 52490130.56,
-      "dollar_volume_label": "52.5M$",
+      "rth_close": 278.49,
+      "volume": 193104.0,
+      "dollar_volume": 53777532.96,
+      "dollar_volume_label": "53.8M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SNX"
@@ -562,13 +615,13 @@
     {
       "symbol": "JBL",
       "name": "Jabil Inc.",
-      "last": 327.68,
-      "change_pct": 5.44,
+      "last": 327.11,
+      "change_pct": 5.25,
       "ref": 310.79,
-      "rth_close": 327.69,
-      "volume": 134205.0,
-      "dollar_volume": 43976294.4,
-      "dollar_volume_label": "44.0M$",
+      "rth_close": 327.11,
+      "volume": 138588.0,
+      "dollar_volume": 45333520.68,
+      "dollar_volume_label": "45.3M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=JBL"
@@ -576,13 +629,13 @@
     {
       "symbol": "LBRT",
       "name": "Liberty Energy Inc.",
-      "last": 19.14,
-      "change_pct": 4.93,
+      "last": 19.06,
+      "change_pct": 4.49,
       "ref": 18.24,
-      "rth_close": 19.14,
-      "volume": 459319.0,
-      "dollar_volume": 8791365.66,
-      "dollar_volume_label": "8.8M$",
+      "rth_close": 19.06,
+      "volume": 465797.0,
+      "dollar_volume": 8878090.82,
+      "dollar_volume_label": "8.9M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=LBRT"
@@ -590,97 +643,83 @@
     {
       "symbol": "FLEX",
       "name": "Flex Ltd.",
-      "last": 117.29,
-      "change_pct": 4.35,
+      "last": 117.2,
+      "change_pct": 4.27,
       "ref": 112.4,
-      "rth_close": 117.38,
-      "volume": 209846.0,
-      "dollar_volume": 24612837.34,
-      "dollar_volume_label": "24.6M$",
+      "rth_close": 117.2,
+      "volume": 227382.0,
+      "dollar_volume": 26649170.4,
+      "dollar_volume_label": "26.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=FLEX"
     },
     {
-      "symbol": "WTTR",
-      "name": "Select Water Solutions, Inc.",
-      "last": 20.27,
-      "change_pct": 3.81,
-      "ref": 19.53,
-      "rth_close": 20.27,
-      "volume": 560867.0,
-      "dollar_volume": 11368774.09,
-      "dollar_volume_label": "11.4M$",
+      "symbol": "MXL",
+      "name": "MaxLinear, Inc",
+      "last": 88.85,
+      "change_pct": 4.15,
+      "ref": 85.31,
+      "rth_close": 88.85,
+      "volume": 387262.0,
+      "dollar_volume": 34408228.7,
+      "dollar_volume_label": "34.4M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=WTTR"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=MXL"
     },
     {
       "symbol": "FLY",
       "name": "Firefly Aerospace Inc.",
-      "last": 23.94,
-      "change_pct": 3.68,
+      "last": 23.95,
+      "change_pct": 3.72,
       "ref": 23.09,
-      "rth_close": 23.94,
-      "volume": 430242.0,
-      "dollar_volume": 10299993.48,
-      "dollar_volume_label": "10.3M$",
+      "rth_close": 23.95,
+      "volume": 439514.0,
+      "dollar_volume": 10526360.3,
+      "dollar_volume_label": "10.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=FLY"
     },
     {
+      "symbol": "WTTR",
+      "name": "Select Water Solutions, Inc.",
+      "last": 20.2,
+      "change_pct": 3.46,
+      "ref": 19.53,
+      "rth_close": 20.2,
+      "volume": 575855.0,
+      "dollar_volume": 11632271.0,
+      "dollar_volume_label": "11.6M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=WTTR"
+    },
+    {
       "symbol": "SMCI",
       "name": "Super Micro Computer, Inc.",
-      "last": 42.84,
-      "change_pct": 3.2,
+      "last": 42.78,
+      "change_pct": 3.06,
       "ref": 41.51,
-      "rth_close": 42.84,
-      "volume": 8458911.0,
-      "dollar_volume": 362379747.24,
-      "dollar_volume_label": "362.4M$",
+      "rth_close": 42.78,
+      "volume": 8910248.0,
+      "dollar_volume": 381180409.44,
+      "dollar_volume_label": "381.2M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SMCI"
     },
     {
-      "symbol": "SNOW",
-      "name": "Snowflake Inc.",
-      "last": 344.3,
-      "change_pct": 3.08,
-      "ref": 334.0,
-      "rth_close": 344.3,
-      "volume": 480429.0,
-      "dollar_volume": 165411704.7,
-      "dollar_volume_label": "165.4M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SNOW"
-    },
-    {
-      "symbol": "CRDO",
-      "name": "Credo Technology Group Holding ",
-      "last": 200.54,
-      "change_pct": 2.33,
-      "ref": 195.97,
-      "rth_close": 200.53,
-      "volume": 1905727.0,
-      "dollar_volume": 382174492.58,
-      "dollar_volume_label": "382.2M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=CRDO"
-    },
-    {
       "symbol": "NOK",
       "name": "Nokia Corporation Sponsored",
       "last": 10.48,
-      "change_pct": 0.53,
+      "change_pct": 0.43,
       "ref": 10.43,
-      "rth_close": 10.48,
-      "volume": 7095316.0,
-      "dollar_volume": 74358911.68,
-      "dollar_volume_label": "74.4M$",
+      "rth_close": 10.47,
+      "volume": 7291578.0,
+      "dollar_volume": 76415737.44,
+      "dollar_volume_label": "76.4M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=NOK"
@@ -691,57 +730,48 @@
   "movers": [
     {
       "symbol": "META",
-      "change_pct": -2.68,
-      "last": 756.78,
+      "change_pct": -2.61,
+      "last": 757.28,
       "rvol": 0.23,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "3.8B$"
+      "dollar_volume_label": "3.9B$"
     },
     {
       "symbol": "TSLA",
-      "change_pct": -1.51,
-      "last": 372.25,
-      "rvol": 0.29,
+      "change_pct": -1.33,
+      "last": 372.93,
+      "rvol": 0.3,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "4.1B$"
-    },
-    {
-      "symbol": "AMD",
-      "change_pct": 0.89,
-      "last": 634.89,
-      "rvol": 0.18,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "2.4B$"
+      "dollar_volume_label": "4.2B$"
     },
     {
       "symbol": "XOM",
-      "change_pct": -0.74,
-      "last": 160.94,
+      "change_pct": -0.99,
+      "last": 160.54,
       "rvol": 0.07,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "158.1M$"
+      "dollar_volume_label": "164.1M$"
     },
     {
       "symbol": "JPM",
-      "change_pct": 0.48,
-      "last": 340.02,
+      "change_pct": 0.44,
+      "last": 339.88,
       "rvol": 0.1,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "237.0M$"
+      "dollar_volume_label": "243.4M$"
     },
     {
       "symbol": "SPY",
       "change_pct": 0.34,
-      "last": 769.78,
+      "last": 769.76,
       "rvol": 0.08,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "2.6B$"
+      "dollar_volume_label": "2.7B$"
     }
   ],
   "news": [
@@ -944,6 +974,52 @@
       "officialish": false
     },
     {
+      "symbol": "ALM",
+      "title": "Almonty Industries (ALM) Could Be 64% Undervalued After Its New Tungsten Offtake Deal",
+      "title_ar": "يمكن أن تكون شركة ألمونتي للصناعات (ALM) مقومة بأقل من قيمتها بنسبة 64 ٪ بعد صفقة التنغستن الجديدة",
+      "summary": "Almonty Industries (NasdaqCM:ALM) just signed a multi-year tungsten concentrate offtake deal with Wolfram Bergbau und Hütten AG, including a conditional US$3.0 million upfront payment and take-or-pay terms tied to restarting Spain’s Los Santos tailings retreatment. Almonty Indust",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/almonty-industries-alm-could-64-101453359.html",
+      "publisher": "Simply Wall St.",
+      "published": "2026-09-22 10:14:53 UT",
+      "published_ts": 1790072093,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "dc1afb9f73829be8e6795e0a4c9c560adb0e2b4c",
+      "source": "yahoo",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
+      "symbol": "ALM",
+      "title": "Almonty and Sandvik’s WBH sign Spanish tungsten supply deal",
+      "title_ar": "ألمونتي وساندفيك دبليو بي إتش يوقعان صفقة توريد التنغستن الإسبانية",
+      "summary": "Under the terms of the deal, WBH will make a conditional one-time payment of $3m (€2.61m) for offtake rights to the tungsten material.",
+      "summary_ar": "",
+      "url": "https://www.mining-technology.com/news/almonty-sandviks-wbh-tungsten-supply-deal/",
+      "publisher": "Mining Technology",
+      "published": "2026-09-18 08:21:15 UT",
+      "published_ts": 1789719675,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "2edc1c9624f8553ef1a8cf0471284fa990f64d6d",
+      "source": "yahoo",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
       "symbol": "JBL",
       "title": "What Analyst Projections for Key Metrics Reveal About Jabil (JBL) Q4 Earnings",
       "title_ar": "ما الذي تكشفه توقعات المحللين للمقاييس الرئيسية عن أرباح جابيل (JBL) في الربع الرابع",
@@ -1106,39 +1182,6 @@
       "officialish": false
     },
     {
-      "symbol": "SNOW",
-      "title": "Could CrowdStrike (CRWD)’s Snowflake (SNOW) Partnership Unlock a New AI Growth Engine?",
-      "title_ar": "هل يمكن لشراكة ندفة الثلج من كراود سترايك (CRWD) إطلاق محرك نمو جديد للذكاء الاصطناعي ؟",
-      "summary": "On August 31, CrowdStrike Holdings, Inc. (NASDAQ:CRWD) announced a major collaboration with Snowflake Inc. (NYSE:SNOW) to bring its AI-native Falcon platform to the Snowflake Marketplace. Under the agreement, joint enterprise customers can apply pre-committed Snowflake capacity t",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/technology/ai/articles/could-crowdstrike-crwd-snowflake-snow-203651870.html",
-      "publisher": "Insider Monkey",
-      "published": "2026-09-24 20:36:51 UT",
-      "published_ts": 1790282211,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "8dccc6115cb7730b2b23468467350a0a91525084",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "partnership",
-          "ar": "شراكة/عقد",
-          "base_impact": 3
-        }
-      ],
-      "catalyst_keys": [
-        "partnership"
-      ],
-      "catalyst_ar": [
-        "شراكة/عقد"
-      ],
-      "impact_reason_ar": "شراكة/عقد",
-      "officialish": false
-    },
-    {
       "symbol": "JBL",
       "title": "Is Jabil Stock Outperforming the Dow?",
       "title_ar": "هل سهم جابل يتفوق على مؤشر داو جونز ؟",
@@ -1179,62 +1222,6 @@
       "officialish": false
     },
     {
-      "symbol": "ALM",
-      "title": "Almonty Industries (ALM) Could Be 64% Undervalued After Its New Tungsten Offtake Deal",
-      "title_ar": "يمكن أن تكون شركة ألمونتي للصناعات (ALM) مقومة بأقل من قيمتها بنسبة 64 ٪ بعد صفقة التنغستن الجديدة",
-      "summary": "Almonty Industries (NasdaqCM:ALM) just signed a multi-year tungsten concentrate offtake deal with Wolfram Bergbau und Hütten AG, including a conditional US$3.0 million upfront payment and take-or-pay terms tied to restarting Spain’s Los Santos tailings retreatment. Almonty Indust",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/almonty-industries-alm-could-64-101453359.html",
-      "publisher": "Simply Wall St.",
-      "published": "2026-09-22 10:14:53 UT",
-      "published_ts": 1790072093,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "dc1afb9f73829be8e6795e0a4c9c560adb0e2b4c",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
-      "symbol": "CRDO",
-      "title": "3 AI Infrastructure Stocks Investors Should Watch As Data Center Spending Builds",
-      "title_ar": "3 أسهم البنية التحتية للذكاء الاصطناعي يجب على المستثمرين مراقبتها بينما يتزايد إنفاق مركز البيانات",
-      "summary": "AI and data-center spending now sit at the crossroads of higher rates, fragile growth and jumpy energy markets, which is exactly where big shifts in market leadership are often born. Investors focused only on rate-sensitive sectors risk missing how capital keeps flowing toward th",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/technology/ai/articles/3-ai-infrastructure-stocks-investors-091849195.html",
-      "publisher": "Simply Wall St.",
-      "published": "2026-09-22 09:18:49 UT",
-      "published_ts": 1790068729,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "a10554f902690dec22be7b0d2273646d49a25277",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "earnings",
-          "ar": "أرباح",
-          "base_impact": 4
-        }
-      ],
-      "catalyst_keys": [
-        "earnings"
-      ],
-      "catalyst_ar": [
-        "أرباح"
-      ],
-      "impact_reason_ar": "أرباح",
-      "officialish": false
-    },
-    {
       "symbol": "FLEX",
       "title": "Why Atkore, Belden And Flex Stock Are Gaining Attention In AI Data Centers",
       "title_ar": "لماذا تحظى أسهم Atkore و Belden و Flex بالاهتمام في مراكز بيانات الذكاء الاصطناعي",
@@ -1265,6 +1252,95 @@
         "أرباح"
       ],
       "impact_reason_ar": "أرباح",
+      "officialish": false
+    },
+    {
+      "symbol": "LBRT",
+      "title": "DWSN Stock Soars 89% Over the Past Year: Is There More Upside Ahead?",
+      "title_ar": "سهم DWSN يرتفع بنسبة 89 ٪ خلال العام الماضي: هل هناك المزيد من الاتجاه الصعودي للأمام ؟",
+      "summary": "Dawson Geophysical's 89% rally comes as revenue, profitability, project opportunities and seismic technology investments strengthen its outlook.",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/dwsn-stock-soars-89-over-131500568.html",
+      "publisher": "Zacks",
+      "published": "2026-09-18 13:15:00 UT",
+      "published_ts": 1789737300,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "5b5a289ddbd4b7d01e17653fc04e25d16b75f941",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "guidance",
+          "ar": "توجيهات",
+          "base_impact": 4
+        }
+      ],
+      "catalyst_keys": [
+        "guidance"
+      ],
+      "catalyst_ar": [
+        "توجيهات"
+      ],
+      "impact_reason_ar": "توجيهات",
+      "officialish": false
+    },
+    {
+      "symbol": "LBRT",
+      "title": "Liberty Energy (LBRT) Stock Trades At A Premium Despite Its 80% Five Year Run",
+      "title_ar": "يتم تداول أسهم شركة ليبرتي إنرجي (LBRT) بعلاوة على الرغم من تشغيلها لمدة خمس سنوات بنسبة 80 ٪",
+      "summary": "Liberty Energy has delivered a strong multi year return, yet the recent pullback in the share price raises a straightforward question for you as an investor. Do the current earnings of Liberty Energy really support where the stock trades today, or has the market moved ahead of th",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/liberty-energy-lbrt-stock-trades-121251774.html",
+      "publisher": "Simply Wall St.",
+      "published": "2026-09-18 12:12:51 UT",
+      "published_ts": 1789733571,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "9988d099cac166e49fb121c396436ca1ad5ee499",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "earnings",
+          "ar": "أرباح",
+          "base_impact": 4
+        }
+      ],
+      "catalyst_keys": [
+        "earnings"
+      ],
+      "catalyst_ar": [
+        "أرباح"
+      ],
+      "impact_reason_ar": "أرباح",
+      "officialish": false
+    },
+    {
+      "symbol": "FLEX",
+      "title": "Where Does Flex (FLEX) Value Sit After Its AI Power Deal?",
+      "title_ar": "أين تقع قيمة Flex (FLEX) بعد صفقة الطاقة الخاصة بالذكاء الاصطناعي ؟",
+      "summary": "Flex Ltd. has been on a powerful multi year run, and with the stock now near recent highs, the real question for investors is whether today's valuation is still grounded in the cash the business can generate. Flex has delivered a very large 5 year share price gain of about 7x, wh",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/where-does-flex-flex-value-001725433.html",
+      "publisher": "Simply Wall St.",
+      "published": "2026-09-17 00:17:25 UT",
+      "published_ts": 1789604245,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "ff01e3f5a2d96500fcec929d3e6a14c7938b81c6",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
       "officialish": false
     },
     {
@@ -1337,29 +1413,6 @@
       "officialish": false
     },
     {
-      "symbol": "SNOW",
-      "title": "Palantir Stock Has a Growth Story Few Companies Can Match",
-      "title_ar": "لدى سهم بالانتير قصة نمو يمكن لعدد قليل من الشركات مطابقتها",
-      "summary": "Palantir is posting revenue growth that most software companies only dream about, while somehow staying GAAP-profitable, but the valuation number sitting above it all raises a question that every serious investor needs to answer before buying.",
-      "summary_ar": "",
-      "url": "https://247wallst.com/investing/2026/09/24/palantir-stock-has-a-growth-story-few-companies-can-match/",
-      "publisher": "24/7 Wall St.",
-      "published": "2026-09-24 15:30:38 UT",
-      "published_ts": 1790263838,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "65574b662bc67db2ac17cdc7d0eec04aaec672a4",
-      "source": "yahoo",
-      "impact": 3,
-      "impact_ar": "تأثير 3/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
       "symbol": "FLY",
       "title": "Firefly Aerospace vs. SpaceX: Which Space Stock Can Put Your Portfolio Into Orbit in 2026?",
       "title_ar": "Firefly Aerospace مقابل SpaceX: أي مخزون فضائي يمكنه وضع محفظتك في المدار في عام 2026 ؟",
@@ -1372,29 +1425,6 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "7884163261f134cd6cda54bb755e2ef533806eee",
-      "source": "yahoo",
-      "impact": 3,
-      "impact_ar": "تأثير 3/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
-      "symbol": "CRDO",
-      "title": "One Under-the-Radar Stock With 100% Upside Potential",
-      "title_ar": "سهم واحد تحت الرادار مع احتمالية صعود بنسبة 100 ٪",
-      "summary": "A small-cap silicon photonics company has quietly built a cash fortress and locked in a major anchor customer, positioning itself to compete in a $26 billion AI optics market where the giants are not paying attention yet.",
-      "summary_ar": "",
-      "url": "https://247wallst.com/investing/2026/09/22/one-under-the-radar-stock-with-100-upside-potential/",
-      "publisher": "24/7 Wall St.",
-      "published": "2026-09-22 17:00:13 UT",
-      "published_ts": 1790096413,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "dc124dee72b0e715e498e6c67f12591163a9845e",
       "source": "yahoo",
       "impact": 3,
       "impact_ar": "تأثير 3/5",
@@ -1432,8 +1462,10 @@
   "news_excluded_negative": [
     "AAON",
     "AKAM",
+    "AMD",
     "ARM",
     "DELL",
+    "EQPT",
     "LPLA",
     "MSFT",
     "MUFG",
@@ -1447,6 +1479,6 @@
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
   "reminder": "تداول المحفز لا المطاردة — راجع المصدر قبل الدخول",
-  "heartbeat_ts": 1790344324,
+  "heartbeat_ts": 1790344416,
   "publisher": "github-actions-always-on"
 }
