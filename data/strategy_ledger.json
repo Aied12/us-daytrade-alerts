@@ -16,14 +16,14 @@
       "stop": 0.9944,
       "tp1": 1.3,
       "tp2": 1.53,
-      "last": 1.13,
+      "last": 1.14,
       "status": "open",
       "exit": null,
       "exit_ts": null,
       "exit_local": null,
       "pnl_pct": null,
       "r_multiple": null,
-      "mfe_pct": 0.0,
+      "mfe_pct": 0.885,
       "mae_pct": 0.0,
       "result_ar": "مفتوح"
     },
@@ -97,7 +97,7 @@
       "stop": 1.0,
       "tp1": 1.31,
       "tp2": 1.54,
-      "last": 1.14,
+      "last": 1.12,
       "status": "open",
       "exit": null,
       "exit_ts": null,
@@ -105,7 +105,7 @@
       "pnl_pct": null,
       "r_multiple": null,
       "mfe_pct": 0.0,
-      "mae_pct": 0.0,
+      "mae_pct": -1.754,
       "result_ar": "مفتوح"
     },
     {
@@ -350,11 +350,271 @@
       "mfe_pct": 0.0,
       "mae_pct": 0.0,
       "result_ar": "مفتوح"
+    },
+    {
+      "id": "jamal:MSFT:2026-09-26",
+      "symbol": "MSFT",
+      "source": "jamal",
+      "source_ar": "استراتيجية جمال",
+      "strategies": [
+        "استراتيجية جمال"
+      ],
+      "side": "long",
+      "opened_ts": 1790375076,
+      "opened_local": "2026-09-26 01:24",
+      "entry": 519.92,
+      "stop": 509.52,
+      "tp1": 535.52,
+      "tp2": 545.92,
+      "last": 518.13,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": -0.344,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "jamal:TSLA:2026-09-26",
+      "symbol": "TSLA",
+      "source": "jamal",
+      "source_ar": "استراتيجية جمال",
+      "strategies": [
+        "استراتيجية جمال"
+      ],
+      "side": "long",
+      "opened_ts": 1790375076,
+      "opened_local": "2026-09-26 01:24",
+      "entry": 386.24,
+      "stop": 378.52,
+      "tp1": 397.82,
+      "tp2": 405.54,
+      "last": 372.63,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": -3.524,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "jamal:AMD:2026-09-26",
+      "symbol": "AMD",
+      "source": "jamal",
+      "source_ar": "استراتيجية جمال",
+      "strategies": [
+        "استراتيجية جمال"
+      ],
+      "side": "long",
+      "opened_ts": 1790375076,
+      "opened_local": "2026-09-26 01:24",
+      "entry": 639.59,
+      "stop": 625.52,
+      "tp1": 660.7,
+      "tp2": 674.77,
+      "last": 631.59,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": -1.254,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "jamal:AAPL:2026-09-26",
+      "symbol": "AAPL",
+      "source": "jamal",
+      "source_ar": "استراتيجية جمال",
+      "strategies": [
+        "استراتيجية جمال"
+      ],
+      "side": "long",
+      "opened_ts": 1790375076,
+      "opened_local": "2026-09-26 01:24",
+      "entry": 342.01,
+      "stop": 334.53,
+      "tp1": 353.23,
+      "tp2": 360.71,
+      "last": 341.13,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": -0.257,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "jamal:PLTR:2026-09-26",
+      "symbol": "PLTR",
+      "source": "jamal",
+      "source_ar": "استراتيجية جمال",
+      "strategies": [
+        "استراتيجية جمال"
+      ],
+      "side": "long",
+      "opened_ts": 1790375076,
+      "opened_local": "2026-09-26 01:24",
+      "entry": 194.41,
+      "stop": 189.35,
+      "tp1": 202.0,
+      "tp2": 207.06,
+      "last": 189.72,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": -2.418,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "jamal:JPM:2026-09-26",
+      "symbol": "JPM",
+      "source": "jamal",
+      "source_ar": "استراتيجية جمال",
+      "strategies": [
+        "استراتيجية جمال"
+      ],
+      "side": "long",
+      "opened_ts": 1790375076,
+      "opened_local": "2026-09-26 01:24",
+      "entry": 343.61,
+      "stop": 338.64,
+      "tp1": 351.07,
+      "tp2": 356.04,
+      "last": 343.1,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": -0.148,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "jamal:META:2026-09-26",
+      "symbol": "META",
+      "source": "jamal",
+      "source_ar": "استراتيجية جمال",
+      "strategies": [
+        "استراتيجية جمال"
+      ],
+      "side": "long",
+      "opened_ts": 1790375076,
+      "opened_local": "2026-09-26 01:24",
+      "entry": 770.34,
+      "stop": 746.54,
+      "tp1": 806.04,
+      "tp2": 829.84,
+      "last": 750.2,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": -2.614,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "jamal:NVDA:2026-09-26",
+      "symbol": "NVDA",
+      "source": "jamal",
+      "source_ar": "استراتيجية جمال",
+      "strategies": [
+        "استراتيجية جمال"
+      ],
+      "side": "long",
+      "opened_ts": 1790375076,
+      "opened_local": "2026-09-26 01:24",
+      "entry": 227.17,
+      "stop": 223.13,
+      "tp1": 233.23,
+      "tp2": 237.27,
+      "last": 225.14,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": -0.894,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "jamal:XOM:2026-09-26",
+      "symbol": "XOM",
+      "source": "jamal",
+      "source_ar": "استراتيجية جمال",
+      "strategies": [
+        "استراتيجية جمال"
+      ],
+      "side": "long",
+      "opened_ts": 1790375076,
+      "opened_local": "2026-09-26 01:24",
+      "entry": 161.95,
+      "stop": 159.78,
+      "tp1": 165.2,
+      "tp2": 167.37,
+      "last": 160.59,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": -0.84,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "jamal:AMZN:2026-09-26",
+      "symbol": "AMZN",
+      "source": "jamal",
+      "source_ar": "استراتيجية جمال",
+      "strategies": [
+        "استراتيجية جمال"
+      ],
+      "side": "long",
+      "opened_ts": 1790375076,
+      "opened_local": "2026-09-26 01:24",
+      "entry": 251.13,
+      "stop": 247.18,
+      "tp1": 257.05,
+      "tp2": 261.0,
+      "last": 250.1,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": -0.41,
+      "result_ar": "مفتوح"
     }
   ],
-  "updated_ts": 1790374937,
+  "updated_ts": 1790375101,
   "summary": {
-    "open": 13,
+    "open": 23,
     "closed": 0,
     "wins": 0,
     "losses": 0,
@@ -367,6 +627,16 @@
         "name": "ماسح القنص",
         "n": 13,
         "open": 13,
+        "closed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "avg_pnl_pct": null
+      },
+      {
+        "name": "استراتيجية جمال",
+        "n": 10,
+        "open": 10,
         "closed": 0,
         "wins": 0,
         "losses": 0,
@@ -396,6 +666,16 @@
         "avg_pnl_pct": null
       },
       {
+        "name": "استراتيجية جمال",
+        "n": 10,
+        "open": 10,
+        "closed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "avg_pnl_pct": null
+      },
+      {
         "name": "قنص سنتات",
         "n": 1,
         "open": 1,
@@ -408,176 +688,6 @@
     ],
     "recent_closed": [],
     "recent_open": [
-      {
-        "symbol": "STEM",
-        "source_ar": "ماسح القنص",
-        "strategies": [
-          "ماسح القنص",
-          "قنص تحت $5"
-        ],
-        "entry": 4.5,
-        "last": 4.5,
-        "stop": 4.18,
-        "tp1": 5.17,
-        "pnl_pct": 0.0,
-        "mfe_pct": 0.0,
-        "mae_pct": 0.0,
-        "opened_local": "2026-09-26 01:22",
-        "result_ar": "مفتوح"
-      },
-      {
-        "symbol": "STKE",
-        "source_ar": "ماسح القنص",
-        "strategies": [
-          "ماسح القنص",
-          "قنص تحت $5"
-        ],
-        "entry": 1.65,
-        "last": 1.65,
-        "stop": 1.48,
-        "tp1": 1.9,
-        "pnl_pct": 0.0,
-        "mfe_pct": 0.0,
-        "mae_pct": 0.0,
-        "opened_local": "2026-09-26 01:22",
-        "result_ar": "مفتوح"
-      },
-      {
-        "symbol": "FLX",
-        "source_ar": "ماسح القنص",
-        "strategies": [
-          "ماسح القنص",
-          "قنص تحت $5"
-        ],
-        "entry": 1.14,
-        "last": 1.14,
-        "stop": 1.0,
-        "tp1": 1.31,
-        "pnl_pct": 0.0,
-        "mfe_pct": 0.0,
-        "mae_pct": 0.0,
-        "opened_local": "2026-09-26 01:22",
-        "result_ar": "مفتوح"
-      },
-      {
-        "symbol": "EVTL",
-        "source_ar": "ماسح القنص",
-        "strategies": [
-          "ماسح القنص",
-          "قنص سنتات"
-        ],
-        "entry": 0.7405,
-        "last": 0.7405,
-        "stop": 0.6887,
-        "tp1": 0.8516,
-        "pnl_pct": 0.0,
-        "mfe_pct": 0.0,
-        "mae_pct": 0.0,
-        "opened_local": "2026-09-26 01:22",
-        "result_ar": "مفتوح"
-      },
-      {
-        "symbol": "JELD",
-        "source_ar": "ماسح القنص",
-        "strategies": [
-          "ماسح القنص",
-          "قنص تحت $5"
-        ],
-        "entry": 1.84,
-        "last": 1.84,
-        "stop": 1.71,
-        "tp1": 2.12,
-        "pnl_pct": 0.0,
-        "mfe_pct": 0.0,
-        "mae_pct": 0.0,
-        "opened_local": "2026-09-26 01:22",
-        "result_ar": "مفتوح"
-      },
-      {
-        "symbol": "DAVA",
-        "source_ar": "ماسح القنص",
-        "strategies": [
-          "ماسح القنص",
-          "قنص تحت $5"
-        ],
-        "entry": 1.81,
-        "last": 1.81,
-        "stop": 1.68,
-        "tp1": 2.08,
-        "pnl_pct": 0.0,
-        "mfe_pct": 0.0,
-        "mae_pct": 0.0,
-        "opened_local": "2026-09-26 01:22",
-        "result_ar": "مفتوح"
-      },
-      {
-        "symbol": "CVRX",
-        "source_ar": "ماسح القنص",
-        "strategies": [
-          "ماسح القنص",
-          "قنص تحت $5"
-        ],
-        "entry": 2.75,
-        "last": 2.75,
-        "stop": 2.5,
-        "tp1": 3.16,
-        "pnl_pct": 0.0,
-        "mfe_pct": 0.0,
-        "mae_pct": 0.0,
-        "opened_local": "2026-09-26 01:22",
-        "result_ar": "مفتوح"
-      },
-      {
-        "symbol": "HEPS",
-        "source_ar": "ماسح القنص",
-        "strategies": [
-          "ماسح القنص",
-          "قنص تحت $5"
-        ],
-        "entry": 2.51,
-        "last": 2.51,
-        "stop": 2.33,
-        "tp1": 2.89,
-        "pnl_pct": 0.0,
-        "mfe_pct": 0.0,
-        "mae_pct": 0.0,
-        "opened_local": "2026-09-26 01:22",
-        "result_ar": "مفتوح"
-      },
-      {
-        "symbol": "LENZ",
-        "source_ar": "ماسح القنص",
-        "strategies": [
-          "ماسح القنص",
-          "قنص تحت $5"
-        ],
-        "entry": 3.96,
-        "last": 3.96,
-        "stop": 3.64,
-        "tp1": 4.55,
-        "pnl_pct": 0.0,
-        "mfe_pct": 0.0,
-        "mae_pct": 0.0,
-        "opened_local": "2026-09-26 01:22",
-        "result_ar": "مفتوح"
-      },
-      {
-        "symbol": "KLXE",
-        "source_ar": "ماسح القنص",
-        "strategies": [
-          "ماسح القنص",
-          "قنص تحت $5"
-        ],
-        "entry": 1.56,
-        "last": 1.56,
-        "stop": 1.37,
-        "tp1": 1.79,
-        "pnl_pct": 0.0,
-        "mfe_pct": 0.0,
-        "mae_pct": 0.0,
-        "opened_local": "2026-09-26 01:22",
-        "result_ar": "مفتوح"
-      },
       {
         "symbol": "CCIF",
         "source_ar": "ماسح القنص",
@@ -611,9 +721,169 @@
         "mae_pct": 0.0,
         "opened_local": "2026-09-26 01:22",
         "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "MSFT",
+        "source_ar": "استراتيجية جمال",
+        "strategies": [
+          "استراتيجية جمال"
+        ],
+        "entry": 519.92,
+        "last": 518.13,
+        "stop": 509.52,
+        "tp1": 535.52,
+        "pnl_pct": -0.344,
+        "mfe_pct": 0.0,
+        "mae_pct": -0.344,
+        "opened_local": "2026-09-26 01:24",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "TSLA",
+        "source_ar": "استراتيجية جمال",
+        "strategies": [
+          "استراتيجية جمال"
+        ],
+        "entry": 386.24,
+        "last": 372.63,
+        "stop": 378.52,
+        "tp1": 397.82,
+        "pnl_pct": -3.524,
+        "mfe_pct": 0.0,
+        "mae_pct": -3.524,
+        "opened_local": "2026-09-26 01:24",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "AMD",
+        "source_ar": "استراتيجية جمال",
+        "strategies": [
+          "استراتيجية جمال"
+        ],
+        "entry": 639.59,
+        "last": 631.59,
+        "stop": 625.52,
+        "tp1": 660.7,
+        "pnl_pct": -1.251,
+        "mfe_pct": 0.0,
+        "mae_pct": -1.254,
+        "opened_local": "2026-09-26 01:24",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "AAPL",
+        "source_ar": "استراتيجية جمال",
+        "strategies": [
+          "استراتيجية جمال"
+        ],
+        "entry": 342.01,
+        "last": 341.13,
+        "stop": 334.53,
+        "tp1": 353.23,
+        "pnl_pct": -0.257,
+        "mfe_pct": 0.0,
+        "mae_pct": -0.257,
+        "opened_local": "2026-09-26 01:24",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "PLTR",
+        "source_ar": "استراتيجية جمال",
+        "strategies": [
+          "استراتيجية جمال"
+        ],
+        "entry": 194.41,
+        "last": 189.72,
+        "stop": 189.35,
+        "tp1": 202.0,
+        "pnl_pct": -2.412,
+        "mfe_pct": 0.0,
+        "mae_pct": -2.418,
+        "opened_local": "2026-09-26 01:24",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "JPM",
+        "source_ar": "استراتيجية جمال",
+        "strategies": [
+          "استراتيجية جمال"
+        ],
+        "entry": 343.61,
+        "last": 343.1,
+        "stop": 338.64,
+        "tp1": 351.07,
+        "pnl_pct": -0.148,
+        "mfe_pct": 0.0,
+        "mae_pct": -0.148,
+        "opened_local": "2026-09-26 01:24",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "META",
+        "source_ar": "استراتيجية جمال",
+        "strategies": [
+          "استراتيجية جمال"
+        ],
+        "entry": 770.34,
+        "last": 750.2,
+        "stop": 746.54,
+        "tp1": 806.04,
+        "pnl_pct": -2.614,
+        "mfe_pct": 0.0,
+        "mae_pct": -2.614,
+        "opened_local": "2026-09-26 01:24",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "NVDA",
+        "source_ar": "استراتيجية جمال",
+        "strategies": [
+          "استراتيجية جمال"
+        ],
+        "entry": 227.17,
+        "last": 225.14,
+        "stop": 223.13,
+        "tp1": 233.23,
+        "pnl_pct": -0.894,
+        "mfe_pct": 0.0,
+        "mae_pct": -0.894,
+        "opened_local": "2026-09-26 01:24",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "XOM",
+        "source_ar": "استراتيجية جمال",
+        "strategies": [
+          "استراتيجية جمال"
+        ],
+        "entry": 161.95,
+        "last": 160.59,
+        "stop": 159.78,
+        "tp1": 165.2,
+        "pnl_pct": -0.84,
+        "mfe_pct": 0.0,
+        "mae_pct": -0.84,
+        "opened_local": "2026-09-26 01:24",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "AMZN",
+        "source_ar": "استراتيجية جمال",
+        "strategies": [
+          "استراتيجية جمال"
+        ],
+        "entry": 251.13,
+        "last": 250.1,
+        "stop": 247.18,
+        "tp1": 257.05,
+        "pnl_pct": -0.41,
+        "mfe_pct": 0.0,
+        "mae_pct": -0.41,
+        "opened_local": "2026-09-26 01:24",
+        "result_ar": "مفتوح"
       }
     ],
     "note_ar": "متابعة ورقية تعليمية: نجاح/فشل حسب وصول السعر للهدف أو الوقف بعد ظهور الإشارة — ليست أرباح محفظة حقيقية."
   },
-  "updated_local": "2026-09-26 01:22 +03"
+  "updated_local": "2026-09-26 01:25 +03"
 }
