@@ -1620,7 +1620,7 @@
       }
     }
 
-    const AUTO_SEC = isLightNet()?45:20;
+    const AUTO_SEC = isLightNet()?15:8;
     let refreshIn = AUTO_SEC;
 
     document.getElementById('btnRefresh').onclick=()=>fetchData(true);
@@ -2036,11 +2036,11 @@
       if(sessionLeft>0) sessionLeft-=1;
       refreshIn=Math.max(0, refreshIn-1);
       const hint=document.getElementById('autoHint');
-      if(hint) hint.textContent=`تحديث تلقائي · التالي خلال ${refreshIn}ث`;
+      if(hint) hint.textContent=`تحديث فوري · أسعار كل ثانيتين · فحص خلال ${refreshIn}ث`;
       tickClocks();
     },1000);
-    setInterval(()=>pollAllPrices(), 5000);
-    setInterval(()=>pollNewsLive(), 20000);
+    setInterval(()=>pollAllPrices(), 2000);
+    setInterval(()=>pollNewsLive(), 8000);
     setInterval(()=>refreshMovingBadges(), 1000);
   </script>
 </body>
