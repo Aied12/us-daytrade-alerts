@@ -28,6 +28,7 @@ from bot.cacheutil import cached_call
 UA = {"User-Agent": "Mozilla/5.0"}
 ROOT = Path(__file__).resolve().parent.parent
 SEEN_PATH = ROOT / "data" / "sniper_seen.json"
+BOARD_PATH = ROOT / "data" / "sniper_board.json"
 RIYADH = ZoneInfo("Asia/Riyadh")
 NY = ZoneInfo("America/New_York")
 
@@ -42,6 +43,8 @@ SNIPER_MIN_CHG = 8.0             # بدون خبر — حركة واضحة
 SNIPER_MIN_CHG_WITH_NEWS = 4.0   # مع محفز يُقبل أبكر
 SNIPER_MIN_CHG_PRE = 5.0         # pre/post
 SNIPER_MIN_CHG_ROCKET = 15.0
+# خروج أنعم من الدخول — يمنع اختفاء/رجوع السهم حول العتبة
+SNIPER_KEEP_CHG = 3.0
 
 # Participation — cents often thin; still require real prints
 SNIPER_MIN_DOLLAR = 250_000
@@ -53,6 +56,9 @@ PLAN_TP1_PCT = 0.15              # جني1 ≈ +15%
 PLAN_TP2_PCT = 0.35              # جني2 ≈ +35% (انفجار السنتات)
 
 SEEN_TTL_SEC = 20 * 3600
+# بعد الظهور: ابقِ السهم على اللوحة حتى لو ضعف الزخم مؤقتاً
+STICKY_HOLD_SEC = 30 * 60
+BOARD_MAX = 20
 
 
 def _px(n: float) -> float:
@@ -139,6 +145,125 @@ def track_sniper_appearances(rows: list[dict[str, Any]]) -> list[dict[str, Any]]
     if dirty or rows:
         _save_seen(seen)
     return out
+
+
+def _load_board() -> dict[str, Any]:
+    try:
+        data = json.loads(BOARD_PATH.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def _save_board(board: dict[str, Any]) -> None:
+    try:
+        BOARD_PATH.parent.mkdir(parents=True, exist_ok=True)
+        # trim oldest by last_ok_ts
+        items = sorted(
+            ((k, v) for k, v in board.items() if isinstance(v, dict)),
+            key=lambda kv: float(kv[1].get("last_ok_ts") or 0),
+            reverse=True,
+        )[:BOARD_MAX]
+        BOARD_PATH.write_text(
+            json.dumps(dict(items), ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+    except Exception:
+        pass
+
+
+def sniper_keep_alive(row: dict[str, Any], *, phase: str | None = None) -> bool:
+    """Softer exit rule so borderline % (e.g. 15.5→14.9) لا يمسح البطاقة."""
+    last = float(row.get("last") or 0)
+    chg = float(row.get("change_pct") or 0)
+    if sniper_tier(last) is None:
+        return False
+    if chg <= 0:
+        return False
+    phase = phase or session_phase()
+    floor = SNIPER_KEEP_CHG
+    if phase in ("pre", "post"):
+        floor = min(floor, 2.0)
+    return chg >= floor
+
+
+def apply_sniper_sticky(
+    fresh: list[dict[str, Any]],
+    *,
+    runners_by_sym: dict[str, dict[str, Any]] | None = None,
+    phase: str | None = None,
+    limit: int = 12,
+) -> list[dict[str, Any]]:
+    """
+    Merge new hits with previously shown names.
+    Keeps a symbol on the board for STICKY_HOLD_SEC while still in-band & green.
+    """
+    phase = phase or session_phase()
+    now = datetime.now(timezone.utc).timestamp()
+    board = _load_board()
+    runners_by_sym = runners_by_sym or {}
+
+    fresh_by: dict[str, dict[str, Any]] = {}
+    for row in fresh:
+        sym = str(row.get("symbol") or "").upper()
+        if sym:
+            fresh_by[sym] = row
+            board[sym] = {
+                "last_ok_ts": now,
+                "first_ts": float((board.get(sym) or {}).get("first_ts") or now),
+                "row": row,
+            }
+
+    # refresh sticky names that didn't re-qualify this tick
+    for sym, meta in list(board.items()):
+        if not isinstance(meta, dict):
+            board.pop(sym, None)
+            continue
+        if sym in fresh_by:
+            continue
+        last_ok = float(meta.get("last_ok_ts") or 0)
+        if now - last_ok > STICKY_HOLD_SEC:
+            board.pop(sym, None)
+            continue
+        live = runners_by_sym.get(sym) or (meta.get("row") if isinstance(meta.get("row"), dict) else None)
+        if not live or not sniper_keep_alive(live, phase=phase):
+            board.pop(sym, None)
+            continue
+        # keep previous card, refresh price/% if we have live runner
+        prev = dict(meta.get("row") or {})
+        if live:
+            prev["last"] = _px(float(live.get("last") or prev.get("last") or 0))
+            prev["change_pct"] = round(float(live.get("change_pct") or prev.get("change_pct") or 0), 2)
+            prev["dollar_volume"] = float(live.get("dollar_volume") or prev.get("dollar_volume") or 0)
+            prev["dollar_volume_label"] = live.get("dollar_volume_label") or prev.get("dollar_volume_label")
+            prev["session_ar"] = live.get("session_ar") or prev.get("session_ar")
+            plan = build_hessa_plan(
+                last=float(prev["last"] or 0),
+                day_low=live.get("day_low"),
+                day_high=live.get("day_high"),
+            )
+            prev.update(plan)
+            prev["sticky"] = True
+            prev["alert_ar"] = prev.get("alert_ar") or "قنص — مثبت مؤقتاً"
+        board[sym] = {
+            "last_ok_ts": last_ok,  # لا تمدد بدون تأهيل جديد
+            "first_ts": float(meta.get("first_ts") or now),
+            "row": prev,
+        }
+        fresh_by[sym] = prev
+
+    _save_board(board)
+
+    merged = list(fresh_by.values())
+    merged.sort(
+        key=lambda x: (
+            0 if x.get("tier_key") == "cents" else 1,
+            0 if x.get("has_news") else 1,
+            -float(x.get("score") or 0),
+            -float(x.get("change_pct") or 0),
+        )
+    )
+    return merged[:limit]
 
 
 def build_hessa_plan(
@@ -384,7 +509,13 @@ def build_sniper_scanner(
             title = ""
             url = r.get("tv_url") or ""
         elif top is None:
-            continue
+            # كان الشرط صاروخ ≥15% فقط فيسبب اختفاء/رجوع حول العتبة (مثل 15.5↔14.9)
+            impact = 3
+            reason = "زخم سعري ضمن نطاق القنص — راقب الخبر/النشاط"
+            cats = []
+            cat_keys = []
+            title = ""
+            url = r.get("tv_url") or ""
         else:
             impact = int(top.get("impact") or 3)
             reason = str(top.get("impact_reason_ar") or top.get("title_ar") or top.get("title") or "")
@@ -409,7 +540,7 @@ def build_sniper_scanner(
             alert = ("سنتات" if tier == "cents" else "تحت $5") + " + محفز قوي"
         elif has_news:
             alert = ("سنتات" if tier == "cents" else "تحت $5") + " + خبر/نشاط"
-        elif chg >= 25:
+        elif chg >= SNIPER_MIN_CHG_ROCKET:
             alert = "صاروخ سنتات — راقب الخبر"
 
         plan = build_hessa_plan(
@@ -444,17 +575,21 @@ def build_sniper_scanner(
                 "price_band_ar": f"${SNIPER_MIN_PRICE:.2f}–<$5",
                 "auto": True,
                 "source_style": "hessa_cents_auto",
+                "sticky": False,
                 **plan,
             }
         )
         seen.add(sym)
 
-    out.sort(
-        key=lambda x: (
-            0 if x.get("tier_key") == "cents" else 1,
-            0 if x.get("has_news") else 1,
-            -float(x.get("score") or 0),
-            -float(x.get("change_pct") or 0),
-        )
+    runners_by_sym = {
+        str(r.get("symbol") or "").upper(): r
+        for r in runners
+        if r.get("symbol")
+    }
+    out = apply_sniper_sticky(
+        out,
+        runners_by_sym=runners_by_sym,
+        phase=phase,
+        limit=limit,
     )
-    return track_sniper_appearances(out[:limit])
+    return track_sniper_appearances(out)
