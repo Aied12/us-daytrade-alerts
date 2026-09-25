@@ -527,7 +527,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=17;
+    window.__STATUS_V=18;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -2376,13 +2376,28 @@
         }
         if(isIOS){
           setStatus('حالة التطبيق: على الآيفون استخدم Safari ← مشاركة ← إضافة إلى الشاشة الرئيسية');
-          showSection('more');
-          const help=document.getElementById('pwaInstallHelp');
-          if(help) help.scrollIntoView({behavior:'smooth', block:'start'});
+          goToInstallHelp();
           return;
         }
         setStatus('حالة التطبيق: المتصفح لا يعرض زر تثبيت الآن — افتح من كروم أو استخدم «المزيد» للتعليمات');
-        showSection('more');
+        goToInstallHelp();
+      }
+
+      function goToInstallHelp(){
+        // أخفِ البانر مؤقتاً حتى لا يغطي بطاقة التعليمات تحت الشريط اللاصق
+        if(banner) banner.classList.remove('on');
+        showSection('more', {smooth:true, scrollTop:false});
+        const help=document.getElementById('pwaInstallHelp');
+        if(help){
+          requestAnimationFrame(()=>{
+            const sticky=document.querySelector('.sticky');
+            const topPad=(sticky && sticky.offsetHeight)||0;
+            const y=help.getBoundingClientRect().top + window.scrollY - topPad - 8;
+            window.scrollTo({top:Math.max(0,y), behavior:'smooth'});
+            help.style.outline='2px solid var(--accent)';
+            setTimeout(()=>{ help.style.outline=''; }, 2200);
+          });
+        }
       }
 
       if(isStandalone){
@@ -2414,11 +2429,7 @@
 
       if(btnInstall) btnInstall.addEventListener('click', triggerInstall);
       if(btnInstallMore) btnInstallMore.addEventListener('click', triggerInstall);
-      if(btnHow) btnHow.addEventListener('click', ()=>{
-        showSection('more');
-        const help=document.getElementById('pwaInstallHelp');
-        if(help) help.scrollIntoView({behavior:'smooth', block:'start'});
-      });
+      if(btnHow) btnHow.addEventListener('click', goToInstallHelp);
       if(btnDismiss) btnDismiss.addEventListener('click', ()=>hideBanner(true));
 
       if('serviceWorker' in navigator){
