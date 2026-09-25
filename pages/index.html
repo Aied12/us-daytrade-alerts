@@ -249,6 +249,7 @@
       </div>
       <div class="toolbar">
         <button class="btn" id="btnRefresh" type="button">🔄 تحديث الآن</button>
+        <button class="btn secondary" id="btnReloadPage" type="button" title="إعادة تحميل الصفحة كاملة">⟳ تحديث الصفحة</button>
         <button class="btn secondary" id="btnTheme" type="button">🌓 نهاري/ليلي</button>
         <button class="btn ghost" id="btnLight" type="button">📶 نسخة خفيفة</button>
         <button class="btn ghost" id="btnNotify" type="button">🔔 إشعار الفرص</button>
@@ -511,13 +512,12 @@
           <li>أكد الاسم ثم <b>إضافة</b> — يظهر أيقونة مثل التطبيقات.</li>
         </ol>
         <p class="muted" style="margin:10px 0 0;font-size:.88rem;line-height:1.45">
-          للتحديث داخل التطبيق: اضغط <b>تحديث الآن</b> أعلى الصفحة.
-          لإعادة تحميل كاملة (إذا علقت نسخة قديمة): <b>اضغط مطوّلاً</b> على نفس الزر.
+          للتحديث داخل التطبيق: <b>تحديث الآن</b> = البيانات · <b>تحديث الصفحة</b> = إعادة تحميل كاملة (مثل زر المتصفح).
         </p>
         <p class="pwa-status muted" id="pwaStatus">حالة التطبيق: جاري التحقق...</p>
         <div class="toolbar" style="margin-top:8px">
           <button class="btn" type="button" id="btnPwaInstallMore">تثبيت (أندرويد / كروم)</button>
-          <button class="btn secondary" type="button" id="btnPwaHardReload">إعادة تحميل كاملة</button>
+          <button class="btn secondary" type="button" id="btnPwaHardReload">تحديث الصفحة</button>
         </div>
       </div>
       <h2 style="margin-top:14px;font-size:1rem">المخاطرة</h2>
@@ -532,7 +532,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=19;
+    window.__STATUS_V=20;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -1898,7 +1898,9 @@
     let refreshIn = AUTO_SEC;
 
     document.getElementById('btnRefresh').onclick=()=>hardRefreshBoard(false);
-    // ضغطة طويلة = إعادة تحميل كاملة للتطبيق (مفيد على الآيفون بدون زر متصفح)
+    const btnReloadPage=document.getElementById('btnReloadPage');
+    if(btnReloadPage) btnReloadPage.onclick=()=>hardRefreshBoard(true);
+    // ضغطة طويلة على «تحديث الآن» = تحديث الصفحة كاملة أيضاً
     (function(){
       const btn=document.getElementById('btnRefresh');
       if(!btn) return;
@@ -1931,11 +1933,15 @@
 
     async function hardRefreshBoard(fullReload){
       const btn=document.getElementById('btnRefresh');
-      if(btn){ btn.disabled=true; btn.textContent='... جاري التحديث'; }
+      const btnPage=document.getElementById('btnReloadPage');
+      const btnMore=document.getElementById('btnPwaHardReload');
+      if(btn){ btn.disabled=true; btn.textContent=fullReload?'... إعادة تحميل':'... جاري التحديث'; }
+      if(btnPage) btnPage.disabled=true;
+      if(btnMore) btnMore.disabled=true;
       try{
         await clearPwaCaches();
         if(fullReload){
-          toast('إعادة تحميل التطبيق...');
+          toast('تحديث الصفحة...');
           const u=new URL(window.location.href);
           u.searchParams.set('_r', String(Date.now()));
           window.location.replace(u.toString());
@@ -1943,8 +1949,10 @@
         }
         await fetchData(true);
       }finally{
-        if(btn && !fullReload){
-          btn.disabled=false; btn.textContent='🔄 تحديث الآن';
+        if(!fullReload){
+          if(btn){ btn.disabled=false; btn.textContent='🔄 تحديث الآن'; }
+          if(btnPage) btnPage.disabled=false;
+          if(btnMore) btnMore.disabled=false;
         }
       }
     }
@@ -2512,7 +2520,7 @@
         const swUrl=new URL('sw.js', window.location.href).pathname;
         navigator.serviceWorker.register(swUrl, {scope: new URL('./', window.location.href).pathname})
           .then((reg)=>{
-            if(isStandalone) setStatus('حالة التطبيق: يعمل كتطبيق مثبت ✓ — استخدم «تحديث الآن» أعلى الصفحة');
+            if(isStandalone) setStatus('حالة التطبيق: يعمل كتطبيق مثبت ✓ — «تحديث الآن» للبيانات · «تحديث الصفحة» لإعادة التحميل');
             else if(!isStandalone) setStatus((statusEl && statusEl.textContent) || 'حالة التطبيق: جاهز');
             if(reg){
               try{ reg.update(); }catch(_){}
