@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
   <meta name="theme-color" content="#07111f" />
   <title>لوحة تنبيهات الأسهم</title>
   <style>
@@ -1261,7 +1263,8 @@
         alive.textContent=ok?'شغال':'تحقق';
         alive.className='pill '+(ok?'ok':'warn');
       }
-      document.getElementById('ago').textContent=`آخر فحص: ${fmtAgo(d.generated_ts)} · ${d.generated_local||''}`;
+      const srcTag = window.__STATUS_SRC==='raw' ? ' · مباشر' : '';
+      document.getElementById('ago').textContent=`آخر فحص: ${fmtAgo(d.generated_ts)} · ${d.generated_local||''}${srcTag}`;
       const lag=d.price_lag_ar||(d.market&&d.market.price_lag_ar)||'تأخير Yahoo ≈ 15 دقيقة';
       const lagEl=document.getElementById('priceLag');
       if(lagEl){
@@ -1626,6 +1629,7 @@
           return;
         }
         LAST_STATUS_TS=nextTs||LAST_STATUS_TS;
+        window.__STATUS_SRC = (best.base||'').includes('raw.githubusercontent') ? 'raw' : 'pages';
         renderAll();
         renderLiveTape();
         if(bust || !liveBusy) pollAllPrices();
