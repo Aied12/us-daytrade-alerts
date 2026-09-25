@@ -95,12 +95,11 @@ jobs:
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # احفظ مخرجات هذا الفحص ثم أعد البناء فوق أحدث main (يتجنب تعارض JSON)
+          # احفظ JSON فقط — لا تعِد كتابة index.html حتى لا تُمسَح تحديثات الواجهة
           STAGE=$(mktemp -d)
           mkdir -p "$STAGE/docs" "$STAGE/pages" "$STAGE/data"
-          cp -f docs/index.html docs/status.json "$STAGE/docs/" 2>/dev/null || true
-          cp -f docs/prices-live.json docs/live.json docs/news-live.json "$STAGE/docs/" 2>/dev/null || true
-          cp -f pages/index.html pages/status.json pages/prices-live.json pages/live.json pages/news-live.json "$STAGE/pages/" 2>/dev/null || true
+          cp -f docs/status.json docs/prices-live.json docs/live.json docs/news-live.json "$STAGE/docs/" 2>/dev/null || true
+          cp -f pages/status.json pages/prices-live.json pages/live.json pages/news-live.json "$STAGE/pages/" 2>/dev/null || true
           cp -f data/sniper_seen.json "$STAGE/data/" 2>/dev/null || true
 
           for i in 1 2 3 4 5 6; do
@@ -109,7 +108,10 @@ jobs:
             cp -f "$STAGE/docs/"* docs/ 2>/dev/null || true
             cp -f "$STAGE/pages/"* pages/ 2>/dev/null || true
             cp -f "$STAGE/data/sniper_seen.json" data/sniper_seen.json 2>/dev/null || true
-            git add docs/ pages/status.json pages/index.html pages/prices-live.json pages/live.json pages/news-live.json data/sniper_seen.json || true
+            # أبقِ docs/index.html متزامناً مع نسخة الكود الحالية على main
+            cp -f pages/index.html docs/index.html 2>/dev/null || true
+            git add docs/status.json docs/prices-live.json docs/live.json docs/news-live.json docs/index.html \
+              pages/status.json pages/prices-live.json pages/live.json pages/news-live.json data/sniper_seen.json || true
             if git diff --cached --quiet; then
               echo "no changes vs origin/main"
               exit 0
