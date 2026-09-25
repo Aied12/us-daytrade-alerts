@@ -367,10 +367,10 @@ def main() -> None:
         limit=12,
     )
 
-    # Sniper mode: cheap runners ($0.30–$8) + strong % + news/catalyst (beside main board)
+    # Sniper: Hessa-style cents auto board (≤$1 / ≤$2) + plan — no manual picks
     cheap_runners = []
     try:
-        cheap_runners = fetch_cheap_runners(limit=25)
+        cheap_runners = fetch_cheap_runners(limit=30)
     except Exception:
         cheap_runners = []
     sniper = build_sniper_scanner(
@@ -424,8 +424,9 @@ def main() -> None:
         "momentum_scanner": momentum,
         "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
         "sniper_scanner": sniper,
-        "sniper_note_ar": "ماسح القنص (نظامنا): أسهم $0.30–$8 + زخم يومي قوي (≥5–8%) + خبر/محفز إن وُجد — مسح آلي بقواعد ثابتة، منفصل عن اللوحة المحافظة وليس متابعة حسابات",
-        "sniper_price_band": {"min": 0.30, "max": 8.0},
+        "sniper_note_ar": "قنص تلقائي بأسلوب ملكة السنتات: تحت $1 (سنتات) و$1–$2 (برايم) + زخم + خبر/نشاط إن وُجد + خطة دخول/وقف/جني تلقائية — بدون تدخل يدوي",
+        "sniper_price_band": {"min": 0.10, "max": 2.0, "cents_max": 1.0, "prime_max": 2.0},
+        "sniper_auto": True,
         "opportunities": opportunities,
         "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
         "opps_rejected_slow": rejected_slow[:20],
