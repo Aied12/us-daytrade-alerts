@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Rebuild Pages JSON/HTML and push docs/ to GitHub for auto-refresh.
 
-Uses an exclusive flock so overlapping cron ticks cannot pile up, stall git,
-or cancel GitHub Pages builds.
+Single git publisher for the dashboard (live/news write files only).
+Uses an exclusive flock so overlapping cron ticks cannot pile up or cancel
+GitHub Pages builds.
 """
 
 from __future__ import annotations
@@ -39,12 +40,15 @@ def main() -> int:
     py = ROOT / ".venv" / "bin" / "python"
     if not py.exists():
         py = Path(sys.executable)
+
+    # Refresh quotes + news files before bundling the commit
+    run([str(py), str(ROOT / "scripts" / "write_live_json.py")])
+    run([str(py), str(ROOT / "scripts" / "publish_news.py")])
+
     rc = run([str(py), str(ROOT / "scripts" / "build_pages.py")])
     if rc != 0:
         return rc
-    run([str(py), str(ROOT / "scripts" / "write_live_json.py")])
 
-    # Ensure docs HTML matches pages
     src = ROOT / "pages" / "index.html"
     dst = ROOT / "docs" / "index.html"
     if src.exists():
@@ -58,31 +62,34 @@ def main() -> int:
             "docs/status.json",
             "docs/prices-live.json",
             "docs/live.json",
+            "docs/news-live.json",
             "pages/index.html",
             "pages/status.json",
             "pages/prices-live.json",
             "pages/live.json",
+            "pages/news-live.json",
+            "data/sniper_seen.json",
         ]
     )
-    # Commit only if staged changes exist
     dirty = subprocess.call(["git", "diff", "--cached", "--quiet"], cwd=ROOT)
     if dirty == 0:
         print("[publish] no dashboard changes")
         return 0
-    msg = "Auto-update dashboard prices and gainers"
-    rc = run(["git", "commit", "-m", msg])
+
+    rc = run(["git", "commit", "-m", "Auto-update dashboard prices and gainers"])
     if rc != 0:
         return 0
-    # Always publish docs to main (Pages source). Skip if another push is mid-flight.
+
+    # Rebase onto latest main then push (avoid rejected non-FF vs Actions)
     run(["git", "fetch", "origin", "main"])
+    run(["git", "pull", "--rebase", "--autostash", "origin", "main"])
     rc = run(["git", "push", "origin", "HEAD:main"])
     if rc != 0:
-        # one retry after short wait (Pages/git races)
-        time.sleep(3)
+        time.sleep(4)
         run(["git", "pull", "--rebase", "--autostash", "origin", "main"])
         rc = run(["git", "push", "origin", "HEAD:main"])
     print("[publish] done" if rc == 0 else "[publish] push failed")
-    return 0  # don't fail cron on push issues
+    return 0
 
 
 if __name__ == "__main__":

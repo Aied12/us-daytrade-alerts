@@ -114,15 +114,7 @@ def main() -> int:
             break
     _write_news_live(merged, fresh_n=len(burst))
     save_seen_news(seen)
-    print(f"[news] wrote news-live.json n={len(merged)} fresh={len(fresh)}")
-
-    run(["git", "add", "docs/news-live.json", "pages/news-live.json"])
-    dirty = subprocess.call(["git", "diff", "--cached", "--quiet"], cwd=ROOT)
-    if dirty != 0:
-        run(["git", "commit", "-m", "Auto-update news-live.json headlines"])
-        run(["git", "push", "origin", "HEAD:main"])
-    else:
-        print("[news] no file changes to push")
+    print(f"[news] wrote news-live.json n={len(merged)} fresh={len(fresh)} (push deferred to publish_pages)")
     return 0
 
 

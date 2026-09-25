@@ -4,8 +4,8 @@ on:
   schedule:
     # Premarket ≈ 11:00 السعودية (08:00 UTC)
     - cron: "0 8 * * 1-5"
-    # أثناء الجلسة كل 5 دقائق (الجهاز المحلي ينشر كل دقيقتين)
-    - cron: "*/5 8-20 * * 1-5"
+    # أثناء الجلسة كل 3 دقائق — الناشر الوحيد السحابي الموثوق
+    - cron: "*/3 8-20 * * 1-5"
     # ملخص مسائي ≈ 23:05 السعودية
     - cron: "5 20 * * 1-5"
   workflow_dispatch:
@@ -14,8 +14,10 @@ on:
         description: "premarket | tick | evening | intel | ping"
         required: true
         default: "tick"
-  # لا تشغّل البوت الثقيل على كل push — يكفي الجدولة + يدوي
-  # (النشر من الجهاز المحلي/الـ watchdog يدفع docs/ مباشرة)
+
+concurrency:
+  group: dashboard-publish
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -25,6 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -46,7 +50,6 @@ jobs:
           printf 'TELEGRAM_EXTRA_CHAT_IDS=%s\n' "$TELEGRAM_EXTRA_CHAT_IDS" >> .env
           printf 'CAPITAL_SAR=%s\n' "${CAPITAL_SAR:-45000}" >> .env
           printf 'LIGHT_MODE=1\nAPI_THRIFT=1\nUSER_MODE=beginner\nMIN_PRICE_USD=5\nTIMEZONE=Asia/Riyadh\n' >> .env
-          # احترام ملف الإيقاف المؤقت إن وُجد في المستودع
           if [ -f data/telegram_paused ]; then
             printf 'TELEGRAM_ENABLED=0\n' >> .env
             echo "[telegram] paused via data/telegram_paused"
@@ -68,22 +71,34 @@ jobs:
           else
             python scripts/scheduled_run.py --mode "$MODE" --force || true
           fi
-          python scripts/build_pages.py
           python scripts/write_live_json.py || true
+          python scripts/publish_news.py || true
+          python scripts/build_pages.py
           cp -f pages/index.html docs/index.html
           cp -f pages/status.json docs/status.json
           cp -f pages/prices-live.json docs/prices-live.json 2>/dev/null || true
           cp -f pages/live.json docs/live.json 2>/dev/null || true
-      - name: Commit docs to main (GitHub Pages source)
+          cp -f pages/news-live.json docs/news-live.json 2>/dev/null || true
+      - name: Commit docs to main
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html docs/status.json docs/prices-live.json docs/live.json \
-                  pages/index.html pages/status.json pages/prices-live.json pages/live.json \
+          git add docs/index.html docs/status.json docs/prices-live.json docs/live.json docs/news-live.json \
+                  pages/index.html pages/status.json pages/prices-live.json pages/live.json pages/news-live.json \
                   data/sniper_seen.json || true
           if git diff --cached --quiet; then
             echo "[publish] no dashboard changes"
             exit 0
           fi
           git commit -m "Auto-update dashboard (Actions)"
-          git push origin HEAD:main
+          # rebase if local VM pushed meanwhile
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin main || git rebase --abort || true
+            if git push origin HEAD:main; then
+              echo "[publish] pushed"
+              exit 0
+            fi
+            echo "[publish] push rejected — retry $i"
+            sleep 5
+          done
+          exit 1

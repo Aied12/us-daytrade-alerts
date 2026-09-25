@@ -454,7 +454,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=8;
+    window.__STATUS_V=9;
     const LS = {
       theme: 'dash_theme',
       filter: 'dash_filter',
@@ -1544,7 +1544,7 @@
 
     async function pollNewsLive(){
       try{
-        const urls=['./news-live.json','https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/news-live.json'];
+        const urls=['https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/news-live.json','./news-live.json'];
         let best=null;
         for(const u of urls){
           try{
@@ -1581,18 +1581,19 @@
       }
     }
 
+    // raw أولاً: يتحدّث مع كل push دون انتظار بناء GitHub Pages (سبب «متأخر»)
     const STATUS_URLS = [
-      './status.json',
       'https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/status.json',
+      './status.json',
     ];
 
     async function fetchFreshestStatus(){
       const ts=Date.now();
-      const v=window.__STATUS_V||'7';
+      const v=window.__STATUS_V||'9';
       let best=null;
       await Promise.all(STATUS_URLS.map(async (base)=>{
         try{
-          const url=base+(base.includes('?')?'&':'?')+'ts='+ts+'&v='+v;
+          const url=base+(base.includes('?')?'&':'?')+'ts='+ts+'&v='+v+'&nocache='+ts;
           const res=await fetch(url,{cache:'no-store', headers:{'Cache-Control':'no-cache','Pragma':'no-cache'}});
           if(!res.ok) return;
           const next=await res.json();
@@ -1797,8 +1798,9 @@
     let liveBusy = false;
     let liveWave = 0;
     const LIVE_JSON_URLS = [
-      './prices-live.json',
       'https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/prices-live.json',
+      'https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/live.json',
+      './prices-live.json',
       './live.json',
     ];
 

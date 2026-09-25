@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
   <meta name="theme-color" content="#07111f" />
   <title>لوحة تنبيهات الأسهم</title>
   <style>
@@ -454,7 +456,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=8;
+    window.__STATUS_V=9;
     const LS = {
       theme: 'dash_theme',
       filter: 'dash_filter',
@@ -1261,7 +1263,8 @@
         alive.textContent=ok?'شغال':'تحقق';
         alive.className='pill '+(ok?'ok':'warn');
       }
-      document.getElementById('ago').textContent=`آخر فحص: ${fmtAgo(d.generated_ts)} · ${d.generated_local||''}`;
+      const srcTag = window.__STATUS_SRC==='raw' ? ' · مباشر' : '';
+      document.getElementById('ago').textContent=`آخر فحص: ${fmtAgo(d.generated_ts)} · ${d.generated_local||''}${srcTag}`;
       const lag=d.price_lag_ar||(d.market&&d.market.price_lag_ar)||'تأخير Yahoo ≈ 15 دقيقة';
       const lagEl=document.getElementById('priceLag');
       if(lagEl){
@@ -1544,7 +1547,7 @@
 
     async function pollNewsLive(){
       try{
-        const urls=['./news-live.json','https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/news-live.json'];
+        const urls=['https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/news-live.json','./news-live.json'];
         let best=null;
         for(const u of urls){
           try{
@@ -1581,18 +1584,19 @@
       }
     }
 
+    // raw أولاً: يتحدّث مع كل push دون انتظار بناء GitHub Pages (سبب «متأخر»)
     const STATUS_URLS = [
-      './status.json',
       'https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/status.json',
+      './status.json',
     ];
 
     async function fetchFreshestStatus(){
       const ts=Date.now();
-      const v=window.__STATUS_V||'7';
+      const v=window.__STATUS_V||'9';
       let best=null;
       await Promise.all(STATUS_URLS.map(async (base)=>{
         try{
-          const url=base+(base.includes('?')?'&':'?')+'ts='+ts+'&v='+v;
+          const url=base+(base.includes('?')?'&':'?')+'ts='+ts+'&v='+v+'&nocache='+ts;
           const res=await fetch(url,{cache:'no-store', headers:{'Cache-Control':'no-cache','Pragma':'no-cache'}});
           if(!res.ok) return;
           const next=await res.json();
@@ -1625,6 +1629,7 @@
           return;
         }
         LAST_STATUS_TS=nextTs||LAST_STATUS_TS;
+        window.__STATUS_SRC = (best.base||'').includes('raw.githubusercontent') ? 'raw' : 'pages';
         renderAll();
         renderLiveTape();
         if(bust || !liveBusy) pollAllPrices();
@@ -1797,8 +1802,9 @@
     let liveBusy = false;
     let liveWave = 0;
     const LIVE_JSON_URLS = [
-      './prices-live.json',
       'https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/prices-live.json',
+      'https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/live.json',
+      './prices-live.json',
       './live.json',
     ];
 
