@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-25T14:27:42.115747+00:00",
-  "generated_ts": 1790346462,
-  "generated_local": "2026-09-25 17:27 +03",
+  "generated_at": "2026-09-25T14:29:34.381525+00:00",
+  "generated_ts": 1790346574,
+  "generated_local": "2026-09-25 17:29 +03",
   "status": {
     "ok": true,
     "last_mode": "dashboard",
-    "changed": true,
+    "changed": false,
     "symbols": 12,
-    "updated_at": "2026-09-25T14:27:42.115504+00:00",
+    "updated_at": "2026-09-25T14:29:34.381274+00:00",
     "source": "build_pages"
   },
   "telegram_enabled": false,
@@ -24,39 +24,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: مبتدئ",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.04,
+    "avg_change_pct": -0.06,
     "details": {
       "SPY": {
-        "last": 767.565,
-        "change_pct": 0.05,
-        "rsi": 49.6
+        "last": 767.62,
+        "change_pct": 0.06,
+        "rsi": 49.3
       },
       "QQQ": {
-        "last": 741.41,
-        "change_pct": 0.04,
-        "rsi": 65.0
+        "last": 741.075,
+        "change_pct": -0.0,
+        "rsi": 64.8
       },
       "IWM": {
-        "last": 281.03,
-        "change_pct": -0.22,
-        "rsi": 22.7
+        "last": 280.98,
+        "change_pct": -0.24,
+        "rsi": 22.4
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": 0.05,
-        "rsi": 49.6
+        "change_pct": 0.06,
+        "rsi": 49.3
       },
       {
         "symbol": "QQQ",
-        "change_pct": 0.04,
-        "rsi": 65.0
+        "change_pct": -0.0,
+        "rsi": 64.8
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.22,
-        "rsi": 22.7
+        "change_pct": -0.24,
+        "rsi": 22.4
       }
     ],
     "no_trade_today": false,
@@ -69,8 +69,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 19937,
-    "ny_time": "10:27:42",
+    "seconds_left": 19825,
+    "ny_time": "10:29:34",
     "open": "09:30",
     "close": "16:00"
   },
@@ -78,35 +78,35 @@
     "strongest": [
       {
         "name": "Financials",
-        "change_pct": 0.27
+        "change_pct": 0.37
       },
       {
         "name": "Technology",
-        "change_pct": -0.09
+        "change_pct": -0.1
       },
       {
         "name": "Energy",
-        "change_pct": -0.73
+        "change_pct": -0.79
       }
     ],
     "weakest": [
       {
         "name": "Consumer",
-        "change_pct": -1.19
+        "change_pct": -1.32
       },
       {
         "name": "Energy",
-        "change_pct": -0.73
+        "change_pct": -0.79
       },
       {
         "name": "Technology",
-        "change_pct": -0.09
+        "change_pct": -0.1
       }
     ]
   },
   "style": {
-    "growth_avg": -1.11,
-    "value_avg": 0.42,
+    "growth_avg": -1.18,
+    "value_avg": 0.45,
     "leader": "قيمة",
     "growth_count": 5,
     "value_count": 5
@@ -115,10 +115,10 @@
     {
       "symbol": "PPLI",
       "name": "People Incorporated",
-      "last": 39.11,
-      "change_pct": 8.85,
-      "dollar_volume": 19488552.11,
-      "dollar_volume_label": "19.5M$",
+      "last": 39.13,
+      "change_pct": 8.91,
+      "dollar_volume": 20131798.05,
+      "dollar_volume_label": "20.1M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -162,16 +162,16 @@
       "catalyst_ar": [
         "اندماج/استحواذ"
       ],
-      "alert_ar": "زخم +8.8% · اندماج/استحواذ",
+      "alert_ar": "زخم +8.9% · اندماج/استحواذ",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PPLI"
     },
     {
       "symbol": "ALM",
       "name": "Almonty Industries Inc.",
-      "last": 13.43,
-      "change_pct": 8.31,
-      "dollar_volume": 25345351.17,
-      "dollar_volume_label": "25.3M$",
+      "last": 13.44,
+      "change_pct": 8.39,
+      "dollar_volume": 25850670.72,
+      "dollar_volume_label": "25.9M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -215,16 +215,16 @@
       "catalyst_ar": [
         "إعادة شراء"
       ],
-      "alert_ar": "زخم +8.3% · إعادة شراء",
+      "alert_ar": "زخم +8.4% · إعادة شراء",
       "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
     },
     {
       "symbol": "DDOG",
       "name": "Datadog, Inc.",
-      "last": 274.71,
-      "change_pct": 6.93,
-      "dollar_volume": 529269472.08,
-      "dollar_volume_label": "529.3M$",
+      "last": 273.73,
+      "change_pct": 6.54,
+      "dollar_volume": 530346674.13,
+      "dollar_volume_label": "530.3M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -256,16 +256,16 @@
       "news_title_ar": "مؤشر داو جونز للعقود الآجلة ينتعش للسوق المرن ؛ تسلا، أكاماي، تايوان شبه مركزة",
       "news_url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rally-resilient-yields-oil-prices-rising-tesla-semi-event/?src=A00220&yptr=yahoo",
       "catalyst_ar": [],
-      "alert_ar": "زخم +6.9% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +6.5% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=DDOG"
     },
     {
       "symbol": "MXL",
       "name": "MaxLinear, Inc",
-      "last": 90.75,
-      "change_pct": 6.38,
-      "dollar_volume": 91752878.25,
-      "dollar_volume_label": "91.8M$",
+      "last": 90.87,
+      "change_pct": 6.52,
+      "dollar_volume": 96385718.13,
+      "dollar_volume_label": "96.4M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -297,57 +297,16 @@
       "news_title_ar": "MXL مقابل VICR: أيهما لديه فرصة أفضل للبنية التحتية للذكاء الاصطناعي ؟",
       "news_url": "https://finance.yahoo.com/technology/ai/articles/mxl-vs-vicr-better-ai-182600283.html",
       "catalyst_ar": [],
-      "alert_ar": "زخم +6.4% · تحرك سعري قوي بدون محفز واضح بعد",
+      "alert_ar": "زخم +6.5% · تحرك سعري قوي بدون محفز واضح بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=MXL"
-    },
-    {
-      "symbol": "BE",
-      "name": "Bloom Energy Corporation",
-      "last": 282.63,
-      "change_pct": 5.99,
-      "dollar_volume": 1636345454.67,
-      "dollar_volume_label": "1.6B$",
-      "rvol": null,
-      "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": true,
-      "news": {
-        "symbol": "BE",
-        "title": "BE Stock Eyes Best Month Since April: Oracle Reaffirms 2.4 GW Fuel Cell Deal Amid Project Jupiter Jitters",
-        "title_ar": "BE Stock Eyes أفضل شهر منذ أبريل: أوراكل تعيد تأكيد صفقة خلايا الوقود بقدرة 2.4 جيجاوات وسط مشروع Jupiter Jitters",
-        "summary": "Project Jupiter is part of a broader Oracle agreement to procure up to 2.8 GW of Bloom systems.",
-        "summary_ar": "",
-        "url": "https://stocktwits.com/news-articles/markets/equity/be-stock-oracle-reaffirms-fuel-cell-deal-amid-project-jupiter-jitters/cZMOGvmRBa0",
-        "publisher": "Stocktwits",
-        "published": "2026-09-25 07:26:41 UT",
-        "published_ts": 1790321201,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "4bde024051d145fdbb89bfd3e73c5d99c83dea7c",
-        "source": "yahoo",
-        "impact": 4,
-        "impact_ar": "تأثير 4/5",
-        "sentiment_score": 4,
-        "catalysts": [],
-        "catalyst_keys": [],
-        "catalyst_ar": [],
-        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-        "officialish": false
-      },
-      "news_title_ar": "BE Stock Eyes أفضل شهر منذ أبريل: أوراكل تعيد تأكيد صفقة خلايا الوقود بقدرة 2.4 جيجاوات وسط مشروع Jupiter Jitters",
-      "news_url": "https://stocktwits.com/news-articles/markets/equity/be-stock-oracle-reaffirms-fuel-cell-deal-amid-project-jupiter-jitters/cZMOGvmRBa0",
-      "catalyst_ar": [],
-      "alert_ar": "زخم +6.0% · تحرك سعري قوي بدون محفز واضح بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=BE"
     },
     {
       "symbol": "SNX",
       "name": "TD SYNNEX Corporation",
-      "last": 274.42,
-      "change_pct": 5.76,
-      "dollar_volume": 82538401.08,
-      "dollar_volume_label": "82.5M$",
+      "last": 274.15,
+      "change_pct": 5.66,
+      "dollar_volume": 83682094.3,
+      "dollar_volume_label": "83.7M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -391,34 +350,34 @@
       "catalyst_ar": [
         "أرباح"
       ],
-      "alert_ar": "زخم +5.8% · أرباح",
+      "alert_ar": "زخم +5.7% · أرباح",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SNX"
     },
     {
-      "symbol": "FLY",
-      "name": "Firefly Aerospace Inc.",
-      "last": 24.16,
-      "change_pct": 4.63,
-      "dollar_volume": 23125782.88,
-      "dollar_volume_label": "23.1M$",
+      "symbol": "BE",
+      "name": "Bloom Energy Corporation",
+      "last": 280.93,
+      "change_pct": 5.36,
+      "dollar_volume": 1647335875.38,
+      "dollar_volume_label": "1.6B$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
       "has_news": true,
       "news": {
-        "symbol": "FLY",
-        "title": "Can Firefly Aerospace (FLY) Launch Investors to New Heights?",
-        "title_ar": "هل يمكن لـ Firefly Aerospace (FLY) إطلاق المستثمرين إلى آفاق جديدة ؟",
-        "summary": "As autonomous innovation accelerates across aerospace and defense, much like when Textron unveiled a cargo plane concept that needs no pilot, Firefly Aerospace (NASDAQ:FLY) is asserting itself as a major player in commercial launch infrastructure. The company’s core financial sta",
+        "symbol": "BE",
+        "title": "BE Stock Eyes Best Month Since April: Oracle Reaffirms 2.4 GW Fuel Cell Deal Amid Project Jupiter Jitters",
+        "title_ar": "BE Stock Eyes أفضل شهر منذ أبريل: أوراكل تعيد تأكيد صفقة خلايا الوقود بقدرة 2.4 جيجاوات وسط مشروع Jupiter Jitters",
+        "summary": "Project Jupiter is part of a broader Oracle agreement to procure up to 2.8 GW of Bloom systems.",
         "summary_ar": "",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/firefly-aerospace-fly-launch-investors-114956087.html",
-        "publisher": "Insider Monkey",
-        "published": "2026-09-25 11:49:56 UT",
-        "published_ts": 1790336996,
+        "url": "https://stocktwits.com/news-articles/markets/equity/be-stock-oracle-reaffirms-fuel-cell-deal-amid-project-jupiter-jitters/cZMOGvmRBa0",
+        "publisher": "Stocktwits",
+        "published": "2026-09-25 07:26:41 UT",
+        "published_ts": 1790321201,
         "sentiment": "pos",
         "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "35e2dbb8409de46dde4022ea506ce095d4d5b93f",
+        "id": "4bde024051d145fdbb89bfd3e73c5d99c83dea7c",
         "source": "yahoo",
         "impact": 4,
         "impact_ar": "تأثير 4/5",
@@ -429,64 +388,11 @@
         "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
         "officialish": false
       },
-      "news_title_ar": "هل يمكن لـ Firefly Aerospace (FLY) إطلاق المستثمرين إلى آفاق جديدة ؟",
-      "news_url": "https://finance.yahoo.com/markets/stocks/articles/firefly-aerospace-fly-launch-investors-114956087.html",
+      "news_title_ar": "BE Stock Eyes أفضل شهر منذ أبريل: أوراكل تعيد تأكيد صفقة خلايا الوقود بقدرة 2.4 جيجاوات وسط مشروع Jupiter Jitters",
+      "news_url": "https://stocktwits.com/news-articles/markets/equity/be-stock-oracle-reaffirms-fuel-cell-deal-amid-project-jupiter-jitters/cZMOGvmRBa0",
       "catalyst_ar": [],
-      "alert_ar": "زخم +4.6% · تحرك سعري قوي بدون محفز واضح بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=FLY"
-    },
-    {
-      "symbol": "JBL",
-      "name": "Jabil Inc.",
-      "last": 323.14,
-      "change_pct": 4.01,
-      "dollar_volume": 72626038.14,
-      "dollar_volume_label": "72.6M$",
-      "rvol": null,
-      "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": true,
-      "news": {
-        "symbol": "JBL",
-        "title": "What Analyst Projections for Key Metrics Reveal About Jabil (JBL) Q4 Earnings",
-        "title_ar": "ما الذي تكشفه توقعات المحللين للمقاييس الرئيسية عن أرباح جابيل (JBL) في الربع الرابع",
-        "summary": "Beyond analysts' top-and-bottom-line estimates for Jabil (JBL), evaluate projections for some of its key metrics to gain a better insight into how the business might have performed for the quarter ended August 2026.",
-        "summary_ar": "",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/analyst-projections-key-metrics-reveal-121512606.html",
-        "publisher": "Zacks",
-        "published": "2026-09-25 12:15:12 UT",
-        "published_ts": 1790338512,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "95e8afb71e925ce27d4f561b3bd7a69b980626bb",
-        "source": "yahoo",
-        "impact": 4,
-        "impact_ar": "تأثير 4/5",
-        "sentiment_score": 4,
-        "catalysts": [
-          {
-            "key": "earnings",
-            "ar": "أرباح",
-            "base_impact": 4
-          }
-        ],
-        "catalyst_keys": [
-          "earnings"
-        ],
-        "catalyst_ar": [
-          "أرباح"
-        ],
-        "impact_reason_ar": "أرباح",
-        "officialish": false
-      },
-      "news_title_ar": "ما الذي تكشفه توقعات المحللين للمقاييس الرئيسية عن أرباح جابيل (JBL) في الربع الرابع",
-      "news_url": "https://finance.yahoo.com/markets/stocks/articles/analyst-projections-key-metrics-reveal-121512606.html",
-      "catalyst_ar": [
-        "أرباح"
-      ],
-      "alert_ar": "زخم +4.0% · أرباح",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=JBL"
+      "alert_ar": "زخم +5.4% · تحرك سعري قوي بدون محفز واضح بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=BE"
     }
   ],
   "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
@@ -502,21 +408,20 @@
   "opportunities": [],
   "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
   "opps_rejected_slow": [
-    "QQQ:زخم ضعيف (+0.04% < 0.35%)",
     "MSFT:ممتد جداً فوق VWAP — لا تدخل متأخراً",
-    "SPY:زخم ضعيف (+0.05% < 0.35%)"
+    "SPY:زخم ضعيف (+0.06% < 0.35%)"
   ],
   "gainers": [
     {
       "symbol": "PPLI",
       "name": "People Incorporated",
-      "last": 39.11,
-      "change_pct": 8.85,
+      "last": 39.13,
+      "change_pct": 8.91,
       "ref": 35.93,
-      "rth_close": 39.11,
-      "volume": 498301.0,
-      "dollar_volume": 19488552.11,
-      "dollar_volume_label": "19.5M$",
+      "rth_close": 39.15,
+      "volume": 514485.0,
+      "dollar_volume": 20131798.05,
+      "dollar_volume_label": "20.1M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PPLI"
@@ -524,13 +429,13 @@
     {
       "symbol": "ALM",
       "name": "Almonty Industries Inc.",
-      "last": 13.43,
-      "change_pct": 8.31,
+      "last": 13.44,
+      "change_pct": 8.39,
       "ref": 12.4,
-      "rth_close": 13.43,
-      "volume": 1887219.0,
-      "dollar_volume": 25345351.17,
-      "dollar_volume_label": "25.3M$",
+      "rth_close": 13.44,
+      "volume": 1923413.0,
+      "dollar_volume": 25850670.72,
+      "dollar_volume_label": "25.9M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
@@ -538,13 +443,13 @@
     {
       "symbol": "DDOG",
       "name": "Datadog, Inc.",
-      "last": 274.71,
-      "change_pct": 6.93,
+      "last": 273.73,
+      "change_pct": 6.54,
       "ref": 256.92,
-      "rth_close": 274.71,
-      "volume": 1926648.0,
-      "dollar_volume": 529269472.08,
-      "dollar_volume_label": "529.3M$",
+      "rth_close": 273.73,
+      "volume": 1937481.0,
+      "dollar_volume": 530346674.13,
+      "dollar_volume_label": "530.3M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=DDOG"
@@ -552,55 +457,55 @@
     {
       "symbol": "MXL",
       "name": "MaxLinear, Inc",
-      "last": 90.75,
-      "change_pct": 6.38,
+      "last": 90.87,
+      "change_pct": 6.52,
       "ref": 85.31,
-      "rth_close": 90.75,
-      "volume": 1011051.0,
-      "dollar_volume": 91752878.25,
-      "dollar_volume_label": "91.8M$",
+      "rth_close": 90.87,
+      "volume": 1060699.0,
+      "dollar_volume": 96385718.13,
+      "dollar_volume_label": "96.4M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=MXL"
     },
     {
+      "symbol": "SNX",
+      "name": "TD SYNNEX Corporation",
+      "last": 274.15,
+      "change_pct": 5.66,
+      "ref": 259.47,
+      "rth_close": 274.15,
+      "volume": 305242.0,
+      "dollar_volume": 83682094.3,
+      "dollar_volume_label": "83.7M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SNX"
+    },
+    {
       "symbol": "BE",
       "name": "Bloom Energy Corporation",
-      "last": 282.63,
-      "change_pct": 5.99,
+      "last": 280.93,
+      "change_pct": 5.36,
       "ref": 266.65,
-      "rth_close": 282.63,
-      "volume": 5789709.0,
-      "dollar_volume": 1636345454.67,
+      "rth_close": 280.93,
+      "volume": 5863866.0,
+      "dollar_volume": 1647335875.38,
       "dollar_volume_label": "1.6B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=BE"
     },
     {
-      "symbol": "SNX",
-      "name": "TD SYNNEX Corporation",
-      "last": 274.42,
-      "change_pct": 5.76,
-      "ref": 259.47,
-      "rth_close": 274.42,
-      "volume": 300774.0,
-      "dollar_volume": 82538401.08,
-      "dollar_volume_label": "82.5M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SNX"
-    },
-    {
       "symbol": "FLY",
       "name": "Firefly Aerospace Inc.",
-      "last": 24.16,
-      "change_pct": 4.63,
+      "last": 24.0,
+      "change_pct": 3.94,
       "ref": 23.09,
-      "rth_close": 24.16,
-      "volume": 957193.0,
-      "dollar_volume": 23125782.88,
-      "dollar_volume_label": "23.1M$",
+      "rth_close": 24.0,
+      "volume": 985983.0,
+      "dollar_volume": 23663592.0,
+      "dollar_volume_label": "23.7M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=FLY"
@@ -608,13 +513,13 @@
     {
       "symbol": "JBL",
       "name": "Jabil Inc.",
-      "last": 323.14,
-      "change_pct": 4.01,
+      "last": 322.08,
+      "change_pct": 3.66,
       "ref": 310.69,
-      "rth_close": 323.14,
-      "volume": 224751.0,
-      "dollar_volume": 72626038.14,
-      "dollar_volume_label": "72.6M$",
+      "rth_close": 322.07,
+      "volume": 228284.0,
+      "dollar_volume": 73525710.72,
+      "dollar_volume_label": "73.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=JBL"
@@ -622,103 +527,89 @@
     {
       "symbol": "SMCI",
       "name": "Super Micro Computer, Inc.",
-      "last": 43.09,
-      "change_pct": 3.8,
+      "last": 42.94,
+      "change_pct": 3.43,
       "ref": 41.51,
-      "rth_close": 43.09,
-      "volume": 16603230.0,
-      "dollar_volume": 715433180.7,
-      "dollar_volume_label": "715.4M$",
+      "rth_close": 42.94,
+      "volume": 16867248.0,
+      "dollar_volume": 724279629.12,
+      "dollar_volume_label": "724.3M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SMCI"
     },
     {
-      "symbol": "EQPT",
-      "name": "EquipmentShare.com Inc",
-      "last": 16.89,
-      "change_pct": 3.49,
-      "ref": 16.32,
-      "rth_close": 16.89,
-      "volume": 814752.0,
-      "dollar_volume": 13761161.28,
-      "dollar_volume_label": "13.8M$",
+      "symbol": "MSFT",
+      "name": "Microsoft Corporation",
+      "last": 514.04,
+      "change_pct": 3.24,
+      "ref": 497.93,
+      "rth_close": 514.04,
+      "volume": 11486600.0,
+      "dollar_volume": 5904571864.0,
+      "dollar_volume_label": "5.9B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=EQPT"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=MSFT"
     },
     {
       "symbol": "CRDO",
       "name": "Credo Technology Group Holding ",
-      "last": 202.62,
-      "change_pct": 3.39,
+      "last": 202.19,
+      "change_pct": 3.17,
       "ref": 195.97,
-      "rth_close": 202.62,
-      "volume": 3255519.0,
-      "dollar_volume": 659633259.78,
-      "dollar_volume_label": "659.6M$",
+      "rth_close": 202.19,
+      "volume": 3313611.0,
+      "dollar_volume": 669979008.09,
+      "dollar_volume_label": "670.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CRDO"
-    },
-    {
-      "symbol": "FLEX",
-      "name": "Flex Ltd.",
-      "last": 116.12,
-      "change_pct": 3.31,
-      "ref": 112.4,
-      "rth_close": 116.12,
-      "volume": 973596.0,
-      "dollar_volume": 113053967.52,
-      "dollar_volume_label": "113.1M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=FLEX"
     }
   ],
   "gainers_min_price": 5.0,
   "gainers_session_ar": "الجلسة الرسمية الآن",
   "movers": [
     {
+      "symbol": "MSFT",
+      "change_pct": 3.24,
+      "last": 514.04,
+      "rvol": 0.56,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "5.9B$"
+    },
+    {
       "symbol": "META",
-      "change_pct": -3.27,
-      "last": 752.14,
+      "change_pct": -3.23,
+      "last": 752.44,
       "rvol": 0.36,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "6.0B$"
     },
     {
-      "symbol": "MSFT",
-      "change_pct": 3.18,
-      "last": 513.77,
-      "rvol": 0.55,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "5.8B$"
-    },
-    {
       "symbol": "TSLA",
-      "change_pct": -1.75,
-      "last": 371.34,
+      "change_pct": -1.93,
+      "last": 370.66,
       "rvol": 0.48,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "6.8B$"
+      "dollar_volume_label": "6.9B$"
     },
     {
       "symbol": "XOM",
-      "change_pct": -0.73,
-      "last": 160.95,
-      "rvol": 0.12,
+      "change_pct": -0.79,
+      "last": 160.87,
+      "rvol": 0.13,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "273.0M$"
+      "dollar_volume_label": "286.8M$"
     },
     {
       "symbol": "AMZN",
-      "change_pct": -0.64,
-      "last": 247.78,
+      "change_pct": -0.72,
+      "last": 247.58,
       "rvol": 0.23,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -726,30 +617,30 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -0.59,
-      "last": 191.46,
+      "change_pct": -0.55,
+      "last": 191.54,
       "rvol": 0.17,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "841.7M$"
-    },
-    {
-      "symbol": "AMD",
-      "change_pct": 0.45,
-      "last": 632.11,
-      "rvol": 0.29,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "3.9B$"
+      "dollar_volume_label": "853.4M$"
     },
     {
       "symbol": "NVDA",
-      "change_pct": -0.38,
-      "last": 223.72,
-      "rvol": 0.18,
+      "change_pct": -0.44,
+      "last": 223.6,
+      "rvol": 0.19,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "4.6B$"
+      "dollar_volume_label": "4.7B$"
+    },
+    {
+      "symbol": "JPM",
+      "change_pct": 0.37,
+      "last": 339.8,
+      "rvol": 0.17,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "409.0M$"
     }
   ],
   "news": [
@@ -1064,29 +955,6 @@
       "officialish": false
     },
     {
-      "symbol": "FLY",
-      "title": "Can Firefly Aerospace (FLY) Launch Investors to New Heights?",
-      "title_ar": "هل يمكن لـ Firefly Aerospace (FLY) إطلاق المستثمرين إلى آفاق جديدة ؟",
-      "summary": "As autonomous innovation accelerates across aerospace and defense, much like when Textron unveiled a cargo plane concept that needs no pilot, Firefly Aerospace (NASDAQ:FLY) is asserting itself as a major player in commercial launch infrastructure. The company’s core financial sta",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/firefly-aerospace-fly-launch-investors-114956087.html",
-      "publisher": "Insider Monkey",
-      "published": "2026-09-25 11:49:56 UT",
-      "published_ts": 1790336996,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "35e2dbb8409de46dde4022ea506ce095d4d5b93f",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
       "symbol": "DDOG",
       "title": "Datadog's Global Expansion Accelerates: Can It Drive More Revenues?",
       "title_ar": "توسع Datadog العالمي يتسارع: هل يمكنه تحقيق المزيد من الإيرادات ؟",
@@ -1147,52 +1015,6 @@
         "توجيهات"
       ],
       "impact_reason_ar": "أرباح · توجيهات",
-      "officialish": false
-    },
-    {
-      "symbol": "JBL",
-      "title": "Akamai Shares Rise 21.3% After $11.6 Billion Anthropic Cloud Services Agreement",
-      "title_ar": "أسهم Akamai ترتفع بنسبة 21.3 ٪ بعد 11.6 مليار $ اتفاقية الخدمات السحابية الأنثروبية",
-      "summary": "Akamai Technologies (NASDAQ:AKAM) shares rose 21. 3% in premarket trading after the company announced a seven-year cloud services commitment with artificial intelligence company Anthropic valued at $11.",
-      "summary_ar": "",
-      "url": "https://investorshub.advfn.com/market-news/article/36942/akamai-shares-rise-21-3-after-11-6-billion-anthropic-cloud-services-agreement",
-      "publisher": "InvestorsHub",
-      "published": "2026-09-25 10:33:20 UT",
-      "published_ts": 1790332400,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "bd88b5010426b56ba97c8b91b24af6417af16b59",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
-      "symbol": "FLY",
-      "title": "Stocktwits Space Race Weekly: Why RKLB, FLY, RDW And PL Are Outpacing SPCX",
-      "title_ar": "سباق ستوكتويتس للفضاء الأسبوعي: لماذا تتفوق RKLB و FLY و RDW و PL على SPCX",
-      "summary": "RKLB rose 14% this week after its 96th Electron launch, a bullish Cantor call, an ARK purchase and shareholder approval of its Iridium deal.",
-      "summary_ar": "",
-      "url": "https://stocktwits.com/news-articles/markets/equity/stocktwits-space-race-weekly-rklb-fly-rdw-pl-outpacing-spcx/cZMObY5RBaS",
-      "publisher": "Stocktwits",
-      "published": "2026-09-25 07:58:37 UT",
-      "published_ts": 1790323117,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "14004bccd56e0a856e6434b5600ee99977ede7ca",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
       "officialish": false
     },
     {
@@ -1338,29 +1160,6 @@
       "officialish": false
     },
     {
-      "symbol": "FLY",
-      "title": "Firefly Aerospace vs. SpaceX: Which Space Stock Can Put Your Portfolio Into Orbit in 2026?",
-      "title_ar": "Firefly Aerospace مقابل SpaceX: أي مخزون فضائي يمكنه وضع محفظتك في المدار في عام 2026 ؟",
-      "summary": "Firefly's $1.4B backlog and government ties offer a cheaper entry point, but SpaceX's Starlink dominance and scale present a different growth thesis.",
-      "summary_ar": "",
-      "url": "https://www.fool.com/coverage/better-buy/2026/09/22/firefly-aerospace-vs-spacex-which-space-stock-can-put-your-portfolio-into-orbit-in-2026/",
-      "publisher": "Motley Fool",
-      "published": "2026-09-22 22:35:01 UT",
-      "published_ts": 1790116501,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "7884163261f134cd6cda54bb755e2ef533806eee",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
       "symbol": "MXL",
       "title": "MXL vs. VICR: Which Has the Better AI Infrastructure Opportunity?",
       "title_ar": "MXL مقابل VICR: أيهما لديه فرصة أفضل للبنية التحتية للذكاء الاصطناعي ؟",
@@ -1405,6 +1204,98 @@
       "catalyst_ar": [],
       "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
       "officialish": false
+    },
+    {
+      "symbol": "FLY",
+      "title": "Can Firefly Aerospace (FLY) Launch Investors to New Heights?",
+      "title_ar": "هل يمكن لـ Firefly Aerospace (FLY) إطلاق المستثمرين إلى آفاق جديدة ؟",
+      "summary": "As autonomous innovation accelerates across aerospace and defense, much like when Textron unveiled a cargo plane concept that needs no pilot, Firefly Aerospace (NASDAQ:FLY) is asserting itself as a major player in commercial launch infrastructure. The company’s core financial sta",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/firefly-aerospace-fly-launch-investors-114956087.html",
+      "publisher": "Insider Monkey",
+      "published": "2026-09-25 11:49:56 UT",
+      "published_ts": 1790336996,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "35e2dbb8409de46dde4022ea506ce095d4d5b93f",
+      "source": "yahoo",
+      "impact": 3,
+      "impact_ar": "تأثير 3/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": false
+    },
+    {
+      "symbol": "JBL",
+      "title": "Akamai Shares Rise 21.3% After $11.6 Billion Anthropic Cloud Services Agreement",
+      "title_ar": "أسهم Akamai ترتفع بنسبة 21.3 ٪ بعد 11.6 مليار $ اتفاقية الخدمات السحابية الأنثروبية",
+      "summary": "Akamai Technologies (NASDAQ:AKAM) shares rose 21. 3% in premarket trading after the company announced a seven-year cloud services commitment with artificial intelligence company Anthropic valued at $11.",
+      "summary_ar": "",
+      "url": "https://investorshub.advfn.com/market-news/article/36942/akamai-shares-rise-21-3-after-11-6-billion-anthropic-cloud-services-agreement",
+      "publisher": "InvestorsHub",
+      "published": "2026-09-25 10:33:20 UT",
+      "published_ts": 1790332400,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "bd88b5010426b56ba97c8b91b24af6417af16b59",
+      "source": "yahoo",
+      "impact": 3,
+      "impact_ar": "تأثير 3/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": false
+    },
+    {
+      "symbol": "FLY",
+      "title": "Stocktwits Space Race Weekly: Why RKLB, FLY, RDW And PL Are Outpacing SPCX",
+      "title_ar": "سباق ستوكتويتس للفضاء الأسبوعي: لماذا تتفوق RKLB و FLY و RDW و PL على SPCX",
+      "summary": "RKLB rose 14% this week after its 96th Electron launch, a bullish Cantor call, an ARK purchase and shareholder approval of its Iridium deal.",
+      "summary_ar": "",
+      "url": "https://stocktwits.com/news-articles/markets/equity/stocktwits-space-race-weekly-rklb-fly-rdw-pl-outpacing-spcx/cZMObY5RBaS",
+      "publisher": "Stocktwits",
+      "published": "2026-09-25 07:58:37 UT",
+      "published_ts": 1790323117,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "14004bccd56e0a856e6434b5600ee99977ede7ca",
+      "source": "yahoo",
+      "impact": 3,
+      "impact_ar": "تأثير 3/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": false
+    },
+    {
+      "symbol": "FLY",
+      "title": "Firefly Aerospace vs. SpaceX: Which Space Stock Can Put Your Portfolio Into Orbit in 2026?",
+      "title_ar": "Firefly Aerospace مقابل SpaceX: أي مخزون فضائي يمكنه وضع محفظتك في المدار في عام 2026 ؟",
+      "summary": "Firefly's $1.4B backlog and government ties offer a cheaper entry point, but SpaceX's Starlink dominance and scale present a different growth thesis.",
+      "summary_ar": "",
+      "url": "https://www.fool.com/coverage/better-buy/2026/09/22/firefly-aerospace-vs-spacex-which-space-stock-can-put-your-portfolio-into-orbit-in-2026/",
+      "publisher": "Motley Fool",
+      "published": "2026-09-22 22:35:01 UT",
+      "published_ts": 1790116501,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "7884163261f134cd6cda54bb755e2ef533806eee",
+      "source": "yahoo",
+      "impact": 3,
+      "impact_ar": "تأثير 3/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": false
     }
   ],
   "news_excluded_negative": [
@@ -1414,6 +1305,7 @@
     "BIRK",
     "DELL",
     "GNRC",
+    "IT",
     "LPLA",
     "MUFG",
     "ON",
@@ -1428,6 +1320,6 @@
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
   "reminder": "تداول المحفز لا المطاردة — راجع المصدر قبل الدخول",
-  "heartbeat_ts": 1790346462,
+  "heartbeat_ts": 1790346574,
   "publisher": "github-actions-always-on"
 }
