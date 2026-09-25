@@ -2049,7 +2049,6 @@
       if(hint) hint.textContent=`تحديث حي · أسعار من الملف كل ${PRICE_POLL_SEC}ث · فحص خلال ${refreshIn}ث`;
       tickClocks();
     },1000);
-    const PRICE_POLL_SEC = isLightNet()?8:5;
     setInterval(()=>pollAllPrices(), PRICE_POLL_SEC*1000);
     setInterval(()=>pollNewsLive(), 15000);
     setInterval(()=>refreshMovingBadges(), 1000);
