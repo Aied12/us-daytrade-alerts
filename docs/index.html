@@ -1034,6 +1034,7 @@
       PRICE_TIER = (savedTier==='low') ? 'low' : 'high';
       syncPriceTierUi();
       syncLightBtn();
+      loadJamalSettings();
     }
     function currentFilter(){
       const a=document.querySelector('#filterSeg button.active');
@@ -1866,6 +1867,9 @@
     };
     document.querySelectorAll('#priceTier button').forEach(b=>{
       b.onclick=()=>setPriceTier(b.dataset.tier||'high');
+    });
+    document.querySelectorAll('#jamalSettingsBox input').forEach(inp=>{
+      inp.addEventListener('change', ()=>{ saveJamalSettingsFromUi(); toast('تم حفظ إعدادات جمال'); });
     });
     document.querySelectorAll('#filterSeg button').forEach(b=>{
       b.onclick=()=>{
