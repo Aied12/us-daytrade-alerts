@@ -1620,7 +1620,8 @@
       }
     }
 
-    const AUTO_SEC = isLightNet()?15:8;
+    const AUTO_SEC = isLightNet()?20:12;
+    const PRICE_POLL_SEC = isLightNet()?8:5;
     let refreshIn = AUTO_SEC;
 
     document.getElementById('btnRefresh').onclick=()=>fetchData(true);
@@ -1924,6 +1925,10 @@
       const jina='https://r.jina.ai/http://query1.finance.yahoo.com/v8/finance/chart/'
         +encodeURIComponent(sym)+'?range=1d&interval=1m&includePrePost=true';
       const r=await fetch(jina,{cache:'no-store', headers:{'Accept':'application/json'}});
+      if(r.status===429){
+        window.__jinaBackoffUntil = Date.now() + 60000; // دقيقة هدوء بعد الحظر
+        throw new Error('jina 429');
+      }
       if(!r.ok) throw new Error('jina '+r.status);
       const payload=await r.json();
       let content=(payload.data&&payload.data.content)||payload.content||'';
@@ -1978,16 +1983,21 @@
     }
 
     async function refreshDirect(syms){
-      // Parallel Yahoo-via-jina for true movement between server publishes
-      // Prefer gainers first so the rise table stays live + liquidity-aware
+      // لا تضرب jina إذا محظور أو لو الملف الطازج يكفي
+      if(window.__jinaBackoffUntil && Date.now() < window.__jinaBackoffUntil) return 0;
       const gainerSet=new Set(GAINERS_STATE.map(g=>String(g.symbol).toUpperCase()));
       const ranked=[...syms].sort((a,b)=>(gainerSet.has(b)?1:0)-(gainerSet.has(a)?1:0));
-      const list=ranked.slice(0, 24);
+      // دفعة صغيرة فقط — موجة دوّارة كل دورة
+      const start=(liveWave*4)%Math.max(ranked.length,1);
+      const list=[];
+      for(let k=0;k<4 && ranked.length;k++) list.push(ranked[(start+k)%ranked.length]);
       let ok=0;
-      await mapPool(list, 6, async (sym)=>{
-        const q=await fetchOneLive(sym);
-        applyQuoteToDom(sym, q);
-        ok++;
+      await mapPool([...new Set(list)], 2, async (sym)=>{
+        try{
+          const q=await fetchOneLive(sym);
+          applyQuoteToDom(sym, q);
+          ok++;
+        }catch(e){}
       });
       return ok;
     }
@@ -1999,16 +2009,12 @@
         const batch=await fetchBatchLive();
         const syms=allPageSymbols();
         renderLiveTape();
-        // Always refresh directly too — batch alone freezes due to Pages cache
-        // Wave through symbols so we don't hammer: full set every other cycle
+        // الملف المنشور هو المصدر الأساسي؛ الطلب المباشر نادر وخفيف
         let directN=0;
-        if(liveWave % 2 === 0){
+        const batchStale = !batch.ok || batch.age > 90;
+        // كل ~6 دورات (≈30ث) أو إذا الملف قديم
+        if(batchStale || (liveWave % 6 === 0)){
           directN = await refreshDirect(syms);
-        } else {
-          // smaller wave
-          const start=(liveWave*5)%Math.max(syms.length,1);
-          const slice=[...syms.slice(start,start+8), ...syms.slice(0, Math.max(0, 8-(syms.length-start)))];
-          directN = await refreshDirect([...new Set(slice)]);
         }
         liveWave++;
         syncGainersAfterQuotes();
@@ -2017,8 +2023,12 @@
         const clk=document.getElementById('liveClock');
         if(clk){
           const movingN=Object.values(LIVE_CACHE).filter(q=>q && q.move_ts && (Date.now()-q.move_ts)<MOVE_WINDOW_MS).length;
-          clk.textContent = `لحظي: ${directN||batch.n||0} سهم · ${new Date().toLocaleTimeString('ar-SA')}`
-            + (batch.ok?` · ملف ${Math.round(batch.age)}ث`:'')
+          const blocked=window.__jinaBackoffUntil && Date.now()<window.__jinaBackoffUntil;
+          clk.textContent = `لحظي: ${batch.n||0} من الملف`
+            + (directN?` +${directN} مباشر`:'')
+            + ` · ${new Date().toLocaleTimeString('ar-SA')}`
+            + (batch.ok?` · عمر الملف ${Math.round(batch.age)}ث`:'')
+            + (blocked?' · تهدئة مؤقتة':'')
             + ` · صاعدين ${GAINERS_STATE.length}`
             + (movingN?` · يتحرك ${movingN}`:'');
         }
@@ -2036,11 +2046,12 @@
       if(sessionLeft>0) sessionLeft-=1;
       refreshIn=Math.max(0, refreshIn-1);
       const hint=document.getElementById('autoHint');
-      if(hint) hint.textContent=`تحديث فوري · أسعار كل ثانيتين · فحص خلال ${refreshIn}ث`;
+      if(hint) hint.textContent=`تحديث حي · أسعار من الملف كل ${PRICE_POLL_SEC}ث · فحص خلال ${refreshIn}ث`;
       tickClocks();
     },1000);
-    setInterval(()=>pollAllPrices(), 2000);
-    setInterval(()=>pollNewsLive(), 8000);
+    const PRICE_POLL_SEC = isLightNet()?8:5;
+    setInterval(()=>pollAllPrices(), PRICE_POLL_SEC*1000);
+    setInterval(()=>pollNewsLive(), 15000);
     setInterval(()=>refreshMovingBadges(), 1000);
   </script>
 </body>
