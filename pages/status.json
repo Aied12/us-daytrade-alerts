@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-25T14:34:56.292190+00:00",
-  "generated_ts": 1790346896,
-  "generated_local": "2026-09-25 17:34 +03",
+  "generated_at": "2026-09-25T14:36:53.399284+00:00",
+  "generated_ts": 1790347013,
+  "generated_local": "2026-09-25 17:36 +03",
   "status": {
     "ok": true,
     "last_mode": "dashboard",
     "changed": true,
     "symbols": 12,
-    "updated_at": "2026-09-25T14:34:56.291987+00:00",
+    "updated_at": "2026-09-25T14:36:53.399072+00:00",
     "source": "build_pages"
   },
   "telegram_enabled": false,
@@ -24,39 +24,39 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: مبتدئ",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": -0.03,
+    "avg_change_pct": -0.02,
     "details": {
       "SPY": {
-        "last": 767.885,
-        "change_pct": 0.09,
-        "rsi": 49.5
+        "last": 767.94,
+        "change_pct": 0.1,
+        "rsi": 49.8
       },
       "QQQ": {
-        "last": 741.73,
-        "change_pct": 0.09,
-        "rsi": 65.1
+        "last": 741.92,
+        "change_pct": 0.11,
+        "rsi": 65.3
       },
       "IWM": {
-        "last": 280.87,
-        "change_pct": -0.28,
-        "rsi": 22.3
+        "last": 280.94,
+        "change_pct": -0.26,
+        "rsi": 22.4
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": 0.09,
-        "rsi": 49.5
+        "change_pct": 0.1,
+        "rsi": 49.8
       },
       {
         "symbol": "QQQ",
-        "change_pct": 0.09,
-        "rsi": 65.1
+        "change_pct": 0.11,
+        "rsi": 65.3
       },
       {
         "symbol": "IWM",
-        "change_pct": -0.28,
-        "rsi": 22.3
+        "change_pct": -0.26,
+        "rsi": 22.4
       }
     ],
     "no_trade_today": false,
@@ -69,8 +69,8 @@
   "session": {
     "phase": "open",
     "label_ar": "للإغلاق",
-    "seconds_left": 19503,
-    "ny_time": "10:34:56",
+    "seconds_left": 19386,
+    "ny_time": "10:36:53",
     "open": "09:30",
     "close": "16:00"
   },
@@ -78,35 +78,35 @@
     "strongest": [
       {
         "name": "Financials",
-        "change_pct": 0.37
+        "change_pct": 0.42
       },
       {
         "name": "Technology",
-        "change_pct": -0.01
+        "change_pct": 0.01
       },
       {
         "name": "Energy",
-        "change_pct": -0.74
+        "change_pct": -0.8
       }
     ],
     "weakest": [
       {
         "name": "Consumer",
-        "change_pct": -1.35
+        "change_pct": -1.25
       },
       {
         "name": "Energy",
-        "change_pct": -0.74
+        "change_pct": -0.8
       },
       {
         "name": "Technology",
-        "change_pct": -0.01
+        "change_pct": 0.01
       }
     ]
   },
   "style": {
-    "growth_avg": -1.12,
-    "value_avg": 0.49,
+    "growth_avg": -1.09,
+    "value_avg": 0.52,
     "leader": "قيمة",
     "growth_count": 5,
     "value_count": 5
@@ -115,10 +115,10 @@
     {
       "symbol": "PPLI",
       "name": "People Incorporated",
-      "last": 39.18,
-      "change_pct": 9.05,
-      "dollar_volume": 21647733.6,
-      "dollar_volume_label": "21.6M$",
+      "last": 39.14,
+      "change_pct": 8.93,
+      "dollar_volume": 21987168.98,
+      "dollar_volume_label": "22.0M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -162,7 +162,7 @@
       "catalyst_ar": [
         "اندماج/استحواذ"
       ],
-      "alert_ar": "زخم +9.1% · اندماج/استحواذ",
+      "alert_ar": "زخم +8.9% · اندماج/استحواذ",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PPLI"
     },
     {
@@ -170,8 +170,8 @@
       "name": "Almonty Industries Inc.",
       "last": 13.48,
       "change_pct": 8.71,
-      "dollar_volume": 27014580.52,
-      "dollar_volume_label": "27.0M$",
+      "dollar_volume": 27371301.76,
+      "dollar_volume_label": "27.4M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -207,60 +207,19 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
     },
     {
-      "symbol": "MXL",
-      "name": "MaxLinear, Inc",
-      "last": 91.69,
-      "change_pct": 7.48,
-      "dollar_volume": 109389470.84,
-      "dollar_volume_label": "109.4M$",
+      "symbol": "BE",
+      "name": "Bloom Energy Corporation",
+      "last": 283.51,
+      "change_pct": 6.32,
+      "dollar_volume": 1744617058.85,
+      "dollar_volume_label": "1.7B$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
       "has_news": true,
       "news": {
-        "symbol": "MXL",
-        "title": "MXL vs. VICR: Which Has the Better AI Infrastructure Opportunity?",
-        "title_ar": "MXL مقابل VICR: أيهما لديه فرصة أفضل للبنية التحتية للذكاء الاصطناعي ؟",
-        "summary": "MaxLinear has the AI infrastructure edge, backed by strong current revenue growth and multiple product ramps through 2027-2028.",
-        "summary_ar": "",
-        "url": "https://finance.yahoo.com/technology/ai/articles/mxl-vs-vicr-better-ai-182600283.html",
-        "publisher": "Zacks",
-        "published": "2026-08-28 18:26:00 UT",
-        "published_ts": 1787941560,
-        "sentiment": "pos",
-        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "fcb12b59164df66c8e87a75b33b8eab5f2c210ea",
-        "source": "yahoo",
-        "impact": 4,
-        "impact_ar": "تأثير 4/5",
-        "sentiment_score": 4,
-        "catalysts": [],
-        "catalyst_keys": [],
-        "catalyst_ar": [],
-        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-        "officialish": false
-      },
-      "news_title_ar": "MXL مقابل VICR: أيهما لديه فرصة أفضل للبنية التحتية للذكاء الاصطناعي ؟",
-      "news_url": "https://finance.yahoo.com/technology/ai/articles/mxl-vs-vicr-better-ai-182600283.html",
-      "catalyst_ar": [],
-      "alert_ar": "زخم +7.5% · تحرك سعري قوي بدون محفز واضح بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=MXL"
-    },
-    {
-      "symbol": "DDOG",
-      "name": "Datadog, Inc.",
-      "last": 273.66,
-      "change_pct": 6.52,
-      "dollar_volume": 544618975.8,
-      "dollar_volume_label": "544.6M$",
-      "rvol": null,
-      "liq_grade_ar": "",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "has_news": true,
-      "news": {
-        "symbol": "DDOG",
+        "symbol": "BE",
         "title": "Dow Jones Futures Signal Rebound For Resilient Market; Tesla, Akamai, Taiwan Semi In Focus",
         "title_ar": "مؤشر داو جونز للعقود الآجلة ينتعش للسوق المرن ؛ تسلا، أكاماي، تايوان شبه مركزة",
         "summary": "Futures rose, with the market showing resilience even as yields keep rising. Taiwan Semi is a buy. Tesla held a Semi event.",
@@ -271,7 +230,7 @@
         "published_ts": 1790337893,
         "sentiment": "pos",
         "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "f7d9e13ad464b79df9f809a29855ede71f88029e",
+        "id": "7c7c669799cbd495eb4bd49c71daac408e453eaa",
         "source": "yahoo",
         "impact": 4,
         "impact_ar": "تأثير 4/5",
@@ -285,34 +244,34 @@
       "news_title_ar": "مؤشر داو جونز للعقود الآجلة ينتعش للسوق المرن ؛ تسلا، أكاماي، تايوان شبه مركزة",
       "news_url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rally-resilient-yields-oil-prices-rising-tesla-semi-event/?src=A00220&yptr=yahoo",
       "catalyst_ar": [],
-      "alert_ar": "زخم +6.5% · تحرك سعري قوي بدون محفز واضح بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=DDOG"
+      "alert_ar": "زخم +6.3% · تحرك سعري قوي بدون محفز واضح بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=BE"
     },
     {
-      "symbol": "BE",
-      "name": "Bloom Energy Corporation",
-      "last": 282.04,
-      "change_pct": 5.77,
-      "dollar_volume": 1712726257.44,
-      "dollar_volume_label": "1.7B$",
+      "symbol": "DDOG",
+      "name": "Datadog, Inc.",
+      "last": 273.1,
+      "change_pct": 6.3,
+      "dollar_volume": 549506967.9,
+      "dollar_volume_label": "549.5M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
       "has_news": true,
       "news": {
-        "symbol": "BE",
-        "title": "BE Stock Eyes Best Month Since April: Oracle Reaffirms 2.4 GW Fuel Cell Deal Amid Project Jupiter Jitters",
-        "title_ar": "BE Stock Eyes أفضل شهر منذ أبريل: أوراكل تعيد تأكيد صفقة خلايا الوقود بقدرة 2.4 جيجاوات وسط مشروع Jupiter Jitters",
-        "summary": "Project Jupiter is part of a broader Oracle agreement to procure up to 2.8 GW of Bloom systems.",
+        "symbol": "DDOG",
+        "title": "Datadog's Global Expansion Accelerates: Can It Drive More Revenues?",
+        "title_ar": "توسع Datadog العالمي يتسارع: هل يمكنه تحقيق المزيد من الإيرادات ؟",
+        "summary": "DDOG's international expansion across EMEA and APAC could support revenue growth as recurring subscriptions drive broader platform adoption.",
         "summary_ar": "",
-        "url": "https://stocktwits.com/news-articles/markets/equity/be-stock-oracle-reaffirms-fuel-cell-deal-amid-project-jupiter-jitters/cZMOGvmRBa0",
-        "publisher": "Stocktwits",
-        "published": "2026-09-25 07:26:41 UT",
-        "published_ts": 1790321201,
+        "url": "https://finance.yahoo.com/markets/stocks/articles/datadogs-global-expansion-accelerates-drive-113700535.html",
+        "publisher": "Zacks",
+        "published": "2026-09-25 11:37:00 UT",
+        "published_ts": 1790336220,
         "sentiment": "pos",
         "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "4bde024051d145fdbb89bfd3e73c5d99c83dea7c",
+        "id": "0ecfd569467f537ef242512f9bdcebbde58137f2",
         "source": "yahoo",
         "impact": 4,
         "impact_ar": "تأثير 4/5",
@@ -323,72 +282,60 @@
         "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
         "officialish": false
       },
-      "news_title_ar": "BE Stock Eyes أفضل شهر منذ أبريل: أوراكل تعيد تأكيد صفقة خلايا الوقود بقدرة 2.4 جيجاوات وسط مشروع Jupiter Jitters",
-      "news_url": "https://stocktwits.com/news-articles/markets/equity/be-stock-oracle-reaffirms-fuel-cell-deal-amid-project-jupiter-jitters/cZMOGvmRBa0",
+      "news_title_ar": "توسع Datadog العالمي يتسارع: هل يمكنه تحقيق المزيد من الإيرادات ؟",
+      "news_url": "https://finance.yahoo.com/markets/stocks/articles/datadogs-global-expansion-accelerates-drive-113700535.html",
       "catalyst_ar": [],
-      "alert_ar": "زخم +5.8% · تحرك سعري قوي بدون محفز واضح بعد",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=BE"
+      "alert_ar": "زخم +6.3% · تحرك سعري قوي بدون محفز واضح بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=DDOG"
     },
     {
-      "symbol": "SNX",
-      "name": "TD SYNNEX Corporation",
-      "last": 271.24,
-      "change_pct": 4.54,
-      "dollar_volume": 89326926.72,
-      "dollar_volume_label": "89.3M$",
+      "symbol": "CRDO",
+      "name": "Credo Technology Group Holding ",
+      "last": 204.59,
+      "change_pct": 4.4,
+      "dollar_volume": 746305652.49,
+      "dollar_volume_label": "746.3M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
       "has_news": true,
       "news": {
-        "symbol": "SNX",
-        "title": "SNX Q3 Earnings Call Highlights AI Infrastructure Momentum",
-        "title_ar": "تسلط مكالمة الأرباح في الربع الثالث من SNX الضوء على زخم البنية التحتية للذكاء الاصطناعي",
-        "summary": "TD SYNNEX sees AI infrastructure demand accelerating as Hyve expands, while management targets stronger cash generation and disciplined margins.",
+        "symbol": "CRDO",
+        "title": "One Under-the-Radar Stock With 100% Upside Potential",
+        "title_ar": "سهم واحد تحت الرادار مع احتمالية صعود بنسبة 100 ٪",
+        "summary": "A small-cap silicon photonics company has quietly built a cash fortress and locked in a major anchor customer, positioning itself to compete in a $26 billion AI optics market where the giants are not paying attention yet.",
         "summary_ar": "",
-        "url": "https://finance.yahoo.com/technology/ai/articles/snx-q3-earnings-call-highlights-130000625.html",
-        "publisher": "Zacks",
-        "published": "2026-09-25 13:00:00 UT",
-        "published_ts": 1790341200,
+        "url": "https://247wallst.com/investing/2026/09/22/one-under-the-radar-stock-with-100-upside-potential/",
+        "publisher": "24/7 Wall St.",
+        "published": "2026-09-22 17:00:13 UT",
+        "published_ts": 1790096413,
         "sentiment": "pos",
         "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-        "id": "87c662401516252de78846776f6629ea1341587b",
+        "id": "dc124dee72b0e715e498e6c67f12591163a9845e",
         "source": "yahoo",
         "impact": 4,
         "impact_ar": "تأثير 4/5",
         "sentiment_score": 4,
-        "catalysts": [
-          {
-            "key": "earnings",
-            "ar": "أرباح",
-            "base_impact": 4
-          }
-        ],
-        "catalyst_keys": [
-          "earnings"
-        ],
-        "catalyst_ar": [
-          "أرباح"
-        ],
-        "impact_reason_ar": "أرباح",
+        "catalysts": [],
+        "catalyst_keys": [],
+        "catalyst_ar": [],
+        "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
         "officialish": false
       },
-      "news_title_ar": "تسلط مكالمة الأرباح في الربع الثالث من SNX الضوء على زخم البنية التحتية للذكاء الاصطناعي",
-      "news_url": "https://finance.yahoo.com/technology/ai/articles/snx-q3-earnings-call-highlights-130000625.html",
-      "catalyst_ar": [
-        "أرباح"
-      ],
-      "alert_ar": "زخم +4.5% · أرباح",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SNX"
+      "news_title_ar": "سهم واحد تحت الرادار مع احتمالية صعود بنسبة 100 ٪",
+      "news_url": "https://247wallst.com/investing/2026/09/22/one-under-the-radar-stock-with-100-upside-potential/",
+      "catalyst_ar": [],
+      "alert_ar": "زخم +4.4% · تحرك سعري قوي بدون محفز واضح بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=CRDO"
     },
     {
       "symbol": "JBL",
       "name": "Jabil Inc.",
-      "last": 323.14,
-      "change_pct": 4.01,
-      "dollar_volume": 77843779.72,
-      "dollar_volume_label": "77.8M$",
+      "last": 324.36,
+      "change_pct": 4.4,
+      "dollar_volume": 80251853.76,
+      "dollar_volume_label": "80.3M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 4,
@@ -432,8 +379,133 @@
       "catalyst_ar": [
         "أرباح"
       ],
-      "alert_ar": "زخم +4.0% · أرباح",
+      "alert_ar": "زخم +4.4% · أرباح",
       "tv_url": "https://www.tradingview.com/chart/?symbol=JBL"
+    },
+    {
+      "symbol": "SNX",
+      "name": "TD SYNNEX Corporation",
+      "last": 270.67,
+      "change_pct": 4.32,
+      "dollar_volume": 89735495.77,
+      "dollar_volume_label": "89.7M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "has_news": true,
+      "news": {
+        "symbol": "SNX",
+        "title": "SNX Q3 Earnings Call Highlights AI Infrastructure Momentum",
+        "title_ar": "تسلط مكالمة الأرباح في الربع الثالث من SNX الضوء على زخم البنية التحتية للذكاء الاصطناعي",
+        "summary": "TD SYNNEX sees AI infrastructure demand accelerating as Hyve expands, while management targets stronger cash generation and disciplined margins.",
+        "summary_ar": "",
+        "url": "https://finance.yahoo.com/technology/ai/articles/snx-q3-earnings-call-highlights-130000625.html",
+        "publisher": "Zacks",
+        "published": "2026-09-25 13:00:00 UT",
+        "published_ts": 1790341200,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "87c662401516252de78846776f6629ea1341587b",
+        "source": "yahoo",
+        "impact": 4,
+        "impact_ar": "تأثير 4/5",
+        "sentiment_score": 4,
+        "catalysts": [
+          {
+            "key": "earnings",
+            "ar": "أرباح",
+            "base_impact": 4
+          }
+        ],
+        "catalyst_keys": [
+          "earnings"
+        ],
+        "catalyst_ar": [
+          "أرباح"
+        ],
+        "impact_reason_ar": "أرباح",
+        "officialish": false
+      },
+      "news_title_ar": "تسلط مكالمة الأرباح في الربع الثالث من SNX الضوء على زخم البنية التحتية للذكاء الاصطناعي",
+      "news_url": "https://finance.yahoo.com/technology/ai/articles/snx-q3-earnings-call-highlights-130000625.html",
+      "catalyst_ar": [
+        "أرباح"
+      ],
+      "alert_ar": "زخم +4.3% · أرباح",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SNX"
+    },
+    {
+      "symbol": "PYPL",
+      "name": "PayPal Holdings, Inc.",
+      "last": 54.81,
+      "change_pct": 4.2,
+      "dollar_volume": 291603779.46,
+      "dollar_volume_label": "291.6M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "has_news": true,
+      "news": {
+        "symbol": "PYPL",
+        "title": "PayPal Holdings (PYPL), What Is Behind The Fresh Attention?",
+        "title_ar": "PayPal Holdings (PYPL)، ما وراء الاهتمام الجديد ؟",
+        "summary": "PayPal Holdings (PYPL) is back in focus after Meta folded its Muse AI shopping assistant into PayPal’s global merchant network, letting users move from product discovery to PayPal powered checkout inside the agent. Despite the Muse AI partnership putting PayPal Holdings back in t",
+        "summary_ar": "",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/paypal-holdings-pypl-behind-fresh-011437320.html",
+        "publisher": "Simply Wall St.",
+        "published": "2026-09-25 01:14:37 UT",
+        "published_ts": 1790298877,
+        "sentiment": "pos",
+        "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+        "id": "1c954d6320d3d7344b0ae597919eb27b8f25a8a9",
+        "source": "yahoo",
+        "impact": 4,
+        "impact_ar": "تأثير 4/5",
+        "sentiment_score": 4,
+        "catalysts": [
+          {
+            "key": "partnership",
+            "ar": "شراكة/عقد",
+            "base_impact": 3
+          }
+        ],
+        "catalyst_keys": [
+          "partnership"
+        ],
+        "catalyst_ar": [
+          "شراكة/عقد"
+        ],
+        "impact_reason_ar": "شراكة/عقد",
+        "officialish": false
+      },
+      "news_title_ar": "PayPal Holdings (PYPL)، ما وراء الاهتمام الجديد ؟",
+      "news_url": "https://finance.yahoo.com/markets/stocks/articles/paypal-holdings-pypl-behind-fresh-011437320.html",
+      "catalyst_ar": [
+        "شراكة/عقد"
+      ],
+      "alert_ar": "زخم +4.2% · شراكة/عقد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=PYPL"
+    },
+    {
+      "symbol": "MXL",
+      "name": "MaxLinear, Inc",
+      "last": 91.0,
+      "change_pct": 6.67,
+      "dollar_volume": 109663645.0,
+      "dollar_volume_label": "109.7M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "has_news": false,
+      "news": null,
+      "news_title_ar": "",
+      "news_url": "",
+      "catalyst_ar": [],
+      "alert_ar": "زخم +6.7% · لا خبر رسمي مرفق بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=MXL"
     }
   ],
   "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
@@ -449,21 +521,21 @@
   "opportunities": [],
   "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
   "opps_rejected_slow": [
-    "QQQ:زخم ضعيف (+0.09% < 0.35%)",
+    "QQQ:زخم ضعيف (+0.11% < 0.35%)",
     "MSFT:ممتد جداً فوق VWAP — لا تدخل متأخراً",
-    "SPY:زخم ضعيف (+0.09% < 0.35%)"
+    "SPY:زخم ضعيف (+0.10% < 0.35%)"
   ],
   "gainers": [
     {
       "symbol": "PPLI",
       "name": "People Incorporated",
-      "last": 39.18,
-      "change_pct": 9.05,
+      "last": 39.14,
+      "change_pct": 8.93,
       "ref": 35.93,
-      "rth_close": 39.18,
-      "volume": 552520.0,
-      "dollar_volume": 21647733.6,
-      "dollar_volume_label": "21.6M$",
+      "rth_close": 39.14,
+      "volume": 561757.0,
+      "dollar_volume": 21987168.98,
+      "dollar_volume_label": "22.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PPLI"
@@ -475,9 +547,9 @@
       "change_pct": 8.71,
       "ref": 12.4,
       "rth_close": 13.48,
-      "volume": 2004049.0,
-      "dollar_volume": 27014580.52,
-      "dollar_volume_label": "27.0M$",
+      "volume": 2030512.0,
+      "dollar_volume": 27371301.76,
+      "dollar_volume_label": "27.4M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=ALM"
@@ -485,83 +557,97 @@
     {
       "symbol": "MXL",
       "name": "MaxLinear, Inc",
-      "last": 91.69,
-      "change_pct": 7.48,
+      "last": 91.0,
+      "change_pct": 6.67,
       "ref": 85.31,
-      "rth_close": 91.69,
-      "volume": 1193036.0,
-      "dollar_volume": 109389470.84,
-      "dollar_volume_label": "109.4M$",
+      "rth_close": 91.0,
+      "volume": 1205095.0,
+      "dollar_volume": 109663645.0,
+      "dollar_volume_label": "109.7M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=MXL"
     },
     {
-      "symbol": "DDOG",
-      "name": "Datadog, Inc.",
-      "last": 273.66,
-      "change_pct": 6.52,
-      "ref": 256.92,
-      "rth_close": 273.66,
-      "volume": 1990130.0,
-      "dollar_volume": 544618975.8,
-      "dollar_volume_label": "544.6M$",
-      "phase": "regular",
-      "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=DDOG"
-    },
-    {
       "symbol": "BE",
       "name": "Bloom Energy Corporation",
-      "last": 282.04,
-      "change_pct": 5.77,
+      "last": 283.51,
+      "change_pct": 6.32,
       "ref": 266.65,
-      "rth_close": 282.04,
-      "volume": 6072636.0,
-      "dollar_volume": 1712726257.44,
+      "rth_close": 283.51,
+      "volume": 6153635.0,
+      "dollar_volume": 1744617058.85,
       "dollar_volume_label": "1.7B$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=BE"
     },
     {
-      "symbol": "SNX",
-      "name": "TD SYNNEX Corporation",
-      "last": 271.24,
-      "change_pct": 4.54,
-      "ref": 259.47,
-      "rth_close": 271.25,
-      "volume": 329328.0,
-      "dollar_volume": 89326926.72,
-      "dollar_volume_label": "89.3M$",
+      "symbol": "DDOG",
+      "name": "Datadog, Inc.",
+      "last": 273.1,
+      "change_pct": 6.3,
+      "ref": 256.92,
+      "rth_close": 273.1,
+      "volume": 2012109.0,
+      "dollar_volume": 549506967.9,
+      "dollar_volume_label": "549.5M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=SNX"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=DDOG"
     },
     {
       "symbol": "JBL",
       "name": "Jabil Inc.",
-      "last": 323.14,
-      "change_pct": 4.01,
+      "last": 324.36,
+      "change_pct": 4.4,
       "ref": 310.69,
-      "rth_close": 323.14,
-      "volume": 240898.0,
-      "dollar_volume": 77843779.72,
-      "dollar_volume_label": "77.8M$",
+      "rth_close": 324.37,
+      "volume": 247416.0,
+      "dollar_volume": 80251853.76,
+      "dollar_volume_label": "80.3M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=JBL"
     },
     {
+      "symbol": "CRDO",
+      "name": "Credo Technology Group Holding ",
+      "last": 204.59,
+      "change_pct": 4.4,
+      "ref": 195.97,
+      "rth_close": 204.59,
+      "volume": 3647811.0,
+      "dollar_volume": 746305652.49,
+      "dollar_volume_label": "746.3M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=CRDO"
+    },
+    {
+      "symbol": "SNX",
+      "name": "TD SYNNEX Corporation",
+      "last": 270.67,
+      "change_pct": 4.32,
+      "ref": 259.47,
+      "rth_close": 270.67,
+      "volume": 331531.0,
+      "dollar_volume": 89735495.77,
+      "dollar_volume_label": "89.7M$",
+      "phase": "regular",
+      "session_ar": "الجلسة الرسمية الآن",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SNX"
+    },
+    {
       "symbol": "PYPL",
       "name": "PayPal Holdings, Inc.",
-      "last": 54.61,
-      "change_pct": 3.82,
+      "last": 54.81,
+      "change_pct": 4.2,
       "ref": 52.6,
-      "rth_close": 54.61,
-      "volume": 5155021.0,
-      "dollar_volume": 281515696.81,
-      "dollar_volume_label": "281.5M$",
+      "rth_close": 54.81,
+      "volume": 5320266.0,
+      "dollar_volume": 291603779.46,
+      "dollar_volume_label": "291.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=PYPL"
@@ -569,83 +655,83 @@
     {
       "symbol": "SMCI",
       "name": "Super Micro Computer, Inc.",
-      "last": 43.1,
-      "change_pct": 3.82,
+      "last": 43.12,
+      "change_pct": 3.88,
       "ref": 41.51,
-      "rth_close": 43.09,
-      "volume": 17584268.0,
-      "dollar_volume": 757881950.8,
-      "dollar_volume_label": "757.9M$",
+      "rth_close": 43.12,
+      "volume": 17787883.0,
+      "dollar_volume": 767013514.96,
+      "dollar_volume_label": "767.0M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=SMCI"
     },
     {
-      "symbol": "CRDO",
-      "name": "Credo Technology Group Holding ",
-      "last": 203.37,
-      "change_pct": 3.78,
-      "ref": 195.97,
-      "rth_close": 203.37,
-      "volume": 3589137.0,
-      "dollar_volume": 729922791.69,
-      "dollar_volume_label": "729.9M$",
+      "symbol": "FLEX",
+      "name": "Flex Ltd.",
+      "last": 116.71,
+      "change_pct": 3.83,
+      "ref": 112.4,
+      "rth_close": 116.71,
+      "volume": 1153375.0,
+      "dollar_volume": 134610396.25,
+      "dollar_volume_label": "134.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=CRDO"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=FLEX"
     },
     {
       "symbol": "FLY",
       "name": "Firefly Aerospace Inc.",
-      "last": 23.96,
-      "change_pct": 3.77,
+      "last": 23.95,
+      "change_pct": 3.75,
       "ref": 23.09,
-      "rth_close": 23.96,
-      "volume": 1030775.0,
-      "dollar_volume": 24697369.0,
-      "dollar_volume_label": "24.7M$",
+      "rth_close": 23.95,
+      "volume": 1048045.0,
+      "dollar_volume": 25100677.75,
+      "dollar_volume_label": "25.1M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=FLY"
     },
     {
-      "symbol": "MUFG",
-      "name": "Mitsubishi UFJ Financial Group,",
-      "last": 23.41,
-      "change_pct": 3.7,
-      "ref": 22.57,
-      "rth_close": 23.41,
-      "volume": 731083.0,
-      "dollar_volume": 17114653.03,
-      "dollar_volume_label": "17.1M$",
+      "symbol": "AAON",
+      "name": "AAON, Inc.",
+      "last": 87.38,
+      "change_pct": 3.69,
+      "ref": 84.27,
+      "rth_close": 87.38,
+      "volume": 359007.0,
+      "dollar_volume": 31370031.66,
+      "dollar_volume_label": "31.4M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=MUFG"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=AAON"
     },
     {
-      "symbol": "ON",
-      "name": "ON Semiconductor Corporation",
-      "last": 75.74,
-      "change_pct": 3.54,
-      "ref": 73.15,
-      "rth_close": 75.74,
-      "volume": 1903123.0,
-      "dollar_volume": 144142536.02,
-      "dollar_volume_label": "144.1M$",
+      "symbol": "WTTR",
+      "name": "Select Water Solutions, Inc.",
+      "last": 20.25,
+      "change_pct": 3.66,
+      "ref": 19.53,
+      "rth_close": 20.25,
+      "volume": 970101.0,
+      "dollar_volume": 19644545.25,
+      "dollar_volume_label": "19.6M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=ON"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=WTTR"
     },
     {
       "symbol": "ARM",
       "name": "Arm Holdings plc",
-      "last": 316.86,
-      "change_pct": 3.43,
+      "last": 317.5,
+      "change_pct": 3.64,
       "ref": 306.34,
-      "rth_close": 316.86,
-      "volume": 2785288.0,
-      "dollar_volume": 882546355.68,
-      "dollar_volume_label": "882.5M$",
+      "rth_close": 317.5,
+      "volume": 2809896.0,
+      "dollar_volume": 892141980.0,
+      "dollar_volume_label": "892.1M$",
       "phase": "regular",
       "session_ar": "الجلسة الرسمية الآن",
       "tv_url": "https://www.tradingview.com/chart/?symbol=ARM"
@@ -655,79 +741,119 @@
   "gainers_session_ar": "الجلسة الرسمية الآن",
   "movers": [
     {
-      "symbol": "MSFT",
-      "change_pct": 3.27,
-      "last": 514.2,
-      "rvol": 0.58,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "6.2B$"
-    },
-    {
       "symbol": "META",
-      "change_pct": -3.24,
-      "last": 752.4,
+      "change_pct": -3.28,
+      "last": 752.08,
       "rvol": 0.38,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "6.3B$"
     },
     {
-      "symbol": "TSLA",
-      "change_pct": -2.1,
-      "last": 370.0,
-      "rvol": 0.5,
+      "symbol": "MSFT",
+      "change_pct": 3.2,
+      "last": 513.88,
+      "rvol": 0.59,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "7.2B$"
+      "dollar_volume_label": "6.2B$"
+    },
+    {
+      "symbol": "TSLA",
+      "change_pct": -2.02,
+      "last": 370.31,
+      "rvol": 0.52,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "7.3B$"
     },
     {
       "symbol": "XOM",
-      "change_pct": -0.74,
-      "last": 160.94,
+      "change_pct": -0.8,
+      "last": 160.85,
       "rvol": 0.13,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "299.9M$"
-    },
-    {
-      "symbol": "AMZN",
-      "change_pct": -0.61,
-      "last": 247.87,
-      "rvol": 0.25,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "2.1B$"
+      "dollar_volume_label": "304.5M$"
     },
     {
       "symbol": "AMD",
-      "change_pct": 0.56,
-      "last": 632.81,
-      "rvol": 0.31,
+      "change_pct": 0.6,
+      "last": 633.06,
+      "rvol": 0.32,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "4.1B$"
+      "dollar_volume_label": "4.2B$"
+    },
+    {
+      "symbol": "AMZN",
+      "change_pct": -0.49,
+      "last": 248.15,
+      "rvol": 0.26,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "2.2B$"
     },
     {
       "symbol": "PLTR",
-      "change_pct": -0.48,
-      "last": 191.67,
-      "rvol": 0.18,
+      "change_pct": -0.45,
+      "last": 191.72,
+      "rvol": 0.2,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "911.1M$"
+      "dollar_volume_label": "968.9M$"
     },
     {
       "symbol": "JPM",
-      "change_pct": 0.37,
-      "last": 339.81,
-      "rvol": 0.17,
+      "change_pct": 0.42,
+      "last": 339.97,
+      "rvol": 0.18,
       "grade": "strong",
       "grade_ar": "قوي",
-      "dollar_volume_label": "423.6M$"
+      "dollar_volume_label": "428.5M$"
     }
   ],
   "news": [
+    {
+      "symbol": "FLEX",
+      "title": "Flex Ltd. Stock: Is FLEX Outperforming the Technology Sector?",
+      "title_ar": "أسهم شركة فليكس المحدودة: هل تتفوق فليكس على قطاع التكنولوجيا ؟",
+      "summary": "Flex Ltd. has outpaced the technical sector, and analysts remain highly optimistic about the stock’s outlook.",
+      "summary_ar": "",
+      "url": "https://www.barchart.com/story/news/4750284/flex-ltd-stock-is-flex-outperforming-the-technology-sector",
+      "publisher": "Barchart",
+      "published": "2026-09-23 10:05:44 UT",
+      "published_ts": 1790157944,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "b4bb4f2d40ba207cffdc56c4efef8855868d36a4",
+      "source": "yahoo",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "guidance",
+          "ar": "توجيهات",
+          "base_impact": 4
+        },
+        {
+          "key": "upgrade",
+          "ar": "ترقية محلل",
+          "base_impact": 2
+        }
+      ],
+      "catalyst_keys": [
+        "guidance",
+        "upgrade"
+      ],
+      "catalyst_ar": [
+        "توجيهات",
+        "ترقية محلل"
+      ],
+      "impact_reason_ar": "توجيهات · ترقية محلل",
+      "officialish": true
+    },
     {
       "symbol": "ALM",
       "title": "Stifel starts Almonty with $25 price target on Western tungsten expansion",
@@ -841,29 +967,6 @@
       "officialish": false
     },
     {
-      "symbol": "ALM",
-      "title": "Almonty and Sandvik’s WBH sign Spanish tungsten supply deal",
-      "title_ar": "ألمونتي وساندفيك دبليو بي إتش يوقعان صفقة توريد التنغستن الإسبانية",
-      "summary": "Under the terms of the deal, WBH will make a conditional one-time payment of $3m (€2.61m) for offtake rights to the tungsten material.",
-      "summary_ar": "",
-      "url": "https://www.mining-technology.com/news/almonty-sandviks-wbh-tungsten-supply-deal/",
-      "publisher": "Mining Technology",
-      "published": "2026-09-18 08:21:15 UT",
-      "published_ts": 1789719675,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "2edc1c9624f8553ef1a8cf0471284fa990f64d6d",
-      "source": "yahoo",
-      "impact": 5,
-      "impact_ar": "تأثير 5/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
-      "officialish": false
-    },
-    {
       "symbol": "SNX",
       "title": "SNX Q3 Earnings Call Highlights AI Infrastructure Momentum",
       "title_ar": "تسلط مكالمة الأرباح في الربع الثالث من SNX الضوء على زخم البنية التحتية للذكاء الاصطناعي",
@@ -930,7 +1033,7 @@
       "officialish": false
     },
     {
-      "symbol": "DDOG",
+      "symbol": "BE",
       "title": "Dow Jones Futures Signal Rebound For Resilient Market; Tesla, Akamai, Taiwan Semi In Focus",
       "title_ar": "مؤشر داو جونز للعقود الآجلة ينتعش للسوق المرن ؛ تسلا، أكاماي، تايوان شبه مركزة",
       "summary": "Futures rose, with the market showing resilience even as yields keep rising. Taiwan Semi is a buy. Tesla held a Semi event.",
@@ -941,7 +1044,7 @@
       "published_ts": 1790337893,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "f7d9e13ad464b79df9f809a29855ede71f88029e",
+      "id": "7c7c669799cbd495eb4bd49c71daac408e453eaa",
       "source": "yahoo",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -1174,6 +1277,29 @@
       "officialish": false
     },
     {
+      "symbol": "PYPL",
+      "title": "Meta Muse's E-Commerce Adoption Remains Uncertain, Wedbush Says",
+      "title_ar": "يقول ويدبوش إن تبني ميتا موسى للتجارة الإلكترونية لا يزال غير مؤكد",
+      "summary": "Meta Platforms' (META) personal artificial intelligence agent, Muse, has drawn strong user interest,",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/technology/ai/articles/meta-muse-apos-e-commerce-151251469.html",
+      "publisher": "MT Newswires",
+      "published": "2026-09-24 15:12:51 UT",
+      "published_ts": 1790262771,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "ec2508f45a0f5f59048e75e37a2cffabf925412a",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
       "symbol": "JBL",
       "title": "Is Jabil Stock Outperforming the Dow?",
       "title_ar": "هل سهم جابل يتفوق على مؤشر داو جونز ؟",
@@ -1215,6 +1341,29 @@
     },
     {
       "symbol": "CRDO",
+      "title": "One Under-the-Radar Stock With 100% Upside Potential",
+      "title_ar": "سهم واحد تحت الرادار مع احتمالية صعود بنسبة 100 ٪",
+      "summary": "A small-cap silicon photonics company has quietly built a cash fortress and locked in a major anchor customer, positioning itself to compete in a $26 billion AI optics market where the giants are not paying attention yet.",
+      "summary_ar": "",
+      "url": "https://247wallst.com/investing/2026/09/22/one-under-the-radar-stock-with-100-upside-potential/",
+      "publisher": "24/7 Wall St.",
+      "published": "2026-09-22 17:00:13 UT",
+      "published_ts": 1790096413,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "dc124dee72b0e715e498e6c67f12591163a9845e",
+      "source": "yahoo",
+      "impact": 4,
+      "impact_ar": "تأثير 4/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "officialish": false
+    },
+    {
+      "symbol": "CRDO",
       "title": "3 AI Infrastructure Stocks Investors Should Watch As Data Center Spending Builds",
       "title_ar": "3 أسهم البنية التحتية للذكاء الاصطناعي يجب على المستثمرين مراقبتها بينما يتزايد إنفاق مركز البيانات",
       "summary": "AI and data-center spending now sit at the crossroads of higher rates, fragile growth and jumpy energy markets, which is exactly where big shifts in market leadership are often born. Investors focused only on rate-sensitive sectors risk missing how capital keeps flowing toward th",
@@ -1247,26 +1396,36 @@
       "officialish": false
     },
     {
-      "symbol": "MXL",
-      "title": "MXL vs. VICR: Which Has the Better AI Infrastructure Opportunity?",
-      "title_ar": "MXL مقابل VICR: أيهما لديه فرصة أفضل للبنية التحتية للذكاء الاصطناعي ؟",
-      "summary": "MaxLinear has the AI infrastructure edge, backed by strong current revenue growth and multiple product ramps through 2027-2028.",
+      "symbol": "FLEX",
+      "title": "Why Atkore, Belden And Flex Stock Are Gaining Attention In AI Data Centers",
+      "title_ar": "لماذا تحظى أسهم Atkore و Belden و Flex بالاهتمام في مراكز بيانات الذكاء الاصطناعي",
+      "summary": "AI data centers keep soaking up power and hardware spending while the Fed leans into higher-for-longer rates, and that mix is quietly reshaping which U.S. infrastructure stocks investors watch first. Big tech capex keeps flowing even as discount rates climb. This article examines",
       "summary_ar": "",
-      "url": "https://finance.yahoo.com/technology/ai/articles/mxl-vs-vicr-better-ai-182600283.html",
-      "publisher": "Zacks",
-      "published": "2026-08-28 18:26:00 UT",
-      "published_ts": 1787941560,
+      "url": "https://finance.yahoo.com/technology/ai/articles/why-atkore-belden-flex-stock-181008775.html",
+      "publisher": "Simply Wall St.",
+      "published": "2026-09-20 18:10:08 UT",
+      "published_ts": 1789927808,
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "fcb12b59164df66c8e87a75b33b8eab5f2c210ea",
+      "id": "8bb299221781fa00e21d33bcd44eec264972ac97",
       "source": "yahoo",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
       "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "تحرك سعري قوي بدون محفز واضح بعد",
+      "catalysts": [
+        {
+          "key": "earnings",
+          "ar": "أرباح",
+          "base_impact": 4
+        }
+      ],
+      "catalyst_keys": [
+        "earnings"
+      ],
+      "catalyst_ar": [
+        "أرباح"
+      ],
+      "impact_reason_ar": "أرباح",
       "officialish": false
     },
     {
@@ -1316,29 +1475,6 @@
       "officialish": false
     },
     {
-      "symbol": "PYPL",
-      "title": "Meta Muse's E-Commerce Adoption Remains Uncertain, Wedbush Says",
-      "title_ar": "يقول ويدبوش إن تبني ميتا موسى للتجارة الإلكترونية لا يزال غير مؤكد",
-      "summary": "Meta Platforms' (META) personal artificial intelligence agent, Muse, has drawn strong user interest,",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/technology/ai/articles/meta-muse-apos-e-commerce-151251469.html",
-      "publisher": "MT Newswires",
-      "published": "2026-09-24 15:12:51 UT",
-      "published_ts": 1790262771,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "ec2508f45a0f5f59048e75e37a2cffabf925412a",
-      "source": "yahoo",
-      "impact": 3,
-      "impact_ar": "تأثير 3/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
       "symbol": "FLY",
       "title": "Firefly Aerospace vs. SpaceX: Which Space Stock Can Put Your Portfolio Into Orbit in 2026?",
       "title_ar": "Firefly Aerospace مقابل SpaceX: أي مخزون فضائي يمكنه وضع محفظتك في المدار في عام 2026 ؟",
@@ -1360,43 +1496,19 @@
       "catalyst_ar": [],
       "impact_reason_ar": "خبر عام / تأثير محدود",
       "officialish": false
-    },
-    {
-      "symbol": "CRDO",
-      "title": "One Under-the-Radar Stock With 100% Upside Potential",
-      "title_ar": "سهم واحد تحت الرادار مع احتمالية صعود بنسبة 100 ٪",
-      "summary": "A small-cap silicon photonics company has quietly built a cash fortress and locked in a major anchor customer, positioning itself to compete in a $26 billion AI optics market where the giants are not paying attention yet.",
-      "summary_ar": "",
-      "url": "https://247wallst.com/investing/2026/09/22/one-under-the-radar-stock-with-100-upside-potential/",
-      "publisher": "24/7 Wall St.",
-      "published": "2026-09-22 17:00:13 UT",
-      "published_ts": 1790096413,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "dc124dee72b0e715e498e6c67f12591163a9845e",
-      "source": "yahoo",
-      "impact": 3,
-      "impact_ar": "تأثير 3/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
     }
   ],
   "news_excluded_negative": [
-    "AAON",
     "AKAM",
     "BIRK",
     "DELL",
     "GNRC",
     "IT",
     "LPLA",
+    "MUFG",
     "PENG",
     "TSEM",
-    "VIAV",
-    "WTTR"
+    "VIAV"
   ],
   "news_note_ar": "بث محفزات: أخبار الشركات + تأثير 1–5 + وسم (FDA/أرباح/شراكة…) — بدون إشاعات",
   "scan_mode_ar": "مسح StockTitan-style: محفز رسمي ← تأثير ← زخم سعري مربوط بالخبر",
@@ -1404,6 +1516,6 @@
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
   "reminder": "تداول المحفز لا المطاردة — راجع المصدر قبل الدخول",
-  "heartbeat_ts": 1790346896,
+  "heartbeat_ts": 1790347013,
   "publisher": "github-actions-always-on"
 }
