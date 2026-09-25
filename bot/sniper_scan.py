@@ -1,10 +1,10 @@
-"""Sniper scanner: cheap stocks + strong momentum + catalyst/news (long-only day trade).
+"""Sniper scanner: our own cheap-runner board (long-only day trade).
 
-Style inspired by selective “قَنص السنتات” day trading:
-- low price band
-- large % move potential
-- news/catalyst preferred
-- not the conservative liquid large-cap board
+Independent of any third-party X/Twitter tip style. Rules:
+- low price band ($0.30–$8)
+- strong day % move
+- news/catalyst preferred when available
+- separate from the conservative liquid large-cap board
 """
 
 from __future__ import annotations
