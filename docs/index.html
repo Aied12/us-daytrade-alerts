@@ -553,7 +553,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=21;
+    window.__STATUS_V=22;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -718,9 +718,10 @@
       return st==='momentum' ? 1.0 : 1.5;
     }
     function strategyRewardMultiples(st){
-      if(st==='jamal') return [1.5, 2.5];
-      if(st==='momentum') return [1, 3];
-      return [1, 2]; // catalyst + sector
+      if(st==='jamal') return [1.0, 2.0];
+      if(st==='momentum') return [1.0, 1.8];
+      if(st==='breakout') return [1.2, 2.0];
+      return [1.2, 2.0]; // catalyst + sector
     }
     function syncCalcSectorTip(){
       const tip=document.getElementById('calcSectorTip');
