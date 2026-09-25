@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-25T12:19:04.996391+00:00",
-  "generated_ts": 1790338744,
-  "generated_local": "2026-09-25 15:19 +03",
+  "generated_at": "2026-09-25T12:20:47.142724+00:00",
+  "generated_ts": 1790338847,
+  "generated_local": "2026-09-25 15:20 +03",
   "status": {
     "ok": true,
     "last_mode": "dashboard",
     "changed": true,
     "symbols": 12,
-    "updated_at": "2026-09-25T12:19:04.996151+00:00",
+    "updated_at": "2026-09-25T12:20:47.142519+00:00",
     "source": "build_pages"
   },
   "telegram_enabled": false,
@@ -24,38 +24,38 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: مبتدئ",
   "market": {
     "tone": "متذبذب — ركّز على أفضل 2–3 فرص فقط",
-    "avg_change_pct": 0.42,
+    "avg_change_pct": 0.4,
     "details": {
       "SPY": {
-        "last": 770.06,
-        "change_pct": 0.38,
+        "last": 769.92,
+        "change_pct": 0.36,
         "rsi": 46.6
       },
       "QQQ": {
-        "last": 745.49,
-        "change_pct": 0.59,
+        "last": 745.3983,
+        "change_pct": 0.58,
         "rsi": 65.5
       },
       "IWM": {
-        "last": 282.47,
-        "change_pct": 0.29,
+        "last": 282.4,
+        "change_pct": 0.26,
         "rsi": 25.5
       }
     },
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": 0.38,
+        "change_pct": 0.36,
         "rsi": 46.6
       },
       {
         "symbol": "QQQ",
-        "change_pct": 0.59,
+        "change_pct": 0.58,
         "rsi": 65.5
       },
       {
         "symbol": "IWM",
-        "change_pct": 0.29,
+        "change_pct": 0.26,
         "rsi": 25.5
       }
     ],
@@ -69,8 +69,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 4255,
-    "ny_time": "08:19:04",
+    "seconds_left": 4152,
+    "ny_time": "08:20:47",
     "open": "09:30",
     "close": "16:00"
   },
@@ -78,7 +78,7 @@
     "strongest": [
       {
         "name": "Consumer",
-        "change_pct": 0.75
+        "change_pct": 0.7
       },
       {
         "name": "Financials",
@@ -86,7 +86,7 @@
       },
       {
         "name": "Technology",
-        "change_pct": 0.3
+        "change_pct": 0.29
       }
     ],
     "weakest": [
@@ -96,7 +96,7 @@
       },
       {
         "name": "Technology",
-        "change_pct": 0.3
+        "change_pct": 0.29
       },
       {
         "name": "Financials",
@@ -105,8 +105,8 @@
     ]
   },
   "style": {
-    "growth_avg": 0.53,
-    "value_avg": 0.05,
+    "growth_avg": 0.52,
+    "value_avg": 0.02,
     "leader": "نمو",
     "growth_count": 5,
     "value_count": 5
@@ -169,6 +169,35 @@
   "momentum_note_ar": "ماسح زخم بأسلوب Argus: تحرك ≈4%+ مع سيولة، والخبر/المحفز بجانب الحركة",
   "sniper_scanner": [
     {
+      "symbol": "UXIN",
+      "name": "Uxin Limited",
+      "last": 1.3,
+      "change_pct": 19.27,
+      "dollar_volume": 20957795.3,
+      "dollar_volume_label": "21.0M$",
+      "has_news": false,
+      "impact": 3,
+      "impact_ar": "تأثير 3/5",
+      "catalyst_ar": [],
+      "catalyst_keys": [],
+      "news_title_ar": "",
+      "news_url": "https://www.tradingview.com/chart/?symbol=UXIN",
+      "alert_ar": "قنص — زخم قوي",
+      "reason_ar": "زخم سعري قوي بدون خبر رسمي مرفق بعد",
+      "score": 86.43,
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=UXIN",
+      "tier": "sniper",
+      "price_band_ar": "$0.30–$8",
+      "appeared_ts": 1790292370,
+      "appeared_at": "2026-09-24T23:26:10.727296+00:00",
+      "appeared_local": "2026-09-25 02:26 +03",
+      "appeared_ny": "19:26 EDT",
+      "appeared_clock_ar": "02:26",
+      "appeared_ago_ar": "منذ 12س 54د",
+      "appeared_ar": "ظهر منذ 12س 54د · 02:26"
+    },
+    {
       "symbol": "SOS",
       "name": "SOS Limited",
       "last": 0.393,
@@ -194,37 +223,8 @@
       "appeared_local": "2026-09-25 11:56 +03",
       "appeared_ny": "04:56 EDT",
       "appeared_clock_ar": "11:56",
-      "appeared_ago_ar": "منذ 3س 22د",
-      "appeared_ar": "ظهر منذ 3س 22د · 11:56"
-    },
-    {
-      "symbol": "UXIN",
-      "name": "Uxin Limited",
-      "last": 1.25,
-      "change_pct": 14.68,
-      "dollar_volume": 20151726.25,
-      "dollar_volume_label": "20.2M$",
-      "has_news": false,
-      "impact": 3,
-      "impact_ar": "تأثير 3/5",
-      "catalyst_ar": [],
-      "catalyst_keys": [],
-      "news_title_ar": "",
-      "news_url": "https://www.tradingview.com/chart/?symbol=UXIN",
-      "alert_ar": "قنص — زخم قوي",
-      "reason_ar": "زخم سعري قوي بدون خبر رسمي مرفق بعد",
-      "score": 65.84,
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=UXIN",
-      "tier": "sniper",
-      "price_band_ar": "$0.30–$8",
-      "appeared_ts": 1790292370,
-      "appeared_at": "2026-09-24T23:26:10.727296+00:00",
-      "appeared_local": "2026-09-25 02:26 +03",
-      "appeared_ny": "19:26 EDT",
-      "appeared_clock_ar": "02:26",
-      "appeared_ago_ar": "منذ 12س 52د",
-      "appeared_ar": "ظهر منذ 12س 52د · 02:26"
+      "appeared_ago_ar": "منذ 3س 24د",
+      "appeared_ar": "ظهر منذ 3س 24د · 11:56"
     },
     {
       "symbol": "PACB",
@@ -252,8 +252,8 @@
       "appeared_local": "2026-09-25 02:26 +03",
       "appeared_ny": "19:26 EDT",
       "appeared_clock_ar": "02:26",
-      "appeared_ago_ar": "منذ 12س 52د",
-      "appeared_ar": "ظهر منذ 12س 52د · 02:26"
+      "appeared_ago_ar": "منذ 12س 54د",
+      "appeared_ar": "ظهر منذ 12س 54د · 02:26"
     },
     {
       "symbol": "RSKD",
@@ -281,8 +281,8 @@
       "appeared_local": "2026-09-25 02:26 +03",
       "appeared_ny": "19:26 EDT",
       "appeared_clock_ar": "02:26",
-      "appeared_ago_ar": "منذ 12س 52د",
-      "appeared_ar": "ظهر منذ 12س 52د · 02:26"
+      "appeared_ago_ar": "منذ 12س 54د",
+      "appeared_ar": "ظهر منذ 12س 54د · 02:26"
     },
     {
       "symbol": "SJT",
@@ -310,8 +310,8 @@
       "appeared_local": "2026-09-25 02:26 +03",
       "appeared_ny": "19:26 EDT",
       "appeared_clock_ar": "02:26",
-      "appeared_ago_ar": "منذ 12س 52د",
-      "appeared_ar": "ظهر منذ 12س 52د · 02:26"
+      "appeared_ago_ar": "منذ 12س 54د",
+      "appeared_ar": "ظهر منذ 12س 54د · 02:26"
     },
     {
       "symbol": "NXTC",
@@ -339,8 +339,8 @@
       "appeared_local": "2026-09-25 11:56 +03",
       "appeared_ny": "04:56 EDT",
       "appeared_clock_ar": "11:56",
-      "appeared_ago_ar": "منذ 3س 22د",
-      "appeared_ar": "ظهر منذ 3س 22د · 11:56"
+      "appeared_ago_ar": "منذ 3س 24د",
+      "appeared_ar": "ظهر منذ 3س 24د · 11:56"
     }
   ],
   "sniper_note_ar": "ماسح القنص: أسهم رخيصة ($0.30–$8) + زخم قوي (≥5–8%) + خبر/محفز مفضّل — أسلوب قنص السنتات، منفصل عن اللوحة المحافظة",
@@ -365,28 +365,28 @@
         "RSI تشبع شرائي"
       ],
       "reason": "ارتداد لملء فجوة هابطة: فجوة -2.3% مع ارتداد | ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | كسر قمة 20 يوم: قرب/فوق قمة 20ي $630.80 | RSI تشبع شرائي: RSI 82 — لا تطارد | شمعة: ابتلاع صاعد: ابتلاع صاعد | اختبار/كسر مقاوم",
-      "entry": 640.9,
-      "entry_original": 640.9,
-      "entry_planned": 640.9,
+      "entry": 640.66,
+      "entry_original": 640.66,
+      "entry_planned": 640.66,
       "stop": 448.39,
-      "stop_alt": 637.7,
-      "target": 987.42,
-      "target_partial": 814.16,
-      "target_final": 987.42,
-      "trail_offset": 67.38,
+      "stop_alt": 637.46,
+      "target": 986.75,
+      "target_partial": 813.7,
+      "target_final": 986.75,
+      "trail_offset": 67.29,
       "shares": 0,
       "risk_sar": 0.0,
       "allowed": false,
-      "change_pct": 1.85,
-      "last": 640.9,
+      "change_pct": 1.81,
+      "last": 640.66,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 1.17,
-        "rvol_pace": 14.92,
+        "rvol_pace": 14.87,
         "volume": 25259300.0,
         "avg_volume_20": 21564805.0,
-        "dollar_volume": 16188685370.0,
-        "avg_dollar_volume": 13820883524.5,
+        "dollar_volume": 16182623138.0,
+        "avg_dollar_volume": 13815707971.3,
         "dollar_volume_label": "16.2B$",
         "avg_dollar_volume_label": "13.8B$",
         "grade": "strong",
@@ -394,11 +394,11 @@
         "label": "RVOL ×1.2 · وتيرة ×14.9 · اليوم 16.2B$ · متوسط 13.8B$"
       },
       "rvol": 1.17,
-      "rvol_pace": 14.92,
+      "rvol_pace": 14.87,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 4.27,
-      "flow_score": 127.27,
+      "flow_score": 124.22,
       "flow_ok": true,
       "smart": {
         "confidence": "A",
@@ -427,21 +427,21 @@
         "vwap": {
           "active": true,
           "side": "stretched",
-          "dist_pct": 6.8,
-          "ar": "ممتد فوق VWAP +6.80% — لا تطارد"
+          "dist_pct": 6.76,
+          "ar": "ممتد فوق VWAP +6.76% — لا تطارد"
         },
         "candle": {
           "name": "ابتلاع صاعد",
           "draw": "📗 █▼→██",
           "ar": "شمعة: ابتلاع صاعد 📗 █▼→██"
         },
-        "stop_alt": 637.7,
+        "stop_alt": 637.46,
         "stop_main": 448.39,
-        "stop_plan_ar": "وقف بديل≈ $637.7 (ATR) · الرئيسي≈ $448.39",
-        "target_partial": 814.16,
-        "target_final": 987.42,
-        "trail_offset": 67.38,
-        "partial_plan_ar": "جني 50% عند $814.16 ثم وقف متحرك ≈ $67.38 تحت القمة",
+        "stop_plan_ar": "وقف بديل≈ $637.46 (ATR) · الرئيسي≈ $448.39",
+        "target_partial": 813.7,
+        "target_final": 986.75,
+        "trail_offset": 67.29,
+        "partial_plan_ar": "جني 50% عند $813.7 ثم وقف متحرك ≈ $67.29 تحت القمة",
         "qqq": {
           "active": false,
           "corr": 0.68
@@ -453,10 +453,10 @@
         "exclude": false,
         "exclude_reason": "",
         "notes": [
-          "ممتد فوق VWAP +6.80% — لا تطارد",
+          "ممتد فوق VWAP +6.76% — لا تطارد",
           "شمعة: ابتلاع صاعد 📗 █▼→██",
-          "وقف بديل≈ $637.7 (ATR) · الرئيسي≈ $448.39",
-          "جني 50% عند $814.16 ثم وقف متحرك ≈ $67.38 تحت القمة"
+          "وقف بديل≈ $637.46 (ATR) · الرئيسي≈ $448.39",
+          "جني 50% عند $813.7 ثم وقف متحرك ≈ $67.29 تحت القمة"
         ],
         "rvol": 1.17
       },
@@ -478,10 +478,10 @@
         }
       ],
       "smart_notes": [
-        "ممتد فوق VWAP +6.80% — لا تطارد",
+        "ممتد فوق VWAP +6.76% — لا تطارد",
         "شمعة: ابتلاع صاعد 📗 █▼→██",
-        "وقف بديل≈ $637.7 (ATR) · الرئيسي≈ $448.39",
-        "جني 50% عند $814.16 ثم وقف متحرك ≈ $67.38 تحت القمة"
+        "وقف بديل≈ $637.46 (ATR) · الرئيسي≈ $448.39",
+        "جني 50% عند $813.7 ثم وقف متحرك ≈ $67.29 تحت القمة"
       ],
       "wait_1m_confirm": false,
       "fake_liquidity": false,
@@ -494,15 +494,15 @@
       "vwap": {
         "active": true,
         "side": "stretched",
-        "dist_pct": 6.8,
-        "ar": "ممتد فوق VWAP +6.80% — لا تطارد"
+        "dist_pct": 6.76,
+        "ar": "ممتد فوق VWAP +6.76% — لا تطارد"
       },
       "qqq": {
         "active": false,
         "corr": 0.68
       },
       "tv_url": "https://www.tradingview.com/chart/?symbol=AMD",
-      "tg_share": "https://t.me/share/url?url=&text=AMD%20فكّر في شراء قصير المدى%20ثقة%20A%0Aالآن%20640.9%20دخول%20640.9%20وقف%20637.7%20هدف%20987.42%0Aسيولة%20قوي%20وتيرة%20x14.92%20زخم%20+1.85%"
+      "tg_share": "https://t.me/share/url?url=&text=AMD%20فكّر في شراء قصير المدى%20ثقة%20A%0Aالآن%20640.66%20دخول%20640.66%20وقف%20637.46%20هدف%20986.75%0Aسيولة%20قوي%20وتيرة%20x14.87%20زخم%20+1.81%"
     },
     {
       "symbol": "TSLA",
@@ -519,40 +519,40 @@
         "شمعة: دوجي"
       ],
       "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | RSI متوازن: RSI 51 | شمعة: دوجي: دوجي",
-      "entry": 381.27,
-      "entry_original": 381.27,
-      "entry_planned": 381.27,
+      "entry": 381.12,
+      "entry_original": 381.12,
+      "entry_planned": 381.12,
       "stop": 345.93,
-      "stop_alt": 379.36,
-      "target": 444.88,
-      "target_partial": 413.07,
-      "target_final": 444.88,
-      "trail_offset": 12.37,
+      "stop_alt": 379.21,
+      "target": 444.46,
+      "target_partial": 412.79,
+      "target_final": 444.46,
+      "trail_offset": 12.32,
       "shares": 3,
-      "risk_sar": 397.57,
+      "risk_sar": 395.89,
       "allowed": false,
-      "change_pct": 0.88,
-      "last": 381.27,
+      "change_pct": 0.84,
+      "last": 381.12,
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.67,
-        "rvol_pace": 8.55,
+        "rvol_pace": 8.52,
         "volume": 26088000.0,
         "avg_volume_20": 38866385.0,
-        "dollar_volume": 9946535236.8,
-        "avg_dollar_volume": 14818532196.01,
+        "dollar_volume": 9942658560.0,
+        "avg_dollar_volume": 14812756651.2,
         "dollar_volume_label": "9.9B$",
         "avg_dollar_volume_label": "14.8B$",
         "grade": "strong",
         "grade_ar": "قوي",
-        "label": "RVOL ×0.7 · وتيرة ×8.6 · اليوم 9.9B$ · متوسط 14.8B$"
+        "label": "RVOL ×0.7 · وتيرة ×8.5 · اليوم 9.9B$ · متوسط 14.8B$"
       },
       "rvol": 0.67,
-      "rvol_pace": 8.55,
+      "rvol_pace": 8.52,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 3.08,
-      "flow_score": 33.02,
+      "flow_score": 31.43,
       "flow_ok": true,
       "smart": {
         "confidence": "C",
@@ -581,21 +581,21 @@
         "vwap": {
           "active": true,
           "side": "stretched",
-          "dist_pct": 1.85,
-          "ar": "ممتد فوق VWAP +1.85% — لا تطارد"
+          "dist_pct": 1.81,
+          "ar": "ممتد فوق VWAP +1.81% — لا تطارد"
         },
         "candle": {
           "name": "دوجي",
           "draw": "➕ ─●─",
           "ar": "شمعة: دوجي ➕ ─●─"
         },
-        "stop_alt": 379.36,
+        "stop_alt": 379.21,
         "stop_main": 345.93,
-        "stop_plan_ar": "وقف بديل≈ $379.36 (ATR) · الرئيسي≈ $345.93",
-        "target_partial": 413.07,
-        "target_final": 444.88,
-        "trail_offset": 12.37,
-        "partial_plan_ar": "جني 50% عند $413.07 ثم وقف متحرك ≈ $12.37 تحت القمة",
+        "stop_plan_ar": "وقف بديل≈ $379.21 (ATR) · الرئيسي≈ $345.93",
+        "target_partial": 412.79,
+        "target_final": 444.46,
+        "trail_offset": 12.32,
+        "partial_plan_ar": "جني 50% عند $412.79 ثم وقف متحرك ≈ $12.32 تحت القمة",
         "qqq": {
           "active": false,
           "corr": 0.52
@@ -607,10 +607,10 @@
         "exclude": false,
         "exclude_reason": "",
         "notes": [
-          "ممتد فوق VWAP +1.85% — لا تطارد",
+          "ممتد فوق VWAP +1.81% — لا تطارد",
           "شمعة: دوجي ➕ ─●─",
-          "وقف بديل≈ $379.36 (ATR) · الرئيسي≈ $345.93",
-          "جني 50% عند $413.07 ثم وقف متحرك ≈ $12.37 تحت القمة"
+          "وقف بديل≈ $379.21 (ATR) · الرئيسي≈ $345.93",
+          "جني 50% عند $412.79 ثم وقف متحرك ≈ $12.32 تحت القمة"
         ],
         "rvol": 0.67
       },
@@ -632,10 +632,10 @@
         }
       ],
       "smart_notes": [
-        "ممتد فوق VWAP +1.85% — لا تطارد",
+        "ممتد فوق VWAP +1.81% — لا تطارد",
         "شمعة: دوجي ➕ ─●─",
-        "وقف بديل≈ $379.36 (ATR) · الرئيسي≈ $345.93",
-        "جني 50% عند $413.07 ثم وقف متحرك ≈ $12.37 تحت القمة"
+        "وقف بديل≈ $379.21 (ATR) · الرئيسي≈ $345.93",
+        "جني 50% عند $412.79 ثم وقف متحرك ≈ $12.32 تحت القمة"
       ],
       "wait_1m_confirm": false,
       "fake_liquidity": false,
@@ -648,15 +648,15 @@
       "vwap": {
         "active": true,
         "side": "stretched",
-        "dist_pct": 1.85,
-        "ar": "ممتد فوق VWAP +1.85% — لا تطارد"
+        "dist_pct": 1.81,
+        "ar": "ممتد فوق VWAP +1.81% — لا تطارد"
       },
       "qqq": {
         "active": false,
         "corr": 0.52
       },
       "tv_url": "https://www.tradingview.com/chart/?symbol=TSLA",
-      "tg_share": "https://t.me/share/url?url=&text=TSLA%20راقب دخول%20ثقة%20C%0Aالآن%20381.27%20دخول%20381.27%20وقف%20379.36%20هدف%20444.88%0Aسيولة%20قوي%20وتيرة%20x8.55%20زخم%20+0.88%"
+      "tg_share": "https://t.me/share/url?url=&text=TSLA%20راقب دخول%20ثقة%20C%0Aالآن%20381.12%20دخول%20381.12%20وقف%20379.21%20هدف%20444.46%0Aسيولة%20قوي%20وتيرة%20x8.52%20زخم%20+0.84%"
     },
     {
       "symbol": "JPM",
@@ -688,7 +688,7 @@
       "session_phase": "pre",
       "liquidity": {
         "rvol": 0.94,
-        "rvol_pace": 11.95,
+        "rvol_pace": 11.9,
         "volume": 6934300.0,
         "avg_volume_20": 7395960.0,
         "dollar_volume": 2361129150.0,
@@ -700,11 +700,11 @@
         "label": "RVOL ×0.9 · وتيرة ×11.9 · اليوم 2.4B$ · متوسط 2.5B$"
       },
       "rvol": 0.94,
-      "rvol_pace": 11.95,
+      "rvol_pace": 11.9,
       "liq_grade": "strong",
       "liq_grade_ar": "قوي",
       "atr_pct": 2.17,
-      "flow_score": 28.85,
+      "flow_score": 28.73,
       "flow_ok": true,
       "smart": {
         "confidence": "C",
@@ -808,12 +808,12 @@
         "corr": 0.17
       },
       "tv_url": "https://www.tradingview.com/chart/?symbol=JPM",
-      "tg_share": "https://t.me/share/url?url=&text=JPM%20راقب دخول%20ثقة%20C%0Aالآن%20340.5%20دخول%20340.5%20وقف%20338.8%20هدف%20353.55%0Aسيولة%20قوي%20وتيرة%20x11.95%20زخم%20+0.57%"
+      "tg_share": "https://t.me/share/url?url=&text=JPM%20راقب دخول%20ثقة%20C%0Aالآن%20340.5%20دخول%20340.5%20وقف%20338.8%20هدف%20353.55%0Aسيولة%20قوي%20وتيرة%20x11.9%20زخم%20+0.57%"
     }
   ],
   "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
   "opps_rejected_slow": [
-    "SPY:زخم ضعيف (+0.38% < 0.4%)"
+    "SPY:زخم ضعيف (+0.36% < 0.4%)"
   ],
   "gainers": [
     {
@@ -848,7 +848,7 @@
       "symbol": "PL",
       "name": "Planet Labs PBC",
       "last": 17.94,
-      "change_pct": 1.81,
+      "change_pct": 1.82,
       "ref": 17.62,
       "rth_close": 17.62,
       "volume": 15476864.0,
@@ -861,12 +861,12 @@
     {
       "symbol": "NBIS",
       "name": "Nebius Group N.V.",
-      "last": 247.77,
-      "change_pct": 1.76,
+      "last": 247.29,
+      "change_pct": 1.56,
       "ref": 243.48,
       "rth_close": 243.48,
       "volume": 24256977.0,
-      "dollar_volume": 6010151191.29,
+      "dollar_volume": 5998507842.33,
       "dollar_volume_label": "6.0B$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
@@ -875,16 +875,30 @@
     {
       "symbol": "KRMN",
       "name": "Karman Holdings Inc.",
-      "last": 35.33,
-      "change_pct": 1.17,
+      "last": 35.36,
+      "change_pct": 1.26,
       "ref": 34.92,
       "rth_close": 34.92,
       "volume": 4720101.0,
-      "dollar_volume": 166761168.33,
-      "dollar_volume_label": "166.8M$",
+      "dollar_volume": 166902771.36,
+      "dollar_volume_label": "166.9M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=KRMN"
+    },
+    {
+      "symbol": "ONDS",
+      "name": "Ondas Inc",
+      "last": 7.69,
+      "change_pct": 1.18,
+      "ref": 7.6,
+      "rth_close": 7.6,
+      "volume": 114076013.0,
+      "dollar_volume": 877244539.97,
+      "dollar_volume_label": "877.2M$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=ONDS"
     },
     {
       "symbol": "IOVA",
@@ -901,20 +915,6 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=IOVA"
     },
     {
-      "symbol": "ONDS",
-      "name": "Ondas Inc",
-      "last": 7.68,
-      "change_pct": 1.05,
-      "ref": 7.6,
-      "rth_close": 7.6,
-      "volume": 114076013.0,
-      "dollar_volume": 876103779.84,
-      "dollar_volume_label": "876.1M$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=ONDS"
-    },
-    {
       "symbol": "FLY",
       "name": "Firefly Aerospace Inc.",
       "last": 23.3,
@@ -929,24 +929,24 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=FLY"
     },
     {
-      "symbol": "TEM",
-      "name": "Tempus AI, Inc.",
-      "last": 82.98,
-      "change_pct": 0.9,
-      "ref": 82.24,
-      "rth_close": 82.24,
-      "volume": 10779648.0,
-      "dollar_volume": 894495191.04,
-      "dollar_volume_label": "894.5M$",
+      "symbol": "GRAL",
+      "name": "GRAIL, Inc.",
+      "last": 126.22,
+      "change_pct": 0.81,
+      "ref": 125.21,
+      "rth_close": 125.21,
+      "volume": 3441644.0,
+      "dollar_volume": 434404305.68,
+      "dollar_volume_label": "434.4M$",
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=TEM"
+      "tv_url": "https://www.tradingview.com/chart/?symbol=GRAL"
     },
     {
       "symbol": "NOK",
       "name": "Nokia Corporation Sponsored",
       "last": 10.51,
-      "change_pct": 0.75,
+      "change_pct": 0.78,
       "ref": 10.43,
       "rth_close": 10.43,
       "volume": 74815291.0,
@@ -971,20 +971,6 @@
       "tv_url": "https://www.tradingview.com/chart/?symbol=NU"
     },
     {
-      "symbol": "INTC",
-      "name": "Intel Corporation",
-      "last": 128.08,
-      "change_pct": 0.54,
-      "ref": 127.39,
-      "rth_close": 127.39,
-      "volume": 118581605.0,
-      "dollar_volume": 15187931968.4,
-      "dollar_volume_label": "15.2B$",
-      "phase": "pre",
-      "session_ar": "Premarket الآن (قبل الافتتاح)",
-      "tv_url": "https://www.tradingview.com/chart/?symbol=INTC"
-    },
-    {
       "symbol": "TWST",
       "name": "Twist Bioscience Corporation",
       "last": 185.0,
@@ -997,6 +983,20 @@
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=TWST"
+    },
+    {
+      "symbol": "CDNA",
+      "name": "CareDx, Inc.",
+      "last": 61.68,
+      "change_pct": 0.5,
+      "ref": 61.37,
+      "rth_close": 61.37,
+      "volume": 2499360.0,
+      "dollar_volume": 154160524.8,
+      "dollar_volume_label": "154.2M$",
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=CDNA"
     },
     {
       "symbol": "PRGO",
@@ -1018,8 +1018,8 @@
   "movers": [
     {
       "symbol": "AMD",
-      "change_pct": 1.85,
-      "last": 640.9,
+      "change_pct": 1.81,
+      "last": 640.66,
       "rvol": 1.17,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -1036,8 +1036,8 @@
     },
     {
       "symbol": "TSLA",
-      "change_pct": 0.88,
-      "last": 381.27,
+      "change_pct": 0.84,
+      "last": 381.12,
       "rvol": 0.67,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -1046,20 +1046,11 @@
     {
       "symbol": "META",
       "change_pct": -0.64,
-      "last": 772.6,
+      "last": 772.58,
       "rvol": 1.55,
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "26.8B$"
-    },
-    {
-      "symbol": "AMZN",
-      "change_pct": 0.61,
-      "last": 250.91,
-      "rvol": 0.93,
-      "grade": "strong",
-      "grade_ar": "قوي",
-      "dollar_volume_label": "8.3B$"
     },
     {
       "symbol": "JPM",
@@ -1069,9 +1060,84 @@
       "grade": "strong",
       "grade_ar": "قوي",
       "dollar_volume_label": "2.4B$"
+    },
+    {
+      "symbol": "AMZN",
+      "change_pct": 0.56,
+      "last": 250.77,
+      "rvol": 0.93,
+      "grade": "strong",
+      "grade_ar": "قوي",
+      "dollar_volume_label": "8.3B$"
     }
   ],
   "news": [
+    {
+      "symbol": "GRAL",
+      "title": "GRAIL (GRAL) Wins FDA Panel Backing, Is It Now Overvalued?",
+      "title_ar": "يفوز GRAIL (GRAL) بدعم لوحة إدارة الأغذية والعقاقير، هل تم المبالغة في تقييمه الآن ؟",
+      "summary": "GRAIL (GRAL) is back in focus after the FDA's Medical Devices Advisory Committee backed its Galleri multi cancer early detection test, shortly after strong PATHFINDER 2 data in Nature Medicine reinforced its real world performance. That regulatory drumbeat has shown up quickly in",
+      "summary_ar": "",
+      "url": "https://finance.yahoo.com/healthcare/articles/grail-gral-wins-fda-panel-201736839.html",
+      "publisher": "Simply Wall St.",
+      "published": "2026-09-24 20:17:36 UT",
+      "published_ts": 1790281056,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "1956de1d7942153cbc19ad46fd01918c16d3cd26",
+      "source": "yahoo",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "fda",
+          "ar": "FDA / دواء",
+          "base_impact": 5
+        }
+      ],
+      "catalyst_keys": [
+        "fda"
+      ],
+      "catalyst_ar": [
+        "FDA / دواء"
+      ],
+      "impact_reason_ar": "FDA / دواء",
+      "officialish": false
+    },
+    {
+      "symbol": "GRAL",
+      "title": "Grail Surges After FDA Advisors Back Its Cancer-Finding Blood Test",
+      "title_ar": "الكأس ترتفع بعد أن أعاد مستشارو إدارة الغذاء والدواء اختبار الدم المكتشف للسرطان",
+      "summary": "Grail stock surged Thursday after a panel of advisors to the FDA backed the company's cancer-detecting blood test.",
+      "summary_ar": "",
+      "url": "https://www.investors.com/news/technology/grail-stock-cancer-blood-test-galleri-fda-advisory-committee-meeting/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "published": "2026-09-24 20:13:02 UT",
+      "published_ts": 1790280782,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "07f5a4b06ee65cbb33dfe0f51e995af03cb4194a",
+      "source": "yahoo",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "sentiment_score": 4,
+      "catalysts": [
+        {
+          "key": "fda",
+          "ar": "FDA / دواء",
+          "base_impact": 5
+        }
+      ],
+      "catalyst_keys": [
+        "fda"
+      ],
+      "catalyst_ar": [
+        "FDA / دواء"
+      ],
+      "impact_reason_ar": "FDA / دواء",
+      "officialish": false
+    },
     {
       "symbol": "AMD",
       "title": "Nvidia Vs. AMD: Who Wins The Critical Coming 6 Month Period?",
@@ -1158,39 +1224,6 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "ddac53305aec6a9165eba769a5be5c54f6cd268c",
-      "source": "yahoo",
-      "impact": 4,
-      "impact_ar": "تأثير 4/5",
-      "sentiment_score": 4,
-      "catalysts": [
-        {
-          "key": "partnership",
-          "ar": "شراكة/عقد",
-          "base_impact": 3
-        }
-      ],
-      "catalyst_keys": [
-        "partnership"
-      ],
-      "catalyst_ar": [
-        "شراكة/عقد"
-      ],
-      "impact_reason_ar": "شراكة/عقد",
-      "officialish": false
-    },
-    {
-      "symbol": "TEM",
-      "title": "Tempus AI (TEM) Has a $75 Goldman Sachs Target, But Its Data Business Faces a Bigger Test",
-      "title_ar": "TEMPUS AI () لديه هدف جولدمان ساكس بقيمة 75 $، لكن أعمال البيانات الخاصة به تواجه اختبارًا أكبر",
-      "summary": "Goldman Sachs’ Neutral initiation of Tempus AI, Inc. (NASDAQ:TEM) on September 21 puts the company’s fastest-growing businesses under different tests: diagnostics offers visible near-term growth, while the data and applications segment faces renewal risk as several major contract",
-      "summary_ar": "",
-      "url": "https://finance.yahoo.com/healthcare/articles/tempus-ai-tem-75-goldman-204805322.html",
-      "publisher": "Insider Monkey",
-      "published": "2026-09-22 20:48:05 UT",
-      "published_ts": 1790110085,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "df8f61043451894089a7614dec00f5b3963b2dc5",
       "source": "yahoo",
       "impact": 4,
       "impact_ar": "تأثير 4/5",
@@ -1462,6 +1495,29 @@
       "officialish": false
     },
     {
+      "symbol": "GRAL",
+      "title": "MRNA On Track To Be September's No. 2 S&P 500 Stock — But These 5 Smaller Health Care Names Did Even Better",
+      "title_ar": "MRNA على المسار الصحيح ليكون سهم S&P 500 رقم 2 في سبتمبر — ولكن هذه الأسماء الخمسة الأصغر للرعاية الصحية كانت أفضل",
+      "summary": "Five smaller stocks with market caps above $100 million beat MRNA’s monthly gain: INDP rose 249%, CYPH 124%, MNOV 85%, GRAL 58% and SRZN 53%.",
+      "summary_ar": "",
+      "url": "https://stocktwits.com/news-articles/markets/equity/mrna-september-no2-sandp500-stock-5-smaller-healthcare-names-did-better/cZMaHg1RBae",
+      "publisher": "Stocktwits",
+      "published": "2026-09-25 03:23:36 UT",
+      "published_ts": 1790306616,
+      "sentiment": "pos",
+      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
+      "id": "5ec87bbd4e684ca2f67795f6131f6eeac9bb89d8",
+      "source": "yahoo",
+      "impact": 2,
+      "impact_ar": "تأثير 2/5",
+      "sentiment_score": 4,
+      "catalysts": [],
+      "catalyst_keys": [],
+      "catalyst_ar": [],
+      "impact_reason_ar": "خبر عام / تأثير محدود",
+      "officialish": false
+    },
+    {
       "symbol": "JPM",
       "title": "JPMorgan sends strong message to Meta stock investors",
       "title_ar": "جي بي مورغان يبعث برسالة قوية إلى مستثمري أسهم ميتا",
@@ -1564,29 +1620,6 @@
       "officialish": false
     },
     {
-      "symbol": "TEM",
-      "title": "Tempus AI Chief Accounting Officer Sells $529,650 of Stock",
-      "title_ar": "كبير مسؤولي المحاسبة في تيمبوس AI يبيع 529,650 $ من الأسهم",
-      "summary": "Sale follows 30% rebound in the stock year to date.",
-      "summary_ar": "",
-      "url": "https://www.fool.com/coverage/filings/2026/09/24/tempus-ai-chief-accounting-officer-sells-usd529-650-of-stock/",
-      "publisher": "Motley Fool",
-      "published": "2026-09-24 13:00:01 UT",
-      "published_ts": 1790254801,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "9ab6ee635e534810d20e8a28624c6e29a5f99f5b",
-      "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
       "symbol": "FLY",
       "title": "Firefly Aerospace vs. SpaceX: Which Space Stock Can Put Your Portfolio Into Orbit in 2026?",
       "title_ar": "Firefly Aerospace مقابل SpaceX: أي مخزون فضائي يمكنه وضع محفظتك في المدار في عام 2026 ؟",
@@ -1599,29 +1632,6 @@
       "sentiment": "pos",
       "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
       "id": "7884163261f134cd6cda54bb755e2ef533806eee",
-      "source": "yahoo",
-      "impact": 2,
-      "impact_ar": "تأثير 2/5",
-      "sentiment_score": 4,
-      "catalysts": [],
-      "catalyst_keys": [],
-      "catalyst_ar": [],
-      "impact_reason_ar": "خبر عام / تأثير محدود",
-      "officialish": false
-    },
-    {
-      "symbol": "TEM",
-      "title": "Tempus AI Sees Pricing, Data Growth Fueling Long-Term Expansion",
-      "title_ar": "يرى Tempus AI التسعير، ونمو البيانات يغذي التوسع على المدى الطويل",
-      "summary": "Tempus AI (NASDAQ:TEM) Founder and CEO Eric Lefkofsky said the company’s second-quarter performance was supported by continued demand for comprehensive genomic profiling and growth in its data-licensing business. Speaking at Morgan Stanley’s Global Healthcare Conference, Lefkofsk",
-      "summary_ar": "",
-      "url": "https://www.marketbeat.com/instant-alerts/event-tempus-ai-sees-pricing-data-growth-fueling-long-term-expansion-2026-09-21/?utm_source=yahoofinance&utm_medium=yahoofinance",
-      "publisher": "MarketBeat",
-      "published": "2026-09-22 00:02:02 UT",
-      "published_ts": 1790035322,
-      "sentiment": "pos",
-      "sentiment_ar": "إيجابي — متوقع يدعم الارتفاع",
-      "id": "1fdecaa8d834cd378162eea1e15c2368d322d7f0",
       "source": "yahoo",
       "impact": 2,
       "impact_ar": "تأثير 2/5",
@@ -1720,6 +1730,6 @@
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
   "reminder": "تداول المحفز لا المطاردة — راجع المصدر قبل الدخول",
-  "heartbeat_ts": 1790338745,
+  "heartbeat_ts": 1790338847,
   "publisher": "github-actions-always-on"
 }
