@@ -122,6 +122,19 @@ def plan_trade(settings: Settings, signal: Signal, *, live_last: float | None = 
     )
 
 
+def size_long_position(
+    *,
+    capital_usd: float,
+    risk_pct: float,
+    entry: float,
+    stop: float,
+) -> dict:
+    """Thin wrapper — canonical implementation lives in jamal_strategy for tests."""
+    from bot.jamal_strategy import size_long_position as _size
+
+    return _size(capital_usd=capital_usd, risk_pct=risk_pct, entry=entry, stop=stop)
+
+
 def risk_banner(settings: Settings) -> str:
     return (
         f"💰 رأس المال: {settings.capital_sar:,.0f} ر.س "

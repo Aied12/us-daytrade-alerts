@@ -1,0 +1,108 @@
+{
+  "TEST": {
+    "created_ts": 1790363979.048945,
+    "entry_trigger": 10.16,
+    "stop": 9.96,
+    "tp1": 10.46,
+    "tp2": 10.66,
+    "state": "WATCH",
+    "updated_ts": 1790363979.048945,
+    "card": {
+      "symbol": "TEST",
+      "strategy": "jamal",
+      "strategy_ar": "استراتيجية جمال",
+      "tag_ar": "🎯 استراتيجية جمال",
+      "last": 10.0,
+      "score": 72,
+      "score_max": 90,
+      "state": "WATCH",
+      "state_ar": "🟡 مراقبة",
+      "signal_ts": 1790363979,
+      "signal_clock_et": "15:19:39",
+      "trigger_clock_et": "—",
+      "age_min": 0.0,
+      "watch_since_ar": "وقت مراقبة السهم: 15:19:39 ET",
+      "trigger_time_ar": "وقت تفعيل الدخول: — ET",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
+      "entry": 10.16,
+      "entry_trigger": 10.16,
+      "stop": 9.96,
+      "tp1": 10.46,
+      "tp2": 10.66,
+      "risk_ps": 0.2,
+      "rr_ar": "1 : 1.5 / 1 : 2.5",
+      "tp1_rr": 1.5,
+      "tp2_rr": 2.5,
+      "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
+      "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
+      "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
+      "checks": [
+        {
+          "key": "vol",
+          "ok": true,
+          "ar": "Volume 2.50x VMA",
+          "need": true
+        },
+        {
+          "key": "mfi",
+          "ok": true,
+          "ar": "MFI 58.8",
+          "need": true
+        },
+        {
+          "key": "mfi_up",
+          "ok": false,
+          "ar": "MFI غير صاعد",
+          "need": true
+        },
+        {
+          "key": "breakout_level",
+          "ok": true,
+          "ar": "أقرب قمة قصيرة $10.15",
+          "need": true
+        },
+        {
+          "key": "above_ma",
+          "ok": true,
+          "ar": "السعر فوق المتوسط القصير",
+          "need": false
+        }
+      ],
+      "checks_ar": [
+        "✓ Volume 2.50x VMA",
+        "✓ MFI 58.8",
+        "✗ MFI غير صاعد",
+        "✓ أقرب قمة قصيرة $10.15",
+        "✓ السعر فوق المتوسط القصير"
+      ],
+      "vol_ratio": 2.5,
+      "mfi": 58.8,
+      "mfi_prev": 59.8,
+      "mfi_rising": false,
+      "short_high": 10.15,
+      "short_low": 9.7,
+      "buffer_pct": 0.1,
+      "max_chase_pct": 1.0,
+      "stop_loss_pct": 2.0,
+      "trailing_enabled": true,
+      "trailing_pct": 1.0,
+      "signal_expiry_min": 15.0,
+      "exit_before_close_min": 15.0,
+      "order_book_available": false,
+      "order_book_ok": null,
+      "order_book_note_ar": "Order Book غير متاح",
+      "mins_to_close": 40.34918425,
+      "sizing": {
+        "shares": 0,
+        "position_usd": 0.0,
+        "risk_usd": 0.0,
+        "max_shares_by_capital": 0,
+        "allowed": false,
+        "note_ar": "لا يمكن حساب الحجم — تحقق من Entry/Stop/رأس المال"
+      },
+      "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
+      "updated_ts": 1790363979,
+      "created_ts": 1790363979
+    }
+  }
+}

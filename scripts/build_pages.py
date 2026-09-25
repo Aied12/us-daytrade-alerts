@@ -26,6 +26,11 @@ from bot.news_ar import fetch_stock_news_ar
 from bot.ops import read_status, touch_status
 from bot.reports import build_full_pack
 from bot.risk import plan_trade, risk_banner
+from bot.jamal_strategy import (
+    JamalSettings,
+    build_jamal_scanner,
+    jamal_to_opportunity,
+)
 from bot.signals import Action
 from bot.smart_signals import enrich_smart_signal
 from bot.catalyst_scan import build_momentum_scanner, enrich_news_item, rank_catalyst_news
@@ -380,6 +385,39 @@ def main() -> None:
         limit=12,
     )
 
+    # استراتيجية جمال — Setup ثم Entry Trigger (لا دخول على المؤشرات وحدها)
+    jamal_cfg = JamalSettings()
+    try:
+        jamal_cards = build_jamal_scanner(snaps, settings=settings, jamal=jamal_cfg, limit=10)
+    except Exception:
+        jamal_cards = []
+    jamal_opps = [jamal_to_opportunity(c) for c in jamal_cards if c]
+    try:
+        bad = set(bad_news) if bad_news else set()
+    except Exception:
+        bad = set()
+    jamal_opps = [jo for jo in jamal_opps if str(jo.get("symbol") or "").upper() not in bad]
+    # ادمج في خطط الدخول مع وسم جمال (بدون تكرار الرمز إن وُجد)
+    seen_opp = {str(o.get("symbol") or "").upper() for o in opportunities}
+    for jo in jamal_opps:
+        sym = str(jo.get("symbol") or "").upper()
+        if not sym:
+            continue
+        if sym in seen_opp:
+            # علّم البطاقة الحالية بوسم جمال إن وُجدت
+            for o in opportunities:
+                if str(o.get("symbol") or "").upper() == sym:
+                    tags = list(o.get("smart_tags") or [])
+                    tags.insert(0, {"key": "jamal", "ar": "🎯 استراتيجية جمال"})
+                    o["smart_tags"] = tags
+                    o["jamal"] = jo.get("jamal") or jo
+                    o["tag_ar"] = "🎯 استراتيجية جمال"
+                    break
+        else:
+            opportunities.append(jo)
+            seen_opp.add(sym)
+    opportunities = opportunities[:16]
+
     from bot.gainers import session_label_ar
 
     gainers_session = session_label_ar(phase)
@@ -429,8 +467,23 @@ def main() -> None:
         "sniper_auto": True,
         "sniper_ignores_price_tier": True,
         "sniper_sticky_min": 30,
+        "jamal_scanner": jamal_cards,
+        "jamal_note_ar": "استراتيجية جمال: Setup → مراقبة → Entry Trigger (اختراق قمة+Buffer) → Stop/TP — بدون مطاردة · ليست توصية استثمارية",
+        "jamal_settings": {
+            "buffer_pct": jamal_cfg.buffer_pct,
+            "max_chase_pct": jamal_cfg.max_chase_pct,
+            "stop_loss_pct": jamal_cfg.stop_loss_pct,
+            "tp1_rr": jamal_cfg.tp1_rr,
+            "tp2_rr": jamal_cfg.tp2_rr,
+            "trailing_enabled": jamal_cfg.trailing_enabled,
+            "trailing_pct": jamal_cfg.trailing_pct,
+            "signal_expiry_min": jamal_cfg.signal_expiry_min,
+            "exit_before_close_min": jamal_cfg.exit_before_close_min,
+            "vol_ratio_min": jamal_cfg.vol_ratio_min,
+            "mfi_min": jamal_cfg.mfi_min,
+        },
         "opportunities": opportunities,
-        "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · المنتهية تُزال تلقائياً",
+        "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · يشمل 🎯 استراتيجية جمال عند التوافق",
         "opps_rejected_slow": rejected_slow[:20],
         "gainers": gainers,
         "gainers_min_price": min_px,

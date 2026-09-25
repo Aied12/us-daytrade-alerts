@@ -241,6 +241,7 @@
         <button type="button" data-section="mood">مزاج السوق</button>
         <button type="button" data-section="momentum">ماسح الزخم</button>
         <button type="button" data-section="sniper">ماسح القنص</button>
+        <button type="button" data-section="jamal">استراتيجية جمال</button>
         <button type="button" data-section="news">بث المحفزات</button>
         <button type="button" data-section="opps">خطط الدخول</button>
         <button type="button" data-section="calc">حاسبة الاستراتيجية</button>
@@ -305,6 +306,26 @@
         <button type="button" data-sf="rocket">صاروخ ≥15%</button>
       </div>
       <div id="sniperList"><div class="empty">جاري مسح القنص...</div></div>
+    </div>
+
+    <div class="card panel" id="panel-jamal" data-section-panel="jamal">
+      <h2>🎯 استراتيجية جمال</h2>
+      <p class="muted" id="jamalNote">Setup → مراقبة → Entry Trigger (اختراق قمة + Buffer) → Stop/TP — بدون مطاردة · ليست توصية استثمارية</p>
+      <details class="muted" style="margin:8px 0 12px">
+        <summary>إعدادات جمال (قابلة للتعديل)</summary>
+        <div class="calc-grid" style="margin-top:8px" id="jamalSettingsBox">
+          <div class="calc-field"><label>Buffer %</label><input id="jamalBuffer" type="number" step="0.01" min="0" value="0.10" /></div>
+          <div class="calc-field"><label>Max Chase %</label><input id="jamalChase" type="number" step="0.1" min="0" value="1.0" /></div>
+          <div class="calc-field"><label>Stop Loss %</label><input id="jamalStopPct" type="number" step="0.1" min="0.1" value="2.0" /></div>
+          <div class="calc-field"><label>TP1 R:R</label><input id="jamalTp1" type="number" step="0.1" min="0.5" value="1.5" /></div>
+          <div class="calc-field"><label>TP2 R:R</label><input id="jamalTp2" type="number" step="0.1" min="0.5" value="2.5" /></div>
+          <div class="calc-field"><label>Signal Expiry (د)</label><input id="jamalExpiry" type="number" step="1" min="1" value="15" /></div>
+          <div class="calc-field"><label>خروج قبل الإغلاق (د)</label><input id="jamalExitClose" type="number" step="1" min="1" value="15" /></div>
+          <div class="calc-field"><label>Trailing Stop %</label><input id="jamalTrail" type="number" step="0.1" min="0" value="1.0" /></div>
+        </div>
+        <p class="muted" style="font-size:.8rem;margin-top:6px">الإعدادات تُحفظ محلياً وتعرض على البطاقات. المحرك السحابي يستخدم القيم الافتراضية الآمنة حتى تُربَط لاحقاً.</p>
+      </details>
+      <div id="jamalList"><div class="empty">جاري بناء Setups جمال...</div></div>
     </div>
 
     <div class="card panel" id="panel-news" data-section-panel="news">
@@ -378,6 +399,7 @@
             <option value="catalyst">محفز/اختراق — Catalyst Breakout</option>
             <option value="momentum">زخم RVOL — Momentum</option>
             <option value="sector">تدوير قطاع — Sector Rotation</option>
+            <option value="jamal">🎯 استراتيجية جمال — Jamal Trigger</option>
           </select>
         </div>
         <div class="calc-field">
@@ -458,7 +480,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V=15;
+    window.__STATUS_V=16;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -473,8 +495,9 @@
       section: 'dash_section',
       priceTier: 'dash_price_tier',
       sniper: 'dash_sniper_filter',
+      jamal: 'dash_jamal_settings',
     };
-    const SECTION_IDS = ['live','market','mood','momentum','sniper','news','opps','calc','gainers','movers','more'];
+    const SECTION_IDS = ['live','market','mood','momentum','sniper','jamal','news','opps','calc','gainers','movers','more'];
     let CURRENT_SECTION = 'momentum';
     let DATA = null;
     let lastUrgent = new Set();
@@ -486,6 +509,12 @@
     let NEWS_CACHE = [];
     let MOMENTUM_CACHE = [];
     let SNIPER_CACHE = [];
+    let JAMAL_CACHE = [];
+    let JAMAL_SETTINGS = {
+      buffer_pct:0.10, max_chase_pct:1.0, stop_loss_pct:2.0,
+      tp1_rr:1.5, tp2_rr:2.5, signal_expiry_min:15, exit_before_close_min:15,
+      trailing_pct:1.0, trailing_enabled:true
+    };
     let CALC_SYM = '';
     let CALC_STOP_USER_EDITED = false;
     let GAINERS_STATE = [];
@@ -612,9 +641,11 @@
       return NaN;
     }
     function strategyStopDefault(st){
+      if(st==='jamal') return 2.0;
       return st==='momentum' ? 1.0 : 1.5;
     }
     function strategyRewardMultiples(st){
+      if(st==='jamal') return [1.5, 2.5];
       if(st==='momentum') return [1, 3];
       return [1, 2]; // catalyst + sector
     }
@@ -1003,6 +1034,7 @@
       PRICE_TIER = (savedTier==='low') ? 'low' : 'high';
       syncPriceTierUi();
       syncLightBtn();
+      loadJamalSettings();
     }
     function currentFilter(){
       const a=document.querySelector('#filterSeg button.active');
@@ -1180,6 +1212,7 @@
             <div class="row">
               <span class="sym calc-clickable" data-apply-calc="${esc(o.symbol)}">${esc(o.symbol)} ${o.urgent?'🔥 عاجل':''} ${wait?'⏳ تأكيد':''}</span>
               <span>
+                ${o.tag_ar||o.source==='jamal'||(o.jamal)?'<span class="pill ok">🎯 جمال</span>':''}
                 <span class="pill conf-${esc(conf)}" title="${esc(confAr)}">ثقة ${esc(conf)}</span>
                 <span class="pill">${esc(o.score_100)}/100</span>
               </span>
@@ -1356,6 +1389,14 @@
       if(sNote) sNote.textContent=d.sniper_note_ar||sNote.textContent;
       SNIPER_CACHE=d.sniper_scanner||[];
       renderSniper(SNIPER_CACHE);
+      JAMAL_CACHE=d.jamal_scanner||[];
+      const jNote=document.getElementById('jamalNote');
+      if(jNote) jNote.textContent=d.jamal_note_ar||jNote.textContent;
+      if(d.jamal_settings){
+        JAMAL_SETTINGS=Object.assign({}, JAMAL_SETTINGS, d.jamal_settings);
+        syncJamalSettingsUi();
+      }
+      renderJamal(JAMAL_CACHE);
       const note=document.getElementById('newsNote');
       if(note) note.textContent=d.news_note_ar||'بث محفزات · تأثير 1–5';
       NEWS_CACHE=news;
@@ -1483,6 +1524,115 @@
           </div>
         </div>`;
       }).join('');
+      });
+    }
+
+    function loadJamalSettings(){
+      try{
+        const raw=localStorage.getItem(LS.jamal);
+        if(raw){
+          const j=JSON.parse(raw);
+          if(j&&typeof j==='object') JAMAL_SETTINGS=Object.assign({}, JAMAL_SETTINGS, j);
+        }
+      }catch(e){}
+      syncJamalSettingsUi();
+    }
+    function syncJamalSettingsUi(){
+      const map={
+        jamalBuffer:'buffer_pct', jamalChase:'max_chase_pct', jamalStopPct:'stop_loss_pct',
+        jamalTp1:'tp1_rr', jamalTp2:'tp2_rr', jamalExpiry:'signal_expiry_min',
+        jamalExitClose:'exit_before_close_min', jamalTrail:'trailing_pct'
+      };
+      Object.keys(map).forEach(id=>{
+        const el=document.getElementById(id);
+        if(el && JAMAL_SETTINGS[map[id]]!=null) el.value=String(JAMAL_SETTINGS[map[id]]);
+      });
+    }
+    function saveJamalSettingsFromUi(){
+      const num=(id, def)=>{
+        const v=Number((document.getElementById(id)||{}).value);
+        return Number.isFinite(v)?v:def;
+      };
+      JAMAL_SETTINGS=Object.assign({}, JAMAL_SETTINGS, {
+        buffer_pct:num('jamalBuffer',0.10),
+        max_chase_pct:num('jamalChase',1.0),
+        stop_loss_pct:num('jamalStopPct',2.0),
+        tp1_rr:num('jamalTp1',1.5),
+        tp2_rr:num('jamalTp2',2.5),
+        signal_expiry_min:num('jamalExpiry',15),
+        exit_before_close_min:num('jamalExitClose',15),
+        trailing_pct:num('jamalTrail',1.0),
+      });
+      try{ localStorage.setItem(LS.jamal, JSON.stringify(JAMAL_SETTINGS)); }catch(e){}
+    }
+    function applyJamalToCalc(card){
+      if(!card) return;
+      const sym=String(card.symbol||'').toUpperCase();
+      CALC_SYM=sym;
+      const pill=document.getElementById('calcSymPill');
+      if(pill) pill.textContent=sym;
+      const stEl=document.getElementById('calcStrategy');
+      if(stEl) stEl.value='jamal';
+      CALC_STOP_USER_EDITED=true;
+      const priceEl=document.getElementById('calcPrice');
+      const brEl=document.getElementById('calcBreakout');
+      const stopEl=document.getElementById('calcStopPct');
+      if(priceEl && Number(card.last)>0) priceEl.value=String(Number(card.last));
+      if(brEl && Number(card.entry)>0) brEl.value=String(Number(card.entry));
+      if(stopEl && Number(card.entry)>0 && Number(card.stop)>0){
+        const pct=((Number(card.entry)-Number(card.stop))/Number(card.entry))*100;
+        stopEl.value=String(Number(pct.toFixed(2)));
+      }
+      const cap=document.getElementById('calcCapital');
+      const defUsd=defaultCapitalUsd();
+      if(cap && Number.isFinite(defUsd)) cap.value=String(defUsd);
+      const riskEl=document.getElementById('calcRiskPct');
+      if(riskEl) riskEl.value='1';
+      runStrategyCalc();
+      if(typeof showSection==='function') showSection('calc', {smooth:true, scrollTop:true});
+      toast(`تم تطبيق خطة جمال ${sym} على الحاسبة`);
+    }
+    function renderJamal(rows){
+      const box=document.getElementById('jamalList');
+      if(!box) return;
+      const list=(rows||[]).slice();
+      if(!list.length){
+        box.innerHTML='<div class="empty">لا Setup جمال الآن — بانتظار Volume/MFI/قمة قصيرة</div>';
+        return;
+      }
+      box.innerHTML=list.map(c=>{
+        const checks=(c.checks_ar||[]).map(t=>`<div class="muted">${esc(t)}</div>`).join('');
+        const size=c.sizing||{};
+        return `<div class="scan-item" data-calc-sym="${esc(c.symbol)}">
+          <div class="row">
+            <span class="sym">${esc(c.symbol)}</span>
+            <span class="pill">${esc(c.state_ar||c.state||'')}</span>
+          </div>
+          <div class="muted">السعر الحالي: $<span data-live-px="${esc(c.symbol)}">${esc(c.last)}</span> · Score: ${esc(c.score)}/${esc(c.score_max||90)}</div>
+          <div class="muted" style="margin-top:4px">${esc(c.watch_since_ar||'')} · ${esc(c.age_ar||'')}</div>
+          <div class="muted">${esc(c.trigger_time_ar||'')}</div>
+          <div class="alert" style="margin-top:8px;line-height:1.55">
+            <div><strong>Entry Trigger:</strong> $${esc(c.entry)}</div>
+            <div><strong>Stop:</strong> $${esc(c.stop)} · <strong>TP1:</strong> $${esc(c.tp1)} · <strong>TP2:</strong> $${esc(c.tp2)}</div>
+            <div><strong>Risk:</strong> $${esc(c.risk_ps)} · <strong>R:R</strong> ${esc(c.rr_ar||'')}</div>
+            <div class="muted">${esc(c.hold_ar||'')}</div>
+            ${c.cancel_reason_ar?`<div class="muted" style="margin-top:4px">${esc(c.cancel_reason_ar)}</div>`:''}
+          </div>
+          <div style="margin-top:8px"><strong>سبب الإشارة / Checklist</strong>${checks}</div>
+          <div class="muted" style="margin-top:8px">${esc(size.note_ar||'')} · أسهم ${esc(size.shares||0)} · مخاطرة $${esc(size.risk_usd||0)}</div>
+          <div class="toolbar" style="margin-top:8px">
+            <button class="btn" type="button" data-jamal-calc="${esc(c.symbol)}">احسب الخطة</button>
+            <button class="btn secondary" type="button" data-apply-calc="${esc(c.symbol)}">للحاسبة</button>
+          </div>
+          <p class="muted" style="font-size:.78rem;margin:8px 0 0">${esc(c.disclaimer_ar||'')}</p>
+        </div>`;
+      }).join('');
+      box.querySelectorAll('[data-jamal-calc]').forEach(btn=>{
+        btn.onclick=()=>{
+          const sym=btn.getAttribute('data-jamal-calc');
+          const card=(JAMAL_CACHE||[]).find(x=>String(x.symbol).toUpperCase()===String(sym).toUpperCase());
+          applyJamalToCalc(card||{symbol:sym});
+        };
       });
     }
 
@@ -1717,6 +1867,9 @@
     };
     document.querySelectorAll('#priceTier button').forEach(b=>{
       b.onclick=()=>setPriceTier(b.dataset.tier||'high');
+    });
+    document.querySelectorAll('#jamalSettingsBox input').forEach(inp=>{
+      inp.addEventListener('change', ()=>{ saveJamalSettingsFromUi(); toast('تم حفظ إعدادات جمال'); });
     });
     document.querySelectorAll('#filterSeg button').forEach(b=>{
       b.onclick=()=>{
