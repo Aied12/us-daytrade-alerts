@@ -387,7 +387,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V = 25;
+    window.__STATUS_V = 26;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -917,7 +917,8 @@
       document.documentElement.setAttribute('data-theme', theme);
       const filter=localStorage.getItem(LS.filter)||'all';
       const sort=localStorage.getItem(LS.sort)||'flow';
-      document.getElementById('sortSel').value=sort;
+      const sortSel=document.getElementById('sortSel');
+      if(sortSel) sortSel.value=sort;
       document.querySelectorAll('#filterSeg button').forEach(b=>{
         b.classList.toggle('active', b.dataset.f===filter);
       });
@@ -1071,7 +1072,7 @@
       // إزالة الفرص المنتهية / المطاردة المتأخرة (علم + وسم + تمدد سعري)
       list=list.filter(o=>!isOppExpired(o));
       list=filterByPriceTier(list);
-      const sort=document.getElementById('sortSel').value;
+      const sort=(document.getElementById('sortSel')||{}).value||'flow';
       if(sort==='change') list.sort((a,b)=>Math.abs(b.change_pct)-Math.abs(a.change_pct));
       else if(sort==='rvol') list.sort((a,b)=>(b.rvol_pace||b.rvol||0)-(a.rvol_pace||a.rvol||0));
       else if(sort==='flow') list.sort((a,b)=>(b.flow_score||0)-(a.flow_score||0) || Math.abs(b.change_pct)-Math.abs(a.change_pct));
@@ -1210,7 +1211,7 @@
       const srcMap={live:' · بث حي', raw:' · مباشر', pages:' · صفحات'};
       const srcTag=srcMap[window.__STATUS_SRC]||'';
       const pub=d.publisher==='github-actions-always-on'?' · سحابي':'';
-      document.getElementById('ago').textContent=`آخر فحص: ${fmtAgo(d.generated_ts)} · ${d.generated_local||''}${srcTag}${pub}`;
+      const _ago=document.getElementById('ago'); if(_ago) _ago.textContent=`آخر فحص: ${fmtAgo(d.generated_ts)} · ${d.generated_local||''}${srcTag}${pub}`;
       const lag=d.price_lag_ar||(d.market&&d.market.price_lag_ar)||'تأخير Yahoo ≈ 15 دقيقة';
       const lagEl=document.getElementById('priceLag');
       if(lagEl){
@@ -1226,7 +1227,7 @@
         }
       }
       runStrategyCalc();
-      document.getElementById('tone').textContent=(d.market&&d.market.tone)||'-';
+      const _tone=document.getElementById('tone'); if(_tone) _tone.textContent=(d.market&&d.market.tone)||'-';
       const riskEl=document.getElementById('risk');
       if(riskEl) riskEl.textContent=d.risk_banner||'';
       const discEl=document.getElementById('disc');
@@ -1240,7 +1241,7 @@
       else hol.innerHTML='';
 
       const idxs=d.market&&d.market.indexes||[];
-      document.getElementById('indexes').innerHTML = idxs.map(x=>`
+      const _idx=document.getElementById('indexes'); if(_idx) _idx.innerHTML = idxs.map(x=>`
         <div class="idx"><b>${esc(x.symbol)}</b>
           <div class="${clsChg(x.change_pct)}" data-live-chg="${esc(x.symbol)}">${x.change_pct>0?'+':''}${esc(x.change_pct)}%</div>
           <div class="muted">$<span data-live-px="${esc(x.symbol)}">—</span> · RSI ${esc(x.rsi)}</div>
@@ -1249,10 +1250,10 @@
 
       const sec=d.sectors||{};
       const s1=(sec.strongest&&sec.strongest[0]); const w1=(sec.weakest&&sec.weakest[0]);
-      document.getElementById('secStrong').innerHTML=s1?`${esc(s1.name)} <span class="up">${s1.change_pct>0?'+':''}${esc(s1.change_pct)}%</span>`:'-';
-      document.getElementById('secWeak').innerHTML=w1?`${esc(w1.name)} <span class="down">${w1.change_pct>0?'+':''}${esc(w1.change_pct)}%</span>`:'-';
+      const _ss=document.getElementById('secStrong'); if(_ss) _ss.innerHTML=s1?`${esc(s1.name)} <span class="up">${s1.change_pct>0?'+':''}${esc(s1.change_pct)}%</span>`:'-';
+      const _sw=document.getElementById('secWeak'); if(_sw) _sw.innerHTML=w1?`${esc(w1.name)} <span class="down">${w1.change_pct>0?'+':''}${esc(w1.change_pct)}%</span>`:'-';
       const st=d.style||{};
-      document.getElementById('styleBoard').innerHTML=`نمو ${st.growth_avg??'-'}% · قيمة ${st.value_avg??'-'}% · المتقدم: <b>${esc(st.leader||'-')}</b>`;
+      const _sb=document.getElementById('styleBoard'); if(_sb) _sb.innerHTML=`نمو ${st.growth_avg??'-'}% · قيمة ${st.value_avg??'-'}% · المتقدم: <b>${esc(st.leader||'-')}</b>`;
 
       GAINERS_STATE = (d.gainers||[]).map(g=>({
         symbol: String(g.symbol||'').toUpperCase(),
@@ -1768,14 +1769,16 @@
 
     let sessionLeft=0;
     function tickClocks(){
-      document.getElementById('saClock').textContent=clockInTz('Asia/Riyadh');
-      document.getElementById('nyClock').textContent=clockInTz('America/New_York');
+      const _sa=document.getElementById('saClock'); if(_sa) _sa.textContent=clockInTz('Asia/Riyadh');
+      const _ny=document.getElementById('nyClock'); if(_ny) _ny.textContent=clockInTz('America/New_York');
       if(DATA&&DATA.session){
         const ph=DATA.session.phase;
         const map={before_open:'للافتتاح', open:'للإغلاق', after_close:'الجلسة مغلقة'};
-        document.getElementById('sessionLabel').textContent=map[ph]||'الجلسة';
-        if(ph==='after_close') document.getElementById('countdown').textContent='مغلق';
-        else document.getElementById('countdown').textContent=fmtCountdown(sessionLeft);
+        const _sl=document.getElementById('sessionLabel'); if(_sl) _sl.textContent=map[ph]||'الجلسة';
+        {
+          const _cd=document.getElementById('countdown');
+          if(_cd) _cd.textContent = (ph==='after_close') ? 'مغلق' : fmtCountdown(sessionLeft);
+        }
       }
       if(DATA&&DATA.generated_ts){
         const ageSec=Math.max(0, Math.floor(Date.now()/1000 - Number(DATA.generated_ts)));
@@ -1792,7 +1795,7 @@
         const srcMap={live:' · بث حي', raw:' · مباشر', pages:' · صفحات'};
         const srcTag=srcMap[window.__STATUS_SRC]||'';
         const pub=DATA.publisher==='github-actions-always-on'?' · سحابي':'';
-        document.getElementById('ago').textContent=`آخر فحص: ${fmtAgo(DATA.generated_ts)} · ${DATA.generated_local||''}${srcTag}${pub}`;
+        const _ago=document.getElementById('ago'); if(_ago) _ago.textContent=`آخر فحص: ${fmtAgo(DATA.generated_ts)} · ${DATA.generated_local||''}${srcTag}${pub}`;
       }
     }
 
@@ -1959,7 +1962,8 @@
         renderOpps();
       };
     });
-    document.getElementById('sortSel').onchange=(e)=>{
+    const sortSelBind=document.getElementById('sortSel');
+    if(sortSelBind) sortSelBind.onchange=(e)=>{
       localStorage.setItem(LS.sort,e.target.value);
       renderOpps();
     };
@@ -2347,11 +2351,11 @@
       }
     }
 
-    loadPrefs();
-    initSectionNav();
-    initStrategyCalc();
-    initPwaInstall();
-    fetchData(true).then(()=>{ renderLiveTape(); pollAllPrices(); pollNewsLive(); });
+    try{ loadPrefs(); }catch(e){ console.warn('loadPrefs', e); }
+    try{ initSectionNav(); }catch(e){ console.warn('initSectionNav', e); }
+    try{ initStrategyCalc(); }catch(e){ console.warn('initStrategyCalc', e); }
+    try{ initPwaInstall(); }catch(e){ console.warn('initPwaInstall', e); }
+    fetchData(true).then(()=>{ try{ renderLiveTape(); }catch(e){} try{ pollAllPrices(); }catch(e){} try{ pollNewsLive(); }catch(e){} });
     setInterval(()=>fetchData(false), AUTO_SEC*1000);
     setInterval(()=>{
       if(sessionLeft>0) sessionLeft-=1;
