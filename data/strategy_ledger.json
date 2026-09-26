@@ -610,11 +610,40 @@
       "mfe_pct": 0.0,
       "mae_pct": -0.53,
       "result_ar": "مفتوح"
+    },
+    {
+      "id": "opps:QQQ:2026-09-26",
+      "symbol": "QQQ",
+      "source": "opps",
+      "source_ar": "خطط الدخول",
+      "strategies": [
+        "ترتيب متوسطات صاعد",
+        "اختبار/كسر مقاومة",
+        "تقلّب منخفض (محافظ)",
+        "خطط الدخول"
+      ],
+      "side": "long",
+      "opened_ts": 1790388469,
+      "opened_local": "2026-09-26 05:07",
+      "entry": 745.4,
+      "stop": 701.4,
+      "tp1": 766.52,
+      "tp2": 798.2,
+      "last": 745.4,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": 0.0,
+      "result_ar": "مفتوح"
     }
   ],
-  "updated_ts": 1790388375,
+  "updated_ts": 1790388469,
   "summary": {
-    "open": 22,
+    "open": 23,
     "closed": 1,
     "wins": 0,
     "losses": 1,
@@ -637,6 +666,16 @@
         "name": "ماسح القنص",
         "n": 13,
         "open": 13,
+        "closed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "avg_pnl_pct": null
+      },
+      {
+        "name": "خطط الدخول",
+        "n": 1,
+        "open": 1,
         "closed": 0,
         "wins": 0,
         "losses": 0,
@@ -684,6 +723,46 @@
         "losses": 0,
         "win_rate": null,
         "avg_pnl_pct": null
+      },
+      {
+        "name": "ترتيب متوسطات صاعد",
+        "n": 1,
+        "open": 1,
+        "closed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "avg_pnl_pct": null
+      },
+      {
+        "name": "اختبار/كسر مقاومة",
+        "n": 1,
+        "open": 1,
+        "closed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "avg_pnl_pct": null
+      },
+      {
+        "name": "تقلّب منخفض (محافظ)",
+        "n": 1,
+        "open": 1,
+        "closed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "avg_pnl_pct": null
+      },
+      {
+        "name": "خطط الدخول",
+        "n": 1,
+        "open": 1,
+        "closed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "avg_pnl_pct": null
       }
     ],
     "recent_closed": [
@@ -703,23 +782,6 @@
       }
     ],
     "recent_open": [
-      {
-        "symbol": "KLXE",
-        "source_ar": "ماسح القنص",
-        "strategies": [
-          "ماسح القنص",
-          "قنص تحت $5"
-        ],
-        "entry": 1.56,
-        "last": 1.56,
-        "stop": 1.37,
-        "tp1": 1.79,
-        "pnl_pct": 0.0,
-        "mfe_pct": 2.564,
-        "mae_pct": 0.0,
-        "opened_local": "2026-09-26 01:22",
-        "result_ar": "مفتوح"
-      },
       {
         "symbol": "CCIF",
         "source_ar": "ماسح القنص",
@@ -897,9 +959,27 @@
         "mae_pct": -0.53,
         "opened_local": "2026-09-26 01:24",
         "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "QQQ",
+        "source_ar": "خطط الدخول",
+        "strategies": [
+          "ترتيب متوسطات صاعد",
+          "اختبار/كسر مقاومة",
+          "تقلّب منخفض (محافظ)"
+        ],
+        "entry": 745.4,
+        "last": 745.4,
+        "stop": 701.4,
+        "tp1": 766.52,
+        "pnl_pct": 0.0,
+        "mfe_pct": 0.0,
+        "mae_pct": 0.0,
+        "opened_local": "2026-09-26 05:07",
+        "result_ar": "مفتوح"
       }
     ],
     "note_ar": "متابعة ورقية تعليمية: نجاح/فشل حسب وصول السعر للهدف أو الوقف بعد ظهور الإشارة — ليست أرباح محفظة حقيقية."
   },
-  "updated_local": "2026-09-26 05:06 +03"
+  "updated_local": "2026-09-26 05:07 +03"
 }
