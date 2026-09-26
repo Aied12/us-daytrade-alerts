@@ -253,12 +253,6 @@
         <button class="btn secondary" id="btnTheme" type="button">🌓 نهاري/ليلي</button>
         <button class="btn ghost" id="btnLight" type="button">📶 نسخة خفيفة</button>
         <button class="btn ghost" id="btnNotify" type="button">🔔 إشعار الفرص</button>
-        <div class="price-tier" id="priceTier" role="group" aria-label="شريحة السعر">
-          <button type="button" data-tier="high" class="active" title="أسهم سعرها 51$ فأكثر">أعلى ≥$51</button>
-          <button type="button" data-tier="low" title="أسهم سعرها من 5$ إلى أقل من 51$">أقل $5–$51</button>
-        </div>
-      </div>
-      <p class="muted" id="priceTierHint" style="margin:6px 0 0;font-size:.82rem">عرض: أسهم أعلى قيمة (≥ $51)</p>
       <div class="pwa-banner" id="pwaBanner" role="status">
         <div class="row">
           <p id="pwaBannerText">ثبّت اللوحة كتطبيق على الشاشة الرئيسية للوصول السريع بدون شريط المتصفح.</p>
@@ -393,7 +387,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V = 24;
+    window.__STATUS_V = 25;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -454,7 +448,7 @@
       return (list||[]).filter(row=>passesPriceTier(rowLastPrice(row)));
     }
     function priceTierLabel(){
-      return PRICE_TIER==='low' ? 'أسهم أقل قيمة ($5 – أقل من $51)' : 'أسهم أعلى قيمة (≥ $51)';
+      return 'كل الأسهم';
     }
     function syncPriceTierUi(){
       document.querySelectorAll('#priceTier button').forEach(b=>{
@@ -463,7 +457,7 @@
       const hint=document.getElementById('priceTierHint');
       if(hint) hint.textContent='عرض: '+priceTierLabel();
       const badge=document.getElementById('liveBadge');
-      if(badge) badge.textContent = PRICE_TIER==='low' ? 'أقل $5–$51' : 'أعلى ≥$51';
+      if(badge) badge.textContent = 'كل الأسهم';
     }
     function setPriceTier(tier, opts){
       opts=opts||{};
@@ -2122,8 +2116,8 @@
         const fromM=(DATA&&DATA.movers||[]).find(m=>String(m.symbol).toUpperCase()===s);
         const px=rowLastPrice(fromOpp||fromG||fromM||null);
         // المؤشرات دائماً تُعرض في شريحة الأعلى فقط كمرجع سوق
-        if(['SPY','QQQ','IWM'].includes(s)) return PRICE_TIER==='high';
-        if(!Number.isFinite(px)) return PRICE_TIER==='high'; // رموز بلا سعر: في الأعلى فقط
+        if(['SPY','QQQ','IWM'].includes(s)) return true;
+        if(!Number.isFinite(px)) return true;
         return passesPriceTier(px);
       }).slice(0,30);
       // Don't wipe DOM every time if already built — keep nodes for smooth updates
