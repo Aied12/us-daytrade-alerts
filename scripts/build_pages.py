@@ -432,11 +432,16 @@ def main() -> None:
         except Exception:
             pass
     try:
+        # الأقسام (قنص/جمال/خطط دخول) أُزيلت من الواجهة — لا نغذي دفتر المتابعة منها.
+        # المتابعة تبدأ من الصفر حتى تُربط مصادر إشارات جديدة.
         strategy_track = sync_from_boards(
-            opportunities=opportunities,
-            sniper=sniper,
-            jamal=jamal_cards,
+            opportunities=[],
+            sniper=[],
+            jamal=[],
             price_by_symbol=price_map,
+        )
+        strategy_track["note_ar"] = (
+            "متابعة ورقية من الصفر — بانتظار مصادر إشارات جديدة بعد إزالة الماسحات القديمة من اللوحة"
         )
     except Exception as e:
         strategy_track = {
