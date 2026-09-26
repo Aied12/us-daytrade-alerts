@@ -273,6 +273,7 @@
         <button type="button" data-section="live" class="active">أسعار لحظية</button>
         <button type="button" data-section="market">السوق</button>
         <button type="button" data-section="mood">مزاج السوق</button>
+        <button type="button" data-section="qannas">القناص</button>
         <button type="button" data-section="track">متابعة الأداء</button>
         <button type="button" data-section="more">المزيد</button>
       </div>
@@ -323,6 +324,22 @@
 
 
 
+
+
+    <div class="card panel" id="panel-qannas" data-section-panel="qannas">
+      <h2>🎯 القناص</h2>
+      <p class="muted" id="qannasNote">Gainers ≥+20% · Volume ≥2–3× · Small/Mid Cap · خبر محفز جديد · Low Float إن توفر</p>
+      <div class="seg" id="qannasSeg">
+        <button type="button" data-qf="all" class="active">الكل</button>
+        <button type="button" data-qf="complete">مكتمل الشروط</button>
+        <button type="button" data-qf="news">مع خبر</button>
+        <button type="button" data-qf="float">فلوت ضيق</button>
+      </div>
+      <div id="qannasList"><div class="empty">جاري مسح القناص...</div></div>
+      <p class="muted" style="margin-top:10px;font-size:.82rem;line-height:1.45">
+        ترتيب الأولوية: خبر حقيقي → سيولة قوية → شركة صغيرة/فلوت ضيق → ارتفاع مستمر (مو طلقة يوم واحد). تعليمي فقط.
+      </p>
+    </div>
 
     <div class="card panel" id="panel-track" data-section-panel="track">
       <h2>متابعة أداء الاستراتيجيات</h2>
@@ -376,7 +393,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V = 23;
+    window.__STATUS_V = 24;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -393,8 +410,8 @@
       sniper: 'dash_sniper_filter',
       jamal: 'dash_jamal_settings',
     };
-    const SECTION_IDS = ['live','market','mood','track','more'];
-    let CURRENT_SECTION = 'momentum';
+    const SECTION_IDS = ['live','market','mood','qannas','track','more'];
+    let CURRENT_SECTION = 'live';
     let DATA = null;
     let lastUrgent = new Set();
     const MOVE_WINDOW_MS = 12000;
@@ -406,6 +423,8 @@
     let MOMENTUM_CACHE = [];
     let SNIPER_CACHE = [];
     let JAMAL_CACHE = [];
+    let QANNAS_CACHE = [];
+    let QANNAS_FILTER = 'all'; // all | complete | news | float
     let JAMAL_SETTINGS = {
       buffer_pct:0.10, max_chase_pct:1.0, stop_loss_pct:2.0,
       tp1_rr:1.0, tp2_rr:2.0, signal_expiry_min:15, exit_before_close_min:15,
@@ -877,6 +896,7 @@
         window.scrollTo({top:0, behavior: opts.smooth?'smooth':'auto'});
       }
       if(sid==='track' && DATA) renderStrategyTrack(DATA.strategy_track||{});
+      if(sid==='qannas') renderQannas(QANNAS_CACHE);
     }
     function initSectionNav(){
       document.querySelectorAll('#sectionNav button').forEach(b=>{
@@ -884,6 +904,13 @@
       });
       const saved=localStorage.getItem(LS.section);
       showSection(SECTION_IDS.includes(saved)?saved:defaultSection(), {scrollTop:false});
+      document.querySelectorAll('#qannasSeg button').forEach(b=>{
+        b.addEventListener('click',()=>{
+          QANNAS_FILTER=b.dataset.qf||'all';
+          document.querySelectorAll('#qannasSeg button').forEach(x=>x.classList.toggle('active', x===b));
+          renderQannas(QANNAS_CACHE);
+        });
+      });
     }
     function syncLightBtn(){
       const on=isLightNet();
@@ -1282,6 +1309,10 @@
         syncJamalSettingsUi();
       }
       renderJamal(JAMAL_CACHE);
+      const qNote=document.getElementById('qannasNote');
+      if(qNote) qNote.textContent=d.qannas_note_ar||qNote.textContent;
+      QANNAS_CACHE=d.qannas_scanner||[];
+      renderQannas(QANNAS_CACHE);
       renderStrategyTrack(d.strategy_track||{});
       const note=document.getElementById('newsNote');
       if(note) note.textContent=d.news_note_ar||'بث محفزات · تأثير 1–5';
@@ -1291,6 +1322,45 @@
       purgeExpiredOpps();
       renderOpps();
       tickClocks();
+    }
+
+    function renderQannas(rows){
+      const box=document.getElementById('qannasList');
+      if(!box) return;
+      let list=Array.isArray(rows)?rows.slice():[];
+      const f=QANNAS_FILTER||'all';
+      if(f==='complete') list=list.filter(r=>r.complete);
+      else if(f==='news') list=list.filter(r=>r.has_news);
+      else if(f==='float') list=list.filter(r=>r.low_float);
+      if(!list.length){
+        box.innerHTML='<div class="empty">لا أسهم تطابق شروط القناص الآن — Gainers ≥+20% + حجم ≥2× + خبر محفز + Small/Mid Cap</div>';
+        return;
+      }
+      box.innerHTML=list.map(r=>{
+        const chg=Number(r.change_pct||0);
+        const checks=(r.checklist||[]).map(c=>
+          `<span class="tag" style="opacity:${c.ok?1:.45}">${c.ok?'✓':'○'} ${esc(c.ar||'')}</span>`
+        ).join(' ');
+        const cats=(r.catalysts||[]).map(t=>`<span class="tag">${esc(t.ar||t.key||'')}</span>`).join(' ');
+        const complete=r.complete? '<span class="pill ok">مكتمل</span>' : `<span class="pill">${r.checks_ok||0}/${r.checks_total||4}</span>`;
+        return `<div class="scan-item">
+          <div class="row">
+            <span class="sym">${esc(r.symbol)}</span>
+            <span class="${clsChg(chg)}" data-live-chg="${esc(r.symbol)}">${chg>0?'+':''}${esc(chg)}%</span>
+          </div>
+          <div class="muted" style="margin-top:4px">${esc(r.name||'')} · ${esc(r.market_cap_label||'—')} · فلوت ${esc(r.float_label||'—')}</div>
+          <div class="row" style="margin-top:6px">
+            <span class="muted">RVOL ×${esc(r.rvol??'-')} · ${esc(r.dollar_volume_label||'')}</span>
+            ${complete}
+          </div>
+          <div style="margin-top:6px">${checks}</div>
+          ${r.has_news?`<div class="muted" style="margin-top:6px;font-size:.86rem">📰 ${esc(r.news_title||'')} ${cats}</div>`:''}
+          <div class="row" style="margin-top:8px">
+            <span class="muted">دخول ${esc(r.entry)} · وقف ${esc(r.stop)} · هدف1 ${esc(r.tp1)}</span>
+            <a class="btn secondary" style="min-height:34px;padding:4px 10px;margin:0;font-size:.82rem" href="${esc(r.tv_url||'#')}" target="_blank" rel="noopener">TV</a>
+          </div>
+        </div>`;
+      }).join('');
     }
 
     function impactDots(n){

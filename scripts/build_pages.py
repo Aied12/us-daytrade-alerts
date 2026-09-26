@@ -35,6 +35,8 @@ from bot.signals import Action
 from bot.smart_signals import enrich_smart_signal
 from bot.catalyst_scan import build_momentum_scanner, enrich_news_item, rank_catalyst_news
 from bot.sniper_scan import build_sniper_scanner, fetch_cheap_runners
+from bot.qannas_scan import NOTE_AR as QANNAS_NOTE_AR
+from bot.qannas_scan import build_qannas_scanner, fetch_qannas_universe
 from bot.strategy_tracker import sync_from_boards
 
 NY = ZoneInfo("America/New_York")
@@ -386,6 +388,24 @@ def main() -> None:
         limit=12,
     )
 
+    # القناص: Gainers ≥+20% + Volume 2–3× + Small/Mid Cap + Fresh Catalyst
+    qannas_runners: list = []
+    try:
+        qannas_runners = fetch_qannas_universe(limit=40)
+    except Exception:
+        qannas_runners = []
+    try:
+        qannas = build_qannas_scanner(
+            runners=qannas_runners,
+            news=news_ar,
+            snaps=snaps,
+            phase=phase,
+            limit=12,
+            require_news=True,
+        )
+    except Exception:
+        qannas = []
+
     # استراتيجية جمال — Setup ثم Entry Trigger (لا دخول على المؤشرات وحدها)
     jamal_cfg = JamalSettings()
     try:
@@ -432,16 +452,16 @@ def main() -> None:
         except Exception:
             pass
     try:
-        # الأقسام (قنص/جمال/خطط دخول) أُزيلت من الواجهة — لا نغذي دفتر المتابعة منها.
-        # المتابعة تبدأ من الصفر حتى تُربط مصادر إشارات جديدة.
+        # متابعة الأداء تُغذّى من ماسح القناص فقط (الماسحات القديمة أُزيلت من الواجهة)
         strategy_track = sync_from_boards(
             opportunities=[],
             sniper=[],
             jamal=[],
+            qannas=qannas,
             price_by_symbol=price_map,
         )
         strategy_track["note_ar"] = (
-            "متابعة ورقية من الصفر — بانتظار مصادر إشارات جديدة بعد إزالة الماسحات القديمة من اللوحة"
+            "متابعة ورقية لماسح القناص — نجاح/فشل حسب الهدف أو الوقف بعد الإشارة"
         )
     except Exception as e:
         strategy_track = {
@@ -506,6 +526,16 @@ def main() -> None:
         "sniper_auto": True,
         "sniper_ignores_price_tier": True,
         "sniper_sticky_min": 30,
+        "qannas_scanner": qannas,
+        "qannas_note_ar": QANNAS_NOTE_AR,
+        "qannas_rules": {
+            "min_chg_pct": 20,
+            "min_rvol": 2,
+            "strong_rvol": 3,
+            "max_mcap": 10_000_000_000,
+            "float_good": 20_000_000,
+            "require_news": True,
+        },
         "jamal_scanner": jamal_cards,
         "jamal_note_ar": "استراتيجية جمال: Setup → مراقبة → Entry Trigger (اختراق قمة+Buffer) → Stop/TP — بدون مطاردة · ليست توصية استثمارية",
         "jamal_settings": {

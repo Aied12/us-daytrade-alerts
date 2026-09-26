@@ -1,0 +1,74 @@
+{
+  "updated_ts": 1790462870,
+  "items": [
+    {
+      "symbol": "TEST",
+      "name": "Test Co",
+      "last": 5.0,
+      "change_pct": 25.0,
+      "rvol": 3.2,
+      "volume": 1000000.0,
+      "avg_volume": 300000.0,
+      "dollar_volume": 5000000.0,
+      "dollar_volume_label": "$5.0M",
+      "market_cap": 800000000.0,
+      "market_cap_label": "$800M",
+      "cap_bucket": "small",
+      "float_shares": 8000000.0,
+      "float_label": "8.0M",
+      "low_float": true,
+      "has_news": true,
+      "news_title": "Company signs partnership agreement with major client",
+      "news_impact": 4,
+      "catalysts": [
+        {
+          "key": "partnership",
+          "ar": "شراكة/عقد",
+          "base_impact": 3
+        }
+      ],
+      "catalyst_ar": "شراكة/عقد",
+      "checklist": [
+        {
+          "key": "news",
+          "ar": "خبر حقيقي وجديد",
+          "ok": true
+        },
+        {
+          "key": "liq",
+          "ar": "سيولة قوية (حجم فوق المتوسط)",
+          "ok": true
+        },
+        {
+          "key": "size",
+          "ar": "شركة صغيرة / فلوت ضيق",
+          "ok": true
+        },
+        {
+          "key": "trend",
+          "ar": "الارتفاع مستمر (فوق الافتتاح)",
+          "ok": true
+        }
+      ],
+      "checks_ok": 4,
+      "checks_total": 4,
+      "complete": true,
+      "entry": 5.0,
+      "stop": 4.08,
+      "tp1": 5.3,
+      "tp2": 5.7,
+      "side": "long",
+      "strategies": [
+        "القناص",
+        "محفز + زخم"
+      ],
+      "tag_ar": "🎯 القناص",
+      "session_ar": "test",
+      "tv_url": "#",
+      "phase": "post",
+      "updated_ts": 1790462870,
+      "score": 154.6,
+      "first_ts": 1790462870
+    }
+  ]
+}

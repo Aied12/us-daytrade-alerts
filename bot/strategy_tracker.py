@@ -75,6 +75,12 @@ def _strategies_of(row: dict[str, Any], source: str) -> list[str]:
             out.append("قنص تحت $5")
         if row.get("has_news"):
             out.append("قنص + خبر")
+    elif source == "qannas":
+        out.append("القناص")
+        if row.get("has_news"):
+            out.append("القناص + محفز")
+        if row.get("low_float"):
+            out.append("فلوت ضيق")
     elif source == "jamal":
         out.append("استراتيجية جمال")
     elif source == "opps":
@@ -123,6 +129,7 @@ def ingest_candidates(
     opportunities: list[dict[str, Any]] | None = None,
     sniper: list[dict[str, Any]] | None = None,
     jamal: list[dict[str, Any]] | None = None,
+    qannas: list[dict[str, Any]] | None = None,
 ) -> int:
     """Open paper trades for new long setups. Returns number newly opened."""
     data = _load()
@@ -136,6 +143,7 @@ def ingest_candidates(
         ("opps", opportunities or []),
         ("sniper", sniper or []),
         ("jamal", jamal or []),
+        ("qannas", qannas or []),
     ]
     for source, rows in batches:
         for row in rows:
@@ -173,7 +181,12 @@ def ingest_candidates(
                 "id": tid,
                 "symbol": sym,
                 "source": source,
-                "source_ar": {"opps": "خطط الدخول", "sniper": "ماسح القنص", "jamal": "استراتيجية جمال"}.get(source, source),
+                "source_ar": {
+                    "opps": "خطط الدخول",
+                    "sniper": "ماسح القنص",
+                    "jamal": "استراتيجية جمال",
+                    "qannas": "القناص",
+                }.get(source, source),
                 "strategies": _strategies_of(row, source),
                 "side": "long",
                 "opened_ts": int(now),
@@ -387,17 +400,23 @@ def sync_from_boards(
     opportunities: list[dict[str, Any]] | None = None,
     sniper: list[dict[str, Any]] | None = None,
     jamal: list[dict[str, Any]] | None = None,
+    qannas: list[dict[str, Any]] | None = None,
     price_by_symbol: dict[str, float] | None = None,
 ) -> dict[str, Any]:
     """One-shot: ingest new setups, mark-to-market, return dashboard payload."""
     prices = dict(price_by_symbol or {})
-    for rows in (opportunities or [], sniper or [], jamal or []):
+    for rows in (opportunities or [], sniper or [], jamal or [], qannas or []):
         for r in rows:
             sym = str(r.get("symbol") or "").upper()
             last = float(r.get("last") or 0)
             if sym and last > 0:
                 prices[sym] = last
-    ingest_candidates(opportunities=opportunities, sniper=sniper, jamal=jamal)
+    ingest_candidates(
+        opportunities=opportunities,
+        sniper=sniper,
+        jamal=jamal,
+        qannas=qannas,
+    )
     mark_to_market(prices)
     data = _load()
     summary = data.get("summary") or summarize(data.get("trades") or [])
