@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
-  <meta name="theme-color" content="#07111f" />
+  <meta name="theme-color" content="#0a0f14" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png" />
-  <title>لوحة تنبيهات الأسهم</title>
+  <title>القناص — تنبيهات الأسهم</title>
   <style>
     :root, [data-theme="dark"] {
       --bg:#07111f; --card:#101a2c; --line:#243247; --text:#e8eefc;
@@ -232,6 +232,102 @@
     .pwa-install-card ol{margin:8px 0 0;padding-inline-start:1.25rem;line-height:1.55}
     .pwa-install-card li{margin:4px 0}
     .pwa-status{font-size:.85rem;margin-top:8px}
+
+    /* —— القناص أولاً (موبايل) —— */
+    :root, [data-theme="dark"] {
+      --bg:#0a0f14; --card:#121a22; --line:#243040; --text:#e8eef4;
+      --muted:#8b9aab; --ok:#3dd68c; --bad:#f07178; --warn:#e6a23c; --accent:#2dd4bf;
+      --amber:#f5b942; --chip:#1a2430; --featured:#152018;
+      --urgent:#3a2410; --urgentBorder:#e6a23c;
+    }
+    body{padding-bottom:88px}
+    .wrap{max-width:560px;margin:0 auto;padding:10px 12px 100px}
+    .sticky{
+      position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 92%, transparent);
+      backdrop-filter:blur(10px);padding:8px 0 6px;margin:0 0 8px;border-bottom:1px solid var(--line);
+    }
+    .brand-hero{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+    .brand-hero h1{
+      margin:0;font-size:1.85rem;line-height:1.1;letter-spacing:-.02em;
+      color:var(--amber);font-weight:900;
+    }
+    .brand-sub{margin:4px 0 0;color:var(--muted);font-size:.88rem}
+    .brand-actions{display:flex;gap:6px;align-items:center}
+    .brand-actions .btn{min-height:40px;padding:8px 12px;margin:0;font-size:.88rem;border-radius:12px}
+    .session-strip{
+      display:flex;gap:8px;overflow:auto;margin:10px 0 4px;padding-bottom:2px;
+      -webkit-overflow-scrolling:touch;
+    }
+    .session-chip{
+      flex:0 0 auto;padding:8px 12px;border-radius:999px;border:1px solid var(--line);
+      background:var(--chip);font-size:.82rem;white-space:nowrap;
+    }
+    .session-chip b{color:var(--text);margin-inline-start:4px}
+    .toolbar-more{display:none}
+    .toolbar-more.open{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .section-nav{display:none !important} /* التنقل عبر الشريط السفلي */
+    .panel{display:none;border:0;background:transparent;padding:0;margin:8px 0}
+    .panel.active{display:block}
+    .qannas-head{margin:4px 0 10px}
+    .qannas-head .muted{font-size:.84rem;line-height:1.4}
+    #qannasSeg{
+      display:flex;gap:6px;overflow:auto;padding:2px 0 8px;
+      -webkit-overflow-scrolling:touch;
+    }
+    #qannasSeg button{
+      flex:0 0 auto;min-height:38px;padding:8px 14px;border-radius:999px;
+      border:1px solid var(--line);background:var(--chip);color:var(--text);
+      font-weight:700;font-size:.86rem;
+    }
+    #qannasSeg button.active{background:var(--accent);border-color:var(--accent);color:#042f2e}
+    .featured-card{
+      border:1px solid color-mix(in srgb,var(--accent) 35%, var(--line));
+      background:linear-gradient(160deg, var(--featured), var(--card));
+      border-radius:22px;padding:16px;margin:0 0 12px;
+    }
+    .featured-card .sym{font-size:1.55rem}
+    .featured-card .chg-xl{font-size:1.7rem;font-weight:900}
+    .featured-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .featured-meta .tag{margin:0;padding:5px 10px;border-radius:999px;font-size:.78rem}
+    .plan-row{
+      display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px;
+    }
+    .plan-cell{
+      background:color-mix(in srgb,var(--chip) 80%, transparent);border:1px solid var(--line);
+      border-radius:14px;padding:10px 8px;text-align:center;
+    }
+    .plan-cell .lab{font-size:.72rem;color:var(--muted);margin-bottom:4px}
+    .plan-cell .val{font-weight:800;font-size:.95rem}
+    .checks-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .qannas-sec-label{
+      margin:14px 0 6px;font-size:.8rem;color:var(--muted);font-weight:700;
+      letter-spacing:.02em;
+    }
+    .scan-item{
+      border:1px solid var(--line);border-radius:16px;padding:12px;margin:8px 0;
+      background:var(--card);
+    }
+    .scan-item .sym{font-size:1.15rem}
+    .dock{
+      position:fixed;bottom:0;inset-inline:0;z-index:60;
+      display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+      padding:8px 6px calc(8px + env(safe-area-inset-bottom));
+      background:color-mix(in srgb,var(--card) 94%, black);
+      border-top:1px solid var(--line);
+      backdrop-filter:blur(12px);
+    }
+    .dock button{
+      border:0;background:transparent;color:var(--muted);padding:6px 2px;
+      font:inherit;font-size:.68rem;font-weight:700;cursor:pointer;
+      display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px;
+    }
+    .dock button .ico{font-size:1.15rem;line-height:1}
+    .dock button.active{color:var(--accent)}
+    .dock button[data-section="qannas"].active{color:var(--amber)}
+    @media (min-width:720px){
+      .wrap{max-width:680px;padding-bottom:110px}
+      .brand-hero h1{font-size:2.1rem}
+    }
   </style>
 </head>
 <body>
@@ -239,20 +335,30 @@
     <div id="holidayBox"></div>
 
     <div class="sticky">
-      <div class="row">
+      <div class="brand-hero">
         <div>
-          <h1>لوحة تنبيهات الأسهم</h1>
-          <div class="muted" id="ago">جاري التحميل...</div>
-          <div class="muted" id="autoHint" style="margin-top:2px">اختر قسماً من الشريط أعلاه</div>
+          <h1>القناص</h1>
+          <p class="brand-sub">محفز + سيولة + كاب صغير</p>
+          <div class="muted" id="ago" style="margin-top:4px;font-size:.8rem">جاري التحميل...</div>
         </div>
-        <span id="alive" class="pill">...</span>
+        <div class="brand-actions">
+          <span id="alive" class="pill">...</span>
+          <button class="btn" id="btnRefresh" type="button" title="تحديث البيانات">تحديث</button>
+          <button class="btn ghost" id="btnMoreTools" type="button" title="المزيد" aria-expanded="false">⋯</button>
+        </div>
       </div>
-      <div class="toolbar">
-        <button class="btn" id="btnRefresh" type="button">🔄 تحديث الآن</button>
-        <button class="btn secondary" id="btnReloadPage" type="button" title="إعادة تحميل الصفحة كاملة">⟳ تحديث الصفحة</button>
+      <div class="session-strip" id="sessionStrip" aria-label="حالة الجلسة">
+        <span class="session-chip">نيويورك <b id="nyClockStrip">--:--</b></span>
+        <span class="session-chip"><span id="sessionLabelStrip">الجلسة</span> <b id="countdownStrip">--</b></span>
+        <span class="session-chip">الرياض <b id="saClockStrip">--:--</b></span>
+      </div>
+      <div class="toolbar-more" id="toolbarMore">
+        <button class="btn secondary" id="btnReloadPage" type="button">⟳ تحديث الصفحة</button>
         <button class="btn secondary" id="btnTheme" type="button">🌓 نهاري/ليلي</button>
         <button class="btn ghost" id="btnLight" type="button">📶 نسخة خفيفة</button>
-        <button class="btn ghost" id="btnNotify" type="button">🔔 إشعار الفرص</button>
+        <button class="btn ghost" id="btnNotify" type="button">🔔 إشعار</button>
+      </div>
+      <div class="muted" id="autoHint" style="display:none">تحديث حي</div>
       <div class="pwa-banner" id="pwaBanner" role="status">
         <div class="row">
           <p id="pwaBannerText">ثبّت اللوحة كتطبيق على الشاشة الرئيسية للوصول السريع بدون شريط المتصفح.</p>
@@ -263,17 +369,18 @@
           <button class="btn secondary" type="button" id="btnPwaHow">كيف أثبّت على الآيفون؟</button>
         </div>
       </div>
-      <div class="section-nav" id="sectionNav" role="tablist" aria-label="أقسام اللوحة">
-        <button type="button" data-section="live" class="active">أسعار لحظية</button>
+      <!-- احتفاظ بمعرّف التنقل للتوافق مع السكربت -->
+      <div class="section-nav" id="sectionNav" role="tablist" aria-label="أقسام اللوحة" hidden>
+        <button type="button" data-section="qannas" class="active">القناص</button>
+        <button type="button" data-section="live">أسعار لحظية</button>
         <button type="button" data-section="market">السوق</button>
         <button type="button" data-section="mood">مزاج السوق</button>
-        <button type="button" data-section="qannas">القناص</button>
         <button type="button" data-section="track">متابعة الأداء</button>
         <button type="button" data-section="more">المزيد</button>
       </div>
     </div>
 
-    <div class="card panel active" id="panel-live" data-section-panel="live">
+    <div class="card panel" id="panel-live" data-section-panel="live">
       <div class="row">
         <h2 style="margin:0">أسعار لحظية <span class="pulse" title="بث حي"></span></h2>
         <span class="pill ok" id="liveBadge">كل الأسهم</span>
@@ -320,18 +427,21 @@
 
 
 
-    <div class="card panel" id="panel-qannas" data-section-panel="qannas">
-      <h2>🎯 القناص</h2>
-      <p class="muted" id="qannasNote">Gainers ≥+20% · Volume ≥2–3× · Small/Mid Cap · خبر محفز جديد · Low Float إن توفر</p>
+    <div class="card panel active" id="panel-qannas" data-section-panel="qannas">
+      <div class="qannas-head">
+        <p class="muted" id="qannasNote">Gainers ≥+20% · Volume ≥2–3× · Small/Mid Cap · خبر محفز جديد · Low Float إن توفر</p>
+      </div>
       <div class="seg" id="qannasSeg">
         <button type="button" data-qf="all" class="active">الكل</button>
-        <button type="button" data-qf="complete">مكتمل الشروط</button>
+        <button type="button" data-qf="complete">مكتمل</button>
         <button type="button" data-qf="news">مع خبر</button>
         <button type="button" data-qf="float">فلوت ضيق</button>
       </div>
-      <div id="qannasList"><div class="empty">جاري مسح القناص...</div></div>
-      <p class="muted" style="margin-top:10px;font-size:.82rem;line-height:1.45">
-        ترتيب الأولوية: خبر حقيقي → سيولة قوية → شركة صغيرة/فلوت ضيق → ارتفاع مستمر (مو طلقة يوم واحد). تعليمي فقط.
+      <div id="qannasFeatured"><div class="empty">جاري مسح القناص...</div></div>
+      <div class="qannas-sec-label" id="qannasMoreLabel" style="display:none">بقية النتائج</div>
+      <div id="qannasList"></div>
+      <p class="muted" style="margin-top:10px;font-size:.78rem;line-height:1.45">
+        ترتيب الأولوية: خبر → سيولة → كاب/فلوت → ارتفاع مستمر. تعليمي فقط.
       </p>
     </div>
 
@@ -384,10 +494,18 @@
       <p class="muted" id="disc"></p>
     </div>
   </div>
+  
+  <nav class="dock" id="bottomDock" aria-label="التنقل الرئيسي">
+    <button type="button" data-section="live"><span class="ico">📈</span>أسعار</button>
+    <button type="button" data-section="market"><span class="ico">🕐</span>سوق</button>
+    <button type="button" data-section="qannas" class="active"><span class="ico">🎯</span>القناص</button>
+    <button type="button" data-section="track"><span class="ico">📊</span>أداء</button>
+    <button type="button" data-section="more"><span class="ico">⋯</span>المزيد</button>
+  </nav>
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V = 26;
+    window.__STATUS_V = 28;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -405,7 +523,7 @@
       jamal: 'dash_jamal_settings',
     };
     const SECTION_IDS = ['live','market','mood','qannas','track','more'];
-    let CURRENT_SECTION = 'live';
+    let CURRENT_SECTION = 'qannas';
     let DATA = null;
     let lastUrgent = new Set();
     const MOVE_WINDOW_MS = 12000;
@@ -868,17 +986,24 @@
     }
     function isLightNet(){ return localStorage.getItem(LS.light)==='1'; }
     function defaultSection(){
-      return 'live';
+      return 'qannas';
     }
     function showSection(id, opts){
       opts=opts||{};
-      const sid=SECTION_IDS.includes(id)?id:defaultSection();
+      let sid=SECTION_IDS.includes(id)?id:defaultSection();
+      // مزاج السوق مدمج مع السوق في الواجهة الجديدة
+      if(sid==='mood') sid='market';
       CURRENT_SECTION=sid;
       document.querySelectorAll('#sectionNav button').forEach(b=>{
         b.classList.toggle('active', b.dataset.section===sid);
       });
+      document.querySelectorAll('#bottomDock button').forEach(b=>{
+        b.classList.toggle('active', b.dataset.section===sid);
+      });
       document.querySelectorAll('[data-section-panel]').forEach(p=>{
-        p.classList.toggle('active', p.getAttribute('data-section-panel')===sid);
+        const key=p.getAttribute('data-section-panel');
+        const on = key===sid || (sid==='market' && key==='mood');
+        p.classList.toggle('active', on);
       });
       localStorage.setItem(LS.section, sid);
       // scroll active tab into view horizontally
@@ -893,11 +1018,21 @@
       if(sid==='qannas') renderQannas(QANNAS_CACHE);
     }
     function initSectionNav(){
-      document.querySelectorAll('#sectionNav button').forEach(b=>{
+      document.querySelectorAll('#sectionNav button, #bottomDock button').forEach(b=>{
         b.addEventListener('click',()=>showSection(b.dataset.section, {smooth:true}));
       });
+      const moreBtn=document.getElementById('btnMoreTools');
+      const moreBox=document.getElementById('toolbarMore');
+      if(moreBtn && moreBox){
+        moreBtn.addEventListener('click',()=>{
+          const open=moreBox.classList.toggle('open');
+          moreBtn.setAttribute('aria-expanded', open?'true':'false');
+        });
+      }
       const saved=localStorage.getItem(LS.section);
-      showSection(SECTION_IDS.includes(saved)?saved:defaultSection(), {scrollTop:false});
+      // أول زيارة بعد التحديث: افتح القناص حتى لو كان المحفوظ قسماً قديماً
+      const prefer = (!saved || saved==='live' || saved==='momentum') ? 'qannas' : saved;
+      showSection(SECTION_IDS.includes(prefer)?prefer:defaultSection(), {scrollTop:false});
       document.querySelectorAll('#qannasSeg button').forEach(b=>{
         b.addEventListener('click',()=>{
           QANNAS_FILTER=b.dataset.qf||'all';
@@ -1320,39 +1455,77 @@
     }
 
     function renderQannas(rows){
+      const feat=document.getElementById('qannasFeatured');
       const box=document.getElementById('qannasList');
-      if(!box) return;
+      const moreLab=document.getElementById('qannasMoreLabel');
+      if(!feat || !box) return;
       let list=Array.isArray(rows)?rows.slice():[];
       const f=QANNAS_FILTER||'all';
       if(f==='complete') list=list.filter(r=>r.complete);
       else if(f==='news') list=list.filter(r=>r.has_news);
       else if(f==='float') list=list.filter(r=>r.low_float);
       if(!list.length){
-        box.innerHTML='<div class="empty">لا أسهم تطابق شروط القناص الآن — Gainers ≥+20% + حجم ≥2× + خبر محفز + Small/Mid Cap</div>';
+        feat.innerHTML='<div class="empty">لا أسهم تطابق شروط القناص الآن — Gainers ≥+20% + حجم ≥2× + خبر محفز + Small/Mid Cap</div>';
+        box.innerHTML='';
+        if(moreLab) moreLab.style.display='none';
         return;
       }
-      box.innerHTML=list.map(r=>{
-        const chg=Number(r.change_pct||0);
-        const checks=(r.checklist||[]).map(c=>
-          `<span class="tag" style="opacity:${c.ok?1:.45}">${c.ok?'✓':'○'} ${esc(c.ar||'')}</span>`
-        ).join(' ');
-        const cats=(r.catalysts||[]).map(t=>`<span class="tag">${esc(t.ar||t.key||'')}</span>`).join(' ');
-        const complete=r.complete? '<span class="pill ok">مكتمل</span>' : `<span class="pill">${r.checks_ok||0}/${r.checks_total||4}</span>`;
+      // بطاقة مميزة: أول مكتمل ثم الأول
+      const featured = list.find(r=>r.complete) || list[0];
+      const rest = list.filter(r=>r!==featured);
+
+      function checksHtml(r){
+        return (r.checklist||[]).map(c=>
+          `<span class="tag" style="opacity:${c.ok?1:.4}">${c.ok?'✓':'○'} ${esc(c.ar||'')}</span>`
+        ).join('');
+      }
+      function catsHtml(r){
+        return (r.catalysts||[]).map(t=>`<span class="tag">${esc(t.ar||t.key||'')}</span>`).join(' ');
+      }
+
+      const chg=Number(featured.change_pct||0);
+      feat.innerHTML=`<div class="featured-card">
+        <div class="row">
+          <div>
+            <div class="sym">${esc(featured.symbol)}</div>
+            <div class="muted" style="margin-top:2px">${esc(featured.name||'')}</div>
+          </div>
+          <div class="chg-xl ${clsChg(chg)}" data-live-chg="${esc(featured.symbol)}">${chg>0?'+':''}${esc(chg)}%</div>
+        </div>
+        <div class="featured-meta">
+          <span class="tag">RVOL ×${esc(featured.rvol??'-')}</span>
+          <span class="tag">${esc(featured.dollar_volume_label||'')}</span>
+          <span class="tag">${esc(featured.market_cap_label||'—')}</span>
+          <span class="tag">فلوت ${esc(featured.float_label||'—')}</span>
+          ${featured.complete?'<span class="tag tone-ok">مكتمل الشروط</span>':`<span class="tag">${featured.checks_ok||0}/${featured.checks_total||4}</span>`}
+        </div>
+        <div class="checks-row">${checksHtml(featured)}</div>
+        ${featured.has_news?`<div class="muted" style="margin-top:10px;font-size:.9rem;line-height:1.35">📰 ${esc(featured.news_title||'')} ${catsHtml(featured)}</div>`:''}
+        <div class="plan-row">
+          <div class="plan-cell"><div class="lab">دخول</div><div class="val">${esc(featured.entry)}</div></div>
+          <div class="plan-cell"><div class="lab">وقف</div><div class="val">${esc(featured.stop)}</div></div>
+          <div class="plan-cell"><div class="lab">هدف1</div><div class="val">${esc(featured.tp1)}</div></div>
+        </div>
+        <div class="row" style="margin-top:12px">
+          <span class="muted" style="font-size:.8rem">$<span data-live-px="${esc(featured.symbol)}">${esc(featured.last)}</span></span>
+          <a class="btn secondary" style="min-height:38px;padding:6px 12px;margin:0;font-size:.85rem" href="${esc(featured.tv_url||'#')}" target="_blank" rel="noopener">TradingView</a>
+        </div>
+      </div>`;
+
+      if(moreLab) moreLab.style.display = rest.length ? 'block' : 'none';
+      box.innerHTML = rest.map(r=>{
+        const c=Number(r.change_pct||0);
         return `<div class="scan-item">
           <div class="row">
             <span class="sym">${esc(r.symbol)}</span>
-            <span class="${clsChg(chg)}" data-live-chg="${esc(r.symbol)}">${chg>0?'+':''}${esc(chg)}%</span>
+            <span class="${clsChg(c)}" data-live-chg="${esc(r.symbol)}">${c>0?'+':''}${esc(c)}%</span>
           </div>
-          <div class="muted" style="margin-top:4px">${esc(r.name||'')} · ${esc(r.market_cap_label||'—')} · فلوت ${esc(r.float_label||'—')}</div>
-          <div class="row" style="margin-top:6px">
-            <span class="muted">RVOL ×${esc(r.rvol??'-')} · ${esc(r.dollar_volume_label||'')}</span>
-            ${complete}
-          </div>
-          <div style="margin-top:6px">${checks}</div>
-          ${r.has_news?`<div class="muted" style="margin-top:6px;font-size:.86rem">📰 ${esc(r.news_title||'')} ${cats}</div>`:''}
+          <div class="muted" style="margin-top:4px">${esc(r.name||'')} · ${esc(r.market_cap_label||'—')} · ×${esc(r.rvol??'-')}</div>
+          <div class="checks-row">${checksHtml(r)}</div>
+          ${r.has_news?`<div class="muted" style="margin-top:6px;font-size:.84rem">📰 ${esc(r.news_title||'')}</div>`:''}
           <div class="row" style="margin-top:8px">
-            <span class="muted">دخول ${esc(r.entry)} · وقف ${esc(r.stop)} · هدف1 ${esc(r.tp1)}</span>
-            <a class="btn secondary" style="min-height:34px;padding:4px 10px;margin:0;font-size:.82rem" href="${esc(r.tv_url||'#')}" target="_blank" rel="noopener">TV</a>
+            <span class="muted" style="font-size:.8rem">دخول ${esc(r.entry)} · وقف ${esc(r.stop)}</span>
+            <a class="btn secondary" style="min-height:34px;padding:4px 10px;margin:0;font-size:.8rem" href="${esc(r.tv_url||'#')}" target="_blank" rel="noopener">TV</a>
           </div>
         </div>`;
       }).join('');
@@ -1769,15 +1942,24 @@
 
     let sessionLeft=0;
     function tickClocks(){
-      const _sa=document.getElementById('saClock'); if(_sa) _sa.textContent=clockInTz('Asia/Riyadh');
-      const _ny=document.getElementById('nyClock'); if(_ny) _ny.textContent=clockInTz('America/New_York');
+      const saTxt=clockInTz('Asia/Riyadh');
+      const nyTxt=clockInTz('America/New_York');
+      const _sa=document.getElementById('saClock'); if(_sa) _sa.textContent=saTxt;
+      const _ny=document.getElementById('nyClock'); if(_ny) _ny.textContent=nyTxt;
+      const _saS=document.getElementById('saClockStrip'); if(_saS) _saS.textContent=saTxt;
+      const _nyS=document.getElementById('nyClockStrip'); if(_nyS) _nyS.textContent=nyTxt;
       if(DATA&&DATA.session){
         const ph=DATA.session.phase;
         const map={before_open:'للافتتاح', open:'للإغلاق', after_close:'الجلسة مغلقة'};
         const _sl=document.getElementById('sessionLabel'); if(_sl) _sl.textContent=map[ph]||'الجلسة';
         {
+          const cdTxt = (ph==='after_close') ? 'مغلق' : fmtCountdown(sessionLeft);
           const _cd=document.getElementById('countdown');
-          if(_cd) _cd.textContent = (ph==='after_close') ? 'مغلق' : fmtCountdown(sessionLeft);
+          if(_cd) _cd.textContent = cdTxt;
+          const _cdS=document.getElementById('countdownStrip');
+          if(_cdS) _cdS.textContent = cdTxt;
+          const _slS=document.getElementById('sessionLabelStrip');
+          if(_slS) _slS.textContent = map[ph]||'الجلسة';
         }
       }
       if(DATA&&DATA.generated_ts){
