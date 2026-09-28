@@ -136,7 +136,7 @@ def fetch_day_gainers(min_price: float = 5.0, limit: int = 20) -> list[dict[str,
         for s in ("SPY", "QQQ", "NVDA", "TSLA", "AMD", "AAPL", "META", "PLTR", "BA"):
             if s not in cand:
                 cand.append(s)
-        cand = cand[:80]
+        cand = cand[:100]
 
         lives: list[dict] = []
         with ThreadPoolExecutor(max_workers=10) as pool:
