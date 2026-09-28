@@ -16,16 +16,16 @@
       "stop": 0.7064,
       "tp1": 1.48,
       "tp2": 1.6,
-      "last": 1.44,
-      "status": "open",
-      "exit": null,
-      "exit_ts": null,
-      "exit_local": null,
-      "pnl_pct": null,
-      "r_multiple": null,
-      "mfe_pct": 2.857,
+      "last": 1.56,
+      "status": "win_tp1",
+      "exit": 1.56,
+      "exit_ts": 1790584431,
+      "exit_local": "2026-09-28 11:33",
+      "pnl_pct": 11.429,
+      "r_multiple": 0.231,
+      "mfe_pct": 11.429,
       "mae_pct": 0.0,
-      "result_ar": "مفتوح"
+      "result_ar": "هدف 1 ✓"
     },
     {
       "id": "qannas:MIMI:2026-09-28",
@@ -43,7 +43,7 @@
       "stop": 0.7671,
       "tp1": 0.9985,
       "tp2": 1.07,
-      "last": 0.949,
+      "last": 0.95,
       "status": "open",
       "exit": null,
       "exit_ts": null,
@@ -97,7 +97,7 @@
       "stop": 3.42,
       "tp1": 7.46,
       "tp2": 8.03,
-      "last": 7.06,
+      "last": 6.67,
       "status": "open",
       "exit": null,
       "exit_ts": null,
@@ -105,7 +105,7 @@
       "pnl_pct": null,
       "r_multiple": null,
       "mfe_pct": 0.284,
-      "mae_pct": -0.426,
+      "mae_pct": -5.256,
       "result_ar": "مفتوح"
     },
     {
@@ -124,7 +124,7 @@
       "stop": 0.2189,
       "tp1": 0.3578,
       "tp2": 0.3848,
-      "last": 0.3274,
+      "last": 0.3256,
       "status": "open",
       "exit": null,
       "exit_ts": null,
@@ -132,7 +132,7 @@
       "pnl_pct": null,
       "r_multiple": null,
       "mfe_pct": 0.0,
-      "mae_pct": -2.993,
+      "mae_pct": -3.526,
       "result_ar": "مفتوح"
     },
     {
@@ -163,53 +163,52 @@
       "result_ar": "مفتوح"
     }
   ],
-  "updated_ts": 1790584255,
-  "updated_local": "2026-09-28 11:30 +03",
+  "updated_ts": 1790584431,
+  "updated_local": "2026-09-28 11:33 +03",
   "summary": {
-    "open": 6,
-    "closed": 0,
-    "wins": 0,
+    "open": 5,
+    "closed": 1,
+    "wins": 1,
     "losses": 0,
     "flat": 0,
-    "win_rate": null,
-    "avg_pnl_pct": 0.0,
-    "avg_r": 0.0,
+    "win_rate": 100.0,
+    "avg_pnl_pct": 11.429,
+    "avg_r": 0.231,
     "by_source": [
       {
         "name": "القناص",
         "n": 6,
-        "open": 6,
-        "closed": 0,
-        "wins": 0,
+        "open": 5,
+        "closed": 1,
+        "wins": 1,
         "losses": 0,
-        "win_rate": null,
-        "avg_pnl_pct": null
+        "win_rate": 100.0,
+        "avg_pnl_pct": 11.429
       }
     ],
     "by_strategy": [
       {
         "name": "القناص",
         "n": 6,
-        "open": 6,
-        "closed": 0,
-        "wins": 0,
+        "open": 5,
+        "closed": 1,
+        "wins": 1,
         "losses": 0,
-        "win_rate": null,
-        "avg_pnl_pct": null
+        "win_rate": 100.0,
+        "avg_pnl_pct": 11.429
       },
       {
         "name": "محفز + زخم",
         "n": 6,
-        "open": 6,
-        "closed": 0,
-        "wins": 0,
+        "open": 5,
+        "closed": 1,
+        "wins": 1,
         "losses": 0,
-        "win_rate": null,
-        "avg_pnl_pct": null
+        "win_rate": 100.0,
+        "avg_pnl_pct": 11.429
       }
     ],
-    "recent_closed": [],
-    "recent_open": [
+    "recent_closed": [
       {
         "symbol": "GYGY",
         "source_ar": "القناص",
@@ -218,15 +217,15 @@
           "محفز + زخم"
         ],
         "entry": 1.4,
-        "last": 1.44,
-        "stop": 0.7064,
-        "tp1": 1.48,
-        "pnl_pct": 2.857,
-        "mfe_pct": 2.857,
-        "mae_pct": 0.0,
+        "exit": 1.56,
+        "pnl_pct": 11.429,
+        "r_multiple": 0.231,
+        "result_ar": "هدف 1 ✓",
         "opened_local": "2026-09-28 11:26",
-        "result_ar": "مفتوح"
-      },
+        "exit_local": "2026-09-28 11:33"
+      }
+    ],
+    "recent_open": [
       {
         "symbol": "MIMI",
         "source_ar": "القناص",
@@ -235,10 +234,10 @@
           "محفز + زخم"
         ],
         "entry": 0.942,
-        "last": 0.949,
+        "last": 0.95,
         "stop": 0.7671,
         "tp1": 0.9985,
-        "pnl_pct": 0.743,
+        "pnl_pct": 0.849,
         "mfe_pct": 2.059,
         "mae_pct": 0.0,
         "opened_local": "2026-09-28 11:26",
@@ -269,12 +268,12 @@
           "محفز + زخم"
         ],
         "entry": 7.04,
-        "last": 7.06,
+        "last": 6.67,
         "stop": 3.42,
         "tp1": 7.46,
-        "pnl_pct": 0.284,
+        "pnl_pct": -5.256,
         "mfe_pct": 0.284,
-        "mae_pct": -0.426,
+        "mae_pct": -5.256,
         "opened_local": "2026-09-28 11:26",
         "result_ar": "مفتوح"
       },
@@ -286,12 +285,12 @@
           "محفز + زخم"
         ],
         "entry": 0.3375,
-        "last": 0.3274,
+        "last": 0.3256,
         "stop": 0.2189,
         "tp1": 0.3578,
-        "pnl_pct": -2.993,
+        "pnl_pct": -3.526,
         "mfe_pct": 0.0,
-        "mae_pct": -2.993,
+        "mae_pct": -3.526,
         "opened_local": "2026-09-28 11:26",
         "result_ar": "مفتوح"
       },
