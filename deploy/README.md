@@ -6,10 +6,12 @@
 
 👉 [`deploy/VPS_IPHONE_AR.md`](./VPS_IPHONE_AR.md)
 
-أمر تثبيت سريع على Ubuntu:
+أمر تثبيت سريع على Ubuntu (من Termius):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/deploy/vps/setup.sh | bash
+apt-get update -y && apt-get install -y git && \
+git clone https://github.com/Aied12/us-daytrade-alerts.git /opt/us-daytrade-alerts && \
+bash /opt/us-daytrade-alerts/deploy/vps/setup.sh
 ```
 
 بعدها افتح: `http://IP_السيرفر/`
