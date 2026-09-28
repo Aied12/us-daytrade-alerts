@@ -1,5 +1,5 @@
 /* US Daytrade Alerts — PWA service worker (fresh HTML, fresh live JSON) */
-const CACHE = "uda-shell-v2";
+const CACHE = "uda-shell-v3";
 const SHELL_STATIC = [
   "./manifest.webmanifest",
   "./icons/icon-192.png",
