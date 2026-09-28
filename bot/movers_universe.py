@@ -233,11 +233,16 @@ def fetch_extended_mover_symbols(*, limit: int = 80) -> list[dict[str, Any]]:
         pre = float(r.get("tv_premarket_change") or 0)
         day = float(r.get("tv_change") or 0)
         yh = float(r.get("screener_chg") or 0)
-        # Premarket: prefer TV premarket_change; ignore absurd Yahoo RTH % seeds
+        src = str(r.get("source") or "")
+        # Premarket: prefer TV premarket_change; boost Finviz/TV over Yahoo RTH junk
         if phase == "pre":
             if pre > 0:
-                return pre + 1000.0  # always ahead of RTH-only seeds
-            return max(day, min(yh, 80.0))
+                return pre + 2000.0
+            if src.startswith("tv:") or src == "finviz":
+                return max(day, 25.0) + 1000.0
+            return max(day, min(yh, 60.0))
+        if src.startswith("tv:") or src == "finviz":
+            return max(day, pre, 20.0) + 500.0
         return max(day, pre, min(yh, 120.0))
 
     rows.sort(key=_score, reverse=True)
