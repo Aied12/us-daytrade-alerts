@@ -220,18 +220,36 @@
     .panel.active{display:block}
     .sticky .toolbar{margin-top:2px}
     .pwa-banner{
-      display:none;margin:10px 0 0;padding:12px 14px;border-radius:14px;
-      border:1px solid color-mix(in srgb,var(--accent) 45%, var(--line));
-      background:color-mix(in srgb,var(--accent) 14%, var(--card));
+      display:none;margin:10px 0 0;padding:14px;border-radius:16px;
+      border:1px solid color-mix(in srgb,var(--accent) 50%, var(--line));
+      background:linear-gradient(160deg, color-mix(in srgb,var(--accent) 18%, var(--card)), var(--card));
+      box-shadow:0 8px 24px color-mix(in srgb, #000 28%, transparent);
     }
     .pwa-banner.on{display:block}
     .pwa-banner .row{margin:0;align-items:flex-start}
-    .pwa-banner p{margin:0;font-size:.9rem;line-height:1.45}
-    .pwa-banner .actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-    .pwa-banner .btn{min-height:40px;padding:8px 12px;margin:0;font-size:.9rem}
-    .pwa-install-card ol{margin:8px 0 0;padding-inline-start:1.25rem;line-height:1.55}
-    .pwa-install-card li{margin:4px 0}
-    .pwa-status{font-size:.85rem;margin-top:8px}
+    .pwa-banner .pwa-title{margin:0;font-size:1.05rem;font-weight:800;color:var(--text);line-height:1.3}
+    .pwa-banner .pwa-sub{margin:6px 0 0;font-size:.88rem;line-height:1.5;color:var(--muted)}
+    .pwa-banner .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .pwa-banner .btn{min-height:44px;padding:10px 14px;margin:0;font-size:.92rem;border-radius:12px;font-weight:700}
+    .pwa-steps{display:grid;gap:8px;margin-top:12px}
+    .pwa-step{
+      display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;
+      background:color-mix(in srgb, var(--chip) 88%, transparent);border:1px solid var(--line);
+    }
+    .pwa-step .num{
+      flex:0 0 28px;height:28px;border-radius:999px;display:grid;place-items:center;
+      background:var(--accent);color:#042f2e;font-weight:900;font-size:.9rem;
+    }
+    .pwa-step .txt{font-size:.9rem;line-height:1.45;color:var(--text)}
+    .pwa-step .txt b{color:var(--amber)}
+    .pwa-install-card{
+      border:1px solid color-mix(in srgb,var(--accent) 35%, var(--line)) !important;
+      background:color-mix(in srgb,var(--accent) 8%, var(--card)) !important;
+    }
+    .pwa-install-card .pwa-steps{margin-top:10px}
+    .pwa-status{font-size:.85rem;margin-top:10px;padding:8px 10px;border-radius:10px;background:var(--chip);border:1px solid var(--line)}
+    .pwa-status.ok{border-color:color-mix(in srgb,var(--ok) 45%, var(--line));color:var(--ok)}
+    .pwa-status.warn{border-color:color-mix(in srgb,var(--warn) 45%, var(--line));color:var(--warn)}
 
     /* —— القناص أولاً (موبايل) —— */
     :root, [data-theme="dark"] {
@@ -359,12 +377,20 @@
       <div class="muted" id="autoHint" style="display:none">تحديث حي</div>
       <div class="pwa-banner" id="pwaBanner" role="status">
         <div class="row">
-          <p id="pwaBannerText">ثبّت اللوحة كتطبيق على الشاشة الرئيسية للوصول السريع بدون شريط المتصفح.</p>
+          <div style="flex:1;min-width:0">
+            <p class="pwa-title" id="pwaBannerTitle">ثبّت «القناص» كتطبيق</p>
+            <p class="pwa-sub" id="pwaBannerText">يظهر مثل التطبيقات على الشاشة الرئيسية — أسرع، وبدون شريط المتصفح، ومطلوب للإشعارات على الآيفون.</p>
+          </div>
           <button class="btn ghost" type="button" id="btnPwaDismiss" aria-label="إخفاء" style="min-height:36px;padding:6px 10px;margin:0">✕</button>
         </div>
+        <div class="pwa-steps" id="pwaBannerSteps" hidden>
+          <div class="pwa-step"><span class="num">1</span><div class="txt">افتح الرابط في <b>Safari</b> فقط</div></div>
+          <div class="pwa-step"><span class="num">2</span><div class="txt">اضغط زر <b>مشاركة</b> ⎙ في الأسفل</div></div>
+          <div class="pwa-step"><span class="num">3</span><div class="txt">اختر <b>إضافة إلى الشاشة الرئيسية</b> ثم إضافة</div></div>
+        </div>
         <div class="actions">
-          <button class="btn" type="button" id="btnPwaInstall">تثبيت التطبيق</button>
-          <button class="btn secondary" type="button" id="btnPwaHow">كيف أثبّت على الآيفون؟</button>
+          <button class="btn" type="button" id="btnPwaInstall">وضّح خطوات الآيفون</button>
+          <button class="btn secondary" type="button" id="btnPwaHow">شرح كامل</button>
         </div>
       </div>
       <!-- احتفاظ بمعرّف التنقل للتوافق مع السكربت -->
@@ -487,21 +513,24 @@
 
     <div class="card panel" id="panel-more" data-section-panel="more">
       <h2>المزيد</h2>
-      <div class="card pwa-install-card" id="pwaInstallHelp" style="margin:10px 0 14px;padding:12px">
-        <h2 style="margin:0;font-size:1rem">تثبيت كتطبيق على الآيفون</h2>
-        <p class="muted" style="margin:6px 0 0;font-size:.9rem">يعمل كتطبيق من الشاشة الرئيسية (PWA) بدون App Store.</p>
-        <ol class="muted" style="font-size:.9rem">
-          <li>افتح الصفحة في <b>Safari</b> (مهم على الآيفون).</li>
-          <li>اضغط زر <b>مشاركة</b> ⎙ في الأسفل.</li>
-          <li>اختر <b>إضافة إلى الشاشة الرئيسية</b>.</li>
-          <li>أكد الاسم ثم <b>إضافة</b> — يظهر أيقونة مثل التطبيقات.</li>
-        </ol>
-        <p class="muted" style="margin:10px 0 0;font-size:.88rem;line-height:1.45">
-          البيانات تتحدث تلقائياً من السيرفر — بدون تحديث يدوي.
+      <div class="card pwa-install-card" id="pwaInstallHelp" style="margin:10px 0 14px;padding:14px">
+        <h2 style="margin:0;font-size:1.05rem">تثبيت التطبيق على الآيفون</h2>
+        <p class="muted" style="margin:6px 0 0;font-size:.9rem;line-height:1.45">
+          بدون App Store. بعد التثبيت تفتحه من الأيقونة مثل أي تطبيق، وتقدر تفعّل الإشعارات.
+        </p>
+        <div class="pwa-steps" id="pwaHelpSteps">
+          <div class="pwa-step"><span class="num">1</span><div class="txt">افتح: <b>https://daytrade.2.28.129.241.sslip.io/</b> في <b>Safari</b></div></div>
+          <div class="pwa-step"><span class="num">2</span><div class="txt">اضغط <b>مشاركة</b> ⎙ أسفل الشاشة</div></div>
+          <div class="pwa-step"><span class="num">3</span><div class="txt">اسحب واختر <b>إضافة إلى الشاشة الرئيسية</b></div></div>
+          <div class="pwa-step"><span class="num">4</span><div class="txt">اضغط <b>إضافة</b> — تظهر أيقونة «القناص»</div></div>
+          <div class="pwa-step"><span class="num">5</span><div class="txt">افتح من الأيقونة، ثم ⋯ → <b>إشعار</b> للسماح بالتنبيهات</div></div>
+        </div>
+        <p class="muted" style="margin:12px 0 0;font-size:.85rem;line-height:1.45">
+          مهم: التثبيت من Chrome على الآيفون غالباً ما يشتغل كالتطبيق الكامل. استخدم Safari.
         </p>
         <p class="pwa-status muted" id="pwaStatus">حالة التطبيق: جاري التحقق...</p>
-        <div class="toolbar" style="margin-top:8px">
-          <button class="btn" type="button" id="btnPwaInstallMore">تثبيت (أندرويد / كروم)</button>
+        <div class="toolbar" style="margin-top:10px">
+          <button class="btn" type="button" id="btnPwaInstallMore">تثبيت أندرويد / كروم</button>
         </div>
       </div>
       <h2 style="margin-top:14px;font-size:1rem">المخاطرة</h2>
@@ -525,7 +554,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V = 32;
+    window.__STATUS_V = 33;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -2611,12 +2640,14 @@
     function initPwaInstall(){
       const LS_DISMISS='dash_pwa_dismiss';
       const banner=document.getElementById('pwaBanner');
+      const bannerSteps=document.getElementById('pwaBannerSteps');
       const statusEl=document.getElementById('pwaStatus');
       const btnInstall=document.getElementById('btnPwaInstall');
       const btnInstallMore=document.getElementById('btnPwaInstallMore');
       const btnHow=document.getElementById('btnPwaHow');
       const btnDismiss=document.getElementById('btnPwaDismiss');
       const bannerText=document.getElementById('pwaBannerText');
+      const bannerTitle=document.getElementById('pwaBannerTitle');
       let deferredPrompt=null;
       const isStandalone=window.matchMedia('(display-mode: standalone)').matches
         || window.navigator.standalone===true;
@@ -2624,7 +2655,12 @@
       const isIOS=/iPad|iPhone|iPod/.test(ua) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
       const isSafari=/Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS|Chrome|Android/.test(ua);
 
-      function setStatus(msg){ if(statusEl) statusEl.textContent=msg; }
+      function setStatus(msg, kind){
+        if(!statusEl) return;
+        statusEl.textContent=msg;
+        statusEl.classList.remove('ok','warn');
+        if(kind) statusEl.classList.add(kind);
+      }
 
       function showBanner(force){
         if(!banner) return;
@@ -2638,30 +2674,41 @@
         if(persist) localStorage.setItem(LS_DISMISS,'1');
       }
 
+      function revealIosSteps(){
+        if(bannerSteps) bannerSteps.hidden=false;
+        showBanner(true);
+        if(bannerTitle) bannerTitle.textContent='ثلاث خطوات فقط على الآيفون';
+        if(bannerText) bannerText.textContent=isSafari
+          ? 'اتبع الأرقام بالترتيب — بعدها تفتحه من الشاشة الرئيسية مثل أي تطبيق.'
+          : 'أنت لست على Safari الآن. انسخ الرابط وافتحه في Safari ثم نفّذ الخطوات.';
+        toast(isSafari ? 'الخطوات ظاهرة فوق — ابدأ من مشاركة ⎙' : 'افتح Safari أولاً ثم أعد المحاولة');
+      }
+
       async function triggerInstall(){
         if(deferredPrompt){
           deferredPrompt.prompt();
           try{
             const choice=await deferredPrompt.userChoice;
             setStatus(choice && choice.outcome==='accepted'
-              ? 'حالة التطبيق: تم التثبيت'
-              : 'حالة التطبيق: أُلغي التثبيت');
+              ? 'حالة التطبيق: تم التثبيت ✓'
+              : 'حالة التطبيق: أُلغي التثبيت', choice && choice.outcome==='accepted' ? 'ok' : 'warn');
           }catch(_){}
           deferredPrompt=null;
           hideBanner(true);
           return;
         }
         if(isIOS){
-          setStatus('حالة التطبيق: على الآيفون استخدم Safari ← مشاركة ← إضافة إلى الشاشة الرئيسية');
-          goToInstallHelp();
+          revealIosSteps();
+          setStatus(isSafari
+            ? 'حالة التطبيق: غير مثبت — نفّذ: مشاركة ← إضافة إلى الشاشة الرئيسية'
+            : 'حالة التطبيق: افتح الرابط في Safari ثم: مشاركة ← إضافة إلى الشاشة الرئيسية', 'warn');
           return;
         }
-        setStatus('حالة التطبيق: المتصفح لا يعرض زر تثبيت الآن — افتح من كروم أو استخدم «المزيد» للتعليمات');
+        setStatus('حالة التطبيق: المتصفح لا يعرض زر تثبيت الآن — افتح من كروم أو راجع الشرح الكامل', 'warn');
         goToInstallHelp();
       }
 
       function goToInstallHelp(){
-        // أخفِ البانر مؤقتاً حتى لا يغطي بطاقة التعليمات تحت الشريط اللاصق
         if(banner) banner.classList.remove('on');
         showSection('more', {smooth:true, scrollTop:false});
         const help=document.getElementById('pwaInstallHelp');
@@ -2672,21 +2719,30 @@
             const y=help.getBoundingClientRect().top + window.scrollY - topPad - 8;
             window.scrollTo({top:Math.max(0,y), behavior:'smooth'});
             help.style.outline='2px solid var(--accent)';
-            setTimeout(()=>{ help.style.outline=''; }, 2200);
+            setTimeout(()=>{ help.style.outline=''; }, 2600);
           });
         }
       }
 
       if(isStandalone){
-        setStatus('حالة التطبيق: يعمل كتطبيق مثبت ✓');
+        setStatus('حالة التطبيق: يعمل كتطبيق مثبت ✓ — البيانات تتحدث تلقائياً', 'ok');
+        if(btnInstall) btnInstall.textContent='مثبت ✓';
       }else if(isIOS){
+        if(bannerSteps) bannerSteps.hidden=false;
+        if(bannerTitle) bannerTitle.textContent='ثبّت «القناص» على الشاشة الرئيسية';
+        if(bannerText) bannerText.textContent=isSafari
+          ? 'ثلاث خطوات في Safari — بعدها يصير مثل التطبيقات.'
+          : 'مهم: افتح نفس الرابط في Safari (مو Chrome) ثم ثبّته.';
+        if(btnInstall) btnInstall.textContent='أظهر الخطوات';
         setStatus(isSafari
-          ? 'حالة التطبيق: غير مثبت — من Safari: مشاركة ← إضافة إلى الشاشة الرئيسية'
-          : 'حالة التطبيق: افتح الرابط في Safari ثم: مشاركة ← إضافة إلى الشاشة الرئيسية');
-        if(bannerText) bannerText.textContent='على الآيفون: Safari → مشاركة → إضافة إلى الشاشة الرئيسية.';
+          ? 'حالة التطبيق: غير مثبت — Safari → مشاركة → إضافة إلى الشاشة الرئيسية'
+          : 'حالة التطبيق: افتح Safari أولاً ثم ثبّت التطبيق', 'warn');
+        // على الآيفون أظهر البانر دائماً حتى التثبيت (إلا إذا أخفاه المستخدم)
         showBanner(false);
       }else{
-        setStatus('حالة التطبيق: غير مثبت — يمكن التثبيت من كروم/إيدج عند ظهور الزر');
+        if(bannerSteps) bannerSteps.hidden=true;
+        if(btnInstall) btnInstall.textContent='تثبيت التطبيق';
+        setStatus('حالة التطبيق: غير مثبت — يمكن التثبيت من كروم/إيدج عند ظهور الزر', 'warn');
         showBanner(false);
       }
 
@@ -2694,14 +2750,17 @@
         e.preventDefault();
         deferredPrompt=e;
         localStorage.removeItem(LS_DISMISS);
-        if(bannerText) bannerText.textContent='ثبّت اللوحة كتطبيق للوصول السريع بدون شريط المتصفح.';
+        if(bannerSteps) bannerSteps.hidden=true;
+        if(bannerTitle) bannerTitle.textContent='ثبّت «القناص» كتطبيق';
+        if(bannerText) bannerText.textContent='اضغط التثبيت مرة واحدة — يفتح بدون شريط المتصفح.';
+        if(btnInstall) btnInstall.textContent='تثبيت الآن';
         showBanner(true);
-        setStatus('حالة التطبيق: جاهز للتثبيت — اضغط «تثبيت التطبيق»');
+        setStatus('حالة التطبيق: جاهز للتثبيت — اضغط «تثبيت الآن»', 'ok');
       });
       window.addEventListener('appinstalled', ()=>{
         deferredPrompt=null;
         hideBanner(true);
-        setStatus('حالة التطبيق: تم التثبيت ✓');
+        setStatus('حالة التطبيق: تم التثبيت ✓', 'ok');
       });
 
       if(btnInstall) btnInstall.addEventListener('click', triggerInstall);
@@ -2709,7 +2768,6 @@
       if(btnHow) btnHow.addEventListener('click', goToInstallHelp);
       if(btnDismiss) btnDismiss.addEventListener('click', ()=>hideBanner(true));
 
-      // عند الرجوع للتطبيق من الخلفية: حدّث البيانات فوراً
       document.addEventListener('visibilitychange', ()=>{
         if(document.visibilityState==='visible'){
           fetchData(true).catch(()=>{});
@@ -2724,7 +2782,6 @@
         navigator.serviceWorker.addEventListener('controllerchange', ()=>{
           if(refreshing) return;
           refreshing=true;
-          // نسخة جديدة من التطبيق وصلت — أعد التحميل مرة واحدة
           const u=new URL(window.location.href);
           u.searchParams.set('_sw', String(Date.now()));
           window.location.replace(u.toString());
@@ -2732,8 +2789,7 @@
         const swUrl=new URL('sw.js', window.location.href).pathname;
         navigator.serviceWorker.register(swUrl, {scope: new URL('./', window.location.href).pathname})
           .then((reg)=>{
-            if(isStandalone) setStatus('حالة التطبيق: يعمل كتطبيق مثبت ✓ — البيانات تتحدث تلقائياً');
-            else if(!isStandalone) setStatus((statusEl && statusEl.textContent) || 'حالة التطبيق: جاهز');
+            if(isStandalone) setStatus('حالة التطبيق: يعمل كتطبيق مثبت ✓ — البيانات تتحدث تلقائياً', 'ok');
             if(reg){
               try{ reg.update(); }catch(_){}
               reg.addEventListener('updatefound', ()=>{
@@ -2748,7 +2804,7 @@
             }
           })
           .catch(()=>{
-            if(!isStandalone) setStatus('حالة التطبيق: تعذّر تسجيل التخزين المؤقت (التثبيت اليدوي ما زال يعمل)');
+            if(!isStandalone) setStatus('حالة التطبيق: تعذّر تسجيل التخزين المؤقت (التثبيت اليدوي ما زال يعمل)', 'warn');
           });
       }
     }
