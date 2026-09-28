@@ -500,6 +500,19 @@
         <div class="m"><div class="muted">مفتوحة الآن</div><div id="trackOpen">—</div></div>
         <div class="m"><div class="muted">مغلقة / رابحة / خاسرة</div><div id="trackClosed">—</div></div>
       </div>
+      <h2 style="margin-top:16px;font-size:1rem">سجل اليوم (ظهور → فتح → إغلاق)</h2>
+      <p class="muted" id="dayPerfNote" style="font-size:.85rem;margin:4px 0 8px">يُحدَّث مع كل فحص — حمّل JSON أو CSV للتحليل</p>
+      <div class="toolbar" style="margin-bottom:8px;gap:8px;flex-wrap:wrap">
+        <a class="btn secondary" id="dayPerfJsonLink" href="/day-performance.json" target="_blank" rel="noopener">تحميل JSON</a>
+        <a class="btn secondary" id="dayPerfCsvLink" href="/day-performance.csv" target="_blank" rel="noopener">تحميل CSV</a>
+      </div>
+      <div class="grid" id="dayPerfKpis" style="margin-bottom:10px">
+        <div class="m"><div class="muted">ظهرت اليوم</div><div id="dayPerfAppeared">—</div></div>
+        <div class="m"><div class="muted">فُتحت</div><div id="dayPerfOpened">—</div></div>
+        <div class="m"><div class="muted">أُغلقت</div><div id="dayPerfClosed">—</div></div>
+        <div class="m"><div class="muted">نجاح اليوم</div><div id="dayPerfWinRate">—</div></div>
+      </div>
+      <div id="dayPerfList"><div class="empty">لا سجل بعد لهذا اليوم</div></div>
       <h2 style="margin-top:16px;font-size:1rem">حسب المصدر</h2>
       <div id="trackBySource"><div class="empty">لا بيانات بعد — تظهر بعد أول إشارات</div></div>
       <h2 style="margin-top:16px;font-size:1rem">أقوى الاستراتيجيات</h2>
@@ -1683,6 +1696,63 @@
           </div>`;
         }).join('') : '<div class="empty">لا نتائج مغلقة بعد — تُحسب عند لمس الهدف أو الوقف</div>';
       }
+      renderDayPerformance(tr.day_performance||(DATA&&DATA.day_performance)||{});
+    }
+
+    function renderDayPerformance(dp){
+      dp=dp||{};
+      const sum=dp.summary||{};
+      const note=document.getElementById('dayPerfNote');
+      if(note) note.textContent=dp.note_ar||('سجل يوم '+(dp.day||'')+' — ظهور → فتح → إغلاق');
+      const setTxt=(id,v)=>{const el=document.getElementById(id); if(el) el.textContent=v;};
+      setTxt('dayPerfAppeared', String(sum.appeared!=null?sum.appeared:'—'));
+      setTxt('dayPerfOpened', String(sum.opened!=null?sum.opened:'—'));
+      setTxt('dayPerfClosed', `${sum.closed||0} · ✓${sum.wins||0} / ✗${sum.losses||0}`);
+      const wr=document.getElementById('dayPerfWinRate');
+      if(wr){
+        wr.textContent = sum.win_rate==null ? '—' : (sum.win_rate+'%');
+        wr.className = sum.win_rate==null?'':(sum.win_rate>=55?'ok':(sum.win_rate>=45?'warn':'bad'));
+      }
+      const urls=dp.urls||{};
+      const jl=document.getElementById('dayPerfJsonLink');
+      const cl=document.getElementById('dayPerfCsvLink');
+      if(jl && urls.json) jl.href=urls.json;
+      if(cl && urls.csv) cl.href=urls.csv;
+      const box=document.getElementById('dayPerfList');
+      if(!box) return;
+      // Prefer full day list from status if present
+      const full=(DATA&&DATA.day_performance&&DATA.day_performance.trades)||dp.trades||[];
+      const only=(DATA&&DATA.day_performance&&DATA.day_performance.appeared_only)||dp.appeared_only||[];
+      const rows=[...full, ...only];
+      if(!rows.length){
+        box.innerHTML='<div class="empty">لا سجل بعد لهذا اليوم — يظهر مع أول سهم في القناص</div>';
+        return;
+      }
+      box.innerHTML=rows.map(r=>{
+        const pnl=r.pnl_pct==null?null:Number(r.pnl_pct);
+        const status=r.status||'';
+        const pill=status==='open'?'مفتوح':(r.result_ar||status);
+        const pnlHtml=pnl==null?'—':(`${pnl>=0?'+':''}${pnl.toFixed(2)}%`);
+        const tto=r.time_to_open_sec!=null?` · ظهور→دخول ${Math.round(r.time_to_open_sec/60)}د`:'';
+        const hold=r.hold_sec!=null?` · مدة ${Math.round(r.hold_sec/60)}د`:'';
+        return `<div class="scan-item">
+          <div class="row"><span class="sym">${esc(r.symbol)}</span><span class="pill">${esc(pill)}</span></div>
+          <div class="muted" style="margin-top:4px;font-size:.82rem">
+            ظهر ${esc(r.appeared_local||'—')}
+            ${r.appear_price!=null?` @ $${esc(r.appear_price)}`:''}
+            ${r.appear_change_pct!=null?` · ${Number(r.appear_change_pct)>0?'+':''}${esc(r.appear_change_pct)}%`:''}
+            ${r.appear_rvol!=null?` · RVOL ${esc(r.appear_rvol)}`:''}
+            ${r.appear_has_news?' · خبر':''}
+          </div>
+          <div class="muted" style="font-size:.82rem">
+            فتح ${esc(r.opened_local||'—')} · دخول ${esc(r.entry||'—')} · وقف ${esc(r.stop||'—')} · هدف ${esc(r.tp1||'—')}/${esc(r.tp2||'—')}
+          </div>
+          <div class="row" style="margin-top:4px">
+            <span class="muted" style="font-size:.82rem">${esc(r.exit_local?('إغلاق '+r.exit_local):'لم يُغلق')}${tto}${hold}</span>
+            <b class="${pnl==null?'':(pnl>=0?'ok':'bad')}">${pnlHtml}</b>
+          </div>
+        </div>`;
+      }).join('');
     }
 
     function renderMomentum(rows){

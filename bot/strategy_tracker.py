@@ -23,6 +23,63 @@ OPEN_MAX_SEC = 6 * 3600  # day-trade horizon
 MIN_HOLD_SEC = 90        # don't close instantly on same-tick noise
 
 
+def _attach_appearance(trade: dict[str, Any], row: dict[str, Any], source: str) -> None:
+    """Stamp appear→open analysis fields onto a new paper trade."""
+    try:
+        from bot.day_performance import append_lifecycle_event, snapshot_from_row
+    except Exception:
+        snapshot_from_row = None  # type: ignore
+        append_lifecycle_event = None  # type: ignore
+
+    if snapshot_from_row is not None:
+        snap = snapshot_from_row(row, source=source)
+        for k, v in snap.items():
+            if k == "source":
+                continue
+            if v is not None and v != "" and v != []:
+                trade[k] = v
+        if snap.get("appear_name"):
+            trade["name"] = snap["appear_name"]
+    # Fallbacks if board had no first_ts
+    if not trade.get("appeared_ts"):
+        trade["appeared_ts"] = int(trade.get("opened_ts") or time.time())
+        trade["appeared_local"] = trade.get("opened_local") or ""
+    if trade.get("appear_price") is None:
+        trade["appear_price"] = trade.get("entry")
+    opened = int(trade.get("opened_ts") or 0)
+    appeared = int(trade.get("appeared_ts") or opened)
+    trade["time_to_open_sec"] = max(0, opened - appeared) if opened and appeared else 0
+    trade["price_trail"] = [
+        {
+            "ts": opened,
+            "local": trade.get("opened_local") or "",
+            "px": trade.get("entry"),
+            "pnl_pct": 0.0,
+            "event": "open",
+        }
+    ]
+    if append_lifecycle_event is not None:
+        try:
+            append_lifecycle_event(
+                "open",
+                {
+                    "trade_id": trade.get("id"),
+                    "symbol": trade.get("symbol"),
+                    "source": source,
+                    "entry": trade.get("entry"),
+                    "stop": trade.get("stop"),
+                    "tp1": trade.get("tp1"),
+                    "tp2": trade.get("tp2"),
+                    "appeared_ts": trade.get("appeared_ts"),
+                    "appear_change_pct": trade.get("appear_change_pct"),
+                    "appear_rvol": trade.get("appear_rvol"),
+                    "appear_has_news": trade.get("appear_has_news"),
+                },
+            )
+        except Exception:
+            pass
+
+
 def _now() -> float:
     return time.time()
 
@@ -180,6 +237,7 @@ def ingest_candidates(
             trade = {
                 "id": tid,
                 "symbol": sym,
+                "name": str(row.get("name") or ""),
                 "source": source,
                 "source_ar": {
                     "opps": "خطط الدخول",
@@ -206,6 +264,7 @@ def ingest_candidates(
                 "mae_pct": 0.0,
                 "result_ar": "مفتوح",
             }
+            _attach_appearance(trade, row, source)
             trades.append(trade)
             by_id[tid] = trade
             opened += 1
@@ -249,6 +308,12 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
         pnl = _pct(entry, last)
         t["mfe_pct"] = max(float(t.get("mfe_pct") or 0), pnl)
         t["mae_pct"] = min(float(t.get("mae_pct") or 0), pnl)
+        try:
+            from bot.day_performance import append_price_trail
+
+            append_price_trail(t, last)
+        except Exception:
+            pass
         age = now - float(t.get("opened_ts") or now)
         if age < MIN_HOLD_SEC:
             continue
@@ -261,6 +326,42 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
             t["pnl_pct"] = _pct(entry, exit_px)
             t["r_multiple"] = _r_multiple(entry, stop, exit_px)
             t["result_ar"] = label
+            t["hold_sec"] = max(0, int(now) - int(t.get("opened_ts") or now))
+            trail = t.get("price_trail")
+            if not isinstance(trail, list):
+                trail = []
+                t["price_trail"] = trail
+            trail.append(
+                {
+                    "ts": int(now),
+                    "local": t["exit_local"],
+                    "px": _px(exit_px),
+                    "pnl_pct": t["pnl_pct"],
+                    "event": status,
+                }
+            )
+            try:
+                from bot.day_performance import append_lifecycle_event
+
+                append_lifecycle_event(
+                    "close",
+                    {
+                        "trade_id": t.get("id"),
+                        "symbol": t.get("symbol"),
+                        "status": status,
+                        "entry": entry,
+                        "exit": t["exit"],
+                        "pnl_pct": t["pnl_pct"],
+                        "r_multiple": t["r_multiple"],
+                        "mfe_pct": t.get("mfe_pct"),
+                        "mae_pct": t.get("mae_pct"),
+                        "hold_sec": t.get("hold_sec"),
+                        "appeared_ts": t.get("appeared_ts"),
+                        "time_to_open_sec": t.get("time_to_open_sec"),
+                    },
+                )
+            except Exception:
+                pass
 
         # Long exits — worst first so gap-through SL wins
         if stop > 0 and last <= stop:
@@ -420,6 +521,23 @@ def sync_from_boards(
     mark_to_market(prices)
     data = _load()
     summary = data.get("summary") or summarize(data.get("trades") or [])
+
+    day_perf: dict[str, Any] = {}
+    try:
+        from bot.day_performance import write_day_report
+
+        day_perf = write_day_report()
+        summary["day_performance"] = {
+            "day": day_perf.get("day"),
+            "summary": day_perf.get("summary"),
+            "urls": day_perf.get("urls"),
+            "trades_n": len(day_perf.get("trades") or []),
+            "appeared_only_n": len(day_perf.get("appeared_only") or []),
+            "note_ar": day_perf.get("note_ar"),
+        }
+    except Exception as e:
+        summary["day_performance"] = {"error": str(e)}
+
     return {
         "updated_ts": data.get("updated_ts"),
         "updated_local": data.get("updated_local"),

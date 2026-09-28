@@ -576,12 +576,33 @@ def _sticky_merge(fresh: list[dict[str, Any]]) -> list[dict[str, Any]]:
         sym = str(row.get("symbol") or "").upper()
         if not sym:
             continue
+        is_new = sym not in seen and sym not in by_old
         first = float(seen.get(sym) or by_old.get(sym, {}).get("first_ts") or now)
         seen[sym] = first
         row = dict(row)
         row["first_ts"] = int(first)
         out.append(row)
         have.add(sym)
+        if is_new:
+            try:
+                from bot.day_performance import append_lifecycle_event, snapshot_from_row
+
+                snap = snapshot_from_row(row, source="qannas")
+                append_lifecycle_event(
+                    "appear",
+                    {
+                        "symbol": sym,
+                        "source": "qannas",
+                        "appear_price": snap.get("appear_price"),
+                        "appear_change_pct": snap.get("appear_change_pct"),
+                        "appear_rvol": snap.get("appear_rvol"),
+                        "appear_has_news": snap.get("appear_has_news"),
+                        "appear_score": snap.get("appear_score"),
+                        "appear_session_ar": snap.get("appear_session_ar"),
+                    },
+                )
+            except Exception:
+                pass
 
     # sticky keep
     for sym, old in by_old.items():

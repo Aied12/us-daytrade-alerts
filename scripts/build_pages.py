@@ -467,6 +467,7 @@ def main() -> None:
         )
         strategy_track["note_ar"] = (
             "متابعة ورقية لماسح القناص — نجاح/فشل حسب الهدف أو الوقف بعد الإشارة"
+            " · سجل يومي كامل: ظهور → فتح → إغلاق"
         )
     except Exception as e:
         strategy_track = {
@@ -480,6 +481,24 @@ def main() -> None:
             "recent_closed": [],
             "recent_open": [],
             "note_ar": f"تعذّر تحديث المتابعة: {e}",
+        }
+
+    # Full day lifecycle export (appear → open → close) for analysis
+    day_performance: dict = {}
+    try:
+        from bot.day_performance import write_day_report
+
+        day_performance = write_day_report(out_dirs=out_dirs)
+    except Exception as e:
+        day_performance = {"error": str(e), "note_ar": "تعذّر بناء سجل اليوم"}
+    if strategy_track.get("day_performance") is None and day_performance:
+        strategy_track["day_performance"] = {
+            "day": day_performance.get("day"),
+            "summary": day_performance.get("summary"),
+            "urls": day_performance.get("urls"),
+            "trades_n": len(day_performance.get("trades") or []),
+            "appeared_only_n": len(day_performance.get("appeared_only") or []),
+            "note_ar": day_performance.get("note_ar"),
         }
 
     from bot.gainers import session_label_ar
@@ -561,6 +580,7 @@ def main() -> None:
         "opps_rejected_slow": rejected_slow[:20],
         "strategy_track": strategy_track,
         "strategy_track_note_ar": strategy_track.get("note_ar") or "متابعة ورقية لنجاح الاستراتيجيات على الأسهم التي مسحها المشروع",
+        "day_performance": day_performance,
         "gainers": gainers,
         "gainers_min_price": min_px,
         "gainers_session_ar": gainers_session,
