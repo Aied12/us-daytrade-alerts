@@ -80,13 +80,13 @@ def main() -> int:
     if rc != 0:
         return 0
 
-    # Rebase onto latest main then push (avoid rejected non-FF vs Actions)
+    # Merge onto latest main then push (rebase fights auto-generated JSON)
     run(["git", "fetch", "origin", "main"])
-    run(["git", "pull", "--rebase", "--autostash", "origin", "main"])
+    run(["git", "pull", "--no-rebase", "--autostash", "origin", "main"])
     rc = run(["git", "push", "origin", "HEAD:main"])
     if rc != 0:
         time.sleep(4)
-        run(["git", "pull", "--rebase", "--autostash", "origin", "main"])
+        run(["git", "pull", "--no-rebase", "--autostash", "origin", "main"])
         rc = run(["git", "push", "origin", "HEAD:main"])
     print("[publish] done" if rc == 0 else "[publish] push failed")
     return 0
