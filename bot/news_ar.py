@@ -433,10 +433,30 @@ def fetch_stock_news_ar(
             seen_titles.add(key)
             collected.append(row)
 
-    collected.sort(
-        key=lambda x: (1 if x.get("sentiment") == "pos" else 0, x.get("published_ts") or 0),
-        reverse=True,
-    )
+    # Stock Titan live feed + underlying wires (GlobeNewswire / PR Newswire / SEC)
+    try:
+        from bot.stocktitan_news import fetch_stocktitan_style_news
+
+        for row in fetch_stocktitan_style_news(limit=max(40, limit)):
+            title = (row.get("title") or "").strip()
+            if not title:
+                continue
+            key = re.sub(r"\s+", " ", title.lower())
+            if key in seen_titles:
+                continue
+            if (row.get("sentiment") or "neu") not in ("pos", "neu"):
+                continue
+            seen_titles.add(key)
+            collected.append(row)
+    except Exception:
+        pass
+
+    def _rank_key(x: dict[str, Any]) -> tuple:
+        src = str(x.get("source") or "")
+        official = bool(x.get("officialish") or src.startswith(("stocktitan", "wire:")))
+        return (1 if official else 0, 1 if x.get("sentiment") == "pos" else 0, x.get("published_ts") or 0)
+
+    collected.sort(key=_rank_key, reverse=True)
     collected = dedupe_near_news(collected)
     collected = collected[:limit]
 
@@ -463,6 +483,7 @@ def fetch_stock_news_ar(
             "sentiment_ar": _sentiment_ar(tag),
             "id": news_fingerprint(row["title"], row.get("symbol") or ""),
             "source": row.get("source") or "",
+            "officialish": bool(row.get("officialish")),
         }
         news.append(enrich_news_item(item))
         time.sleep(0.05)

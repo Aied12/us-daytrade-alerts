@@ -50,7 +50,7 @@ def _write_news_live(items: list[dict], *, fresh_n: int) -> None:
         "generated_ts": int(time.time()),
         "fresh_this_minute": fresh_n,
         "count": len(items),
-        "note_ar": "بث محفزات StockTitan-style — تأثير 1–5 · محايد/إيجابي · كل دقيقة",
+        "note_ar": "بث محفزات — Stock Titan + أسلاك رسمية (GlobeNewswire / PR Newswire / SEC) · تأثير 1–5",
         "news": items,
     }
     raw = json.dumps(payload, ensure_ascii=False)
@@ -64,7 +64,7 @@ def main() -> int:
     syms = _symbols(settings)
     pack = fetch_stock_news_ar(
         syms,
-        limit=40,
+        limit=70,
         per_symbol=4,
         drop_negative_symbols=False,  # feed volume: drop only neg headlines
         translate_summary=False,
@@ -74,7 +74,7 @@ def main() -> int:
     try:
         from bot.catalyst_scan import enrich_news_item, rank_catalyst_news
 
-        news = rank_catalyst_news([enrich_news_item(n) for n in news], limit=40)
+        news = rank_catalyst_news([enrich_news_item(n) for n in news], limit=70)
     except Exception:
         pass
 
@@ -110,7 +110,7 @@ def main() -> int:
         seen_ids.add(i)
         n["id"] = i
         merged.append(n)
-        if len(merged) >= 40:
+        if len(merged) >= 70:
             break
     _write_news_live(merged, fresh_n=len(burst))
     save_seen_news(seen)
