@@ -18,6 +18,12 @@ tar -czf "$DEST/data.tgz" \
   --exclude='data/publish_pages.lock' \
   data 2>/dev/null || true
 
+# Day performance exports (appear → open → close analysis)
+tar -czf "$DEST/day-performance.tgz" \
+  data/day_performance data/lifecycle \
+  docs/day-performance.json docs/day-performance.csv \
+  2>/dev/null || true
+
 tar -czf "$DEST/docs-json.tgz" \
   docs/status.json docs/prices-live.json docs/live.json docs/news-live.json \
   docs/index.html docs/sw.js docs/manifest.webmanifest \
