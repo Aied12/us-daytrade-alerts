@@ -94,8 +94,7 @@ def main() -> int:
     # Site-only: do not push news to Telegram
     print(f"[news] site-only fresh={len(fresh)} shown_new={len(burst)}")
 
-    # Rolling board: newest first, keep 40
-    # Prefer previously published live file + new items
+    # Rolling board: newest → oldest
     prev: list[dict] = []
     try:
         prev = list(json.loads((ROOT / "docs" / "news-live.json").read_text(encoding="utf-8")).get("news") or [])
@@ -110,8 +109,8 @@ def main() -> int:
         seen_ids.add(i)
         n["id"] = i
         merged.append(n)
-        if len(merged) >= 70:
-            break
+    merged.sort(key=lambda n: int(n.get("published_ts") or 0), reverse=True)
+    merged = merged[:70]
     _write_news_live(merged, fresh_n=len(burst))
     save_seen_news(seen)
     print(f"[news] wrote news-live.json n={len(merged)} fresh={len(fresh)} (push deferred to publish_pages)")

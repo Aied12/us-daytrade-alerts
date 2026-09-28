@@ -529,7 +529,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V = 29;
+    window.__STATUS_V = 30;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -1895,6 +1895,8 @@
       const cat=CAT_FILTER||'all';
       if(cat==='hi') list=list.filter(n=>Number(n.impact||0)>=4);
       else if(cat!=='all') list=list.filter(n=>(n.catalyst_keys||[]).includes(cat) || (n.catalysts||[]).some(c=>c.key===cat));
+      // الأجدد → الأقدم
+      list.sort((a,b)=>(Number(b.published_ts||0)-Number(a.published_ts||0)));
       return list;
     }
 

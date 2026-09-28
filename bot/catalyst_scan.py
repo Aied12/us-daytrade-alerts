@@ -261,14 +261,14 @@ def build_momentum_scanner(
 
 
 def rank_catalyst_news(news: list[dict[str, Any]], *, limit: int = 30) -> list[dict[str, Any]]:
-    """Sort feed like StockTitan: impact first, then freshness, prefer official."""
+    """Sort feed newest → oldest; impact/official as tie-breakers only."""
     enriched = [enrich_news_item(n) if n.get("impact") is None else n for n in (news or [])]
     enriched.sort(
         key=lambda n: (
+            int(n.get("published_ts") or 0),
             int(n.get("impact") or 0),
             1 if n.get("officialish") else 0,
             1 if n.get("sentiment") == "pos" else 0,
-            n.get("published_ts") or 0,
         ),
         reverse=True,
     )

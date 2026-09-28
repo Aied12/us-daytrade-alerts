@@ -1895,6 +1895,8 @@
       const cat=CAT_FILTER||'all';
       if(cat==='hi') list=list.filter(n=>Number(n.impact||0)>=4);
       else if(cat!=='all') list=list.filter(n=>(n.catalyst_keys||[]).includes(cat) || (n.catalysts||[]).some(c=>c.key===cat));
+      // الأجدد → الأقدم
+      list.sort((a,b)=>(Number(b.published_ts||0)-Number(a.published_ts||0)));
       return list;
     }
 
