@@ -97,7 +97,7 @@
       "stop": 3.42,
       "tp1": 7.46,
       "tp2": 8.03,
-      "last": 5.39,
+      "last": 5.26,
       "status": "open",
       "exit": null,
       "exit_ts": null,
@@ -105,7 +105,7 @@
       "pnl_pct": null,
       "r_multiple": null,
       "mfe_pct": 0.284,
-      "mae_pct": -23.438,
+      "mae_pct": -25.284,
       "result_ar": "مفتوح"
     },
     {
@@ -215,12 +215,39 @@
       "mfe_pct": 6.263,
       "mae_pct": 0.0,
       "result_ar": "هدف 1 ✓"
+    },
+    {
+      "id": "qannas:VWAV:2026-09-28",
+      "symbol": "VWAV",
+      "source": "qannas",
+      "source_ar": "القناص",
+      "strategies": [
+        "القناص",
+        "محفز + زخم"
+      ],
+      "side": "long",
+      "opened_ts": 1790593972,
+      "opened_local": "2026-09-28 14:12",
+      "entry": 6.37,
+      "stop": 4.81,
+      "tp1": 6.75,
+      "tp2": 7.26,
+      "last": 6.37,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": 0.0,
+      "result_ar": "مفتوح"
     }
   ],
-  "updated_ts": 1790593846,
-  "updated_local": "2026-09-28 14:10 +03",
+  "updated_ts": 1790593972,
+  "updated_local": "2026-09-28 14:12 +03",
   "summary": {
-    "open": 3,
+    "open": 4,
     "closed": 5,
     "wins": 5,
     "losses": 0,
@@ -231,8 +258,8 @@
     "by_source": [
       {
         "name": "القناص",
-        "n": 8,
-        "open": 3,
+        "n": 9,
+        "open": 4,
         "closed": 5,
         "wins": 5,
         "losses": 0,
@@ -243,8 +270,8 @@
     "by_strategy": [
       {
         "name": "القناص",
-        "n": 8,
-        "open": 3,
+        "n": 9,
+        "open": 4,
         "closed": 5,
         "wins": 5,
         "losses": 0,
@@ -253,8 +280,8 @@
       },
       {
         "name": "محفز + زخم",
-        "n": 8,
-        "open": 3,
+        "n": 9,
+        "open": 4,
         "closed": 5,
         "wins": 5,
         "losses": 0,
@@ -365,12 +392,12 @@
           "محفز + زخم"
         ],
         "entry": 7.04,
-        "last": 5.39,
+        "last": 5.26,
         "stop": 3.42,
         "tp1": 7.46,
-        "pnl_pct": -23.438,
+        "pnl_pct": -25.284,
         "mfe_pct": 0.284,
-        "mae_pct": -23.438,
+        "mae_pct": -25.284,
         "opened_local": "2026-09-28 11:26",
         "result_ar": "مفتوح"
       },
@@ -389,6 +416,23 @@
         "mfe_pct": 3.125,
         "mae_pct": -3.125,
         "opened_local": "2026-09-28 11:28",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "VWAV",
+        "source_ar": "القناص",
+        "strategies": [
+          "القناص",
+          "محفز + زخم"
+        ],
+        "entry": 6.37,
+        "last": 6.37,
+        "stop": 4.81,
+        "tp1": 6.75,
+        "pnl_pct": 0.0,
+        "mfe_pct": 0.0,
+        "mae_pct": 0.0,
+        "opened_local": "2026-09-28 14:12",
         "result_ar": "مفتوح"
       }
     ],
