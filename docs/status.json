@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-28T08:43:14.343389+00:00",
-  "generated_ts": 1790584994,
-  "generated_local": "2026-09-28 11:43 +03",
+  "generated_at": "2026-09-28T08:45:28.232422+00:00",
+  "generated_ts": 1790585128,
+  "generated_local": "2026-09-28 11:45 +03",
   "status": {
     "ok": true,
     "last_mode": "dashboard",
     "changed": false,
     "symbols": 12,
-    "updated_at": "2026-09-28T08:43:14.343211+00:00",
+    "updated_at": "2026-09-28T08:45:28.232237+00:00",
     "source": "build_pages"
   },
   "telegram_enabled": false,
@@ -24,16 +24,16 @@
   "risk_banner": "💰 رأس المال: 45,000 ر.س (≈ $12,000)\n⚠️ مخاطرة الصفقة: 450 ر.س (1%)\n🛑 حد الخسارة اليومي: 900 ر.س (2%) — إذا وصلته قف فورًا\n📌 أقصى تنبيهات دخول اليوم: 5\n🎛 الوضع: مبتدئ",
   "market": {
     "tone": "هابط — فضّل الانتظار أو صفقات قصيرة فقط للمحترفين",
-    "avg_change_pct": -0.66,
+    "avg_change_pct": -0.68,
     "details": {
       "SPY": {
-        "last": 767.93,
-        "change_pct": -0.44,
+        "last": 767.78,
+        "change_pct": -0.46,
         "rsi": 52.5
       },
       "QQQ": {
-        "last": 737.34,
-        "change_pct": -0.96,
+        "last": 737.2285,
+        "change_pct": -0.98,
         "rsi": 66.4
       },
       "IWM": {
@@ -45,12 +45,12 @@
     "indexes": [
       {
         "symbol": "SPY",
-        "change_pct": -0.44,
+        "change_pct": -0.46,
         "rsi": 52.5
       },
       {
         "symbol": "QQQ",
-        "change_pct": -0.96,
+        "change_pct": -0.98,
         "rsi": 66.4
       },
       {
@@ -69,8 +69,8 @@
   "session": {
     "phase": "before_open",
     "label_ar": "للافتتاح",
-    "seconds_left": 17205,
-    "ny_time": "04:43:14",
+    "seconds_left": 17071,
+    "ny_time": "04:45:28",
     "open": "09:30",
     "close": "16:00"
   },
@@ -86,17 +86,17 @@
       },
       {
         "name": "Consumer",
-        "change_pct": -0.87
+        "change_pct": -0.79
       }
     ],
     "weakest": [
       {
         "name": "Technology",
-        "change_pct": -1.11
+        "change_pct": -1.13
       },
       {
         "name": "Consumer",
-        "change_pct": -0.87
+        "change_pct": -0.79
       },
       {
         "name": "Financials",
@@ -115,10 +115,10 @@
     {
       "symbol": "GYGY",
       "name": "Game Your Game, Inc.",
-      "last": 1.45,
-      "change_pct": 95.9,
-      "dollar_volume": 60535217.7,
-      "dollar_volume_label": "60.5M$",
+      "last": 1.41,
+      "change_pct": 90.64,
+      "dollar_volume": 58865280.66,
+      "dollar_volume_label": "58.9M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -128,14 +128,14 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +95.9% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +90.6% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=GYGY"
     },
     {
       "symbol": "CLRO",
       "name": "ClearOne, Inc.",
       "last": 6.38,
-      "change_pct": 84.93,
+      "change_pct": 84.9,
       "dollar_volume": 267813.26,
       "dollar_volume_label": "268K$",
       "rvol": null,
@@ -153,10 +153,10 @@
     {
       "symbol": "MIMI",
       "name": "Mint Incorporation Limited",
-      "last": 0.97,
-      "change_pct": 26.46,
-      "dollar_volume": 16836762.39,
-      "dollar_volume_label": "16.8M$",
+      "last": 0.96,
+      "change_pct": 24.51,
+      "dollar_volume": 16663187.52,
+      "dollar_volume_label": "16.7M$",
       "rvol": null,
       "liq_grade_ar": "",
       "impact": 5,
@@ -166,8 +166,27 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم +26.5% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم +24.5% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=MIMI"
+    },
+    {
+      "symbol": "SDEV",
+      "name": "Stablecoin Development Corporat",
+      "last": 1.73,
+      "change_pct": 16.15,
+      "dollar_volume": 23438321.99,
+      "dollar_volume_label": "23.4M$",
+      "rvol": null,
+      "liq_grade_ar": "",
+      "impact": 5,
+      "impact_ar": "تأثير 5/5",
+      "has_news": false,
+      "news": null,
+      "news_title_ar": "",
+      "news_url": "",
+      "catalyst_ar": [],
+      "alert_ar": "زخم +16.1% · لا خبر رسمي مرفق بعد",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SDEV"
     },
     {
       "symbol": "ACET",
@@ -210,9 +229,9 @@
     {
       "symbol": "AMD",
       "name": "",
-      "last": 614.71,
-      "change_pct": -2.52,
-      "dollar_volume": 10815760979.0,
+      "last": 614.47,
+      "change_pct": -2.56,
+      "dollar_volume": 10811538203.0,
       "dollar_volume_label": "10.8B$",
       "rvol": 27.12,
       "liq_grade_ar": "قوي",
@@ -223,7 +242,7 @@
       "news_title_ar": "",
       "news_url": "",
       "catalyst_ar": [],
-      "alert_ar": "زخم -2.5% · لا خبر رسمي مرفق بعد",
+      "alert_ar": "زخم -2.6% · لا خبر رسمي مرفق بعد",
       "tv_url": "https://www.tradingview.com/chart/?symbol=AMD"
     }
   ],
@@ -270,8 +289,8 @@
       "appeared_local": "2026-09-28 11:00 +03",
       "appeared_ny": "04:00 EDT",
       "appeared_clock_ar": "11:00",
-      "appeared_ago_ar": "منذ 42 دقيقة",
-      "appeared_ar": "ظهر منذ 42 دقيقة · 11:00"
+      "appeared_ago_ar": "منذ 45 دقيقة",
+      "appeared_ar": "ظهر منذ 45 دقيقة · 11:00"
     },
     {
       "symbol": "SRFM",
@@ -314,8 +333,8 @@
       "appeared_local": "2026-09-28 07:01 +03",
       "appeared_ny": "00:01 EDT",
       "appeared_clock_ar": "07:01",
-      "appeared_ago_ar": "منذ 4س 41د",
-      "appeared_ar": "ظهر منذ 4س 41د · 07:01"
+      "appeared_ago_ar": "منذ 4س 43د",
+      "appeared_ar": "ظهر منذ 4س 43د · 07:01"
     },
     {
       "symbol": "STEM",
@@ -358,8 +377,8 @@
       "appeared_local": "2026-09-28 07:01 +03",
       "appeared_ny": "00:01 EDT",
       "appeared_clock_ar": "07:01",
-      "appeared_ago_ar": "منذ 4س 41د",
-      "appeared_ar": "ظهر منذ 4س 41د · 07:01"
+      "appeared_ago_ar": "منذ 4س 43د",
+      "appeared_ar": "ظهر منذ 4س 43د · 07:01"
     },
     {
       "symbol": "FLX",
@@ -402,8 +421,8 @@
       "appeared_local": "2026-09-28 07:01 +03",
       "appeared_ny": "00:01 EDT",
       "appeared_clock_ar": "07:01",
-      "appeared_ago_ar": "منذ 4س 41د",
-      "appeared_ar": "ظهر منذ 4س 41د · 07:01"
+      "appeared_ago_ar": "منذ 4س 43د",
+      "appeared_ar": "ظهر منذ 4س 43د · 07:01"
     },
     {
       "symbol": "LVWR",
@@ -446,8 +465,8 @@
       "appeared_local": "2026-09-28 11:00 +03",
       "appeared_ny": "04:00 EDT",
       "appeared_clock_ar": "11:00",
-      "appeared_ago_ar": "منذ 42 دقيقة",
-      "appeared_ar": "ظهر منذ 42 دقيقة · 11:00"
+      "appeared_ago_ar": "منذ 45 دقيقة",
+      "appeared_ar": "ظهر منذ 45 دقيقة · 11:00"
     },
     {
       "symbol": "STKE",
@@ -490,8 +509,8 @@
       "appeared_local": "2026-09-28 07:01 +03",
       "appeared_ny": "00:01 EDT",
       "appeared_clock_ar": "07:01",
-      "appeared_ago_ar": "منذ 4س 41د",
-      "appeared_ar": "ظهر منذ 4س 41د · 07:01"
+      "appeared_ago_ar": "منذ 4س 43د",
+      "appeared_ar": "ظهر منذ 4س 43د · 07:01"
     },
     {
       "symbol": "LENZ",
@@ -534,8 +553,8 @@
       "appeared_local": "2026-09-28 11:00 +03",
       "appeared_ny": "04:00 EDT",
       "appeared_clock_ar": "11:00",
-      "appeared_ago_ar": "منذ 42 دقيقة",
-      "appeared_ar": "ظهر منذ 42 دقيقة · 11:00"
+      "appeared_ago_ar": "منذ 45 دقيقة",
+      "appeared_ar": "ظهر منذ 45 دقيقة · 11:00"
     },
     {
       "symbol": "CCIF",
@@ -578,8 +597,8 @@
       "appeared_local": "2026-09-28 07:01 +03",
       "appeared_ny": "00:01 EDT",
       "appeared_clock_ar": "07:01",
-      "appeared_ago_ar": "منذ 4س 41د",
-      "appeared_ar": "ظهر منذ 4س 41د · 07:01"
+      "appeared_ago_ar": "منذ 4س 43د",
+      "appeared_ar": "ظهر منذ 4س 43د · 07:01"
     },
     {
       "symbol": "KLXE",
@@ -622,8 +641,8 @@
       "appeared_local": "2026-09-28 11:00 +03",
       "appeared_ny": "04:00 EDT",
       "appeared_clock_ar": "11:00",
-      "appeared_ago_ar": "منذ 42 دقيقة",
-      "appeared_ar": "ظهر منذ 42 دقيقة · 11:00"
+      "appeared_ago_ar": "منذ 45 دقيقة",
+      "appeared_ar": "ظهر منذ 45 دقيقة · 11:00"
     },
     {
       "symbol": "CVRX",
@@ -666,8 +685,8 @@
       "appeared_local": "2026-09-28 07:01 +03",
       "appeared_ny": "00:01 EDT",
       "appeared_clock_ar": "07:01",
-      "appeared_ago_ar": "منذ 4س 41د",
-      "appeared_ar": "ظهر منذ 4س 41د · 07:01"
+      "appeared_ago_ar": "منذ 4س 43د",
+      "appeared_ar": "ظهر منذ 4س 43د · 07:01"
     },
     {
       "symbol": "DAVA",
@@ -710,8 +729,8 @@
       "appeared_local": "2026-09-28 11:00 +03",
       "appeared_ny": "04:00 EDT",
       "appeared_clock_ar": "11:00",
-      "appeared_ago_ar": "منذ 42 دقيقة",
-      "appeared_ar": "ظهر منذ 42 دقيقة · 11:00"
+      "appeared_ago_ar": "منذ 45 دقيقة",
+      "appeared_ar": "ظهر منذ 45 دقيقة · 11:00"
     }
   ],
   "sniper_note_ar": "ماسح القنص مستقل عن ≥$51 و$5–$51 — تحت $5 فقط · الأسهم الظاهرة تثبت ~30 د حتى لا تختفي وترجع فجأة",
@@ -728,13 +747,13 @@
     {
       "symbol": "GYGY",
       "name": "Game Your Game, Inc.",
-      "last": 1.45,
-      "change_pct": 95.86,
+      "last": 1.42,
+      "change_pct": 92.0,
       "rvol": 15.52,
       "volume": 27573000.0,
       "avg_volume": 1776500.0,
-      "dollar_volume": 39980850.0,
-      "dollar_volume_label": "40.0M$",
+      "dollar_volume": 39153660.0,
+      "dollar_volume_label": "39.2M$",
       "market_cap": 10644323.0,
       "market_cap_label": "$11M",
       "cap_bucket": "small",
@@ -771,10 +790,10 @@
       "checks_ok": 3,
       "checks_total": 4,
       "complete": false,
-      "entry": 1.45,
+      "entry": 1.42,
       "stop": 0.7064,
-      "tp1": 1.54,
-      "tp2": 1.65,
+      "tp1": 1.51,
+      "tp2": 1.62,
       "side": "long",
       "strategies": [
         "القناص",
@@ -784,20 +803,20 @@
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=GYGY",
       "phase": "pre",
-      "updated_ts": 1790584994,
+      "updated_ts": 1790585128,
       "score": 212.0,
       "first_ts": 1790583995
     },
     {
       "symbol": "MIMI",
       "name": "Mint Incorporation Limited",
-      "last": 0.9888,
-      "change_pct": 28.25,
+      "last": 0.9599,
+      "change_pct": 24.5,
       "rvol": 75.72,
       "volume": 13652200.0,
       "avg_volume": 180300.0,
-      "dollar_volume": 13499295.36,
-      "dollar_volume_label": "13.5M$",
+      "dollar_volume": 13104746.78,
+      "dollar_volume_label": "13.1M$",
       "market_cap": 11408069.0,
       "market_cap_label": "$11M",
       "cap_bucket": "small",
@@ -834,10 +853,10 @@
       "checks_ok": 3,
       "checks_total": 4,
       "complete": false,
-      "entry": 0.9888,
+      "entry": 0.9599,
       "stop": 0.7671,
-      "tp1": 1.05,
-      "tp2": 1.13,
+      "tp1": 1.02,
+      "tp2": 1.09,
       "side": "long",
       "strategies": [
         "القناص",
@@ -847,8 +866,8 @@
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=MIMI",
       "phase": "pre",
-      "updated_ts": 1790584994,
-      "score": 149.9,
+      "updated_ts": 1790585128,
+      "score": 145.4,
       "first_ts": 1790583995
     },
     {
@@ -982,13 +1001,13 @@
     {
       "symbol": "ARAY",
       "name": "Accuray Incorporated",
-      "last": 0.3946,
-      "change_pct": 83.53,
+      "last": 0.4276,
+      "change_pct": 98.88,
       "rvol": 1.29,
       "volume": 760300.0,
       "avg_volume": 590700.0,
-      "dollar_volume": 300014.38,
-      "dollar_volume_label": "300K$",
+      "dollar_volume": 325104.28,
+      "dollar_volume_label": "325K$",
       "market_cap": 25691396.0,
       "market_cap_label": "$26M",
       "cap_bucket": "small",
@@ -1025,10 +1044,10 @@
       "checks_ok": 2,
       "checks_total": 4,
       "complete": false,
-      "entry": 0.3946,
+      "entry": 0.4276,
       "stop": 0.2189,
-      "tp1": 0.4183,
-      "tp2": 0.4498,
+      "tp1": 0.4533,
+      "tp2": 0.4875,
       "side": "long",
       "strategies": [
         "القناص",
@@ -1038,20 +1057,20 @@
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=ARAY",
       "phase": "pre",
-      "updated_ts": 1790584994,
+      "updated_ts": 1790585128,
       "score": 134.32,
       "first_ts": 1790583995
     },
     {
       "symbol": "CLRO",
       "name": "ClearOne, Inc.",
-      "last": 6.37,
-      "change_pct": 84.61,
+      "last": 6.35,
+      "change_pct": 84.07,
       "rvol": 1.08,
       "volume": 42400.0,
       "avg_volume": 39433.333333333336,
-      "dollar_volume": 270088.0,
-      "dollar_volume_label": "270K$",
+      "dollar_volume": 269240.0,
+      "dollar_volume_label": "269K$",
       "market_cap": 9230171.999999998,
       "market_cap_label": "$9M",
       "cap_bucket": "small",
@@ -1088,10 +1107,10 @@
       "checks_ok": 2,
       "checks_total": 4,
       "complete": false,
-      "entry": 6.37,
+      "entry": 6.35,
       "stop": 3.42,
-      "tp1": 6.75,
-      "tp2": 7.26,
+      "tp1": 6.73,
+      "tp2": 7.24,
       "side": "long",
       "strategies": [
         "القناص",
@@ -1101,7 +1120,7 @@
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=CLRO",
       "phase": "pre",
-      "updated_ts": 1790584994,
+      "updated_ts": 1790585128,
       "score": 132.64,
       "first_ts": 1790583995
     }
@@ -1121,18 +1140,18 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 515.0,
+      "last": 514.67,
       "score": 90,
       "score_max": 90,
-      "state": "EXPIRED",
-      "state_ar": "⚪ Signal Expired",
-      "signal_ts": 1790583995,
-      "signal_clock_et": "04:26:35",
+      "state": "WATCH",
+      "state_ar": "🟡 مراقبة",
+      "signal_ts": 1790585128,
+      "signal_clock_et": "04:45:28",
       "trigger_clock_et": "—",
-      "age_min": 16.7,
-      "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+      "age_min": 0.0,
+      "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
       "entry": 518.13,
       "entry_trigger": 518.13,
       "stop": 507.77,
@@ -1144,7 +1163,7 @@
       "tp2_rr": 2.0,
       "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
       "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-      "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+      "cancel_reason_ar": "",
       "checks": [
         {
           "key": "vol",
@@ -1210,8 +1229,8 @@
         "note_ar": "11 سهم · صفقة $5699.43 · مخاطرة $113.96"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790584994,
-      "created_ts": 1790583995,
+      "updated_ts": 1790585128,
+      "created_ts": 1790585128,
       "shares": 11,
       "position_usd": 5699.43,
       "risk_usd": 113.96
@@ -1221,18 +1240,18 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 368.12,
+      "last": 368.36,
       "score": 72,
       "score_max": 90,
-      "state": "EXPIRED",
-      "state_ar": "⚪ Signal Expired",
-      "signal_ts": 1790583995,
-      "signal_clock_et": "04:26:35",
+      "state": "WATCH",
+      "state_ar": "🟡 مراقبة",
+      "signal_ts": 1790585128,
+      "signal_clock_et": "04:45:28",
       "trigger_clock_et": "—",
-      "age_min": 16.7,
-      "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+      "age_min": 0.0,
+      "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
       "entry": 386.24,
       "entry_trigger": 386.24,
       "stop": 378.52,
@@ -1244,7 +1263,7 @@
       "tp2_rr": 2.0,
       "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
       "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-      "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+      "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
       "checks": [
         {
           "key": "vol",
@@ -1310,8 +1329,8 @@
         "note_ar": "15 سهم · صفقة $5793.6 · مخاطرة $115.8"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790584994,
-      "created_ts": 1790583995,
+      "updated_ts": 1790585128,
+      "created_ts": 1790585128,
       "shares": 15,
       "position_usd": 5793.6,
       "risk_usd": 115.8
@@ -1321,18 +1340,18 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 614.71,
+      "last": 614.47,
       "score": 72,
       "score_max": 90,
-      "state": "EXPIRED",
-      "state_ar": "⚪ Signal Expired",
-      "signal_ts": 1790583995,
-      "signal_clock_et": "04:26:35",
+      "state": "WATCH",
+      "state_ar": "🟡 مراقبة",
+      "signal_ts": 1790585128,
+      "signal_clock_et": "04:45:28",
       "trigger_clock_et": "—",
-      "age_min": 16.7,
-      "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+      "age_min": 0.0,
+      "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
       "entry": 632.13,
       "entry_trigger": 632.13,
       "stop": 619.49,
@@ -1344,7 +1363,7 @@
       "tp2_rr": 2.0,
       "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
       "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-      "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+      "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
       "checks": [
         {
           "key": "vol",
@@ -1410,8 +1429,8 @@
         "note_ar": "9 سهم · صفقة $5689.17 · مخاطرة $113.76"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790584994,
-      "created_ts": 1790583995,
+      "updated_ts": 1790585128,
+      "created_ts": 1790585128,
       "shares": 9,
       "position_usd": 5689.17,
       "risk_usd": 113.76
@@ -1424,15 +1443,15 @@
       "last": 163.11,
       "score": 72,
       "score_max": 90,
-      "state": "EXPIRED",
-      "state_ar": "⚪ Signal Expired",
-      "signal_ts": 1790583995,
-      "signal_clock_et": "04:26:35",
+      "state": "WATCH",
+      "state_ar": "🟡 مراقبة",
+      "signal_ts": 1790585128,
+      "signal_clock_et": "04:45:28",
       "trigger_clock_et": "—",
-      "age_min": 16.7,
-      "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+      "age_min": 0.0,
+      "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
       "entry": 169.03,
       "entry_trigger": 169.03,
       "stop": 165.65,
@@ -1444,7 +1463,7 @@
       "tp2_rr": 2.0,
       "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
       "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-      "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+      "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
       "checks": [
         {
           "key": "vol",
@@ -1510,8 +1529,8 @@
         "note_ar": "35 سهم · صفقة $5916.05 · مخاطرة $118.3"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790584994,
-      "created_ts": 1790583995,
+      "updated_ts": 1790585128,
+      "created_ts": 1790585128,
       "shares": 35,
       "position_usd": 5916.05,
       "risk_usd": 118.3
@@ -1521,18 +1540,18 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 340.39,
+      "last": 340.4,
       "score": 72,
       "score_max": 90,
-      "state": "EXPIRED",
-      "state_ar": "⚪ Signal Expired",
-      "signal_ts": 1790583995,
-      "signal_clock_et": "04:26:35",
+      "state": "WATCH",
+      "state_ar": "🟡 مراقبة",
+      "signal_ts": 1790585128,
+      "signal_clock_et": "04:45:28",
       "trigger_clock_et": "—",
-      "age_min": 16.7,
-      "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+      "age_min": 0.0,
+      "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
       "entry": 342.01,
       "entry_trigger": 342.01,
       "stop": 334.53,
@@ -1544,7 +1563,7 @@
       "tp2_rr": 2.0,
       "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
       "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-      "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+      "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
       "checks": [
         {
           "key": "vol",
@@ -1610,8 +1629,8 @@
         "note_ar": "16 سهم · صفقة $5472.16 · مخاطرة $119.68"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790584994,
-      "created_ts": 1790583995,
+      "updated_ts": 1790585128,
+      "created_ts": 1790585128,
       "shares": 16,
       "position_usd": 5472.16,
       "risk_usd": 119.68
@@ -1621,18 +1640,18 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 188.35,
+      "last": 188.4,
       "score": 72,
       "score_max": 90,
-      "state": "EXPIRED",
-      "state_ar": "⚪ Signal Expired",
-      "signal_ts": 1790583995,
-      "signal_clock_et": "04:26:35",
+      "state": "WATCH",
+      "state_ar": "🟡 مراقبة",
+      "signal_ts": 1790585128,
+      "signal_clock_et": "04:45:28",
       "trigger_clock_et": "—",
-      "age_min": 16.7,
-      "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+      "age_min": 0.0,
+      "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
       "entry": 194.41,
       "entry_trigger": 194.41,
       "stop": 190.52,
@@ -1644,7 +1663,7 @@
       "tp2_rr": 2.0,
       "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
       "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-      "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+      "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
       "checks": [
         {
           "key": "vol",
@@ -1710,8 +1729,8 @@
         "note_ar": "30 سهم · صفقة $5832.3 · مخاطرة $116.7"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790584994,
-      "created_ts": 1790583995,
+      "updated_ts": 1790585128,
+      "created_ts": 1790585128,
       "shares": 30,
       "position_usd": 5832.3,
       "risk_usd": 116.7
@@ -1724,15 +1743,15 @@
       "last": 341.21,
       "score": 54,
       "score_max": 90,
-      "state": "EXPIRED",
-      "state_ar": "⚪ Signal Expired",
-      "signal_ts": 1790583995,
-      "signal_clock_et": "04:26:35",
+      "state": "WATCH",
+      "state_ar": "🟡 مراقبة",
+      "signal_ts": 1790585128,
+      "signal_clock_et": "04:45:28",
       "trigger_clock_et": "—",
-      "age_min": 16.7,
-      "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+      "age_min": 0.0,
+      "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
       "entry": 343.65,
       "entry_trigger": 343.65,
       "stop": 338.64,
@@ -1744,7 +1763,7 @@
       "tp2_rr": 2.0,
       "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
       "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-      "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+      "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
       "checks": [
         {
           "key": "vol",
@@ -1810,8 +1829,8 @@
         "note_ar": "23 سهم · صفقة $7903.95 · مخاطرة $115.23"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790584994,
-      "created_ts": 1790583995,
+      "updated_ts": 1790585128,
+      "created_ts": 1790585128,
       "shares": 23,
       "position_usd": 7903.95,
       "risk_usd": 115.23
@@ -1821,18 +1840,18 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 735.29,
+      "last": 735.23,
       "score": 54,
       "score_max": 90,
-      "state": "EXPIRED",
-      "state_ar": "⚪ Signal Expired",
-      "signal_ts": 1790583995,
-      "signal_clock_et": "04:26:35",
+      "state": "WATCH",
+      "state_ar": "🟡 مراقبة",
+      "signal_ts": 1790585128,
+      "signal_clock_et": "04:45:28",
       "trigger_clock_et": "—",
-      "age_min": 16.7,
-      "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+      "age_min": 0.0,
+      "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
       "entry": 770.34,
       "entry_trigger": 770.34,
       "stop": 754.93,
@@ -1844,7 +1863,7 @@
       "tp2_rr": 2.0,
       "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
       "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-      "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+      "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
       "checks": [
         {
           "key": "vol",
@@ -1910,8 +1929,8 @@
         "note_ar": "7 سهم · صفقة $5392.38 · مخاطرة $107.87"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790584994,
-      "created_ts": 1790583995,
+      "updated_ts": 1790585128,
+      "created_ts": 1790585128,
       "shares": 7,
       "position_usd": 5392.38,
       "risk_usd": 107.87
@@ -1921,18 +1940,18 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 223.19,
+      "last": 223.16,
       "score": 54,
       "score_max": 90,
-      "state": "EXPIRED",
-      "state_ar": "⚪ Signal Expired",
-      "signal_ts": 1790583995,
-      "signal_clock_et": "04:26:35",
+      "state": "WATCH",
+      "state_ar": "🟡 مراقبة",
+      "signal_ts": 1790585128,
+      "signal_clock_et": "04:45:28",
       "trigger_clock_et": "—",
-      "age_min": 16.7,
-      "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+      "age_min": 0.0,
+      "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
       "entry": 227.17,
       "entry_trigger": 227.17,
       "stop": 223.13,
@@ -1944,7 +1963,7 @@
       "tp2_rr": 2.0,
       "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
       "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-      "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+      "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
       "checks": [
         {
           "key": "vol",
@@ -2010,8 +2029,8 @@
         "note_ar": "29 سهم · صفقة $6587.93 · مخاطرة $117.16"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790584994,
-      "created_ts": 1790583995,
+      "updated_ts": 1790585128,
+      "created_ts": 1790585128,
       "shares": 29,
       "position_usd": 6587.93,
       "risk_usd": 117.16
@@ -2021,18 +2040,18 @@
       "strategy": "jamal",
       "strategy_ar": "استراتيجية جمال",
       "tag_ar": "🎯 استراتيجية جمال",
-      "last": 248.01,
+      "last": 248.24,
       "score": 36,
       "score_max": 90,
-      "state": "EXPIRED",
-      "state_ar": "⚪ Signal Expired",
-      "signal_ts": 1790583995,
-      "signal_clock_et": "04:26:35",
+      "state": "WATCH",
+      "state_ar": "🟡 مراقبة",
+      "signal_ts": 1790585128,
+      "signal_clock_et": "04:45:28",
       "trigger_clock_et": "—",
-      "age_min": 16.7,
-      "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+      "age_min": 0.0,
+      "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
       "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-      "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+      "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
       "entry": 251.13,
       "entry_trigger": 251.13,
       "stop": 247.18,
@@ -2044,7 +2063,7 @@
       "tp2_rr": 2.0,
       "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
       "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-      "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+      "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
       "checks": [
         {
           "key": "vol",
@@ -2110,8 +2129,8 @@
         "note_ar": "30 سهم · صفقة $7533.9 · مخاطرة $118.5"
       },
       "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-      "updated_ts": 1790584994,
-      "created_ts": 1790583995,
+      "updated_ts": 1790585128,
+      "created_ts": 1790585128,
       "shares": 30,
       "position_usd": 7533.9,
       "risk_usd": 118.5
@@ -2148,7 +2167,7 @@
         "RSI متوازن",
         "ارتداد من MA20"
       ],
-      "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | زخم قطاع Energy: قطاع Energy +1.6% | RSI متوازن: RSI 52 | ارتداد من MA20: قرب MA20 (+0.39%) ضمن اتجاه صاعد | تفوق على السوق: أقوى من المؤشر بـ +2.0% (السهم +1.6% / السوق -0.4",
+      "reason": "ترتيب متوسطات صاعد: السعر فوق MA20 فوق MA50 | زخم قطاع Energy: قطاع Energy +1.6% | RSI متوازن: RSI 52 | ارتداد من MA20: قرب MA20 (+0.39%) ضمن اتجاه صاعد | تفوق على السوق: أقوى من المؤشر بـ +2.0% (السهم +1.6% / السوق -0.5",
       "entry": 163.11,
       "entry_original": 163.11,
       "entry_planned": 163.11,
@@ -2297,15 +2316,15 @@
         "last": 163.11,
         "score": 72,
         "score_max": 90,
-        "state": "EXPIRED",
-        "state_ar": "⚪ Signal Expired",
-        "signal_ts": 1790583995,
-        "signal_clock_et": "04:26:35",
+        "state": "WATCH",
+        "state_ar": "🟡 مراقبة",
+        "signal_ts": 1790585128,
+        "signal_clock_et": "04:45:28",
         "trigger_clock_et": "—",
-        "age_min": 16.7,
-        "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+        "age_min": 0.0,
+        "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
         "entry": 169.03,
         "entry_trigger": 169.03,
         "stop": 165.65,
@@ -2317,7 +2336,7 @@
         "tp2_rr": 2.0,
         "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
         "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-        "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+        "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
         "checks": [
           {
             "key": "vol",
@@ -2383,8 +2402,8 @@
           "note_ar": "35 سهم · صفقة $5916.05 · مخاطرة $118.3"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790584994,
-        "created_ts": 1790583995,
+        "updated_ts": 1790585128,
+        "created_ts": 1790585128,
         "shares": 35,
         "position_usd": 5916.05,
         "risk_usd": 118.3
@@ -2393,12 +2412,12 @@
     },
     {
       "symbol": "MSFT",
-      "action": "انتظر تأكيد",
-      "action_key": "WAIT",
+      "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
       "side": "long",
       "score_100": 90,
       "confidence": "B",
-      "confidence_ar": "⚪ Signal Expired",
+      "confidence_ar": "🟡 مراقبة",
       "urgent": false,
       "strategies": [
         "استراتيجية جمال"
@@ -2415,7 +2434,7 @@
       "risk_usd": 113.96,
       "allowed": false,
       "change_pct": 0,
-      "last": 515.0,
+      "last": 514.67,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2423,18 +2442,18 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 515.0,
+        "last": 514.67,
         "score": 90,
         "score_max": 90,
-        "state": "EXPIRED",
-        "state_ar": "⚪ Signal Expired",
-        "signal_ts": 1790583995,
-        "signal_clock_et": "04:26:35",
+        "state": "WATCH",
+        "state_ar": "🟡 مراقبة",
+        "signal_ts": 1790585128,
+        "signal_clock_et": "04:45:28",
         "trigger_clock_et": "—",
-        "age_min": 16.7,
-        "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+        "age_min": 0.0,
+        "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
         "entry": 518.13,
         "entry_trigger": 518.13,
         "stop": 507.77,
@@ -2446,7 +2465,7 @@
         "tp2_rr": 2.0,
         "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
         "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-        "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+        "cancel_reason_ar": "",
         "checks": [
           {
             "key": "vol",
@@ -2512,8 +2531,8 @@
           "note_ar": "11 سهم · صفقة $5699.43 · مخاطرة $113.96"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790584994,
-        "created_ts": 1790583995,
+        "updated_ts": 1790585128,
+        "created_ts": 1790585128,
         "shares": 11,
         "position_usd": 5699.43,
         "risk_usd": 113.96
@@ -2531,17 +2550,17 @@
         "✓ أقرب قمة قصيرة $517.61",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "expired": true,
+      "expired": false,
       "flow_ok": true
     },
     {
       "symbol": "AMD",
-      "action": "انتظر تأكيد",
-      "action_key": "WAIT",
+      "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
       "side": "long",
       "score_100": 72,
       "confidence": "B",
-      "confidence_ar": "⚪ Signal Expired",
+      "confidence_ar": "🟡 مراقبة",
       "urgent": false,
       "strategies": [
         "استراتيجية جمال"
@@ -2558,7 +2577,7 @@
       "risk_usd": 113.76,
       "allowed": false,
       "change_pct": 0,
-      "last": 614.71,
+      "last": 614.47,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2566,18 +2585,18 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 614.71,
+        "last": 614.47,
         "score": 72,
         "score_max": 90,
-        "state": "EXPIRED",
-        "state_ar": "⚪ Signal Expired",
-        "signal_ts": 1790583995,
-        "signal_clock_et": "04:26:35",
+        "state": "WATCH",
+        "state_ar": "🟡 مراقبة",
+        "signal_ts": 1790585128,
+        "signal_clock_et": "04:45:28",
         "trigger_clock_et": "—",
-        "age_min": 16.7,
-        "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+        "age_min": 0.0,
+        "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
         "entry": 632.13,
         "entry_trigger": 632.13,
         "stop": 619.49,
@@ -2589,7 +2608,7 @@
         "tp2_rr": 2.0,
         "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
         "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-        "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+        "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
         "checks": [
           {
             "key": "vol",
@@ -2655,8 +2674,8 @@
           "note_ar": "9 سهم · صفقة $5689.17 · مخاطرة $113.76"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790584994,
-        "created_ts": 1790583995,
+        "updated_ts": 1790585128,
+        "created_ts": 1790585128,
         "shares": 9,
         "position_usd": 5689.17,
         "risk_usd": 113.76
@@ -2674,17 +2693,17 @@
         "✓ أقرب قمة قصيرة $631.5",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "expired": true,
+      "expired": false,
       "flow_ok": true
     },
     {
       "symbol": "AAPL",
-      "action": "انتظر تأكيد",
-      "action_key": "WAIT",
+      "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
       "side": "long",
       "score_100": 72,
       "confidence": "B",
-      "confidence_ar": "⚪ Signal Expired",
+      "confidence_ar": "🟡 مراقبة",
       "urgent": false,
       "strategies": [
         "استراتيجية جمال"
@@ -2701,7 +2720,7 @@
       "risk_usd": 119.68,
       "allowed": false,
       "change_pct": 0,
-      "last": 340.39,
+      "last": 340.4,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2709,18 +2728,18 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 340.39,
+        "last": 340.4,
         "score": 72,
         "score_max": 90,
-        "state": "EXPIRED",
-        "state_ar": "⚪ Signal Expired",
-        "signal_ts": 1790583995,
-        "signal_clock_et": "04:26:35",
+        "state": "WATCH",
+        "state_ar": "🟡 مراقبة",
+        "signal_ts": 1790585128,
+        "signal_clock_et": "04:45:28",
         "trigger_clock_et": "—",
-        "age_min": 16.7,
-        "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+        "age_min": 0.0,
+        "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
         "entry": 342.01,
         "entry_trigger": 342.01,
         "stop": 334.53,
@@ -2732,7 +2751,7 @@
         "tp2_rr": 2.0,
         "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
         "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-        "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+        "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
         "checks": [
           {
             "key": "vol",
@@ -2798,8 +2817,8 @@
           "note_ar": "16 سهم · صفقة $5472.16 · مخاطرة $119.68"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790584994,
-        "created_ts": 1790583995,
+        "updated_ts": 1790585128,
+        "created_ts": 1790585128,
         "shares": 16,
         "position_usd": 5472.16,
         "risk_usd": 119.68
@@ -2817,17 +2836,17 @@
         "✓ أقرب قمة قصيرة $341.67",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "expired": true,
+      "expired": false,
       "flow_ok": true
     },
     {
       "symbol": "PLTR",
-      "action": "انتظر تأكيد",
-      "action_key": "WAIT",
+      "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
       "side": "long",
       "score_100": 72,
       "confidence": "B",
-      "confidence_ar": "⚪ Signal Expired",
+      "confidence_ar": "🟡 مراقبة",
       "urgent": false,
       "strategies": [
         "استراتيجية جمال"
@@ -2844,7 +2863,7 @@
       "risk_usd": 116.7,
       "allowed": false,
       "change_pct": 0,
-      "last": 188.35,
+      "last": 188.4,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2852,18 +2871,18 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 188.35,
+        "last": 188.4,
         "score": 72,
         "score_max": 90,
-        "state": "EXPIRED",
-        "state_ar": "⚪ Signal Expired",
-        "signal_ts": 1790583995,
-        "signal_clock_et": "04:26:35",
+        "state": "WATCH",
+        "state_ar": "🟡 مراقبة",
+        "signal_ts": 1790585128,
+        "signal_clock_et": "04:45:28",
         "trigger_clock_et": "—",
-        "age_min": 16.7,
-        "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+        "age_min": 0.0,
+        "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
         "entry": 194.41,
         "entry_trigger": 194.41,
         "stop": 190.52,
@@ -2875,7 +2894,7 @@
         "tp2_rr": 2.0,
         "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
         "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-        "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+        "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
         "checks": [
           {
             "key": "vol",
@@ -2941,8 +2960,8 @@
           "note_ar": "30 سهم · صفقة $5832.3 · مخاطرة $116.7"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790584994,
-        "created_ts": 1790583995,
+        "updated_ts": 1790585128,
+        "created_ts": 1790585128,
         "shares": 30,
         "position_usd": 5832.3,
         "risk_usd": 116.7
@@ -2960,17 +2979,160 @@
         "✓ أقرب قمة قصيرة $194.21",
         "✓ السعر فوق المتوسط القصير"
       ],
-      "expired": true,
+      "expired": false,
+      "flow_ok": true
+    },
+    {
+      "symbol": "JPM",
+      "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
+      "side": "long",
+      "score_100": 54,
+      "confidence": "B",
+      "confidence_ar": "🟡 مراقبة",
+      "urgent": false,
+      "strategies": [
+        "استراتيجية جمال"
+      ],
+      "reason": "✓ Volume 1.49x VMA · ✗ MFI 19.1 · ✓ MFI صاعد ↑ · ✓ أقرب قمة قصيرة $343.31 · ✗ تحت المتوسط القصير",
+      "entry": 343.65,
+      "entry_original": 343.65,
+      "entry_planned": 343.65,
+      "stop": 338.64,
+      "target": 348.66,
+      "target_partial": 348.66,
+      "target_final": 353.67,
+      "shares": 23,
+      "risk_usd": 115.23,
+      "allowed": false,
+      "change_pct": 0,
+      "last": 341.21,
+      "tag_ar": "🎯 استراتيجية جمال",
+      "source": "jamal",
+      "jamal": {
+        "symbol": "JPM",
+        "strategy": "jamal",
+        "strategy_ar": "استراتيجية جمال",
+        "tag_ar": "🎯 استراتيجية جمال",
+        "last": 341.21,
+        "score": 54,
+        "score_max": 90,
+        "state": "WATCH",
+        "state_ar": "🟡 مراقبة",
+        "signal_ts": 1790585128,
+        "signal_clock_et": "04:45:28",
+        "trigger_clock_et": "—",
+        "age_min": 0.0,
+        "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
+        "trigger_time_ar": "وقت تفعيل الدخول: — ET",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
+        "entry": 343.65,
+        "entry_trigger": 343.65,
+        "stop": 338.64,
+        "tp1": 348.66,
+        "tp2": 353.67,
+        "risk_ps": 5.01,
+        "rr_ar": "1 : 1.0 / 1 : 2.0",
+        "tp1_rr": 1.0,
+        "tp2_rr": 2.0,
+        "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
+        "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
+        "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
+        "checks": [
+          {
+            "key": "vol",
+            "ok": true,
+            "ar": "Volume 1.49x VMA",
+            "need": true
+          },
+          {
+            "key": "mfi",
+            "ok": false,
+            "ar": "MFI 19.1",
+            "need": true
+          },
+          {
+            "key": "mfi_up",
+            "ok": true,
+            "ar": "MFI صاعد ↑",
+            "need": true
+          },
+          {
+            "key": "breakout_level",
+            "ok": true,
+            "ar": "أقرب قمة قصيرة $343.31",
+            "need": true
+          },
+          {
+            "key": "above_ma",
+            "ok": false,
+            "ar": "تحت المتوسط القصير",
+            "need": false
+          }
+        ],
+        "checks_ar": [
+          "✓ Volume 1.49x VMA",
+          "✗ MFI 19.1",
+          "✓ MFI صاعد ↑",
+          "✓ أقرب قمة قصيرة $343.31",
+          "✗ تحت المتوسط القصير"
+        ],
+        "vol_ratio": 1.49,
+        "mfi": 19.1,
+        "mfi_prev": 10.4,
+        "mfi_rising": true,
+        "short_high": 343.31,
+        "short_low": 338.64,
+        "buffer_pct": 0.1,
+        "max_chase_pct": 1.0,
+        "stop_loss_pct": 2.0,
+        "trailing_enabled": true,
+        "trailing_pct": 1.0,
+        "signal_expiry_min": 15.0,
+        "exit_before_close_min": 15.0,
+        "order_book_available": false,
+        "order_book_ok": null,
+        "order_book_note_ar": "Order Book غير متاح",
+        "mins_to_close": null,
+        "sizing": {
+          "shares": 23,
+          "position_usd": 7903.95,
+          "risk_usd": 115.23,
+          "max_shares_by_capital": 34,
+          "allowed": true,
+          "note_ar": "23 سهم · صفقة $7903.95 · مخاطرة $115.23"
+        },
+        "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
+        "updated_ts": 1790585128,
+        "created_ts": 1790585128,
+        "shares": 23,
+        "position_usd": 7903.95,
+        "risk_usd": 115.23
+      },
+      "smart_tags": [
+        {
+          "key": "jamal",
+          "ar": "🎯 استراتيجية جمال"
+        }
+      ],
+      "smart_notes": [
+        "✓ Volume 1.49x VMA",
+        "✗ MFI 19.1",
+        "✓ MFI صاعد ↑",
+        "✓ أقرب قمة قصيرة $343.31",
+        "✗ تحت المتوسط القصير"
+      ],
+      "expired": false,
       "flow_ok": true
     },
     {
       "symbol": "AMZN",
-      "action": "انتظر تأكيد",
-      "action_key": "WAIT",
+      "action": "راقب دخول",
+      "action_key": "WATCH_ENTRY",
       "side": "long",
       "score_100": 36,
       "confidence": "B",
-      "confidence_ar": "⚪ Signal Expired",
+      "confidence_ar": "🟡 مراقبة",
       "urgent": false,
       "strategies": [
         "استراتيجية جمال"
@@ -2987,7 +3149,7 @@
       "risk_usd": 118.5,
       "allowed": false,
       "change_pct": 0,
-      "last": 248.01,
+      "last": 248.24,
       "tag_ar": "🎯 استراتيجية جمال",
       "source": "jamal",
       "jamal": {
@@ -2995,18 +3157,18 @@
         "strategy": "jamal",
         "strategy_ar": "استراتيجية جمال",
         "tag_ar": "🎯 استراتيجية جمال",
-        "last": 248.01,
+        "last": 248.24,
         "score": 36,
         "score_max": 90,
-        "state": "EXPIRED",
-        "state_ar": "⚪ Signal Expired",
-        "signal_ts": 1790583995,
-        "signal_clock_et": "04:26:35",
+        "state": "WATCH",
+        "state_ar": "🟡 مراقبة",
+        "signal_ts": 1790585128,
+        "signal_clock_et": "04:45:28",
         "trigger_clock_et": "—",
-        "age_min": 16.7,
-        "watch_since_ar": "وقت مراقبة السهم: 04:26:35 ET",
+        "age_min": 0.0,
+        "watch_since_ar": "وقت مراقبة السهم: 04:45:28 ET",
         "trigger_time_ar": "وقت تفعيل الدخول: — ET",
-        "age_ar": "الوقت المنقضي منذ الإشارة: 16 د",
+        "age_ar": "الوقت المنقضي منذ الإشارة: 0 د",
         "entry": 251.13,
         "entry_trigger": 251.13,
         "stop": 247.18,
@@ -3018,7 +3180,7 @@
         "tp2_rr": 2.0,
         "exit_before_close_ar": "قبل إغلاق السوق بـ 15 دقيقة",
         "hold_ar": "قبل إغلاق السوق بـ 15 دقيقة",
-        "cancel_reason_ar": "انتهت صلاحية الإشارة (15 د بدون Trigger)",
+        "cancel_reason_ar": "Setup غير مكتمل — بانتظار Volume/MFI/قمة",
         "checks": [
           {
             "key": "vol",
@@ -3084,8 +3246,8 @@
           "note_ar": "30 سهم · صفقة $7533.9 · مخاطرة $118.5"
         },
         "disclaimer_ar": "Setup / Entry Trigger / Stop / Target — لأغراض تعليمية وليست توصية استثمارية",
-        "updated_ts": 1790584994,
-        "created_ts": 1790583995,
+        "updated_ts": 1790585128,
+        "created_ts": 1790585128,
         "shares": 30,
         "position_usd": 7533.9,
         "risk_usd": 118.5
@@ -3103,15 +3265,15 @@
         "✓ أقرب قمة قصيرة $250.88",
         "✗ تحت المتوسط القصير"
       ],
-      "expired": true,
+      "expired": false,
       "flow_ok": true
     }
   ],
   "opps_note_ar": "خطط دخول ذكية بعد الماسح — ثقة A/B/C · وقف/هدف · يشمل 🎯 استراتيجية جمال عند التوافق",
   "opps_rejected_slow": [],
   "strategy_track": {
-    "updated_ts": 1790584994,
-    "updated_local": "2026-09-28 11:43 +03",
+    "updated_ts": 1790585128,
+    "updated_local": "2026-09-28 11:45 +03",
     "trades_n": 6,
     "open": 4,
     "closed": 2,
@@ -3196,10 +3358,10 @@
           "محفز + زخم"
         ],
         "entry": 0.942,
-        "last": 0.9888,
+        "last": 0.9599,
         "stop": 0.7671,
         "tp1": 0.9985,
-        "pnl_pct": 4.968,
+        "pnl_pct": 1.9,
         "mfe_pct": 4.968,
         "mae_pct": 0.0,
         "opened_local": "2026-09-28 11:26",
@@ -3230,12 +3392,12 @@
           "محفز + زخم"
         ],
         "entry": 7.04,
-        "last": 6.37,
+        "last": 6.35,
         "stop": 3.42,
         "tp1": 7.46,
-        "pnl_pct": -9.517,
+        "pnl_pct": -9.801,
         "mfe_pct": 0.284,
-        "mae_pct": -9.517,
+        "mae_pct": -9.801,
         "opened_local": "2026-09-28 11:26",
         "result_ar": "مفتوح"
       },
@@ -3264,13 +3426,13 @@
     {
       "symbol": "GYGY",
       "name": "Game Your Game, Inc.",
-      "last": 1.45,
-      "change_pct": 95.9,
+      "last": 1.41,
+      "change_pct": 90.64,
       "ref": 0.74,
       "rth_close": 0.74,
       "volume": 41748426.0,
-      "dollar_volume": 60535217.7,
-      "dollar_volume_label": "60.5M$",
+      "dollar_volume": 58865280.66,
+      "dollar_volume_label": "58.9M$",
       "market_cap": 10644323.0,
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
@@ -3281,7 +3443,7 @@
       "symbol": "CLRO",
       "name": "ClearOne, Inc.",
       "last": 6.38,
-      "change_pct": 84.93,
+      "change_pct": 84.9,
       "ref": 3.45,
       "rth_close": 3.45,
       "volume": 41977.0,
@@ -3296,18 +3458,34 @@
     {
       "symbol": "MIMI",
       "name": "Mint Incorporation Limited",
-      "last": 0.97,
-      "change_pct": 26.46,
+      "last": 0.96,
+      "change_pct": 24.51,
       "ref": 0.77,
       "rth_close": 0.77,
       "volume": 17357487.0,
-      "dollar_volume": 16836762.39,
-      "dollar_volume_label": "16.8M$",
+      "dollar_volume": 16663187.52,
+      "dollar_volume_label": "16.7M$",
       "market_cap": 11408069.0,
       "phase": "pre",
       "session_ar": "Premarket الآن (قبل الافتتاح)",
       "tv_url": "https://www.tradingview.com/chart/?symbol=MIMI",
       "source": "tv:premarket_change"
+    },
+    {
+      "symbol": "SDEV",
+      "name": "Stablecoin Development Corporat",
+      "last": 1.73,
+      "change_pct": 16.15,
+      "ref": 1.49,
+      "rth_close": 1.49,
+      "volume": 13548163.0,
+      "dollar_volume": 23438321.99,
+      "dollar_volume_label": "23.4M$",
+      "market_cap": 75417001.0,
+      "phase": "pre",
+      "session_ar": "Premarket الآن (قبل الافتتاح)",
+      "tv_url": "https://www.tradingview.com/chart/?symbol=SDEV",
+      "source": "finviz"
     },
     {
       "symbol": "ACET",
@@ -3363,8 +3541,8 @@
   "movers": [
     {
       "symbol": "AMD",
-      "change_pct": -2.52,
-      "last": 614.71,
+      "change_pct": -2.56,
+      "last": 614.47,
       "rvol": 0.81,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -3381,8 +3559,8 @@
     },
     {
       "symbol": "QQQ",
-      "change_pct": -0.96,
-      "last": 737.34,
+      "change_pct": -0.98,
+      "last": 737.23,
       "rvol": 0.91,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -3390,8 +3568,8 @@
     },
     {
       "symbol": "PLTR",
-      "change_pct": -0.7,
-      "last": 188.35,
+      "change_pct": -0.67,
+      "last": 188.4,
       "rvol": 0.67,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -3399,8 +3577,8 @@
     },
     {
       "symbol": "AMZN",
-      "change_pct": -0.66,
-      "last": 248.01,
+      "change_pct": -0.57,
+      "last": 248.24,
       "rvol": 0.97,
       "grade": "strong",
       "grade_ar": "قوي",
@@ -3411,7 +3589,7 @@
     {
       "symbol": "TRMD",
       "title": "Torm PLC - Major Shareholder Announcement",
-      "title_ar": "TORM PLC - إعلان المساهمين الرئيسيين",
+      "title_ar": "Torm PLC - Major Shareholder Announcement",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/TRMD/torm-plc-major-shareholder-fzu4qshs61pu.html",
@@ -3434,7 +3612,7 @@
     {
       "symbol": "FHYDF",
       "title": "First Hydrogen Completes Commercial Drone UGV Build",
-      "title_ar": "أول هيدروجين يكمل بناء الطائرات بدون طيار التجارية",
+      "title_ar": "First Hydrogen Completes Commercial Drone UGV Build",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/FHYDF/first-hydrogen-completes-commercial-drone-ugv-hjz13sgvzlge.html",
@@ -3457,7 +3635,7 @@
     {
       "symbol": "TMSNY",
       "title": "Temenos Named 2026 IDC Real Results Winner with Hamilton Reserve Bank",
-      "title_ar": "تيمينوس اسمه 2026 IDC النتائج الحقيقية الفائز مع هاميلتون البنك الاحتياطي",
+      "title_ar": "Temenos Named 2026 IDC Real Results Winner with Hamilton Reserve Bank",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/TMSNY/temenos-named-2026-idc-real-results-winner-with-hamilton-reserve-pger06ibxg26.html",
@@ -3480,7 +3658,7 @@
     {
       "symbol": "LEMIF",
       "title": "LEADING EDGE MATERIALS CLOSES C$6,000,000 PRIVATE PLACEMENT",
-      "title_ar": "المواد الرائدة تغلق الاكتتاب الخاص بقيمة 6,000,000 $",
+      "title_ar": "LEADING EDGE MATERIALS CLOSES C$6,000,000 PRIVATE PLACEMENT",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/LEMIF/leading-edge-materials-closes-c-6-000-000-private-8rueu9li5996.html",
@@ -3513,7 +3691,7 @@
     {
       "symbol": "AON",
       "title": "Aon Launches Power Lifecycle Program to Support Conventional Gas Power Projects Powering Digital Infrastructure Growth",
-      "title_ar": "أيون تطلق برنامج دورة حياة الطاقة لدعم مشاريع الطاقة التقليدية للغاز لتعزيز نمو البنية التحتية الرقمية",
+      "title_ar": "Aon Launches Power Lifecycle Program to Support Conventional Gas Power Projects Powering Digital Infrastructure Growth",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/AON/aon-launches-power-lifecycle-program-to-support-conventional-gas-ra17jmgihmqg.html",
@@ -3536,7 +3714,7 @@
     {
       "symbol": "TNDM",
       "title": "Tandem Mobi Automated Insulin Delivery System Now Available in Twelve International Markets",
-      "title_ar": "نظام توصيل الأنسولين الآلي من Tandem Mobi متوفر الآن في اثني عشر سوقًا دوليًا",
+      "title_ar": "Tandem Mobi Automated Insulin Delivery System Now Available in Twelve International Markets",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/TNDM/tandem-mobi-automated-insulin-delivery-system-now-available-in-01e3qut4s1bq.html",
@@ -3559,7 +3737,7 @@
     {
       "symbol": "ERIC",
       "title": "Share buybacks in Ericsson during the period September 21 - September 25, 2026",
-      "title_ar": "عمليات إعادة شراء الأسهم في إريكسون خلال الفترة من 21 سبتمبر إلى 25 سبتمبر 2026",
+      "title_ar": "Share buybacks in Ericsson during the period September 21 - September 25, 2026",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/ERIC/share-buybacks-in-ericsson-during-the-period-september-21-september-cqaztv6o0pvk.html",
@@ -3592,7 +3770,7 @@
     {
       "symbol": "ACN",
       "title": "Accenture and osapiens Make DS Smith’s Global Supply Chain More Transparent and Ready for Evolving EU Regulation",
-      "title_ar": "تجعل Accenture و osapiens سلسلة التوريد العالمية لشركة DS Smith أكثر شفافية وجاهزة للوائح الاتحاد الأوروبي المتطورة",
+      "title_ar": "Accenture and osapiens Make DS Smith’s Global Supply Chain More Transparent and Ready for Evolving EU Regulation",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/ACN/accenture-and-osapiens-make-ds-smith-s-global-supply-chain-more-foe37gikraer.html",
@@ -3615,7 +3793,7 @@
     {
       "symbol": "TTE",
       "title": "Strategy and Outlook Presentation 2026",
-      "title_ar": "عرض الاستراتيجية والتوقعات 2026",
+      "title_ar": "Strategy and Outlook Presentation 2026",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/TTE/strategy-and-outlook-presentation-urmudj7rekte.html",
@@ -3648,7 +3826,7 @@
     {
       "symbol": "LKNCY",
       "title": "Luckin Coffee Celebrates 100 Stores in Singapore",
-      "title_ar": "Luckin Coffee تحتفل بـ 100 متجر في سنغافورة",
+      "title_ar": "Luckin Coffee Celebrates 100 Stores in Singapore",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/LKNCY/luckin-coffee-celebrates-100-stores-in-eqf330o3m5vv.html",
@@ -3671,7 +3849,7 @@
     {
       "symbol": "BUR",
       "title": "Statement Regarding Jury Verdict in Patent Matter",
-      "title_ar": "بيان بشأن حكم هيئة المحلفين في مسألة براءات الاختراع",
+      "title_ar": "Statement Regarding Jury Verdict in Patent Matter",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/BUR/statement-regarding-jury-verdict-in-patent-097cu0imm4vr.html",
@@ -3694,7 +3872,7 @@
     {
       "symbol": "DXCM",
       "title": "Dexcom Publishes New Report During EASD 2026 on Type 2 Diabetes Revealing Critical Opportunity for Global Diabetes Care",
-      "title_ar": "تنشر Dexcom تقريرًا جديدًا خلال EASD 2026 حول مرض السكري من النوع 2 يكشف عن فرصة حاسمة لرعاية مرض السكري العالمي",
+      "title_ar": "Dexcom Publishes New Report During EASD 2026 on Type 2 Diabetes Revealing Critical Opportunity for Global Diabetes Care",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/DXCM/dexcom-publishes-new-report-during-easd-2026-on-type-2-diabetes-5c739f0t469v.html",
@@ -3717,7 +3895,7 @@
     {
       "symbol": "CMCL",
       "title": "Caledonia Mining Corporation Plc: Notification of Relevant Change to Significant Shareholder",
-      "title_ar": "شركة كاليدونيا للتعدين ش.م. ع: إخطار بالتغيير ذي الصلة للمساهمين المهمين",
+      "title_ar": "Caledonia Mining Corporation Plc: Notification of Relevant Change to Significant Shareholder",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/CMCL/caledonia-mining-corporation-plc-notification-of-relevant-change-to-oecgy4vausvn.html",
@@ -3740,7 +3918,7 @@
     {
       "symbol": "HOPHF",
       "title": "Hemogenyx Pharmaceuticals PLC Announces Half-year Financial Report",
-      "title_ar": "تعلن Hemogenyx Pharmaceuticals PLC عن التقرير المالي نصف السنوي",
+      "title_ar": "Hemogenyx Pharmaceuticals PLC Announces Half-year Financial Report",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/HOPHF/hemogenyx-pharmaceuticals-plc-announces-half-year-financial-ztggkdq58dzl.html",
@@ -3763,7 +3941,7 @@
     {
       "symbol": "FULMF",
       "title": "Fulcrum Metals PLC Announces Interim Results for the six months to 30 June 2026",
-      "title_ar": "تعلن Fulcrum Metals PLC عن النتائج المؤقتة للأشهر الستة حتى 30 يونيو 2026",
+      "title_ar": "Fulcrum Metals PLC Announces Interim Results for the six months to 30 June 2026",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/FULMF/fulcrum-metals-plc-announces-interim-results-for-the-six-months-to-j7mfp1gt3qzu.html",
@@ -3786,7 +3964,7 @@
     {
       "symbol": "QGEN",
       "title": "QIAGEN Completes U.S. QIAstat-Dx Bloodstream Infection Portfolio With FDA Clearance of New Bacteria Detection Panel",
-      "title_ar": "تستكمل QIAGEN محفظة عدوى مجرى الدم QIAstat - Dx الأمريكية بتخليص إدارة الغذاء والدواء الأمريكية من لوحة الكشف عن البكتيريا الجديدة",
+      "title_ar": "QIAGEN Completes U.S. QIAstat-Dx Bloodstream Infection Portfolio With FDA Clearance of New Bacteria Detection Panel",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/QGEN/qiagen-completes-u-s-qi-astat-dx-bloodstream-infection-portfolio-jvzlo7mipawz.html",
@@ -3819,7 +3997,7 @@
     {
       "symbol": "ARCAY",
       "title": "Arcadis deepens Autodesk collaboration to accelerate AI and data-led delivery for clients",
-      "title_ar": "تعمل أركاديس على تعميق تعاون أوتوديسك لتسريع تقديم الذكاء الاصطناعي والبيانات للعملاء",
+      "title_ar": "Arcadis deepens Autodesk collaboration to accelerate AI and data-led delivery for clients",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/ARCAY/arcadis-deepens-autodesk-collaboration-to-accelerate-ai-and-data-led-6jcjh1je5v66.html",
@@ -3852,7 +4030,7 @@
     {
       "symbol": "NXPI",
       "title": "VSMC Celebrates the Grand Opening of Its First 300mm Fab in Singapore",
-      "title_ar": "تحتفل شركة في إس إم سي بالافتتاح الكبير لأول مصنع لها بسمك 300 مم في سنغافورة",
+      "title_ar": "VSMC Celebrates the Grand Opening of Its First 300mm Fab in Singapore",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/NXPI/vsmc-celebrates-the-grand-opening-of-its-first-300mm-fab-in-ncj7wrjmxlhs.html",
@@ -3875,7 +4053,7 @@
     {
       "symbol": "AGLDF",
       "title": "Austral Gold Intersects 95 m at 1.10 g/t AuEq at Guanaco",
-      "title_ar": "يتقاطع الذهب الأسترالي مع 95 مترًا عند 1.10 جم/طن من AuEq في غواناكو",
+      "title_ar": "Austral Gold Intersects 95 m at 1.10 g/t AuEq at Guanaco",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/AGLDF/austral-gold-intersects-95-m-at-1-10-g-t-au-eq-at-81n712bv7rm8.html",
@@ -3898,7 +4076,7 @@
     {
       "symbol": "FFAI",
       "title": "Faraday Future Announces This Week’s Investor Weekly Report From YT Jia Has Been Rescheduled to September 28; FF EAI “Built in USA” Upstream & Downstream Business Partner Conference Part Two to Be Held September 29",
-      "title_ar": "تعلن Faraday Future عن إعادة جدولة التقرير الأسبوعي للمستثمر لهذا الأسبوع من YT JIA إلى 28 سبتمبر ؛ FF EAI \"بنيت في الولايات المتحدة الأمريكية\" مؤتمر شركاء الأعمال المنبع والمصب الجزء الثاني الذي سيعقد في 29 سبتمبر",
+      "title_ar": "Faraday Future Announces This Week’s Investor Weekly Report From YT Jia Has Been Rescheduled to September 28; FF EAI “Built in USA” Upstream & Downstream Business Partner Conference Part Two to Be Held September 29",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/FFAI/faraday-future-announces-this-week-s-investor-weekly-report-from-yt-npy99pbwok02.html",
@@ -3921,7 +4099,7 @@
     {
       "symbol": "HCM",
       "title": "HUTCHMED Initiates Global Trial of KRAS-EGFR-Antibody Conjugate Therapy HMPL-A830 in Patients with Solid Tumors",
-      "title_ar": "HUTCHMED تبدأ تجربة عالمية للعلاج المقترن بالأجسام المضادة KRAS - EGFR - HMPL - A830 في المرضى الذين يعانون من أورام صلبة",
+      "title_ar": "HUTCHMED Initiates Global Trial of KRAS-EGFR-Antibody Conjugate Therapy HMPL-A830 in Patients with Solid Tumors",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/HCM/hutchmed-initiates-global-trial-of-kras-egfr-antibody-conjugate-8jpo17s9at9s.html",
@@ -3954,7 +4132,7 @@
     {
       "symbol": "NIO",
       "title": "NIO Announces Definitive Agreements for Strategic Transaction with Geely Holding Group in Battery Swapping and Charging Businesses",
-      "title_ar": "تعلن NIO عن اتفاقيات نهائية للمعاملات الاستراتيجية مع مجموعة جيلي القابضة في أعمال مبادلة البطاريات وشحنها",
+      "title_ar": "NIO Announces Definitive Agreements for Strategic Transaction with Geely Holding Group in Battery Swapping and Charging Businesses",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/NIO/nio-announces-definitive-agreements-for-strategic-transaction-with-bxgo4c9npdff.html",
@@ -3987,7 +4165,7 @@
     {
       "symbol": "WOLF",
       "title": "Wolfspeed Expands 200 mm Silicon Carbide Portfolio with New Premium Power Substrates",
-      "title_ar": "Wolfspeed توسع محفظة كربيد السيليكون 200 مم مع ركائز طاقة جديدة ممتازة",
+      "title_ar": "Wolfspeed Expands 200 mm Silicon Carbide Portfolio with New Premium Power Substrates",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/WOLF/wolfspeed-expands-200-mm-silicon-carbide-portfolio-with-new-premium-a233mj5rv3as.html",
@@ -4010,7 +4188,7 @@
     {
       "symbol": "MAUTF",
       "title": "Montage Gold achieves first gold pour at its Koné mine on budget and ahead of schedule",
-      "title_ar": "مونتاج جولد تحقق أول صب للذهب في منجم كوني في الميزانية وقبل الموعد المحدد",
+      "title_ar": "Montage Gold achieves first gold pour at its Koné mine on budget and ahead of schedule",
       "summary": "",
       "summary_ar": "",
       "url": "https://www.stocktitan.net/news/MAUTF/montage-gold-achieves-first-gold-pour-at-its-kone-mine-on-budget-and-ouot2x1utkt1.html",
@@ -4032,10 +4210,9 @@
     }
   ],
   "news_excluded_negative": [
+    "AAON",
     "ARAY",
     "AVGO",
-    "COST",
-    "JPM",
     "MAAS",
     "META",
     "NVDA",
@@ -4047,6 +4224,6 @@
   "channel": "@aied01",
   "disclaimer": "تعليمي فقط — ليس توصية استثمارية. لا يوجد تنفيذ أوامر تلقائي.",
   "reminder": "تداول المحفز لا المطاردة — راجع المصدر قبل الدخول",
-  "heartbeat_ts": 1790584994,
+  "heartbeat_ts": 1790585128,
   "publisher": "github-actions-always-on"
 }
