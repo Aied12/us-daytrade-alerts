@@ -1,15 +1,11 @@
 name: us-daytrade-alerts
 
-# المهام الثقيلة فقط (يدوي أو مرة عند الافتتاح/الإغلاق)
-# التحديث المستمر انتقل إلى always-on.yml لتجنب التعارض
+# متوقف عن الجدول — الحي على VPS. يبقى للتشغيل اليدوي فقط.
 on:
-  schedule:
-    - cron: "0 8 * * 1-5"
-    - cron: "5 20 * * 1-5"
   workflow_dispatch:
     inputs:
       mode:
-        description: "premarket | tick | evening | intel | ping"
+        description: "premarket | tick | evening | intel | ping (يدوي فقط)"
         required: true
         default: "tick"
 
@@ -22,6 +18,7 @@ permissions:
 
 jobs:
   run-alerts:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -47,22 +44,11 @@ jobs:
           printf 'TELEGRAM_CHANNEL_ID=%s\n' "$TELEGRAM_CHANNEL_ID" >> .env
           printf 'TELEGRAM_EXTRA_CHAT_IDS=%s\n' "$TELEGRAM_EXTRA_CHAT_IDS" >> .env
           printf 'CAPITAL_SAR=%s\n' "${CAPITAL_SAR:-45000}" >> .env
-          printf 'LIGHT_MODE=1\nAPI_THRIFT=1\nUSER_MODE=beginner\nMIN_PRICE_USD=5\nTIMEZONE=Asia/Riyadh\n' >> .env
-          if [ -f data/telegram_paused ]; then
-            printf 'TELEGRAM_ENABLED=0\n' >> .env
-          else
-            printf 'TELEGRAM_ENABLED=0\n' >> .env
-          fi
+          printf 'LIGHT_MODE=1\nAPI_THRIFT=1\nUSER_MODE=beginner\nMIN_PRICE_USD=5\nTIMEZONE=Asia/Riyadh\nTELEGRAM_ENABLED=0\n' >> .env
       - name: Run bot job + rebuild dashboard
         run: |
           MODE="${{ github.event.inputs.mode }}"
-          if [ -z "$MODE" ]; then
-            HOUR=$(date -u +%H)
-            if [ "$HOUR" = "08" ]; then MODE=premarket
-            elif [ "$HOUR" = "20" ]; then MODE=evening
-            else MODE=tick
-            fi
-          fi
+          if [ -z "$MODE" ]; then MODE=tick; fi
           if [ "$MODE" = "ping" ]; then
             python scripts/telegram_ping.py || true
           else
@@ -90,9 +76,9 @@ jobs:
             echo "[publish] no dashboard changes"
             exit 0
           fi
-          git commit -m "Auto-update dashboard (Actions)"
+          git commit -m "Auto-update dashboard (Actions manual)"
           for i in 1 2 3; do
-            git pull --rebase --autostash origin main || git rebase --abort || true
+            git pull --no-rebase --autostash origin main || true
             if git push origin HEAD:main; then
               echo "[publish] pushed"
               exit 0

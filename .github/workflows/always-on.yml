@@ -1,21 +1,12 @@
 name: always-on-dashboard
 
-# ناشر سحابي دائم — لا يعتمد على جهاز Cloud Agent الذي ينام
+# متوقف — التحديث الحي أصبح على VPS.
+# الإبقاء على workflow_dispatch فقط للطوارئ اليدوية.
 on:
-  schedule:
-    # نافذة الرياض ≈ 11:00 → 03:00+ (Premarket حتى نهاية After-hours الأمريكي)
-    # UTC 08–23 أيام الاثنين–الجمعة + ذيل بعد منتصف الليل UTC الثلاثاء–السبت
-    - cron: "*/5 8-23 * * 1-5"
-    - cron: "*/5 0-2 * * 2-6"
-    - cron: "0 8 * * 1-5"
-    - cron: "5 20 * * 1-5"
-    # فجوة الليل (UTC 03–07) + نهاية الأسبوع — نبض خفيف حتى لا يتجمّد «آخر فحص»
-    - cron: "*/20 3-7 * * 1-5"
-    - cron: "*/20 * * * 0,6"
   workflow_dispatch:
     inputs:
       mode:
-        description: "tick | premarket | evening"
+        description: "tick | premarket | evening (يدوي فقط — الجدول متوقف)"
         required: true
         default: "tick"
 
@@ -29,6 +20,7 @@ permissions:
 
 jobs:
   publish:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
@@ -40,155 +32,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install deps
+      - name: Notice
         run: |
-          python -m pip install -U pip
-          pip install -r requirements.txt
-
-      - name: Env
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
-          TELEGRAM_EXTRA_CHAT_IDS: ${{ secrets.TELEGRAM_EXTRA_CHAT_IDS }}
-          CAPITAL_SAR: ${{ secrets.CAPITAL_SAR }}
-          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
-        run: |
-          printf 'TELEGRAM_BOT_TOKEN=%s\n' "$TELEGRAM_BOT_TOKEN" > .env
-          printf 'TELEGRAM_CHAT_ID=%s\n' "$TELEGRAM_CHAT_ID" >> .env
-          printf 'TELEGRAM_CHANNEL_ID=%s\n' "$TELEGRAM_CHANNEL_ID" >> .env
-          printf 'TELEGRAM_EXTRA_CHAT_IDS=%s\n' "$TELEGRAM_EXTRA_CHAT_IDS" >> .env
-          printf 'CAPITAL_SAR=%s\n' "${CAPITAL_SAR:-45000}" >> .env
-          printf 'FINNHUB_API_KEY=%s\n' "$FINNHUB_API_KEY" >> .env
-          printf 'LIGHT_MODE=1\nAPI_THRIFT=1\nUSER_MODE=beginner\nMIN_PRICE_USD=5\nTIMEZONE=Asia/Riyadh\nTELEGRAM_ENABLED=0\n' >> .env
-          if [ -f data/telegram_paused ]; then printf 'TELEGRAM_ENABLED=0\n' >> .env; fi
-
-      - name: Scan + rebuild live JSON
-        run: |
-          MODE="${{ github.event.inputs.mode }}"
-          if [ -z "$MODE" ]; then
-            HOUR=$(date -u +%H)
-            if [ "$HOUR" = "08" ]; then MODE=premarket
-            elif [ "$HOUR" = "20" ]; then MODE=evening
-            else MODE=tick
-            fi
-          fi
-          python scripts/scheduled_run.py --mode "$MODE" --force || true
-          python scripts/write_live_json.py || true
-          python scripts/publish_news.py || true
-          python scripts/build_pages.py
-          cp -f pages/index.html docs/index.html
-          cp -f pages/status.json docs/status.json
-          cp -f pages/prices-live.json docs/prices-live.json 2>/dev/null || true
-          cp -f pages/live.json docs/live.json 2>/dev/null || true
-          cp -f pages/news-live.json docs/news-live.json 2>/dev/null || true
-          mkdir -p docs/icons
-          cp -f pages/manifest.webmanifest docs/manifest.webmanifest 2>/dev/null || true
-          cp -f pages/sw.js docs/sw.js 2>/dev/null || true
-          cp -f pages/icons/*.png docs/icons/ 2>/dev/null || true
-          python - <<'PY'
-          import json, time
-          from pathlib import Path
-          p = Path("docs/status.json")
-          d = json.loads(p.read_text(encoding="utf-8"))
-          d["heartbeat_ts"] = int(time.time())
-          d["publisher"] = "github-actions-always-on"
-          p.write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
-          Path("pages/status.json").write_text(p.read_text(encoding="utf-8"), encoding="utf-8")
-          print("heartbeat", d["heartbeat_ts"], "generated", d.get("generated_local"))
-          PY
-
-      - name: Commit + push (conflict-proof)
-        id: publish
-        run: |
-          set -e
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # احفظ JSON فقط — لا تعِد كتابة index.html حتى لا تُمسَح تحديثات الواجهة
-          STAGE=$(mktemp -d)
-          mkdir -p "$STAGE/docs" "$STAGE/pages" "$STAGE/data"
-          cp -f docs/status.json docs/prices-live.json docs/live.json docs/news-live.json "$STAGE/docs/" 2>/dev/null || true
-          cp -f pages/status.json pages/prices-live.json pages/live.json pages/news-live.json "$STAGE/pages/" 2>/dev/null || true
-          cp -f data/sniper_seen.json data/sniper_board.json data/jamal_board.json data/strategy_ledger.json data/qannas_seen.json data/qannas_board.json "$STAGE/data/" 2>/dev/null || true
-
-          for i in 1 2 3 4 5 6; do
-            git fetch origin main
-            git reset --hard origin/main
-            cp -f "$STAGE/docs/"* docs/ 2>/dev/null || true
-            cp -f "$STAGE/pages/"* pages/ 2>/dev/null || true
-            cp -f "$STAGE/data/sniper_seen.json" data/sniper_seen.json 2>/dev/null || true
-            cp -f "$STAGE/data/sniper_board.json" data/sniper_board.json 2>/dev/null || true
-            cp -f "$STAGE/data/jamal_board.json" data/jamal_board.json 2>/dev/null || true
-            cp -f "$STAGE/data/strategy_ledger.json" data/strategy_ledger.json 2>/dev/null || true
-            cp -f "$STAGE/data/qannas_seen.json" data/qannas_seen.json 2>/dev/null || true
-            cp -f "$STAGE/data/qannas_board.json" data/qannas_board.json 2>/dev/null || true
-            # أبقِ docs/index.html متزامناً مع نسخة الكود الحالية على main
-            cp -f pages/index.html docs/index.html 2>/dev/null || true
-            mkdir -p docs/icons
-            cp -f pages/manifest.webmanifest docs/manifest.webmanifest 2>/dev/null || true
-            cp -f pages/sw.js docs/sw.js 2>/dev/null || true
-            cp -f pages/icons/*.png docs/icons/ 2>/dev/null || true
-            git add docs/status.json docs/prices-live.json docs/live.json docs/news-live.json docs/index.html \
-              docs/manifest.webmanifest docs/sw.js docs/icons \
-              pages/status.json pages/prices-live.json pages/live.json pages/news-live.json \
-              data/sniper_seen.json data/sniper_board.json data/jamal_board.json data/strategy_ledger.json \
-              data/qannas_seen.json data/qannas_board.json || true
-            if git diff --cached --quiet; then
-              echo "no changes vs origin/main"
-              exit 0
-            fi
-            git commit -m "Always-on live dashboard update" || true
-            if git push origin HEAD:main; then
-              echo "pushed ok"
-              exit 0
-            fi
-            echo "push failed try $i — retry from latest main"
-            sleep $((i*2))
-          done
-          echo "push failed after retries"
-          exit 1
-
-      - name: Optional Cloudflare live mirror
-        if: success()
-        env:
-          LIVE_API_URL: ${{ secrets.LIVE_API_URL }}
-          LIVE_API_TOKEN: ${{ secrets.LIVE_API_TOKEN }}
-        run: |
-          if [ -z "$LIVE_API_URL" ] || [ -z "$LIVE_API_TOKEN" ]; then
-            echo "Cloudflare mirror not configured — skip"
-            exit 0
-          fi
-          curl -fsS -X POST "$LIVE_API_URL/ingest" \
-            -H "Authorization: Bearer $LIVE_API_TOKEN" \
-            -H "Content-Type: application/json" \
-            --data-binary @docs/status.json
-          curl -fsS -X POST "$LIVE_API_URL/ingest/prices" \
-            -H "Authorization: Bearer $LIVE_API_TOKEN" \
-            -H "Content-Type: application/json" \
-            --data-binary @docs/prices-live.json || true
-          echo "mirrored to Cloudflare"
-
-      # يعوّض تأخر جدولة GitHub أثناء Premarket + الجلسة + After-hours
-      # عطلة/فجوة الليل تعتمد على cron */20 فقط (بدون سلسلة keepalive)
-      - name: Keepalive next tick
-        if: always()
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          HOUR=$((10#$(date -u +%H)))
-          DOW=$(date -u +%u)
-          IN_WINDOW=0
-          # Mon–Fri UTC 08–23 ≈ Riyadh 11:00–02:59
-          if [ "$DOW" -le 5 ] && [ "$HOUR" -ge 8 ] && [ "$HOUR" -le 23 ]; then
-            IN_WINDOW=1
-          fi
-          # After midnight UTC (Tue–Sat 00–02) = late After-hours in Riyadh
-          if [ "$DOW" -ge 2 ] && [ "$DOW" -le 6 ] && [ "$HOUR" -le 2 ]; then
-            IN_WINDOW=1
-          fi
-          if [ "$IN_WINDOW" -ne 1 ]; then
-            echo "outside active market window — skip keepalive (UTC hour=$HOUR dow=$DOW); schedule covers gaps"
-            exit 0
-          fi
-          gh workflow run always-on-dashboard --ref main -f mode=tick
-          echo "queued next always-on tick"
+          echo "always-on schedule is disabled — live updates run on the VPS."
+          echo "This manual dispatch still works for emergencies."
