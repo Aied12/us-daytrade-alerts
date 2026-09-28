@@ -2008,12 +2008,18 @@
       }
     }
 
-    // مصدر حي أولاً (Cloudflare إن وُجد) ثم raw — لا نعتمد على كاش Pages للبيانات
+    // VPS/نفس المصدر أولاً، ثم Cloudflare، ثم raw كاحتياطي — لا نعتمد على كاش Pages
     function statusUrls(){
       const u=[];
+      const host=(location.hostname||'');
+      const onVps = host && !host.includes('github.io') && !host.includes('githubusercontent');
+      // على VPS: نفس السيرفر أصدق مصدر (تحديث فوري بدون Git)
+      if(onVps) u.push('./status.json');
       if(window.__LIVE_API) u.push(window.__LIVE_API+'/status.json');
-      u.push('https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/status.json');
-      u.push('./status.json');
+      if(!onVps){
+        u.push('https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/status.json');
+        u.push('./status.json');
+      }
       return u;
     }
 
