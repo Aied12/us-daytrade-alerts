@@ -43,12 +43,16 @@ SMALL_MCAP = 2_000_000_000      # Small-cap تفضيل
 FLOAT_GOOD = 20_000_000         # Low float إن توفر
 FLOAT_GREAT = 10_000_000
 MIN_DOLLAR = 2_000_000          # سيولة دولار دنيا (حماية)
+MIN_DOLLAR_PRE = 120_000        # Premarket: طباعة مبكرة أضعف
+MIN_RVOL_PRE = 0.85             # Premarket RVOL غالباً منخفض أول الساعة
 MIN_PRICE = 0.25
 MAX_PRICE = 150.0               # أبعد عن العمالقة
 NEWS_MAX_AGE_H = 36.0           # خبر «جديد» تقريباً يوم ونصف
 BOARD_MAX = 16
 STICKY_HOLD_SEC = 25 * 60
 SEEN_TTL_SEC = 20 * 3600
+ROCKET_CHG = 40.0               # حركة صاروخية → تظهر حتى بدون خبر/سيولة كاملة
+ROCKET_CHG_SOFT = 20.0
 
 # خطة يومية بسيطة للمتابعة الورقية
 PLAN_STOP_PCT = 0.07
@@ -295,9 +299,12 @@ def _score_row(row: dict[str, Any]) -> float:
 
 
 def fetch_qannas_universe(*, limit: int = 40) -> list[dict[str, Any]]:
-    """Top gainers / small-cap gainers / actives → live filter."""
+    """Top gainers / actives / TradingView pre movers → live filter."""
 
     def _build() -> list[dict[str, Any]]:
+        phase = session_phase()
+        min_dollar = MIN_DOLLAR_PRE if phase == "pre" else MIN_DOLLAR
+        min_rvol = MIN_RVOL_PRE if phase == "pre" else MIN_RVOL
         by: dict[str, dict[str, Any]] = {}
         for scr in ("day_gainers", "small_cap_gainers", "most_actives", "aggressive_small_caps"):
             for q in _screener_quotes(scr, 50):
@@ -320,7 +327,39 @@ def fetch_qannas_universe(*, limit: int = 40) -> list[dict[str, Any]]:
                     "name": q.get("shortName") or q.get("longName") or prev.get("name") or "",
                 }
 
-        # prefilter soft by screener % / mcap
+        # Extended movers (TradingView premarket / Finviz / Yahoo %) — catches CLRO-like names
+        try:
+            from bot.movers_universe import fetch_extended_mover_symbols
+
+            for row in fetch_extended_mover_symbols(limit=70):
+                sym = str(row.get("symbol") or "").upper()
+                if not sym or not sym.isalpha() or len(sym) > 5:
+                    continue
+                prev = by.get(sym) or {}
+                hint = max(
+                    float(row.get("tv_premarket_change") or 0),
+                    float(row.get("tv_change") or 0),
+                    float(row.get("screener_chg") or 0),
+                )
+                by[sym] = {
+                    **prev,
+                    "symbol": sym,
+                    "market_cap": float(row.get("market_cap") or prev.get("market_cap") or 0),
+                    "screener_chg": max(float(prev.get("screener_chg") or 0), hint),
+                    "screener_price": float(
+                        row.get("tv_premarket_price")
+                        or row.get("tv_close")
+                        or row.get("screener_price")
+                        or prev.get("screener_price")
+                        or 0
+                    ),
+                    "float_shares": float(row.get("float_shares") or prev.get("float_shares") or 0),
+                    "name": row.get("name") or prev.get("name") or "",
+                    "ext_source": row.get("source") or "",
+                }
+        except Exception:
+            pass
+
         cands = []
         for sym, q in by.items():
             mcap = float(q.get("market_cap") or 0)
@@ -330,10 +369,11 @@ def fetch_qannas_universe(*, limit: int = 40) -> list[dict[str, Any]]:
             if px and (px < MIN_PRICE or px > MAX_PRICE):
                 continue
             chg = float(q.get("screener_chg") or 0)
-            if chg < 8:  # soft — live may be higher
+            if chg < 8 and not q.get("ext_source"):
                 continue
             cands.append(sym)
-        cands = cands[:90]
+        cands.sort(key=lambda s: -float((by.get(s) or {}).get("screener_chg") or 0))
+        cands = cands[:110]
 
         lives: list[dict[str, Any]] = []
         with ThreadPoolExecutor(max_workers=10) as pool:
@@ -350,16 +390,22 @@ def fetch_qannas_universe(*, limit: int = 40) -> list[dict[str, Any]]:
                 vol = float(live.get("volume") or 0)
                 dollar = last * vol
                 mcap = float(base.get("market_cap") or 0)
-                if chg < MIN_CHG_PCT:
+                if chg < MIN_CHG_PCT and chg < ROCKET_CHG_SOFT:
                     continue
                 if last < MIN_PRICE or last > MAX_PRICE:
                     continue
                 if mcap and mcap > MAX_MCAP:
                     continue
-                if rvol < MIN_RVOL and dollar < MIN_DOLLAR * 3:
-                    continue
-                if dollar < MIN_DOLLAR:
-                    continue
+                rocket = chg >= ROCKET_CHG
+                soft_rocket = phase == "pre" and chg >= ROCKET_CHG_SOFT
+                if not rocket and not soft_rocket:
+                    if rvol < min_rvol and dollar < min_dollar * 3:
+                        continue
+                    if dollar < min_dollar:
+                        continue
+                else:
+                    if dollar < (80_000 if rocket else 120_000):
+                        continue
                 lives.append(
                     {
                         **live,
@@ -375,12 +421,13 @@ def fetch_qannas_universe(*, limit: int = 40) -> list[dict[str, Any]]:
                         "cap_bucket": (
                             "small" if mcap and mcap <= SMALL_MCAP else ("mid" if mcap else "unknown")
                         ),
+                        "ext_source": base.get("ext_source") or "",
                     }
                 )
         lives.sort(key=lambda x: -float(x.get("change_pct") or 0))
         return lives[:limit]
 
-    key = f"qannas_universe:{session_phase()}:{limit}"
+    key = f"qannas_universe:{session_phase()}:{limit}:v2"
     try:
         hit = cached_call(key, _build, ttl=50)
         return list(hit) if hit else _build()
@@ -420,17 +467,21 @@ def build_qannas_scanner(
         rvol = float(r.get("rvol") or 0)
         if snap and snap.avg_volume_20 > 0 and snap.volume > 0:
             rvol = max(rvol, snap.volume / snap.avg_volume_20)
-        if rvol < MIN_RVOL:
+        chg = float(r.get("change_pct") or 0)
+        min_rvol = MIN_RVOL_PRE if phase == "pre" else MIN_RVOL
+        rocket = chg >= ROCKET_CHG
+        soft_rocket = phase == "pre" and chg >= ROCKET_CHG_SOFT
+        if rvol < min_rvol and not rocket and not soft_rocket:
             continue
 
         related = by_news.get(sym) or []
         has_news = bool(related)
-        if require_news and not has_news:
+        # صاروخ Premarket يظهر حتى بدون خبر (بطاقة ناقصة الشروط)
+        if require_news and not has_news and not rocket and not soft_rocket:
             continue
 
         mcap = float(r.get("market_cap") or 0) or None
         flt = float(r.get("float_shares") or 0) or None
-        chg = float(r.get("change_pct") or 0)
         last = float(r.get("last") or 0)
         day_open = float(r.get("day_open") or 0)
         day_low = float(r.get("day_low") or 0) or None

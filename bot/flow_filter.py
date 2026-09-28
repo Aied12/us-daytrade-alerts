@@ -143,6 +143,16 @@ def gainer_passes_flow(row: dict[str, Any], phase: str | None = None) -> bool:
     dollar = float(row.get("dollar_volume") or 0)
     if chg < th["min_chg"]:
         return False
+    # Rocket / premarket exception: big % with thin early prints still shown
+    if phase == "pre":
+        if chg >= 40 and dollar >= 80_000:
+            return True
+        if chg >= 20 and dollar >= 150_000:
+            return True
+        if chg >= 12 and dollar >= 400_000:
+            return True
+    elif chg >= 50 and dollar >= 200_000:
+        return True
     if dollar < th["min_dollar"]:
         return False
     return True
