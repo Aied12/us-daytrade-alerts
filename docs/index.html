@@ -343,7 +343,6 @@
         </div>
         <div class="brand-actions">
           <span id="alive" class="pill">...</span>
-          <button class="btn" id="btnRefresh" type="button" title="تحديث البيانات">تحديث</button>
           <button class="btn ghost" id="btnMoreTools" type="button" title="المزيد" aria-expanded="false">⋯</button>
         </div>
       </div>
@@ -353,7 +352,6 @@
         <span class="session-chip">الرياض <b id="saClockStrip">--:--</b></span>
       </div>
       <div class="toolbar-more" id="toolbarMore">
-        <button class="btn secondary" id="btnReloadPage" type="button">⟳ تحديث الصفحة</button>
         <button class="btn secondary" id="btnTheme" type="button">🌓 نهاري/ليلي</button>
         <button class="btn ghost" id="btnLight" type="button">📶 نسخة خفيفة</button>
         <button class="btn ghost" id="btnNotify" type="button">🔔 إشعار</button>
@@ -425,7 +423,6 @@
           <h2 style="margin:0">الأخبار</h2>
           <p class="muted" id="newsNote" style="margin:6px 0 0;font-size:.88rem;line-height:1.4">بث محفزات — Stock Titan + أسلاك رسمية</p>
         </div>
-        <button class="btn secondary" type="button" id="btnNewsRefresh" style="min-height:38px;padding:6px 12px;margin:0;font-size:.85rem">تحديث</button>
       </div>
       <div class="seg" id="catFilters" style="margin-top:8px">
         <button type="button" data-cat="all" class="active">الكل</button>
@@ -500,12 +497,11 @@
           <li>أكد الاسم ثم <b>إضافة</b> — يظهر أيقونة مثل التطبيقات.</li>
         </ol>
         <p class="muted" style="margin:10px 0 0;font-size:.88rem;line-height:1.45">
-          للتحديث داخل التطبيق: <b>تحديث الآن</b> = البيانات · <b>تحديث الصفحة</b> = إعادة تحميل كاملة (مثل زر المتصفح).
+          البيانات تتحدث تلقائياً من السيرفر — بدون تحديث يدوي.
         </p>
         <p class="pwa-status muted" id="pwaStatus">حالة التطبيق: جاري التحقق...</p>
         <div class="toolbar" style="margin-top:8px">
           <button class="btn" type="button" id="btnPwaInstallMore">تثبيت (أندرويد / كروم)</button>
-          <button class="btn secondary" type="button" id="btnPwaHardReload">تحديث الصفحة</button>
         </div>
       </div>
       <h2 style="margin-top:14px;font-size:1rem">المخاطرة</h2>
@@ -529,7 +525,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V = 30;
+    window.__STATUS_V = 31;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -2048,11 +2044,6 @@
     }
 
     async function fetchData(bust=false){
-      const btn=document.getElementById('btnRefresh');
-      // لا تعطّل الزر في التحديث التلقائي حتى لا يسرق التركيز ويقفز التمرير
-      if(bust){
-        btn.disabled=true; btn.textContent='... جاري التحديث';
-      }
       try{
         const best=await fetchFreshestStatus();
         if(!best) throw new Error('no status');
@@ -2075,15 +2066,9 @@
         renderLiveTape();
         if(bust || !liveBusy) pollAllPrices();
         refreshIn=AUTO_SEC;
-        if(bust) toast('تم التحديث');
       }catch(e){
         if(bust){
-          const _op=document.getElementById('opps'); if(_op) _op.innerHTML='<div class="empty">تعذّر التحديث — تحقق من النت أو افتح /scan في تيليجرام</div>';
-          toast('فشل التحديث');
-        }
-      }finally{
-        if(bust){
-          btn.disabled=false; btn.textContent='🔄 تحديث الآن';
+          const _op=document.getElementById('opps'); if(_op) _op.innerHTML='<div class="empty">تعذّر التحديث — تحقق من النت</div>';
         }
       }
     }
@@ -2091,24 +2076,6 @@
     const AUTO_SEC = isLightNet()?12:8;
     const PRICE_POLL_SEC = isLightNet()?6:4;
     let refreshIn = AUTO_SEC;
-
-    document.getElementById('btnRefresh').onclick=()=>hardRefreshBoard(false);
-    const btnReloadPage=document.getElementById('btnReloadPage');
-    if(btnReloadPage) btnReloadPage.onclick=()=>hardRefreshBoard(true);
-    // ضغطة طويلة على «تحديث الآن» = تحديث الصفحة كاملة أيضاً
-    (function(){
-      const btn=document.getElementById('btnRefresh');
-      if(!btn) return;
-      let pressTimer=null;
-      const clear=()=>{ if(pressTimer){ clearTimeout(pressTimer); pressTimer=null; } };
-      btn.addEventListener('touchstart', ()=>{
-        clear();
-        pressTimer=setTimeout(()=>hardRefreshBoard(true), 650);
-      }, {passive:true});
-      btn.addEventListener('touchend', clear);
-      btn.addEventListener('touchcancel', clear);
-      btn.addEventListener('contextmenu', (e)=>{ e.preventDefault(); hardRefreshBoard(true); });
-    })();
 
     async function clearPwaCaches(){
       try{
@@ -2127,29 +2094,16 @@
     }
 
     async function hardRefreshBoard(fullReload){
-      const btn=document.getElementById('btnRefresh');
-      const btnPage=document.getElementById('btnReloadPage');
-      const btnMore=document.getElementById('btnPwaHardReload');
-      if(btn){ btn.disabled=true; btn.textContent=fullReload?'... إعادة تحميل':'... جاري التحديث'; }
-      if(btnPage) btnPage.disabled=true;
-      if(btnMore) btnMore.disabled=true;
       try{
         await clearPwaCaches();
         if(fullReload){
-          toast('تحديث الصفحة...');
           const u=new URL(window.location.href);
           u.searchParams.set('_r', String(Date.now()));
           window.location.replace(u.toString());
           return;
         }
         await fetchData(true);
-      }finally{
-        if(!fullReload){
-          if(btn){ btn.disabled=false; btn.textContent='🔄 تحديث الآن'; }
-          if(btnPage) btnPage.disabled=false;
-          if(btnMore) btnMore.disabled=false;
-        }
-      }
+      }catch(_){}
     }
     document.getElementById('btnTheme').onclick=()=>{
       const cur=document.documentElement.getAttribute('data-theme')||'dark';
@@ -2207,8 +2161,6 @@
         renderNewsList(NEWS_CACHE);
       };
     });
-    const btnNewsRefresh=document.getElementById('btnNewsRefresh');
-    if(btnNewsRefresh) btnNewsRefresh.onclick=()=>{ toast('تحديث الأخبار...'); pollNewsLive(); };
     document.querySelectorAll('#sniperSeg button').forEach(b=>{
       b.onclick=()=>{
         document.querySelectorAll('#sniperSeg button').forEach(x=>x.classList.remove('active'));
@@ -2700,10 +2652,8 @@
       if(btnInstallMore) btnInstallMore.addEventListener('click', triggerInstall);
       if(btnHow) btnHow.addEventListener('click', goToInstallHelp);
       if(btnDismiss) btnDismiss.addEventListener('click', ()=>hideBanner(true));
-      const btnHard=document.getElementById('btnPwaHardReload');
-      if(btnHard) btnHard.addEventListener('click', ()=>hardRefreshBoard(true));
 
-      // عند الرجوع للتطبيق من الخلفية: حدّث البيانات فوراً (بديل سحب التحديث على الآيفون)
+      // عند الرجوع للتطبيق من الخلفية: حدّث البيانات فوراً
       document.addEventListener('visibilitychange', ()=>{
         if(document.visibilityState==='visible'){
           fetchData(true).catch(()=>{});
@@ -2726,7 +2676,7 @@
         const swUrl=new URL('sw.js', window.location.href).pathname;
         navigator.serviceWorker.register(swUrl, {scope: new URL('./', window.location.href).pathname})
           .then((reg)=>{
-            if(isStandalone) setStatus('حالة التطبيق: يعمل كتطبيق مثبت ✓ — «تحديث الآن» للبيانات · «تحديث الصفحة» لإعادة التحميل');
+            if(isStandalone) setStatus('حالة التطبيق: يعمل كتطبيق مثبت ✓ — البيانات تتحدث تلقائياً');
             else if(!isStandalone) setStatus((statusEl && statusEl.textContent) || 'حالة التطبيق: جاهز');
             if(reg){
               try{ reg.update(); }catch(_){}
