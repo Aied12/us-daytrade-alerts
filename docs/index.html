@@ -1945,8 +1945,15 @@
 
     async function pollNewsLive(){
       try{
-        const urls=(window.__LIVE_API?[window.__LIVE_API+'/news-live.json']:[])
-          .concat(['https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/news-live.json','./news-live.json']);
+        const host=(location.hostname||'');
+        const onVps = host && !host.includes('github.io') && !host.includes('githubusercontent');
+        const urls=[];
+        if(onVps) urls.push('./news-live.json');
+        if(window.__LIVE_API) urls.push(window.__LIVE_API+'/news-live.json');
+        if(!onVps){
+          urls.push('https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/news-live.json');
+          urls.push('./news-live.json');
+        }
         let best=null;
         for(const u of urls){
           try{
@@ -2301,13 +2308,21 @@
     let liveWave = 0;
     const LIVE_JSON_URLS = (()=>{
       const u=[];
+      const host=(typeof location!=='undefined' && location.hostname)||'';
+      const onVps = host && !host.includes('github.io') && !host.includes('githubusercontent');
+      if(onVps){
+        u.push('./prices-live.json');
+        u.push('./live.json');
+      }
       if(window.__LIVE_API){
         u.push(window.__LIVE_API+'/prices-live.json');
       }
-      u.push('https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/prices-live.json');
-      u.push('https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/live.json');
-      u.push('./prices-live.json');
-      u.push('./live.json');
+      if(!onVps){
+        u.push('https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/prices-live.json');
+        u.push('https://raw.githubusercontent.com/Aied12/us-daytrade-alerts/main/docs/live.json');
+        u.push('./prices-live.json');
+        u.push('./live.json');
+      }
       return u;
     })();
 
