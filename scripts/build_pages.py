@@ -354,10 +354,10 @@ def main() -> None:
     news_ar = list(news_pack.get("news") or [])
     bad_news = {str(s).upper() for s in (news_pack.get("negative_symbols") or [])}
 
-    # Drop any stock with negative headlines from boards + news (already filtered)
+    # Drop negative-headline names from trade boards — but keep gainers intact
+    # (Webull/TV Market Movers must stay visible even with mixed headlines).
     if bad_news:
         opportunities = [o for o in opportunities if str(o.get("symbol") or "").upper() not in bad_news]
-        gainers = [g for g in (gainers or []) if str(g.get("symbol") or "").upper() not in bad_news]
         movers = [s for s in movers if s.symbol.upper() not in bad_news]
         news_ar = [n for n in news_ar if str(n.get("symbol") or "").upper() not in bad_news]
 
