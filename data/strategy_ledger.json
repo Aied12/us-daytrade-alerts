@@ -97,7 +97,7 @@
       "stop": 3.42,
       "tp1": 7.46,
       "tp2": 8.03,
-      "last": 6.32,
+      "last": 6.24,
       "status": "open",
       "exit": null,
       "exit_ts": null,
@@ -178,64 +178,79 @@
       "stop": 2.99,
       "tp1": 3.98,
       "tp2": 4.28,
-      "last": 3.76,
-      "status": "open",
-      "exit": null,
-      "exit_ts": null,
-      "exit_local": null,
-      "pnl_pct": null,
-      "r_multiple": null,
-      "mfe_pct": 1.333,
+      "last": 4.13,
+      "status": "win_tp1",
+      "exit": 4.13,
+      "exit_ts": 1790591435,
+      "exit_local": "2026-09-28 13:30",
+      "pnl_pct": 10.133,
+      "r_multiple": 0.5,
+      "mfe_pct": 10.133,
       "mae_pct": -0.267,
-      "result_ar": "مفتوح"
+      "result_ar": "هدف 1 ✓"
     }
   ],
-  "updated_ts": 1790591308,
-  "updated_local": "2026-09-28 13:28 +03",
+  "updated_ts": 1790591435,
+  "updated_local": "2026-09-28 13:30 +03",
   "summary": {
-    "open": 4,
-    "closed": 3,
-    "wins": 3,
+    "open": 3,
+    "closed": 4,
+    "wins": 4,
     "losses": 0,
     "flat": 0,
     "win_rate": 100.0,
-    "avg_pnl_pct": 10.089,
-    "avg_r": 0.307,
+    "avg_pnl_pct": 10.1,
+    "avg_r": 0.355,
     "by_source": [
       {
         "name": "القناص",
         "n": 7,
-        "open": 4,
-        "closed": 3,
-        "wins": 3,
+        "open": 3,
+        "closed": 4,
+        "wins": 4,
         "losses": 0,
         "win_rate": 100.0,
-        "avg_pnl_pct": 10.089
+        "avg_pnl_pct": 10.1
       }
     ],
     "by_strategy": [
       {
         "name": "القناص",
         "n": 7,
-        "open": 4,
-        "closed": 3,
-        "wins": 3,
+        "open": 3,
+        "closed": 4,
+        "wins": 4,
         "losses": 0,
         "win_rate": 100.0,
-        "avg_pnl_pct": 10.089
+        "avg_pnl_pct": 10.1
       },
       {
         "name": "محفز + زخم",
         "n": 7,
-        "open": 4,
-        "closed": 3,
-        "wins": 3,
+        "open": 3,
+        "closed": 4,
+        "wins": 4,
         "losses": 0,
         "win_rate": 100.0,
-        "avg_pnl_pct": 10.089
+        "avg_pnl_pct": 10.1
       }
     ],
     "recent_closed": [
+      {
+        "symbol": "MEDS",
+        "source_ar": "القناص",
+        "strategies": [
+          "القناص",
+          "محفز + زخم"
+        ],
+        "entry": 3.75,
+        "exit": 4.13,
+        "pnl_pct": 10.133,
+        "r_multiple": 0.5,
+        "result_ar": "هدف 1 ✓",
+        "opened_local": "2026-09-28 13:05",
+        "exit_local": "2026-09-28 13:30"
+      },
       {
         "symbol": "MIMI",
         "source_ar": "القناص",
@@ -308,10 +323,10 @@
           "محفز + زخم"
         ],
         "entry": 7.04,
-        "last": 6.32,
+        "last": 6.24,
         "stop": 3.42,
         "tp1": 7.46,
-        "pnl_pct": -10.227,
+        "pnl_pct": -11.364,
         "mfe_pct": 0.284,
         "mae_pct": -14.631,
         "opened_local": "2026-09-28 11:26",
@@ -332,23 +347,6 @@
         "mfe_pct": 3.125,
         "mae_pct": -1.563,
         "opened_local": "2026-09-28 11:28",
-        "result_ar": "مفتوح"
-      },
-      {
-        "symbol": "MEDS",
-        "source_ar": "القناص",
-        "strategies": [
-          "القناص",
-          "محفز + زخم"
-        ],
-        "entry": 3.75,
-        "last": 3.76,
-        "stop": 2.99,
-        "tp1": 3.98,
-        "pnl_pct": 0.267,
-        "mfe_pct": 1.333,
-        "mae_pct": -0.267,
-        "opened_local": "2026-09-28 13:05",
         "result_ar": "مفتوح"
       }
     ],
