@@ -25,7 +25,8 @@ systemctl enable --now cron 2>/dev/null || service cron start 2>/dev/null || tru
 echo "[ops-cron] installed $CRON_FILE"
 echo "  - watchdog every 3 min"
 echo "  - backup daily 02:15 UTC"
-# Smoke once
-/usr/bin/python3 "$APP_DIR/scripts/vps_watchdog.py" || true
-APP_DIR="$APP_DIR" /bin/bash "$APP_DIR/scripts/vps_backup.sh" || true
+# Smoke once (append to the same logs cron uses)
+/usr/bin/python3 "$APP_DIR/scripts/vps_watchdog.py" >> "$APP_DIR/logs/vps_watchdog.log" 2>&1 || true
+APP_DIR="$APP_DIR" /bin/bash "$APP_DIR/scripts/vps_backup.sh" >> "$APP_DIR/logs/vps_backup.log" 2>&1 || true
 ls -la /opt/backups/us-daytrade-alerts | tail -5
+echo "[ops-cron] logs: $APP_DIR/logs/vps_watchdog.log $APP_DIR/logs/vps_backup.log"

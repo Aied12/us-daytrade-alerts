@@ -2,9 +2,10 @@
 
 ## ما تم تفعيله
 
-1. **إيقاف جداول GitHub Actions**
-   - `always-on.yml` و `alerts.yml` صاروا يدويين فقط (`workflow_dispatch`)
-   - التحديث الحي من الـ VPS فقط — بدون استهلاك Actions كل دقائق
+1. **إيقاف GitHub Actions المقرر**
+   - الجداول (`schedule`) محذوفة من `always-on.yml` و `alerts.yml`
+   - الـ workflows معطّلة يدوياً في GitHub (`disabled_manually`) حتى لا تستهلك رصيد أو تتعارض مع الـ VPS
+   - التحديث الحي من الـ VPS فقط
 
 2. **نسخة احتياطية يومية**
    - السكربت: `scripts/vps_backup.sh`
