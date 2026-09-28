@@ -138,38 +138,90 @@ def fetch_day_gainers(min_price: float = 5.0, limit: int = 20) -> list[dict[str,
                 cand.append(s)
         cand = cand[:100]
 
+        # Premarket: match Webull mid-list (<$5) — floor $0.25. RTH/post keep caller floor.
+        price_floor = 0.25 if phase == "pre" else float(min_price)
         lives: list[dict] = []
+        seen_live: set[str] = set()
         with ThreadPoolExecutor(max_workers=10) as pool:
             futs = {pool.submit(_yahoo_live, s): s for s in cand}
             for fut in as_completed(futs):
                 row = fut.result()
                 if not row:
                     continue
-                # Rocket pre movers can be under the usual min_price floor (still >= $0.25)
+                sym = row["symbol"]
+                extra = meta.get(sym) or {}
                 chg = float(row["change_pct"] or 0)
-                floor = 0.25 if (phase == "pre" and chg >= 15) else min_price
-                if row["last"] < floor:
+                last = float(row["last"] or 0)
+                ref = float(row.get("ref") or 0)
+                vol = float(row.get("volume") or 0)
+                # Yahoo often reports 0% pre while Webull/TV already show the move (RJF/H/PHIO)
+                src_chg = float(extra.get("tv_premarket_change") or extra.get("screener_chg") or 0)
+                src_px = float(extra.get("tv_premarket_price") or extra.get("screener_price") or 0)
+                src_vol = float(extra.get("volume") or 0)
+                if phase == "pre" and src_chg > 0 and (chg <= 0.5 or (src_chg - chg) >= 5.0):
+                    chg = src_chg
+                    if src_px > 0:
+                        last = src_px
+                    # Webull often stubs volume as 1 for large names — keep Yahoo prints
+                    if src_vol > vol and src_vol >= 100:
+                        vol = src_vol
+                    pre_close = float(extra.get("pre_close") or 0)
+                    if pre_close > 0:
+                        ref = pre_close
+                if last < price_floor:
                     continue
                 if chg <= 0:
                     continue
-                dollar = row["last"] * float(row.get("volume") or 0)
-                extra = meta.get(row["symbol"]) or {}
+                dollar = last * vol
                 lives.append(
                     {
-                        "symbol": row["symbol"],
+                        "symbol": sym,
                         "name": row.get("name") or extra.get("name") or "",
-                        "last": row["last"],
-                        "change_pct": row["change_pct"],
-                        "ref": row["ref"],
+                        "last": round(last, 4 if last < 1 else 2),
+                        "change_pct": round(chg, 2),
+                        "ref": round(ref, 4 if ref < 1 else 2) if ref else row.get("ref"),
                         "rth_close": row.get("rth_close"),
-                        "volume": row.get("volume") or 0,
+                        "volume": vol,
                         "dollar_volume": round(dollar, 2),
                         "dollar_volume_label": _money(dollar),
                         "market_cap": float(extra.get("market_cap") or 0) or None,
                         "phase": row["phase"],
                         "session_ar": session_label_ar(row["phase"]),
-                        "tv_url": f"https://www.tradingview.com/chart/?symbol={row['symbol']}",
+                        "tv_url": f"https://www.tradingview.com/chart/?symbol={sym}",
                         "source": extra.get("source") or "yahoo",
+                    }
+                )
+                seen_live.add(sym)
+        # Webull-only rows when Yahoo chart fails entirely
+        if phase == "pre":
+            for sym, extra in meta.items():
+                if sym in seen_live:
+                    continue
+                if str(extra.get("source") or "") != "webull_pre":
+                    continue
+                chg = float(extra.get("tv_premarket_change") or 0)
+                last = float(extra.get("tv_premarket_price") or 0)
+                if chg <= 0 or last < price_floor:
+                    continue
+                vol = float(extra.get("volume") or 0)
+                dollar = last * vol
+                pre_close = float(extra.get("pre_close") or 0)
+                lives.append(
+                    {
+                        "symbol": sym,
+                        "name": extra.get("name") or "",
+                        "last": round(last, 4 if last < 1 else 2),
+                        "change_pct": round(chg, 2),
+                        "ref": round(pre_close, 4 if pre_close < 1 else 2) if pre_close else None,
+                        "rth_close": pre_close or None,
+                        "volume": vol,
+                        "dollar_volume": round(dollar, 2),
+                        "dollar_volume_label": _money(dollar),
+                        "market_cap": float(extra.get("market_cap") or 0) or None,
+                        "phase": phase,
+                        "session_ar": session_label_ar(phase),
+                        "tv_url": f"https://www.tradingview.com/chart/?symbol={sym}",
+                        "source": "webull_pre",
                     }
                 )
         from bot.flow_filter import gainer_passes_flow

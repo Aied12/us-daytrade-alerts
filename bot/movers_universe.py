@@ -243,12 +243,16 @@ def fetch_webull_premarket_gainers(*, limit: int = 50) -> list[dict[str, Any]]:
                 sym = str(t.get("symbol") or t.get("disSymbol") or "").upper()
                 if not sym or not sym.isalpha() or len(sym) > 5:
                     continue
+                # Webull preMarket fields: pprice/pchRatio are live pre prints;
+                # close/preClose/changeRatio are prior regular close (do NOT use as live px).
                 try:
-                    chg = float(t.get("changeRatio") or 0) * 100.0
+                    chg = float(t.get("pchRatio") or t.get("changeRatio") or 0) * 100.0
                 except Exception:
                     chg = 0.0
                 try:
-                    px = float(t.get("close") or 0)
+                    px = float(t.get("pprice") or 0)
+                    if px <= 0:
+                        px = float(t.get("close") or 0)
                 except Exception:
                     px = 0.0
                 try:
@@ -259,6 +263,10 @@ def fetch_webull_premarket_gainers(*, limit: int = 50) -> list[dict[str, Any]]:
                     mcap = float(t.get("marketValue") or 0)
                 except Exception:
                     mcap = 0.0
+                try:
+                    pre_close = float(t.get("preClose") or t.get("close") or 0)
+                except Exception:
+                    pre_close = 0.0
                 rows.append(
                     {
                         "symbol": sym,
@@ -267,6 +275,7 @@ def fetch_webull_premarket_gainers(*, limit: int = 50) -> list[dict[str, Any]]:
                         "tv_premarket_price": px,
                         "screener_chg": chg,
                         "screener_price": px,
+                        "pre_close": pre_close,
                         "volume": vol,
                         "market_cap": mcap,
                         "source": "webull_pre",

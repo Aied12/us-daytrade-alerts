@@ -174,7 +174,12 @@ def main() -> None:
 
     ctx = market_context()
     phase = session_phase()
-    min_px = max(float(settings.min_price_usd), 5.0)
+    # Premarket: Webull Top Gainers includes sub-$5 names — do not force $5 floor.
+    # RTH/post: keep the stricter daytrade floor.
+    if phase == "pre":
+        min_px = 0.25
+    else:
+        min_px = max(float(settings.min_price_usd), 5.0)
 
     # Refresh candidate universe: watchlist + day gainers + most-actives (via gainers feed)
     gainers = fetch_day_gainers(min_price=min_px, limit=25)

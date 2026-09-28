@@ -145,6 +145,10 @@ def gainer_passes_flow(row: dict[str, Any], phase: str | None = None) -> bool:
         return False
     # Rocket / premarket exception: big % with thin early prints still shown
     if phase == "pre":
+        src = str(row.get("source") or "")
+        # Trust Webull Market Movers list as-is (app may show thin vol=1 prints)
+        if src == "webull_pre" and chg >= 8.0:
+            return True
         if chg >= 40 and dollar >= 50_000:
             return True
         if chg >= 20 and dollar >= 80_000:
@@ -155,6 +159,8 @@ def gainer_passes_flow(row: dict[str, Any], phase: str | None = None) -> bool:
             return True
         # Webull mid-list names often print thin before the open
         if chg >= 15 and dollar >= 3_000:
+            return True
+        if chg >= 10 and dollar >= 5_000:
             return True
     elif chg >= 50 and dollar >= 200_000:
         return True
