@@ -554,7 +554,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V = 33;
+    window.__STATUS_V = 34;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -1187,6 +1187,26 @@
       return DATA.opportunities.length!==before;
     }
 
+    function syncTrackOpenAfterQuotes(){
+      const rows=(DATA&&DATA.strategy_track&&DATA.strategy_track.recent_open)||[];
+      if(!rows.length) return;
+      rows.forEach(r=>{
+        const sym=String(r.symbol||'').toUpperCase();
+        const q=LIVE_CACHE[sym];
+        if(!q || !(q.last>0)) return;
+        const entry=Number(r.entry||0);
+        const last=Number(q.last);
+        const pnl=entry>0 ? ((last-entry)/entry)*100 : Number(r.pnl_pct||0);
+        r.last=last;
+        r.pnl_pct=Number(pnl.toFixed(2));
+        document.querySelectorAll('[data-track-pnl="'+sym+'"]').forEach(el=>{
+          el.textContent=(pnl>=0?'+':'')+pnl.toFixed(2)+'%';
+          el.classList.remove('ok','bad');
+          el.classList.add(pnl>=0?'ok':'bad');
+        });
+      });
+    }
+
     function syncOppsAfterQuotes(){
       if(!DATA || !Array.isArray(DATA.opportunities) || !DATA.opportunities.length) return;
       const before = DATA.opportunities.map(o=>o.symbol).join(',');
@@ -1634,12 +1654,19 @@
       if(openBox){
         const rows=tr.recent_open||[];
         openBox.innerHTML = rows.length ? rows.map(r=>{
-          const pnl=Number(r.pnl_pct||0);
-          return `<div class="scan-item">
-            <div class="row"><span class="sym">${esc(r.symbol)}</span><span class="pill">${esc(r.source_ar||'')}</span></div>
+          const sym=String(r.symbol||'').toUpperCase();
+          const live=LIVE_CACHE[sym];
+          const entry=Number(r.entry||0);
+          const last=Number((live && live.last>0)?live.last:(r.last||0));
+          const pnl=entry>0 && last>0 ? ((last-entry)/entry)*100 : Number(r.pnl_pct||0);
+          return `<div class="scan-item" data-track-open="${esc(sym)}">
+            <div class="row"><span class="sym">${esc(sym)}</span><span class="pill">${esc(r.source_ar||'')}</span></div>
             <div class="muted" style="margin-top:4px">${(r.strategies||[]).map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div>
-            <div class="row" style="margin-top:6px"><span class="muted">دخول ${r.entry} · الآن ${r.last}</span><b class="${pnl>=0?'ok':'bad'}">${pnl>=0?'+':''}${pnl.toFixed(2)}%</b></div>
-            <div class="muted" style="font-size:.82rem">وقف ${r.stop} · هدف1 ${r.tp1} · منذ ${esc(r.opened_local||'')}</div>
+            <div class="row" style="margin-top:6px">
+              <span class="muted">دخول $${esc(Number(entry).toFixed(2))} · سعر الآن $<span data-live-px="${esc(sym)}">${last>0?esc(Number(last).toFixed(2)):'—'}</span></span>
+              <b class="${pnl>=0?'ok':'bad'}" data-track-pnl="${esc(sym)}">${pnl>=0?'+':''}${pnl.toFixed(2)}%</b>
+            </div>
+            <div class="muted" style="font-size:.82rem">وقف ${esc(r.stop)} · هدف1 ${esc(r.tp1)} · منذ ${esc(r.opened_local||'')}</div>
           </div>`;
         }).join('') : '<div class="empty">لا صفقات مفتوحة</div>';
       }
@@ -2369,6 +2396,7 @@
       (DATA&&DATA.gainers||[]).forEach(g=>g.symbol&&set.add(String(g.symbol).toUpperCase()));
       GAINERS_STATE.forEach(g=>g.symbol&&set.add(String(g.symbol).toUpperCase()));
       (DATA&&DATA.movers||[]).forEach(m=>m.symbol&&set.add(String(m.symbol).toUpperCase()));
+      ((DATA&&DATA.strategy_track&&DATA.strategy_track.recent_open)||[]).forEach(r=>r.symbol&&set.add(String(r.symbol).toUpperCase()));
       ((DATA&&DATA.market&&DATA.market.indexes)||[]).forEach(x=>x.symbol&&set.add(String(x.symbol).toUpperCase()));
       ['SPY','QQQ','IWM'].forEach(s=>set.add(s));
       document.querySelectorAll('[data-live-px]').forEach(n=>{
@@ -2602,6 +2630,7 @@
         liveWave++;
         syncGainersAfterQuotes();
         syncOppsAfterQuotes();
+        syncTrackOpenAfterQuotes();
         refreshMovingBadges();
         const clk=document.getElementById('liveClock');
         if(clk){
