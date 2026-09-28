@@ -114,34 +114,50 @@ def fetch_day_gainers(min_price: float = 5.0, limit: int = 20) -> list[dict[str,
 
     def _build() -> list[dict]:
         phase = session_phase()
-        # Candidates: recent day gainers + most actives (then re-rank by LIVE %)
+        # Candidates: extended movers first (TV premarket / Finviz), then Yahoo screeners
         cand: list[str] = []
-        for scr in ("day_gainers", "most_actives"):
+        meta: dict[str, dict] = {}
+        try:
+            from bot.movers_universe import fetch_extended_mover_symbols
+
+            for row in fetch_extended_mover_symbols(limit=60):
+                s = str(row.get("symbol") or "").upper()
+                if not s:
+                    continue
+                if s not in cand:
+                    cand.append(s)
+                meta[s] = row
+        except Exception:
+            pass
+        for scr in ("day_gainers", "most_actives", "small_cap_gainers"):
             for s in _screener_symbols(scr, 30):
                 if s and s not in cand:
                     cand.append(s)
-        # light extras often moving in pre
         for s in ("SPY", "QQQ", "NVDA", "TSLA", "AMD", "AAPL", "META", "PLTR", "BA"):
             if s not in cand:
                 cand.append(s)
-        cand = cand[:45]
+        cand = cand[:80]
 
         lives: list[dict] = []
-        with ThreadPoolExecutor(max_workers=8) as pool:
+        with ThreadPoolExecutor(max_workers=10) as pool:
             futs = {pool.submit(_yahoo_live, s): s for s in cand}
             for fut in as_completed(futs):
                 row = fut.result()
                 if not row:
                     continue
-                if row["last"] < min_price:
+                # Rocket pre movers can be under the usual min_price floor (still >= $0.25)
+                chg = float(row["change_pct"] or 0)
+                floor = 0.25 if (phase == "pre" and chg >= 15) else min_price
+                if row["last"] < floor:
                     continue
-                if row["change_pct"] <= 0:
+                if chg <= 0:
                     continue
                 dollar = row["last"] * float(row.get("volume") or 0)
+                extra = meta.get(row["symbol"]) or {}
                 lives.append(
                     {
                         "symbol": row["symbol"],
-                        "name": row.get("name") or "",
+                        "name": row.get("name") or extra.get("name") or "",
                         "last": row["last"],
                         "change_pct": row["change_pct"],
                         "ref": row["ref"],
@@ -149,12 +165,13 @@ def fetch_day_gainers(min_price: float = 5.0, limit: int = 20) -> list[dict[str,
                         "volume": row.get("volume") or 0,
                         "dollar_volume": round(dollar, 2),
                         "dollar_volume_label": _money(dollar),
+                        "market_cap": float(extra.get("market_cap") or 0) or None,
                         "phase": row["phase"],
                         "session_ar": session_label_ar(row["phase"]),
                         "tv_url": f"https://www.tradingview.com/chart/?symbol={row['symbol']}",
+                        "source": extra.get("source") or "yahoo",
                     }
                 )
-        # Require real participation + move (no slow tickers)
         from bot.flow_filter import gainer_passes_flow
 
         lives = [x for x in lives if gainer_passes_flow(x, phase)]
