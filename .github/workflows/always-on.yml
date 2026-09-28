@@ -168,7 +168,8 @@ jobs:
             --data-binary @docs/prices-live.json || true
           echo "mirrored to Cloudflare"
 
-      # يعوّض تأخر جدولة GitHub؛ يستمر طوال Premarket + الجلسة + After-hours + عطلة
+      # يعوّض تأخر جدولة GitHub أثناء Premarket + الجلسة + After-hours
+      # عطلة/فجوة الليل تعتمد على cron */20 فقط (بدون سلسلة keepalive)
       - name: Keepalive next tick
         if: always()
         env:
@@ -185,16 +186,8 @@ jobs:
           if [ "$DOW" -ge 2 ] && [ "$DOW" -le 6 ] && [ "$HOUR" -le 2 ]; then
             IN_WINDOW=1
           fi
-          # Overnight gap Mon–Fri UTC 03–07
-          if [ "$DOW" -le 5 ] && [ "$HOUR" -ge 3 ] && [ "$HOUR" -le 7 ]; then
-            IN_WINDOW=1
-          fi
-          # Weekend all day (Sat=6, Sun=7)
-          if [ "$DOW" -ge 6 ]; then
-            IN_WINDOW=1
-          fi
           if [ "$IN_WINDOW" -ne 1 ]; then
-            echo "outside extended market window — skip keepalive (UTC hour=$HOUR dow=$DOW)"
+            echo "outside active market window — skip keepalive (UTC hour=$HOUR dow=$DOW); schedule covers gaps"
             exit 0
           fi
           gh workflow run always-on-dashboard --ref main -f mode=tick
