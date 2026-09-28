@@ -17,8 +17,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-CYCLE_SEC = int(os.getenv("VPS_CYCLE_SEC", "30"))
-PUSH_EVERY = int(os.getenv("VPS_PUSH_EVERY", "2"))  # push git every N cycles
+CYCLE_SEC = int(os.getenv("VPS_CYCLE_SEC", "45"))
+# 0 = لا تدفع Git (موصى به على VPS — الصفحة تُخدم محلياً)
+PUSH_EVERY = int(os.getenv("VPS_PUSH_EVERY", "0"))
 LIVE_API_URL = (os.getenv("LIVE_API_URL") or "").rstrip("/")
 LIVE_API_TOKEN = os.getenv("LIVE_API_TOKEN") or ""
 

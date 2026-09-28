@@ -1,17 +1,38 @@
-# تشغيل مستمر على VPS (Docker)
+# تشغيل كامل على VPS: فحص مستمر + صفحة حية على المنفذ 80
+# الاستخدام:
+#   cd /opt/us-daytrade-alerts/deploy/vps
+#   docker compose up -d --build
 
 services:
-  daytrade-bot:
+  bot:
     build:
-      context: ..
+      context: ../..
       dockerfile: deploy/vps/Dockerfile
     restart: unless-stopped
     env_file:
-      - ../.env
+      - ../../.env
+    environment:
+      # لا تدفع Git كل دورة — الصفحة تُخدم من هذا السيرفر مباشرة
+      VPS_CYCLE_SEC: ${VPS_CYCLE_SEC:-45}
+      VPS_PUSH_EVERY: ${VPS_PUSH_EVERY:-0}
+      LIVE_API_URL: ${LIVE_API_URL:-}
+      LIVE_API_TOKEN: ${LIVE_API_TOKEN:-}
     volumes:
-      - ../data:/app/data
-      - ../docs:/app/docs
-      - ../pages:/app/pages
-      - ../logs:/app/logs
+      - ../../data:/app/data
+      - ../../docs:/app/docs
+      - ../../pages:/app/pages
+      - ../../logs:/app/logs
+      - ../../.env:/app/.env:ro
     working_dir: /app
     command: ["python", "scripts/vps_loop.py"]
+
+  web:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ../../docs:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - bot
