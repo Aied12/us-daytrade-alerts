@@ -43,16 +43,16 @@
       "stop": 0.7671,
       "tp1": 0.9985,
       "tp2": 1.07,
-      "last": 0.98,
-      "status": "open",
-      "exit": null,
-      "exit_ts": null,
-      "exit_local": null,
-      "pnl_pct": null,
-      "r_multiple": null,
-      "mfe_pct": 4.968,
+      "last": 0.9986,
+      "status": "win_tp1",
+      "exit": 0.9986,
+      "exit_ts": 1790585569,
+      "exit_local": "2026-09-28 11:52",
+      "pnl_pct": 6.008,
+      "r_multiple": 0.324,
+      "mfe_pct": 6.008,
       "mae_pct": 0.0,
-      "result_ar": "مفتوح"
+      "result_ar": "هدف 1 ✓"
     },
     {
       "id": "qannas:SDEV:2026-09-28",
@@ -97,7 +97,7 @@
       "stop": 3.42,
       "tp1": 7.46,
       "tp2": 8.03,
-      "last": 6.56,
+      "last": 6.63,
       "status": "open",
       "exit": null,
       "exit_ts": null,
@@ -163,52 +163,67 @@
       "result_ar": "مفتوح"
     }
   ],
-  "updated_ts": 1790585437,
-  "updated_local": "2026-09-28 11:50 +03",
+  "updated_ts": 1790585569,
+  "updated_local": "2026-09-28 11:52 +03",
   "summary": {
-    "open": 4,
-    "closed": 2,
-    "wins": 2,
+    "open": 3,
+    "closed": 3,
+    "wins": 3,
     "losses": 0,
     "flat": 0,
     "win_rate": 100.0,
-    "avg_pnl_pct": 12.13,
-    "avg_r": 0.298,
+    "avg_pnl_pct": 10.089,
+    "avg_r": 0.307,
     "by_source": [
       {
         "name": "القناص",
         "n": 6,
-        "open": 4,
-        "closed": 2,
-        "wins": 2,
+        "open": 3,
+        "closed": 3,
+        "wins": 3,
         "losses": 0,
         "win_rate": 100.0,
-        "avg_pnl_pct": 12.13
+        "avg_pnl_pct": 10.089
       }
     ],
     "by_strategy": [
       {
         "name": "القناص",
         "n": 6,
-        "open": 4,
-        "closed": 2,
-        "wins": 2,
+        "open": 3,
+        "closed": 3,
+        "wins": 3,
         "losses": 0,
         "win_rate": 100.0,
-        "avg_pnl_pct": 12.13
+        "avg_pnl_pct": 10.089
       },
       {
         "name": "محفز + زخم",
         "n": 6,
-        "open": 4,
-        "closed": 2,
-        "wins": 2,
+        "open": 3,
+        "closed": 3,
+        "wins": 3,
         "losses": 0,
         "win_rate": 100.0,
-        "avg_pnl_pct": 12.13
+        "avg_pnl_pct": 10.089
       }
     ],
     "recent_closed": [
+      {
+        "symbol": "MIMI",
+        "source_ar": "القناص",
+        "strategies": [
+          "القناص",
+          "محفز + زخم"
+        ],
+        "entry": 0.942,
+        "exit": 0.9986,
+        "pnl_pct": 6.008,
+        "r_multiple": 0.324,
+        "result_ar": "هدف 1 ✓",
+        "opened_local": "2026-09-28 11:26",
+        "exit_local": "2026-09-28 11:52"
+      },
       {
         "symbol": "ARAY",
         "source_ar": "القناص",
@@ -242,23 +257,6 @@
     ],
     "recent_open": [
       {
-        "symbol": "MIMI",
-        "source_ar": "القناص",
-        "strategies": [
-          "القناص",
-          "محفز + زخم"
-        ],
-        "entry": 0.942,
-        "last": 0.98,
-        "stop": 0.7671,
-        "tp1": 0.9985,
-        "pnl_pct": 4.034,
-        "mfe_pct": 4.968,
-        "mae_pct": 0.0,
-        "opened_local": "2026-09-28 11:26",
-        "result_ar": "مفتوح"
-      },
-      {
         "symbol": "SDEV",
         "source_ar": "القناص",
         "strategies": [
@@ -283,10 +281,10 @@
           "محفز + زخم"
         ],
         "entry": 7.04,
-        "last": 6.56,
+        "last": 6.63,
         "stop": 3.42,
         "tp1": 7.46,
-        "pnl_pct": -6.818,
+        "pnl_pct": -5.824,
         "mfe_pct": 0.284,
         "mae_pct": -9.801,
         "opened_local": "2026-09-28 11:26",
