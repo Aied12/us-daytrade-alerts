@@ -27,7 +27,6 @@ mkdir -p data docs pages logs
 
 if [ ! -f .env ]; then
   cp .env.example .env
-  # VPS defaults
   {
     echo ""
     echo "# --- VPS ---"
@@ -38,16 +37,40 @@ if [ ! -f .env ]; then
   echo "==> تم إنشاء .env — عدّل التوكنات لاحقاً إذا احتجت تيليجرام"
 fi
 
+# HTTPS hostname (sslip.io works without buying a domain)
+if ! grep -q '^DOMAIN=' .env 2>/dev/null; then
+  IP4="$(curl -4 -fsS ifconfig.me 2>/dev/null || true)"
+  if [ -n "$IP4" ]; then
+    echo "DOMAIN=daytrade.${IP4}.sslip.io" >> .env
+  else
+    echo "DOMAIN=daytrade.2.28.129.241.sslip.io" >> .env
+  fi
+fi
+
+if command -v ufw >/dev/null 2>&1; then
+  ufw allow 22/tcp || true
+  ufw allow 80/tcp || true
+  ufw allow 443/tcp || true
+fi
+
 echo "==> بناء وتشغيل الحاويات"
 cd "$APP_DIR/deploy/vps"
+# Export DOMAIN for Caddy
+set -a
+# shellcheck disable=SC1091
+source "$APP_DIR/.env" || true
+set +a
 docker compose up -d --build
 
-IP="$(curl -fsS ifconfig.me 2>/dev/null || hostname -I | awk '{print $1}')"
+IP="$(curl -4 -fsS ifconfig.me 2>/dev/null || hostname -I | awk '{print $1}')"
+DOMAIN="$(grep -E '^DOMAIN=' "$APP_DIR/.env" 2>/dev/null | cut -d= -f2- | tr -d '"' | tr -d "'" || true)"
+DOMAIN="${DOMAIN:-daytrade.${IP}.sslip.io}"
 echo ""
 echo "============================================"
 echo " تم التشغيل"
-echo " افتح من الآيفون:  http://$IP/"
-echo " فحص الصحة:       http://$IP/healthz"
+echo " HTTP:   http://$IP/"
+echo " HTTPS:  https://$DOMAIN/"
+echo " فحص:    https://$DOMAIN/healthz"
 echo "============================================"
 echo " أوامر مفيدة:"
 echo "   cd $APP_DIR/deploy/vps && docker compose logs -f bot"
