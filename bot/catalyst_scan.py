@@ -20,6 +20,8 @@ OFFICIAL_PUBLISHERS = (
     "edgar",
     "company",
     "press release",
+    "stock titan",
+    "stocktitan",
 )
 
 # Catalyst taxonomy → Arabic label + base impact
@@ -137,7 +139,7 @@ def enrich_news_item(item: dict[str, Any], *, change_pct: float | None = None) -
     out["catalyst_keys"] = [t["key"] for t in tags]
     out["catalyst_ar"] = [t["ar"] for t in tags]
     out["impact_reason_ar"] = reason
-    out["officialish"] = is_officialish(
+    out["officialish"] = bool(item.get("officialish")) or is_officialish(
         str(out.get("publisher") or ""),
         str(out.get("title") or ""),
         str(out.get("source") or ""),

@@ -310,15 +310,15 @@
     .scan-item .sym{font-size:1.15rem}
     .dock{
       position:fixed;bottom:0;inset-inline:0;z-index:60;
-      display:grid;grid-template-columns:repeat(5,1fr);gap:0;
-      padding:8px 6px calc(8px + env(safe-area-inset-bottom));
+      display:grid;grid-template-columns:repeat(6,1fr);gap:0;
+      padding:8px 4px calc(8px + env(safe-area-inset-bottom));
       background:color-mix(in srgb,var(--card) 94%, black);
       border-top:1px solid var(--line);
       backdrop-filter:blur(12px);
     }
     .dock button{
-      border:0;background:transparent;color:var(--muted);padding:6px 2px;
-      font:inherit;font-size:.68rem;font-weight:700;cursor:pointer;
+      border:0;background:transparent;color:var(--muted);padding:6px 1px;
+      font:inherit;font-size:.62rem;font-weight:700;cursor:pointer;
       display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px;
     }
     .dock button .ico{font-size:1.15rem;line-height:1}
@@ -374,6 +374,7 @@
         <button type="button" data-section="qannas" class="active">القناص</button>
         <button type="button" data-section="live">أسعار لحظية</button>
         <button type="button" data-section="market">السوق</button>
+        <button type="button" data-section="news">الأخبار</button>
         <button type="button" data-section="mood">مزاج السوق</button>
         <button type="button" data-section="track">متابعة الأداء</button>
         <button type="button" data-section="more">المزيد</button>
@@ -416,6 +417,28 @@
         <div class="muted">نمو vs قيمة</div>
         <div id="styleBoard">-</div>
       </div>
+    </div>
+
+    <div class="card panel" id="panel-news" data-section-panel="news">
+      <div class="row" style="margin:0 0 6px;align-items:flex-start">
+        <div>
+          <h2 style="margin:0">الأخبار</h2>
+          <p class="muted" id="newsNote" style="margin:6px 0 0;font-size:.88rem;line-height:1.4">بث محفزات — Stock Titan + أسلاك رسمية</p>
+        </div>
+        <button class="btn secondary" type="button" id="btnNewsRefresh" style="min-height:38px;padding:6px 12px;margin:0;font-size:.85rem">تحديث</button>
+      </div>
+      <div class="seg" id="catFilters" style="margin-top:8px">
+        <button type="button" data-cat="all" class="active">الكل</button>
+        <button type="button" data-cat="hi">تأثير عالي</button>
+        <button type="button" data-cat="fda">FDA</button>
+        <button type="button" data-cat="earnings">أرباح</button>
+        <button type="button" data-cat="mna">اندماج</button>
+        <button type="button" data-cat="offering">طرح</button>
+      </div>
+      <div id="newsList"><div class="empty">جاري جلب الأخبار...</div></div>
+      <p class="muted" style="margin-top:10px;font-size:.78rem;line-height:1.45">
+        المصدر: Stock Titan (بيانات حية) + GlobeNewswire / PR Newswire / SEC — بلاشائعات. تعليمي فقط.
+      </p>
     </div>
 
 
@@ -498,6 +521,7 @@
   <nav class="dock" id="bottomDock" aria-label="التنقل الرئيسي">
     <button type="button" data-section="live"><span class="ico">◉</span>أسعار</button>
     <button type="button" data-section="market"><span class="ico">◷</span>سوق</button>
+    <button type="button" data-section="news"><span class="ico">☰</span>أخبار</button>
     <button type="button" data-section="qannas" class="active"><span class="ico">◎</span>القناص</button>
     <button type="button" data-section="track"><span class="ico">▤</span>أداء</button>
     <button type="button" data-section="more"><span class="ico">⋯</span>المزيد</button>
@@ -505,7 +529,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V = 28;
+    window.__STATUS_V = 29;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -522,7 +546,7 @@
       sniper: 'dash_sniper_filter',
       jamal: 'dash_jamal_settings',
     };
-    const SECTION_IDS = ['live','market','mood','qannas','track','more'];
+    const SECTION_IDS = ['live','market','news','mood','qannas','track','more'];
     let CURRENT_SECTION = 'qannas';
     let DATA = null;
     let lastUrgent = new Set();
@@ -1016,6 +1040,7 @@
       }
       if(sid==='track' && DATA) renderStrategyTrack(DATA.strategy_track||{});
       if(sid==='qannas') renderQannas(QANNAS_CACHE);
+      if(sid==='news'){ renderNewsList(NEWS_CACHE); pollNewsLive(); }
     }
     function initSectionNav(){
       document.querySelectorAll('#sectionNav button, #bottomDock button').forEach(b=>{
@@ -2167,6 +2192,8 @@
         renderNewsList(NEWS_CACHE);
       };
     });
+    const btnNewsRefresh=document.getElementById('btnNewsRefresh');
+    if(btnNewsRefresh) btnNewsRefresh.onclick=()=>{ toast('تحديث الأخبار...'); pollNewsLive(); };
     document.querySelectorAll('#sniperSeg button').forEach(b=>{
       b.onclick=()=>{
         document.querySelectorAll('#sniperSeg button').forEach(x=>x.classList.remove('active'));
