@@ -16,14 +16,14 @@
       "stop": 0.7064,
       "tp1": 1.48,
       "tp2": 1.6,
-      "last": 1.4,
+      "last": 1.41,
       "status": "open",
       "exit": null,
       "exit_ts": null,
       "exit_local": null,
       "pnl_pct": null,
       "r_multiple": null,
-      "mfe_pct": 0.0,
+      "mfe_pct": 0.714,
       "mae_pct": 0.0,
       "result_ar": "مفتوح"
     },
@@ -43,14 +43,14 @@
       "stop": 0.7671,
       "tp1": 0.9985,
       "tp2": 1.07,
-      "last": 0.942,
+      "last": 0.9614,
       "status": "open",
       "exit": null,
       "exit_ts": null,
       "exit_local": null,
       "pnl_pct": null,
       "r_multiple": null,
-      "mfe_pct": 0.0,
+      "mfe_pct": 2.059,
       "mae_pct": 0.0,
       "result_ar": "مفتوح"
     },
@@ -97,7 +97,7 @@
       "stop": 3.42,
       "tp1": 7.46,
       "tp2": 8.03,
-      "last": 7.04,
+      "last": 7.01,
       "status": "open",
       "exit": null,
       "exit_ts": null,
@@ -105,7 +105,7 @@
       "pnl_pct": null,
       "r_multiple": null,
       "mfe_pct": 0.0,
-      "mae_pct": 0.0,
+      "mae_pct": -0.426,
       "result_ar": "مفتوح"
     },
     {
@@ -124,7 +124,34 @@
       "stop": 0.2189,
       "tp1": 0.3578,
       "tp2": 0.3848,
-      "last": 0.3375,
+      "last": 0.33,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": -2.222,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "qannas:ONCO:2026-09-28",
+      "symbol": "ONCO",
+      "source": "qannas",
+      "source_ar": "القناص",
+      "strategies": [
+        "القناص",
+        "محفز + زخم"
+      ],
+      "side": "long",
+      "opened_ts": 1790584117,
+      "opened_local": "2026-09-28 11:28",
+      "entry": 1.28,
+      "stop": 0.995,
+      "tp1": 1.36,
+      "tp2": 1.46,
+      "last": 1.28,
       "status": "open",
       "exit": null,
       "exit_ts": null,
@@ -136,10 +163,10 @@
       "result_ar": "مفتوح"
     }
   ],
-  "updated_ts": 1790583995,
-  "updated_local": "2026-09-28 11:26 +03",
+  "updated_ts": 1790584117,
+  "updated_local": "2026-09-28 11:28 +03",
   "summary": {
-    "open": 5,
+    "open": 6,
     "closed": 0,
     "wins": 0,
     "losses": 0,
@@ -150,8 +177,8 @@
     "by_source": [
       {
         "name": "القناص",
-        "n": 5,
-        "open": 5,
+        "n": 6,
+        "open": 6,
         "closed": 0,
         "wins": 0,
         "losses": 0,
@@ -162,8 +189,8 @@
     "by_strategy": [
       {
         "name": "القناص",
-        "n": 5,
-        "open": 5,
+        "n": 6,
+        "open": 6,
         "closed": 0,
         "wins": 0,
         "losses": 0,
@@ -172,8 +199,8 @@
       },
       {
         "name": "محفز + زخم",
-        "n": 5,
-        "open": 5,
+        "n": 6,
+        "open": 6,
         "closed": 0,
         "wins": 0,
         "losses": 0,
@@ -191,11 +218,11 @@
           "محفز + زخم"
         ],
         "entry": 1.4,
-        "last": 1.4,
+        "last": 1.41,
         "stop": 0.7064,
         "tp1": 1.48,
-        "pnl_pct": 0.0,
-        "mfe_pct": 0.0,
+        "pnl_pct": 0.714,
+        "mfe_pct": 0.714,
         "mae_pct": 0.0,
         "opened_local": "2026-09-28 11:26",
         "result_ar": "مفتوح"
@@ -208,11 +235,11 @@
           "محفز + زخم"
         ],
         "entry": 0.942,
-        "last": 0.942,
+        "last": 0.9614,
         "stop": 0.7671,
         "tp1": 0.9985,
-        "pnl_pct": 0.0,
-        "mfe_pct": 0.0,
+        "pnl_pct": 2.059,
+        "mfe_pct": 2.059,
         "mae_pct": 0.0,
         "opened_local": "2026-09-28 11:26",
         "result_ar": "مفتوح"
@@ -242,12 +269,12 @@
           "محفز + زخم"
         ],
         "entry": 7.04,
-        "last": 7.04,
+        "last": 7.01,
         "stop": 3.42,
         "tp1": 7.46,
-        "pnl_pct": 0.0,
+        "pnl_pct": -0.426,
         "mfe_pct": 0.0,
-        "mae_pct": 0.0,
+        "mae_pct": -0.426,
         "opened_local": "2026-09-28 11:26",
         "result_ar": "مفتوح"
       },
@@ -259,13 +286,30 @@
           "محفز + زخم"
         ],
         "entry": 0.3375,
-        "last": 0.3375,
+        "last": 0.33,
         "stop": 0.2189,
         "tp1": 0.3578,
+        "pnl_pct": -2.222,
+        "mfe_pct": 0.0,
+        "mae_pct": -2.222,
+        "opened_local": "2026-09-28 11:26",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "ONCO",
+        "source_ar": "القناص",
+        "strategies": [
+          "القناص",
+          "محفز + زخم"
+        ],
+        "entry": 1.28,
+        "last": 1.28,
+        "stop": 0.995,
+        "tp1": 1.36,
         "pnl_pct": 0.0,
         "mfe_pct": 0.0,
         "mae_pct": 0.0,
-        "opened_local": "2026-09-28 11:26",
+        "opened_local": "2026-09-28 11:28",
         "result_ar": "مفتوح"
       }
     ],
