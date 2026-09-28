@@ -145,11 +145,16 @@ def gainer_passes_flow(row: dict[str, Any], phase: str | None = None) -> bool:
         return False
     # Rocket / premarket exception: big % with thin early prints still shown
     if phase == "pre":
-        if chg >= 40 and dollar >= 80_000:
+        if chg >= 40 and dollar >= 50_000:
             return True
-        if chg >= 20 and dollar >= 150_000:
+        if chg >= 20 and dollar >= 80_000:
             return True
-        if chg >= 12 and dollar >= 400_000:
+        if chg >= 12 and dollar >= 150_000:
+            return True
+        if chg >= 10 and dollar >= 25_000:
+            return True
+        # Webull mid-list names often print thin before the open
+        if chg >= 15 and dollar >= 3_000:
             return True
     elif chg >= 50 and dollar >= 200_000:
         return True

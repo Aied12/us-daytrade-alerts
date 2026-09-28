@@ -36,6 +36,7 @@ def _tv_scan(
         "filter": [
             {"left": "type", "operation": "equal", "right": "stock"},
             {"left": "exchange", "operation": "in_range", "right": EXCHANGES},
+            {"left": "premarket_close", "operation": "nempty"},
             {"left": filter_left, "operation": "greater", "right": float(min_chg)},
             {"left": "active_symbol", "operation": "equal", "right": True},
         ],
@@ -211,16 +212,87 @@ def fetch_finviz_top_gainers(*, limit: int = 30) -> list[dict[str, Any]]:
     return cached_call(f"finviz_gainers:{limit}", _call, ttl=90) or []
 
 
+def fetch_webull_premarket_gainers(*, limit: int = 50) -> list[dict[str, Any]]:
+    """Webull US pre-market top gainers (same list as the app Market Movers)."""
+
+    def _call() -> list[dict[str, Any]]:
+        try:
+            r = requests.get(
+                "https://quotes-gw.webullfintech.com/api/wlas/ranking/topGainers",
+                params={
+                    "regionId": 6,
+                    "rankType": "preMarket",
+                    "pageIndex": 1,
+                    "pageSize": int(limit),
+                },
+                headers={
+                    "User-Agent": UA["User-Agent"],
+                    "Accept": "application/json",
+                    "app": "wb",
+                    "appid": "wb",
+                    "device-type": "1",
+                    "ver": "8.0.0",
+                },
+                timeout=20,
+            )
+            if not r.ok:
+                return []
+            rows: list[dict[str, Any]] = []
+            for item in r.json().get("data") or []:
+                t = item.get("ticker") if isinstance(item.get("ticker"), dict) else {}
+                sym = str(t.get("symbol") or t.get("disSymbol") or "").upper()
+                if not sym or not sym.isalpha() or len(sym) > 5:
+                    continue
+                try:
+                    chg = float(t.get("changeRatio") or 0) * 100.0
+                except Exception:
+                    chg = 0.0
+                try:
+                    px = float(t.get("close") or 0)
+                except Exception:
+                    px = 0.0
+                try:
+                    vol = float(t.get("volume") or 0)
+                except Exception:
+                    vol = 0.0
+                try:
+                    mcap = float(t.get("marketValue") or 0)
+                except Exception:
+                    mcap = 0.0
+                rows.append(
+                    {
+                        "symbol": sym,
+                        "name": str(t.get("name") or "")[:48],
+                        "tv_premarket_change": chg,
+                        "tv_premarket_price": px,
+                        "screener_chg": chg,
+                        "screener_price": px,
+                        "volume": vol,
+                        "market_cap": mcap,
+                        "source": "webull_pre",
+                    }
+                )
+                if len(rows) >= limit:
+                    break
+            return rows
+        except Exception:
+            return []
+
+    return cached_call(f"webull_pre:{limit}", _call, ttl=45) or []
+
+
 def fetch_extended_mover_symbols(*, limit: int = 80) -> list[dict[str, Any]]:
-    """Merge TV + Yahoo % + Finviz into a deduped candidate list with metadata."""
+    """Merge Webull + TV + Yahoo % + Finviz into a deduped candidate list."""
     by: dict[str, dict[str, Any]] = {}
     phase = session_phase()
-    # Order matters for merge hints: TV first (session-aware), then Finviz, then Yahoo RTH %
-    for row in (
-        list(fetch_tradingview_movers(limit=50, min_chg=12.0))
-        + list(fetch_finviz_top_gainers(limit=25))
-        + list(fetch_yahoo_pct_movers(limit=40, min_chg=12.0))
-    ):
+    # Webull first in pre — same universe the user sees in the app
+    sources: list[dict[str, Any]] = []
+    if phase == "pre":
+        sources.extend(fetch_webull_premarket_gainers(limit=50))
+    sources.extend(fetch_tradingview_movers(limit=50, min_chg=8.0))
+    sources.extend(fetch_finviz_top_gainers(limit=25))
+    sources.extend(fetch_yahoo_pct_movers(limit=40, min_chg=12.0))
+    for row in sources:
         sym = str(row.get("symbol") or "").upper()
         if not sym:
             continue
@@ -234,8 +306,9 @@ def fetch_extended_mover_symbols(*, limit: int = 80) -> list[dict[str, Any]]:
         day = float(r.get("tv_change") or 0)
         yh = float(r.get("screener_chg") or 0)
         src = str(r.get("source") or "")
-        # Premarket: prefer TV premarket_change; boost Finviz/TV over Yahoo RTH junk
         if phase == "pre":
+            if src == "webull_pre":
+                return pre + 3000.0
             if pre > 0:
                 return pre + 2000.0
             if src.startswith("tv:") or src == "finviz":
