@@ -67,6 +67,14 @@ def cycle(n: int) -> None:
     if PUSH_EVERY > 0 and n % PUSH_EVERY == 0:
         run([py, str(ROOT / "scripts" / "publish_pages.py")])
 
+    # Web Push: urgent opportunities to subscribed phones
+    try:
+        from bot.web_push import notify_urgent_from_status
+
+        notify_urgent_from_status(ROOT / "docs" / "status.json")
+    except Exception as e:
+        print(f"[push] skip: {e}", flush=True)
+
 
 def main() -> int:
     print(f"[vps_loop] start cycle={CYCLE_SEC}s push_every={PUSH_EVERY}", flush=True)

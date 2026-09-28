@@ -1,0 +1,11 @@
+{$DOMAIN:daytrade.2.28.129.241.sslip.io} {
+	encode gzip
+
+	handle /api/* {
+		reverse_proxy api:5055
+	}
+
+	handle {
+		reverse_proxy web:80
+	}
+}
