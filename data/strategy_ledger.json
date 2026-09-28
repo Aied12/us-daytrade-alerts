@@ -1,9 +1,145 @@
 {
-  "trades": [],
-  "updated_ts": 1790583855,
-  "updated_local": "2026-09-28 11:24 +03",
+  "trades": [
+    {
+      "id": "qannas:GYGY:2026-09-28",
+      "symbol": "GYGY",
+      "source": "qannas",
+      "source_ar": "القناص",
+      "strategies": [
+        "القناص",
+        "محفز + زخم"
+      ],
+      "side": "long",
+      "opened_ts": 1790583995,
+      "opened_local": "2026-09-28 11:26",
+      "entry": 1.4,
+      "stop": 0.7064,
+      "tp1": 1.48,
+      "tp2": 1.6,
+      "last": 1.4,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": 0.0,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "qannas:MIMI:2026-09-28",
+      "symbol": "MIMI",
+      "source": "qannas",
+      "source_ar": "القناص",
+      "strategies": [
+        "القناص",
+        "محفز + زخم"
+      ],
+      "side": "long",
+      "opened_ts": 1790583995,
+      "opened_local": "2026-09-28 11:26",
+      "entry": 0.942,
+      "stop": 0.7671,
+      "tp1": 0.9985,
+      "tp2": 1.07,
+      "last": 0.942,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": 0.0,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "qannas:SDEV:2026-09-28",
+      "symbol": "SDEV",
+      "source": "qannas",
+      "source_ar": "القناص",
+      "strategies": [
+        "القناص",
+        "محفز + زخم"
+      ],
+      "side": "long",
+      "opened_ts": 1790583995,
+      "opened_local": "2026-09-28 11:26",
+      "entry": 1.81,
+      "stop": 1.39,
+      "tp1": 1.92,
+      "tp2": 2.06,
+      "last": 1.81,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": 0.0,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "qannas:CLRO:2026-09-28",
+      "symbol": "CLRO",
+      "source": "qannas",
+      "source_ar": "القناص",
+      "strategies": [
+        "القناص",
+        "محفز + زخم"
+      ],
+      "side": "long",
+      "opened_ts": 1790583995,
+      "opened_local": "2026-09-28 11:26",
+      "entry": 7.04,
+      "stop": 3.42,
+      "tp1": 7.46,
+      "tp2": 8.03,
+      "last": 7.04,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": 0.0,
+      "result_ar": "مفتوح"
+    },
+    {
+      "id": "qannas:ARAY:2026-09-28",
+      "symbol": "ARAY",
+      "source": "qannas",
+      "source_ar": "القناص",
+      "strategies": [
+        "القناص",
+        "محفز + زخم"
+      ],
+      "side": "long",
+      "opened_ts": 1790583995,
+      "opened_local": "2026-09-28 11:26",
+      "entry": 0.3375,
+      "stop": 0.2189,
+      "tp1": 0.3578,
+      "tp2": 0.3848,
+      "last": 0.3375,
+      "status": "open",
+      "exit": null,
+      "exit_ts": null,
+      "exit_local": null,
+      "pnl_pct": null,
+      "r_multiple": null,
+      "mfe_pct": 0.0,
+      "mae_pct": 0.0,
+      "result_ar": "مفتوح"
+    }
+  ],
+  "updated_ts": 1790583995,
+  "updated_local": "2026-09-28 11:26 +03",
   "summary": {
-    "open": 0,
+    "open": 5,
     "closed": 0,
     "wins": 0,
     "losses": 0,
@@ -11,10 +147,128 @@
     "win_rate": null,
     "avg_pnl_pct": 0.0,
     "avg_r": 0.0,
-    "by_source": [],
-    "by_strategy": [],
+    "by_source": [
+      {
+        "name": "القناص",
+        "n": 5,
+        "open": 5,
+        "closed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "avg_pnl_pct": null
+      }
+    ],
+    "by_strategy": [
+      {
+        "name": "القناص",
+        "n": 5,
+        "open": 5,
+        "closed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "avg_pnl_pct": null
+      },
+      {
+        "name": "محفز + زخم",
+        "n": 5,
+        "open": 5,
+        "closed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate": null,
+        "avg_pnl_pct": null
+      }
+    ],
     "recent_closed": [],
-    "recent_open": [],
+    "recent_open": [
+      {
+        "symbol": "GYGY",
+        "source_ar": "القناص",
+        "strategies": [
+          "القناص",
+          "محفز + زخم"
+        ],
+        "entry": 1.4,
+        "last": 1.4,
+        "stop": 0.7064,
+        "tp1": 1.48,
+        "pnl_pct": 0.0,
+        "mfe_pct": 0.0,
+        "mae_pct": 0.0,
+        "opened_local": "2026-09-28 11:26",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "MIMI",
+        "source_ar": "القناص",
+        "strategies": [
+          "القناص",
+          "محفز + زخم"
+        ],
+        "entry": 0.942,
+        "last": 0.942,
+        "stop": 0.7671,
+        "tp1": 0.9985,
+        "pnl_pct": 0.0,
+        "mfe_pct": 0.0,
+        "mae_pct": 0.0,
+        "opened_local": "2026-09-28 11:26",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "SDEV",
+        "source_ar": "القناص",
+        "strategies": [
+          "القناص",
+          "محفز + زخم"
+        ],
+        "entry": 1.81,
+        "last": 1.81,
+        "stop": 1.39,
+        "tp1": 1.92,
+        "pnl_pct": 0.0,
+        "mfe_pct": 0.0,
+        "mae_pct": 0.0,
+        "opened_local": "2026-09-28 11:26",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "CLRO",
+        "source_ar": "القناص",
+        "strategies": [
+          "القناص",
+          "محفز + زخم"
+        ],
+        "entry": 7.04,
+        "last": 7.04,
+        "stop": 3.42,
+        "tp1": 7.46,
+        "pnl_pct": 0.0,
+        "mfe_pct": 0.0,
+        "mae_pct": 0.0,
+        "opened_local": "2026-09-28 11:26",
+        "result_ar": "مفتوح"
+      },
+      {
+        "symbol": "ARAY",
+        "source_ar": "القناص",
+        "strategies": [
+          "القناص",
+          "محفز + زخم"
+        ],
+        "entry": 0.3375,
+        "last": 0.3375,
+        "stop": 0.2189,
+        "tp1": 0.3578,
+        "pnl_pct": 0.0,
+        "mfe_pct": 0.0,
+        "mae_pct": 0.0,
+        "opened_local": "2026-09-28 11:26",
+        "result_ar": "مفتوح"
+      }
+    ],
     "note_ar": "متابعة ورقية من الصفر — تُسجَّل الإشارات الجديدة فقط · ليست أرباح محفظة حقيقية."
   },
   "reset_note_ar": "تم تصفير المتابعة وإعادة البدء من الصفر"
