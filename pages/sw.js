@@ -1,5 +1,5 @@
 /* US Daytrade Alerts — PWA service worker (fresh HTML, fresh live JSON) */
-const CACHE = "uda-shell-v4";
+const CACHE = "uda-shell-v5";
 const SHELL_STATIC = [
   "./manifest.webmanifest",
   "./icons/icon-192.png",
@@ -27,16 +27,37 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-self.addEventListener("message", (event) => {
-  const data = event.data || {};
-  if (data && data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-  }
-  if (data && data.type === "CLEAR_CACHE") {
-    event.waitUntil(
-      caches.keys().then((keys) => Promise.all(keys.map((k) => caches.delete(k))))
-    );
-  }
+self.addEventListener("push", (event) => {
+  let data = { title: "تنبيه", body: "فرصة جديدة", url: "/" };
+  try {
+    if (event.data) data = { ...data, ...event.data.json() };
+  } catch (_) {}
+  event.waitUntil(
+    self.registration.showNotification(data.title || "تنبيه", {
+      body: data.body || "",
+      lang: data.lang || "ar",
+      dir: "rtl",
+      data: { url: data.url || "/" },
+      badge: "./icons/icon-192.png",
+      icon: "./icons/icon-192.png",
+    })
+  );
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const target = (event.notification.data && event.notification.data.url) || "/";
+  event.waitUntil(
+    clients.matchAll({ type: "window", includeUncontrolled: true }).then((list) => {
+      for (const c of list) {
+        if ("focus" in c) {
+          c.navigate(target);
+          return c.focus();
+        }
+      }
+      if (clients.openWindow) return clients.openWindow(target);
+    })
+  );
 });
 
 function isLiveData(url) {

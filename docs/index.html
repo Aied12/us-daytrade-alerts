@@ -525,7 +525,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V = 31;
+    window.__STATUS_V = 32;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -2118,11 +2118,67 @@
       toast(next==='1'?'وضع النت الضعيف مفعّل':'الوضع الكامل مفعّل');
       renderAll();
     };
+    function urlBase64ToUint8Array(base64String){
+      const padding='='.repeat((4-base64String.length%4)%4);
+      const base64=(base64String+padding).replace(/-/g,'+').replace(/_/g,'/');
+      const raw=atob(base64);
+      const out=new Uint8Array(raw.length);
+      for(let i=0;i<raw.length;i++) out[i]=raw.charCodeAt(i);
+      return out;
+    }
+
+    async function subscribeWebPush(){
+      if(!('serviceWorker' in navigator) || !('PushManager' in window)){
+        toast('الجهاز/المتصفح لا يدعم إشعارات الخلفية');
+        return false;
+      }
+      // iOS: يحتاج HTTPS + تثبيت على الشاشة الرئيسية
+      const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent||'');
+      const standalone=window.matchMedia('(display-mode: standalone)').matches || navigator.standalone===true;
+      if(isIOS && !standalone){
+        toast('على الآيفون: ثبّت الصفحة أولاً (مشاركة ← إضافة للشاشة الرئيسية) ثم فعّل الإشعار');
+        return false;
+      }
+      if(location.protocol!=='https:' && location.hostname!=='localhost'){
+        toast('الإشعارات تحتاج HTTPS — افتح رابط الآمن');
+        return false;
+      }
+      const reg=await navigator.serviceWorker.ready;
+      const keyRes=await fetch('/api/push/vapid-public-key',{cache:'no-store'});
+      if(!keyRes.ok) throw new Error('vapid');
+      const {publicKey}=await keyRes.json();
+      let sub=await reg.pushManager.getSubscription();
+      if(!sub){
+        sub=await reg.pushManager.subscribe({
+          userVisibleOnly:true,
+          applicationServerKey:urlBase64ToUint8Array(publicKey)
+        });
+      }
+      const res=await fetch('/api/push/subscribe',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(sub.toJSON())
+      });
+      if(!res.ok) throw new Error('subscribe');
+      return true;
+    }
+
     document.getElementById('btnNotify').onclick=async()=>{
       if(!('Notification' in window)){ toast('المتصفح لا يدعم الإشعارات'); return; }
-      const perm=await Notification.requestPermission();
-      if(perm==='granted'){ localStorage.setItem(LS.notify,'1'); toast('تم تفعيل إشعار الفرص القوية'); }
-      else { localStorage.setItem(LS.notify,'0'); toast('لم يتم السماح بالإشعارات'); }
+      try{
+        const perm=await Notification.requestPermission();
+        if(perm!=='granted'){
+          localStorage.setItem(LS.notify,'0');
+          toast('لم يتم السماح بالإشعارات');
+          return;
+        }
+        localStorage.setItem(LS.notify,'1');
+        const ok=await subscribeWebPush();
+        toast(ok?'تم تفعيل إشعارات الفرص (حتى لو التطبيق بالخلفية)':'تم تفعيل الإشعار أثناء فتح الصفحة');
+      }catch(e){
+        localStorage.setItem(LS.notify,'1');
+        toast('تم تفعيل إشعار الصفحة — خلفية تحتاج HTTPS وتثبيت');
+      }
     };
     document.querySelectorAll('#priceTier button').forEach(b=>{
       b.onclick=()=>setPriceTier(b.dataset.tier||'high');
