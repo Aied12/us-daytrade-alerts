@@ -1630,6 +1630,25 @@
       return `<span class="impact impact-${v}" title="تأثير ${v}/5">${'●'.repeat(v)}${'○'.repeat(5-v)}</span>`;
     }
 
+    function fmtSaTime(localStr, ts){
+      // Always show entry/exit times in Saudi Arabia (Asia/Riyadh)
+      try{
+        if(ts!=null && Number(ts)>0){
+          const d=new Date(Number(ts)*1000);
+          const date=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Riyadh',year:'numeric',month:'2-digit',day:'2-digit'}).format(d);
+          const time=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Riyadh',hour:'2-digit',minute:'2-digit',hour12:false}).format(d);
+          // en-GB date is DD/MM/YYYY → normalize
+          const parts=date.split('/');
+          const ymd=parts.length===3?`${parts[2]}-${parts[1]}-${parts[0]}`:date;
+          return `${ymd} ${time} السعودية`;
+        }
+      }catch(e){}
+      const s=String(localStr||'').trim();
+      if(!s) return '—';
+      if(/السعودية|\+03|Riyadh/i.test(s)) return s;
+      return s+' السعودية';
+    }
+
     function renderStrategyTrack(tr){
       tr=tr||{};
       const note=document.getElementById('trackNote');
@@ -1721,7 +1740,7 @@
               <span class="muted">دخول $${esc(Number(entry).toFixed(2))} · سعر الآن $<span data-live-px="${esc(sym)}">${last>0?esc(Number(last).toFixed(2)):'—'}</span></span>
               <b class="${pnl>=0?'ok':'bad'}" data-track-pnl="${esc(sym)}">${pnl>=0?'+':''}${pnl.toFixed(2)}%</b>
             </div>
-            <div class="muted" style="font-size:.82rem">وقف ${esc(r.stop)}${stopPct!=null?` (−${esc(stopPct.toFixed(1))}%)`:''}${stopWide?' · وقف قديم أوسع':''} · هدف1 ${esc(r.tp1)} · منذ ${esc(r.opened_local||'')}</div>
+            <div class="muted" style="font-size:.82rem">وقف ${esc(r.stop)}${stopPct!=null?` (−${esc(stopPct.toFixed(1))}%)`:''}${stopWide?' · وقف قديم أوسع':''} · هدف1 ${esc(r.tp1)} · دخول ${esc(fmtSaTime(r.opened_local,r.opened_ts))}</div>
           </div>`;
         }).join('') : '<div class="empty">لا صفقات مفتوحة</div>';
       }
@@ -1735,7 +1754,7 @@
             <div class="row"><span class="sym">${esc(r.symbol)}</span><span class="pill ${flat?'':(pnl>=0?'ok':'bad')}">${esc(r.result_ar||'')}</span></div>
             <div class="muted" style="margin-top:4px">${esc(r.source_ar||'')} · ${(r.strategies||[]).map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div>
             <div class="row" style="margin-top:6px"><span class="muted">${r.entry} → ${r.exit}</span><b class="${flat?'':(pnl>=0?'ok':'bad')}">${pnl>=0?'+':''}${pnl.toFixed(2)}%${r.r_multiple!=null?` · ${r.r_multiple}R`:''}${flat?' · لا يدخل نسبة النجاح':''}</b></div>
-            <div class="muted" style="font-size:.82rem">${esc(r.opened_local||'')} → ${esc(r.exit_local||'')}</div>
+            <div class="muted" style="font-size:.82rem">${esc(fmtSaTime(r.opened_local,r.opened_ts))} → ${esc(fmtSaTime(r.exit_local,r.exit_ts))}</div>
           </div>`;
         }).join('') : '<div class="empty">لا نتائج مغلقة بعد — تُحسب عند لمس الهدف أو الوقف</div>';
       }
@@ -1783,17 +1802,17 @@
         return `<div class="scan-item">
           <div class="row"><span class="sym">${esc(r.symbol)}</span><span class="pill">${esc(pill)}</span></div>
           <div class="muted" style="margin-top:4px;font-size:.82rem">
-            ظهر ${esc(r.appeared_local||'—')}
+            ظهر ${esc(fmtSaTime(r.appeared_local,r.appeared_ts))}
             ${r.appear_price!=null?` @ $${esc(r.appear_price)}`:''}
             ${r.appear_change_pct!=null?` · ${Number(r.appear_change_pct)>0?'+':''}${esc(r.appear_change_pct)}%`:''}
             ${r.appear_rvol!=null?` · RVOL ${esc(r.appear_rvol)}`:''}
             ${r.appear_has_news?' · خبر':''}
           </div>
           <div class="muted" style="font-size:.82rem">
-            فتح ${esc(r.opened_local||'—')} · دخول ${esc(r.entry||'—')} · وقف ${esc(r.stop||'—')}${r.stop_pct!=null?` (−${esc(r.stop_pct)}%)`:''}${Number(r.stop_pct)>12?' · قديم أوسع':''} · هدف ${esc(r.tp1||'—')}/${esc(r.tp2||'—')}
+            فتح ${esc(fmtSaTime(r.opened_local,r.opened_ts))} · دخول ${esc(r.entry||'—')} · وقف ${esc(r.stop||'—')}${r.stop_pct!=null?` (−${esc(r.stop_pct)}%)`:''}${Number(r.stop_pct)>12?' · قديم أوسع':''} · هدف ${esc(r.tp1||'—')}/${esc(r.tp2||'—')}
           </div>
           <div class="row" style="margin-top:4px">
-            <span class="muted" style="font-size:.82rem">${esc(r.exit_local?('إغلاق '+r.exit_local):'لم يُغلق')}${tto}${hold}</span>
+            <span class="muted" style="font-size:.82rem">${esc(r.exit_local?('إغلاق '+fmtSaTime(r.exit_local,r.exit_ts)):'لم يُغلق')}${tto}${hold}</span>
             <b class="${pnl==null?'':(pnl>=0?'ok':'bad')}">${pnlHtml}</b>
           </div>
         </div>`;

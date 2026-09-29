@@ -286,6 +286,8 @@ def ingest_candidates(
                 "side": "long",
                 "opened_ts": int(now),
                 "opened_local": datetime.now(RIYADH).strftime("%Y-%m-%d %H:%M"),
+                "opened_tz": "Asia/Riyadh",
+                "opened_label_ar": "توقيت السعودية",
                 "entry": entry,
                 "stop": stop,
                 "tp1": tp1,
@@ -603,7 +605,9 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
                 "status": t.get("status"),
                 "result_ar": t.get("result_ar"),
                 "opened_local": t.get("opened_local"),
+                "opened_ts": t.get("opened_ts"),
                 "exit_local": t.get("exit_local"),
+                "exit_ts": t.get("exit_ts"),
             }
             for t in recent_closed
         ],
@@ -621,6 +625,7 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
                 "mfe_pct": t.get("mfe_pct"),
                 "mae_pct": t.get("mae_pct"),
                 "opened_local": t.get("opened_local"),
+                "opened_ts": t.get("opened_ts"),
                 "result_ar": "مفتوح",
             }
             for t in recent_open
