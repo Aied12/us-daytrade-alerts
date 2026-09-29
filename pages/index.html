@@ -493,7 +493,7 @@
 
     <div class="card panel" id="panel-track" data-section-panel="track">
       <h2>متابعة أداء الاستراتيجيات</h2>
-      <p class="muted" id="trackNote">مؤشرات اليوم فقط — نسبة النجاح بدون إغلاق الجلسة عند 0٪</p>
+      <p class="muted" id="trackNote">مؤشرات اليوم — إغلاق إجباري 11 مساءً السعودية · التراكمي محفوظ</p>
       <div class="grid" id="trackKpis" style="margin-top:10px">
         <div class="m"><div class="muted">نجاح اليوم</div><div id="trackWinRate" class="sym">—</div></div>
         <div class="m"><div class="muted">نسبة التراكمي :</div><div id="trackCumWinRate" class="sym">—</div></div>
@@ -511,6 +511,7 @@
       <div class="toolbar" style="margin-bottom:8px;gap:8px;flex-wrap:wrap">
         <a class="btn secondary" id="dayPerfJsonLink" href="/day-performance.json" target="_blank" rel="noopener">تحميل JSON</a>
         <a class="btn secondary" id="dayPerfCsvLink" href="/day-performance.csv" target="_blank" rel="noopener">تحميل CSV</a>
+        <a class="btn secondary" id="dayPerfArchiveLink" href="/day-performance-archive/index.json" target="_blank" rel="noopener">أرشيف الأيام</a>
       </div>
       <div class="grid" id="dayPerfKpis" style="margin-bottom:10px">
         <div class="m"><div class="muted">ظهرت اليوم</div><div id="dayPerfAppeared">—</div></div>
@@ -1795,8 +1796,14 @@
       const urls=dp.urls||{};
       const jl=document.getElementById('dayPerfJsonLink');
       const cl=document.getElementById('dayPerfCsvLink');
+      const al=document.getElementById('dayPerfArchiveLink');
       if(jl && urls.json) jl.href=urls.json;
       if(cl && urls.csv) cl.href=urls.csv;
+      if(al) al.href=urls.archive_index||urls.archive||'/day-performance-archive/index.json';
+      if(dp.archived){
+        const note=document.getElementById('dayPerfNote');
+        if(note) note.textContent=dp.note_ar||'اليوم مؤرشف بعد إغلاق 11 مساءً — التراكمي محفوظ';
+      }
       const box=document.getElementById('dayPerfList');
       if(!box) return;
       // Prefer full day list from status if present

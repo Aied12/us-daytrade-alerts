@@ -40,8 +40,24 @@ def _session_phase() -> str:
 
 
 def _paper_session_open() -> bool:
-    """Paper daytrades only during pre / regular / after-hours."""
+    """Paper daytrades during US pre/regular/post, until 23:00 Riyadh flat."""
+    try:
+        from bot.performance_eod import block_new_opens
+
+        if block_new_opens():
+            return False
+    except Exception:
+        pass
     return _session_phase() in ("pre", "regular", "post")
+
+
+def _riyadh_eod_flat() -> bool:
+    try:
+        from bot.performance_eod import past_flat_time
+
+        return bool(past_flat_time())
+    except Exception:
+        return False
 
 
 
@@ -355,7 +371,12 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
         except Exception:
             pass
         age = now - float(t.get("opened_ts") or now)
-        # Force flat at end of after-hours / overnight — daytrade only
+        # Adopted system: flatten every open at 23:00 Asia/Riyadh (≈ US RTH close)
+        if _riyadh_eod_flat():
+            label = "إغلاق 11 مساءً +" if pnl >= 0 else "إغلاق 11 مساءً −"
+            _close_trade(t, "session_end", last, label, entry=entry, stop=stop, now=now)
+            continue
+        # Safety: US fully shut (weekend / overnight) — still flatten leftovers
         if session_closed:
             label = "إغلاق الجلسة +" if pnl >= 0 else "إغلاق الجلسة −"
             _close_trade(t, "session_end", last, label, entry=entry, stop=stop, now=now)
@@ -435,7 +456,7 @@ def _close_trade(
         pass
 
 
-def force_close_all_open(reason_ar: str = "إغلاق الجلسة") -> int:
+def force_close_all_open(reason_ar: str = "إغلاق 11 مساءً") -> int:
     """Manually flatten every open paper trade at last mark. Returns closed count."""
     data = _load()
     trades: list[dict[str, Any]] = list(data.get("trades") or [])
@@ -648,6 +669,7 @@ def sync_from_boards(
     """One-shot: ingest new setups, mark-to-market, return dashboard payload.
 
     Top-level KPIs are **today only** (Riyadh). All-time totals live under ``all_time``.
+    At 23:00 Riyadh: flatten opens, archive the day, clear today panel (cumulative kept).
     """
     prices = dict(price_by_symbol or {})
     for rows in (opportunities or [], sniper or [], jamal or [], qannas or []):
@@ -656,6 +678,15 @@ def sync_from_boards(
             last = float(r.get("last") or 0)
             if sym and last > 0:
                 prices[sym] = last
+
+    eod: dict[str, Any] = {}
+    try:
+        from bot.performance_eod import run_eod_if_needed
+
+        eod = run_eod_if_needed(price_by_symbol=prices)
+    except Exception as e:
+        eod = {"error": str(e)}
+
     ingest_candidates(
         opportunities=opportunities,
         sniper=sniper,
@@ -665,15 +696,46 @@ def sync_from_boards(
     mark_to_market(prices)
     data = _load()
     all_trades = list(data.get("trades") or [])
-    all_time = data.get("summary") or summarize(all_trades)
+    # Always refresh all-time on disk summary from full ledger (never wiped by EOD)
+    all_time = summarize(all_trades)
+    data["summary"] = all_time
+    _save(data)
 
     day = datetime.now(RIYADH).strftime("%Y-%m-%d")
-    today = summarize(_trades_for_day(all_trades, day))
-    # Dashboard primary = today KPIs; nest all-time for reference
+    cleared = False
+    try:
+        from bot.performance_eod import today_kpis_cleared as _cleared
+
+        cleared = bool(_cleared())
+    except Exception:
+        cleared = False
+
+    if cleared:
+        today = summarize([])
+        today_note = (
+            f"يوم {day} مؤرشف بعد إغلاق 11 مساءً — لوحة اليوم مُصفَّرة · "
+            "التراكمي محفوظ · السجل في الأرشيف للتحليل"
+        )
+        today_trades_n = 0
+    else:
+        today = summarize(_trades_for_day(all_trades, day))
+        today_note = (
+            f"مؤشرات يوم {day} · إغلاق إجباري 11 مساءً السعودية · وقف جديد ≈10٪ · "
+            "نسبة النجاح بدون إغلاق مسطّح 0٪ · تعليمي."
+        )
+        today_trades_n = len(_trades_for_day(all_trades, day))
+
     summary = {
         **today,
         "day": day,
         "scope": "today",
+        "today_cleared": cleared,
+        "eod": {
+            "closed_n": eod.get("closed_n"),
+            "archived": eod.get("archived"),
+            "already_done": eod.get("already_done"),
+            "past_flat": eod.get("past_flat"),
+        },
         "all_time": {
             "open": all_time.get("open"),
             "closed": all_time.get("closed"),
@@ -684,24 +746,48 @@ def sync_from_boards(
             "avg_pnl_pct": all_time.get("avg_pnl_pct"),
             "avg_r": all_time.get("avg_r"),
         },
-        "note_ar": (
-            f"مؤشرات يوم {day} فقط · نسبة النجاح بدون إغلاق الجلسة/صفر٪ · "
-            "صفقات جديدة: وقف ≈ 10٪ تحت الدخول (الصفقات المفتوحة الأقدم قد يكون وقفها أوسع ولا يُعدَّل) · تعليمي."
-        ),
+        "note_ar": today_note,
     }
 
     try:
         from bot.day_performance import write_day_report
 
         day_perf = write_day_report()
-        summary["day_performance"] = {
-            "day": day_perf.get("day"),
-            "summary": day_perf.get("summary"),
-            "urls": day_perf.get("urls"),
-            "trades_n": len(day_perf.get("trades") or []),
-            "appeared_only_n": len(day_perf.get("appeared_only") or []),
-            "note_ar": day_perf.get("note_ar"),
-        }
+        if cleared:
+            summary["day_performance"] = {
+                "day": day,
+                "summary": {
+                    "appeared": 0,
+                    "opened": 0,
+                    "open_now": 0,
+                    "closed": 0,
+                    "wins": 0,
+                    "losses": 0,
+                    "win_rate": None,
+                },
+                "urls": {
+                    "json": "/day-performance.json",
+                    "csv": "/day-performance.csv",
+                    "archive": f"/day-performance-archive/{day}.json",
+                    "archive_index": "/day-performance-archive/index.json",
+                },
+                "trades_n": 0,
+                "appeared_only_n": 0,
+                "note_ar": today_note,
+                "archived": True,
+            }
+        else:
+            summary["day_performance"] = {
+                "day": day_perf.get("day"),
+                "summary": day_perf.get("summary"),
+                "urls": {
+                    **(day_perf.get("urls") or {}),
+                    "archive_index": "/day-performance-archive/index.json",
+                },
+                "trades_n": len(day_perf.get("trades") or []),
+                "appeared_only_n": len(day_perf.get("appeared_only") or []),
+                "note_ar": day_perf.get("note_ar"),
+            }
     except Exception as e:
         summary["day_performance"] = {"error": str(e)}
 
@@ -709,6 +795,6 @@ def sync_from_boards(
         "updated_ts": data.get("updated_ts"),
         "updated_local": data.get("updated_local"),
         "trades_n": len(all_trades),
-        "trades_today_n": len(_trades_for_day(all_trades, day)),
+        "trades_today_n": today_trades_n,
         **summary,
     }
