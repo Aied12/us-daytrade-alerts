@@ -281,10 +281,10 @@ def build_hessa_plan(
         return {}
     stop_raw = entry * (1.0 - PLAN_STOP_PCT)
     if day_low and day_low > 0:
-        # لا نضع الوقف فوق قاع اليوم إن كان أضيق من 7%
-        stop_raw = min(stop_raw, float(day_low) * 0.995)
-        # ولا نجعله أعمق من ~12% في السنتات الضيقة
-        stop_raw = max(stop_raw, entry * 0.88)
+        # قاع اليوم يضيّق الوقف فقط (أقرب للدخول)، ولا يوسّعه تحت 10%
+        day_stop = float(day_low) * 0.995
+        if stop_raw < day_stop < entry:
+            stop_raw = day_stop
     tp1 = entry * (1.0 + PLAN_TP1_PCT)
     tp2 = entry * (1.0 + PLAN_TP2_PCT)
     support = _px(day_low) if day_low and day_low > 0 else _px(stop_raw)
