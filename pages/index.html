@@ -498,9 +498,12 @@
         <div class="m"><div class="muted">نجاح اليوم</div><div id="trackWinRate" class="sym">—</div></div>
         <div class="m"><div class="muted">متوسط % اليوم</div><div id="trackAvgPnl">—</div></div>
         <div class="m"><div class="muted">مفتوحة الآن</div><div id="trackOpen">—</div></div>
-        <div class="m"><div class="muted">مغلقة · رابحة · خاسرة · مسطّحة</div><div id="trackClosed">—</div></div>
+        <div class="m"><div class="muted">مغلقة :</div><div id="trackClosed">—</div></div>
+        <div class="m"><div class="muted">رابحة :</div><div id="trackWins" class="ok">—</div></div>
+        <div class="m"><div class="muted">خاسرة :</div><div id="trackLosses" class="bad">—</div></div>
       </div>
-      <p class="muted" id="trackAllTime" style="font-size:.8rem;margin:6px 0 0"></p>
+      <p class="muted" id="trackFlatNote" style="font-size:.8rem;margin:6px 0 0"></p>
+      <p class="muted" id="trackAllTime" style="font-size:.8rem;margin:4px 0 0"></p>
       <h2 style="margin-top:16px;font-size:1rem">سجل اليوم (ظهور → فتح → إغلاق)</h2>
       <p class="muted" id="dayPerfNote" style="font-size:.85rem;margin:4px 0 8px">يُحدَّث مع كل فحص — حمّل JSON أو CSV للتحليل</p>
       <div class="toolbar" style="margin-bottom:8px;gap:8px;flex-wrap:wrap">
@@ -510,7 +513,9 @@
       <div class="grid" id="dayPerfKpis" style="margin-bottom:10px">
         <div class="m"><div class="muted">ظهرت اليوم</div><div id="dayPerfAppeared">—</div></div>
         <div class="m"><div class="muted">فُتحت</div><div id="dayPerfOpened">—</div></div>
-        <div class="m"><div class="muted">أُغلقت · رابحة · خاسرة · مسطّحة</div><div id="dayPerfClosed">—</div></div>
+        <div class="m"><div class="muted">مغلقة :</div><div id="dayPerfClosed">—</div></div>
+        <div class="m"><div class="muted">رابحة :</div><div id="dayPerfWins" class="ok">—</div></div>
+        <div class="m"><div class="muted">خاسرة :</div><div id="dayPerfLosses" class="bad">—</div></div>
         <div class="m"><div class="muted">نجاح اليوم</div><div id="dayPerfWinRate">—</div></div>
       </div>
       <div id="dayPerfList"><div class="empty">لا سجل بعد لهذا اليوم</div></div>
@@ -1638,14 +1643,21 @@
       const op=document.getElementById('trackOpen');
       if(op) op.textContent=String(tr.open||0);
       const cl=document.getElementById('trackClosed');
-      if(cl){
-        cl.textContent=`${tr.closed||0} · ${tr.wins||0} · ${tr.losses||0} · ${tr.flat||0}`;
+      if(cl) cl.textContent=String(tr.closed||0);
+      const tw=document.getElementById('trackWins');
+      if(tw) tw.textContent=String(tr.wins||0);
+      const tl=document.getElementById('trackLosses');
+      if(tl) tl.textContent=String(tr.losses||0);
+      const flatNote=document.getElementById('trackFlatNote');
+      if(flatNote){
+        const flat=tr.flat||0;
+        flatNote.textContent = flat ? `مسطّحة (إغلاق جلسة 0٪، خارج نسبة النجاح): ${flat}` : '';
       }
       const at=document.getElementById('trackAllTime');
       if(at){
         const a=tr.all_time||{};
         if(a.closed!=null){
-          at.textContent = `كل الفترات: نجاح ${a.win_rate==null?'—':a.win_rate+'%'} · مغلقة ${a.closed||0} · رابحة ${a.wins||0} · خاسرة ${a.losses||0} · مسطّحة ${a.flat||0}`;
+          at.textContent = `كل الفترات: نجاح ${a.win_rate==null?'—':a.win_rate+'%'} · مغلقة: ${a.closed||0} · رابحة: ${a.wins||0} · خاسرة: ${a.losses||0}`;
         } else {
           at.textContent = '';
         }
@@ -1659,7 +1671,7 @@
             <div><b>${esc(r.name)}</b><div class="muted" style="font-size:.8rem">${r.n||0} إشارة · مفتوح ${r.open||0}</div></div>
             <div style="text-align:left">
               <b class="${r.win_rate==null?'':(r.win_rate>=55?'ok':(r.win_rate>=45?'warn':'bad'))}">${r.win_rate==null?'—':r.win_rate+'%'}</b>
-              <div class="muted" style="font-size:.8rem">رابحة ${r.wins||0} · خاسرة ${r.losses||0} · مسطّحة ${r.flat||0}</div>
+              <div class="muted" style="font-size:.8rem">رابحة: ${r.wins||0} · خاسرة: ${r.losses||0}</div>
             </div>
           </div>`).join('') : '<div class="empty">لا بيانات مصدر بعد</div>';
       }
@@ -1722,7 +1734,9 @@
       const setTxt=(id,v)=>{const el=document.getElementById(id); if(el) el.textContent=v;};
       setTxt('dayPerfAppeared', String(sum.appeared!=null?sum.appeared:'—'));
       setTxt('dayPerfOpened', String(sum.opened!=null?sum.opened:'—'));
-      setTxt('dayPerfClosed', `${sum.closed||0} · رابحة ${sum.wins||0} · خاسرة ${sum.losses||0} · مسطّحة ${sum.flat||0}`);
+      setTxt('dayPerfClosed', String(sum.closed!=null?sum.closed:0));
+      setTxt('dayPerfWins', String(sum.wins!=null?sum.wins:0));
+      setTxt('dayPerfLosses', String(sum.losses!=null?sum.losses:0));
       const wr=document.getElementById('dayPerfWinRate');
       if(wr){
         wr.textContent = sum.win_rate==null ? '—' : (sum.win_rate+'%');
