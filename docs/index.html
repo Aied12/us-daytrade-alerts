@@ -498,7 +498,7 @@
         <div class="m"><div class="muted">نجاح اليوم</div><div id="trackWinRate" class="sym">—</div></div>
         <div class="m"><div class="muted">متوسط % اليوم</div><div id="trackAvgPnl">—</div></div>
         <div class="m"><div class="muted">مفتوحة الآن</div><div id="trackOpen">—</div></div>
-        <div class="m"><div class="muted">مغلقة / رابحة / خاسرة</div><div id="trackClosed">—</div></div>
+        <div class="m"><div class="muted">مغلقة · رابحة · خاسرة · مسطّحة</div><div id="trackClosed">—</div></div>
       </div>
       <p class="muted" id="trackAllTime" style="font-size:.8rem;margin:6px 0 0"></p>
       <h2 style="margin-top:16px;font-size:1rem">سجل اليوم (ظهور → فتح → إغلاق)</h2>
@@ -1639,14 +1639,13 @@
       if(op) op.textContent=String(tr.open||0);
       const cl=document.getElementById('trackClosed');
       if(cl){
-        const flat=tr.flat||0;
-        cl.textContent=`${tr.closed||0} / ✓${tr.wins||0} / ✗${tr.losses||0}`+(flat?` / ○${flat}`:'');
+        cl.textContent=`${tr.closed||0} · ${tr.wins||0} · ${tr.losses||0} · ${tr.flat||0}`;
       }
       const at=document.getElementById('trackAllTime');
       if(at){
         const a=tr.all_time||{};
         if(a.closed!=null){
-          at.textContent = `كل الفترات: نجاح ${a.win_rate==null?'—':a.win_rate+'%'} · مغلقة ${a.closed||0} · ✓${a.wins||0} / ✗${a.losses||0}`+(a.flat?` / ○${a.flat}`:'');
+          at.textContent = `كل الفترات: نجاح ${a.win_rate==null?'—':a.win_rate+'%'} · مغلقة ${a.closed||0} · رابحة ${a.wins||0} · خاسرة ${a.losses||0} · مسطّحة ${a.flat||0}`;
         } else {
           at.textContent = '';
         }
@@ -1660,7 +1659,7 @@
             <div><b>${esc(r.name)}</b><div class="muted" style="font-size:.8rem">${r.n||0} إشارة · مفتوح ${r.open||0}</div></div>
             <div style="text-align:left">
               <b class="${r.win_rate==null?'':(r.win_rate>=55?'ok':(r.win_rate>=45?'warn':'bad'))}">${r.win_rate==null?'—':r.win_rate+'%'}</b>
-              <div class="muted" style="font-size:.8rem">✓${r.wins||0} / ✗${r.losses||0}${(r.flat?` / ○${r.flat}`:'')}</div>
+              <div class="muted" style="font-size:.8rem">رابحة ${r.wins||0} · خاسرة ${r.losses||0} · مسطّحة ${r.flat||0}</div>
             </div>
           </div>`).join('') : '<div class="empty">لا بيانات مصدر بعد</div>';
       }
@@ -1723,7 +1722,7 @@
       const setTxt=(id,v)=>{const el=document.getElementById(id); if(el) el.textContent=v;};
       setTxt('dayPerfAppeared', String(sum.appeared!=null?sum.appeared:'—'));
       setTxt('dayPerfOpened', String(sum.opened!=null?sum.opened:'—'));
-      setTxt('dayPerfClosed', `${sum.closed||0} · ✓${sum.wins||0} / ✗${sum.losses||0}`+(sum.flat?` / ○${sum.flat}`:''));
+      setTxt('dayPerfClosed', `${sum.closed||0} · رابحة ${sum.wins||0} · خاسرة ${sum.losses||0} · مسطّحة ${sum.flat||0}`);
       const wr=document.getElementById('dayPerfWinRate');
       if(wr){
         wr.textContent = sum.win_rate==null ? '—' : (sum.win_rate+'%');
