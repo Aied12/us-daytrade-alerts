@@ -1046,6 +1046,13 @@
     function pad(n){return String(n).padStart(2,'0')}
     function clockInTz(timeZone){
       try{
+        // Saudi clock: 12-hour with ص/م · NY stays 24h
+        if(timeZone==='Asia/Riyadh'){
+          const parts=new Intl.DateTimeFormat('en-US',{timeZone,hour:'numeric',minute:'2-digit',second:'2-digit',hour12:true}).formatToParts(new Date());
+          const get=t=> (parts.find(p=>p.type===t)||{}).value||'';
+          const ap=(get('dayPeriod')||'').toLowerCase().startsWith('a')?'ص':'م';
+          return `${Number(get('hour'))}:${get('minute')}:${get('second')} ${ap}`;
+        }
         return new Intl.DateTimeFormat('en-GB',{timeZone,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date());
       }catch(e){return '--:--:--'}
     }
@@ -1631,22 +1638,30 @@
     }
 
     function fmtSaTime(localStr, ts){
-      // Always show entry/exit times in Saudi Arabia (Asia/Riyadh)
+      // Saudi Arabia time in 12-hour format (e.g. 5:41 م)
+      const fmt12 = (d)=>{
+        const dateParts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Riyadh',year:'numeric',month:'2-digit',day:'2-digit'}).format(d); // YYYY-MM-DD
+        const parts=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Riyadh',hour:'numeric',minute:'2-digit',hour12:true}).formatToParts(d);
+        const get=t=> (parts.find(p=>p.type===t)||{}).value||'';
+        const ap=(get('dayPeriod')||'').toLowerCase().startsWith('a')?'ص':'م';
+        return `${dateParts} ${Number(get('hour'))}:${get('minute')} ${ap}`;
+      };
       try{
         if(ts!=null && Number(ts)>0){
-          const d=new Date(Number(ts)*1000);
-          const date=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Riyadh',year:'numeric',month:'2-digit',day:'2-digit'}).format(d);
-          const time=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Riyadh',hour:'2-digit',minute:'2-digit',hour12:false}).format(d);
-          // en-GB date is DD/MM/YYYY → normalize
-          const parts=date.split('/');
-          const ymd=parts.length===3?`${parts[2]}-${parts[1]}-${parts[0]}`:date;
-          return `${ymd} ${time} السعودية`;
+          return fmt12(new Date(Number(ts)*1000));
         }
       }catch(e){}
-      const s=String(localStr||'').trim();
+      const s=String(localStr||'').trim().replace(/\s*السعودية|\s*\+03|\s*Riyadh/ig,'').trim();
       if(!s) return '—';
-      if(/السعودية|\+03|Riyadh/i.test(s)) return s;
-      return s+' السعودية';
+      // Parse "YYYY-MM-DD HH:MM" as Riyadh wall clock → 12h
+      const m=s.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{1,2}):(\d{2})(?::(\d{2}))?/);
+      if(m){
+        let h=Number(m[4]), mi=m[5];
+        const ap=h>=12?'م':'ص';
+        h = h % 12; if(h===0) h=12;
+        return `${m[1]}-${m[2]}-${m[3]} ${h}:${mi} ${ap}`;
+      }
+      return s;
     }
 
     function renderStrategyTrack(tr){
