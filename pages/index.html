@@ -496,7 +496,9 @@
       <p class="muted" id="trackNote">مؤشرات اليوم فقط — نسبة النجاح بدون إغلاق الجلسة عند 0٪</p>
       <div class="grid" id="trackKpis" style="margin-top:10px">
         <div class="m"><div class="muted">نجاح اليوم</div><div id="trackWinRate" class="sym">—</div></div>
+        <div class="m"><div class="muted">نسبة التراكمي :</div><div id="trackCumWinRate" class="sym">—</div></div>
         <div class="m"><div class="muted">متوسط % اليوم</div><div id="trackAvgPnl">—</div></div>
+        <div class="m"><div class="muted">متوسط التراكمي :</div><div id="trackCumAvgPnl">—</div></div>
         <div class="m"><div class="muted">مفتوحة الآن</div><div id="trackOpen">—</div></div>
         <div class="m"><div class="muted">مغلقة :</div><div id="trackClosed">—</div></div>
         <div class="m"><div class="muted">رابحة :</div><div id="trackWins" class="ok">—</div></div>
@@ -1634,11 +1636,23 @@
         wr.textContent = tr.win_rate==null ? '— بانتظار نتائج' : (tr.win_rate+'%');
         wr.className = 'sym '+(tr.win_rate==null?'':(tr.win_rate>=55?'ok':(tr.win_rate>=45?'warn':'bad')));
       }
+      const a=tr.all_time||{};
+      const cwr=document.getElementById('trackCumWinRate');
+      if(cwr){
+        cwr.textContent = a.win_rate==null ? '—' : (a.win_rate+'%');
+        cwr.className = 'sym '+(a.win_rate==null?'':(a.win_rate>=55?'ok':(a.win_rate>=45?'warn':'bad')));
+      }
       const ap=document.getElementById('trackAvgPnl');
       if(ap){
         const v=tr.avg_pnl_pct;
         ap.textContent = (v==null||v===0 && !tr.closed) ? '—' : ((v>0?'+':'')+Number(v).toFixed(2)+'%');
         ap.className = (v>0?'ok':(v<0?'bad':''));
+      }
+      const cap=document.getElementById('trackCumAvgPnl');
+      if(cap){
+        const v=a.avg_pnl_pct;
+        cap.textContent = (v==null) ? '—' : ((v>0?'+':'')+Number(v).toFixed(2)+'%');
+        cap.className = (v>0?'ok':(v<0?'bad':''));
       }
       const op=document.getElementById('trackOpen');
       if(op) op.textContent=String(tr.open||0);
@@ -1655,9 +1669,8 @@
       }
       const at=document.getElementById('trackAllTime');
       if(at){
-        const a=tr.all_time||{};
         if(a.closed!=null){
-          at.textContent = `كل الفترات: نجاح ${a.win_rate==null?'—':a.win_rate+'%'} · مغلقة: ${a.closed||0} · رابحة: ${a.wins||0} · خاسرة: ${a.losses||0}`;
+          at.textContent = `كل الفترات · مغلقة: ${a.closed||0} · رابحة: ${a.wins||0} · خاسرة: ${a.losses||0}`;
         } else {
           at.textContent = '';
         }
