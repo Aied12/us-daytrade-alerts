@@ -154,5 +154,75 @@ class StrategyTrackerTests(unittest.TestCase):
                 self.assertEqual(t["status"], "session_end")
 
 
+    def test_win_rate_excludes_flat_session_end(self):
+        trades = [
+            {
+                "symbol": "W1",
+                "status": "win_tp1",
+                "pnl_pct": 10.0,
+                "r_multiple": 1.0,
+                "source_ar": "القناص",
+                "strategies": ["القناص"],
+                "opened_local": "2026-09-29 10:00",
+                "exit_ts": 1,
+                "exit_local": "2026-09-29 10:10",
+                "entry": 1,
+                "exit": 1.1,
+                "stop": 0.9,
+            },
+            {
+                "symbol": "L1",
+                "status": "loss_sl",
+                "pnl_pct": -10.0,
+                "r_multiple": -1.0,
+                "source_ar": "القناص",
+                "strategies": ["القناص"],
+                "opened_local": "2026-09-29 11:00",
+                "exit_ts": 2,
+                "exit_local": "2026-09-29 11:10",
+                "entry": 1,
+                "exit": 0.9,
+                "stop": 0.9,
+            },
+            {
+                "symbol": "F1",
+                "status": "session_end",
+                "pnl_pct": 0.0,
+                "r_multiple": 0.0,
+                "source_ar": "القناص",
+                "strategies": ["القناص"],
+                "result_ar": "إغلاق الجلسة",
+                "opened_local": "2026-09-29 12:00",
+                "exit_ts": 3,
+                "exit_local": "2026-09-29 23:00",
+                "entry": 1,
+                "exit": 1.0,
+                "stop": 0.9,
+            },
+        ]
+        s = summarize(trades)
+        self.assertEqual(s["wins"], 1)
+        self.assertEqual(s["losses"], 1)
+        self.assertEqual(s["flat"], 1)
+        self.assertEqual(s["session_end"], 1)
+        # 1 win / (1 win + 1 loss) — flat excluded
+        self.assertEqual(s["win_rate"], 50.0)
+        self.assertEqual(s["avg_pnl_pct"], 0.0)  # (10 + -10) / 2
+
+    def test_trades_for_day_filters(self):
+        from bot.strategy_tracker import _trades_for_day
+
+        trades = [
+            {"id": "qannas:A:2026-09-28", "opened_local": "2026-09-28 10:00", "status": "open"},
+            {"id": "qannas:B:2026-09-29", "opened_local": "2026-09-29 10:00", "status": "open"},
+            {"id": "qannas:C:2026-09-29", "opened_ts": 1727610000, "opened_local": "", "status": "win_tp1"},
+        ]
+        # Force day via opened_local for B
+        today = _trades_for_day(trades, "2026-09-29")
+        syms = {t["id"].split(":")[1] for t in today}
+        self.assertIn("B", syms)
+        self.assertNotIn("A", syms)
+
+
 if __name__ == "__main__":
     unittest.main()
