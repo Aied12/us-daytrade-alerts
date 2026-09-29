@@ -27,7 +27,9 @@ class StrategyTrackerTests(unittest.TestCase):
             path = Path(td) / "strategy_ledger.json"
             with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
                 "bot.strategy_tracker._paper_session_open", return_value=True
-            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"):
+            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"), mock.patch(
+                "bot.strategy_tracker._riyadh_eod_flat", return_value=False
+            ):
                 n = ingest_candidates(
                     sniper=[
                         {
