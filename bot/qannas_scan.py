@@ -54,8 +54,8 @@ SEEN_TTL_SEC = 20 * 3600
 ROCKET_CHG = 40.0               # حركة صاروخية → تظهر حتى بدون خبر/سيولة كاملة
 ROCKET_CHG_SOFT = 20.0
 
-# خطة يومية بسيطة للمتابعة الورقية
-PLAN_STOP_PCT = 0.07
+# خطة يومية بسيطة للمتابعة الورقية (صفقات جديدة)
+PLAN_STOP_PCT = 0.10            # وقف ≈ 10% تحت الدخول
 PLAN_TP1_PCT = 0.06
 PLAN_TP2_PCT = 0.14
 
@@ -199,12 +199,21 @@ def _live_row(symbol: str) -> dict[str, Any] | None:
 
 
 def _plan(last: float, day_low: float | None = None) -> dict[str, float]:
+    """Entry/stop/TP for new qannas paper setups.
+
+    Stop is capped at PLAN_STOP_PCT (10%). Day-low may only tighten the stop
+    (closer to entry), never widen it — avoids multi-tens-% open drawdowns.
+    """
     entry = _px(last)
-    stop = _px(entry * (1 - PLAN_STOP_PCT))
+    stop_pct = _px(entry * (1 - PLAN_STOP_PCT))
+    stop = stop_pct
     if day_low and day_low > 0:
-        stop = min(stop, _px(float(day_low) * 0.995))
+        day_stop = _px(float(day_low) * 0.995)
+        # tighter only: higher stop price = less risk
+        if stop_pct < day_stop < entry:
+            stop = day_stop
     if stop >= entry:
-        stop = _px(entry * 0.97)
+        stop = _px(entry * (1 - PLAN_STOP_PCT))
     tp1 = _px(entry * (1 + PLAN_TP1_PCT))
     tp2 = _px(entry * (1 + PLAN_TP2_PCT))
     return {"entry": entry, "stop": stop, "tp1": tp1, "tp2": tp2}
