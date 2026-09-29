@@ -2754,8 +2754,13 @@
         // الملف المنشور هو المصدر الأساسي؛ الطلب المباشر نادر وخفيف
         let directN=0;
         const batchStale = !batch.ok || batch.age > 90;
-        // كل ~6 دورات (≈30ث) أو إذا الملف قديم
-        if(batchStale || (liveWave % 6 === 0)){
+        const openMissing=((DATA&&DATA.strategy_track&&DATA.strategy_track.recent_open)||[])
+          .some(r=>{
+            const s=String(r.symbol||'').toUpperCase();
+            return s && !(LIVE_CACHE[s]&&LIVE_CACHE[s].last>0);
+          });
+        // كل ~6 دورات أو ملف قديم أو صفقات مفتوحة بلا سعر حي
+        if(batchStale || openMissing || (liveWave % 6 === 0)){
           directN = await refreshDirect(syms);
         }
         liveWave++;
