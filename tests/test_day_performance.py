@@ -122,6 +122,12 @@ class DayPerformanceTests(unittest.TestCase):
     def test_ingest_attaches_appearance(self):
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "strategy_ledger.json"
+            # Same Riyadh calendar day as "now" so sticky-day clamp does not fire
+            from datetime import datetime
+            from zoneinfo import ZoneInfo
+
+            now = datetime.now(ZoneInfo("Asia/Riyadh"))
+            first = int(now.replace(hour=9, minute=0, second=0).timestamp())
             with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
                 "bot.strategy_tracker._paper_session_open", return_value=True
             ):
@@ -130,7 +136,7 @@ class DayPerformanceTests(unittest.TestCase):
                         {
                             "symbol": "Q1",
                             "name": "Q One",
-                            "first_ts": 1700000000,
+                            "first_ts": first,
                             "last": 3.0,
                             "entry": 3.0,
                             "stop": 2.8,
@@ -148,11 +154,78 @@ class DayPerformanceTests(unittest.TestCase):
                 )
                 self.assertEqual(n, 1)
                 t = json.loads(path.read_text(encoding="utf-8"))["trades"][0]
-                self.assertEqual(t["appeared_ts"], 1700000000)
+                self.assertEqual(t["appeared_ts"], first)
                 self.assertEqual(t["appear_change_pct"], 22)
                 self.assertTrue(t["appear_has_news"])
                 self.assertIsInstance(t.get("price_trail"), list)
                 self.assertGreaterEqual(len(t["price_trail"]), 1)
+
+    def test_win_rate_skips_flat_zero(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            ledger = root / "strategy_ledger.json"
+            ledger.write_text(
+                json.dumps(
+                    {
+                        "trades": [
+                            {
+                                "id": "qannas:W:2099-01-01",
+                                "symbol": "W",
+                                "opened_local": "2099-01-01 10:00",
+                                "opened_ts": 4102444800,
+                                "status": "win_tp1",
+                                "pnl_pct": 8.0,
+                                "r_multiple": 0.8,
+                                "entry": 1,
+                                "stop": 0.9,
+                                "exit": 1.08,
+                            },
+                            {
+                                "id": "qannas:F:2099-01-01",
+                                "symbol": "F",
+                                "opened_local": "2099-01-01 11:00",
+                                "opened_ts": 4102448400,
+                                "status": "session_end",
+                                "pnl_pct": 0.0,
+                                "r_multiple": 0.0,
+                                "entry": 1,
+                                "stop": 0.9,
+                                "exit": 1.0,
+                                "result_ar": "إغلاق الجلسة",
+                            },
+                            {
+                                "id": "qannas:L:2099-01-01",
+                                "symbol": "L",
+                                "opened_local": "2099-01-01 12:00",
+                                "opened_ts": 4102452000,
+                                "status": "loss_sl",
+                                "pnl_pct": -5.0,
+                                "r_multiple": -0.5,
+                                "entry": 1,
+                                "stop": 0.9,
+                                "exit": 0.95,
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with mock.patch("bot.day_performance.LEDGER_PATH", ledger), mock.patch(
+                "bot.day_performance.QANNAS_BOARD", root / "missing.json"
+            ), mock.patch("bot.day_performance.QANNAS_SEEN", root / "missing_seen.json"), mock.patch(
+                "bot.day_performance.SNIPER_BOARD", root / "missing_s.json"
+            ), mock.patch(
+                "bot.day_performance.SNIPER_SEEN", root / "missing_ss.json"
+            ), mock.patch(
+                "bot.day_performance._day_str", return_value="2099-01-01"
+            ):
+                report = build_day_report(day="2099-01-01")
+                s = report["summary"]
+                self.assertEqual(s["wins"], 1)
+                self.assertEqual(s["losses"], 1)
+                self.assertEqual(s["flat"], 1)
+                self.assertEqual(s["win_rate"], 50.0)
+                self.assertEqual(s["avg_pnl_pct"], 1.5)  # (8 + -5) / 2
 
 
 if __name__ == "__main__":

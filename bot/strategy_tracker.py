@@ -70,6 +70,17 @@ def _attach_appearance(trade: dict[str, Any], row: dict[str, Any], source: str) 
         trade["appear_price"] = trade.get("entry")
     opened = int(trade.get("opened_ts") or 0)
     appeared = int(trade.get("appeared_ts") or opened)
+    # Sticky first_ts from a prior Riyadh day would inflate time_to_open
+    if appeared and opened:
+        try:
+            a_day = datetime.fromtimestamp(appeared, RIYADH).strftime("%Y-%m-%d")
+            o_day = datetime.fromtimestamp(opened, RIYADH).strftime("%Y-%m-%d")
+            if a_day != o_day:
+                trade["appeared_ts"] = opened
+                trade["appeared_local"] = trade.get("opened_local") or ""
+                appeared = opened
+        except Exception:
+            pass
     trade["time_to_open_sec"] = max(0, opened - appeared) if opened and appeared else 0
     trade["price_trail"] = [
         {
@@ -447,23 +458,65 @@ def force_close_all_open(reason_ar: str = "إغلاق الجلسة") -> int:
     return n
 
 
+def _trade_day(t: dict[str, Any]) -> str:
+    """Riyadh calendar day for a paper trade (opened_local / opened_ts / id)."""
+    opened_local = str(t.get("opened_local") or "")
+    if len(opened_local) >= 10 and opened_local[4] == "-" and opened_local[7] == "-":
+        return opened_local[:10]
+    ots = t.get("opened_ts")
+    if ots:
+        try:
+            return datetime.fromtimestamp(float(ots), RIYADH).strftime("%Y-%m-%d")
+        except Exception:
+            pass
+    tid = str(t.get("id") or "")
+    parts = tid.split(":")
+    if len(parts) >= 3 and len(parts[-1]) >= 10 and parts[-1][4] == "-":
+        return parts[-1][:10]
+    return ""
+
+
+def _trades_for_day(trades: list[dict[str, Any]], day: str | None = None) -> list[dict[str, Any]]:
+    day = day or datetime.now(RIYADH).strftime("%Y-%m-%d")
+    return [t for t in trades if _trade_day(t) == day]
+
+
+def _stop_distance_pct(entry: float, stop: float) -> float | None:
+    """How far stop sits below entry (positive %). None if levels invalid."""
+    entry = float(entry or 0)
+    stop = float(stop or 0)
+    if entry <= 0 or stop <= 0 or stop >= entry:
+        return None
+    return round((entry - stop) / entry * 100.0, 1)
+
+
 def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     trades = list(trades if trades is not None else (_load().get("trades") or []))
     closed = [t for t in trades if t.get("status") and t.get("status") != "open"]
     open_n = sum(1 for t in trades if t.get("status") == "open")
-    wins = [t for t in closed if str(t.get("status", "")).startswith("win") or float(t.get("pnl_pct") or 0) > 0]
-    losses = [t for t in closed if t.get("status") == "loss_sl" or float(t.get("pnl_pct") or 0) < 0]
-    # expired with pnl==0 counted neither
+    # Directional only: exclude flat session_end / 0% closes from win_rate & avg
     decided = [t for t in closed if t.get("pnl_pct") is not None]
     win_n = sum(1 for t in decided if float(t.get("pnl_pct") or 0) > 0)
     loss_n = sum(1 for t in decided if float(t.get("pnl_pct") or 0) < 0)
     flat_n = sum(1 for t in decided if float(t.get("pnl_pct") or 0) == 0)
-    avg_pnl = round(sum(float(t.get("pnl_pct") or 0) for t in decided) / len(decided), 3) if decided else 0.0
-    avg_r = round(
-        sum(float(t.get("r_multiple") or 0) for t in decided if t.get("r_multiple") is not None) / max(1, len(decided)),
-        3,
-    ) if decided else 0.0
-    win_rate = round(100.0 * win_n / len(decided), 1) if decided else None
+    session_end_n = sum(1 for t in closed if t.get("status") == "session_end")
+    directional = [t for t in decided if float(t.get("pnl_pct") or 0) != 0]
+    avg_pnl = (
+        round(sum(float(t.get("pnl_pct") or 0) for t in directional) / len(directional), 3)
+        if directional
+        else 0.0
+    )
+    avg_r = (
+        round(
+            sum(float(t.get("r_multiple") or 0) for t in directional if t.get("r_multiple") is not None)
+            / max(1, len(directional)),
+            3,
+        )
+        if directional
+        else 0.0
+    )
+    scored = win_n + loss_n
+    win_rate = round(100.0 * win_n / scored, 1) if scored else None
 
     by_source: dict[str, dict[str, Any]] = {}
     by_strategy: dict[str, dict[str, Any]] = {}
@@ -475,11 +528,15 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
             return
         bucket["closed"] = int(bucket.get("closed") or 0) + 1
         pnl = float(t.get("pnl_pct") or 0)
-        bucket["pnl_sum"] = round(float(bucket.get("pnl_sum") or 0) + pnl, 3)
+        if pnl != 0:
+            bucket["pnl_sum"] = round(float(bucket.get("pnl_sum") or 0) + pnl, 3)
+            bucket["pnl_n"] = int(bucket.get("pnl_n") or 0) + 1
         if pnl > 0:
             bucket["wins"] = int(bucket.get("wins") or 0) + 1
         elif pnl < 0:
             bucket["losses"] = int(bucket.get("losses") or 0) + 1
+        else:
+            bucket["flat"] = int(bucket.get("flat") or 0) + 1
 
     for t in trades:
         src = str(t.get("source_ar") or t.get("source") or "?")
@@ -494,6 +551,7 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
             wins_b = int(b.get("wins") or 0)
             losses_b = int(b.get("losses") or 0)
             decided_b = wins_b + losses_b
+            pnl_n = int(b.get("pnl_n") or 0)
             rows.append(
                 {
                     "name": name,
@@ -502,8 +560,9 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
                     "closed": closed_n,
                     "wins": wins_b,
                     "losses": losses_b,
+                    "flat": int(b.get("flat") or 0),
                     "win_rate": round(100.0 * wins_b / decided_b, 1) if decided_b else None,
-                    "avg_pnl_pct": round(float(b.get("pnl_sum") or 0) / closed_n, 3) if closed_n else None,
+                    "avg_pnl_pct": round(float(b.get("pnl_sum") or 0) / pnl_n, 3) if pnl_n else None,
                 }
             )
         rows.sort(key=lambda r: (r["win_rate"] is not None, r["win_rate"] or -1, r["n"]), reverse=True)
@@ -522,6 +581,7 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
         "wins": win_n,
         "losses": loss_n,
         "flat": flat_n,
+        "session_end": session_end_n,
         "win_rate": win_rate,
         "avg_pnl_pct": avg_pnl,
         "avg_r": avg_r,
@@ -534,8 +594,11 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
                 "strategies": (t.get("strategies") or [])[:3],
                 "entry": t.get("entry"),
                 "exit": t.get("exit"),
+                "stop": t.get("stop"),
+                "stop_pct": _stop_distance_pct(float(t.get("entry") or 0), float(t.get("stop") or 0)),
                 "pnl_pct": t.get("pnl_pct"),
                 "r_multiple": t.get("r_multiple"),
+                "status": t.get("status"),
                 "result_ar": t.get("result_ar"),
                 "opened_local": t.get("opened_local"),
                 "exit_local": t.get("exit_local"),
@@ -550,6 +613,7 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
                 "entry": t.get("entry"),
                 "last": t.get("last"),
                 "stop": t.get("stop"),
+                "stop_pct": _stop_distance_pct(float(t.get("entry") or 0), float(t.get("stop") or 0)),
                 "tp1": t.get("tp1"),
                 "pnl_pct": _pct(float(t.get("entry") or 0), float(t.get("last") or 0)),
                 "mfe_pct": t.get("mfe_pct"),
@@ -559,7 +623,10 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
             }
             for t in recent_open
         ],
-        "note_ar": "متابعة ورقية من الصفر — تُسجَّل الإشارات الجديدة فقط · ليست أرباح محفظة حقيقية.",
+        "note_ar": (
+            "مؤشرات اليوم فقط · نسبة النجاح بدون إغلاق الجلسة 0% · "
+            "صفقات جديدة وقف≈10% (المفتوحة القديمة قد تكون أوسع) · تعليمي."
+        ),
     }
 
 
@@ -571,7 +638,10 @@ def sync_from_boards(
     qannas: list[dict[str, Any]] | None = None,
     price_by_symbol: dict[str, float] | None = None,
 ) -> dict[str, Any]:
-    """One-shot: ingest new setups, mark-to-market, return dashboard payload."""
+    """One-shot: ingest new setups, mark-to-market, return dashboard payload.
+
+    Top-level KPIs are **today only** (Riyadh). All-time totals live under ``all_time``.
+    """
     prices = dict(price_by_symbol or {})
     for rows in (opportunities or [], sniper or [], jamal or [], qannas or []):
         for r in rows:
@@ -587,9 +657,32 @@ def sync_from_boards(
     )
     mark_to_market(prices)
     data = _load()
-    summary = data.get("summary") or summarize(data.get("trades") or [])
+    all_trades = list(data.get("trades") or [])
+    all_time = data.get("summary") or summarize(all_trades)
 
-    day_perf: dict[str, Any] = {}
+    day = datetime.now(RIYADH).strftime("%Y-%m-%d")
+    today = summarize(_trades_for_day(all_trades, day))
+    # Dashboard primary = today KPIs; nest all-time for reference
+    summary = {
+        **today,
+        "day": day,
+        "scope": "today",
+        "all_time": {
+            "open": all_time.get("open"),
+            "closed": all_time.get("closed"),
+            "wins": all_time.get("wins"),
+            "losses": all_time.get("losses"),
+            "flat": all_time.get("flat"),
+            "win_rate": all_time.get("win_rate"),
+            "avg_pnl_pct": all_time.get("avg_pnl_pct"),
+            "avg_r": all_time.get("avg_r"),
+        },
+        "note_ar": (
+            f"مؤشرات يوم {day} فقط · نسبة النجاح بدون إغلاق الجلسة/صفر٪ · "
+            "صفقات جديدة: وقف ≈ 10٪ تحت الدخول (الصفقات المفتوحة الأقدم قد يكون وقفها أوسع ولا يُعدَّل) · تعليمي."
+        ),
+    }
+
     try:
         from bot.day_performance import write_day_report
 
@@ -608,6 +701,7 @@ def sync_from_boards(
     return {
         "updated_ts": data.get("updated_ts"),
         "updated_local": data.get("updated_local"),
-        "trades_n": len(data.get("trades") or []),
+        "trades_n": len(all_trades),
+        "trades_today_n": len(_trades_for_day(all_trades, day)),
         **summary,
     }

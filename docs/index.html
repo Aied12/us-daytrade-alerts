@@ -493,13 +493,14 @@
 
     <div class="card panel" id="panel-track" data-section-panel="track">
       <h2>متابعة أداء الاستراتيجيات</h2>
-      <p class="muted" id="trackNote">متابعة ورقية من الصفر — تُبنى على الإشارات الجديدة فقط</p>
+      <p class="muted" id="trackNote">مؤشرات اليوم فقط — نسبة النجاح بدون إغلاق الجلسة عند 0٪</p>
       <div class="grid" id="trackKpis" style="margin-top:10px">
-        <div class="m"><div class="muted">نسبة النجاح</div><div id="trackWinRate" class="sym">—</div></div>
-        <div class="m"><div class="muted">متوسط الربح/الخسارة %</div><div id="trackAvgPnl">—</div></div>
+        <div class="m"><div class="muted">نجاح اليوم</div><div id="trackWinRate" class="sym">—</div></div>
+        <div class="m"><div class="muted">متوسط % اليوم</div><div id="trackAvgPnl">—</div></div>
         <div class="m"><div class="muted">مفتوحة الآن</div><div id="trackOpen">—</div></div>
         <div class="m"><div class="muted">مغلقة / رابحة / خاسرة</div><div id="trackClosed">—</div></div>
       </div>
+      <p class="muted" id="trackAllTime" style="font-size:.8rem;margin:6px 0 0"></p>
       <h2 style="margin-top:16px;font-size:1rem">سجل اليوم (ظهور → فتح → إغلاق)</h2>
       <p class="muted" id="dayPerfNote" style="font-size:.85rem;margin:4px 0 8px">يُحدَّث مع كل فحص — حمّل JSON أو CSV للتحليل</p>
       <div class="toolbar" style="margin-bottom:8px;gap:8px;flex-wrap:wrap">
@@ -521,7 +522,7 @@
       <div id="trackOpenList"><div class="empty">لا صفقات مفتوحة</div></div>
       <h2 style="margin-top:16px;font-size:1rem">آخر النتائج</h2>
       <div id="trackClosedList"><div class="empty">لا نتائج مغلقة بعد</div></div>
-      <p class="muted" style="margin-top:12px;font-size:.82rem">تعليمي فقط — ليست أرباح محفظة حقيقية. القياس: وصول السعر للهدف/الوقف بعد ظهور الإشارة في الماسحات.</p>
+      <p class="muted" style="margin-top:12px;font-size:.82rem">تعليمي فقط — ليست أرباح محفظة حقيقية. صفقات جديدة: وقف ≈ 10٪ تحت الدخول. الصفقات المفتوحة الأقدم قد يكون وقفها أوسع ولا يُعدَّل.</p>
     </div>
 
     <div class="card panel" id="panel-more" data-section-panel="more">
@@ -1637,7 +1638,19 @@
       const op=document.getElementById('trackOpen');
       if(op) op.textContent=String(tr.open||0);
       const cl=document.getElementById('trackClosed');
-      if(cl) cl.textContent=`${tr.closed||0} / ✓${tr.wins||0} / ✗${tr.losses||0}`;
+      if(cl){
+        const flat=tr.flat||0;
+        cl.textContent=`${tr.closed||0} / ✓${tr.wins||0} / ✗${tr.losses||0}`+(flat?` / ○${flat}`:'');
+      }
+      const at=document.getElementById('trackAllTime');
+      if(at){
+        const a=tr.all_time||{};
+        if(a.closed!=null){
+          at.textContent = `كل الفترات: نجاح ${a.win_rate==null?'—':a.win_rate+'%'} · مغلقة ${a.closed||0} · ✓${a.wins||0} / ✗${a.losses||0}`+(a.flat?` / ○${a.flat}`:'');
+        } else {
+          at.textContent = '';
+        }
+      }
 
       const srcBox=document.getElementById('trackBySource');
       if(srcBox){
@@ -1647,7 +1660,7 @@
             <div><b>${esc(r.name)}</b><div class="muted" style="font-size:.8rem">${r.n||0} إشارة · مفتوح ${r.open||0}</div></div>
             <div style="text-align:left">
               <b class="${r.win_rate==null?'':(r.win_rate>=55?'ok':(r.win_rate>=45?'warn':'bad'))}">${r.win_rate==null?'—':r.win_rate+'%'}</b>
-              <div class="muted" style="font-size:.8rem">✓${r.wins||0} / ✗${r.losses||0}</div>
+              <div class="muted" style="font-size:.8rem">✓${r.wins||0} / ✗${r.losses||0}${(r.flat?` / ○${r.flat}`:'')}</div>
             </div>
           </div>`).join('') : '<div class="empty">لا بيانات مصدر بعد</div>';
       }
@@ -1672,6 +1685,8 @@
           const entry=Number(r.entry||0);
           const last=Number((live && live.last>0)?live.last:(r.last||0));
           const pnl=entry>0 && last>0 ? ((last-entry)/entry)*100 : Number(r.pnl_pct||0);
+          const stopPct=r.stop_pct!=null?Number(r.stop_pct):(entry>0&&r.stop?((entry-Number(r.stop))/entry*100):null);
+          const stopWide=stopPct!=null && stopPct>12;
           return `<div class="scan-item" data-track-open="${esc(sym)}">
             <div class="row"><span class="sym">${esc(sym)}</span><span class="pill">${esc(r.source_ar||'')}</span></div>
             <div class="muted" style="margin-top:4px">${(r.strategies||[]).map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div>
@@ -1679,7 +1694,7 @@
               <span class="muted">دخول $${esc(Number(entry).toFixed(2))} · سعر الآن $<span data-live-px="${esc(sym)}">${last>0?esc(Number(last).toFixed(2)):'—'}</span></span>
               <b class="${pnl>=0?'ok':'bad'}" data-track-pnl="${esc(sym)}">${pnl>=0?'+':''}${pnl.toFixed(2)}%</b>
             </div>
-            <div class="muted" style="font-size:.82rem">وقف ${esc(r.stop)} · هدف1 ${esc(r.tp1)} · منذ ${esc(r.opened_local||'')}</div>
+            <div class="muted" style="font-size:.82rem">وقف ${esc(r.stop)}${stopPct!=null?` (−${esc(stopPct.toFixed(1))}%)`:''}${stopWide?' · وقف قديم أوسع':''} · هدف1 ${esc(r.tp1)} · منذ ${esc(r.opened_local||'')}</div>
           </div>`;
         }).join('') : '<div class="empty">لا صفقات مفتوحة</div>';
       }
@@ -1688,10 +1703,11 @@
         const rows=tr.recent_closed||[];
         closedBox.innerHTML = rows.length ? rows.map(r=>{
           const pnl=Number(r.pnl_pct||0);
+          const flat=r.status==='session_end' || pnl===0;
           return `<div class="scan-item">
-            <div class="row"><span class="sym">${esc(r.symbol)}</span><span class="pill ${pnl>=0?'ok':'bad'}">${esc(r.result_ar||'')}</span></div>
+            <div class="row"><span class="sym">${esc(r.symbol)}</span><span class="pill ${flat?'':(pnl>=0?'ok':'bad')}">${esc(r.result_ar||'')}</span></div>
             <div class="muted" style="margin-top:4px">${esc(r.source_ar||'')} · ${(r.strategies||[]).map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div>
-            <div class="row" style="margin-top:6px"><span class="muted">${r.entry} → ${r.exit}</span><b class="${pnl>=0?'ok':'bad'}">${pnl>=0?'+':''}${pnl.toFixed(2)}%${r.r_multiple!=null?` · ${r.r_multiple}R`:''}</b></div>
+            <div class="row" style="margin-top:6px"><span class="muted">${r.entry} → ${r.exit}</span><b class="${flat?'':(pnl>=0?'ok':'bad')}">${pnl>=0?'+':''}${pnl.toFixed(2)}%${r.r_multiple!=null?` · ${r.r_multiple}R`:''}${flat?' · لا يدخل نسبة النجاح':''}</b></div>
             <div class="muted" style="font-size:.82rem">${esc(r.opened_local||'')} → ${esc(r.exit_local||'')}</div>
           </div>`;
         }).join('') : '<div class="empty">لا نتائج مغلقة بعد — تُحسب عند لمس الهدف أو الوقف</div>';
@@ -1707,7 +1723,7 @@
       const setTxt=(id,v)=>{const el=document.getElementById(id); if(el) el.textContent=v;};
       setTxt('dayPerfAppeared', String(sum.appeared!=null?sum.appeared:'—'));
       setTxt('dayPerfOpened', String(sum.opened!=null?sum.opened:'—'));
-      setTxt('dayPerfClosed', `${sum.closed||0} · ✓${sum.wins||0} / ✗${sum.losses||0}`);
+      setTxt('dayPerfClosed', `${sum.closed||0} · ✓${sum.wins||0} / ✗${sum.losses||0}`+(sum.flat?` / ○${sum.flat}`:''));
       const wr=document.getElementById('dayPerfWinRate');
       if(wr){
         wr.textContent = sum.win_rate==null ? '—' : (sum.win_rate+'%');
@@ -1745,7 +1761,7 @@
             ${r.appear_has_news?' · خبر':''}
           </div>
           <div class="muted" style="font-size:.82rem">
-            فتح ${esc(r.opened_local||'—')} · دخول ${esc(r.entry||'—')} · وقف ${esc(r.stop||'—')} · هدف ${esc(r.tp1||'—')}/${esc(r.tp2||'—')}
+            فتح ${esc(r.opened_local||'—')} · دخول ${esc(r.entry||'—')} · وقف ${esc(r.stop||'—')}${r.stop_pct!=null?` (−${esc(r.stop_pct)}%)`:''}${Number(r.stop_pct)>12?' · قديم أوسع':''} · هدف ${esc(r.tp1||'—')}/${esc(r.tp2||'—')}
           </div>
           <div class="row" style="margin-top:4px">
             <span class="muted" style="font-size:.82rem">${esc(r.exit_local?('إغلاق '+r.exit_local):'لم يُغلق')}${tto}${hold}</span>

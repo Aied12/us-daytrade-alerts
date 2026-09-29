@@ -210,7 +210,15 @@ def enrich_trade_appearance(trade: dict[str, Any], board: dict[str, dict[str, An
         trade["name"] = snap["appear_name"]
         changed = True
     if trade.get("appeared_ts") and trade.get("opened_ts") and trade.get("time_to_open_sec") is None:
-        trade["time_to_open_sec"] = max(0, int(trade["opened_ts"]) - int(trade["appeared_ts"]))
+        appeared = int(trade["appeared_ts"])
+        opened = int(trade["opened_ts"])
+        # Sticky board first_ts from a prior day artificially inflates the gap
+        if _day_str(float(appeared)) != _day_str(float(opened)):
+            trade["appeared_ts"] = opened
+            trade["appeared_local"] = trade.get("opened_local") or _local(opened)
+            trade["time_to_open_sec"] = 0
+        else:
+            trade["time_to_open_sec"] = max(0, opened - appeared)
         changed = True
     return changed
 
@@ -254,6 +262,14 @@ def _trade_lifecycle_row(t: dict[str, Any]) -> dict[str, Any]:
     tto = t.get("time_to_open_sec")
     if tto is None and appeared and opened:
         tto = max(0, opened - appeared)
+    # Clamp sticky multi-day inflate for the row itself
+    if tto is not None and appeared and opened and _day_str(float(appeared)) != _day_str(float(opened)):
+        tto = 0
+    entry = float(t.get("entry") or 0)
+    stop = float(t.get("stop") or 0)
+    stop_pct = None
+    if entry > 0 and stop > 0 and stop < entry:
+        stop_pct = round((entry - stop) / entry * 100.0, 1)
     return {
         "id": t.get("id"),
         "symbol": t.get("symbol"),
@@ -291,6 +307,7 @@ def _trade_lifecycle_row(t: dict[str, Any]) -> dict[str, Any]:
         "appear_phase": t.get("appear_phase"),
         "entry": t.get("entry"),
         "stop": t.get("stop"),
+        "stop_pct": stop_pct,
         "tp1": t.get("tp1"),
         "tp2": t.get("tp2"),
         "last": t.get("last"),
@@ -374,8 +391,17 @@ def build_day_report(day: str | None = None) -> dict[str, Any]:
     decided = [r for r in closed if r.get("pnl_pct") is not None]
     wins = [r for r in decided if float(r.get("pnl_pct") or 0) > 0]
     losses = [r for r in decided if float(r.get("pnl_pct") or 0) < 0]
+    flats = [r for r in decided if float(r.get("pnl_pct") or 0) == 0]
+    session_ends = [r for r in closed if r.get("status") == "session_end"]
+    directional = wins + losses
     holds = [int(r["hold_sec"]) for r in closed if r.get("hold_sec") is not None]
-    ttos = [int(r["time_to_open_sec"]) for r in rows if r.get("time_to_open_sec") is not None]
+    # Cap sticky-appear inflation: ignore appear→open gaps over 6h for the average
+    ttos = [
+        int(r["time_to_open_sec"])
+        for r in rows
+        if r.get("time_to_open_sec") is not None and int(r["time_to_open_sec"]) <= 6 * 3600
+    ]
+    scored = len(wins) + len(losses)
 
     summary = {
         "appeared": len(rows) + len(appeared_only),
@@ -384,12 +410,23 @@ def build_day_report(day: str | None = None) -> dict[str, Any]:
         "closed": len(closed),
         "wins": len(wins),
         "losses": len(losses),
-        "win_rate": round(100.0 * len(wins) / len(decided), 1) if decided else None,
-        "avg_pnl_pct": round(sum(float(r.get("pnl_pct") or 0) for r in decided) / len(decided), 3) if decided else None,
-        "avg_r": round(sum(float(r.get("r_multiple") or 0) for r in decided) / len(decided), 3) if decided else None,
+        "flat": len(flats),
+        "session_end": len(session_ends),
+        "win_rate": round(100.0 * len(wins) / scored, 1) if scored else None,
+        "avg_pnl_pct": (
+            round(sum(float(r.get("pnl_pct") or 0) for r in directional) / len(directional), 3)
+            if directional
+            else None
+        ),
+        "avg_r": (
+            round(sum(float(r.get("r_multiple") or 0) for r in directional) / len(directional), 3)
+            if directional
+            else None
+        ),
         "avg_hold_sec": int(sum(holds) / len(holds)) if holds else None,
         "avg_time_to_open_sec": int(sum(ttos) / len(ttos)) if ttos else None,
         "appeared_only_n": len(appeared_only),
+        "win_rate_note_ar": "نسبة النجاح = رابح / (رابح+خاسر) — بدون إغلاق الجلسة عند 0٪",
     }
 
     return {
@@ -398,8 +435,8 @@ def build_day_report(day: str | None = None) -> dict[str, Any]:
         "generated_ts": int(_now()),
         "generated_local": datetime.now(RIYADH).strftime("%Y-%m-%d %H:%M:%S %Z"),
         "note_ar": (
-            "سجل يومي كامل: ظهور السهم في القناص → فتح الصفقة الورقية → الإغلاق "
-            "(هدف/وقف/انتهاء). للتحليل — ليس تنفيذ وساطة."
+            "سجل يومي: ظهور → فتح → إغلاق. نجاح اليوم بدون صفقات الجلسة المسطّحة (0٪). "
+            "صفقات جديدة وقف≈10٪ · المفتوحة القديمة قد تكون أوسع ولا تُعدَّل. للتحليل — ليس وساطة."
         ),
         "summary": summary,
         "trades": rows,
