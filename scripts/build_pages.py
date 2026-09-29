@@ -466,8 +466,8 @@ def main() -> None:
             price_by_symbol=price_map,
         )
         strategy_track["note_ar"] = (
-            "متابعة ورقية لماسح القناص — نجاح/فشل حسب الهدف أو الوقف بعد الإشارة"
-            " · سجل يومي كامل: ظهور → فتح → إغلاق"
+            "متابعة ورقية لماسح القناص — تُقفل مع نهاية After-hours"
+            " · نجاح/فشل حسب الهدف أو الوقف أو إغلاق الجلسة"
         )
     except Exception as e:
         strategy_track = {

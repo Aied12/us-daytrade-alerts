@@ -122,7 +122,9 @@ class DayPerformanceTests(unittest.TestCase):
     def test_ingest_attaches_appearance(self):
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "strategy_ledger.json"
-            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path):
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=True
+            ):
                 n = ingest_candidates(
                     qannas=[
                         {

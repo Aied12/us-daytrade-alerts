@@ -17,10 +17,32 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parent.parent
 LEDGER_PATH = ROOT / "data" / "strategy_ledger.json"
 RIYADH = ZoneInfo("Asia/Riyadh")
+NY = ZoneInfo("America/New_York")
 
 MAX_TRADES = 400
-OPEN_MAX_SEC = 6 * 3600  # day-trade horizon
+OPEN_MAX_SEC = 6 * 3600  # day-trade horizon inside an open session
 MIN_HOLD_SEC = 90        # don't close instantly on same-tick noise
+
+
+def _session_phase() -> str:
+    """pre | regular | post | closed — US equity extended hours."""
+    try:
+        from bot.live_quotes import session_phase
+
+        return str(session_phase() or "closed")
+    except Exception:
+        try:
+            from bot.gainers import session_phase
+
+            return str(session_phase() or "closed")
+        except Exception:
+            return "closed"
+
+
+def _paper_session_open() -> bool:
+    """Paper daytrades only during pre / regular / after-hours."""
+    return _session_phase() in ("pre", "regular", "post")
+
 
 
 def _attach_appearance(trade: dict[str, Any], row: dict[str, Any], source: str) -> None:
@@ -189,6 +211,10 @@ def ingest_candidates(
     qannas: list[dict[str, Any]] | None = None,
 ) -> int:
     """Open paper trades for new long setups. Returns number newly opened."""
+    # No new daytrades while US market (incl. after-hours) is shut
+    if not _paper_session_open():
+        return 0
+
     data = _load()
     trades: list[dict[str, Any]] = list(data.get("trades") or [])
     by_id = {str(t.get("id")): t for t in trades if t.get("id")}
@@ -289,10 +315,11 @@ def _r_multiple(entry: float, stop: float, exit_px: float) -> float:
 
 
 def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
-    """Update open trades; close on SL / TP / timeout. Returns fresh summary."""
+    """Update open trades; close on SL / TP / session end / timeout. Returns fresh summary."""
     data = _load()
     trades: list[dict[str, Any]] = list(data.get("trades") or [])
     now = _now()
+    session_closed = not _paper_session_open()
     for t in trades:
         if t.get("status") != "open":
             continue
@@ -315,69 +342,109 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
         except Exception:
             pass
         age = now - float(t.get("opened_ts") or now)
+        # Force flat at end of after-hours / overnight — daytrade only
+        if session_closed:
+            label = "إغلاق الجلسة +" if pnl >= 0 else "إغلاق الجلسة −"
+            _close_trade(t, "session_end", last, label, entry=entry, stop=stop, now=now)
+            continue
         if age < MIN_HOLD_SEC:
             continue
 
-        def _close(status: str, exit_px: float, label: str) -> None:
-            t["status"] = status
-            t["exit"] = _px(exit_px)
-            t["exit_ts"] = int(now)
-            t["exit_local"] = datetime.now(RIYADH).strftime("%Y-%m-%d %H:%M")
-            t["pnl_pct"] = _pct(entry, exit_px)
-            t["r_multiple"] = _r_multiple(entry, stop, exit_px)
-            t["result_ar"] = label
-            t["hold_sec"] = max(0, int(now) - int(t.get("opened_ts") or now))
-            trail = t.get("price_trail")
-            if not isinstance(trail, list):
-                trail = []
-                t["price_trail"] = trail
-            trail.append(
-                {
-                    "ts": int(now),
-                    "local": t["exit_local"],
-                    "px": _px(exit_px),
-                    "pnl_pct": t["pnl_pct"],
-                    "event": status,
-                }
-            )
-            try:
-                from bot.day_performance import append_lifecycle_event
-
-                append_lifecycle_event(
-                    "close",
-                    {
-                        "trade_id": t.get("id"),
-                        "symbol": t.get("symbol"),
-                        "status": status,
-                        "entry": entry,
-                        "exit": t["exit"],
-                        "pnl_pct": t["pnl_pct"],
-                        "r_multiple": t["r_multiple"],
-                        "mfe_pct": t.get("mfe_pct"),
-                        "mae_pct": t.get("mae_pct"),
-                        "hold_sec": t.get("hold_sec"),
-                        "appeared_ts": t.get("appeared_ts"),
-                        "time_to_open_sec": t.get("time_to_open_sec"),
-                    },
-                )
-            except Exception:
-                pass
-
         # Long exits — worst first so gap-through SL wins
         if stop > 0 and last <= stop:
-            _close("loss_sl", last, "وقف خسارة")
+            _close_trade(t, "loss_sl", last, "وقف خسارة", entry=entry, stop=stop, now=now)
         elif tp2 > 0 and last >= tp2:
-            _close("win_tp2", last, "هدف 2 ✓")
+            _close_trade(t, "win_tp2", last, "هدف 2 ✓", entry=entry, stop=stop, now=now)
         elif tp1 > 0 and last >= tp1:
-            _close("win_tp1", last, "هدف 1 ✓")
+            _close_trade(t, "win_tp1", last, "هدف 1 ✓", entry=entry, stop=stop, now=now)
         elif age >= OPEN_MAX_SEC:
             label = "انتهى الوقت +" if pnl >= 0 else "انتهى الوقت −"
-            _close("expired", last, label)
+            _close_trade(t, "expired", last, label, entry=entry, stop=stop, now=now)
 
     data["trades"] = trades
     data["summary"] = summarize(trades)
     _save(data)
     return data["summary"]
+
+
+def _close_trade(
+    t: dict[str, Any],
+    status: str,
+    exit_px: float,
+    label: str,
+    *,
+    entry: float,
+    stop: float,
+    now: float,
+) -> None:
+    t["status"] = status
+    t["exit"] = _px(exit_px)
+    t["exit_ts"] = int(now)
+    t["exit_local"] = datetime.now(RIYADH).strftime("%Y-%m-%d %H:%M")
+    t["pnl_pct"] = _pct(entry, exit_px)
+    t["r_multiple"] = _r_multiple(entry, stop, exit_px)
+    t["result_ar"] = label
+    t["hold_sec"] = max(0, int(now) - int(t.get("opened_ts") or now))
+    trail = t.get("price_trail")
+    if not isinstance(trail, list):
+        trail = []
+        t["price_trail"] = trail
+    trail.append(
+        {
+            "ts": int(now),
+            "local": t["exit_local"],
+            "px": _px(exit_px),
+            "pnl_pct": t["pnl_pct"],
+            "event": status,
+        }
+    )
+    try:
+        from bot.day_performance import append_lifecycle_event
+
+        append_lifecycle_event(
+            "close",
+            {
+                "trade_id": t.get("id"),
+                "symbol": t.get("symbol"),
+                "status": status,
+                "entry": entry,
+                "exit": t["exit"],
+                "pnl_pct": t["pnl_pct"],
+                "r_multiple": t["r_multiple"],
+                "mfe_pct": t.get("mfe_pct"),
+                "mae_pct": t.get("mae_pct"),
+                "hold_sec": t.get("hold_sec"),
+                "appeared_ts": t.get("appeared_ts"),
+                "time_to_open_sec": t.get("time_to_open_sec"),
+            },
+        )
+    except Exception:
+        pass
+
+
+def force_close_all_open(reason_ar: str = "إغلاق الجلسة") -> int:
+    """Manually flatten every open paper trade at last mark. Returns closed count."""
+    data = _load()
+    trades: list[dict[str, Any]] = list(data.get("trades") or [])
+    now = _now()
+    n = 0
+    for t in trades:
+        if t.get("status") != "open":
+            continue
+        entry = float(t.get("entry") or 0)
+        stop = float(t.get("stop") or 0)
+        last = float(t.get("last") or entry)
+        if entry <= 0 or last <= 0:
+            continue
+        pnl = _pct(entry, last)
+        label = f"{reason_ar} +" if pnl >= 0 else f"{reason_ar} −"
+        _close_trade(t, "session_end", last, label, entry=entry, stop=stop, now=now)
+        n += 1
+    if n:
+        data["trades"] = trades
+        data["summary"] = summarize(trades)
+        _save(data)
+    return n
 
 
 def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:

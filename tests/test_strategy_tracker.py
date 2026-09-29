@@ -10,6 +10,7 @@ from unittest import mock
 
 from bot.strategy_tracker import (
     _levels_from_row,
+    force_close_all_open,
     ingest_candidates,
     mark_to_market,
     summarize,
@@ -24,7 +25,9 @@ class StrategyTrackerTests(unittest.TestCase):
     def test_ingest_and_win_tp1(self):
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "strategy_ledger.json"
-            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path):
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=True
+            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"):
                 n = ingest_candidates(
                     sniper=[
                         {
@@ -54,7 +57,9 @@ class StrategyTrackerTests(unittest.TestCase):
     def test_stop_loss(self):
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "strategy_ledger.json"
-            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path):
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=True
+            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"):
                 ingest_candidates(
                     opportunities=[
                         {
@@ -76,6 +81,77 @@ class StrategyTrackerTests(unittest.TestCase):
                 t = json.loads(path.read_text(encoding="utf-8"))["trades"][0]
                 self.assertEqual(t["status"], "loss_sl")
                 self.assertLess(t["pnl_pct"], 0)
+
+    def test_no_ingest_when_closed(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "strategy_ledger.json"
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=False
+            ):
+                n = ingest_candidates(
+                    qannas=[
+                        {
+                            "symbol": "ZZZ",
+                            "last": 2.0,
+                            "entry": 2.0,
+                            "stop": 1.8,
+                            "tp1": 2.2,
+                            "tp2": 2.4,
+                        }
+                    ]
+                )
+                self.assertEqual(n, 0)
+                self.assertFalse(path.exists())
+
+    def test_session_end_flattens_open(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "strategy_ledger.json"
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=True
+            ):
+                ingest_candidates(
+                    qannas=[
+                        {
+                            "symbol": "BBB",
+                            "last": 10.0,
+                            "entry": 10.0,
+                            "stop": 9.0,
+                            "tp1": 11.0,
+                            "tp2": 12.0,
+                        }
+                    ]
+                )
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=False
+            ):
+                mark_to_market({"BBB": 10.4})
+                t = json.loads(path.read_text(encoding="utf-8"))["trades"][0]
+                self.assertEqual(t["status"], "session_end")
+                self.assertIn("إغلاق الجلسة", t["result_ar"])
+                self.assertGreater(t["pnl_pct"], 0)
+
+    def test_force_close_all(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "strategy_ledger.json"
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=True
+            ):
+                ingest_candidates(
+                    qannas=[
+                        {
+                            "symbol": "CCC",
+                            "last": 5.0,
+                            "entry": 5.0,
+                            "stop": 4.5,
+                            "tp1": 5.5,
+                            "tp2": 6.0,
+                        }
+                    ]
+                )
+                n = force_close_all_open()
+                self.assertEqual(n, 1)
+                t = json.loads(path.read_text(encoding="utf-8"))["trades"][0]
+                self.assertEqual(t["status"], "session_end")
 
 
 if __name__ == "__main__":
