@@ -573,7 +573,9 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
         key=lambda t: int(t.get("exit_ts") or 0),
         reverse=True,
     )[:15]
-    recent_open = [t for t in trades if t.get("status") == "open"][-12:]
+    recent_open = [t for t in trades if t.get("status") == "open"]
+    # Newest opens last in ledger → show newest first, keep all (cap 40)
+    recent_open = list(reversed(recent_open))[:40]
 
     return {
         "open": open_n,

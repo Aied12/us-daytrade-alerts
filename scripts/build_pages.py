@@ -456,6 +456,34 @@ def main() -> None:
                 price_map[str(s.symbol).upper()] = float(s.last)
         except Exception:
             pass
+    # Refresh quotes for open paper trades (often off the qannas board already)
+    try:
+        from bot.live_quotes import fetch_live_quotes
+        from bot.strategy_tracker import LEDGER_PATH
+
+        open_syms: list[str] = []
+        try:
+            ledger = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
+            for t in ledger.get("trades") or []:
+                if t.get("status") == "open" and t.get("symbol"):
+                    open_syms.append(str(t["symbol"]).upper())
+        except Exception:
+            pass
+        for r in qannas or []:
+            if isinstance(r, dict) and r.get("symbol"):
+                open_syms.append(str(r["symbol"]).upper())
+        open_syms = list(dict.fromkeys(open_syms))[:40]
+        missing = [s for s in open_syms if s not in price_map]
+        if missing:
+            for sym, q in fetch_live_quotes(missing).items():
+                try:
+                    px = float(getattr(q, "last", 0) or 0)
+                    if px > 0:
+                        price_map[str(sym).upper()] = px
+                except Exception:
+                    pass
+    except Exception:
+        pass
     try:
         # متابعة الأداء تُغذّى من ماسح القناص فقط (الماسحات القديمة أُزيلت من الواجهة)
         strategy_track = sync_from_boards(

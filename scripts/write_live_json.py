@@ -32,9 +32,24 @@ def main() -> int:
         for s in (status.get("sniper_scanner") or [])[:12]:
             if s.get("symbol"):
                 symbols.append(s["symbol"])
+        for q in (status.get("qannas") or [])[:15]:
+            if isinstance(q, dict) and q.get("symbol"):
+                symbols.append(q["symbol"])
+        # Open paper trades need live prices for PnL % on the track panel
+        for r in ((status.get("strategy_track") or {}).get("recent_open") or []):
+            if isinstance(r, dict) and r.get("symbol"):
+                symbols.append(r["symbol"])
     except Exception:
         pass
-    symbols = list(dict.fromkeys(s.upper() for s in symbols if s))[:55]
+    # Also pull open symbols straight from the ledger (status may lag one cycle)
+    try:
+        ledger = json.loads((ROOT / "data" / "strategy_ledger.json").read_text(encoding="utf-8"))
+        for t in ledger.get("trades") or []:
+            if t.get("status") == "open" and t.get("symbol"):
+                symbols.append(str(t["symbol"]))
+    except Exception:
+        pass
+    symbols = list(dict.fromkeys(s.upper() for s in symbols if s))[:80]
     quotes = fetch_live_quotes(symbols)
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
