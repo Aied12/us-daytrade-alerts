@@ -1214,16 +1214,19 @@
       rows.forEach(r=>{
         const sym=String(r.symbol||'').toUpperCase();
         const q=LIVE_CACHE[sym];
-        if(!q || !(q.last>0)) return;
         const entry=Number(r.entry||0);
-        const last=Number(q.last);
-        const pnl=entry>0 ? ((last-entry)/entry)*100 : Number(r.pnl_pct||0);
+        let last=Number((q && q.last>0) ? q.last : (r.last||0));
+        if(!(entry>0) || !(last>0)) return;
+        const pnl=((last-entry)/entry)*100;
         r.last=last;
         r.pnl_pct=Number(pnl.toFixed(2));
+        document.querySelectorAll('[data-live-px="'+sym+'"]').forEach(el=>{
+          el.textContent=Number(last).toFixed(last<1?4:2);
+        });
         document.querySelectorAll('[data-track-pnl="'+sym+'"]').forEach(el=>{
           el.textContent=(pnl>=0?'+':'')+pnl.toFixed(2)+'%';
-          el.classList.remove('ok','bad');
-          el.classList.add(pnl>=0?'ok':'bad');
+          el.classList.remove('ok','bad','muted');
+          el.classList.add(pnl>0?'ok':(pnl<0?'bad':'muted'));
         });
       });
     }
@@ -2709,13 +2712,29 @@
       // لا تضرب jina إذا محظور أو لو الملف الطازج يكفي
       if(window.__jinaBackoffUntil && Date.now() < window.__jinaBackoffUntil) return 0;
       const gainerSet=new Set(GAINERS_STATE.map(g=>String(g.symbol).toUpperCase()));
-      const ranked=[...syms].sort((a,b)=>(gainerSet.has(b)?1:0)-(gainerSet.has(a)?1:0));
-      // دفعة صغيرة فقط — موجة دوّارة كل دورة
+      const openSet=new Set(((DATA&&DATA.strategy_track&&DATA.strategy_track.recent_open)||[])
+        .map(r=>String(r.symbol||'').toUpperCase()).filter(Boolean));
+      // أولوية: صفقات مفتوحة بلا سعر حي → غينرز → الباقي
+      const ranked=[...syms].sort((a,b)=>{
+        const score=s=>{
+          let n=0;
+          if(openSet.has(s)) n+=4;
+          if(openSet.has(s) && !(LIVE_CACHE[s]&&LIVE_CACHE[s].last>0)) n+=6;
+          if(gainerSet.has(s)) n+=1;
+          return n;
+        };
+        return score(b)-score(a);
+      });
+      // دفعة أكبر للصفقات المفتوحة الناقصة
+      const needOpen=[...openSet].filter(s=>!(LIVE_CACHE[s]&&LIVE_CACHE[s].last>0));
       const start=(liveWave*4)%Math.max(ranked.length,1);
-      const list=[];
-      for(let k=0;k<4 && ranked.length;k++) list.push(ranked[(start+k)%ranked.length]);
+      const list=[...needOpen.slice(0,6)];
+      for(let k=0;k<4 && ranked.length;k++){
+        const s=ranked[(start+k)%ranked.length];
+        if(!list.includes(s)) list.push(s);
+      }
       let ok=0;
-      await mapPool([...new Set(list)], 2, async (sym)=>{
+      await mapPool([...new Set(list)], 3, async (sym)=>{
         try{
           const q=await fetchOneLive(sym);
           applyQuoteToDom(sym, q);
