@@ -53,8 +53,8 @@ def cycle(n: int) -> None:
     t0 = time.time()
     run([py, str(ROOT / "scripts" / "scheduled_run.py"), "--mode", "tick", "--force"])
     run([py, str(ROOT / "scripts" / "write_live_json.py")])
-    # News translate is slower — every other cycle keeps «آخر فحص» fresher
-    if n == 1 or n % 2 == 0:
+    # News translate/fetch is slower — every 3rd cycle keeps «آخر فحص» fresher
+    if n == 1 or n % 3 == 0:
         run([py, str(ROOT / "scripts" / "publish_news.py")])
     run([py, str(ROOT / "scripts" / "build_pages.py")])
     # sync html

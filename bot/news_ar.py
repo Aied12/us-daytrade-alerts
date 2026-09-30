@@ -167,7 +167,7 @@ def _via_mymemory(text: str) -> str:
         "https://api.mymemory.translated.net/get",
         params=params,
         headers=UA,
-        timeout=18,
+        timeout=5,
     )
     if not r.ok:
         return ""
