@@ -61,7 +61,9 @@ class StrategyTrackerTests(unittest.TestCase):
             path = Path(td) / "strategy_ledger.json"
             with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
                 "bot.strategy_tracker._paper_session_open", return_value=True
-            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"):
+            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"), mock.patch(
+                "bot.strategy_tracker._riyadh_eod_flat", return_value=False
+            ):
                 ingest_candidates(
                     opportunities=[
                         {
@@ -110,7 +112,7 @@ class StrategyTrackerTests(unittest.TestCase):
             path = Path(td) / "strategy_ledger.json"
             with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
                 "bot.strategy_tracker._paper_session_open", return_value=True
-            ):
+            ), mock.patch("bot.strategy_tracker._riyadh_eod_flat", return_value=False):
                 ingest_candidates(
                     qannas=[
                         {
@@ -125,7 +127,7 @@ class StrategyTrackerTests(unittest.TestCase):
                 )
             with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
                 "bot.strategy_tracker._paper_session_open", return_value=False
-            ):
+            ), mock.patch("bot.strategy_tracker._riyadh_eod_flat", return_value=False):
                 mark_to_market({"BBB": 10.4})
                 t = json.loads(path.read_text(encoding="utf-8"))["trades"][0]
                 self.assertEqual(t["status"], "session_end")
@@ -137,7 +139,7 @@ class StrategyTrackerTests(unittest.TestCase):
             path = Path(td) / "strategy_ledger.json"
             with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
                 "bot.strategy_tracker._paper_session_open", return_value=True
-            ):
+            ), mock.patch("bot.strategy_tracker._riyadh_eod_flat", return_value=False):
                 ingest_candidates(
                     qannas=[
                         {

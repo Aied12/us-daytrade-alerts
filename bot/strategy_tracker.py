@@ -52,10 +52,11 @@ def _paper_session_open() -> bool:
 
 
 def _riyadh_eod_flat() -> bool:
+    """Flatten window: 23:00 flat trigger and whole overnight lock until 11:00."""
     try:
-        from bot.performance_eod import past_flat_time
+        from bot.performance_eod import in_overnight_lock, past_flat_time
 
-        return bool(past_flat_time())
+        return bool(past_flat_time() or in_overnight_lock())
     except Exception:
         return False
 
