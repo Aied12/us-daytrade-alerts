@@ -28,6 +28,9 @@ NO_GREEN_MFE_MAX = 0.0      # must have printed above entry (MFE > 0)
 # Paper open gate for قناص — skip thin names that gap through stops
 QANNAS_PAPER_MIN_DOLLAR = 1_000_000.0
 QANNAS_PAPER_MIN_RVOL = 2.0
+QANNAS_PAPER_MIN_PRICE = 0.50
+QANNAS_PAPER_MAX_CHG_PCT = 120.0   # avoid parabolic late extensions
+QANNAS_PAPER_LATE_HOUR = 17       # no new paper opens from 17:00 Asia/Riyadh
 
 
 def _session_phase() -> str:
@@ -354,15 +357,27 @@ def _r_multiple(entry: float, stop: float, exit_px: float) -> float:
 
 
 def _qannas_paper_entry_ok(row: dict[str, Any]) -> bool:
-    """Rule 2: skip thin قناص names for new paper opens (gap/fade risk)."""
+    """قناص paper gate: liquidity + time window + extension cap (28–30 Sep study)."""
     dollar = float(row.get("dollar_volume") or row.get("appear_dollar_volume") or 0)
     rvol = float(row.get("rvol") or row.get("appear_rvol") or 0)
     chg = float(row.get("change_pct") or row.get("appear_change_pct") or 0)
+    last = float(row.get("last") or row.get("entry") or row.get("appear_price") or 0)
     # Strong rockets still need a dollar-volume floor
     if dollar < QANNAS_PAPER_MIN_DOLLAR:
         return False
     if rvol < QANNAS_PAPER_MIN_RVOL and chg < 40.0:
         return False
+    if last > 0 and last < QANNAS_PAPER_MIN_PRICE:
+        return False
+    if chg >= QANNAS_PAPER_MAX_CHG_PCT:
+        return False
+    # Best historical WR was before 17:00 SA; late regular fades dominated losses
+    try:
+        h = datetime.now(RIYADH).hour
+        if h >= QANNAS_PAPER_LATE_HOUR:
+            return False
+    except Exception:
+        pass
     return True
 
 
