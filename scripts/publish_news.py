@@ -44,7 +44,7 @@ def _symbols(settings) -> list[str]:
     # liquid movers often in the news
     for s in ("SPY", "QQQ", "NVDA", "TSLA", "AMD", "AAPL", "META", "AMZN", "MSFT", "PLTR", "COIN", "BA"):
         syms.append(s)
-    return list(dict.fromkeys(s.upper() for s in syms if s))[:28]
+    return list(dict.fromkeys(s.upper() for s in syms if s))[:16]
 
 
 def _write_news_live(items: list[dict], *, fresh_n: int) -> None:
@@ -85,8 +85,8 @@ def main() -> int:
     syms = _symbols(settings)
     pack = fetch_stock_news_ar(
         syms,
-        limit=70,
-        per_symbol=4,
+        limit=40,
+        per_symbol=2,
         drop_negative_symbols=False,  # feed volume: drop only neg headlines
         translate_summary=False,
         include_market=True,
@@ -95,7 +95,7 @@ def main() -> int:
     try:
         from bot.catalyst_scan import enrich_news_item, rank_catalyst_news
 
-        news = rank_catalyst_news([enrich_news_item(n) for n in news], limit=70)
+        news = rank_catalyst_news([enrich_news_item(n) for n in news], limit=40)
     except Exception:
         pass
 
@@ -142,9 +142,9 @@ def main() -> int:
                     n["summary_ar"] = old.get("summary_ar")
         merged.append(n)
     merged.sort(key=lambda n: int(n.get("published_ts") or 0), reverse=True)
-    merged = merged[:70]
+    merged = merged[:50]
     # Translate a few missing Arabic titles each cycle (quota-safe)
-    translated = ensure_news_arabic(merged, max_new=int(__import__("os").getenv("NEWS_TRANSLATE_BUDGET", "12")))
+    translated = ensure_news_arabic(merged, max_new=int(__import__("os").getenv("NEWS_TRANSLATE_BUDGET", "5")))
     _write_news_live(merged, fresh_n=len(burst))
     save_seen_news(seen)
     ar_n = sum(1 for n in merged if _is_good_ar(str(n.get("title_ar") or ""), str(n.get("title") or "")))
