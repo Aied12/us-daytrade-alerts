@@ -90,54 +90,185 @@ def _looks_arabic(text: str) -> bool:
     return bool(re.search(r"[\u0600-\u06FF]", text or ""))
 
 
-def _translate_ar(text: str) -> str:
+def _is_good_ar(ar: str, src: str = "") -> bool:
+    """True only for usable Arabic (never accept EN fallback / quota warnings)."""
+    ar = (ar or "").strip()
+    if not ar or not _looks_arabic(ar):
+        return False
+    up = ar.upper()
+    if "MYMEMORY WARNING" in up or "QUOTA" in up or "TOO MANY REQUESTS" in up:
+        return False
+    if src and ar.strip().lower() == src.strip().lower():
+        return False
+    return True
+
+
+def _cache_path(text: str) -> Path:
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    key = hashlib.sha1(text.encode("utf-8")).hexdigest()
+    return CACHE_DIR / f"{key}.json"
+
+
+def _read_ar_cache(text: str) -> str:
+    path = _cache_path(text)
+    if not path.exists():
+        return ""
+    try:
+        cached = json.loads(path.read_text(encoding="utf-8"))
+        ar = str(cached.get("ar") or "").strip()
+        if _is_good_ar(ar, text):
+            return ar
+    except Exception:
+        pass
+    return ""
+
+
+def _write_ar_cache(text: str, ar: str) -> None:
+    if not _is_good_ar(ar, text):
+        return
+    try:
+        _cache_path(text).write_text(
+            json.dumps({"en": text, "ar": ar}, ensure_ascii=False),
+            encoding="utf-8",
+        )
+    except Exception:
+        pass
+
+
+def purge_bad_news_ar_cache() -> int:
+    """Delete poisoned cache entries that stored English (or warnings) as 'ar'."""
+    if not CACHE_DIR.exists():
+        return 0
+    removed = 0
+    for path in CACHE_DIR.glob("*.json"):
+        try:
+            cached = json.loads(path.read_text(encoding="utf-8"))
+            ar = str(cached.get("ar") or "")
+            en = str(cached.get("en") or "")
+            if _is_good_ar(ar, en):
+                continue
+            path.unlink(missing_ok=True)
+            removed += 1
+        except Exception:
+            try:
+                path.unlink(missing_ok=True)
+                removed += 1
+            except Exception:
+                pass
+    return removed
+
+
+def _via_mymemory(text: str) -> str:
+    email = (os.getenv("MYMEMORY_EMAIL") or "").strip()
+    params = {"q": text[:450], "langpair": "en|ar"}
+    if email:
+        params["de"] = email
+    r = requests.get(
+        "https://api.mymemory.translated.net/get",
+        params=params,
+        headers=UA,
+        timeout=18,
+    )
+    if not r.ok:
+        return ""
+    data = r.json() if r.content else {}
+    if data.get("quotaFinished"):
+        return ""
+    ar = ((data.get("responseData") or {}).get("translatedText") or "").strip()
+    if not _is_good_ar(ar, text):
+        return ""
+    return ar
+
+
+def _via_google(text: str) -> str:
+    from deep_translator import GoogleTranslator
+
+    # auto → catches EN + occasional non-EN wires
+    ar = GoogleTranslator(source="auto", target="ar").translate(text[:450]) or ""
+    time.sleep(0.35)
+    return ar if _is_good_ar(ar, text) else ""
+
+
+def _via_argos(text: str) -> str:
+    """Offline EN→AR if argostranslate + language pack are installed."""
+    try:
+        import argostranslate.translate  # type: ignore
+    except Exception:
+        return ""
+    try:
+        ar = argostranslate.translate.translate(text[:450], "en", "ar") or ""
+        return ar if _is_good_ar(ar, text) else ""
+    except Exception:
+        return ""
+
+
+# Soft budget so free APIs survive the day (publish loop is every ~45s).
+_TRANSLATE_BUDGET = {"left": int(os.getenv("NEWS_TRANSLATE_BUDGET", "12"))}
+_TRANSLATE_BUDGET_TS = {"day": ""}
+
+
+def _reset_budget_if_needed() -> None:
+    day = time.strftime("%Y-%m-%d", time.gmtime())
+    if _TRANSLATE_BUDGET_TS["day"] != day:
+        _TRANSLATE_BUDGET_TS["day"] = day
+        _TRANSLATE_BUDGET["left"] = int(os.getenv("NEWS_TRANSLATE_BUDGET", "12"))
+
+
+def _translate_ar(text: str, *, force: bool = False) -> str:
     text = (text or "").strip()
     if not text:
         return ""
     if _looks_arabic(text):
         return text
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    key = hashlib.sha1(text.encode("utf-8")).hexdigest()
-    path = CACHE_DIR / f"{key}.json"
-    if path.exists():
-        try:
-            cached = json.loads(path.read_text(encoding="utf-8"))
-            if cached.get("ar"):
-                return str(cached["ar"])
-        except Exception:
-            pass
+
+    cached = _read_ar_cache(text)
+    if cached:
+        return cached
+
+    _reset_budget_if_needed()
+    if not force and _TRANSLATE_BUDGET["left"] <= 0:
+        # Keep English for now; next cycles will translate when budget refreshes / cache warms
+        return text
 
     ar = ""
-    try:
-        r = requests.get(
-            "https://api.mymemory.translated.net/get",
-            params={"q": text[:450], "langpair": "en|ar"},
-            headers=UA,
-            timeout=18,
-        )
-        if r.ok:
-            ar = ((r.json().get("responseData") or {}).get("translatedText") or "").strip()
-            if ar and ar.lower() == text.lower():
-                ar = ""
-    except Exception:
-        ar = ""
-
-    if not ar:
+    for fn in (_via_mymemory, _via_google, _via_argos):
         try:
-            from deep_translator import GoogleTranslator
-
-            ar = GoogleTranslator(source="en", target="ar").translate(text[:450]) or ""
-            time.sleep(0.25)
+            ar = fn(text) or ""
         except Exception:
             ar = ""
+        if _is_good_ar(ar, text):
+            break
+        ar = ""
 
-    if not ar:
-        ar = text
-    try:
-        path.write_text(json.dumps({"en": text, "ar": ar}, ensure_ascii=False), encoding="utf-8")
-    except Exception:
-        pass
-    return ar
+    if _is_good_ar(ar, text):
+        if not force:
+            _TRANSLATE_BUDGET["left"] = max(0, _TRANSLATE_BUDGET["left"] - 1)
+        _write_ar_cache(text, ar)
+        return ar
+
+    # Do NOT cache failures — retry later when quota recovers
+    return text
+
+
+def ensure_news_arabic(rows: list[dict[str, Any]], *, max_new: int = 12) -> int:
+    """Fill missing title_ar on news rows. Returns how many newly translated."""
+    done = 0
+    for row in rows:
+        title = str(row.get("title") or "").strip()
+        title_ar = str(row.get("title_ar") or "").strip()
+        if _is_good_ar(title_ar, title):
+            continue
+        if not title:
+            continue
+        if done >= max_new:
+            break
+        ar = _translate_ar(title, force=False)
+        if _is_good_ar(ar, title):
+            row["title_ar"] = ar
+            done += 1
+        else:
+            row["title_ar"] = title_ar or title
+    return done
 
 
 def _item_fields(item: dict[str, Any]) -> dict[str, Any] | None:
@@ -462,6 +593,7 @@ def fetch_stock_news_ar(
 
     news: list[dict[str, Any]] = []
     for row in collected:
+        # Prefer cache; budget limits live API calls so free quotas last the day
         title_ar = _translate_ar(row["title"])
         summary_ar = ""
         if translate_summary and row.get("summary"):
@@ -472,9 +604,9 @@ def fetch_stock_news_ar(
         item = {
             "symbol": row["symbol"],
             "title": row["title"],
-            "title_ar": title_ar,
+            "title_ar": title_ar if _is_good_ar(title_ar, row["title"]) else row["title"],
             "summary": row.get("summary") or "",
-            "summary_ar": summary_ar,
+            "summary_ar": summary_ar if _is_good_ar(summary_ar, row.get("summary") or "") else "",
             "url": row.get("url") or f"https://finance.yahoo.com/quote/{row['symbol']}/news",
             "publisher": row.get("publisher") or "",
             "published": row.get("published") or "",
@@ -486,7 +618,6 @@ def fetch_stock_news_ar(
             "officialish": bool(row.get("officialish")),
         }
         news.append(enrich_news_item(item))
-        time.sleep(0.05)
     from bot.catalyst_scan import rank_catalyst_news
 
     news = rank_catalyst_news(news, limit=limit)
