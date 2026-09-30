@@ -22,6 +22,12 @@ NY = ZoneInfo("America/New_York")
 MAX_TRADES = 400
 OPEN_MAX_SEC = 6 * 3600  # day-trade horizon inside an open session
 MIN_HOLD_SEC = 90        # don't close instantly on same-tick noise
+# Protection (from 28–30 Sep loss analysis): cancel قناص if never green
+NO_GREEN_EXIT_SEC = 5 * 60  # 5 minutes
+NO_GREEN_MFE_MAX = 0.0      # must have printed above entry (MFE > 0)
+# Paper open gate for قناص — skip thin names that gap through stops
+QANNAS_PAPER_MIN_DOLLAR = 1_000_000.0
+QANNAS_PAPER_MIN_RVOL = 2.0
 
 
 def _session_phase() -> str:
@@ -288,6 +294,9 @@ def ingest_candidates(
                 continue
             if existing and existing.get("status") != "open":
                 continue  # already closed today
+            # قناص only: tighten paper entry liquidity (rule 2)
+            if source == "qannas" and not _qannas_paper_entry_ok(row):
+                continue
             trade = {
                 "id": tid,
                 "symbol": sym,
@@ -344,6 +353,19 @@ def _r_multiple(entry: float, stop: float, exit_px: float) -> float:
     return round((exit_px - entry) / risk, 3)
 
 
+def _qannas_paper_entry_ok(row: dict[str, Any]) -> bool:
+    """Rule 2: skip thin قناص names for new paper opens (gap/fade risk)."""
+    dollar = float(row.get("dollar_volume") or row.get("appear_dollar_volume") or 0)
+    rvol = float(row.get("rvol") or row.get("appear_rvol") or 0)
+    chg = float(row.get("change_pct") or row.get("appear_change_pct") or 0)
+    # Strong rockets still need a dollar-volume floor
+    if dollar < QANNAS_PAPER_MIN_DOLLAR:
+        return False
+    if rvol < QANNAS_PAPER_MIN_RVOL and chg < 40.0:
+        return False
+    return True
+
+
 def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
     """Update open trades; close on SL / TP / session end / timeout. Returns fresh summary."""
     data = _load()
@@ -383,6 +405,26 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
             _close_trade(t, "session_end", last, label, entry=entry, stop=stop, now=now)
             continue
         if age < MIN_HOLD_SEC:
+            continue
+
+        # Rule 1 (قناص): never printed green within 5 min → cancel early (cut fade)
+        src = str(t.get("source") or "")
+        mfe = float(t.get("mfe_pct") or 0)
+        if (
+            src == "qannas"
+            and age >= NO_GREEN_EXIT_SEC
+            and mfe <= NO_GREEN_MFE_MAX
+            and pnl <= 0
+        ):
+            _close_trade(
+                t,
+                "loss_fade",
+                last,
+                "إلغاء — ما اخضرّت خلال 5د",
+                entry=entry,
+                stop=stop,
+                now=now,
+            )
             continue
 
         # Long exits — worst first so gap-through SL wins

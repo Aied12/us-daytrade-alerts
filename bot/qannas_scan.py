@@ -1,13 +1,15 @@
 """ماسح القناص — Gainers + Volume + Catalyst + Small/Mid Cap (+ Low Float).
 
-شروط الصورة التعليمية:
+شروط الصورة التعليمية (+ تشديد سيولة):
 - Gainers ≥ +20%
-- Volume ≥ 2–3× المتوسط
+- Volume ≥ 3× المتوسط (Premarket ≥ 2×)
+- دولار فوليوم ≥ 5M$ (Premarket ≥ 1M$)
 - Small / Mid Cap
 - Fresh Catalyst (خبر حقيقي وجديد)
 - Low Float إن توفر (<20M مفضّل، <10M أقوى)
 
 ترتيب الأولوية: خبر → سيولة → حجم الشركة/فلوت → استمرارية الارتفاع
+الصفقات الورقية: إلغاء إذا ما اخضرّت خلال 5 دقائق
 """
 
 from __future__ import annotations
@@ -34,17 +36,17 @@ SEEN_PATH = ROOT / "data" / "qannas_seen.json"
 RIYADH = ZoneInfo("Asia/Riyadh")
 NY = ZoneInfo("America/New_York")
 
-# —— شروط الماسح (من الصورة) ——
+# —— شروط الماسح (من الصورة) + تشديد سيولة بعد تحليل 28–30/9 ——
 MIN_CHG_PCT = 20.0              # Gainers ≥ +20%
-MIN_RVOL = 2.0                  # Volume ≥ 2× Avg (الحد الأدنى)
-STRONG_RVOL = 3.0               # الأفضل ≥ 3×
+MIN_RVOL = 3.0                  # Volume ≥ 3× Avg (كان 2× — تشديد)
+STRONG_RVOL = 5.0               # الأفضل ≥ 5×
 MAX_MCAP = 10_000_000_000       # Mid-cap سقف (~$10B)
 SMALL_MCAP = 2_000_000_000      # Small-cap تفضيل
 FLOAT_GOOD = 20_000_000         # Low float إن توفر
 FLOAT_GREAT = 10_000_000
-MIN_DOLLAR = 2_000_000          # سيولة دولار دنيا (حماية)
-MIN_DOLLAR_PRE = 120_000        # Premarket: طباعة مبكرة أضعف
-MIN_RVOL_PRE = 0.85             # Premarket RVOL غالباً منخفض أول الساعة
+MIN_DOLLAR = 5_000_000          # سيولة دولار دنيا (كان 2M — تقليل الفجوات)
+MIN_DOLLAR_PRE = 1_000_000      # Premarket: كان 120K — تشديد
+MIN_RVOL_PRE = 2.0              # Premarket RVOL (كان 0.85)
 MIN_PRICE = 0.25
 MAX_PRICE = 150.0               # أبعد عن العمالقة
 NEWS_MAX_AGE_H = 36.0           # خبر «جديد» تقريباً يوم ونصف
@@ -53,6 +55,7 @@ STICKY_HOLD_SEC = 25 * 60
 SEEN_TTL_SEC = 20 * 3600
 ROCKET_CHG = 40.0               # حركة صاروخية → تظهر حتى بدون خبر/سيولة كاملة
 ROCKET_CHG_SOFT = 20.0
+ROCKET_MIN_DOLLAR = 1_000_000   # حتى الصاروخ يحتاج دولار فوليوم أدنى
 
 # خطة يومية بسيطة للمتابعة الورقية (صفقات جديدة)
 PLAN_STOP_PCT = 0.10            # وقف ≈ 10% تحت الدخول
@@ -413,7 +416,8 @@ def fetch_qannas_universe(*, limit: int = 40) -> list[dict[str, Any]]:
                     if dollar < min_dollar:
                         continue
                 else:
-                    if dollar < (80_000 if rocket else 120_000):
+                    # صاروخ: يسمح بـ RVOL أضعف لكن ليس بسيولة هزيلة (فجوات الوقف)
+                    if dollar < ROCKET_MIN_DOLLAR:
                         continue
                 lives.append(
                     {
@@ -436,7 +440,7 @@ def fetch_qannas_universe(*, limit: int = 40) -> list[dict[str, Any]]:
         lives.sort(key=lambda x: -float(x.get("change_pct") or 0))
         return lives[:limit]
 
-    key = f"qannas_universe:{session_phase()}:{limit}:v2"
+    key = f"qannas_universe:{session_phase()}:{limit}:v3liq"
     try:
         hit = cached_call(key, _build, ttl=50)
         return list(hit) if hit else _build()
@@ -643,6 +647,6 @@ def _sticky_merge(fresh: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 NOTE_AR = (
-    "القناص: Gainers ≥+20% · Volume ≥2–3× · Small/Mid Cap · خبر محفز جديد"
-    " · Low Float إن توفر — ترتيب: خبر → سيولة → حجم الشركة → استمرارية"
+    "القناص: ≥+20% · Volume ≥3× (≥2× بري) · دولار≥5M$ (≥1M$ بري) · Small/Mid"
+    " · خبر محفز — ورقياً: إلغاء إذا ما اخضرّت خلال 5د"
 )

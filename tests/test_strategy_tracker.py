@@ -227,6 +227,64 @@ class StrategyTrackerTests(unittest.TestCase):
         self.assertIn("B", syms)
         self.assertNotIn("A", syms)
 
+    def test_qannas_no_green_exit_after_5min(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "strategy_ledger.json"
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=True
+            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"), mock.patch(
+                "bot.strategy_tracker._riyadh_eod_flat", return_value=False
+            ):
+                ingest_candidates(
+                    qannas=[
+                        {
+                            "symbol": "FADE",
+                            "last": 2.0,
+                            "entry": 2.0,
+                            "stop": 1.8,
+                            "tp1": 2.12,
+                            "tp2": 2.28,
+                            "dollar_volume": 5_000_000,
+                            "rvol": 4.0,
+                            "change_pct": 25.0,
+                        }
+                    ]
+                )
+                data = json.loads(path.read_text(encoding="utf-8"))
+                data["trades"][0]["opened_ts"] -= 320  # >5 min
+                data["trades"][0]["mfe_pct"] = 0.0
+                path.write_text(json.dumps(data), encoding="utf-8")
+                mark_to_market({"FADE": 1.95})  # still red
+                t = json.loads(path.read_text(encoding="utf-8"))["trades"][0]
+                self.assertEqual(t["status"], "loss_fade")
+                self.assertIn("5د", t["result_ar"])
+                self.assertLess(t["pnl_pct"], 0)
+
+    def test_qannas_skips_thin_dollar_volume(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "strategy_ledger.json"
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=True
+            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"), mock.patch(
+                "bot.strategy_tracker._riyadh_eod_flat", return_value=False
+            ):
+                n = ingest_candidates(
+                    qannas=[
+                        {
+                            "symbol": "THIN",
+                            "last": 1.0,
+                            "entry": 1.0,
+                            "stop": 0.9,
+                            "tp1": 1.06,
+                            "tp2": 1.14,
+                            "dollar_volume": 200_000,  # below 1M gate
+                            "rvol": 8.0,
+                            "change_pct": 30.0,
+                        }
+                    ]
+                )
+                self.assertEqual(n, 0)
+
 
 if __name__ == "__main__":
     unittest.main()
