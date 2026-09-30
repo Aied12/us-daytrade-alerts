@@ -112,7 +112,9 @@ class StrategyTrackerTests(unittest.TestCase):
             path = Path(td) / "strategy_ledger.json"
             with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
                 "bot.strategy_tracker._paper_session_open", return_value=True
-            ), mock.patch("bot.strategy_tracker._riyadh_eod_flat", return_value=False):
+            ), mock.patch("bot.strategy_tracker._riyadh_eod_flat", return_value=False), mock.patch(
+                "bot.strategy_tracker.QANNAS_PAPER_LATE_HOUR", 24
+            ):
                 ingest_candidates(
                     qannas=[
                         {
@@ -142,7 +144,9 @@ class StrategyTrackerTests(unittest.TestCase):
             path = Path(td) / "strategy_ledger.json"
             with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
                 "bot.strategy_tracker._paper_session_open", return_value=True
-            ), mock.patch("bot.strategy_tracker._riyadh_eod_flat", return_value=False):
+            ), mock.patch("bot.strategy_tracker._riyadh_eod_flat", return_value=False), mock.patch(
+                "bot.strategy_tracker.QANNAS_PAPER_LATE_HOUR", 24
+            ):
                 ingest_candidates(
                     qannas=[
                         {
@@ -240,7 +244,7 @@ class StrategyTrackerTests(unittest.TestCase):
                 "bot.strategy_tracker._paper_session_open", return_value=True
             ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"), mock.patch(
                 "bot.strategy_tracker._riyadh_eod_flat", return_value=False
-            ):
+            ), mock.patch("bot.strategy_tracker.QANNAS_PAPER_LATE_HOUR", 24):
                 ingest_candidates(
                     qannas=[
                         {
@@ -273,7 +277,7 @@ class StrategyTrackerTests(unittest.TestCase):
                 "bot.strategy_tracker._paper_session_open", return_value=True
             ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"), mock.patch(
                 "bot.strategy_tracker._riyadh_eod_flat", return_value=False
-            ):
+            ), mock.patch("bot.strategy_tracker.QANNAS_PAPER_LATE_HOUR", 24):
                 n = ingest_candidates(
                     qannas=[
                         {
@@ -290,6 +294,70 @@ class StrategyTrackerTests(unittest.TestCase):
                     ]
                 )
                 self.assertEqual(n, 0)
+
+    def _qannas_row(self, **over):
+        row = {
+            "symbol": "QOK",
+            "last": 2.0,
+            "entry": 2.0,
+            "stop": 1.8,
+            "tp1": 2.12,
+            "tp2": 2.28,
+            "dollar_volume": 5_000_000,
+            "rvol": 4.0,
+            "change_pct": 25.0,
+        }
+        row.update(over)
+        return row
+
+    def test_qannas_skips_late_hour(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "strategy_ledger.json"
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=True
+            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"), mock.patch(
+                "bot.strategy_tracker._riyadh_eod_flat", return_value=False
+            ), mock.patch("bot.strategy_tracker.QANNAS_PAPER_LATE_HOUR", 0):
+                # LATE_HOUR=0 → any real hour blocks
+                n = ingest_candidates(qannas=[self._qannas_row(symbol="LATE")])
+                self.assertEqual(n, 0)
+
+    def test_qannas_skips_parabolic_extension(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "strategy_ledger.json"
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=True
+            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"), mock.patch(
+                "bot.strategy_tracker._riyadh_eod_flat", return_value=False
+            ), mock.patch("bot.strategy_tracker.QANNAS_PAPER_LATE_HOUR", 24):
+                n = ingest_candidates(
+                    qannas=[self._qannas_row(symbol="PARA", change_pct=150.0)]
+                )
+                self.assertEqual(n, 0)
+
+    def test_qannas_skips_sub_min_price(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "strategy_ledger.json"
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=True
+            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"), mock.patch(
+                "bot.strategy_tracker._riyadh_eod_flat", return_value=False
+            ), mock.patch("bot.strategy_tracker.QANNAS_PAPER_LATE_HOUR", 24):
+                n = ingest_candidates(
+                    qannas=[self._qannas_row(symbol="PENNY", last=0.2, entry=0.2)]
+                )
+                self.assertEqual(n, 0)
+
+    def test_qannas_accepts_liquid_in_window(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "strategy_ledger.json"
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=True
+            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"), mock.patch(
+                "bot.strategy_tracker._riyadh_eod_flat", return_value=False
+            ), mock.patch("bot.strategy_tracker.QANNAS_PAPER_LATE_HOUR", 24):
+                n = ingest_candidates(qannas=[self._qannas_row(symbol="GOOD")])
+                self.assertEqual(n, 1)
 
 
 if __name__ == "__main__":

@@ -56,6 +56,8 @@ SEEN_TTL_SEC = 20 * 3600
 ROCKET_CHG = 40.0               # حركة صاروخية → تظهر حتى بدون خبر/سيولة كاملة
 ROCKET_CHG_SOFT = 20.0
 ROCKET_MIN_DOLLAR = 1_000_000   # حتى الصاروخ يحتاج دولار فوليوم أدنى
+MAX_EXT_CHG_PCT = 120.0         # تمدد مفرط = خطر انقلاب (من تحليل الخسائر)
+LATE_ENTRY_HOUR_SA = 17         # بعد 17 السعودية WR التاريخي ضعيف
 
 # خطة يومية بسيطة للمتابعة الورقية (صفقات جديدة)
 PLAN_STOP_PCT = 0.10            # وقف ≈ 10% تحت الدخول
@@ -486,6 +488,15 @@ def build_qannas_scanner(
         soft_rocket = phase == "pre" and chg >= ROCKET_CHG_SOFT
         if rvol < min_rvol and not rocket and not soft_rocket:
             continue
+        # كبح التمدد المفرط (خسائر 29–30 كانت أثقل فوق +120%)
+        if chg >= MAX_EXT_CHG_PCT and not rocket:
+            continue
+        # نافذة زمنية: بعد 17 SA لا بطاقات جديدة للأداء الورقي (تبقى القائمة القديمة sticky)
+        try:
+            if datetime.now(RIYADH).hour >= LATE_ENTRY_HOUR_SA and not rocket:
+                continue
+        except Exception:
+            pass
 
         related = by_news.get(sym) or []
         has_news = bool(related)
@@ -647,6 +658,6 @@ def _sticky_merge(fresh: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 NOTE_AR = (
-    "القناص: ≥+20% · Volume ≥3× (≥2× بري) · دولار≥5M$ (≥1M$ بري) · Small/Mid"
-    " · خبر محفز — ورقياً: إلغاء إذا ما اخضرّت خلال 5د"
+    "القناص: ≥+20% · Vol≥3× (≥2× بري) · $≥5M (≥1M بري) · تمدد≤120% · دخول حتى 17 SA"
+    " · ورقياً: إلغاء إن لم تخضر خلال 5د"
 )
