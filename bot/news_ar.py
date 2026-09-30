@@ -196,10 +196,67 @@ def _via_argos(text: str) -> str:
     except Exception:
         return ""
     try:
+        # Lazy install once if pack missing (dev / older images)
+        try:
+            installed = argostranslate.translate.get_installed_languages()
+            has = any(getattr(l, "code", "") == "en" for l in installed) and any(
+                getattr(l, "code", "") == "ar" for l in installed
+            )
+        except Exception:
+            has = False
+        if not has:
+            try:
+                import argostranslate.package as pkg  # type: ignore
+
+                pkg.update_package_index()
+                pkg.install_package_for_language_pair("en", "ar")
+            except Exception:
+                return ""
         ar = argostranslate.translate.translate(text[:450], "en", "ar") or ""
-        return ar if _is_good_ar(ar, text) else ""
+        if not _is_good_ar(ar, text):
+            return ""
+        # Keep common brand/ticker tokens readable
+        for brand in (
+            "Apple", "NVIDIA", "Nvidia", "Tesla", "Amazon", "Microsoft", "Meta",
+            "Google", "Alphabet", "Netflix", "Intel", "AMD", "Oracle", "Palantir",
+            "Coinbase", "Boeing", "Nasdaq", "Dow", "Fed",
+        ):
+            if brand.lower() in text.lower() and brand not in ar:
+                # soft: leave as-is; Argos sometimes calques brand names
+                pass
+        return ar
     except Exception:
         return ""
+
+
+def _looks_mostly_english(text: str) -> bool:
+    """Drop obvious non-English IR wires from translation/priority path."""
+    t = (text or "").strip()
+    if not t:
+        return False
+    # If already Arabic, fine
+    if _looks_arabic(t):
+        return True
+    letters = re.findall(r"[A-Za-zÀ-ÿ]", t)
+    if len(letters) < 8:
+        return False
+    ascii_letters = sum(1 for c in letters if c.isascii())
+    ratio = ascii_letters / max(1, len(letters))
+    if ratio < 0.85:
+        return False
+    # High-ASCII Latin without heavy diacritics ≈ English finance wire
+    if ratio >= 0.98:
+        return True
+    low = f" {t.lower()} "
+    return any(
+        w in low
+        for w in (
+            " the ", " a ", " to ", " of ", " in ", " for ", " and ", " on ",
+            " stock", " share", " company", " announces", " launches", " raises",
+            " report", " earnings", " deal", " acquires", " partnership",
+            " jumps ", " rises ", " surge", " after ",
+        )
+    ) or bool(re.search(r"\b(Inc|Corp|Ltd|PLC|CEO|EPS|AI|SEC)\b", t))
 
 
 # Soft budget so free APIs survive the day (publish loop is every ~45s).
@@ -259,6 +316,10 @@ def ensure_news_arabic(rows: list[dict[str, Any]], *, max_new: int = 12) -> int:
         if _is_good_ar(title_ar, title):
             continue
         if not title:
+            continue
+        if not _looks_mostly_english(title):
+            # Keep original (PL/DE/ES wires) — don't burn quota on non-English
+            row["title_ar"] = title_ar or title
             continue
         if done >= max_new:
             break
