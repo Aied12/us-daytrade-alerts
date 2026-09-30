@@ -122,6 +122,9 @@ class StrategyTrackerTests(unittest.TestCase):
                             "stop": 9.0,
                             "tp1": 11.0,
                             "tp2": 12.0,
+                            "dollar_volume": 5_000_000,
+                            "rvol": 4.0,
+                            "change_pct": 25.0,
                         }
                     ]
                 )
@@ -149,6 +152,9 @@ class StrategyTrackerTests(unittest.TestCase):
                             "stop": 4.5,
                             "tp1": 5.5,
                             "tp2": 6.0,
+                            "dollar_volume": 5_000_000,
+                            "rvol": 4.0,
+                            "change_pct": 25.0,
                         }
                     ]
                 )
