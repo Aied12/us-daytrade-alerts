@@ -50,9 +50,12 @@ def mirror(path: Path, endpoint: str) -> None:
 
 def cycle(n: int) -> None:
     py = sys.executable
+    t0 = time.time()
     run([py, str(ROOT / "scripts" / "scheduled_run.py"), "--mode", "tick", "--force"])
     run([py, str(ROOT / "scripts" / "write_live_json.py")])
-    run([py, str(ROOT / "scripts" / "publish_news.py")])
+    # News translate is slower — every other cycle keeps «آخر فحص» fresher
+    if n == 1 or n % 2 == 0:
+        run([py, str(ROOT / "scripts" / "publish_news.py")])
     run([py, str(ROOT / "scripts" / "build_pages.py")])
     # sync html
     src = ROOT / "pages" / "index.html"
@@ -74,6 +77,8 @@ def cycle(n: int) -> None:
         notify_urgent_from_status(ROOT / "docs" / "status.json")
     except Exception as e:
         print(f"[push] skip: {e}", flush=True)
+
+    print(f"[vps_loop] cycle_work={time.time() - t0:.1f}s", flush=True)
 
 
 def main() -> int:

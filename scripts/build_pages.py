@@ -22,7 +22,7 @@ from bot.gainers import fetch_day_gainers, watchlist_gainers
 from bot.live_quotes import price_lag_label_ar, session_phase
 from bot.liquidity import liquidity_dict
 from bot.market_data import fetch_history, market_context, scan_watchlist, sector_momentum
-from bot.news_ar import fetch_stock_news_ar
+from bot.news_ar import fetch_stock_news_ar, load_news_live
 from bot.ops import read_status, touch_status
 from bot.reports import build_full_pack
 from bot.risk import plan_trade, risk_banner
@@ -340,17 +340,22 @@ def main() -> None:
     for s in settings.watchlist or []:
         news_syms.append(str(s).upper())
     news_syms = list(dict.fromkeys(news_syms))[:22]
-    try:
-        news_pack = fetch_stock_news_ar(
-            news_syms,
-            limit=24,
-            per_symbol=4,
-            drop_negative_symbols=True,
-            translate_summary=False,
-            include_market=True,
-        )
-    except Exception:
-        news_pack = {"news": [], "negative_symbols": []}
+    # Prefer fresh news-live.json (written by publish_news) — skip heavy re-translate
+    live_news = load_news_live(max_age_sec=240)
+    if live_news:
+        news_pack = {"news": live_news, "negative_symbols": []}
+    else:
+        try:
+            news_pack = fetch_stock_news_ar(
+                news_syms,
+                limit=24,
+                per_symbol=4,
+                drop_negative_symbols=True,
+                translate_summary=False,
+                include_market=True,
+            )
+        except Exception:
+            news_pack = {"news": [], "negative_symbols": []}
     news_ar = list(news_pack.get("news") or [])
     bad_news = {str(s).upper() for s in (news_pack.get("negative_symbols") or [])}
 

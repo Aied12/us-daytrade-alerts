@@ -190,7 +190,14 @@ def _via_google(text: str) -> str:
 
 
 def _via_argos(text: str) -> str:
-    """Offline EN→AR if argostranslate + language pack are installed."""
+    """Offline EN→AR if enabled and argostranslate + language pack are installed.
+
+    Disabled by default: loading Torch/Argos on every vps_loop subprocess adds
+    ~1–2 minutes per cycle and makes «آخر فحص» look stuck. Set NEWS_USE_ARGOS=1
+    for a separate/slow translate pass when online APIs are blocked.
+    """
+    if (os.getenv("NEWS_USE_ARGOS") or "0").strip().lower() not in ("1", "true", "yes", "on"):
+        return ""
     try:
         import argostranslate.translate  # type: ignore
     except Exception:
@@ -227,6 +234,32 @@ def _via_argos(text: str) -> str:
         return ar
     except Exception:
         return ""
+
+
+def load_news_live(max_age_sec: int = 180) -> list[dict[str, Any]]:
+    """Reuse docs/pages news-live.json when fresh — avoids re-translating in build_pages."""
+    now = time.time()
+    best: list[dict[str, Any]] = []
+    best_age = 10**9
+    for folder in (ROOT / "docs", ROOT / "pages"):
+        path = folder / "news-live.json"
+        if not path.exists():
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+            rows = list(data.get("news") or [])
+            if not rows:
+                continue
+            ts = float(data.get("generated_ts") or path.stat().st_mtime)
+            age = now - ts
+            if age < best_age:
+                best_age = age
+                best = rows
+        except Exception:
+            continue
+    if best and best_age <= max_age_sec:
+        return best
+    return best if best and best_age <= max_age_sec * 2 else []
 
 
 def _looks_mostly_english(text: str) -> bool:

@@ -18,6 +18,7 @@ services:
       LIVE_API_TOKEN: ${LIVE_API_TOKEN:-}
       VAPID_SUBJECT: ${VAPID_SUBJECT:-mailto:daytrade@localhost}
       NEWS_TRANSLATE_BUDGET: ${NEWS_TRANSLATE_BUDGET:-15}
+      NEWS_USE_ARGOS: ${NEWS_USE_ARGOS:-0}
     volumes:
       - ../../data:/app/data
       - ../../docs:/app/docs
