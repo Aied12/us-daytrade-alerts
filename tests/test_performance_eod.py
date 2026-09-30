@@ -28,12 +28,17 @@ class PerformanceEodTests(unittest.TestCase):
         at = datetime(2026, 9, 29, 23, 0, tzinfo=RIYADH)
         after = datetime(2026, 9, 29, 23, 30, tzinfo=RIYADH)
         morning = datetime(2026, 9, 30, 1, 0, tzinfo=RIYADH)
+        at_11 = datetime(2026, 9, 30, 11, 0, tzinfo=RIYADH)
         self.assertFalse(past_flat_time(before))
         self.assertTrue(past_flat_time(at))
         self.assertTrue(past_flat_time(after))
         self.assertFalse(past_flat_time(morning))
         self.assertTrue(block_new_opens(at))
+        self.assertTrue(block_new_opens(morning))  # overnight lock until 11:00
         self.assertFalse(block_new_opens(before))
+        self.assertFalse(block_new_opens(at_11))
+        self.assertTrue(today_kpis_cleared(morning))
+        self.assertFalse(today_kpis_cleared(at_11))
 
     def test_eod_closes_and_archives_once(self):
         with tempfile.TemporaryDirectory() as td:
