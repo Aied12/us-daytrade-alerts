@@ -241,15 +241,20 @@ def _looks_mostly_english(text: str) -> bool:
     if len(letters) < 8:
         return False
     ascii_letters = sum(1 for c in letters if c.isascii())
-    if ascii_letters / max(1, len(letters)) < 0.85:
+    ratio = ascii_letters / max(1, len(letters))
+    if ratio < 0.85:
         return False
-    low = t.lower()
+    # High-ASCII Latin without heavy diacritics ≈ English finance wire
+    if ratio >= 0.98:
+        return True
+    low = f" {t.lower()} "
     return any(
         w in low
         for w in (
             " the ", " a ", " to ", " of ", " in ", " for ", " and ", " on ",
             " stock", " share", " company", " announces", " launches", " raises",
             " report", " earnings", " deal", " acquires", " partnership",
+            " jumps ", " rises ", " surge", " after ",
         )
     ) or bool(re.search(r"\b(Inc|Corp|Ltd|PLC|CEO|EPS|AI|SEC)\b", t))
 
