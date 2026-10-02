@@ -357,12 +357,14 @@ def _r_multiple(entry: float, stop: float, exit_px: float) -> float:
 
 
 def _qannas_paper_entry_ok(row: dict[str, Any]) -> bool:
-    """قناص paper gate: liquidity + time window + extension cap (28–30 Sep study)."""
+    """قناص paper: فقط مكتمل 4/4 + سيولة/وقت/سقف تمدد."""
+    # Scanner marks complete only when all 4 checklist conditions pass (incl. news)
+    if not bool(row.get("complete")):
+        return False
     dollar = float(row.get("dollar_volume") or row.get("appear_dollar_volume") or 0)
     rvol = float(row.get("rvol") or row.get("appear_rvol") or 0)
     chg = float(row.get("change_pct") or row.get("appear_change_pct") or 0)
     last = float(row.get("last") or row.get("entry") or row.get("appear_price") or 0)
-    # Strong rockets still need a dollar-volume floor
     if dollar < QANNAS_PAPER_MIN_DOLLAR:
         return False
     if rvol < QANNAS_PAPER_MIN_RVOL and chg < 40.0:
@@ -371,7 +373,6 @@ def _qannas_paper_entry_ok(row: dict[str, Any]) -> bool:
         return False
     if chg >= QANNAS_PAPER_MAX_CHG_PCT:
         return False
-    # Best historical WR was before 17:00 SA; late regular fades dominated losses
     try:
         h = datetime.now(RIYADH).hour
         if h >= QANNAS_PAPER_LATE_HOUR:
