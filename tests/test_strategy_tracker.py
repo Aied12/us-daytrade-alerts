@@ -127,6 +127,8 @@ class StrategyTrackerTests(unittest.TestCase):
                             "dollar_volume": 5_000_000,
                             "rvol": 4.0,
                             "change_pct": 25.0,
+                            "complete": True,
+                            "has_news": True,
                         }
                     ]
                 )
@@ -159,6 +161,8 @@ class StrategyTrackerTests(unittest.TestCase):
                             "dollar_volume": 5_000_000,
                             "rvol": 4.0,
                             "change_pct": 25.0,
+                            "complete": True,
+                            "has_news": True,
                         }
                     ]
                 )
@@ -257,6 +261,8 @@ class StrategyTrackerTests(unittest.TestCase):
                             "dollar_volume": 5_000_000,
                             "rvol": 4.0,
                             "change_pct": 25.0,
+                            "complete": True,
+                            "has_news": True,
                         }
                     ]
                 )
@@ -306,6 +312,10 @@ class StrategyTrackerTests(unittest.TestCase):
             "dollar_volume": 5_000_000,
             "rvol": 4.0,
             "change_pct": 25.0,
+            "has_news": True,
+            "complete": True,
+            "checks_ok": 4,
+            "tier": "ready",
         }
         row.update(over)
         return row
@@ -358,6 +368,27 @@ class StrategyTrackerTests(unittest.TestCase):
             ), mock.patch("bot.strategy_tracker.QANNAS_PAPER_LATE_HOUR", 24):
                 n = ingest_candidates(qannas=[self._qannas_row(symbol="GOOD")])
                 self.assertEqual(n, 1)
+
+    def test_qannas_skips_incomplete_watch(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "strategy_ledger.json"
+            with mock.patch("bot.strategy_tracker.LEDGER_PATH", path), mock.patch(
+                "bot.strategy_tracker._paper_session_open", return_value=True
+            ), mock.patch("bot.strategy_tracker._session_phase", return_value="regular"), mock.patch(
+                "bot.strategy_tracker._riyadh_eod_flat", return_value=False
+            ), mock.patch("bot.strategy_tracker.QANNAS_PAPER_LATE_HOUR", 24):
+                n = ingest_candidates(
+                    qannas=[
+                        self._qannas_row(
+                            symbol="WATCH",
+                            complete=False,
+                            has_news=False,
+                            checks_ok=2,
+                            tier="watch",
+                        )
+                    ]
+                )
+                self.assertEqual(n, 0)
 
 
 if __name__ == "__main__":

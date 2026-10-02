@@ -479,15 +479,15 @@
       </div>
       <div class="seg" id="qannasSeg">
         <button type="button" data-qf="all" class="active">الكل</button>
-        <button type="button" data-qf="complete">مكتمل</button>
+        <button type="button" data-qf="complete">مكتمل 4/4</button>
+        <button type="button" data-qf="watch">مراقبة</button>
         <button type="button" data-qf="news">مع خبر</button>
-        <button type="button" data-qf="float">فلوت ضيق</button>
       </div>
       <div id="qannasFeatured"><div class="empty">جاري مسح القناص...</div></div>
-      <div class="qannas-sec-label" id="qannasMoreLabel" style="display:none">بقية النتائج</div>
+      <div class="qannas-sec-label" id="qannasMoreLabel" style="display:none">مراقبة (ناقص شرط أو أكثر)</div>
       <div id="qannasList"></div>
       <p class="muted" style="margin-top:10px;font-size:.78rem;line-height:1.45">
-        ترتيب الأولوية: خبر → سيولة → كاب/فلوت → ارتفاع مستمر. تعليمي فقط.
+        بارز/ورقي = مكتمل 4/4 فقط (خبر + سيولة$ + صغير/فلوت + فوق الافتتاح). الباقي مراقبة. تعليمي فقط.
       </p>
     </div>
 
@@ -1564,17 +1564,12 @@
       let list=Array.isArray(rows)?rows.slice():[];
       const f=QANNAS_FILTER||'all';
       if(f==='complete') list=list.filter(r=>r.complete);
+      else if(f==='watch') list=list.filter(r=>!r.complete);
       else if(f==='news') list=list.filter(r=>r.has_news);
       else if(f==='float') list=list.filter(r=>r.low_float);
-      if(!list.length){
-        feat.innerHTML='<div class="empty">لا أسهم تطابق شروط القناص الآن — Gainers ≥+20% + حجم ≥2× + خبر محفز + Small/Mid Cap</div>';
-        box.innerHTML='';
-        if(moreLab) moreLab.style.display='none';
-        return;
-      }
-      // بطاقة مميزة: أول مكتمل ثم الأول
-      const featured = list.find(r=>r.complete) || list[0];
-      const rest = list.filter(r=>r!==featured);
+
+      const ready=list.filter(r=>r.complete);
+      const watch=list.filter(r=>!r.complete);
 
       function checksHtml(r){
         return (r.checklist||[]).map(c=>
@@ -1584,53 +1579,94 @@
       function catsHtml(r){
         return (r.catalysts||[]).map(t=>`<span class="tag">${esc(t.ar||t.key||'')}</span>`).join(' ');
       }
-
-      const chg=Number(featured.change_pct||0);
-      feat.innerHTML=`<div class="featured-card">
-        <div class="row">
-          <div>
-            <div class="sym">${esc(featured.symbol)}</div>
-            <div class="muted" style="margin-top:2px">${esc(featured.name||'')}</div>
-          </div>
-          <div class="chg-xl ${clsChg(chg)}" data-live-chg="${esc(featured.symbol)}">${chg>0?'+':''}${esc(chg)}%</div>
-        </div>
-        <div class="featured-meta">
-          <span class="tag">RVOL ×${esc(featured.rvol??'-')}</span>
-          <span class="tag">${esc(featured.dollar_volume_label||'')}</span>
-          <span class="tag">${esc(featured.market_cap_label||'—')}</span>
-          <span class="tag">فلوت ${esc(featured.float_label||'—')}</span>
-          ${featured.complete?'<span class="tag tone-ok">مكتمل الشروط</span>':`<span class="tag">${featured.checks_ok||0}/${featured.checks_total||4}</span>`}
-        </div>
-        <div class="checks-row">${checksHtml(featured)}</div>
-        ${featured.has_news?`<div class="muted" style="margin-top:10px;font-size:.9rem;line-height:1.35">📰 ${esc(featured.news_title||'')} ${catsHtml(featured)}</div>`:''}
-        <div class="plan-row">
-          <div class="plan-cell"><div class="lab">دخول</div><div class="val">${esc(featured.entry)}</div></div>
-          <div class="plan-cell"><div class="lab">وقف</div><div class="val">${esc(featured.stop)}</div></div>
-          <div class="plan-cell"><div class="lab">هدف1</div><div class="val">${esc(featured.tp1)}</div></div>
-        </div>
-        <div class="row" style="margin-top:12px">
-          <span class="muted" style="font-size:.8rem">$<span data-live-px="${esc(featured.symbol)}">${esc(featured.last)}</span></span>
-          <a class="btn secondary" style="min-height:38px;padding:6px 12px;margin:0;font-size:.85rem" href="${esc(featured.tv_url||'#')}" target="_blank" rel="noopener">TradingView</a>
-        </div>
-      </div>`;
-
-      if(moreLab) moreLab.style.display = rest.length ? 'block' : 'none';
-      box.innerHTML = rest.map(r=>{
+      function cardHtml(r, {featured=false}={}){
         const c=Number(r.change_pct||0);
-        return `<div class="scan-item">
+        const tier=r.complete
+          ? '<span class="tag tone-ok">مكتمل 4/4</span>'
+          : `<span class="tag">${esc(r.tier_ar||'مراقبة')} · ${r.checks_ok||0}/${r.checks_total||4}</span>`;
+        if(featured){
+          return `<div class="featured-card">
+            <div class="row">
+              <div>
+                <div class="sym">${esc(r.symbol)}</div>
+                <div class="muted" style="margin-top:2px">${esc(r.name||'')}</div>
+              </div>
+              <div class="chg-xl ${clsChg(c)}" data-live-chg="${esc(r.symbol)}">${c>0?'+':''}${esc(c)}%</div>
+            </div>
+            <div class="featured-meta">
+              <span class="tag">RVOL ×${esc(r.rvol??'-')}</span>
+              <span class="tag">${esc(r.dollar_volume_label||'')}</span>
+              <span class="tag">${esc(r.market_cap_label||'—')}</span>
+              <span class="tag">فلوت ${esc(r.float_label||'—')}</span>
+              ${tier}
+            </div>
+            <div class="checks-row">${checksHtml(r)}</div>
+            ${r.has_news?`<div class="muted" style="margin-top:10px;font-size:.9rem;line-height:1.35">📰 ${esc(r.news_title||'')} ${catsHtml(r)}</div>`:''}
+            <div class="plan-row">
+              <div class="plan-cell"><div class="lab">دخول</div><div class="val">${esc(r.entry)}</div></div>
+              <div class="plan-cell"><div class="lab">وقف</div><div class="val">${esc(r.stop)}</div></div>
+              <div class="plan-cell"><div class="lab">هدف1</div><div class="val">${esc(r.tp1)}</div></div>
+            </div>
+            <div class="row" style="margin-top:12px">
+              <span class="muted" style="font-size:.8rem">$<span data-live-px="${esc(r.symbol)}">${esc(r.last)}</span></span>
+              <a class="btn secondary" style="min-height:38px;padding:6px 12px;margin:0;font-size:.85rem" href="${esc(r.tv_url||'#')}" target="_blank" rel="noopener">TradingView</a>
+            </div>
+          </div>`;
+        }
+        return `<div class="scan-item" style="${r.complete?'':'opacity:.92'}">
           <div class="row">
             <span class="sym">${esc(r.symbol)}</span>
             <span class="${clsChg(c)}" data-live-chg="${esc(r.symbol)}">${c>0?'+':''}${esc(c)}%</span>
           </div>
-          <div class="muted" style="margin-top:4px">${esc(r.name||'')} · ${esc(r.market_cap_label||'—')} · ×${esc(r.rvol??'-')}</div>
-          <div class="checks-row">${checksHtml(r)}</div>
+          <div class="muted" style="margin-top:4px">${esc(r.name||'')} · ${esc(r.market_cap_label||'—')} · ×${esc(r.rvol??'-')} · ${esc(r.dollar_volume_label||'')}</div>
+          <div class="checks-row">${checksHtml(r)} ${tier}</div>
           ${r.has_news?`<div class="muted" style="margin-top:6px;font-size:.84rem">📰 ${esc(r.news_title||'')}</div>`:''}
           <div class="row" style="margin-top:8px">
-            <span class="muted" style="font-size:.8rem">دخول ${esc(r.entry)} · وقف ${esc(r.stop)}</span>
+            <span class="muted" style="font-size:.8rem">${r.complete?`دخول ${esc(r.entry)} · وقف ${esc(r.stop)}`:'رصد فقط — ليس مكتمل 4/4'}</span>
             <a class="btn secondary" style="min-height:34px;padding:4px 10px;margin:0;font-size:.8rem" href="${esc(r.tv_url||'#')}" target="_blank" rel="noopener">TV</a>
           </div>
         </div>`;
-      }).join('');
+      }
+
+      // بارز: مكتمل فقط — لا نبرز ناقص الشروط
+      if(f==='watch'){
+        feat.innerHTML = watch.length
+          ? '<div class="empty">عرض المراقبة فقط (ناقص شرط أو أكثر) — ليست فرصًا مكتملة</div>'
+          : '<div class="empty">لا أسهم في المراقبة الآن</div>';
+        if(moreLab){ moreLab.style.display = watch.length ? 'block' : 'none'; moreLab.textContent='مراقبة (ناقص شرط أو أكثر)'; }
+        box.innerHTML = watch.map(r=>cardHtml(r)).join('');
+        return;
+      }
+
+      if(f==='complete' && !ready.length){
+        feat.innerHTML='<div class="empty">لا أسهم مكتملة 4/4 الآن — يلزم خبر + سيولة$ + صغير/فلوت + فوق الافتتاح ≥+20%</div>';
+        box.innerHTML='';
+        if(moreLab) moreLab.style.display='none';
+        return;
+      }
+
+      if(!list.length){
+        feat.innerHTML='<div class="empty">لا أسهم في مسح القناص الآن</div>';
+        box.innerHTML='';
+        if(moreLab) moreLab.style.display='none';
+        return;
+      }
+
+      if(ready.length){
+        feat.innerHTML = cardHtml(ready[0], {featured:true});
+        const restReady = ready.slice(1);
+        if(f==='complete'){
+          if(moreLab){ moreLab.style.display = restReady.length ? 'block' : 'none'; moreLab.textContent='بقية المكتمل'; }
+          box.innerHTML = restReady.map(r=>cardHtml(r)).join('');
+        } else {
+          if(moreLab){ moreLab.style.display = watch.length ? 'block' : 'none'; moreLab.textContent='مراقبة (ناقص شرط أو أكثر)'; }
+          box.innerHTML = watch.map(r=>cardHtml(r)).join('');
+        }
+      } else {
+        feat.innerHTML='<div class="empty">لا مكتمل 4/4 الآن — الأسفل للمراقبة فقط (صاروخ/ناقص خبر أو سيولة)</div>';
+        if(moreLab){ moreLab.style.display = watch.length ? 'block' : 'none'; moreLab.textContent='مراقبة (ناقص شرط أو أكثر)'; }
+        box.innerHTML = watch.map(r=>cardHtml(r)).join('');
+      }
     }
 
     function impactDots(n){

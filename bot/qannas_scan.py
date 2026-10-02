@@ -270,13 +270,22 @@ def _checklist(
     change_pct: float,
     day_open: float,
     last: float,
+    dollar_volume: float = 0.0,
+    phase: str | None = None,
 ) -> list[dict[str, Any]]:
-    """ترتيب الأولوية من الصورة."""
+    """ترتيب الأولوية من الصورة — الأربعة معًا = بطاقة مكتملة."""
+    phase = phase or "regular"
+    min_rvol = MIN_RVOL_PRE if phase == "pre" else MIN_RVOL
+    min_dollar = MIN_DOLLAR_PRE if phase == "pre" else MIN_DOLLAR
     above_open = bool(day_open and last and last >= day_open * 0.995)
-    smallish = bool(mcap and mcap <= SMALL_MCAP) or bool(float_shares and float_shares <= FLOAT_GOOD)
+    # فلوت معروف ومفضّل، أو small-cap واضح
+    smallish = bool(float_shares and float_shares <= FLOAT_GOOD) or bool(
+        mcap and mcap <= SMALL_MCAP
+    )
+    liq_ok = rvol >= min_rvol and float(dollar_volume or 0) >= min_dollar
     return [
-        {"key": "news", "ar": "خبر حقيقي وجديد", "ok": has_news},
-        {"key": "liq", "ar": "سيولة قوية (حجم فوق المتوسط)", "ok": rvol >= MIN_RVOL},
+        {"key": "news", "ar": "خبر حقيقي وجديد", "ok": bool(has_news)},
+        {"key": "liq", "ar": "سيولة قوية (حجم + دولار)", "ok": liq_ok},
         {"key": "size", "ar": "شركة صغيرة / فلوت ضيق", "ok": smallish},
         {
             "key": "trend",
@@ -284,6 +293,13 @@ def _checklist(
             "ok": above_open and change_pct >= MIN_CHG_PCT,
         },
     ]
+
+
+def _is_complete(checklist: list[dict[str, Any]]) -> bool:
+    """مكتمل فقط عند نجاح الشروط الأربعة كلها (يشمل الخبر)."""
+    if len(checklist) < 4:
+        return False
+    return all(bool(c.get("ok")) for c in checklist)
 
 
 def _score_row(row: dict[str, Any]) -> float:
@@ -515,6 +531,7 @@ def build_qannas_scanner(
         news_title = str((top_news or {}).get("title") or (top_news or {}).get("headline") or "")
         catalysts = (top_news or {}).get("catalysts") or []
 
+        dollar_vol = float(r.get("dollar_volume") or 0)
         checklist = _checklist(
             has_news=has_news,
             rvol=rvol,
@@ -523,8 +540,11 @@ def build_qannas_scanner(
             change_pct=chg,
             day_open=day_open,
             last=last,
+            dollar_volume=dollar_vol,
+            phase=phase,
         )
         checks_ok = sum(1 for c in checklist if c.get("ok"))
+        complete = _is_complete(checklist)
         plan = _plan(last, day_low)
 
         low_float = bool(flt and flt <= FLOAT_GOOD)
@@ -536,8 +556,8 @@ def build_qannas_scanner(
             "rvol": round(rvol, 2),
             "volume": float(r.get("volume") or 0),
             "avg_volume": float(r.get("avg_volume") or 0),
-            "dollar_volume": float(r.get("dollar_volume") or 0),
-            "dollar_volume_label": r.get("dollar_volume_label") or _money(float(r.get("dollar_volume") or 0)),
+            "dollar_volume": dollar_vol,
+            "dollar_volume_label": r.get("dollar_volume_label") or _money(dollar_vol),
             "market_cap": mcap,
             "market_cap_label": r.get("market_cap_label") or _fmt_cap(mcap),
             "cap_bucket": r.get("cap_bucket") or "unknown",
@@ -554,14 +574,17 @@ def build_qannas_scanner(
             "checklist": checklist,
             "checks_ok": checks_ok,
             "checks_total": 4,
-            "complete": checks_ok >= 3 and has_news and rvol >= MIN_RVOL and chg >= MIN_CHG_PCT,
+            # جاهز فقط عند 4/4 — الصاروخ بدون خبر يبقى «مراقبة»
+            "complete": complete,
+            "tier": "ready" if complete else "watch",
+            "tier_ar": "مكتمل 4/4" if complete else "مراقبة",
             "entry": plan["entry"],
             "stop": plan["stop"],
             "tp1": plan["tp1"],
             "tp2": plan["tp2"],
             "side": "long",
-            "strategies": ["القناص", "محفز + زخم"],
-            "tag_ar": "🎯 القناص",
+            "strategies": ["القناص", "محفز + زخم"] if complete else ["القناص", "مراقبة"],
+            "tag_ar": "🎯 القناص" if complete else "👁 مراقبة",
             "session_ar": r.get("session_ar") or session_label_ar(phase),
             "tv_url": r.get("tv_url") or f"https://www.tradingview.com/chart/?symbol={sym}",
             "phase": phase,
@@ -658,6 +681,6 @@ def _sticky_merge(fresh: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 NOTE_AR = (
-    "القناص: ≥+20% · Vol≥3× (≥2× بري) · $≥5M (≥1M بري) · تمدد≤120% · دخول حتى 17 SA"
-    " · ورقياً: إلغاء إن لم تخضر خلال 5د"
+    "القناص: 4 شروط — خبر + سيولة$ + صغير/فلوت + فوق الافتتاح ≥+20%"
+    " · مكتمل 4/4 فقط بارز/ورقي · الباقي مراقبة · تمدد≤120% · حتى 17 SA · إلغاء 5د"
 )
