@@ -1,0 +1,37 @@
+---
+description: سياق مشروع القناص — البنية والسيرفر وطريقة النشر
+alwaysApply: true
+---
+
+# مشروع القناص (us-daytrade-alerts)
+
+المستخدم (عايد) مبتدئ تقنياً: اشرح بالعربي وبخطوات بسيطة، ونفّذ الأوامر بنفسك بدل ما تطلب منه يكتبها.
+
+## البنية
+- الواجهة: `pages/index.html` (ملف واحد HTML/CSS/JS). لا تعدّل `docs/index.html` — ينسخ تلقائياً من `pages/` كل دورة.
+- البوت والماسحات: `bot/` (مثل `qannas_scan.py`, `sniper_scan.py`, `mudaraba_scan.py`) و `scripts/` (`vps_loop.py`, `build_pages.py`).
+- ملفات JSON في `data/` و `docs/` و `pages/*.json` بيانات تشغيل يكتبها البوت — لا تعدّلها ولا ترفعها.
+
+## السيرفر (Hetzner)
+- الدخول: `ssh root@2.28.129.241` (مفتاح الماك مثبت).
+- المسار: `/opt/us-daytrade-alerts` على فرع `main`، ويشتغل بـ docker compose من `deploy/vps` (bot, api, web, caddy).
+- الموقع: https://daytrade.2.28.129.241.sslip.io
+
+## طريقة النشر بعد أي تعديل
+1. `git add` للملفات اللي عدّلتها فقط، ثم `git commit` و `git push origin main`.
+2. على السيرفر:
+   ```bash
+   ssh root@2.28.129.241 'cd /opt/us-daytrade-alerts && git pull --ff-only'
+   ```
+3. لو تغيّر كود Python أو requirements:
+   ```bash
+   ssh root@2.28.129.241 'cd /opt/us-daytrade-alerts/deploy/vps && docker compose up -d --build'
+   ```
+   تعديل `pages/index.html` فقط ما يحتاج build — يظهر في الدورة الجاية.
+4. تأكد: `curl -s -o /dev/null -w "%{http_code}" https://daytrade.2.28.129.241.sslip.io/index.html` يرجّع 200.
+
+## ممنوع
+- المستودع على GitHub **عام**: لا ترفع `.env` أو `data/vapid.json` أو `data/push_subs.json` أو أي توكن.
+- لا تضف `GITHUB_TOKEN` في `.env` السيرفر: `scripts/backup_continuous.sh` بيرفع مجلد `data/` كامل (فيه الأسرار) لـ GitHub.
+- لا تمسح أو تعيد ضبط (`git reset --hard`, `git clean`) على السيرفر — فيه بيانات تشغيل غير محفوظة في git.
+- التطبيق تعليمي للتنبيهات فقط — لا تضف تنفيذ أوامر شراء/بيع.
