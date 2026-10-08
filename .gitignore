@@ -17,3 +17,17 @@ docs/day-performance*.json
 docs/day-performance*.csv
 pages/day-performance*.json
 pages/day-performance*.csv
+
+.env.bak*
+data/*.json
+!data/mudaraba_scan_config.json
+data/*.flag
+data/*.lock
+data/notes/
+data/telegram_paused
+data/tg_offset.txt
+docs/index.html
+docs/*.json
+docs/day-performance-archive/
+pages/*.json
+pages/day-performance-archive/
