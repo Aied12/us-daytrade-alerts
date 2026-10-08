@@ -60,6 +60,18 @@ WIRE_FEEDS = (
 _TICKER_IN_TITLE = re.compile(
     r"(?:\(|\[|\bNasdaq[:\s-]*|\bNYSE[:\s-]*|\bOTC[:\s-]*)([A-Z]{1,5})\b|(?:NASDAQ|NYSE|NYSEAMERICAN|OTCQB|OTCQX)[:\s]+([A-Z]{1,5})\b"
 )
+# False positives from wires/timezones/common caps
+_JUNK_TICKERS = frozenset(
+    {
+        "MARKET", "GLOBE", "EEST", "EST", "EDT", "PDT", "PST", "CST", "UTC", "GMT",
+        "CEO", "CFO", "COO", "CTO", "FDA", "SEC", "ETF", "IPO", "NYSE", "NASDAQ",
+        "OTC", "OTCQB", "OTCQX", "AMEX", "PR", "NEWS", "INC", "LTD", "LLC", "PLC",
+        "THE", "AND", "FOR", "WITH", "FROM", "THIS", "THAT", "ARE", "WAS", "WILL",
+        "JAN", "FEB", "MAR", "APR", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC",
+        "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN", "USD", "EUR", "GBP",
+        "HTTP", "HTTPS", "WWW", "COM", "HTML", "PRESS", "RELEASE", "TODAY",
+    }
+)
 _ST_BLOCK = re.compile(
     r"(?P<when>\d{2}/\d{2}/\d{4}\s+\d{1,2}:\d{2}\s+[AP]M)\s*\n"
     r"\[(?P<sym>[A-Z]{1,5})\s*:\s*(?P<ex>[^\]]+)\]\((?P<sym_url>[^)]+)\)\s*\n"
@@ -165,14 +177,20 @@ def _extract_ticker(title: str, link: str = "", summary: str = "") -> str:
     blob = f"{title} {summary} {unquote(link)}"
     m = _TICKER_IN_TITLE.search(blob)
     if m:
-        return (m.group(1) or m.group(2) or "").upper()
+        cand = (m.group(1) or m.group(2) or "").upper()
+        if cand and cand not in _JUNK_TICKERS and cand.isalpha():
+            return cand
     m2 = re.search(r"\(([A-Z]{1,5})\)\s*$", title.strip())
     if m2:
-        return m2.group(1).upper()
+        cand = m2.group(1).upper()
+        if cand not in _JUNK_TICKERS:
+            return cand
     # SEC atom titles often: "8-K - Company Name (0001234567) (Filer)"
     m3 = re.search(r"/Archives/edgar/data/\d+/[^/]+/([A-Z0-9-]+)", link)
     if m3 and re.fullmatch(r"[A-Z]{1,5}", m3.group(1) or ""):
-        return m3.group(1).upper()
+        cand = m3.group(1).upper()
+        if cand not in _JUNK_TICKERS:
+            return cand
     return "MARKET"
 
 

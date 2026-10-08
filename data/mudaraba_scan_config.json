@@ -1,0 +1,59 @@
+{
+  "strategy_name": "US_PM_ORB_RETEST_SCALP",
+  "status": "adopted",
+  "watchlist": [
+    { "symbol": "SPY", "enabled": true, "priority": 1 },
+    { "symbol": "AAPL", "enabled": true, "priority": 2 },
+    { "symbol": "TSLA", "enabled": true, "priority": 3 },
+    { "symbol": "META", "enabled": true, "priority": 4 }
+  ],
+  "excluded": ["NVDA", "AMD", "QQQ"],
+  "timezone": "America/New_York",
+  "chart": {
+    "timeframe": "5m",
+    "extended_hours": true
+  },
+  "sessions": {
+    "premarket_start": "04:00",
+    "premarket_end": "09:29",
+    "trade_start": "09:35",
+    "trade_end": "11:30",
+    "force_flat": "11:30",
+    "no_new_entries_after": "11:15"
+  },
+  "filters": {
+    "min_pm_range_pct": 0.0015,
+    "breakout_buffer_pct": 0.0005,
+    "retest_tolerance_pct": 0.0015,
+    "skip_if_both_sides_break": true,
+    "max_trades_per_symbol_per_day": 1,
+    "news_blackout_minutes": 30
+  },
+  "entry": {
+    "require_breakout": true,
+    "require_retest": true,
+    "confirmation": {
+      "allow_engulfing": true,
+      "allow_strong_body": true,
+      "min_body_to_range": 0.55,
+      "engulf_only": false
+    }
+  },
+  "risk": {
+    "r_multiple": 1.5,
+    "risk_per_trade_pct_min": 0.5,
+    "risk_per_trade_pct_max": 1.0,
+    "stop_buffer_long_mult": 0.999,
+    "stop_buffer_short_mult": 1.001,
+    "same_bar_stop_and_target": "count_as_stop"
+  },
+  "exits": {
+    "take_profit_R": 1.5,
+    "stop_loss_R": 1.0,
+    "time_stop": "11:30"
+  },
+  "scan_alerts": {
+    "long": "LONG_ORB_RETEST",
+    "short": "SHORT_ORB_RETEST"
+  }
+}

@@ -21,6 +21,11 @@ NY = ZoneInfo("America/New_York")
 
 MAX_TRADES = 400
 OPEN_MAX_SEC = 6 * 3600  # day-trade horizon inside an open session
+# سلم الورق: وقف أولي 10% ثم يُرفع إلى كل هدف عند لمسه
+INITIAL_STOP_PCT = 0.10
+DEFAULT_TP1_PCT = 0.06
+DEFAULT_TP2_PCT = 0.14
+DEFAULT_TP3_PCT = 0.25
 MIN_HOLD_SEC = 90        # don't close instantly on same-tick noise
 # Protection (from 28–30 Sep loss analysis): cancel قناص if never green
 NO_GREEN_EXIT_SEC = 5 * 60  # 5 minutes
@@ -33,7 +38,11 @@ QANNAS_PAPER_MIN_DOLLAR = 1_000_000.0
 QANNAS_PAPER_MIN_RVOL = 2.0
 QANNAS_PAPER_MIN_PRICE = 0.50
 QANNAS_PAPER_MAX_CHG_PCT = 120.0   # avoid parabolic late extensions
-QANNAS_PAPER_LATE_HOUR = 17       # no new paper opens from 17:00 Asia/Riyadh
+QANNAS_PAPER_LATE_HOUR = 17              # شبه مكتمل 3/4: لا فتح جديد من 17:00 السعودية
+QANNAS_PAPER_LATE_HOUR_COMPLETE = 21     # مكتمل 4/4: يُسمح لاحقاً أثناء الجلسة
+# أفضل فرص ≥3/4: بحد أقصى 3 صفقات قناص مفتوحة معاً (المغلقة ما تحجز المقعد)
+QANNAS_PAPER_MIN_CHECKS = 3
+QANNAS_PAPER_TOP_N = 3
 
 ACTIVE_STATUSES = ("open", "pending_breakout")
 
@@ -134,6 +143,7 @@ def _attach_appearance(trade: dict[str, Any], row: dict[str, Any], source: str) 
                     "stop": trade.get("stop"),
                     "tp1": trade.get("tp1"),
                     "tp2": trade.get("tp2"),
+                    "tp3": trade.get("tp3"),
                     "appeared_ts": trade.get("appeared_ts"),
                     "appear_change_pct": trade.get("appear_change_pct"),
                     "appear_rvol": trade.get("appear_rvol"),
@@ -197,7 +207,11 @@ def _strategies_of(row: dict[str, Any], source: str) -> list[str]:
         if row.get("has_news"):
             out.append("قنص + خبر")
     elif source == "qannas":
-        out.append("القناص")
+        checks = _qannas_checks_ok(row)
+        if row.get("complete") or checks >= 4:
+            out.append("القناص")
+        else:
+            out.append(f"القناص {checks}/4")
         if row.get("has_news"):
             out.append("القناص + محفز")
         if row.get("low_float"):
@@ -216,33 +230,105 @@ def _strategies_of(row: dict[str, Any], source: str) -> list[str]:
     return uniq[:6]
 
 
-def _levels_from_row(row: dict[str, Any]) -> tuple[float, float, float, float] | None:
+def _levels_from_row(row: dict[str, Any]) -> tuple[float, float, float, float, float] | None:
     entry = float(
         row.get("entry")
         or row.get("entry_trigger")
         or row.get("last")
         or 0
     )
-    stop = float(row.get("stop") or 0)
-    tp1 = float(row.get("tp1") or row.get("target_partial") or row.get("target") or 0)
-    tp2 = float(row.get("tp2") or row.get("target_final") or row.get("target") or tp1)
-    if entry <= 0 or stop <= 0:
+    if entry <= 0:
         return None
+    # دائماً وقف أولي = 10% تحت الدخول (بغض النظر عن وقف المصدر)
+    stop = entry * (1.0 - INITIAL_STOP_PCT)
+    tp1 = float(row.get("tp1") or row.get("target_partial") or row.get("target") or 0)
+    tp2 = float(row.get("tp2") or row.get("target_final") or row.get("target") or 0)
+    tp3 = float(row.get("tp3") or row.get("target_stretch") or 0)
     if tp1 <= 0:
-        # fallback 1.5R long
-        risk = max(entry - stop, entry * 0.01)
-        tp1 = entry + 1.5 * risk
+        tp1 = entry * (1.0 + DEFAULT_TP1_PCT)
     if tp2 <= 0:
-        risk = max(entry - stop, entry * 0.01)
-        tp2 = entry + 2.5 * risk
-    # long-only ledger
-    if stop >= entry:
-        stop = entry * 0.98
+        tp2 = entry * (1.0 + DEFAULT_TP2_PCT)
+    if tp3 <= 0:
+        tp3 = entry * (1.0 + DEFAULT_TP3_PCT)
     if tp1 <= entry:
-        tp1 = entry * 1.02
+        tp1 = entry * (1.0 + DEFAULT_TP1_PCT)
     if tp2 < tp1:
-        tp2 = tp1
-    return _px(entry), _px(stop), _px(tp1), _px(tp2)
+        tp2 = max(tp1 * 1.01, entry * (1.0 + DEFAULT_TP2_PCT))
+    if tp3 < tp2:
+        tp3 = max(tp2 * 1.01, entry * (1.0 + DEFAULT_TP3_PCT))
+    return _px(entry), _px(stop), _px(tp1), _px(tp2), _px(tp3)
+
+
+def _qannas_day_symbols(trades: list[dict[str, Any]], day: str) -> set[str]:
+    """Symbols that already have a قناص paper trade today (any status) — لا نعيد نفس الرمز."""
+    out: set[str] = set()
+    for t in trades:
+        if str(t.get("source") or "") != "qannas":
+            continue
+        if _trade_day(t) != day and not str(t.get("id") or "").endswith(":" + day):
+            continue
+        sym = str(t.get("symbol") or "").upper().strip()
+        if sym:
+            out.add(sym)
+    return out
+
+
+def _qannas_active_symbols(trades: list[dict[str, Any]], day: str) -> set[str]:
+    """قناص مفتوح/انتظار اختراق اليوم فقط — هذا ما يحجز سقف TOP_N."""
+    out: set[str] = set()
+    for t in trades:
+        if str(t.get("source") or "") != "qannas":
+            continue
+        if str(t.get("status") or "") not in ACTIVE_STATUSES:
+            continue
+        if _trade_day(t) != day and not str(t.get("id") or "").endswith(":" + day):
+            continue
+        sym = str(t.get("symbol") or "").upper().strip()
+        if sym:
+            out.add(sym)
+    return out
+
+
+def _qannas_is_complete(row: dict[str, Any]) -> bool:
+    return bool(row.get("complete")) or _qannas_checks_ok(row) >= 4
+
+
+def _qannas_allowed_new_symbols(
+    rows: list[dict[str, Any]],
+    trades: list[dict[str, Any]],
+    day: str,
+) -> set[str]:
+    """Pick new قناص paper names — مكتمل 4/4 أولاً ثم 3/4؛ السقف على المفتوح فقط."""
+    already = _qannas_day_symbols(trades, day)  # نفس الرمز لا يُعاد اليوم
+    active = _qannas_active_symbols(trades, day)
+    slots = QANNAS_PAPER_TOP_N - len(active)
+    if slots <= 0:
+        return set()
+    complete: list[dict[str, Any]] = []
+    near: list[dict[str, Any]] = []
+    for row in rows:
+        sym = str(row.get("symbol") or "").upper().strip()
+        if not sym or sym in already:
+            continue
+        if (row.get("side") or "long") == "short" or row.get("expired"):
+            continue
+        if not _qannas_paper_entry_ok(row):
+            continue
+        if not _levels_from_row(row):
+            continue
+        if _qannas_is_complete(row):
+            complete.append(row)
+        else:
+            near.append(row)
+    # الأولوية المطلقة للمكتمل 4/4، ثم شبه المكتمل 3/4
+    complete.sort(key=_qannas_paper_rank_key, reverse=True)
+    near.sort(key=_qannas_paper_rank_key, reverse=True)
+    picked = (complete + near)[:slots]
+    return {
+        str(r.get("symbol") or "").upper().strip()
+        for r in picked
+        if str(r.get("symbol") or "").strip()
+    }
 
 
 def ingest_candidates(
@@ -263,12 +349,14 @@ def ingest_candidates(
     day = datetime.now(RIYADH).strftime("%Y-%m-%d")
     opened = 0
     now = _now()
+    qannas_rows = list(qannas or [])
+    qannas_new_ok = _qannas_allowed_new_symbols(qannas_rows, trades, day)
 
     batches: list[tuple[str, list[dict[str, Any]]]] = [
         ("opps", opportunities or []),
         ("sniper", sniper or []),
         ("jamal", jamal or []),
-        ("qannas", qannas or []),
+        ("qannas", qannas_rows),
     ]
     for source, rows in batches:
         for row in rows:
@@ -290,7 +378,7 @@ def ingest_candidates(
             levels = _levels_from_row(row)
             if not levels:
                 continue
-            entry, stop, tp1, tp2 = levels
+            entry, stop, tp1, tp2, tp3 = levels
             tid = _trade_id(source, sym, day)
             existing = by_id.get(tid)
             if existing and existing.get("status") in ACTIVE_STATUSES:
@@ -302,9 +390,13 @@ def ingest_candidates(
                 continue
             if existing and existing.get("status") not in ACTIVE_STATUSES:
                 continue  # already closed today
-            # قناص only: tighten paper entry liquidity (rule 2)
-            if source == "qannas" and not _qannas_paper_entry_ok(row):
-                continue
+            # قناص: ≥3/4 + سيولة، وأفضل 3 فقط لليوم
+            if source == "qannas":
+                if not _qannas_paper_entry_ok(row):
+                    continue
+                if sym not in qannas_new_ok:
+                    continue
+            checks_ok = _qannas_checks_ok(row) if source == "qannas" else None
             trade = {
                 "id": tid,
                 "symbol": sym,
@@ -328,12 +420,14 @@ def ingest_candidates(
                 "initial_stop": stop,
                 "tp1": tp1,
                 "tp2": tp2,
+                "tp3": tp3,
                 "last": _px(float(row.get("last") or entry)),
                 # انتظار اختراق وتثبيت فوق الدخول 3–5د
                 "status": "pending_breakout",
                 "breakout_level": entry,
                 "breakout_above_since": None,
-                "stop_trail_stage": 0,  # 0=أولي · 1=وقف=دخول بعد هدف1 · 2=وقف=هدف1 بعد هدف2
+                # 0=وقف 10% · 1=وقف=هدف1 · 2=وقف=هدف2 · 3=وقف=هدف3
+                "stop_trail_stage": 0,
                 "exit": None,
                 "exit_ts": None,
                 "exit_local": None,
@@ -341,12 +435,25 @@ def ingest_candidates(
                 "r_multiple": None,
                 "mfe_pct": 0.0,
                 "mae_pct": 0.0,
-                "result_ar": "انتظار اختراق (تثبيت 3–5د)",
+                "result_ar": (
+                    f"انتظار اختراق · قناص {checks_ok}/4 (من أفضل {QANNAS_PAPER_TOP_N})"
+                    if source == "qannas" and checks_ok is not None
+                    else "انتظار اختراق (تثبيت 3–5د)"
+                ),
+                "paper_checks_ok": checks_ok,
+                "paper_tier": (
+                    "complete"
+                    if source == "qannas" and (row.get("complete") or (checks_ok or 0) >= 4)
+                    else ("near_complete" if source == "qannas" else None)
+                ),
             }
             _attach_appearance(trade, row, source)
             trades.append(trade)
             by_id[tid] = trade
             opened += 1
+            if source == "qannas":
+                # slot consumed — keep cap tight within same ingest pass
+                qannas_new_ok.discard(sym)
     data["trades"] = trades
     data["summary"] = summarize(trades)
     _save(data)
@@ -366,10 +473,35 @@ def _r_multiple(entry: float, stop: float, exit_px: float) -> float:
     return round((exit_px - entry) / risk, 3)
 
 
+def _qannas_checks_ok(row: dict[str, Any]) -> int:
+    """How many of the 4 قناص checklist conditions are true."""
+    if row.get("checks_ok") is not None:
+        try:
+            return int(row.get("checks_ok") or 0)
+        except Exception:
+            pass
+    if bool(row.get("complete")):
+        return 4
+    cl = row.get("checklist") or row.get("appear_checklist") or []
+    if isinstance(cl, list):
+        return sum(1 for c in cl if isinstance(c, dict) and c.get("ok"))
+    return 0
+
+
+def _qannas_paper_rank_key(row: dict[str, Any]) -> tuple:
+    """Higher is better — مكتمل 4/4 أولاً، ثم السكور / الزخم / السيولة."""
+    checks = _qannas_checks_ok(row)
+    complete = 1 if (bool(row.get("complete")) or checks >= 4) else 0
+    score = float(row.get("score") or row.get("appear_score") or 0)
+    chg = float(row.get("change_pct") or row.get("appear_change_pct") or 0)
+    dollar = float(row.get("dollar_volume") or row.get("appear_dollar_volume") or 0)
+    return (complete, checks, score, chg, dollar)
+
+
 def _qannas_paper_entry_ok(row: dict[str, Any]) -> bool:
-    """قناص paper: فقط مكتمل 4/4 + سيولة/وقت/سقف تمدد."""
-    # Scanner marks complete only when all 4 checklist conditions pass (incl. news)
-    if not bool(row.get("complete")):
+    """قناص paper: ≥3/4 شروط + سيولة/وقت/سقف تمدد (أفضل 3 تُختار في ingest)."""
+    checks = _qannas_checks_ok(row)
+    if checks < QANNAS_PAPER_MIN_CHECKS and not bool(row.get("complete")):
         return False
     dollar = float(row.get("dollar_volume") or row.get("appear_dollar_volume") or 0)
     rvol = float(row.get("rvol") or row.get("appear_rvol") or 0)
@@ -385,7 +517,9 @@ def _qannas_paper_entry_ok(row: dict[str, Any]) -> bool:
         return False
     try:
         h = datetime.now(RIYADH).hour
-        if h >= QANNAS_PAPER_LATE_HOUR:
+        complete = bool(row.get("complete")) or checks >= 4
+        late_cut = QANNAS_PAPER_LATE_HOUR_COMPLETE if complete else QANNAS_PAPER_LATE_HOUR
+        if h >= late_cut:
             return False
     except Exception:
         pass
@@ -411,6 +545,7 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
             initial_stop = stop
         tp1 = float(t.get("tp1") or 0)
         tp2 = float(t.get("tp2") or 0)
+        tp3 = float(t.get("tp3") or 0)
         last = float(price_by_symbol.get(sym) or t.get("last") or entry)
         if last <= 0 or entry <= 0:
             continue
@@ -522,14 +657,30 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
             )
             continue
 
-        # تحقيق الأهداف → رفع الوقف (لا إغلاق فوري على الهدف)
-        # هدف2: وقف → هدف1 | هدف1: وقف → سعر الدخول (مشاركة)
-        if tp2 > 0 and last >= tp2 and stage < 2:
-            t["stop"] = _px(tp1 if tp1 > 0 else entry)
+        # تحقيق الأهداف → رفع الوقف إلى نفس الهدف (لا إغلاق فوري)
+        # هدف1→وقف=هدف1 | هدف2→وقف=هدف2 | هدف3→وقف=هدف3
+        if tp3 > 0 and last >= tp3 and stage < 3:
+            t["stop"] = _px(tp3)
+            stop = float(t["stop"])
+            t["stop_trail_stage"] = 3
+            t["tp3_hit_ts"] = int(now)
+            t["result_ar"] = "هدف3 ✓ — الوقف على هدف3"
+            stage = 3
+            try:
+                from bot.day_performance import append_lifecycle_event
+
+                append_lifecycle_event(
+                    "trail",
+                    {"trade_id": t.get("id"), "symbol": sym, "stage": 3, "stop": stop, "last": last},
+                )
+            except Exception:
+                pass
+        elif tp2 > 0 and last >= tp2 and stage < 2:
+            t["stop"] = _px(tp2)
             stop = float(t["stop"])
             t["stop_trail_stage"] = 2
             t["tp2_hit_ts"] = int(now)
-            t["result_ar"] = "هدف2 ✓ — الوقف على هدف1"
+            t["result_ar"] = "هدف2 ✓ — الوقف على هدف2"
             stage = 2
             try:
                 from bot.day_performance import append_lifecycle_event
@@ -541,11 +692,11 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
             except Exception:
                 pass
         elif tp1 > 0 and last >= tp1 and stage < 1:
-            t["stop"] = _px(entry)  # مشاركة
+            t["stop"] = _px(tp1)
             stop = float(t["stop"])
             t["stop_trail_stage"] = 1
             t["tp1_hit_ts"] = int(now)
-            t["result_ar"] = "هدف1 ✓ — الوقف على الدخول"
+            t["result_ar"] = "هدف1 ✓ — الوقف على هدف1"
             stage = 1
             try:
                 from bot.day_performance import append_lifecycle_event
@@ -559,12 +710,22 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
 
         # كسر الوقف → خروج فوري
         if stop > 0 and last <= stop:
-            if stage >= 2:
+            if stage >= 3:
                 _close_trade(
                     t,
-                    "win_trail_tp1",
+                    "win_trail_tp3",
                     last,
-                    "خروج — كسر الوقف عند هدف1",
+                    "خروج — كسر الوقف عند هدف3",
+                    entry=entry,
+                    stop=initial_stop or stop,
+                    now=now,
+                )
+            elif stage >= 2:
+                _close_trade(
+                    t,
+                    "win_trail_tp2",
+                    last,
+                    "خروج — كسر الوقف عند هدف2",
                     entry=entry,
                     stop=initial_stop or stop,
                     now=now,
@@ -572,9 +733,9 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
             elif stage >= 1:
                 _close_trade(
                     t,
-                    "win_be",
+                    "win_trail_tp1",
                     last,
-                    "خروج — كسر الوقف عند الدخول (مشاركة)",
+                    "خروج — كسر الوقف عند هدف1",
                     entry=entry,
                     stop=initial_stop or stop,
                     now=now,
@@ -845,18 +1006,20 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
                 "stop": t.get("stop"),
                 "stop_pct": _stop_distance_pct(float(t.get("entry") or 0), float(t.get("stop") or 0)),
                 "tp1": t.get("tp1"),
+                "tp2": t.get("tp2"),
+                "tp3": t.get("tp3"),
                 "pnl_pct": _pct(float(t.get("entry") or 0), float(t.get("last") or 0)),
                 "mfe_pct": t.get("mfe_pct"),
                 "mae_pct": t.get("mae_pct"),
                 "opened_local": t.get("opened_local"),
                 "opened_ts": t.get("opened_ts"),
-                "result_ar": "مفتوح",
+                "result_ar": t.get("result_ar") or "مفتوح",
+                "stop_trail_stage": t.get("stop_trail_stage"),
             }
             for t in recent_open
         ],
         "note_ar": (
-            "مؤشرات اليوم فقط · نسبة النجاح بدون إغلاق الجلسة 0% · "
-            "صفقات جديدة وقف≈10% (المفتوحة القديمة قد تكون أوسع) · تعليمي."
+            "مؤشرات اليوم فقط · وقف أولي 10% · بعد كل هدف يُرفع الوقف لنفس الهدف (1→2→3) · تعليمي."
         ),
     }
 

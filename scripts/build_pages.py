@@ -37,6 +37,8 @@ from bot.catalyst_scan import build_momentum_scanner, enrich_news_item, rank_cat
 from bot.sniper_scan import build_sniper_scanner, fetch_cheap_runners
 from bot.qannas_scan import NOTE_AR as QANNAS_NOTE_AR
 from bot.qannas_scan import build_qannas_scanner, fetch_qannas_universe
+from bot.mudaraba_scan import NOTE_AR as MUDARABA_NOTE_AR
+from bot.mudaraba_scan import build_mudaraba_scanner, mudaraba_rules_payload
 from bot.strategy_tracker import sync_from_boards
 
 NY = ZoneInfo("America/New_York")
@@ -416,6 +418,12 @@ def main() -> None:
     except Exception:
         qannas = []
 
+    # المضاربه: Premarket ORB Retest (SPY/AAPL/TSLA/META)
+    try:
+        mudaraba = build_mudaraba_scanner(limit=4)
+    except Exception:
+        mudaraba = []
+
     # استراتيجية جمال — Setup ثم Entry Trigger (لا دخول على المؤشرات وحدها)
     jamal_cfg = JamalSettings()
     try:
@@ -593,6 +601,9 @@ def main() -> None:
             "float_good": 20_000_000,
             "require_news": True,
         },
+        "mudaraba_scanner": mudaraba,
+        "mudaraba_note_ar": MUDARABA_NOTE_AR,
+        "mudaraba_rules": mudaraba_rules_payload(),
         "jamal_scanner": jamal_cards,
         "jamal_note_ar": "استراتيجية جمال: Setup → مراقبة → Entry Trigger (اختراق قمة+Buffer) → Stop/TP — بدون مطاردة · ليست توصية استثمارية",
         "jamal_settings": {

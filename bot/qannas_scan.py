@@ -63,6 +63,7 @@ LATE_ENTRY_HOUR_SA = 17         # بعد 17 السعودية WR التاريخي
 PLAN_STOP_PCT = 0.10            # وقف ≈ 10% تحت الدخول
 PLAN_TP1_PCT = 0.06
 PLAN_TP2_PCT = 0.14
+PLAN_TP3_PCT = 0.25             # جني3 ≈ +25%
 
 
 def _px(n: float) -> float:
@@ -221,7 +222,8 @@ def _plan(last: float, day_low: float | None = None) -> dict[str, float]:
         stop = _px(entry * (1 - PLAN_STOP_PCT))
     tp1 = _px(entry * (1 + PLAN_TP1_PCT))
     tp2 = _px(entry * (1 + PLAN_TP2_PCT))
-    return {"entry": entry, "stop": stop, "tp1": tp1, "tp2": tp2}
+    tp3 = _px(entry * (1 + PLAN_TP3_PCT))
+    return {"entry": entry, "stop": stop, "tp1": tp1, "tp2": tp2, "tp3": tp3}
 
 
 def _news_by_symbol(news: list[dict[str, Any]] | None) -> dict[str, list[dict[str, Any]]]:
@@ -582,6 +584,7 @@ def build_qannas_scanner(
             "stop": plan["stop"],
             "tp1": plan["tp1"],
             "tp2": plan["tp2"],
+            "tp3": plan["tp3"],
             "side": "long",
             "strategies": ["القناص", "محفز + زخم"] if complete else ["القناص", "مراقبة"],
             "tag_ar": "🎯 القناص" if complete else "👁 مراقبة",
