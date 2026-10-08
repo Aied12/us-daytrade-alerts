@@ -30,14 +30,37 @@ def _save_json(path: Path, value: Any) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def _vapid_usable(private_key: str) -> bool:
+    """Reject corrupt/unsupported private keys that crash every cycle."""
+    try:
+        from py_vapid import Vapid
+
+        Vapid.from_string(private_key=private_key)
+        return True
+    except Exception:
+        pass
+    try:
+        from cryptography.hazmat.primitives import serialization
+
+        serialization.load_pem_private_key(private_key.encode("utf-8"), password=None)
+        return True
+    except Exception:
+        return False
+
+
 def ensure_vapid_keys() -> dict[str, str]:
     existing = _load_json(VAPID_PATH, {})
     if existing.get("publicKey") and existing.get("privateKey"):
-        return {
-            "publicKey": str(existing["publicKey"]),
-            "privateKey": str(existing["privateKey"]),
-            "subject": str(existing.get("subject") or os.getenv("VAPID_SUBJECT", "mailto:daytrade@localhost")),
-        }
+        priv = str(existing["privateKey"])
+        if _vapid_usable(priv):
+            return {
+                "publicKey": str(existing["publicKey"]),
+                "privateKey": priv,
+                "subject": str(
+                    existing.get("subject") or os.getenv("VAPID_SUBJECT", "mailto:daytrade@localhost")
+                ),
+            }
+        print("[push] regenerating unusable VAPID private key", flush=True)
 
     from cryptography.hazmat.primitives.asymmetric import ec
     from cryptography.hazmat.primitives import serialization
@@ -54,9 +77,13 @@ def ensure_vapid_keys() -> dict[str, str]:
         format=serialization.PublicFormat.UncompressedPoint,
     )
     public_b64 = base64.urlsafe_b64encode(raw_pub).decode("utf-8").rstrip("=")
+    # pywebpush prefers raw URL-safe base64 private scalar (not PEM)
+    raw_priv = private_key.private_numbers().private_value.to_bytes(32, "big")
+    priv_b64 = base64.urlsafe_b64encode(raw_priv).decode("utf-8").rstrip("=")
     keys = {
         "publicKey": public_b64,
-        "privateKey": private_pem,
+        "privateKey": priv_b64,
+        "privateKeyPem": private_pem,
         "subject": os.getenv("VAPID_SUBJECT", "mailto:daytrade@localhost"),
     }
     _save_json(VAPID_PATH, keys)
@@ -93,6 +120,7 @@ def send_web_push(title: str, body: str, *, url: str = "/") -> int:
     payload = json.dumps({"title": title, "body": body, "url": url, "lang": "ar"}, ensure_ascii=False)
     ok = 0
     dead: list[str] = []
+    jwt_bad = 0
     for sub in list_subscriptions():
         try:
             webpush(
@@ -100,17 +128,28 @@ def send_web_push(title: str, body: str, *, url: str = "/") -> int:
                 data=payload,
                 vapid_private_key=keys["privateKey"],
                 vapid_claims={"sub": keys["subject"]},
+                timeout=8,
             )
             ok += 1
         except WebPushException as e:
             status = getattr(getattr(e, "response", None), "status_code", None)
-            if status in (404, 410):
+            body_txt = ""
+            try:
+                body_txt = (getattr(e, "response", None).text or "")[:120]
+            except Exception:
+                body_txt = str(e)[:120]
+            # اشتراك قديم بمفتاح VAPID مختلف — احذفه حتى لا يبطئ كل دورة
+            if status in (404, 410) or (status == 403 and "BadJwtToken" in body_txt):
                 dead.append(str(sub.get("endpoint") or ""))
+                if status == 403:
+                    jwt_bad += 1
             print(f"[push] fail {status}: {e}", flush=True)
         except Exception as e:
             print(f"[push] error: {e}", flush=True)
     for ep in dead:
         remove_subscription(ep)
+    if jwt_bad:
+        print(f"[push] removed {jwt_bad} BadJwtToken subscription(s)", flush=True)
     return ok
 
 

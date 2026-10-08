@@ -328,7 +328,7 @@
     .scan-item .sym{font-size:1.15rem}
     .dock{
       position:fixed;bottom:0;inset-inline:0;z-index:60;
-      display:grid;grid-template-columns:repeat(6,1fr);gap:0;
+      display:grid;grid-template-columns:repeat(7,1fr);gap:0;
       padding:8px 4px calc(8px + env(safe-area-inset-bottom));
       background:color-mix(in srgb,var(--card) 94%, black);
       border-top:1px solid var(--line);
@@ -336,12 +336,25 @@
     }
     .dock button{
       border:0;background:transparent;color:var(--muted);padding:6px 1px;
-      font:inherit;font-size:.62rem;font-weight:700;cursor:pointer;
+      font:inherit;font-size:.58rem;font-weight:700;cursor:pointer;
       display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px;
     }
-    .dock button .ico{font-size:1.15rem;line-height:1}
+    .dock button .ico{font-size:1.1rem;line-height:1}
     .dock button.active{color:var(--accent)}
     .dock button[data-section="qannas"].active{color:var(--amber)}
+    .dock button[data-section="mudaraba"].active{color:#7dd3fc}
+    #mudarabaSeg{
+      display:flex;gap:6px;overflow:auto;padding:2px 0 8px;
+      -webkit-overflow-scrolling:touch;
+    }
+    #mudarabaSeg button{
+      flex:0 0 auto;min-height:38px;padding:8px 14px;border-radius:999px;
+      border:1px solid var(--line);background:var(--chip);color:var(--text);
+      font-weight:700;font-size:.86rem;
+    }
+    #mudarabaSeg button.active{background:#0ea5e9;border-color:#0ea5e9;color:#042f2e}
+    .mudaraba-head{margin:4px 0 10px}
+    .mudaraba-head .muted{font-size:.84rem;line-height:1.4}
     @media (min-width:720px){
       .wrap{max-width:680px;padding-bottom:110px}
       .brand-hero h1{font-size:2.1rem}
@@ -396,6 +409,7 @@
       <!-- احتفاظ بمعرّف التنقل للتوافق مع السكربت -->
       <div class="section-nav" id="sectionNav" role="tablist" aria-label="أقسام اللوحة" hidden>
         <button type="button" data-section="qannas" class="active">القناص</button>
+        <button type="button" data-section="mudaraba">المضاربه</button>
         <button type="button" data-section="live">أسعار لحظية</button>
         <button type="button" data-section="market">السوق</button>
         <button type="button" data-section="news">الأخبار</button>
@@ -487,7 +501,26 @@
       <div class="qannas-sec-label" id="qannasMoreLabel" style="display:none">مراقبة (ناقص شرط أو أكثر)</div>
       <div id="qannasList"></div>
       <p class="muted" style="margin-top:10px;font-size:.78rem;line-height:1.45">
-        بارز/ورقي = مكتمل 4/4 فقط (خبر + سيولة$ + صغير/فلوت + فوق الافتتاح). الباقي مراقبة. تعليمي فقط.
+        ورقي = أفضل 3 · الأولوية لمكتمل 4/4 ثم شبه مكتمل 3/4 (وقف 10٪ + تريل الأهداف). تعليمي فقط.
+      </p>
+    </div>
+
+    <div class="card panel" id="panel-mudaraba" data-section-panel="mudaraba">
+      <div class="mudaraba-head">
+        <p class="muted" id="mudarabaNote">المضاربه · ORB إعادة اختبار Premarket · SPY/AAPL/TSLA/META · 5د · 09:35–11:30 نيويورك · 1.5R</p>
+      </div>
+      <div class="seg" id="mudarabaSeg">
+        <button type="button" data-mf="all" class="active">الكل</button>
+        <button type="button" data-mf="alert">إشارة</button>
+        <button type="button" data-mf="watch">مراقبة</button>
+        <button type="button" data-mf="long">Long</button>
+        <button type="button" data-mf="short">Short</button>
+      </div>
+      <div id="mudarabaFeatured"><div class="empty">جاري مسح المضاربه...</div></div>
+      <div class="qannas-sec-label" id="mudarabaMoreLabel" style="display:none">بقية القائمة</div>
+      <div id="mudarabaList"></div>
+      <p class="muted" style="margin-top:10px;font-size:.78rem;line-height:1.45">
+        اختراق اتجاه واحد فقط → إعادة اختبار PMH/PML → شمعة تأكيد · وقف وهدف 1.5R · إغلاق 11:30 ET. تعليمي فقط.
       </p>
     </div>
 
@@ -570,13 +603,14 @@
     <button type="button" data-section="market"><span class="ico">◷</span>سوق</button>
     <button type="button" data-section="news"><span class="ico">☰</span>أخبار</button>
     <button type="button" data-section="qannas" class="active"><span class="ico">◎</span>القناص</button>
+    <button type="button" data-section="mudaraba"><span class="ico">⚡</span>المضاربه</button>
     <button type="button" data-section="track"><span class="ico">▤</span>أداء</button>
     <button type="button" data-section="more"><span class="ico">⋯</span>المزيد</button>
   </nav>
   <div class="toast" id="toast"></div>
 
   <script>
-    window.__STATUS_V = 34;
+    window.__STATUS_V = 35;
     // ضع رابط Cloudflare Worker هنا بعد إنشائه، مثال: https://us-daytrade-live.xxx.workers.dev
     window.__LIVE_API = (localStorage.getItem('dash_live_api') || '').replace(/\/$/, '');
 
@@ -593,7 +627,7 @@
       sniper: 'dash_sniper_filter',
       jamal: 'dash_jamal_settings',
     };
-    const SECTION_IDS = ['live','market','news','mood','qannas','track','more'];
+    const SECTION_IDS = ['live','market','news','mood','qannas','mudaraba','track','more'];
     let CURRENT_SECTION = 'qannas';
     let DATA = null;
     let lastUrgent = new Set();
@@ -607,6 +641,8 @@
     let SNIPER_CACHE = [];
     let JAMAL_CACHE = [];
     let QANNAS_CACHE = [];
+    let MUDARABA_CACHE = [];
+    let MUDARABA_FILTER = 'all'; // all | alert | watch | long | short
     let QANNAS_FILTER = 'all'; // all | complete | news | float
     let JAMAL_SETTINGS = {
       buffer_pct:0.10, max_chase_pct:1.0, stop_loss_pct:2.0,
@@ -1094,6 +1130,7 @@
       }
       if(sid==='track' && DATA) renderStrategyTrack(DATA.strategy_track||{});
       if(sid==='qannas') renderQannas(QANNAS_CACHE);
+      if(sid==='mudaraba') renderMudaraba(MUDARABA_CACHE);
       if(sid==='news'){ renderNewsList(NEWS_CACHE); pollNewsLive(); }
     }
     function initSectionNav(){
@@ -1117,6 +1154,13 @@
           QANNAS_FILTER=b.dataset.qf||'all';
           document.querySelectorAll('#qannasSeg button').forEach(x=>x.classList.toggle('active', x===b));
           renderQannas(QANNAS_CACHE);
+        });
+      });
+      document.querySelectorAll('#mudarabaSeg button').forEach(b=>{
+        b.addEventListener('click',()=>{
+          MUDARABA_FILTER=b.dataset.mf||'all';
+          document.querySelectorAll('#mudarabaSeg button').forEach(x=>x.classList.toggle('active', x===b));
+          renderMudaraba(MUDARABA_CACHE);
         });
       });
     }
@@ -1545,6 +1589,10 @@
       if(qNote) qNote.textContent=d.qannas_note_ar||qNote.textContent;
       QANNAS_CACHE=d.qannas_scanner||[];
       renderQannas(QANNAS_CACHE);
+      const mdbNote=document.getElementById('mudarabaNote');
+      if(mdbNote) mdbNote.textContent=d.mudaraba_note_ar||mdbNote.textContent;
+      MUDARABA_CACHE=d.mudaraba_scanner||[];
+      renderMudaraba(MUDARABA_CACHE);
       renderStrategyTrack(d.strategy_track||{});
       const note=document.getElementById('newsNote');
       if(note) note.textContent=d.news_note_ar||'بث محفزات · تأثير 1–5';
@@ -1554,6 +1602,101 @@
       purgeExpiredOpps();
       renderOpps();
       tickClocks();
+    }
+
+    function renderMudaraba(rows){
+      const feat=document.getElementById('mudarabaFeatured');
+      const box=document.getElementById('mudarabaList');
+      const moreLab=document.getElementById('mudarabaMoreLabel');
+      if(!feat || !box) return;
+      let list=Array.isArray(rows)?rows.slice():[];
+      const f=MUDARABA_FILTER||'all';
+      if(f==='alert') list=list.filter(r=>r.complete || r.alert);
+      else if(f==='watch') list=list.filter(r=>!(r.complete || r.alert));
+      else if(f==='long') list=list.filter(r=>r.side==='long' || r.long_break || String(r.stage||'').includes('long'));
+      else if(f==='short') list=list.filter(r=>r.side==='short' || r.short_break || String(r.stage||'').includes('short'));
+
+      const ready=list.filter(r=>r.complete || r.alert);
+      const watch=list.filter(r=>!(r.complete || r.alert));
+
+      function checksHtml(r){
+        return (r.checklist||[]).map(c=>
+          `<span class="tag" style="opacity:${c.ok?1:.4}">${c.ok?'✓':'○'} ${esc(c.ar||'')}</span>`
+        ).join('');
+      }
+      function cardHtml(r, {featured=false}={}){
+        const c=Number(r.change_pct||0);
+        const side=r.side==='long'?'Long':(r.side==='short'?'Short':'—');
+        const tier=r.complete
+          ? `<span class="tag tone-ok">${esc(r.alert||'إشارة')} · ${side}</span>`
+          : `<span class="tag">${esc(r.stage_ar||'مراقبة')} · ${Number(r.checks_ok||0)}/${r.checks_total||4}</span>`;
+        const levels=`PMH ${esc(r.pmh??'—')} · PML ${esc(r.pml??'—')} · نطاق ${esc(r.pm_range_pct_display||'—')}`;
+        if(featured){
+          return `<div class="featured-card">
+            <div class="row">
+              <div>
+                <div class="sym">${esc(r.symbol)}</div>
+                <div class="muted" style="margin-top:2px">${esc(r.name||'')} · المضاربه</div>
+              </div>
+              <div class="chg-xl ${clsChg(c)}" data-live-chg="${esc(r.symbol)}">${c>0?'+':''}${esc(c)}%</div>
+            </div>
+            <div class="featured-meta">
+              <span class="tag">${esc(r.session_ar||'')}</span>
+              <span class="tag">${levels}</span>
+              ${tier}
+            </div>
+            <div class="checks-row">${checksHtml(r)}</div>
+            ${r.note_ar?`<div class="muted" style="margin-top:10px;font-size:.9rem;line-height:1.35">${esc(r.note_ar)}</div>`:''}
+            <div class="plan-row">
+              <div class="plan-cell"><div class="lab">دخول</div><div class="val">${esc(r.entry??'—')}</div></div>
+              <div class="plan-cell"><div class="lab">وقف</div><div class="val">${esc(r.stop??'—')}</div></div>
+              <div class="plan-cell"><div class="lab">هدف 1.5R</div><div class="val">${esc(r.tp??r.tp1??'—')}</div></div>
+            </div>
+            <div class="row" style="margin-top:12px">
+              <span class="muted" style="font-size:.8rem">$<span data-live-px="${esc(r.symbol)}">${esc(r.last??'—')}</span></span>
+              <a class="btn secondary" style="min-height:38px;padding:6px 12px;margin:0;font-size:.85rem" href="${esc(r.tv_url||'#')}" target="_blank" rel="noopener">TradingView</a>
+            </div>
+          </div>`;
+        }
+        return `<div class="scan-item" style="${r.complete?'':'opacity:.92'}">
+          <div class="row">
+            <span class="sym">${esc(r.symbol)}</span>
+            <span class="${clsChg(c)}" data-live-chg="${esc(r.symbol)}">${c>0?'+':''}${esc(c)}%</span>
+          </div>
+          <div class="muted" style="margin-top:4px">${esc(r.name||'')} · ${levels}</div>
+          <div class="checks-row">${checksHtml(r)} ${tier}</div>
+          ${r.note_ar?`<div class="muted" style="margin-top:6px;font-size:.84rem">${esc(r.note_ar)}</div>`:''}
+          <div class="row" style="margin-top:8px">
+            <span class="muted" style="font-size:.8rem">${r.complete?`دخول ${esc(r.entry)} · وقف ${esc(r.stop)} · هدف ${esc(r.tp||r.tp1)}`:`${esc(r.stage_ar||'مراقبة')}`}</span>
+            <a class="btn secondary" style="min-height:34px;padding:4px 10px;margin:0;font-size:.8rem" href="${esc(r.tv_url||'#')}" target="_blank" rel="noopener">TV</a>
+          </div>
+        </div>`;
+      }
+
+      if(!list.length){
+        feat.innerHTML='<div class="empty">لا أسهم في مسح المضاربه الآن</div>';
+        box.innerHTML='';
+        if(moreLab) moreLab.style.display='none';
+        return;
+      }
+
+      if(ready.length){
+        feat.innerHTML = cardHtml(ready[0], {featured:true});
+        const rest = (f==='alert' ? ready.slice(1) : watch);
+        if(moreLab){
+          moreLab.style.display = rest.length ? 'block' : 'none';
+          moreLab.textContent = f==='alert' ? 'بقية الإشارات' : 'مراقبة (Premarket / اختراق / إعادة اختبار)';
+        }
+        box.innerHTML = rest.map(r=>cardHtml(r)).join('');
+      } else {
+        feat.innerHTML = cardHtml(watch[0], {featured:true});
+        const rest = watch.slice(1);
+        if(moreLab){
+          moreLab.style.display = rest.length ? 'block' : 'none';
+          moreLab.textContent = 'بقية القائمة (SPY · AAPL · TSLA · META)';
+        }
+        box.innerHTML = rest.map(r=>cardHtml(r)).join('');
+      }
     }
 
     function renderQannas(rows){
@@ -1581,9 +1724,12 @@
       }
       function cardHtml(r, {featured=false}={}){
         const c=Number(r.change_pct||0);
+        const checksN=Number(r.checks_ok||0);
         const tier=r.complete
           ? '<span class="tag tone-ok">مكتمل 4/4</span>'
-          : `<span class="tag">${esc(r.tier_ar||'مراقبة')} · ${r.checks_ok||0}/${r.checks_total||4}</span>`;
+          : (checksN>=3
+            ? `<span class="tag tone-ok">شبه مكتمل ${checksN}/4 · مرشّح ورقي</span>`
+            : `<span class="tag">${esc(r.tier_ar||'مراقبة')} · ${checksN}/${r.checks_total||4}</span>`);
         if(featured){
           return `<div class="featured-card">
             <div class="row">
@@ -1622,7 +1768,7 @@
           <div class="checks-row">${checksHtml(r)} ${tier}</div>
           ${r.has_news?`<div class="muted" style="margin-top:6px;font-size:.84rem">📰 ${esc(r.news_title||'')}</div>`:''}
           <div class="row" style="margin-top:8px">
-            <span class="muted" style="font-size:.8rem">${r.complete?`دخول ${esc(r.entry)} · وقف ${esc(r.stop)}`:'رصد فقط — ليس مكتمل 4/4'}</span>
+            <span class="muted" style="font-size:.8rem">${(r.complete||Number(r.checks_ok||0)>=3)?`دخول ${esc(r.entry)} · وقف ${esc(r.stop)}`:'رصد فقط — أقل من 3/4'}</span>
             <a class="btn secondary" style="min-height:34px;padding:4px 10px;margin:0;font-size:.8rem" href="${esc(r.tv_url||'#')}" target="_blank" rel="noopener">TV</a>
           </div>
         </div>`;
@@ -1867,7 +2013,7 @@
             ${r.appear_has_news?' · خبر':''}
           </div>
           <div class="muted" style="font-size:.82rem">
-            فتح ${esc(fmtSaTime(r.opened_local,r.opened_ts))} · دخول ${esc(r.entry||'—')} · وقف ${esc(r.stop||'—')}${r.stop_pct!=null?` (−${esc(r.stop_pct)}%)`:''}${Number(r.stop_pct)>12?' · قديم أوسع':''} · هدف ${esc(r.tp1||'—')}/${esc(r.tp2||'—')}
+            فتح ${esc(fmtSaTime(r.opened_local,r.opened_ts))} · دخول ${esc(r.entry||'—')} · وقف ${esc(r.stop||'—')}${r.stop_pct!=null?` (−${esc(r.stop_pct)}%)`:''}${Number(r.stop_pct)>12?' · قديم أوسع':''} · هدف ${esc(r.tp1||'—')}/${esc(r.tp2||'—')}/${esc(r.tp3||'—')}
           </div>
           <div class="row" style="margin-top:4px">
             <span class="muted" style="font-size:.82rem">${esc(r.exit_local?('إغلاق '+fmtSaTime(r.exit_local,r.exit_ts)):'لم يُغلق')}${tto}${hold}</span>

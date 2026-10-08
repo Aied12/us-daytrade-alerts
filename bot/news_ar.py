@@ -24,7 +24,23 @@ ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = ROOT / "data" / "cache" / "news_ar"
 SEEN_PATH = ROOT / "data" / "news_seen.json"
 UA = {"User-Agent": "Mozilla/5.0 us-daytrade-alerts"}
-FINNHUB_KEY = os.getenv("FINNHUB_API_KEY", "").strip()
+
+
+def _finnhub_key() -> str:
+    """Read key at call-time (env may load after import)."""
+    k = (os.getenv("FINNHUB_API_KEY") or "").strip().strip('"').strip("'")
+    if k:
+        return k
+    try:
+        for line in (ROOT / ".env").read_text(encoding="utf-8").splitlines():
+            if line.startswith("FINNHUB_API_KEY="):
+                return line.split("=", 1)[1].strip().strip('"').strip("'")
+    except Exception:
+        pass
+    return ""
+
+
+FINNHUB_KEY = _finnhub_key()  # best-effort at import; _finnhub_key() used in fetches
 
 # Word-boundary negatives (single tokens)
 NEGATIVE_WORDS = (
@@ -408,17 +424,119 @@ def _item_fields(item: dict[str, Any]) -> dict[str, Any] | None:
     }
 
 
+_NAME_STOP = frozenset(
+    {
+        "inc", "corp", "ltd", "llc", "plc", "the", "and", "holdings", "company", "group",
+        "ordinary", "shares", "class", "common", "stock", "new", "old",
+    }
+)
+
+
+def _company_name_tokens(name: str) -> list[str]:
+    toks = re.findall(r"[A-Za-z]{3,}", name or "")
+    return [t for t in toks if t.lower() not in _NAME_STOP][:5]
+
+
+def _title_matches_symbol(title: str, symbol: str, name_tokens: list[str]) -> bool:
+    t = title or ""
+    sym = (symbol or "").upper()
+    if not t or not sym:
+        return False
+    if re.search(rf"\b{re.escape(sym)}\b", t, flags=re.I):
+        return True
+    if f"({sym})" in t.upper() or f"[{sym}]" in t.upper():
+        return True
+    low = t.lower()
+    hits = sum(1 for tok in name_tokens[:3] if tok.lower() in low)
+    # short/unique names (Veea, ReTo) → 1 token enough; longer need 2
+    need = 1 if name_tokens and len(name_tokens[0]) >= 4 and len(name_tokens) <= 2 else 2
+    return hits >= min(need, max(1, len(name_tokens[:3])))
+
+
+def _fetch_yahoo_search_news(symbol: str, limit: int = 6) -> list[dict[str, Any]]:
+    """Company news via Yahoo search, filtered by ticker/company name (no Finnhub needed)."""
+    sym = (symbol or "").upper().strip()
+    if not sym or not sym.isalpha() or len(sym) > 5:
+        return []
+    try:
+        r = requests.get(
+            "https://query1.finance.yahoo.com/v1/finance/search",
+            params={"q": sym, "quotesCount": 5, "newsCount": 15},
+            headers=UA,
+            timeout=18,
+        )
+        if not r.ok:
+            return []
+        js = r.json() or {}
+    except Exception:
+        return []
+    quotes = list(js.get("quotes") or [])
+    q0 = next((q for q in quotes if str(q.get("symbol") or "").upper() == sym), None)
+    if not q0:
+        return []
+    name = str(q0.get("shortname") or q0.get("longname") or "")
+    tokens = _company_name_tokens(name)
+    rows: list[dict[str, Any]] = []
+    for item in list(js.get("news") or []):
+        if not isinstance(item, dict):
+            continue
+        title = str(item.get("title") or "").strip()
+        if not title or not _title_matches_symbol(title, sym, tokens):
+            continue
+        ts = item.get("providerPublishTime")
+        published = ""
+        ts_i = None
+        if isinstance(ts, (int, float)) and ts:
+            ts_i = int(ts)
+            published = datetime.fromtimestamp(ts_i, tz=timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+        rows.append(
+            {
+                "title": title,
+                "summary": str(item.get("summary") or "")[:280],
+                "url": str(item.get("link") or item.get("url") or f"https://finance.yahoo.com/quote/{sym}/news"),
+                "published": published,
+                "published_ts": ts_i,
+                "publisher": str(item.get("publisher") or ""),
+                "symbol": sym,
+                "source": "yahoo_search",
+                "company_name": name,
+            }
+        )
+        if len(rows) >= limit:
+            break
+    return rows
+
+
 def _fetch_symbol_news(symbol: str, limit: int = 4) -> list[dict[str, Any]]:
     def _call():
         rows: list[dict[str, Any]] = []
+        key = _finnhub_key()
+        # Resolve company name once (for filtering generic Finnhub noise)
+        name_tokens: list[str] = []
+        try:
+            yr = requests.get(
+                "https://query1.finance.yahoo.com/v1/finance/search",
+                params={"q": symbol, "quotesCount": 3, "newsCount": 0},
+                headers=UA,
+                timeout=12,
+            )
+            if yr.ok:
+                for q in list((yr.json() or {}).get("quotes") or []):
+                    if str(q.get("symbol") or "").upper() == symbol.upper():
+                        name_tokens = _company_name_tokens(
+                            str(q.get("shortname") or q.get("longname") or "")
+                        )
+                        break
+        except Exception:
+            pass
         # Finnhub company news (fast, many headlines)
-        if FINNHUB_KEY:
+        if key:
             try:
-                frm = (date.today() - timedelta(days=2)).isoformat()
+                frm = (date.today() - timedelta(days=5)).isoformat()
                 to = date.today().isoformat()
                 r = requests.get(
                     "https://finnhub.io/api/v1/company-news",
-                    params={"symbol": symbol, "from": frm, "to": to, "token": FINNHUB_KEY},
+                    params={"symbol": symbol, "from": frm, "to": to, "token": key},
                     headers=UA,
                     timeout=15,
                 )
@@ -427,6 +545,10 @@ def _fetch_symbol_news(symbol: str, limit: int = 4) -> list[dict[str, Any]]:
                         title = (item.get("headline") or "").strip()
                         if not title:
                             continue
+                        # Drop generic market blurbs wrongly tagged to the symbol
+                        if name_tokens and not _title_matches_symbol(title, symbol, name_tokens):
+                            if not re.search(rf"\b{re.escape(symbol)}\b", title, flags=re.I):
+                                continue
                         ts = int(item.get("datetime") or 0) or None
                         published = (
                             datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -447,7 +569,15 @@ def _fetch_symbol_news(symbol: str, limit: int = 4) -> list[dict[str, Any]]:
                         )
             except Exception:
                 pass
-        # Yahoo fallback / supplement
+        # Yahoo search first-quality (works without Finnhub; filters by company name)
+        try:
+            rows.extend(_fetch_yahoo_search_news(symbol, limit=max(limit, 6)))
+        except Exception:
+            pass
+        # Prefer company-name matches: put yahoo_search ahead when sorting later via seen order
+        # Reorder: yahoo_search first, then finnhub/yahoo
+        rows.sort(key=lambda x: 0 if str(x.get("source") or "") == "yahoo_search" else 1)
+        # Yahoo yfinance fallback / supplement
         try:
             for item in list(yf.Ticker(symbol).news or []):
                 if not isinstance(item, dict):
@@ -462,7 +592,7 @@ def _fetch_symbol_news(symbol: str, limit: int = 4) -> list[dict[str, Any]]:
             pass
         return rows
 
-    raw = cached_call(f"newsmix:{symbol}", _call, ttl=45) or []
+    raw = cached_call(f"newsmix:{symbol}:v2", _call, ttl=90) or []
     out: list[dict[str, Any]] = []
     seen: set[str] = set()
     for fields in raw:
@@ -472,6 +602,7 @@ def _fetch_symbol_news(symbol: str, limit: int = 4) -> list[dict[str, Any]]:
             continue
         seen.add(key)
         fields = dict(fields)
+        fields["symbol"] = str(fields.get("symbol") or symbol).upper()
         fields["sentiment"] = _sentiment(fields["title"], fields.get("summary") or "")
         out.append(fields)
         if len(out) >= limit:
@@ -481,16 +612,17 @@ def _fetch_symbol_news(symbol: str, limit: int = 4) -> list[dict[str, Any]]:
 
 def _fetch_market_news(limit: int = 30) -> list[dict[str, Any]]:
     """Finnhub general + market categories; keep market/stock-ish headlines."""
-    if not FINNHUB_KEY:
+    if not _finnhub_key():
         return []
 
     def _call():
         rows: list[dict[str, Any]] = []
+        key = _finnhub_key()
         for cat in ("general", "merger", "forex", "crypto"):
             try:
                 r = requests.get(
                     "https://finnhub.io/api/v1/news",
-                    params={"category": cat, "token": FINNHUB_KEY},
+                    params={"category": cat, "token": key},
                     headers=UA,
                     timeout=15,
                 )

@@ -54,6 +54,7 @@ SNIPER_MIN_DOLLAR_HOT = 120_000  # if move is huge
 PLAN_STOP_PCT = 0.10             # وقف ≈ 10% تحت الدخول (صفقات جديدة)
 PLAN_TP1_PCT = 0.06              # جني1 ≈ +6% (قريب وقابل للتحقق)
 PLAN_TP2_PCT = 0.14              # جني2 ≈ +14% للامتداد / الصاروخ
+PLAN_TP3_PCT = 0.25              # جني3 ≈ +25%
 
 SEEN_TTL_SEC = 20 * 3600
 # بعد الظهور: ابقِ السهم على اللوحة حتى لو ضعف الزخم مؤقتاً
@@ -287,6 +288,7 @@ def build_hessa_plan(
             stop_raw = day_stop
     tp1 = entry * (1.0 + PLAN_TP1_PCT)
     tp2 = entry * (1.0 + PLAN_TP2_PCT)
+    tp3 = entry * (1.0 + PLAN_TP3_PCT)
     support = _px(day_low) if day_low and day_low > 0 else _px(stop_raw)
     resistance = _px(day_high) if day_high and day_high > entry else _px(tp1)
     stop = _px(stop_raw)
@@ -295,11 +297,12 @@ def build_hessa_plan(
         "stop": stop,
         "tp1": _px(tp1),
         "tp2": _px(tp2),
+        "tp3": _px(tp3),
         "support": support,
         "resistance": resistance,
         "plan_ar": (
             f"دخول ${_px(entry)} · وقف ${_px(stop)} · "
-            f"جني1 ${_px(tp1)} · جني2 ${_px(tp2)}"
+            f"جني1 ${_px(tp1)} · جني2 ${_px(tp2)} · جني3 ${_px(tp3)}"
         ),
         "levels_ar": (
             f"دعم ${_px(support)} · مقاومة ${_px(resistance)}"
