@@ -538,6 +538,23 @@ _STOP_EXITS = {
 }
 
 
+def _cancel_pending(
+    t: dict[str, Any],
+    status: str,
+    seen_px: float,
+    label: str,
+    *,
+    now: float,
+    at_ts: float | None = None,
+) -> None:
+    """Pending trade never bought → 0% (price at cancel kept in cancel_px for review)."""
+    entry = float(t.get("entry") or 0)
+    t["cancel_px"] = _px(seen_px)
+    t["cancel_pnl_pct"] = _pct(entry, seen_px)
+    _close_trade(t, status, entry, label, entry=entry,
+                 stop=float(t.get("initial_stop") or t.get("stop") or 0), now=now, at_ts=at_ts)
+
+
 def _fresh_bars(sym: str, now: float) -> list[list[float]] | None:
     """1m bars for an active trade, or None when missing/lagging (→ live-price fallback)."""
     try:
@@ -611,9 +628,8 @@ def _apply_minute_bars(t: dict[str, Any], bars: list[list[float]], now: float) -
 
         if t.get("status") == "pending_breakout":
             if stop > 0 and lo <= stop:
-                fill = o if o <= stop else stop
-                _close_trade(t, "loss_sl", fill, "كسر الوقف قبل تأكيد الاختراق",
-                             entry=entry, stop=risk_stop, now=now, at_ts=end)
+                _cancel_pending(t, "breakout_fail", min(o, stop), "إلغاء — كسر الوقف قبل الدخول",
+                                now=now, at_ts=end)
                 return True
             if c >= entry:
                 since = int(t.get("breakout_above_since") or ts)
@@ -635,8 +651,8 @@ def _apply_minute_bars(t: dict[str, Any], bars: list[list[float]], now: float) -
                 t["result_ar"] = "انتظار اختراق (تثبيت 3–5د)"
                 pending_age = end - float(t.get("appeared_signal_ts") or t.get("opened_ts") or end)
                 if pending_age >= BREAKOUT_PENDING_MAX_SEC:
-                    _close_trade(t, "breakout_fail", c, "فشل اختراق — ما ثبت فوق الدخول",
-                                 entry=entry, stop=risk_stop, now=now, at_ts=end)
+                    _cancel_pending(t, "breakout_fail", c, "فشل اختراق — ما ثبت فوق الدخول",
+                                    now=now, at_ts=end)
                     return True
             continue
 
@@ -745,27 +761,10 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
                 label = "إلغاء اختراق — إغلاق جلسة"
                 if _riyadh_eod_flat():
                     label = "إغلاق 11 مساءً (قبل اختراق)"
-                _close_trade(
-                    t,
-                    "session_end",
-                    last,
-                    label,
-                    entry=entry,
-                    stop=initial_stop or stop,
-                    now=now,
-                )
+                _cancel_pending(t, "session_end", last, label, now=now)
                 continue
-            # كسر الوقف قبل التأكيد → خروج فوري
             if stop > 0 and last <= stop:
-                _close_trade(
-                    t,
-                    "loss_sl",
-                    last,
-                    "كسر الوقف قبل تأكيد الاختراق",
-                    entry=entry,
-                    stop=initial_stop or stop,
-                    now=now,
-                )
+                _cancel_pending(t, "breakout_fail", last, "إلغاء — كسر الوقف قبل الدخول", now=now)
                 continue
             if last >= entry:
                 if not t.get("breakout_above_since"):
@@ -788,15 +787,7 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
                 t["breakout_above_since"] = None
                 t["result_ar"] = "انتظار اختراق (تثبيت 3–5د)"
                 if pending_age >= BREAKOUT_PENDING_MAX_SEC:
-                    _close_trade(
-                        t,
-                        "breakout_fail",
-                        last,
-                        "فشل اختراق — ما ثبت فوق الدخول",
-                        entry=entry,
-                        stop=initial_stop or stop,
-                        now=now,
-                    )
+                    _cancel_pending(t, "breakout_fail", last, "فشل اختراق — ما ثبت فوق الدخول", now=now)
                 continue
             # fall through once promoted to open on this same tick
 
@@ -1013,6 +1004,10 @@ def force_close_all_open(reason_ar: str = "إغلاق 11 مساءً") -> int:
         stop = float(t.get("initial_stop") or t.get("stop") or 0)
         last = float(t.get("last") or entry)
         if entry <= 0 or last <= 0:
+            continue
+        if t.get("status") == "pending_breakout":
+            _cancel_pending(t, "session_end", last, f"{reason_ar} (قبل اختراق)", now=now)
+            n += 1
             continue
         pnl = _pct(entry, last)
         label = f"{reason_ar} +" if pnl >= 0 else f"{reason_ar} −"
