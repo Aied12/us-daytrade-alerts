@@ -478,7 +478,7 @@ def main() -> None:
         try:
             ledger = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
             for t in ledger.get("trades") or []:
-                if t.get("status") == "open" and t.get("symbol"):
+                if t.get("status") in ("open", "pending_breakout") and t.get("symbol"):
                     open_syms.append(str(t["symbol"]).upper())
         except Exception:
             pass

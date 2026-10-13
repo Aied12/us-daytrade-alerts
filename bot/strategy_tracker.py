@@ -43,6 +43,8 @@ QANNAS_PAPER_LATE_HOUR_COMPLETE = 21     # مكتمل 4/4: يُسمح لاحقا
 # أفضل فرص ≥3/4: بحد أقصى 3 صفقات قناص مفتوحة معاً (المغلقة ما تحجز المقعد)
 QANNAS_PAPER_MIN_CHECKS = 3
 QANNAS_PAPER_TOP_N = 3
+# لا نعتمد شموع الدقيقة إذا آخر شمعة أقدم من هذا (بيانات متأخرة) — نرجع للسعر الحي
+BARS_MAX_LAG_SEC = 5 * 60
 
 ACTIVE_STATUSES = ("open", "pending_breakout")
 
@@ -383,6 +385,8 @@ def ingest_candidates(
             existing = by_id.get(tid)
             if existing and existing.get("status") in ACTIVE_STATUSES:
                 # Refresh live mark only (open or awaiting breakout confirm)
+                if row.get("sticky") or existing.get("fill_model") == "1m":
+                    continue
                 last = float(row.get("last") or entry)
                 existing["last"] = _px(last)
                 existing["mfe_pct"] = max(float(existing.get("mfe_pct") or 0), _pct(entry, last))
@@ -526,6 +530,165 @@ def _qannas_paper_entry_ok(row: dict[str, Any]) -> bool:
     return True
 
 
+_STOP_EXITS = {
+    0: ("loss_sl", "كسر وقف الخسارة"),
+    1: ("win_trail_tp1", "خروج — كسر الوقف عند هدف1"),
+    2: ("win_trail_tp2", "خروج — كسر الوقف عند هدف2"),
+    3: ("win_trail_tp3", "خروج — كسر الوقف عند هدف3"),
+}
+
+
+def _fresh_bars(sym: str, now: float) -> list[list[float]] | None:
+    """1m bars for an active trade, or None when missing/lagging (→ live-price fallback)."""
+    try:
+        from bot.minute_bars import fetch_minute_bars
+
+        bars = fetch_minute_bars(sym)
+    except Exception:
+        return None
+    if not bars:
+        return None
+    if now - (int(bars[-1][0]) + 60) > BARS_MAX_LAG_SEC:
+        return None
+    return bars
+
+
+def _stamp_shadow_filter(t: dict[str, Any], bars: list[list[float]] | None, at_ts: float) -> None:
+    """وضع مراقبة: هل كان فلتر عدم المطاردة سيقبل هذه الصفقة؟ لا يغيّر شيئاً في التداول."""
+    if t.get("shadow_filter_ok") is not None:
+        return
+    try:
+        from bot.minute_bars import anti_chase_check, fetch_minute_bars
+
+        if bars is None:
+            bars = fetch_minute_bars(str(t.get("symbol") or ""))
+        chg = t.get("appear_change_pct")
+        t.update(
+            anti_chase_check(
+                bars,
+                entry=float(t.get("entry") or 0),
+                at_ts=at_ts,
+                change_pct=float(chg) if chg is not None else None,
+            )
+        )
+    except Exception:
+        pass
+
+
+def _apply_minute_bars(t: dict[str, Any], bars: list[list[float]], now: float) -> bool:
+    """Walk completed 1m bars since the last check. Returns True when the trade closed.
+
+    Stop fills at the stop price, or at the bar open when price gapped through it.
+    A bar touching both stop and target counts as stopped (conservative).
+    """
+    from bot.minute_bars import completed_bars
+
+    t["fill_model"] = "1m"
+    cursor = int(t.get("bars_seen_ts") or 0)
+    if not cursor:
+        start = float(
+            (t.get("appeared_signal_ts") if t.get("status") == "pending_breakout" else None)
+            or t.get("opened_ts")
+            or now
+        )
+        cursor = int(start // 60 * 60)
+    sym = str(t.get("symbol") or "").upper()
+    prev_close: float | None = None
+    for b in completed_bars(bars, now):
+        ts, o, h, lo, c = int(b[0]), b[1], b[2], b[3], b[4]
+        if ts <= cursor:
+            prev_close = c
+            continue
+        gap_close = prev_close
+        prev_close = c
+        cursor = ts
+        t["bars_seen_ts"] = ts
+        end = ts + 60
+        entry = float(t.get("entry") or 0)
+        stop = float(t.get("stop") or 0)
+        risk_stop = float(t.get("initial_stop") or stop or 0)
+        t["last"] = _px(c)
+
+        if t.get("status") == "pending_breakout":
+            if stop > 0 and lo <= stop:
+                fill = o if o <= stop else stop
+                _close_trade(t, "loss_sl", fill, "كسر الوقف قبل تأكيد الاختراق",
+                             entry=entry, stop=risk_stop, now=now, at_ts=end)
+                return True
+            if c >= entry:
+                since = int(t.get("breakout_above_since") or ts)
+                t["breakout_above_since"] = since
+                held = end - since
+                if held >= BREAKOUT_CONFIRM_SEC:
+                    t["status"] = "open"
+                    t["opened_ts"] = end
+                    t["opened_local"] = datetime.fromtimestamp(end, RIYADH).strftime("%Y-%m-%d %H:%M")
+                    t["breakout_confirmed_ts"] = end
+                    t["result_ar"] = "مفتوح — اختراق مؤكد"
+                    t["mfe_pct"] = 0.0
+                    t["mae_pct"] = 0.0
+                    _stamp_shadow_filter(t, bars, end)
+                else:
+                    t["result_ar"] = f"تثبيت اختراق {int(held)}ث / {BREAKOUT_CONFIRM_SEC}ث"
+            else:
+                t["breakout_above_since"] = None
+                t["result_ar"] = "انتظار اختراق (تثبيت 3–5د)"
+                pending_age = end - float(t.get("appeared_signal_ts") or t.get("opened_ts") or end)
+                if pending_age >= BREAKOUT_PENDING_MAX_SEC:
+                    _close_trade(t, "breakout_fail", c, "فشل اختراق — ما ثبت فوق الدخول",
+                                 entry=entry, stop=risk_stop, now=now, at_ts=end)
+                    return True
+            continue
+
+        stage = int(t.get("stop_trail_stage") or 0)
+        if stop > 0 and lo <= stop:
+            through = o <= stop
+            gap = through and gap_close is not None and gap_close > stop
+            status, label = _STOP_EXITS[min(stage, 3)]
+            _close_trade(t, status, o if through else stop, label + (" (فجوة)" if gap else ""),
+                         entry=entry, stop=risk_stop, now=now, at_ts=end)
+            return True
+
+        t["mfe_pct"] = max(float(t.get("mfe_pct") or 0), _pct(entry, h))
+        t["mae_pct"] = min(float(t.get("mae_pct") or 0), _pct(entry, lo))
+
+        for level, key in ((3, "tp3"), (2, "tp2"), (1, "tp1")):
+            tp = float(t.get(key) or 0)
+            if tp > 0 and h >= tp and stage < level:
+                t["stop"] = _px(tp)
+                t["stop_trail_stage"] = level
+                t[f"tp{level}_hit_ts"] = end
+                t["result_ar"] = f"هدف{level} ✓ — الوقف على هدف{level}"
+                stage = level
+                try:
+                    from bot.day_performance import append_lifecycle_event
+
+                    append_lifecycle_event(
+                        "trail",
+                        {"trade_id": t.get("id"), "symbol": sym, "stage": level, "stop": t["stop"], "last": h},
+                    )
+                except Exception:
+                    pass
+                break
+
+        age = end - float(t.get("opened_ts") or end)
+        if (
+            str(t.get("source") or "") == "qannas"
+            and stage == 0
+            and age >= NO_GREEN_EXIT_SEC
+            and float(t.get("mfe_pct") or 0) <= NO_GREEN_MFE_MAX
+            and c <= entry
+        ):
+            _close_trade(t, "loss_fade", c, "إلغاء — ما اخضرّت خلال 5د",
+                         entry=entry, stop=risk_stop, now=now, at_ts=end)
+            return True
+        if age >= OPEN_MAX_SEC:
+            label = "انتهى الوقت +" if c >= entry else "انتهى الوقت −"
+            _close_trade(t, "expired", c, label, entry=entry, stop=risk_stop, now=now, at_ts=end)
+            return True
+    return False
+
+
 def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
     """Update active trades; breakout confirm, trail stops, SL / session / timeout."""
     data = _load()
@@ -548,6 +711,21 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
         tp3 = float(t.get("tp3") or 0)
         last = float(price_by_symbol.get(sym) or t.get("last") or entry)
         if last <= 0 or entry <= 0:
+            continue
+        # شموع الدقيقة: الوقف/الأهداف/الاختراق بين فحص وفحص (الإغلاق الإجباري يبقى على السعر الحي)
+        bars = None if (_riyadh_eod_flat() or session_closed) else _fresh_bars(sym, now)
+        if bars is not None:
+            if _apply_minute_bars(t, bars, now):
+                continue
+            if sym not in price_by_symbol:
+                last = float(t.get("last") or last)
+            t["last"] = _px(last)
+            try:
+                from bot.day_performance import append_price_trail
+
+                append_price_trail(t, last)
+            except Exception:
+                pass
             continue
         t["last"] = _px(last)
         pnl = _pct(entry, last)
@@ -600,6 +778,7 @@ def mark_to_market(price_by_symbol: dict[str, float]) -> dict[str, Any]:
                     t["opened_local"] = datetime.now(RIYADH).strftime("%Y-%m-%d %H:%M")
                     t["breakout_confirmed_ts"] = int(now)
                     t["result_ar"] = "مفتوح — اختراق مؤكد"
+                    _stamp_shadow_filter(t, None, now)
                     status = "open"
                 else:
                     t["result_ar"] = f"تثبيت اختراق {int(held)}ث / {BREAKOUT_CONFIRM_SEC}ث"
@@ -769,11 +948,14 @@ def _close_trade(
     entry: float,
     stop: float,
     now: float,
+    at_ts: float | None = None,
 ) -> None:
+    if at_ts:
+        now = float(at_ts)
     t["status"] = status
     t["exit"] = _px(exit_px)
     t["exit_ts"] = int(now)
-    t["exit_local"] = datetime.now(RIYADH).strftime("%Y-%m-%d %H:%M")
+    t["exit_local"] = datetime.fromtimestamp(now, RIYADH).strftime("%Y-%m-%d %H:%M")
     t["pnl_pct"] = _pct(entry, exit_px)
     # R على المخاطرة الأولية (قبل رفع الوقف)
     risk_stop = float(t.get("initial_stop") or stop or 0)
@@ -954,6 +1136,31 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
         rows.sort(key=lambda r: (r["win_rate"] is not None, r["win_rate"] or -1, r["n"]), reverse=True)
         return rows
 
+    def _shadow_bucket(ok: bool) -> dict[str, Any]:
+        rows = [
+            t for t in closed
+            if t.get("shadow_filter_ok") is ok and t.get("pnl_pct") is not None
+        ]
+        pnls = [float(t.get("pnl_pct") or 0) for t in rows]
+        w = sum(1 for p in pnls if p > 0)
+        lo = sum(1 for p in pnls if p < 0)
+        return {
+            "n": len(rows),
+            "wins": w,
+            "losses": lo,
+            "win_rate": round(100.0 * w / (w + lo), 1) if (w + lo) else None,
+            "avg_pnl_pct": round(sum(pnls) / len(pnls), 3) if pnls else None,
+        }
+
+    shadow_filter = {
+        "accepted": _shadow_bucket(True),
+        "rejected": _shadow_bucket(False),
+        "note_ar": (
+            "وضع مراقبة: فلتر عدم المطاردة (ارتفاع ≥15% آخر 15د أو ≥8% آخر 5د أو تمدد ≥100%) "
+            "يُسجَّل فقط ولا يمنع أي صفقة"
+        ),
+    }
+
     recent_closed = sorted(
         [t for t in closed if t.get("exit_ts")],
         key=lambda t: int(t.get("exit_ts") or 0),
@@ -976,6 +1183,7 @@ def summarize(trades: list[dict[str, Any]] | None = None) -> dict[str, Any]:
         "avg_r": avg_r,
         "by_source": _finalize(by_source),
         "by_strategy": _finalize(by_strategy)[:20],
+        "shadow_filter": shadow_filter,
         "recent_closed": [
             {
                 "symbol": t.get("symbol"),
@@ -1040,10 +1248,13 @@ def sync_from_boards(
     prices = dict(price_by_symbol or {})
     for rows in (opportunities or [], sniper or [], jamal or [], qannas or []):
         for r in rows:
+            # البطاقات المثبّتة (sticky) تحمل سعراً قديماً — لا تغطي السعر الحي
+            if r.get("sticky"):
+                continue
             sym = str(r.get("symbol") or "").upper()
             last = float(r.get("last") or 0)
             if sym and last > 0:
-                prices[sym] = last
+                prices.setdefault(sym, last)
 
     eod: dict[str, Any] = {}
     try:
@@ -1111,6 +1322,7 @@ def sync_from_boards(
             "win_rate": all_time.get("win_rate"),
             "avg_pnl_pct": all_time.get("avg_pnl_pct"),
             "avg_r": all_time.get("avg_r"),
+            "shadow_filter": all_time.get("shadow_filter"),
         },
         "note_ar": today_note,
     }

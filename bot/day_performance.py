@@ -58,6 +58,11 @@ CSV_FIELDS = [
     "appear_checks_ok",
     "appear_session_ar",
     "strategies",
+    "fill_model",
+    "shadow_filter_ok",
+    "shadow_run5_pct",
+    "shadow_run15_pct",
+    "shadow_reason",
 ]
 
 
@@ -316,6 +321,11 @@ def _trade_lifecycle_row(t: dict[str, Any]) -> dict[str, Any]:
         "r_multiple": t.get("r_multiple"),
         "mfe_pct": t.get("mfe_pct"),
         "mae_pct": t.get("mae_pct"),
+        "fill_model": t.get("fill_model") or "live",
+        "shadow_filter_ok": t.get("shadow_filter_ok"),
+        "shadow_run5_pct": t.get("shadow_run5_pct"),
+        "shadow_run15_pct": t.get("shadow_run15_pct"),
+        "shadow_reason": t.get("shadow_reason"),
         "price_trail": t.get("price_trail") or [],
     }
 
